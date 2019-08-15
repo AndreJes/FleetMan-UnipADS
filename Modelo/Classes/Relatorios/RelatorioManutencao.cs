@@ -8,5 +8,6 @@ namespace Modelo.Classes.Relatorios
 {
     class RelatorioManutencao
     {
+        public List<Manutencao.Manutencao> Manutencoes { get; set; }
     }
 }

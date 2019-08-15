@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.Classes.Web;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Modelo.Classes.Relatorios
 {
     class RelatorioViagem
     {
+        public List<Viagem> Viagens { get; set; }
     }
 }

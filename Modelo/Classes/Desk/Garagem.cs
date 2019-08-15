@@ -8,5 +8,12 @@ namespace Modelo.Classes.Desk
 {
     class Garagem
     {
+        public long? GaragemId { get; set; }
+        public string Telefone { get; set; }
+        public string Endereco { get; set; }
+        public string CNPJ { get; set; }
+        public uint Capacidade { get; set; }
+
+
     }
 }

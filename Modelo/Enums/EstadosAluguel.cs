@@ -8,5 +8,8 @@ namespace Modelo.Enums
 {
     enum EstadosAluguel
     {
+        REGULAR,
+        CANCELADO,
+        VENCIDO
     }
 }

@@ -8,5 +8,8 @@ namespace Modelo.Enums
 {
     enum ItemSolicitacao
     {
+        VEICULO,
+        MOTORISTA,
+        ALUGUEL
     }
 }

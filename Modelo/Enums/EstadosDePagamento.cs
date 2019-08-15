@@ -8,5 +8,8 @@ namespace Modelo.Enums
 {
     enum EstadosDePagamento
     {
+        PAGO,
+        VENCIDO,
+        AGUARDANDO_PAGAMENTO
     }
 }

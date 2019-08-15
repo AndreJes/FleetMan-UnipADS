@@ -41,14 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Cliente\ClientePF.cs" />
-    <Compile Include="Classes\Cliente\ClientePJ.cs" />
+    <Compile Include="Classes\Clientes\ClientePF.cs" />
+    <Compile Include="Classes\Clientes\ClientePJ.cs" />
     <Compile Include="Classes\Manutencao\Abastecimento.cs" />
     <Compile Include="Classes\Desk\Aviso.cs" />
     <Compile Include="Classes\Manutencao\Fornecedor.cs" />
     <Compile Include="Classes\Manutencao\Manutencao.cs" />
     <Compile Include="Classes\Manutencao\Peca.cs" />
-    <Compile Include="Classes\Usuarios\Permissoes\Permicoes.cs" />
+    <Compile Include="Classes\Usuarios\Permissoes\Permissoes.cs" />
     <Compile Include="Classes\Usuarios\Usuario.cs" />
     <Compile Include="Classes\Usuarios\UsuarioFunc.cs" />
     <Compile Include="Classes\Relatorios\Relatorio.cs" />
@@ -76,14 +76,9 @@
     <Compile Include="Enums\TiposDeSolicitacao.cs" />
     <Compile Include="Enums\TiposDeVeiculo.cs" />
     <Compile Include="Enums\TiposRelatorios.cs" />
-    <Compile Include="Interfaces\IConsultar.cs" />
-    <Compile Include="Interfaces\IEditar.cs" />
-    <Compile Include="Interfaces\IExcluir.cs" />
-    <Compile Include="Interfaces\IGravar.cs" />
-    <Compile Include="Interfaces\IInativar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Web\Aluguel.cs" />
-    <Compile Include="Classes\Cliente\Cliente.cs" />
+    <Compile Include="Classes\Clientes\Cliente.cs" />
     <Compile Include="Classes\Desk\Financa.cs" />
     <Compile Include="Classes\Desk\Funcionario.cs" />
     <Compile Include="Classes\Desk\Garagem.cs" />

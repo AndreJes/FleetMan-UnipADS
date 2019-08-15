@@ -8,5 +8,12 @@ namespace Modelo.Enums
 {
     enum EstadosDeMotorista
     {
+        REGULAR,
+        PONTOS_CNH_ESTOURADOS,
+        EXAME_MEDICO_VENCIDO,
+        EM_VIAGEM,
+        AFASTADO,
+        ACIDENTADO,
+        INATIVO
     }
 }

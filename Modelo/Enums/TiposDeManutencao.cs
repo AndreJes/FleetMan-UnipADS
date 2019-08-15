@@ -8,5 +8,8 @@ namespace Modelo.Enums
 {
     enum TiposDeManutencao
     {
+        PREVENTIVA,
+        CORRETIVA,
+        ABASTECIMENTO
     }
 }

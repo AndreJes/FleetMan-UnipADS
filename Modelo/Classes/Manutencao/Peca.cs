@@ -8,5 +8,11 @@ namespace Modelo.Classes.Manutencao
 {
     class Peca
     {
+        public long? PecaId { get; set; }
+        public string Descricao { get; set; }
+        public uint Quantidade { get; set; }
+
+        public long FornecedorId { get; set; }
+        public Fornecedor Fornecedor { get; set; }
     }
 }

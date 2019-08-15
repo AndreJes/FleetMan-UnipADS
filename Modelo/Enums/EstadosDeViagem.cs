@@ -8,5 +8,9 @@ namespace Modelo.Enums
 {
     enum EstadosDeViagem
     {
+        AGUARDANDO_INICIO,
+        EM_ANDAMENTO,
+        CONCLUIDA,
+        CANCELADA
     }
 }

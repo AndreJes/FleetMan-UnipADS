@@ -8,5 +8,8 @@ namespace Modelo.Enums
 {
     enum EstadosDeManutencao
     {
+        CONCLUIDA,
+        EM_ANDAMENTO,
+        CANCELADA
     }
 }

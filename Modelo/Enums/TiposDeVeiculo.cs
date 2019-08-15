@@ -8,5 +8,14 @@ namespace Modelo.Enums
 {
     enum TiposDeVeiculo
     {
+        MOTO,
+        CARRO,
+        VAN,
+        CAMINHONETE,
+        CAMINHAO_LEVE,
+        CAMINHAO_PESADO,
+        ONIBUS,
+        UTILITARIO,
+        OUTROS
     }
 }

@@ -8,5 +8,8 @@ namespace Modelo.Enums
 {
     enum EstadosDaSolicitacao
     {
+        APROVADA,
+        REPROVADA,
+        AGUARDANDO_APROVACAO
     }
 }

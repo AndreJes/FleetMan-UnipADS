@@ -8,5 +8,8 @@ namespace Modelo.Enums
 {
     enum CoberturasSeguro
     {
+        TOTAL,
+        PARCIAL,
+        AMBOS
     }
 }

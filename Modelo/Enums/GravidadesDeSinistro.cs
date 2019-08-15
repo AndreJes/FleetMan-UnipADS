@@ -8,5 +8,11 @@ namespace Modelo.Enums
 {
     enum GravidadesDeSinistro
     {
+        BATIDA,
+        ACIDENTE_LEVE_SEM_VITIMA,
+        ACIDENTE_LEVE_COM_VITIMA,
+        ACIDENTE_GRAVE,
+        ACIDENTE_FATAL,
+        PERDA_TOTAL,
     }
 }

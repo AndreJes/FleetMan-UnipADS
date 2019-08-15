@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum GravidadesDaInfracao
+    enum GravidadesDeInfracao
     {
+        LEVE = 3,
+        MEDIA = 4,
+        GRAVE = 5,
+        GRAVISSIMA = 7
     }
 }

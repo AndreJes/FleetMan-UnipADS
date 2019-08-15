@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,12 @@ namespace Modelo.Classes.Desk
 {
     class Multa
     {
+        public long? MultaId { get; set; }
+        public string CodigoMulta { get; set; }
+        public double Valor { get; set; }
+        public DateTime DataDaMulta { get; set; }
+        public EstadosDePagamento EstadoDoPagamento { get; set; }
+        public GravidadesDeInfracao GravidadeDaInfracao { get; set; }
+
     }
 }

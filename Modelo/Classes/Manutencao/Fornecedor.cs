@@ -8,5 +8,12 @@ namespace Modelo.Classes.Manutencao
 {
     class Fornecedor
     {
+        public long? FornecedorId { get; set; }
+        public string CNPJ { get; set; }
+        public string Razao_Social { get; set; }
+        public string Telefone { get; set; }
+        public string Email { get; set; }
+
+        public List<Peca> Pecas { get; set; }
     }
 }

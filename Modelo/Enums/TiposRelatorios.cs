@@ -8,5 +8,11 @@ namespace Modelo.Enums
 {
     enum TiposRelatorios
     {
+        VIAGEM,
+        MULTA,
+        ACIDENTE,
+        CONSUMO,
+        FINANCEIRO,
+        MANUTENCOES
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,10 @@ namespace Modelo.Classes.Desk
 {
     class Sinistro
     {
+        public long? SinistroId { get; set; }
+        public string CodSinistro { get; set; }
+        public string Descricao { get; set; }
+        public EstadosDePagamento EstadoPagamento { get; set; }
+        public GravidadesDeSinistro Gravidade { get; set; }
     }
 }

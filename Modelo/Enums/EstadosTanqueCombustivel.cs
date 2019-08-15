@@ -8,5 +8,10 @@ namespace Modelo.Enums
 {
     enum EstadosTanqueCombustivel
     {
+        CHEIO,
+        TRES_QUARTOS,
+        METADE,
+        UM_QUARTO,
+        VAZIO
     }
 }
