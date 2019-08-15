@@ -41,11 +41,61 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Cliente\ClientePF.cs" />
+    <Compile Include="Classes\Cliente\ClientePJ.cs" />
+    <Compile Include="Classes\Manutencao\Abastecimento.cs" />
+    <Compile Include="Classes\Desk\Aviso.cs" />
+    <Compile Include="Classes\Manutencao\Fornecedor.cs" />
+    <Compile Include="Classes\Manutencao\Manutencao.cs" />
+    <Compile Include="Classes\Manutencao\Peca.cs" />
+    <Compile Include="Classes\Usuarios\Permissoes\Permicoes.cs" />
+    <Compile Include="Classes\Usuarios\Usuario.cs" />
+    <Compile Include="Classes\Usuarios\UsuarioFunc.cs" />
+    <Compile Include="Classes\Relatorios\Relatorio.cs" />
+    <Compile Include="Classes\Relatorios\RelatorioAcidentes.cs" />
+    <Compile Include="Classes\Relatorios\RelatorioConsumo.cs" />
+    <Compile Include="Classes\Relatorios\RelatorioFinanceiro.cs" />
+    <Compile Include="Classes\Relatorios\RelatorioManutencao.cs" />
+    <Compile Include="Classes\Relatorios\RelatorioMulta.cs" />
+    <Compile Include="Classes\Relatorios\RelatorioViagem.cs" />
+    <Compile Include="Enums\CategoriasCNH.cs" />
+    <Compile Include="Enums\CoberturasSeguro.cs" />
+    <Compile Include="Enums\EstadosAluguel.cs" />
+    <Compile Include="Enums\EstadosDaSolicitacao.cs" />
+    <Compile Include="Enums\EstadosDeManutencao.cs" />
+    <Compile Include="Enums\EstadosDeVeiculo.cs" />
+    <Compile Include="Enums\EstadosDeViagem.cs" />
+    <Compile Include="Enums\EstadosDeMotorista.cs" />
+    <Compile Include="Enums\EstadosDePagamento.cs" />
+    <Compile Include="Enums\EstadosTanqueCombustivel.cs" />
+    <Compile Include="Enums\GravidadesDaInfracao.cs" />
+    <Compile Include="Enums\GravidadesDeSinistro.cs" />
+    <Compile Include="Enums\ItemSolicitacao.cs" />
+    <Compile Include="Enums\TiposDeAviso.cs" />
+    <Compile Include="Enums\TiposDeManutencao.cs" />
+    <Compile Include="Enums\TiposDeSolicitacao.cs" />
+    <Compile Include="Enums\TiposDeVeiculo.cs" />
+    <Compile Include="Enums\TiposRelatorios.cs" />
+    <Compile Include="Interfaces\IConsultar.cs" />
+    <Compile Include="Interfaces\IEditar.cs" />
+    <Compile Include="Interfaces\IExcluir.cs" />
+    <Compile Include="Interfaces\IGravar.cs" />
+    <Compile Include="Interfaces\IInativar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\Web\Aluguel.cs" />
+    <Compile Include="Classes\Cliente\Cliente.cs" />
+    <Compile Include="Classes\Desk\Financa.cs" />
+    <Compile Include="Classes\Desk\Funcionario.cs" />
+    <Compile Include="Classes\Desk\Garagem.cs" />
+    <Compile Include="Classes\Web\Motorista.cs" />
+    <Compile Include="Classes\Desk\Multa.cs" />
+    <Compile Include="Classes\Desk\Seguro.cs" />
+    <Compile Include="Classes\Desk\Sinistro.cs" />
+    <Compile Include="Classes\Web\Veiculo.cs" />
+    <Compile Include="Classes\Web\Viagem.cs" />
+    <Compile Include="Classes\Web\Solicitacao.cs" />
+    <Compile Include="Classes\Usuarios\UsuarioCliente.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Desk\" />
-    <Folder Include="Web\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

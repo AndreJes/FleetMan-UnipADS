@@ -44,8 +44,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Cliente\" />
     <Folder Include="Desk\" />
+    <Folder Include="Manutencao\" />
+    <Folder Include="Relatorios\" />
+    <Folder Include="Usuarios\" />
     <Folder Include="Web\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{e49d7987-d220-4d5b-bb00-611d7248f8d9}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{2379d099-a2cb-40c5-9e40-4f00a88539cb}</Project>
+      <Name>Persistencia</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
