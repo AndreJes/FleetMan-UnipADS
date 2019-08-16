@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum ItemSolicitacao
+    public enum ItemSolicitacao
     {
         VEICULO,
         MOTORISTA,

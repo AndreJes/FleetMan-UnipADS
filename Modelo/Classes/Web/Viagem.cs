@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Web
 {
-    class Viagem
+    public class Viagem
     {
         public long? ViagemId { get; set; }
         public string EnderecoOrigem { get; set; }

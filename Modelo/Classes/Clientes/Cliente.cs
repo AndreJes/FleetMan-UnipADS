@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Clientes
 {
-    abstract class Cliente
+    public abstract class Cliente
     {
         public long? ClienteId { get; set; }
         public string Telefone { get; set; }

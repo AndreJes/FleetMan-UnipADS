@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Web
 {
-    class Motorista
+    public class Motorista
     {
         public long? MotoristaId { get; set; }
         public string NumeroCNH { get; set; }

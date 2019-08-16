@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum EstadosDeViagem
+    public enum EstadosDeViagem
     {
         AGUARDANDO_INICIO,
         EM_ANDAMENTO,

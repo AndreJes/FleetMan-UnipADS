@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum GravidadesDeSinistro
+    public enum GravidadesDeSinistro
     {
         BATIDA,
         ACIDENTE_LEVE_SEM_VITIMA,

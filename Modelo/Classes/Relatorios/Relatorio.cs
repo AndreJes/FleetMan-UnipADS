@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Relatorios
 {
-    abstract class Relatorio
+    public abstract class Relatorio
     {
         public long? RelatorioId { get; set; }
         public DateTime DataEmissao { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Desk
 {
-    class Funcionario
+    public class Funcionario
     {
         public long? FuncionarioId { get; set; }
         public string Nome { get; set; }

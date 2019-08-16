@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Manutencao
 {
-    class Fornecedor
+    public class Fornecedor
     {
         public long? FornecedorId { get; set; }
         public string CNPJ { get; set; }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Usuarios
 {
-    class UsuarioCliente : Usuario
+    public class UsuarioCliente : Usuario
     {
+        public long? ClienteId { get; set; }
+        public Clientes.Cliente Cliente { get; set; }
     }
 }

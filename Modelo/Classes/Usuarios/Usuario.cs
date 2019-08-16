@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Usuarios
 {
-    abstract class Usuario
+    public abstract class Usuario
     {
         public long? UsuarioId { get; set; }
         public string Login { get; set; }

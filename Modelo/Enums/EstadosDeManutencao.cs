@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum EstadosDeManutencao
+    public enum EstadosDeManutencao
     {
         CONCLUIDA,
         EM_ANDAMENTO,

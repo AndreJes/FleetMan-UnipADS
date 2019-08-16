@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum EstadosDeMotorista
+    public enum EstadosDeMotorista
     {
         REGULAR,
         PONTOS_CNH_ESTOURADOS,

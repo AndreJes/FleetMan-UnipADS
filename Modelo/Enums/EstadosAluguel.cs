@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum EstadosAluguel
+    public enum EstadosAluguel
     {
         REGULAR,
         CANCELADO,

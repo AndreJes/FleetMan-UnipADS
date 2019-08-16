@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum CoberturasSeguro
+    public enum CoberturasSeguro
     {
         TOTAL,
         PARCIAL,

@@ -7,7 +7,7 @@ using Modelo.Enums;
 
 namespace Modelo.Classes.Web
 {
-    class Veiculo
+    public class Veiculo
     {
         public long? VeiculoId { get; set; }
         public string Nome { get; set; }

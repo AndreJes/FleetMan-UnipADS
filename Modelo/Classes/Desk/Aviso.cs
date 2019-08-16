@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Desk
 {
-    class Aviso
+    public class Aviso
     {
         public long? AvisoId { get; set; }
         public string Mensagem { get; set; }

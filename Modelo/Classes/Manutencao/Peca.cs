@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Manutencao
 {
-    class Peca
+    public class Peca
     {
         public long? PecaId { get; set; }
         public string Descricao { get; set; }

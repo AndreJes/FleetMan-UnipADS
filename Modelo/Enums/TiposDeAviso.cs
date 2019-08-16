@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum TiposDeAviso
+    public enum TiposDeAviso
     {
         VEICULO_IRREGULAR,
         MOTORISTA_IRREGULAR,

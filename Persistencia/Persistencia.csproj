@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,10 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contexts\EFContext.cs" />
+    <Compile Include="Migrations\201908162152231_First-After-Enabled.cs" />
+    <Compile Include="Migrations\201908162152231_First-After-Enabled.Designer.cs">
+      <DependentUpon>201908162152231_First-After-Enabled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contexts\" />
     <Folder Include="DAL\Cliente\" />
     <Folder Include="DAL\Desk\" />
     <Folder Include="DAL\Manutencao\" />
@@ -68,6 +74,11 @@
       <Project>{e49d7987-d220-4d5b-bb00-611d7248f8d9}</Project>
       <Name>Modelo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201908162152231_First-After-Enabled.resx">
+      <DependentUpon>201908162152231_First-After-Enabled.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

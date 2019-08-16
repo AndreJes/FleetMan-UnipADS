@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Manutencao
 {
-    class Manutencao
+    public class Manutencao
     {
         public long? ManutencaoId { get; set; }
         public string Local { get; set; }

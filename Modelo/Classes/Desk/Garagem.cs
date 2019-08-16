@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Desk
 {
-    class Garagem
+    public class Garagem
     {
         public long? GaragemId { get; set; }
         public string Telefone { get; set; }

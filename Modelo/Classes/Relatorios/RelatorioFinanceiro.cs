@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Relatorios
 {
-    class RelatorioFinanceiro
+    public class RelatorioFinanceiro: Relatorio
     {
         public List<Financa> Financas { get; set; }
     }

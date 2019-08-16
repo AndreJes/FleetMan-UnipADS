@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum GravidadesDeInfracao
+    public enum GravidadesDeInfracao
     {
         LEVE = 3,
         MEDIA = 4,

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum EstadosDeVeiculo
+    public enum EstadosDeVeiculo
     {
         NORMAL,
         EM_VIAGEM,

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum EstadosTanqueCombustivel
+    public enum EstadosTanqueCombustivel
     {
         CHEIO,
         TRES_QUARTOS,

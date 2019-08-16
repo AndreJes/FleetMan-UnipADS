@@ -7,10 +7,10 @@ using Modelo.Enums;
 
 namespace Modelo.Classes.Web
 {
-    class Solicitacao
+    public class Solicitacao
     {
         public long? SolicitacaoId { get; set; }
-        public object Item { get; set; }
+        public string ItemSerializado { get; set; }
         public ItemSolicitacao TipoDeItem { get; set; }
         public EstadosDaSolicitacao Estado { get; set; }
         public TiposDeSolicitacao Tipo { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Clientes
 {
-    class ClientePF : Cliente
+    public class ClientePF : Cliente
     {
         public string CPF { get; set; }
 

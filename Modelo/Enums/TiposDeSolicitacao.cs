@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum TiposDeSolicitacao
+    public enum TiposDeSolicitacao
     {
         INCLUSAO,
         EXCLUSAO,

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum CategoriasCNH
+    public enum CategoriasCNH
     {
         A,
         B,

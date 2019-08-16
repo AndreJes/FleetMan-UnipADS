@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum TiposDeVeiculo
+    public enum TiposDeVeiculo
     {
         MOTO,
         CARRO,

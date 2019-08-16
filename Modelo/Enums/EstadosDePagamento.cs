@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    enum EstadosDePagamento
+    public enum EstadosDePagamento
     {
         PAGO,
         VENCIDO,

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Usuarios.Permissoes
 {
-    class Permissoes
+    public class Permissoes
     {
         public bool Veiculos { get; set; }
         public bool Motoristas { get; set; }

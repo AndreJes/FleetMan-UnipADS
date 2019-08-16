@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Relatorios
 {
-    class RelatorioMulta
+    public class RelatorioMulta : Relatorio
     {
         public List<Multa> Multas { get; set; }
     }

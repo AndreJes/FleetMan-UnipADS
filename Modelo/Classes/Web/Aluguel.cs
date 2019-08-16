@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Web
 {
-    class Aluguel
+    public class Aluguel
     {
         public long? AluguelId { get; set; }
         public DateTime DataContratacao { get; set; }

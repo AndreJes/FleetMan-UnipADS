@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Manutencao
 {
-    class Abastecimento : Manutencao
+    public class Abastecimento : Manutencao
     {
         public double QuantidadeAbastecida { get; set; }
         public double Valor { get; set; }
