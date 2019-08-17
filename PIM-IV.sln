@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistencia", "Persistenci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servicos", "Servicos\Servicos.csproj", "{5421A323-FEF5-476E-A247-C34E727BEEDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDesk", "AppDesk\AppDesk.csproj", "{3061D4A9-6A83-4DB8-9276-E0908CC3C7F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDesk", "AppDesk\AppDesk.csproj", "{7CA445C6-EA3C-4BB8-8B5C-1E168BA6438C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{5421A323-FEF5-476E-A247-C34E727BEEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5421A323-FEF5-476E-A247-C34E727BEEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5421A323-FEF5-476E-A247-C34E727BEEDC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3061D4A9-6A83-4DB8-9276-E0908CC3C7F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3061D4A9-6A83-4DB8-9276-E0908CC3C7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3061D4A9-6A83-4DB8-9276-E0908CC3C7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3061D4A9-6A83-4DB8-9276-E0908CC3C7F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CA445C6-EA3C-4BB8-8B5C-1E168BA6438C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA445C6-EA3C-4BB8-8B5C-1E168BA6438C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA445C6-EA3C-4BB8-8B5C-1E168BA6438C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA445C6-EA3C-4BB8-8B5C-1E168BA6438C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
