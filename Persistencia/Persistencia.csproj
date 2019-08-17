@@ -51,6 +51,10 @@
   <ItemGroup>
     <Compile Include="Contexts\EFContext.cs" />
     <Compile Include="DAL\Cliente\ClienteDAL.cs" />
+    <Compile Include="Migrations\201908172029295_Initial.cs" />
+    <Compile Include="Migrations\201908172029295_Initial.Designer.cs">
+      <DependentUpon>201908172029295_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +74,11 @@
       <Project>{e49d7987-d220-4d5b-bb00-611d7248f8d9}</Project>
       <Name>Modelo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201908172029295_Initial.resx">
+      <DependentUpon>201908172029295_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
