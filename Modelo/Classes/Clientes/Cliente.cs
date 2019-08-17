@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.Classes.Web;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,10 @@ namespace Modelo.Classes.Clientes
         public string Nome { get; set; }
         public string Email { get; set; }
         public bool Ativo { get; set; }
+
+        public List<Veiculo> Veiculos{ get; set; }
+        public List<Motorista> Motoristas { get; set; }
+        public List<Aluguel> Alugueis { get; set; }
 
         public Cliente()
         {

@@ -20,5 +20,10 @@ namespace Modelo.Classes.Web
         public ushort QuantidadePassageiros { get; set; }
         public EstadosDeViagem EstadoDaViagem { get; set; }
 
+        public long? VeiculoId { get; set; }
+        public Veiculo Veiculo { get; set; }
+
+        public long? MotoristaId { get; set; }
+        public Motorista Motorista { get; set; }
     }
 }

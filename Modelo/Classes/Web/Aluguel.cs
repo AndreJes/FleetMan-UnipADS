@@ -16,10 +16,10 @@ namespace Modelo.Classes.Web
         public EstadosDePagamento EstadoDoPagamento { get; set; }
         public EstadosAluguel EstadoDoAluguel { get; set; }
 
-        public long IdVeiculoAlugado { get; set; }
-        public Veiculo VeiculoAlugado { get; set; }
+        public long? VeiculoId { get; set; }
+        public Veiculo Veiculo { get; set; }
 
-        public long IdCliente { get; set; }
+        public long? ClienteId { get; set; }
         public Cliente Cliente { get; set; }
     }
 }

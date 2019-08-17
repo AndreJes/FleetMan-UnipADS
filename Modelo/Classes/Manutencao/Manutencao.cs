@@ -1,4 +1,5 @@
-﻿using Modelo.Enums;
+﻿using Modelo.Classes.Web;
+using Modelo.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,10 @@ namespace Modelo.Classes.Manutencao
         public TiposDeManutencao Tipo { get; set; }
         public EstadosDeManutencao EstadoAtual { get; set; }
 
-        public List<long> PecasIds { get; set; }
+        public List<long?> PecasIds { get; set; }
         public List<Peca> PecasUtilizadas { get; set; }
+
+        public long? VeiculoId { get; set; }
+        public Veiculo Veiculo { get; set; }
     }
 }

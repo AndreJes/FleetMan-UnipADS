@@ -15,5 +15,7 @@ namespace Modelo.Classes.Web
         public EstadosDaSolicitacao Estado { get; set; }
         public TiposDeSolicitacao Tipo { get; set; }
 
+        public long? ClienteId { get; set; }
+        public Clientes.Cliente Cliente { get; set; }
     }
 }

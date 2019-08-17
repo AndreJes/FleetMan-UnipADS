@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.Classes.Web;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,15 @@ namespace Modelo.Classes.Desk
         public string Telefone { get; set; }
         public string Endereco { get; set; }
         public string CNPJ { get; set; }
-        public uint Capacidade { get; set; }
+        public ushort Capacidade { get; set; }
+        public ushort QuantidadeDeVeiculosNaGaragem
+        {
+            get
+            {
+                return Convert.ToUInt16(Veiculos.Count);
+            }
+        }
 
-
+        public List<Veiculo> Veiculos { get; set; }
     }
 }
