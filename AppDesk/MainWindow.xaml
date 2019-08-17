@@ -5,8 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="FleetManV0.1" Height="640" Width="1080" MaxHeight="640" MinHeight="640" MaxWidth="1080" MinWidth="1080">
+    <Grid x:Name="MainGrid">
+        <!--#region Login Area-->
+        <Border Visibility="Hidden" x:Name="LogonGridBorder" BorderBrush="DarkRed" BorderThickness="1" Margin="50" Grid.Row="1">
+            <Grid>
+
+
+            </Grid>
+        </Border>
+        <!--#endregion-->
+
+        <!--#region Main Content-->
+        <Border x:Name="MainContentBorder" Margin="10" BorderBrush="Gray" BorderThickness="3">
+            <Grid ShowGridLines="False">
+                <!--#region Row Definitions-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="80*"/>
+                </Grid.RowDefinitions>
+                <!--#endregion-->
+
+                <!--#region Login Information Grid-->
+                <Border x:Name="LoginInformationBorder" BorderBrush="LightGray" BorderThickness="0 0 0 1">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+
+                        <Button Margin="0 8" x:Name="CurrentUserBtn" Background="Transparent">
+                            <Image x:Name="UserImage" Height="20" Width="24"/>
+                        </Button>
+
+                        <Label x:Name="CurrentUserCPFDisplayLabel" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
+                        <Label x:Name="CurrentUserNameDisplayLabel" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
+
+                        <Button Margin="0 8 20 8">
+                            Logout
+                            <!--Colocar Imagem do simbolo de desligar-->
+                        </Button>
+                        
+                    </StackPanel>
+                </Border>
+                <!--#endregion-->
+
+                <!--#region Main Buttons-->
+                <Border Grid.Row="1">
+                    <Grid x:Name="MainButtonsGrid" ShowGridLines="False" >
+                        <!--#region Grid Columns and Row-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <!--#endregion-->
+                    </Grid>
+                </Border>
+                <!--#endregion-->
+            </Grid>
+        </Border>
+        <!--#endregion-->
     </Grid>
 </Window>

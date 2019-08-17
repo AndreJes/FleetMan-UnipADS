@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppDesk.Tools;
 
 namespace AppDesk
 {
@@ -23,6 +24,8 @@ namespace AppDesk
         public MainWindow()
         {
             InitializeComponent();
+            CurrentUserNameDisplayLabel.Content = "Nome: " + "José Santos Costas";
+            CurrentUserCPFDisplayLabel.Content = "CPF: " + "123.124.124-42";
         }
     }
 }
