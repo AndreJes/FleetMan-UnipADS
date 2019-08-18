@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace Modelo.Classes.Web
         public long? GaragemId { get; set; }
         public Garagem Garagem { get; set; }
 
+        //Cliente ao qual o veiculo pertence. Pode ser nulo se Locação for escolhida
         public long? ClienteId { get; set; }
         public Clientes.Cliente Cliente { get; set; }
 

@@ -64,9 +64,9 @@
                 </Border>
                 <!--#endregion-->
 
-                <!--#region Main Buttons-->
+                <!--#region Main Menu Grid-->
                 <Border Grid.Row="1">
-                    <Grid x:Name="MainButtonsGrid" ShowGridLines="False" >
+                    <Grid x:Name="MainButtonsGrid" ShowGridLines="False" Visibility="Hidden" >
                         <!--#region Grid Columns and Row-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
@@ -80,7 +80,8 @@
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                         <!--#endregion-->
-                        <!--#region Veiculos Botão Menu-->
+                        <!--#region Menu Principal-->
+                        <!--#region Veiculos-->
                         <StackPanel Style="{StaticResource MainMenuStackPanelStyle}">
                             <Button Style="{StaticResource MainMenuBtnStyle}">
                                 <Image x:Name="VeicBtnImage"/>
@@ -90,7 +91,7 @@
                             </Label>
                         </StackPanel>
                         <!--#endregion-->
-                        <!--#region Motoristas Botão Menu-->
+                        <!--#region Motoristas-->
                         <StackPanel Grid.Column="1" Style="{StaticResource MainMenuStackPanelStyle}">
                             <Button Style="{StaticResource MainMenuBtnStyle}">
                                 <Image x:Name="MotorBtnImage"/>
@@ -100,8 +101,26 @@
                             </Label>
                         </StackPanel>
                         <!--#endregion-->
+                        <!--#endregion-->
+                        
                     </Grid>
                 </Border>
+                <!--#endregion-->
+                
+                <!--#region Vehicles List/Actions Grid Menu-->
+                <Grid x:Name="VehicleDataGrid" Grid.Row="1" ShowGridLines="True">
+                    <!--#region Column/Rows Definitions-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="9*"/>
+                    </Grid.RowDefinitions>
+                    <!--#endregion-->
+                    
+                </Grid>
                 <!--#endregion-->
             </Grid>
         </Border>
