@@ -27,5 +27,30 @@ namespace AppDesk
             CurrentUserNameDisplayLabel.Content = "Nome: " + "José Santos Costas";
             CurrentUserCPFDisplayLabel.Content = "CPF: " + "123.124.124-42";
         }
+
+        #region Botoes de Voltar
+        // Botão de Voltar da lista de Veiculos
+        private void VehicleGridBackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            BackBtnFunction();
+        }
+        #endregion
+
+        #region Menu Principal
+        private void VehicleListMainMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
+            VehicleDataGrid.Visibility = Visibility.Visible;
+        }
+        #endregion
+
+        #region Metodos Auxiliares
+        private void BackBtnFunction()
+        {
+            VehicleDataGrid.Visibility = Visibility.Collapsed;
+
+            MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
+        }
+        #endregion
     }
 }

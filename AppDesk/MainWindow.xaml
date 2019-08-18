@@ -65,8 +65,8 @@
                 <!--#endregion-->
 
                 <!--#region Main Menu Grid-->
-                <Border x:Name="MainButtonsBorder" Grid.Row="1">
-                    <Grid ShowGridLines="False" Visibility="Hidden" >
+                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1">
+                    <Grid ShowGridLines="False" Visibility="Visible" >
                         <!--#region Grid Columns and Row-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
@@ -83,7 +83,7 @@
                         <!--#region Menu Principal-->
                         <!--#region Veiculos-->
                         <StackPanel Style="{StaticResource MainMenuStackPanelStyle}">
-                            <Button Style="{StaticResource MainMenuBtnStyle}">
+                            <Button x:Name="VehicleListMainMenuBtn" Click="VehicleListMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
                                 <Image x:Name="VeicBtnImage"/>
                             </Button>
                             <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
@@ -108,7 +108,7 @@
                 <!--#endregion-->
 
                 <!--#region Vehicles List/Actions Grid Menu-->
-                <Grid x:Name="VehicleDataGrid" Grid.Row="1">
+                <Grid x:Name="VehicleDataGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -129,7 +129,7 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button  Grid.Column="0" Margin="20 10">
+                            <Button x:Name="VehicleGridBackBtn" Click="VehicleGridBackBtn_Click" Grid.Column="0" Margin="20 10">
                                 Voltar
                             </Button>
 
