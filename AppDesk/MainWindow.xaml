@@ -65,8 +65,8 @@
                 <!--#endregion-->
 
                 <!--#region Main Menu Grid-->
-                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1">
-                    <Grid ShowGridLines="False" Visibility="Visible" >
+                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Collapsed">
+                    <Grid ShowGridLines="False" >
                         <!--#region Grid Columns and Row-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
@@ -108,7 +108,7 @@
                 <!--#endregion-->
 
                 <!--#region Vehicles List/Actions Grid Menu-->
-                <Grid x:Name="VehicleDataGrid" Visibility="Collapsed" Grid.Row="1">
+                <Grid x:Name="VehicleDataGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -207,7 +207,7 @@
                     </Border>
                     <!--#endregion-->
                     <!--#region Lista Veiculos-->
-                    <Grid x:Name="VehiclePanelGrid" Grid.Row="1">
+                    <Grid x:Name="VehicleListGrid" Grid.Row="1">
 
                     </Grid>
                     <!--#endregion-->

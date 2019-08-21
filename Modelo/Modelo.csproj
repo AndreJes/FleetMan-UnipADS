@@ -53,7 +53,7 @@
     <Compile Include="Classes\Usuarios\Usuario.cs" />
     <Compile Include="Classes\Usuarios\UsuarioFunc.cs" />
     <Compile Include="Classes\Relatorios\Relatorio.cs" />
-    <Compile Include="Classes\Relatorios\RelatorioAcidentes.cs" />
+    <Compile Include="Classes\Relatorios\RelatorioSinistros.cs" />
     <Compile Include="Classes\Relatorios\RelatorioConsumo.cs" />
     <Compile Include="Classes\Relatorios\RelatorioFinanceiro.cs" />
     <Compile Include="Classes\Relatorios\RelatorioManutencao.cs" />

@@ -11,14 +11,17 @@ using Modelo.Classes.Manutencao;
 using Modelo.Classes.Relatorios;
 using Modelo.Classes.Web;
 using Modelo.Classes.Usuarios;
+using Persistencia.Migrations;
 
 namespace Persistencia.Contexts
 {
-    class EFContext : DbContext
+    public class EFContext : DbContext
     {
         #region Dbsets
         #region Clientes
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<ClientePF> ClientesPF { get; set; }
+        public DbSet<ClientePJ> ClientesPJ { get; set; }
         #endregion
         #region Desk
         public DbSet<Aviso> Avisos { get; set; }
@@ -37,7 +40,7 @@ namespace Persistencia.Contexts
         #endregion
         #region Relatorios
         public DbSet<Relatorio> Relatorios { get; set; }
-        public DbSet<RelatorioAcidentes> RelatoriosAcidentes { get; set; }
+        public DbSet<RelatorioSinistros> RelatoriosAcidentes { get; set; }
         public DbSet<RelatorioConsumo> RelatoriosConsumos { get; set; }
         public DbSet<RelatorioFinanceiro> RelatoriosFinanceiros { get; set; }
         public DbSet<RelatorioManutencao> RelatoriosManutencao { get; set; }
@@ -47,6 +50,7 @@ namespace Persistencia.Contexts
         #region Usuarios
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<UsuarioFunc> UsuariosFuncionarios { get; set; }
+        public DbSet<UsuarioCliente> UsuariosClientes { get; set; }
         #endregion
         #region Web
         public DbSet<Aluguel> Alugueis { get; set; }
@@ -59,7 +63,7 @@ namespace Persistencia.Contexts
 
         public EFContext() : base("Banco_Pim_IV")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFContext, Migrations.Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFContext, Configuration>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -67,12 +71,16 @@ namespace Persistencia.Contexts
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<RelatorioAcidentes>().ToTable("RelatoriosAcidentes");
+            modelBuilder.Entity<RelatorioSinistros>().ToTable("RelatoriosAcidentes");
             modelBuilder.Entity<RelatorioConsumo>().ToTable("RelatoriosConsumos");
             modelBuilder.Entity<RelatorioFinanceiro>().ToTable("RelatoriosFinanceiros");
             modelBuilder.Entity<RelatorioManutencao>().ToTable("RelatoriosManutencao");
             modelBuilder.Entity<RelatorioMulta>().ToTable("RelatoriosMultas");
             modelBuilder.Entity<RelatorioViagem>().ToTable("RelatoriosViagens");
+            modelBuilder.Entity<UsuarioCliente>().ToTable("UsuariosClientes");
+            modelBuilder.Entity<UsuarioFunc>().ToTable("UsuariosFuncionarios");
+            modelBuilder.Entity<ClientePF>().ToTable("ClientesPF");
+            modelBuilder.Entity<ClientePJ>().ToTable("ClientesPJ");
         }
 
     }

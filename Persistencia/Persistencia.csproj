@@ -51,9 +51,11 @@
   <ItemGroup>
     <Compile Include="Contexts\EFContext.cs" />
     <Compile Include="DAL\Cliente\ClienteDAL.cs" />
-    <Compile Include="Migrations\201908172029295_Initial.cs" />
-    <Compile Include="Migrations\201908172029295_Initial.Designer.cs">
-      <DependentUpon>201908172029295_Initial.cs</DependentUpon>
+    <Compile Include="DAL\DALContext.cs" />
+    <Compile Include="DAL\Web\VeiculoDAL.cs" />
+    <Compile Include="Migrations\201908211755517_Initial.cs" />
+    <Compile Include="Migrations\201908211755517_Initial.Designer.cs">
+      <DependentUpon>201908211755517_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,7 +65,7 @@
     <Folder Include="DAL\Manutencao\" />
     <Folder Include="DAL\Relatorios\" />
     <Folder Include="DAL\Usuarios\" />
-    <Folder Include="DAL\Web\" />
+    <Folder Include="Initializers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -76,8 +78,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908172029295_Initial.resx">
-      <DependentUpon>201908172029295_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908211755517_Initial.resx">
+      <DependentUpon>201908211755517_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
