@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppDesk.Serviço;
 using AppDesk.Tools;
 
 namespace AppDesk
@@ -21,14 +22,14 @@ namespace AppDesk
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
-            CurrentUserNameDisplayLabel.Content = "Nome: " + "José Santos Costas";
-            CurrentUserCPFDisplayLabel.Content = "CPF: " + "123.124.124-42";
+            VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().ToList();
         }
 
-        #region Botoes de Voltar
+        #region Botoes de Voltar Ao Menu Principal
         // Botão de Voltar da lista de Veiculos
         private void VehicleGridBackBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -36,7 +37,7 @@ namespace AppDesk
         }
         #endregion
 
-        #region Menu Principal
+        #region Botoes Menu Principal
         private void VehicleListMainMenuBtn_Click(object sender, RoutedEventArgs e)
         {
             MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
@@ -45,6 +46,7 @@ namespace AppDesk
         #endregion
 
         #region Metodos Auxiliares
+        //Método faz o retorno ao menu principal, escondendo os grids anteriores e exibindo apenas o grid do menu.
         private void BackBtnFunction()
         {
             VehicleDataGrid.Visibility = Visibility.Collapsed;

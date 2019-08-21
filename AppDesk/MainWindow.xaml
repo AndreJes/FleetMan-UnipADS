@@ -108,7 +108,7 @@
                 <!--#endregion-->
 
                 <!--#region Vehicles List/Actions Grid Menu-->
-                <Grid x:Name="VehicleDataGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="VehicleGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -208,7 +208,7 @@
                     <!--#endregion-->
                     <!--#region Lista Veiculos-->
                     <Grid x:Name="VehicleListGrid" Grid.Row="1">
-
+                        <DataGrid x:Name="VehicleDataGrid" Margin="10" Grid.Row="1"/>
                     </Grid>
                     <!--#endregion-->
                 </Grid>
