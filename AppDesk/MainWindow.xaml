@@ -65,7 +65,7 @@
                 <!--#endregion-->
 
                 <!--#region Main Menu Grid-->
-                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Collapsed">
+                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Visible">
                     <Grid ShowGridLines="False" >
                         <!--#region Grid Columns and Row-->
                         <Grid.ColumnDefinitions>
@@ -81,9 +81,21 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Menu Principal-->
+                        
+                        <!--#region Clientes-->
+                        <StackPanel Grid.Column="0" Style="{StaticResource MainMenuStackPanelStyle}">
+                            <Button x:Name="ClientesMainMenuBtn" Style="{StaticResource MainMenuBtnStyle}">
+                                <Image x:Name="ClientesBtnImage"/>
+                            </Button>
+                            <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                CLIENTES
+                            </Label>
+                        </StackPanel>
+                        <!--#endregion-->
+                        
                         <!--#region Veiculos-->
-                        <StackPanel Style="{StaticResource MainMenuStackPanelStyle}">
-                            <Button x:Name="VehicleListMainMenuBtn" Click="VehicleListMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                        <StackPanel Grid.Column="1" Style="{StaticResource MainMenuStackPanelStyle}">
+                            <Button x:Name="VehicleMainMenuBtn" Click="VehicleMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
                                 <Image x:Name="VeicBtnImage"/>
                             </Button>
                             <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
@@ -91,13 +103,69 @@
                             </Label>
                         </StackPanel>
                         <!--#endregion-->
+                        
                         <!--#region Motoristas-->
-                        <StackPanel Grid.Column="1" Style="{StaticResource MainMenuStackPanelStyle}">
+                        <StackPanel Grid.Column="2" Style="{StaticResource MainMenuStackPanelStyle}">
                             <Button Style="{StaticResource MainMenuBtnStyle}">
-                                <Image x:Name="MotorBtnImage"/>
+                                <Image x:Name="MotoristasBtnImage"/>
                             </Button>
                             <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
                                 MOTORISTAS
+                            </Label>
+                        </StackPanel>
+                        <!--#endregion-->
+                        
+                        <!--#region Multas/Sinistros-->
+                        <StackPanel Grid.Column="3" Style="{StaticResource MainMenuStackPanelStyle}">
+                            <Button Style="{StaticResource MainMenuBtnStyle}">
+                                <Image x:Name="MultaSinisBtnImage"/>
+                            </Button>
+                            <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                MULTAS e SINISTROS
+                            </Label>
+                        </StackPanel>
+                        <!--#endregion-->
+                        
+                        <!--#region Viagens-->
+                        <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource MainMenuStackPanelStyle}">
+                            <Button Style="{StaticResource MainMenuBtnStyle}">
+                                <Image x:Name="ViagensBtnImage"/>
+                            </Button>
+                            <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                VIAGENS
+                            </Label>
+                        </StackPanel>
+                        <!--#endregion-->
+                        
+                        <!--#region Solicitações-->
+                        <StackPanel Grid.Row="1" Grid.Column="1" Style="{StaticResource MainMenuStackPanelStyle}">
+                            <Button Style="{StaticResource MainMenuBtnStyle}">
+                                <Image x:Name="SolicitBtnImage"/>
+                            </Button>
+                            <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                SILICITAÇÕES
+                            </Label>
+                        </StackPanel>
+                        <!--#endregion-->
+
+                        <!--#region Garagens-->
+                        <StackPanel Grid.Row="1" Grid.Column="2" Style="{StaticResource MainMenuStackPanelStyle}">
+                            <Button Style="{StaticResource MainMenuBtnStyle}">
+                                <Image x:Name="GaragensBtnImage"/>
+                            </Button>
+                            <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                GARAGENS
+                            </Label>
+                        </StackPanel>
+                        <!--#endregion-->
+
+                        <!--#region Locações-->
+                        <StackPanel Grid.Row="1" Grid.Column="3" Style="{StaticResource MainMenuStackPanelStyle}">
+                            <Button Style="{StaticResource MainMenuBtnStyle}">
+                                <Image x:Name="LocacaoBtnImage"/>
+                            </Button>
+                            <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                LOCAÇÕES
                             </Label>
                         </StackPanel>
                         <!--#endregion-->
@@ -108,7 +176,7 @@
                 <!--#endregion-->
 
                 <!--#region Vehicles List/Actions Grid Menu-->
-                <Grid x:Name="VehicleGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="VehicleGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -208,7 +276,18 @@
                     <!--#endregion-->
                     <!--#region Lista Veiculos-->
                     <Grid x:Name="VehicleListGrid" Grid.Row="1">
-                        <DataGrid x:Name="VehicleDataGrid" Margin="10" Grid.Row="1"/>
+                        <DataGrid x:Name="VehicleDataGrid" Margin="10" AutoGenerateColumns="False" Grid.Row="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Placa" Binding="{Binding Placa}"/>
+                                <DataGridTextColumn Header="Código Renavam" Binding="{Binding CodRenavam}"/>
+                                <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}"/>
+                                <DataGridTextColumn Header="Modelo" Binding="{Binding Modelo}"/>
+                                <DataGridTextColumn Header="Marca" Binding="{Binding Marca}"/>
+                                <DataGridTextColumn Header="Veiculo adaptado" Binding="{Binding AdaptadoTxt}"/>
+                                <DataGridTextColumn Header="Veiculo para locação" Binding="{Binding ParaLocacaoTxt}"/>
+                                <DataGridTextColumn Header="Situação" Binding="{Binding EstadoTxt}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Grid>
                     <!--#endregion-->
                 </Grid>

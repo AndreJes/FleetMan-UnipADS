@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Modelo.Enums
 {
-    public enum EstadosTanqueCombustivel
+    public enum EstadosTanqueCombustivel : int
     {
-        CHEIO,
-        TRES_QUARTOS,
-        METADE,
-        UM_QUARTO,
-        VAZIO
+        CHEIO = 100,
+        TRES_QUARTOS = 75,
+        METADE = 50,
+        UM_QUARTO = 25,
+        VAZIO = 0
     }
 }
