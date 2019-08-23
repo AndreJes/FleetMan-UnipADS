@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AppDesk.Serviço;
 using AppDesk.Tools;
+using Modelo.Classes.Clientes;
 
 namespace AppDesk
 {
@@ -25,13 +26,8 @@ namespace AppDesk
         public MainWindow()
         {
             InitializeComponent();
-
-            VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().ToList();
-            ClienteDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().ToList();
-
-            MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
-            VehicleGrid.Visibility = Visibility.Collapsed;
-            
+            PopulateDataGrid();
+            StartGrids();
         }
 
         #region Botoes de Voltar Ao Menu Principal
@@ -67,6 +63,19 @@ namespace AppDesk
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
         }
 
+        private void StartGrids()
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
+            VehicleGrid.Visibility = Visibility.Collapsed;
+            ClientesGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void PopulateDataGrid()
+        {
+            VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().ToList();
+            ClientePFDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpf => cpf is ClientePF).ToList();
+            ClientePJDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpj => cpj is ClientePJ).ToList();
+        }
         #endregion
     }
 }

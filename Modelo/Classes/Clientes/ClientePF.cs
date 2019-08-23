@@ -12,7 +12,7 @@ namespace Modelo.Classes.Clientes
         public string CPF { get; set; }
 
         [NotMapped]
-        public string CPF_CNPJ
+        public string CPFTxt
         {
             get
             {

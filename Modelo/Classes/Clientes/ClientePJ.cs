@@ -12,7 +12,7 @@ namespace Modelo.Classes.Clientes
         public string CNPJ { get; set; }
 
         [NotMapped]
-        public string CPF_CNPJ
+        public string CNPJTxt
         {
             get
             {
