@@ -52,6 +52,13 @@ namespace AppDesk
             MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
             ClientesGrid.Visibility = Visibility.Visible;
         }
+
+        //Botão de acesso a lista de MULTAS/SINISTROS
+        private void MultaSinisMainMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
+            MultaSinisGrid.Visibility = Visibility.Visible;
+        }
         #endregion
 
         #region Metodos Auxiliares
@@ -63,19 +70,25 @@ namespace AppDesk
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
         }
 
+        //Utilizado para iniciar o programa com os Grids corretos carregados e visiveis.
         private void StartGrids()
         {
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
             VehicleGrid.Visibility = Visibility.Collapsed;
             ClientesGrid.Visibility = Visibility.Collapsed;
+            MultaSinisGrid.Visibility = Visibility.Collapsed;
         }
 
+        //Define a fonte de dados de todos os DataGrids
         private void PopulateDataGrid()
         {
             VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().ToList();
             ClientePFDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpf => cpf is ClientePF).ToList();
             ClientePJDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpj => cpj is ClientePJ).ToList();
+            MultasDataGrid.ItemsSource = ServicoDados.ServicoDadosMulta.ObterMultasOrdPorId().ToList();
+            SinistrosDataGrid.ItemsSource = ServicoDados.ServicoDadosSinistro.ObterSinistrosOrdPorId().ToList();
         }
         #endregion
+
     }
 }

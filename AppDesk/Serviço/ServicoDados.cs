@@ -1,4 +1,5 @@
 ﻿using Servicos.Cliente;
+using Servicos.Desk;
 using Servicos.Web;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,7 @@ namespace AppDesk.Serviço
     {
         public static VeiculoService ServicoDadosVeiculos = new VeiculoService();
         public static ClienteService ServicoDadosClientes = new ClienteService();
+        public static MultaService ServicoDadosMulta = new MultaService();
+        public static SinistroService ServicoDadosSinistro = new SinistroService();
     }
 }

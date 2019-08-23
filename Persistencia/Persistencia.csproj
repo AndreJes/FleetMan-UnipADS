@@ -52,6 +52,8 @@
     <Compile Include="Contexts\EFContext.cs" />
     <Compile Include="DAL\Cliente\ClienteDAL.cs" />
     <Compile Include="DAL\DALContext.cs" />
+    <Compile Include="DAL\Desk\MultaDAL.cs" />
+    <Compile Include="DAL\Desk\SinistroDAL.cs" />
     <Compile Include="DAL\Web\VeiculoDAL.cs" />
     <Compile Include="Migrations\201908211755517_Initial.cs" />
     <Compile Include="Migrations\201908211755517_Initial.Designer.cs">
@@ -61,7 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DAL\Desk\" />
     <Folder Include="DAL\Manutencao\" />
     <Folder Include="DAL\Relatorios\" />
     <Folder Include="DAL\Usuarios\" />

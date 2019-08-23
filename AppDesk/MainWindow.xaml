@@ -117,7 +117,7 @@
 
                         <!--#region Multas/Sinistros-->
                         <StackPanel Grid.Column="3" Style="{StaticResource MainMenuStackPanelStyle}">
-                            <Button Style="{StaticResource MainMenuBtnStyle}">
+                            <Button x:Name="MultaSinisMainMenuBtn" Click="MultaSinisMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
                                 <Image x:Name="MultaSinisBtnImage"/>
                             </Button>
                             <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
@@ -294,7 +294,7 @@
                 <!--#endregion-->
 
                 <!--#region Clientes List/Actions Grid Menu-->
-                <Grid x:Name="ClientesGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="ClientesGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -391,7 +391,7 @@
                 <!--#endregion-->
 
                 <!--#region Multas e Sinistros List/Actions Grid Menu-->
-                <Grid x:Name="MultaSinisGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="MultaSinisGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -464,20 +464,20 @@
                         <!--#region Pessoa Fisica-->
                         <DataGrid x:Name="MultasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="CPF" Binding="{Binding CPFTxt}"/>
-                                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
-                                <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" />
-                                <DataGridTextColumn Header="Status" Binding="{Binding AtivoTxt}" />
+                                <DataGridTextColumn Header="Código" Binding="{Binding CodigoMulta}"/>
+                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor}"/>
+                                <DataGridTextColumn Header="Data da infração" Binding="{Binding DataDaMulta}" />
+                                <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoDoPagamento}" />
+                                <DataGridTextColumn Header="Gravidade" Binding="{Binding GravidadeDaInfracao}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
                         <!--#region Pessoa Juridica-->
                         <DataGrid x:Name="SinistrosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="CNPJ" Binding="{Binding CNPJTxt}"/>
-                                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
-                                <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" />
-                                <DataGridTextColumn Header="Status" Binding="{Binding AtivoTxt}" />
+                                <DataGridTextColumn Header="Código" Binding="{Binding CodSinistro}"/>
+                                <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoPagamento}"/>
+                                <DataGridTextColumn Header="Gravidade" Binding="{Binding Gravidade}" />
                             </DataGrid.Columns>
                         </DataGrid>
 

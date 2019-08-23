@@ -42,11 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cliente\ClienteService.cs" />
+    <Compile Include="Desk\MultaService.cs" />
+    <Compile Include="Desk\SinistroService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\VeiculoService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Desk\" />
     <Folder Include="Manutencao\" />
     <Folder Include="Relatorios\" />
     <Folder Include="Usuarios\" />
