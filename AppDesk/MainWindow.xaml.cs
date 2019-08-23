@@ -30,8 +30,7 @@ namespace AppDesk
             StartGrids();
         }
 
-        #region Botoes de Voltar Ao Menu Principal
-        // Botão de Voltar da lista de Veiculos
+        #region Botão de Voltar Ao Menu Principal
         private void BackToMainMenuGridBackBtn_Click(object sender, RoutedEventArgs e)
         {
             BackBtnFunction();
@@ -73,6 +72,8 @@ namespace AppDesk
         {
             VehicleGrid.Visibility = Visibility.Collapsed;
             ClientesGrid.Visibility = Visibility.Collapsed;
+            MultaSinisGrid.Visibility = Visibility.Collapsed;
+            MotoristasGrid.Visibility = Visibility.Collapsed;
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
         }
 

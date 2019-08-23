@@ -352,7 +352,7 @@
                         </Grid>
                     </Border>
                     <!--#endregion-->
-                    <!--#region Lista-->
+                    <!--#region Listas -->
                     <Grid x:Name="ClientesListGrid" Grid.Row="1">
                         <!--#region Columns/Rows-->
                         <Grid.ColumnDefinitions>
@@ -374,6 +374,11 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
+                        <!--#region Separador-->
+                        <StackPanel Orientation="Horizontal" Grid.RowSpan="2" HorizontalAlignment="Right" Width="5">
+                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                        </StackPanel>
+                        <!--#endregion-->
                         <!--#region Pessoa Juridica-->
                         <DataGrid x:Name="ClientePJDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
@@ -391,7 +396,7 @@
                 <!--#endregion-->
 
                 <!--#region Multas e Sinistros List/Actions Grid Menu-->
-                <Grid x:Name="MultaSinisGrid" Visibility="Collapsed" Grid.Row="1">
+                <Grid x:Name="MultaSinisGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -461,7 +466,7 @@
                             <RowDefinition Height="90*"/>
                         </Grid.RowDefinitions>
                         <!--#endregion-->
-                        <!--#region Pessoa Fisica-->
+                        <!--#region Multas-->
                         <DataGrid x:Name="MultasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding CodigoMulta}"/>
@@ -472,7 +477,12 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
-                        <!--#region Pessoa Juridica-->
+                        <!--#region Separador-->
+                        <StackPanel Orientation="Horizontal" Grid.RowSpan="2" HorizontalAlignment="Right" Width="5">
+                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                        </StackPanel>
+                        <!--#endregion-->
+                        <!--#region Sinistros-->
                         <DataGrid x:Name="SinistrosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding CodSinistro}"/>
@@ -488,7 +498,7 @@
                 <!--#endregion-->
 
                 <!--#region Motoristas List/Actions Grid Menu-->
-                <Grid x:Name="MotoristasGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="MotoristasGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -593,6 +603,7 @@
                                 <DataGridTextColumn Header="CNH" Binding="{Binding NumeroCNH}"/>
                                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
                                 <DataGridTextColumn Header="Situação" Binding="{Binding Estado}"/>
+                                <DataGridTextColumn Header="Motorista Próprio" Binding="{Binding ProprioTxt}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
