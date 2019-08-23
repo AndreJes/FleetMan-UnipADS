@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,15 @@ namespace Modelo.Classes.Clientes
     public class ClientePJ : Cliente
     {
         public string CNPJ { get; set; }
+
+        [NotMapped]
+        public string CPF_CNPJ
+        {
+            get
+            {
+                return CNPJ.Insert(2, ".").Insert(6, ".").Insert(10, "/").Insert(15, "-");
+            }
+        }
 
         public ClientePJ() { }
 
