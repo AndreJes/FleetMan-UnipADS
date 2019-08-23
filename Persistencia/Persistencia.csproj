@@ -52,6 +52,7 @@
     <Compile Include="Contexts\EFContext.cs" />
     <Compile Include="DAL\Cliente\ClienteDAL.cs" />
     <Compile Include="DAL\DALContext.cs" />
+    <Compile Include="DAL\Desk\GaragenDAL.cs" />
     <Compile Include="DAL\Desk\MultaDAL.cs" />
     <Compile Include="DAL\Desk\SinistroDAL.cs" />
     <Compile Include="DAL\Web\MotoristaDAL.cs" />

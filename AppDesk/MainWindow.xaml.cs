@@ -27,7 +27,7 @@ namespace AppDesk
         {
             InitializeComponent();
             PopulateDataGrid();
-            StartGrids();
+            GotoMainMenu();
         }
 
         #region Botão de Voltar Ao Menu Principal
@@ -59,10 +59,18 @@ namespace AppDesk
             MultaSinisGrid.Visibility = Visibility.Visible;
         }
 
+        //Botão de acesso a lista de MOTORISTAS
         private void MotoristaMainMenuBtn_Click(object sender, RoutedEventArgs e)
         {
             MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
             MotoristasGrid.Visibility = Visibility.Visible;
+        }
+
+        //Botão de acesso a lista de GARAGENS
+        private void GaragensMainMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
+            GaragensGrid.Visibility = Visibility.Visible;
         }
         #endregion
 
@@ -70,21 +78,18 @@ namespace AppDesk
         //Método faz o retorno ao menu principal, escondendo os grids anteriores e exibindo apenas o grid do menu.
         private void BackBtnFunction()
         {
-            VehicleGrid.Visibility = Visibility.Collapsed;
-            ClientesGrid.Visibility = Visibility.Collapsed;
-            MultaSinisGrid.Visibility = Visibility.Collapsed;
-            MotoristasGrid.Visibility = Visibility.Collapsed;
-            MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
+            GotoMainMenu();
         }
 
         //Utilizado para iniciar o programa com os Grids corretos carregados e visiveis.
-        private void StartGrids()
+        private void GotoMainMenu()
         {
-            MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
             VehicleGrid.Visibility = Visibility.Collapsed;
             ClientesGrid.Visibility = Visibility.Collapsed;
             MultaSinisGrid.Visibility = Visibility.Collapsed;
             MotoristasGrid.Visibility = Visibility.Collapsed;
+            GaragensGrid.Visibility = Visibility.Collapsed;
+            MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
         }
 
         //Define a fonte de dados de todos os DataGrids
@@ -96,7 +101,9 @@ namespace AppDesk
             MultasDataGrid.ItemsSource = ServicoDados.ServicoDadosMulta.ObterMultasOrdPorId().ToList();
             SinistrosDataGrid.ItemsSource = ServicoDados.ServicoDadosSinistro.ObterSinistrosOrdPorId().ToList();
             MotoristasDataGrid.ItemsSource = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId().ToList();
+            GaragensDataGrid.ItemsSource = ServicoDados.ServicoDadosGaragem.ObterGaragensOrdPorId().ToList();
         }
         #endregion
+
     }
 }
