@@ -2,6 +2,7 @@
 using Modelo.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace Modelo.Classes.Web
 {
     public class Motorista
     {
+        #region Props principais
         public long? MotoristaId { get; set; }
         public string NumeroCNH { get; set; }
         public int PontosCNH { get; set; }
@@ -17,7 +19,28 @@ namespace Modelo.Classes.Web
         public string CPF { get; set; }
         public bool MotoristaProprio { get; set; }
         public DateTime VencimentoExame { get; set; }
+        #endregion
+        #region Enums
         public EstadosDeMotorista Estado { get; set; }
+        #endregion
+        #region Props não mapeadas
+        [NotMapped]
+        public string CPFTxt
+        {
+            get
+            {
+                return CPF.Insert(3, ".").Insert(7, ".").Insert(11, "-");
+            }
+        }
+        [NotMapped]
+        public string ProprioTxt
+        {
+            get
+            {
+                return MotoristaProprio ? "Sim" : "Não";
+            }
+        }
+        #endregion
 
         public long? ClienteId { get; set; }
         public Clientes.Cliente Cliente { get; set; }

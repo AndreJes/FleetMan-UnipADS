@@ -45,6 +45,7 @@
     <Compile Include="Desk\MultaService.cs" />
     <Compile Include="Desk\SinistroService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\MotoristaService.cs" />
     <Compile Include="Web\VeiculoService.cs" />
   </ItemGroup>
   <ItemGroup>

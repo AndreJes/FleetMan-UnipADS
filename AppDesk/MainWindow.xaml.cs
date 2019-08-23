@@ -59,6 +59,12 @@ namespace AppDesk
             MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
             MultaSinisGrid.Visibility = Visibility.Visible;
         }
+
+        private void MotoristaMainMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
+            MotoristasGrid.Visibility = Visibility.Visible;
+        }
         #endregion
 
         #region Metodos Auxiliares
@@ -77,6 +83,7 @@ namespace AppDesk
             VehicleGrid.Visibility = Visibility.Collapsed;
             ClientesGrid.Visibility = Visibility.Collapsed;
             MultaSinisGrid.Visibility = Visibility.Collapsed;
+            MotoristasGrid.Visibility = Visibility.Collapsed;
         }
 
         //Define a fonte de dados de todos os DataGrids
@@ -87,8 +94,8 @@ namespace AppDesk
             ClientePJDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpj => cpj is ClientePJ).ToList();
             MultasDataGrid.ItemsSource = ServicoDados.ServicoDadosMulta.ObterMultasOrdPorId().ToList();
             SinistrosDataGrid.ItemsSource = ServicoDados.ServicoDadosSinistro.ObterSinistrosOrdPorId().ToList();
+            MotoristasDataGrid.ItemsSource = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId().ToList();
         }
         #endregion
-
     }
 }

@@ -106,7 +106,7 @@
 
                         <!--#region Motoristas-->
                         <StackPanel Grid.Column="2" Style="{StaticResource MainMenuStackPanelStyle}">
-                            <Button Style="{StaticResource MainMenuBtnStyle}">
+                            <Button x:Name="MotoristaMainMenuBtn" Click="MotoristaMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
                                 <Image x:Name="MotoristasBtnImage"/>
                             </Button>
                             <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
@@ -214,7 +214,7 @@
                                 </ComboBox>
                             </StackPanel>
                             <!--#endregion-->
-                            <!--#region Pesquisa de Veiculo-->
+                            <!--#region Pesquisa-->
                             <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
@@ -482,6 +482,119 @@
                         </DataGrid>
 
                         <!--#endregion-->
+                    </Grid>
+                    <!--#endregion-->
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region Motoristas List/Actions Grid Menu-->
+                <Grid x:Name="MotoristasGrid" Visibility="Visible" Grid.Row="1">
+                    <!--#region Rows Definitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="119*"/>
+                    </Grid.RowDefinitions>
+                    <!--#endregion-->
+                    <!--#region ToolBar-->
+                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                        <Grid x:Name="MotoristasToolBarGrid">
+                            <!--#region Columns-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85*"/>
+                                <ColumnDefinition Width="140*"/>
+                                <ColumnDefinition Width="234*"/>
+                                <ColumnDefinition Width="229*"/>
+                                <ColumnDefinition Width="358*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+
+                            <!--#region Botoes Voltar e Registrar-->
+                            <Button x:Name="MotoristasGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
+                                Voltar
+                            </Button>
+
+                            <Button  Grid.Column="1" Margin="20 10" FontSize="11">
+                                Registrar Motorista
+                            </Button>
+                            <!--#endregion-->
+                            <!--#region Seleção de Cliente-->
+                            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 5">
+                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
+                                    Selecionar Cliente:</Label>
+                                <ComboBox>
+
+                                </ComboBox>
+                            </StackPanel>
+                            <!--#endregion-->
+                            <!--#region Pesquisa-->
+                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
+                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
+                                    Pesquisar:
+                                </Label>
+                                <TextBox x:Name="MotoristasSearchTextBox">
+
+                                </TextBox>
+                            </StackPanel>
+                            <!--#endregion-->
+                            <!--#region Filtros-->
+                            <Grid Grid.Column="4" Margin="10,5,-5,5">
+                                <!--#region Columns e Rows-->
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50*"/>
+                                    <RowDefinition Height="50*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="85*"/>
+                                </Grid.ColumnDefinitions>
+                                <!--#endregion-->
+                                <!--#region Label e OK btn-->
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">
+                                Situação:
+                                </TextBlock>
+                                <Button Grid.Row="1" Grid.Column="0" x:Name="ConfirmMotoristasFiltersBtn" Margin="5 2">Ok</Button>
+                                <!--#endregion-->
+                                <!--#region CheckBoxes-->
+                                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                    <CheckBox VerticalContentAlignment="Center">Regular</CheckBox>
+                                    <CheckBox Margin="15 0" VerticalContentAlignment="Center">CNH Irregular</CheckBox>
+                                    <CheckBox VerticalContentAlignment="Center">Exame Vencido</CheckBox>
+                                </StackPanel>
+                                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                                    <CheckBox VerticalContentAlignment="Center">Em Viagem</CheckBox>
+                                    <CheckBox Margin="5 0" VerticalContentAlignment="Center">Acidentado</CheckBox>
+                                    <CheckBox VerticalContentAlignment="Center">Afastado</CheckBox>
+                                </StackPanel>
+                                <!--#endregion-->
+                            </Grid>
+                            <!--#endregion-->
+                            <!--#region Separators-->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
+                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
+                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
+                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
+                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            </StackPanel>
+                            <!--#endregion-->
+                        </Grid>
+                    </Border>
+                    <!--#endregion-->
+                    <!--#region Lista-->
+                    <Grid x:Name="MotoristasListGrid" Grid.Row="1">
+                        <DataGrid x:Name="MotoristasDataGrid" Margin="10" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="CPF" Binding="{Binding CPFTxt}"/>
+                                <DataGridTextColumn Header="CNH" Binding="{Binding NumeroCNH}"/>
+                                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
+                                <DataGridTextColumn Header="Situação" Binding="{Binding Estado}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Grid>
                     <!--#endregion-->
                 </Grid>
