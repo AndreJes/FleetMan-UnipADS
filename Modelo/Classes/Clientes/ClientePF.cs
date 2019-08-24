@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.Classes.Auxiliares;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace Modelo.Classes.Clientes
 
         public ClientePF() { }
 
-        public ClientePF(long clienteId, string telefone, string endereco, string nome, string email, string cPF) : base(clienteId, telefone, endereco, nome, email)
+        public ClientePF(long clienteId, string telefone, Endereco endereco, string nome, string email, string cPF) : base(clienteId, telefone, endereco, nome, email)
         {
             CPF = cPF;
         }

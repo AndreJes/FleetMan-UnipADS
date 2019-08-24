@@ -1,10 +1,12 @@
-﻿using Modelo.Classes.Web;
+﻿using Modelo.Classes.Auxiliares;
+using Modelo.Classes.Web;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Modelo.Classes.Desk
 {
@@ -13,16 +15,9 @@ namespace Modelo.Classes.Desk
         #region Props principais
         public long? GaragemId { get; set; }
         public string Telefone { get; set; }
-        public string Endereco { get; set; }
+        public Endereco Endereco { get; set; }
         public string CNPJ { get; set; }
-        public ushort Capacidade { get; set; }
-        public ushort QuantidadeDeVeiculosNaGaragem
-        {
-            get
-            {
-                return Convert.ToUInt16(Veiculos.Count);
-            }
-        }
+        public int Capacidade { get; set; }
         #endregion
 
         #region Props não mapeadas
@@ -43,6 +38,34 @@ namespace Modelo.Classes.Desk
                 return Telefone.Insert(0, "(").Insert(3, ") ").Insert(9, "-");
             }
         }
+
+        [NotMapped]
+        public string EnderecoParcial
+        {
+            get
+            {
+                return $"{Endereco.Rua}, {Endereco.Numero} - {Endereco.Bairro}";
+            }
+        }
+
+        [NotMapped]
+        public string Cidade
+        {
+            get
+            {
+                return Endereco.Cidade;
+            }
+        }
+
+        [NotMapped]
+        public string UF
+        {
+            get
+            {
+                return Endereco.UF;
+            }
+        }
+
         #endregion
 
         public List<Veiculo> Veiculos { get; set; }

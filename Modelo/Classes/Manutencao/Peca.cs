@@ -12,7 +12,7 @@ namespace Modelo.Classes.Manutencao
         public string Descricao { get; set; }
         public uint Quantidade { get; set; }
 
-        public long FornecedorId { get; set; }
+        public long? FornecedorId { get; set; }
         public Fornecedor Fornecedor { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Modelo.Classes.Desk;
+﻿using Modelo.Classes.Auxiliares;
+using Modelo.Classes.Desk;
 using Modelo.Enums;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace Modelo.Classes.Web
     public class Viagem
     {
         public long? ViagemId { get; set; }
-        public string EnderecoOrigem { get; set; }
-        public string EnderecoDestino { get; set; }
+        public Endereco EnderecoOrigem { get; set; }
+        public Endereco EnderecoDestino { get; set; }
         public Garagem GaragemOrigem { get; set; }
         public Garagem GaragemRetorno { get; set; }
         public DateTime DataSaida { get; set; }

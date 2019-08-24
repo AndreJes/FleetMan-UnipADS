@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.Classes.Auxiliares;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace Modelo.Classes.Manutencao
         public string Razao_Social { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
+        public bool LojaVirtual { get; set; }
+        public Endereco Endereco { get; set; }
 
         public List<Peca> Pecas { get; set; }
     }

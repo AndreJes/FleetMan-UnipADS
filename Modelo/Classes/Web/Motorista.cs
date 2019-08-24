@@ -1,4 +1,5 @@
-﻿using Modelo.Classes.Desk;
+﻿using Modelo.Classes.Auxiliares;
+using Modelo.Classes.Desk;
 using Modelo.Enums;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Modelo.Classes.Web
         public int PontosCNH { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set; }
+        public Endereco Endereco { get; set; }
         public bool MotoristaProprio { get; set; }
         public DateTime VencimentoExame { get; set; }
         #endregion

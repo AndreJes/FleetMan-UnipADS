@@ -1,4 +1,5 @@
-﻿using Modelo.Classes.Web;
+﻿using Modelo.Classes.Auxiliares;
+using Modelo.Classes.Web;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,7 +14,7 @@ namespace Modelo.Classes.Clientes
         #region Props Principais
         public long? ClienteId { get; set; }
         public string Telefone { get; set; }
-        public string Endereco { get; set; }
+        public Endereco Endereco { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public bool Ativo { get; set; }
@@ -41,7 +42,7 @@ namespace Modelo.Classes.Clientes
             Ativo = true;
         }
 
-        public Cliente(long clienteId, string telefone, string endereco, string nome, string email) : this()
+        public Cliente(long clienteId, string telefone, Endereco endereco, string nome, string email) : this()
         {
             ClienteId = clienteId;
             Telefone = telefone;

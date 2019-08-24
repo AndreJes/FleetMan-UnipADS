@@ -701,9 +701,10 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="CNPJ" Binding="{Binding CNPJTxt}"/>
                                 <DataGridTextColumn Header="Telefone" Binding="{Binding TelefoneTxt}"/>
-                                <DataGridTextColumn Header="Endereço" Binding="{Binding Endereco}"/>
+                                <DataGridTextColumn Header="UF" Binding="{Binding UF}"/>
+                                <DataGridTextColumn Header="Cidade" Binding="{Binding Cidade}"/>
+                                <DataGridTextColumn Header="Endereço" Binding="{Binding EnderecoParcial}"/>
                                 <DataGridTextColumn Header="Capacidade Máxima" Binding="{Binding Capacidade}"/>
-                                <DataGridTextColumn Header="Nº Veículos na Garagem" Binding="{Binding QuantidadeDeVeiculosNaGaragem}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

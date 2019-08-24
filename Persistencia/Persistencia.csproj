@@ -61,6 +61,14 @@
     <Compile Include="Migrations\201908211755517_Initial.Designer.cs">
       <DependentUpon>201908211755517_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908240143531_Novo-Tipo-Endereco.cs" />
+    <Compile Include="Migrations\201908240143531_Novo-Tipo-Endereco.Designer.cs">
+      <DependentUpon>201908240143531_Novo-Tipo-Endereco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908240151386_Tipo-Int-Garagem.cs" />
+    <Compile Include="Migrations\201908240151386_Tipo-Int-Garagem.Designer.cs">
+      <DependentUpon>201908240151386_Tipo-Int-Garagem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -83,6 +91,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201908211755517_Initial.resx">
       <DependentUpon>201908211755517_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908240143531_Novo-Tipo-Endereco.resx">
+      <DependentUpon>201908240143531_Novo-Tipo-Endereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908240151386_Tipo-Int-Garagem.resx">
+      <DependentUpon>201908240151386_Tipo-Int-Garagem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

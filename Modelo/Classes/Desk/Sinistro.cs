@@ -13,6 +13,7 @@ namespace Modelo.Classes.Desk
         public long? SinistroId { get; set; }
         public string CodSinistro { get; set; }
         public string Descricao { get; set; }
+        public ushort QntEnvolvidos { get; set; }
         public EstadosDePagamento EstadoPagamento { get; set; }
         public GravidadesDeSinistro Gravidade { get; set; }
 
