@@ -49,6 +49,7 @@
     <Compile Include="Web\AluguelService.cs" />
     <Compile Include="Web\MotoristaService.cs" />
     <Compile Include="Web\VeiculoService.cs" />
+    <Compile Include="Web\ViagemService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Manutencao\" />

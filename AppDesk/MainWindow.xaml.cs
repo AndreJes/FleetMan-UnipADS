@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using AppDesk.Serviço;
 using AppDesk.Tools;
 using Modelo.Classes.Clientes;
+using Modelo.Classes.Web;
+using Modelo.Enums;
 
 namespace AppDesk
 {
@@ -79,6 +81,13 @@ namespace AppDesk
             MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
             LocacoesGrid.Visibility = Visibility.Visible;
         }
+
+        //Botão de acesso a lista de VIAGENS
+        private void ViagensMainMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
+            ViagensGrid.Visibility = Visibility.Visible;
+        }
         #endregion
 
         #region Metodos Auxiliares
@@ -97,6 +106,7 @@ namespace AppDesk
             MotoristasGrid.Visibility = Visibility.Collapsed;
             GaragensGrid.Visibility = Visibility.Collapsed;
             LocacoesGrid.Visibility = Visibility.Collapsed;
+            ViagensGrid.Visibility = Visibility.Collapsed;
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
         }
 
@@ -104,16 +114,34 @@ namespace AppDesk
         private void PopulateDataGrid()
         {
             VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().ToList();
+            #region Clientes
             ClientePFDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpf => cpf is ClientePF).ToList();
+
             ClientePJDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpj => cpj is ClientePJ).ToList();
+            #endregion
+            #region Multas/Sinistros
             MultasDataGrid.ItemsSource = ServicoDados.ServicoDadosMulta.ObterMultasOrdPorId().ToList();
+
             SinistrosDataGrid.ItemsSource = ServicoDados.ServicoDadosSinistro.ObterSinistrosOrdPorId().ToList();
+            #endregion
             MotoristasDataGrid.ItemsSource = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId().ToList();
+
             GaragensDataGrid.ItemsSource = ServicoDados.ServicoDadosGaragem.ObterGaragensOrdPorId().ToList();
+
             LocacoesDataGrid.ItemsSource = ServicoDados.ServicoDadosAluguel.ObterAlugueisOrdPorId().ToList();
+            #region Viagens
+            ViagensAguardandoDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.AGUARDANDO_INICIO).ToList();
+
+            ViagensEmAndamentoDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.EM_ANDAMENTO).ToList();
+
+            List<Viagem> ViagensConcluidasECanceladas = new List<Viagem>();
+            ViagensConcluidasECanceladas.AddRange(ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CONCLUIDA));
+            ViagensConcluidasECanceladas.AddRange(ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CANCELADA));
+            ViagensConcluidasDataGrid.ItemsSource = ViagensConcluidasECanceladas;
+            #endregion
         }
+
         #endregion
 
-        
     }
 }

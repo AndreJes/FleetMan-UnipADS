@@ -18,5 +18,6 @@ namespace AppDesk.Serviço
         public static MotoristaService ServicoDadosMotorista = new MotoristaService();
         public static GaragemService ServicoDadosGaragem = new GaragemService();
         public static AluguelService ServicoDadosAluguel = new AluguelService();
+        public static ViagemService ServicoDadosViagem = new ViagemService();
     }
 }
