@@ -18,7 +18,7 @@ namespace Modelo.Classes.Web
         public Garagem GaragemRetorno { get; set; }
         public DateTime DataSaida { get; set; }
         public DateTime DataChegada { get; set; }
-        public ushort QuantidadePassageiros { get; set; }
+        public int QuantidadePassageiros { get; set; }
         public EstadosDeViagem EstadoDaViagem { get; set; }
 
         public long? VeiculoId { get; set; }

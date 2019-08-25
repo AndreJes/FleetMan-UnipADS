@@ -161,7 +161,7 @@
 
                         <!--#region Locações-->
                         <StackPanel Grid.Row="1" Grid.Column="3" Style="{StaticResource MainMenuStackPanelStyle}">
-                            <Button Style="{StaticResource MainMenuBtnStyle}">
+                            <Button x:Name="LocacaoMainMenuBtn" Style="{StaticResource MainMenuBtnStyle}">
                                 <Image x:Name="LocacaoBtnImage"/>
                             </Button>
                             <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
@@ -658,7 +658,7 @@
 
                                     </ComboBox>
                                 </StackPanel>
-                                <StackPanel Orientation="Vertical" Grid.Column="1" Margin="5">
+                                <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0 5 10 5">
                                     <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                         Cidade:
                                     </Label>
@@ -711,6 +711,9 @@
                     <!--#endregion-->
                 </Grid>
                 <!--#endregion-->
+                
+                
+                
                 <!--#endregion-->
             </Grid>
         </Border>
