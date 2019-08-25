@@ -55,6 +55,7 @@
     <Compile Include="DAL\Desk\GaragenDAL.cs" />
     <Compile Include="DAL\Desk\MultaDAL.cs" />
     <Compile Include="DAL\Desk\SinistroDAL.cs" />
+    <Compile Include="DAL\Web\AluguelDAL.cs" />
     <Compile Include="DAL\Web\MotoristaDAL.cs" />
     <Compile Include="DAL\Web\VeiculoDAL.cs" />
     <Compile Include="Migrations\201908211755517_Initial.cs" />

@@ -72,6 +72,13 @@ namespace AppDesk
             MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
             GaragensGrid.Visibility = Visibility.Visible;
         }
+
+        //Botão de acesso a lista de LOCAÇÕES
+        private void LocacaoMainMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
+            LocacoesGrid.Visibility = Visibility.Visible;
+        }
         #endregion
 
         #region Metodos Auxiliares
@@ -89,6 +96,7 @@ namespace AppDesk
             MultaSinisGrid.Visibility = Visibility.Collapsed;
             MotoristasGrid.Visibility = Visibility.Collapsed;
             GaragensGrid.Visibility = Visibility.Collapsed;
+            LocacoesGrid.Visibility = Visibility.Collapsed;
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
         }
 
@@ -102,8 +110,10 @@ namespace AppDesk
             SinistrosDataGrid.ItemsSource = ServicoDados.ServicoDadosSinistro.ObterSinistrosOrdPorId().ToList();
             MotoristasDataGrid.ItemsSource = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId().ToList();
             GaragensDataGrid.ItemsSource = ServicoDados.ServicoDadosGaragem.ObterGaragensOrdPorId().ToList();
+            LocacoesDataGrid.ItemsSource = ServicoDados.ServicoDadosAluguel.ObterAlugueisOrdPorId().ToList();
         }
         #endregion
 
+        
     }
 }
