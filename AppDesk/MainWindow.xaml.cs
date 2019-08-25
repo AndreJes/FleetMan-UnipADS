@@ -88,6 +88,13 @@ namespace AppDesk
             MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
             ViagensGrid.Visibility = Visibility.Visible;
         }
+
+        //Botão de acesso a lista de SOLICITAÇÕES
+        private void SolicitacaoMainMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
+            SolicitacoesGrid.Visibility = Visibility.Visible;
+        }
         #endregion
 
         #region Metodos Auxiliares
@@ -107,6 +114,7 @@ namespace AppDesk
             GaragensGrid.Visibility = Visibility.Collapsed;
             LocacoesGrid.Visibility = Visibility.Collapsed;
             ViagensGrid.Visibility = Visibility.Collapsed;
+            SolicitacoesGrid.Visibility = Visibility.Collapsed;
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
         }
 
@@ -138,6 +146,11 @@ namespace AppDesk
             ViagensConcluidasECanceladas.AddRange(ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CONCLUIDA));
             ViagensConcluidasECanceladas.AddRange(ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CANCELADA));
             ViagensConcluidasDataGrid.ItemsSource = ViagensConcluidasECanceladas;
+            #endregion
+            #region Solicitações
+            SolicitacoesAguardandoDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.AGUARDANDO_APROVACAO);
+            SolicitacoesAprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.APROVADA);
+            SolicitacoesReprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.REPROVADA);
             #endregion
         }
 
