@@ -84,6 +84,10 @@
     <Compile Include="Migrations\201908261812509_Seguro-vinculado-a-Veiculo.Designer.cs">
       <DependentUpon>201908261812509_Seguro-vinculado-a-Veiculo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908261901026_Tipo-De-Financa.cs" />
+    <Compile Include="Migrations\201908261901026_Tipo-De-Financa.Designer.cs">
+      <DependentUpon>201908261901026_Tipo-De-Financa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -121,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908261812509_Seguro-vinculado-a-Veiculo.resx">
       <DependentUpon>201908261812509_Seguro-vinculado-a-Veiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908261901026_Tipo-De-Financa.resx">
+      <DependentUpon>201908261901026_Tipo-De-Financa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
