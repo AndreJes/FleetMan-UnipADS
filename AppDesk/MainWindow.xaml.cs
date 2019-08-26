@@ -95,6 +95,14 @@ namespace AppDesk
             MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
             SolicitacoesGrid.Visibility = Visibility.Visible;
         }
+
+        //Botão de acesso a lista de MANUTENÇÕES
+
+        //Botão de acesso a lista de FINANÇAS
+
+        //Botão de acesso a lista de RELATÓRIOS
+
+        //Botão de acesso a lista de FUNCIONÁRIOS
         #endregion
 
         #region Metodos Auxiliares

@@ -25,6 +25,7 @@
         </Style>
     </Window.Resources>
     <Grid x:Name="MainGrid">
+
         <!--#region Login Area-->
         <Border Visibility="Hidden" x:Name="LogonGridBorder" BorderBrush="DarkRed" BorderThickness="1" Margin="50" Grid.Row="1">
             <Grid>
@@ -45,22 +46,38 @@
                 <!--#endregion-->
 
                 <!--#region Login Information Grid-->
-                <Border x:Name="LoginInformationBorder" BorderBrush="LightGray" BorderThickness="0 0 0 1">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-
-                        <Button Margin="0 8" x:Name="CurrentUserBtn" Background="Transparent">
-                            <Image x:Name="UserImage" Height="20" Width="24"/>
+                <Border x:Name="InformationBorder" BorderBrush="LightGray" BorderThickness="0 0 0 1">
+                    <Grid>
+                        <!--#region Columns-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="90*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+                        
+                        <Button>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Avisos</Label>
+                                <Label></Label>
+                            </StackPanel>
                         </Button>
+                        
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
 
-                        <Label x:Name="CurrentUserCPFDisplayLabel" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
-                        <Label x:Name="CurrentUserNameDisplayLabel" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
+                            <Button Margin="0 8" x:Name="CurrentUserBtn" Background="Transparent">
+                                <Image x:Name="UserImage" Height="20" Width="24"/>
+                            </Button>
 
-                        <Button Margin="0 8 20 8">
-                            Logout
-                            <!--Colocar Imagem do simbolo de desligar-->
-                        </Button>
+                            <Label x:Name="CurrentUserCPFDisplayLabel" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
+                            <Label x:Name="CurrentUserNameDisplayLabel" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
 
-                    </StackPanel>
+                            <Button Margin="0 8 20 8">
+                                Logout
+                                <!--Colocar Imagem do simbolo de desligar-->
+                            </Button>
+
+                        </StackPanel>
+                    </Grid>
                 </Border>
                 <!--#endregion-->
 
@@ -169,6 +186,51 @@
                             </Label>
                         </StackPanel>
                         <!--#endregion-->
+
+                        <!--#region Manutenção-->
+                        <StackPanel Grid.Row="2" Grid.Column="0" Style="{StaticResource MainMenuStackPanelStyle}">
+                            <Button x:Name="ManutencaoMainMenuBtn" Style="{StaticResource MainMenuBtnStyle}">
+                                <Image x:Name="ManutencaoBtnImage"/>
+                            </Button>
+                            <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                MANUTENÇÕES
+                            </Label>
+                        </StackPanel>
+                        <!--#endregion-->
+
+                        <!--#region Financeiro-->
+                        <StackPanel Grid.Row="2" Grid.Column="2" Style="{StaticResource MainMenuStackPanelStyle}">
+                            <Button x:Name="FinanceiroMainMenuBtn" Style="{StaticResource MainMenuBtnStyle}">
+                                <Image x:Name="FinanceiroBtnImage"/>
+                            </Button>
+                            <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                FINANCEIRO
+                            </Label>
+                        </StackPanel>
+                        <!--#endregion-->
+
+                        <!--#region Relatórios-->
+                        <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource MainMenuStackPanelStyle}">
+                            <Button x:Name="RelatorioMainMenuBtn" Style="{StaticResource MainMenuBtnStyle}">
+                                <Image x:Name="RelatorioBtnImage"/>
+                            </Button>
+                            <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                RELATÓRIOS
+                            </Label>
+                        </StackPanel>
+                        <!--#endregion-->
+
+                        <!--#region Funcionários-->
+                        <StackPanel Grid.Row="2" Grid.Column="3" Style="{StaticResource MainMenuStackPanelStyle}">
+                            <Button x:Name="FuncionarioMainMenuBtn" Style="{StaticResource MainMenuBtnStyle}">
+                                <Image x:Name="FuncionarioBtnImage"/>
+                            </Button>
+                            <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                FUNCIONÁRIOS
+                            </Label>
+                        </StackPanel>
+                        <!--#endregion-->
+
                         <!--#endregion-->
 
                     </Grid>
