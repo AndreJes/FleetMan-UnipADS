@@ -12,6 +12,8 @@ namespace Modelo.Classes.Web
     {
         public long? SolicitacaoId { get; set; }
         public string ItemSerializado { get; set; }
+        public DateTime DataDaSolicitacao { get; set; }
+        public DateTime DataProcessamento { get; set; }
         public ItemSolicitacao TipoDeItem { get; set; }
         public EstadosDaSolicitacao Estado { get; set; }
         public TiposDeSolicitacao Tipo { get; set; }

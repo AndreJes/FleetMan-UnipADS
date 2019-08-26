@@ -946,7 +946,7 @@
                 <!--#endregion-->
 
                 <!--#region Solicitações List/Actions Grid Menu-->
-                <Grid x:Name="SolicitacoesGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="SolicitacoesGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -1027,8 +1027,9 @@
                         <DataGrid x:Name="SolicitacoesAguardandoDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding SolicitacaoId}"/>
-                                <DataGridTextColumn Header="Item da Solicitação" Binding="{Binding TipoDeItemTxt}"/>
-                                <DataGridTextColumn Header="Tipo de Solicitação" Binding="{Binding TipoDeSoliciTxt}" />
+                                <DataGridTextColumn Header="Item" Binding="{Binding TipoDeItemTxt}"/>
+                                <DataGridTextColumn Header="Tipo" Binding="{Binding TipoDeSoliciTxt}" />
+                                <DataGridTextColumn Header="Data de Solicitação" Binding="{Binding DataDaSolicitacao}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
@@ -1041,8 +1042,9 @@
                         <DataGrid x:Name="SolicitacoesAprovadasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding SolicitacaoId}"/>
-                                <DataGridTextColumn Header="Item da Solicitação" Binding="{Binding TipoDeItemTxt}"/>
-                                <DataGridTextColumn Header="Tipo de Solicitação" Binding="{Binding TipoDeSoliciTxt}" />
+                                <DataGridTextColumn Header="Item" Binding="{Binding TipoDeItemTxt}"/>
+                                <DataGridTextColumn Header="Tipo" Binding="{Binding TipoDeSoliciTxt}" />
+                                <DataGridTextColumn Header="Data de Processamento" Binding="{Binding DataProcessamento}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
@@ -1055,8 +1057,9 @@
                         <DataGrid x:Name="SolicitacoesReprovadasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding SolicitacaoId}"/>
-                                <DataGridTextColumn Header="Item da Solicitação" Binding="{Binding TipoDeItemTxt}"/>
-                                <DataGridTextColumn Header="Tipo de Solicitação" Binding="{Binding TipoDeSoliciTxt}" />
+                                <DataGridTextColumn Header="Item" Binding="{Binding TipoDeItemTxt}"/>
+                                <DataGridTextColumn Header="Tipo" Binding="{Binding TipoDeSoliciTxt}" />
+                                <DataGridTextColumn Header="Data de Processamento" Binding="{Binding DataProcessamento}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
