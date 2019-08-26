@@ -21,7 +21,6 @@ namespace Modelo.Classes.Desk
         public DateTime Vencimento_Contrato { get; set; }
         public EstadosDePagamento EstadoPagamento { get; set; }
 
-        public long? VeiculoId { get; set; }
-        public Veiculo Veiculo { get; set; }
+        public List<Veiculo> Veiculos { get; set; }
     }
 }

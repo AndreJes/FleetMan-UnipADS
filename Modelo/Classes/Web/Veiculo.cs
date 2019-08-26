@@ -86,6 +86,9 @@ namespace Modelo.Classes.Web
         public long? ClienteId { get; set; }
         public Clientes.Cliente Cliente { get; set; }
 
+        public long? SeguroId { get; set; }
+        public Seguro Seguro { get; set; }
+
         public List<Multa> Multas { get; set; }
         public List<Sinistro> Sinistros { get; set; }
         public List<Manutencao.Manutencao> Manutencoes { get; set; }

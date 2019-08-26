@@ -80,6 +80,10 @@
     <Compile Include="Migrations\201908261745057_Data-Na-Solicitacao.Designer.cs">
       <DependentUpon>201908261745057_Data-Na-Solicitacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908261812509_Seguro-vinculado-a-Veiculo.cs" />
+    <Compile Include="Migrations\201908261812509_Seguro-vinculado-a-Veiculo.Designer.cs">
+      <DependentUpon>201908261812509_Seguro-vinculado-a-Veiculo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908261745057_Data-Na-Solicitacao.resx">
       <DependentUpon>201908261745057_Data-Na-Solicitacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908261812509_Seguro-vinculado-a-Veiculo.resx">
+      <DependentUpon>201908261812509_Seguro-vinculado-a-Veiculo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

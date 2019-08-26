@@ -47,46 +47,59 @@ namespace Persistencia.Migrations
             #region Cliente 2
             ClientePJ ClientesPJ = new ClientePJ(2,
                 "1134562345",
-                new Endereco() {
+                new Endereco()
+                {
                     Rua = "Rua um",
                     Numero = "45",
                     Bairro = "Bras",
                     Cidade = "São Paulo",
-                    UF = "SP" }, 
-                "XingLing LTDA.", 
+                    UF = "SP"
+                },
+                "XingLing LTDA.",
                 "XinglingRoupas@hotmail.com",
                 "12341234123432");
             #endregion
-            Financa Financas = new Financa() {
+            Financa Financas = new Financa()
+            {
                 FinancaId = 1,
                 Valor = 50.30,
                 Descricao = "Conta de Luz",
                 DataVencimento = DateTime.ParseExact("07/27/2018", "MM/dd/yyyy", CultureInfo.InvariantCulture),
-                EstadoPagamento = EstadosDePagamento.PAGO };
-            Funcionario Funcionarios = new Funcionario() {
+                EstadoPagamento = EstadosDePagamento.PAGO
+            };
+            Funcionario Funcionarios = new Funcionario()
+            {
                 FuncionarioId = 1,
                 CPF = "12332112345",
                 Email = "Jose@gmail.com",
                 Nome = "José",
-                Endereco = new Endereco() {
+                Endereco = new Endereco()
+                {
                     Rua = "Rua dois",
                     Numero = "23",
                     Bairro = "Brás",
                     Cidade = "São Paulo",
-                    UF = "SP" },
-                Telefone = "11956783214" };
-            Garagem Garagens = new Garagem() {
+                    UF = "SP"
+                },
+                Telefone = "11956783214"
+            };
+            Garagem Garagens = new Garagem()
+            {
                 GaragemId = 1,
                 Capacidade = 30,
-                Endereco = new Endereco() {
+                Endereco = new Endereco()
+                {
                     Rua = "Rua um",
                     Numero = "11",
                     Bairro = "Vale do Silicio",
                     Cidade = "São Paulo",
-                    UF = "SP" },
+                    UF = "SP"
+                },
                 Telefone = "2143534223",
-                CNPJ = "12343235433323" };
-            Seguro Seguros = new Seguro() {
+                CNPJ = "12343235433323"
+            };
+            Seguro Seguros = new Seguro()
+            {
                 SeguroId = 1,
                 CNPJ = "12354312354323",
                 PrecoParcela = 250.00,
@@ -96,31 +109,40 @@ namespace Persistencia.Migrations
                 DataVencimentoParcela = DateTime.Now,
                 EstadoPagamento = EstadosDePagamento.PAGO,
                 Nome = "AutoSeguros LTDA.",
-                Vencimento_Contrato = DateTime.ParseExact("2019", "yyyy", CultureInfo.InvariantCulture) };
-            Fornecedor Fornecedores = new Fornecedor() {
+                Vencimento_Contrato = DateTime.ParseExact("2019", "yyyy", CultureInfo.InvariantCulture)
+            };
+            Fornecedor Fornecedores = new Fornecedor()
+            {
                 FornecedorId = 1,
                 CNPJ = "78912345632134",
                 Email = "Pecas123@gmail.com",
                 Telefone = "3167893456",
                 Razao_Social = "Autopecas LTDA.",
-                Endereco = new Endereco() {
+                Endereco = new Endereco()
+                {
                     Rua = "Rua Setenta",
                     Bairro = "Pimenta",
                     Numero = "122",
                     Cidade = "São Paulo",
-                    UF = "SP" },
-                LojaVirtual = false };
-            Peca Pecas = new Peca() {
+                    UF = "SP"
+                },
+                LojaVirtual = false
+            };
+            Peca Pecas = new Peca()
+            {
                 FornecedorId = 1,
                 PecaId = 1,
                 Descricao = "Carburador de Celta",
-                Quantidade = 5 };
-            UsuarioFunc UsuariosFuncs = new UsuarioFunc() {
+                Quantidade = 5
+            };
+            UsuarioFunc UsuariosFuncs = new UsuarioFunc()
+            {
                 UsuarioId = 1,
                 FuncionarioId = 1,
                 Login = Funcionarios.Email,
                 Senha = Funcionarios.CPF.Substring(0, 4),
-                Permissoes = new Permissoes() {
+                Permissoes = new Permissoes()
+                {
                     Clientes = true,
                     Financeiro = true,
                     Funcionarios = true,
@@ -132,14 +154,19 @@ namespace Persistencia.Migrations
                     Relatorios = true,
                     Seguros = true,
                     Solicitacoes = true,
-                    Veiculos = true } };
-            UsuarioCliente UsuarioClientes = new UsuarioCliente() {
+                    Veiculos = true
+                }
+            };
+            UsuarioCliente UsuarioClientes = new UsuarioCliente()
+            {
                 UsuarioId = 2,
                 ClienteId = 1,
                 Login = ClientesPF.Email,
-                Senha = ClientesPF.CPF.Substring(0, 4) };
+                Senha = ClientesPF.CPF.Substring(0, 4)
+            };
 
-            Motorista Motorista1 = new Motorista() {
+            Motorista Motorista1 = new Motorista()
+            {
                 MotoristaId = 1,
                 CPF = "12345678911",
                 Nome = "Antonio",
@@ -148,13 +175,17 @@ namespace Persistencia.Migrations
                 PontosCNH = 0,
                 Estado = EstadosDeMotorista.REGULAR,
                 VencimentoExame = DateTime.ParseExact("11/22/2019", "MM/dd/yyyy", CultureInfo.InvariantCulture),
-                Endereco = new Endereco() {
+                Endereco = new Endereco()
+                {
                     Rua = "Rua vinte e um",
                     Numero = "21",
                     Bairro = "Mooca",
                     Cidade = "São Paulo",
-                    UF = "SP" } };
-            Motorista Motorista2 = new Motorista() {
+                    UF = "SP"
+                }
+            };
+            Motorista Motorista2 = new Motorista()
+            {
                 MotoristaId = 2,
                 CPF = "12345558911",
                 Nome = "Maria",
@@ -164,13 +195,17 @@ namespace Persistencia.Migrations
                 Estado = EstadosDeMotorista.REGULAR,
                 VencimentoExame = DateTime.ParseExact("11/25/2019", "MM/dd/yyyy", CultureInfo.InvariantCulture),
                 ClienteId = 2,
-                Endereco = new Endereco() {
+                Endereco = new Endereco()
+                {
                     Rua = "Rua vinte e dois",
                     Numero = "11",
                     Bairro = "Mooca",
                     Cidade = "São Paulo",
-                    UF = "SP" } };
-            Veiculo Veiculo1 = new Veiculo() {
+                    UF = "SP"
+                }
+            };
+            Veiculo Veiculo1 = new Veiculo()
+            {
                 Adaptado = false,
                 Ano = 2018,
                 CategoriaExigida = CategoriasCNH.B,
@@ -184,8 +219,12 @@ namespace Persistencia.Migrations
                 Nome = "Gol",
                 EstadoDoTanque = EstadosTanqueCombustivel.TRES_QUARTOS,
                 EstadoDoVeiculo = EstadosDeVeiculo.NORMAL,
-                ParaLocacao = true, GaragemId = 1 };
-            Veiculo Veiculo2 = new Veiculo() {
+                ParaLocacao = true,
+                GaragemId = 1,
+                SeguroId = 1
+            };
+            Veiculo Veiculo2 = new Veiculo()
+            {
                 Adaptado = true,
                 Ano = 2019,
                 CategoriaExigida = CategoriasCNH.C,
@@ -201,7 +240,9 @@ namespace Persistencia.Migrations
                 EstadoDoVeiculo = EstadosDeVeiculo.NORMAL,
                 ParaLocacao = false,
                 GaragemId = 1,
-                ClienteId = 2 };
+                ClienteId = 2,
+                SeguroId = 1
+            };
 
             context.ClientesPF.AddOrUpdate<ClientePF>(ClientesPF);
             context.ClientesPJ.AddOrUpdate<ClientePJ>(ClientesPJ);
