@@ -88,6 +88,10 @@
     <Compile Include="Migrations\201908261901026_Tipo-De-Financa.Designer.cs">
       <DependentUpon>201908261901026_Tipo-De-Financa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908261914321_Financa-Update-Datas.cs" />
+    <Compile Include="Migrations\201908261914321_Financa-Update-Datas.Designer.cs">
+      <DependentUpon>201908261914321_Financa-Update-Datas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908261901026_Tipo-De-Financa.resx">
       <DependentUpon>201908261901026_Tipo-De-Financa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908261914321_Financa-Update-Datas.resx">
+      <DependentUpon>201908261914321_Financa-Update-Datas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

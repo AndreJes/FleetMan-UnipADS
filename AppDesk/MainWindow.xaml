@@ -45,7 +45,7 @@
                 </Grid.RowDefinitions>
                 <!--#endregion-->
 
-                <!--#region Login Information Grid-->
+                <!--#region Information Grid-->
                 <Border x:Name="InformationBorder" BorderBrush="LightGray" BorderThickness="0 0 0 1">
                     <Grid>
                         <!--#region Columns-->

@@ -12,7 +12,7 @@ namespace Modelo.Classes.Desk
         public long? FinancaId { get; set; }
         public string Descricao { get; set; }
         public double Valor { get; set; }
-        public DateTime DataVencimento { get; set; }
+        public DateTime? DataVencimento { get; set; }
         public DateTime? DataPagamento { get; set; }
         public EstadosDePagamento EstadoPagamento{ get; set; }
         public TipoDeFinanca Tipo { get; set; }
