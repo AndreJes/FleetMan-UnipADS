@@ -200,7 +200,7 @@
 
                         <!--#region Financeiro-->
                         <StackPanel Grid.Row="2" Grid.Column="2" Style="{StaticResource MainMenuStackPanelStyle}">
-                            <Button x:Name="FinanceiroMainMenuBtn" Style="{StaticResource MainMenuBtnStyle}">
+                            <Button x:Name="FinanceiroMainMenuBtn" Click="FinanceiroMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
                                 <Image x:Name="FinanceiroBtnImage"/>
                             </Button>
                             <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
@@ -1124,6 +1124,110 @@
                                 <DataGridTextColumn Header="Data de Processamento" Binding="{Binding DataProcessamento}"/>
                             </DataGrid.Columns>
                         </DataGrid>
+                        <!--#endregion-->
+                    </Grid>
+                    <!--#endregion-->
+                </Grid>
+                <!--#endregion-->
+
+                <!--#region Financeiro List/Actions Grid Menu-->
+                <Grid x:Name="FinancasGrid" Visibility="Visible" Grid.Row="1">
+                    <!--#region Rows Definitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="119*"/>
+                    </Grid.RowDefinitions>
+                    <!--#endregion-->
+                    <!--#region ToolBar-->
+                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                        <Grid x:Name="FinancasToolBarGrid">
+                            <!--#region Columns-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85*"/>
+                                <ColumnDefinition Width="140*"/>
+                                <ColumnDefinition Width="234*"/>
+                                <ColumnDefinition Width="229*"/>
+                                <ColumnDefinition Width="358*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+
+                            <!--#region Botoes Voltar e Registrar-->
+                            <Button x:Name="FinancasGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
+                                Voltar
+                            </Button>
+
+                            <Button  Grid.Column="1" Margin="20 10" FontSize="9">
+                                Registrar Multa/Sinistro
+                            </Button>
+                            <!--#endregion-->
+
+                            <!--#region Pesquisa-->
+                            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 5">
+                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
+                                    Pesquisar:
+                                </Label>
+                                <TextBox x:Name="FinancasSearchTextBox">
+
+                                </TextBox>
+                            </StackPanel>
+                            <!--#endregion-->
+
+                            <!--#region Separators-->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
+                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
+                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
+                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
+                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            </StackPanel>
+                            <!--#endregion-->
+                        </Grid>
+                    </Border>
+                    <!--#endregion-->
+                    <!--#region Lista-->
+                    <Grid x:Name="FinancasListGrid" Grid.Row="1">
+                        <!--#region Columns/Rows-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="90*"/>
+                        </Grid.RowDefinitions>
+                        <!--#endregion-->
+                        <!--#region Multas-->
+                        <DataGrid x:Name="FinancaSaidaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Código" Binding="{Binding FinancaId}"/>
+                                <DataGridTextColumn Header="Descrição" Binding="{Binding Descricao}"/>
+                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor}" />
+                                <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoPagamentoTxt}" />
+                                <DataGridTextColumn Header="Data vencimento" Binding="{Binding DataVencimento}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <!--#endregion-->
+                        <!--#region Separador-->
+                        <StackPanel Orientation="Horizontal" Grid.RowSpan="2" HorizontalAlignment="Right" Width="5">
+                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                        </StackPanel>
+                        <!--#endregion-->
+                        <!--#region Sinistros-->
+                        <DataGrid x:Name="FinancaEntradaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Código" Binding="{Binding FinancaId}"/>
+                                <DataGridTextColumn Header="Descrição" Binding="{Binding Descricao}"/>
+                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor}" />
+                                <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoPagamentoTxt}" />
+                                <DataGridTextColumn Header="Data recebimento" Binding="{Binding DataPagamento}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
                         <!--#endregion-->
                     </Grid>
                     <!--#endregion-->

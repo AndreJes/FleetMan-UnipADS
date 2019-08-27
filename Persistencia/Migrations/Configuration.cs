@@ -29,6 +29,7 @@ namespace Persistencia.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            #region Clientes
             #region Cliente 1
             ClientePF ClientesPF = new ClientePF(1,
                 "1126784567",
@@ -59,14 +60,27 @@ namespace Persistencia.Migrations
                 "XinglingRoupas@hotmail.com",
                 "12341234123432");
             #endregion
-            Financa Financas = new Financa()
+            #endregion
+            #region Financas
+            Financa Financa1 = new Financa()
             {
                 FinancaId = 1,
                 Valor = 50.30,
                 Descricao = "Conta de Luz",
                 DataVencimento = DateTime.ParseExact("07/27/2018", "MM/dd/yyyy", CultureInfo.InvariantCulture),
-                EstadoPagamento = EstadosDePagamento.PAGO
+                EstadoPagamento = EstadosDePagamento.PAGO,
+                Tipo = Modelo.Enums.TipoDeFinanca.SAIDA
             };
+            Financa Financa2 = new Financa()
+            {
+                FinancaId = 2,
+                Valor = 200.00,
+                Descricao = "Pagamento aluguel",
+                DataPagamento = DateTime.ParseExact("07/25/2018", "MM/dd/yyyy", CultureInfo.InvariantCulture),
+                EstadoPagamento = EstadosDePagamento.PAGO,
+                Tipo = Modelo.Enums.TipoDeFinanca.ENTRADA
+            };
+            #endregion
             Funcionario Funcionarios = new Funcionario()
             {
                 FuncionarioId = 1,
@@ -246,7 +260,8 @@ namespace Persistencia.Migrations
 
             context.ClientesPF.AddOrUpdate<ClientePF>(ClientesPF);
             context.ClientesPJ.AddOrUpdate<ClientePJ>(ClientesPJ);
-            context.Financas.AddOrUpdate<Financa>(Financas);
+            context.Financas.AddOrUpdate<Financa>(Financa1);
+            context.Financas.AddOrUpdate<Financa>(Financa2);
             context.Funcionarios.AddOrUpdate<Funcionario>(Funcionarios);
             context.Garagens.AddOrUpdate<Garagem>(Garagens);
             context.Seguro.AddOrUpdate<Seguro>(Seguros);

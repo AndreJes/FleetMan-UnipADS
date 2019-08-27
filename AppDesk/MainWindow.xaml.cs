@@ -99,7 +99,11 @@ namespace AppDesk
         //Botão de acesso a lista de MANUTENÇÕES
 
         //Botão de acesso a lista de FINANÇAS
-
+        private void FinanceiroMainMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
+            FinancasGrid.Visibility = Visibility.Visible;
+        }
         //Botão de acesso a lista de RELATÓRIOS
 
         //Botão de acesso a lista de FUNCIONÁRIOS
@@ -123,6 +127,7 @@ namespace AppDesk
             LocacoesGrid.Visibility = Visibility.Collapsed;
             ViagensGrid.Visibility = Visibility.Collapsed;
             SolicitacoesGrid.Visibility = Visibility.Collapsed;
+            FinancasGrid.Visibility = Visibility.Collapsed;
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
         }
 
@@ -130,21 +135,25 @@ namespace AppDesk
         private void PopulateDataGrid()
         {
             VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().ToList();
+
             #region Clientes
             ClientePFDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpf => cpf is ClientePF).ToList();
 
             ClientePJDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpj => cpj is ClientePJ).ToList();
             #endregion
+
             #region Multas/Sinistros
             MultasDataGrid.ItemsSource = ServicoDados.ServicoDadosMulta.ObterMultasOrdPorId().ToList();
 
             SinistrosDataGrid.ItemsSource = ServicoDados.ServicoDadosSinistro.ObterSinistrosOrdPorId().ToList();
             #endregion
+
             MotoristasDataGrid.ItemsSource = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId().ToList();
 
             GaragensDataGrid.ItemsSource = ServicoDados.ServicoDadosGaragem.ObterGaragensOrdPorId().ToList();
 
             LocacoesDataGrid.ItemsSource = ServicoDados.ServicoDadosAluguel.ObterAlugueisOrdPorId().ToList();
+
             #region Viagens
             ViagensAguardandoDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.AGUARDANDO_INICIO).ToList();
 
@@ -155,10 +164,17 @@ namespace AppDesk
             ViagensConcluidasECanceladas.AddRange(ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CANCELADA));
             ViagensConcluidasDataGrid.ItemsSource = ViagensConcluidasECanceladas;
             #endregion
+
             #region Solicitações
             SolicitacoesAguardandoDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.AGUARDANDO_APROVACAO);
             SolicitacoesAprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.APROVADA);
             SolicitacoesReprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.REPROVADA);
+            #endregion
+
+            #region Finanças
+            FinancaEntradaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.ENTRADA).ToList();
+
+            FinancaSaidaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.SAIDA).ToList();
             #endregion
         }
 

@@ -52,6 +52,7 @@
     <Compile Include="Contexts\EFContext.cs" />
     <Compile Include="DAL\Cliente\ClienteDAL.cs" />
     <Compile Include="DAL\DALContext.cs" />
+    <Compile Include="DAL\Desk\FinancaDAL.cs" />
     <Compile Include="DAL\Desk\GaragenDAL.cs" />
     <Compile Include="DAL\Desk\MultaDAL.cs" />
     <Compile Include="DAL\Desk\SinistroDAL.cs" />
@@ -91,6 +92,10 @@
     <Compile Include="Migrations\201908261914321_Financa-Update-Datas.cs" />
     <Compile Include="Migrations\201908261914321_Financa-Update-Datas.Designer.cs">
       <DependentUpon>201908261914321_Financa-Update-Datas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908272315481_Nova-Financa.cs" />
+    <Compile Include="Migrations\201908272315481_Nova-Financa.Designer.cs">
+      <DependentUpon>201908272315481_Nova-Financa.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908261914321_Financa-Update-Datas.resx">
       <DependentUpon>201908261914321_Financa-Update-Datas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908272315481_Nova-Financa.resx">
+      <DependentUpon>201908272315481_Nova-Financa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
