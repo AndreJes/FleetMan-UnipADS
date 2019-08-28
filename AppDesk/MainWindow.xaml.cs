@@ -105,7 +105,11 @@ namespace AppDesk
             FinancasGrid.Visibility = Visibility.Visible;
         }
         //Botão de acesso a lista de RELATÓRIOS
-
+        private void RelatorioMainMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
+            RelatoriosGrid.Visibility = Visibility.Visible;
+        }
         //Botão de acesso a lista de FUNCIONÁRIOS
         private void FuncionarioMainMenuBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -134,6 +138,7 @@ namespace AppDesk
             SolicitacoesGrid.Visibility = Visibility.Collapsed;
             FinancasGrid.Visibility = Visibility.Collapsed;
             FuncionariosGrid.Visibility = Visibility.Collapsed;
+            RelatoriosGrid.Visibility = Visibility.Collapsed;
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
         }
 
@@ -144,13 +149,11 @@ namespace AppDesk
 
             #region Clientes
             ClientePFDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpf => cpf is ClientePF).ToList();
-
             ClientePJDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpj => cpj is ClientePJ).ToList();
             #endregion
 
             #region Multas/Sinistros
             MultasDataGrid.ItemsSource = ServicoDados.ServicoDadosMulta.ObterMultasOrdPorId().ToList();
-
             SinistrosDataGrid.ItemsSource = ServicoDados.ServicoDadosSinistro.ObterSinistrosOrdPorId().ToList();
             #endregion
 
@@ -179,16 +182,24 @@ namespace AppDesk
 
             #region Finanças
             FinancaEntradaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.ENTRADA).ToList();
-
             FinancaSaidaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.SAIDA).ToList();
             #endregion
 
             #region Funcionarios
             FuncionariosDataGrid.ItemsSource = ServicoDados.ServicoDadosFuncionario.ObterFuncionariosOrdPorId().ToList();
+            //TODO: Separar funcionarios Ativos/Inativos.
+            #endregion
+
+            #region Relatórios
+            RelatoriosAbastecimentoDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosConsumoOrdPorId().ToList();
+            RelatoriosFinanceiroDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosFinanceiroOrdPorId().ToList();
+            RelatoriosManutencaoDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosManutencaoOrdPorId().ToList();
+            RelatoriosMultaDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosMultaOrdPorId().ToList();
+            RelatoriosSinistroDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosAcidenteOrdPorId().ToList();
+            RelatoriosViagemDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosViagemOrdPorId().ToList();
             #endregion
         }
 
         #endregion
-
     }
 }

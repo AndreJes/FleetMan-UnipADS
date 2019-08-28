@@ -1,5 +1,6 @@
 ﻿using Servicos.Cliente;
 using Servicos.Desk;
+using Servicos.Relatorios;
 using Servicos.Web;
 using System;
 using System.Collections.Generic;
@@ -22,5 +23,6 @@ namespace AppDesk.Serviço
         public static SolicitacaoService ServicoDadosSolicitacao = new SolicitacaoService();
         public static FinancaService ServicoDadosFinancas = new FinancaService();
         public static FuncionarioService ServicoDadosFuncionario = new FuncionarioService();
+        public static RelatorioService ServicoDadosRelatorio = new RelatorioService();
     }
 }

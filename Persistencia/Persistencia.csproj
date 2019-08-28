@@ -57,6 +57,7 @@
     <Compile Include="DAL\Desk\GaragenDAL.cs" />
     <Compile Include="DAL\Desk\MultaDAL.cs" />
     <Compile Include="DAL\Desk\SinistroDAL.cs" />
+    <Compile Include="DAL\Relatorios\RelatorioDAL.cs" />
     <Compile Include="DAL\Web\AluguelDAL.cs" />
     <Compile Include="DAL\Web\MotoristaDAL.cs" />
     <Compile Include="DAL\Web\SolicitacaoDAL.cs" />
@@ -103,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\Manutencao\" />
-    <Folder Include="DAL\Relatorios\" />
     <Folder Include="DAL\Usuarios\" />
     <Folder Include="Initializers\" />
   </ItemGroup>
