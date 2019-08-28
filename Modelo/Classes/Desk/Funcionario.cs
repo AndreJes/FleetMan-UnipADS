@@ -28,6 +28,15 @@ namespace Modelo.Classes.Desk
                 return CPF.FormatarCPF();
             }
         }
+
+        [NotMapped]
+        public string TelefoneTxt
+        {
+            get
+            {
+                return Telefone.FormatarNumCelular();
+            }
+        }
         #endregion
 
     }

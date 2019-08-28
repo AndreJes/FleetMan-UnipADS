@@ -53,6 +53,7 @@
     <Compile Include="DAL\Cliente\ClienteDAL.cs" />
     <Compile Include="DAL\DALContext.cs" />
     <Compile Include="DAL\Desk\FinancaDAL.cs" />
+    <Compile Include="DAL\Desk\FuncionarioDAL.cs" />
     <Compile Include="DAL\Desk\GaragenDAL.cs" />
     <Compile Include="DAL\Desk\MultaDAL.cs" />
     <Compile Include="DAL\Desk\SinistroDAL.cs" />

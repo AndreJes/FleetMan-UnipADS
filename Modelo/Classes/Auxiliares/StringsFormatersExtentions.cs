@@ -18,9 +18,14 @@ namespace Modelo.Classes.Auxiliares
             return cnpj.Insert(2, ".").Insert(6, ".").Insert(10, "/").Insert(15, "-");
         }
 
-        public static string FormatarTelefone(this string telefone)
+        public static string FormatarNumTelefone(this string telefone)
         {
             return telefone.Insert(0, "(").Insert(3, ") ").Insert(9, "-");
+        }
+
+        public static string FormatarNumCelular(this string celular)
+        {
+            return celular.Insert(0, "(").Insert(3, ") ").Insert(10, "-");
         }
     }
 }

@@ -107,6 +107,11 @@ namespace AppDesk
         //Botão de acesso a lista de RELATÓRIOS
 
         //Botão de acesso a lista de FUNCIONÁRIOS
+        private void FuncionarioMainMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
+            FuncionariosGrid.Visibility = Visibility.Visible;
+        }
         #endregion
 
         #region Metodos Auxiliares
@@ -128,6 +133,7 @@ namespace AppDesk
             ViagensGrid.Visibility = Visibility.Collapsed;
             SolicitacoesGrid.Visibility = Visibility.Collapsed;
             FinancasGrid.Visibility = Visibility.Collapsed;
+            FuncionariosGrid.Visibility = Visibility.Collapsed;
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
         }
 
@@ -175,6 +181,10 @@ namespace AppDesk
             FinancaEntradaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.ENTRADA).ToList();
 
             FinancaSaidaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.SAIDA).ToList();
+            #endregion
+
+            #region Funcionarios
+            FuncionariosDataGrid.ItemsSource = ServicoDados.ServicoDadosFuncionario.ObterFuncionariosOrdPorId().ToList();
             #endregion
         }
 

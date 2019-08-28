@@ -222,7 +222,7 @@
 
                         <!--#region Funcionários-->
                         <StackPanel Grid.Row="2" Grid.Column="3" Style="{StaticResource MainMenuStackPanelStyle}">
-                            <Button x:Name="FuncionarioMainMenuBtn" Style="{StaticResource MainMenuBtnStyle}">
+                            <Button x:Name="FuncionarioMainMenuBtn" Click="FuncionarioMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
                                 <Image x:Name="FuncionarioBtnImage"/>
                             </Button>
                             <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
@@ -1310,10 +1310,9 @@
                         <DataGrid x:Name="FuncionariosDataGrid" Margin="10" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="CPF" Binding="{Binding CPFTxt}"/>
-                                <DataGridTextColumn Header="CNH" Binding="{Binding NumeroCNH}"/>
                                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
-                                <DataGridTextColumn Header="Situação" Binding="{Binding Estado}"/>
-                                <DataGridTextColumn Header="Motorista Próprio" Binding="{Binding ProprioTxt}"/>
+                                <DataGridTextColumn Header="Telefone" Binding="{Binding TelefoneTxt}"/>
+                                <DataGridTextColumn Header="E-mail" Binding="{Binding Email}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

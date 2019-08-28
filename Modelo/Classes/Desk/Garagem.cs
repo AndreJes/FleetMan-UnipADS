@@ -35,7 +35,7 @@ namespace Modelo.Classes.Desk
         {
             get
             {
-                return Telefone.FormatarTelefone();
+                return Telefone.FormatarNumTelefone();
             }
         }
 
