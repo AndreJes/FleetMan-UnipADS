@@ -17,6 +17,7 @@ using AppDesk.Tools;
 using Modelo.Classes.Clientes;
 using Modelo.Classes.Web;
 using Modelo.Enums;
+using AppDesk.Windows.Clientes;
 
 namespace AppDesk
 {
@@ -115,6 +116,14 @@ namespace AppDesk
         {
             MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
             FuncionariosGrid.Visibility = Visibility.Visible;
+        }
+        #endregion
+
+        #region Botões Registro
+        private void RegistrarClienteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormRegistroCliente formRegistroCliente = new FormRegistroCliente();
+            formRegistroCliente.Show();
         }
         #endregion
 

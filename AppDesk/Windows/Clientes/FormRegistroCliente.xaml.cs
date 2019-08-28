@@ -17,11 +17,23 @@ namespace AppDesk.Windows.Clientes
     /// <summary>
     /// Lógica interna para FormRegistroVeiculo.xaml
     /// </summary>
-    public partial class FormRegistroVeiculo : Window
+    public partial class FormRegistroCliente : Window
     {
-        public FormRegistroVeiculo()
+        public FormRegistroCliente()
         {
             InitializeComponent();
+        }
+
+        //Botão registro
+        private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //Botão Cancelar
+        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

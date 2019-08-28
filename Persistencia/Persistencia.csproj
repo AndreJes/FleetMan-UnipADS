@@ -107,6 +107,10 @@
     <Compile Include="Migrations\201908281623051_New-Uf-as-Enum.Designer.cs">
       <DependentUpon>201908281623051_New-Uf-as-Enum.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908282147306_CEP-Endereco.cs" />
+    <Compile Include="Migrations\201908282147306_CEP-Endereco.Designer.cs">
+      <DependentUpon>201908282147306_CEP-Endereco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -158,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908281623051_New-Uf-as-Enum.resx">
       <DependentUpon>201908281623051_New-Uf-as-Enum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908282147306_CEP-Endereco.resx">
+      <DependentUpon>201908282147306_CEP-Endereco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

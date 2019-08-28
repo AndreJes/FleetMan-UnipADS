@@ -1,4 +1,4 @@
-﻿<Window x:Class="AppDesk.Windows.Clientes.FormRegistroVeiculo"
+﻿<Window x:Class="AppDesk.Windows.Clientes.FormRegistroCliente"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -126,10 +126,10 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+                <Button x:Name="RegistrarBtn" Click="RegistrarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
                     REGISTRAR
                 </Button>
-                <Button Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
                     CANCELAR
                 </Button>
             </Grid>

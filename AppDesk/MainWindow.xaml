@@ -383,7 +383,7 @@
                                 Voltar
                             </Button>
 
-                            <Button  Grid.Column="1" Margin="20 10">
+                            <Button x:Name="RegistrarClienteBtn" Click="RegistrarClienteBtn_Click" Grid.Column="1" Margin="20 10">
                                 Registrar Cliente
                             </Button>
                             <!--#endregion-->

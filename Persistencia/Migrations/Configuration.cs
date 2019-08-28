@@ -39,6 +39,7 @@ namespace Persistencia.Migrations
                     Numero = "155",
                     Bairro = "Ermelino Matarazzo",
                     Cidade = "São Paulo",
+                    CEP = "00000-000",
                     UF = UnidadesFederativas.SP
                 },
                 "Carlos",
@@ -54,6 +55,7 @@ namespace Persistencia.Migrations
                     Numero = "45",
                     Bairro = "Bras",
                     Cidade = "São Paulo",
+                    CEP = "00000-000",
                     UF = UnidadesFederativas.SP
                 },
                 "XingLing LTDA.",
@@ -93,6 +95,7 @@ namespace Persistencia.Migrations
                     Numero = "23",
                     Bairro = "Brás",
                     Cidade = "São Paulo",
+                    CEP = "00000-000",
                     UF = UnidadesFederativas.SP
                 },
                 Telefone = "11956783214"
@@ -107,6 +110,7 @@ namespace Persistencia.Migrations
                     Numero = "11",
                     Bairro = "Vale do Silicio",
                     Cidade = "São Paulo",
+                    CEP = "00000-000",
                     UF = UnidadesFederativas.SP
                 },
                 Telefone = "2143534223",
@@ -138,6 +142,7 @@ namespace Persistencia.Migrations
                     Bairro = "Pimenta",
                     Numero = "122",
                     Cidade = "São Paulo",
+                    CEP = "00000-000",
                     UF = UnidadesFederativas.SP
                 },
                 LojaVirtual = false
@@ -195,6 +200,7 @@ namespace Persistencia.Migrations
                     Numero = "21",
                     Bairro = "Mooca",
                     Cidade = "São Paulo",
+                    CEP = "00000-000",
                     UF = UnidadesFederativas.SP
                 }
             };
@@ -215,6 +221,7 @@ namespace Persistencia.Migrations
                     Numero = "11",
                     Bairro = "Mooca",
                     Cidade = "São Paulo",
+                    CEP = "00000-000",
                     UF = UnidadesFederativas.SP
                 }
             };
