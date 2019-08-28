@@ -1,0 +1,139 @@
+﻿<Window x:Class="AppDesk.Windows.Clientes.FormRegistroVeiculo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDesk.Windows.Clientes"
+        mc:Ignorable="d"
+        Title="Registrar Novo Cliente" Height="400" Width="380">
+    <Window.Resources>
+        <Style x:Key="MainLabelStyle" TargetType="Label">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Black" />
+        </Style>
+        <Style x:Key="MainTextBoxStyle" TargetType="TextBox">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="MainStackPanelStyle" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid x:Name="FormContentGrid">
+            <!--#region Columns/ Rows-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+            <!--#region Header-->
+            <Label FontFamily="Arial" Style="{StaticResource MainLabelStyle}" Width="auto" FontSize="20">REGISTRAR NOVO CLIENTE</Label>
+            <!--#endregion-->
+            <!--#region Fields-->
+            <!--#region Informações Principais-->
+            <GroupBox Grid.Row="1">
+                <GroupBox.Header>Dados Principais</GroupBox.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <!--#region Cliente-->
+                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">Cliente</Label>
+                        <Border BorderBrush="#FFABADB3" BorderThickness="1">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton Margin="5 0" GroupName="PFPJ" Content="Pessoa Física" IsChecked="True" VerticalAlignment="Center" />
+                                <RadioButton Margin="5 0" GroupName="PFPJ" Content="Pessoa Juridica" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <!--#endregion-->
+                    <!--#region CPF/CNPJ - Telefone-->
+                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">CPF/CNPJ</Label>
+                        <TextBox x:Name="CPFCNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Width="100"></TextBox>
+                        <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
+                        <TextBox x:Name="TelefoneTextBox" Style="{StaticResource MainTextBoxStyle}" Width="100"></TextBox>
+                    </StackPanel>
+                    <!--#endregion-->
+                    <!--#region Nome-->
+                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">Nome</Label>
+                        <TextBox x:Name="NomeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="275"></TextBox>
+                    </StackPanel>
+                    <!--#endregion-->
+                    <!--#region Email-->
+                    <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">E-Mail</Label>
+                        <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="275"></TextBox>
+                    </StackPanel>
+                    <!--#endregion-->
+                </Grid>
+            </GroupBox>
+            <!--#endregion-->
+            <!--#region Endereço-->
+            <GroupBox Grid.Row="2">
+                <GroupBox.Header>Dados para Localização</GroupBox.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <!--#region Rua / Nº-->
+                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">Endereço</Label>
+                        <TextBox x:Name="RuaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170"></TextBox>
+                        <Label Style="{StaticResource MainLabelStyle}" Width="45">Nº</Label>
+                        <TextBox x:Name="NumeroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="60"></TextBox>
+                    </StackPanel>
+                    <!--#endregion-->
+                    <!--#region Bairro/ CEP-->
+                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}" Width="45">CEP</Label>
+                        <TextBox x:Name="CEPTextBox" Style="{StaticResource MainTextBoxStyle}" Width="75"></TextBox>
+                        <Label Style="{StaticResource MainLabelStyle}">Bairro</Label>
+                        <TextBox x:Name="BairroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="155"></TextBox>
+                    </StackPanel>
+                    <!--#endregion-->
+                    <!--#region Cidade/ UF-->
+                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">Cidade</Label>
+                        <TextBox x:Name="CidadeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="180"></TextBox>
+                        <Label Style="{StaticResource MainLabelStyle}" Width="45">UF</Label>
+                        <ComboBox Width="50">
+                        </ComboBox>
+                    </StackPanel>
+                    <!--#endregion-->
+                </Grid>
+            </GroupBox>
+            <!--#endregion-->
+            <!--#endregion-->
+            <!--#region Botões confirmar-->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+                    REGISTRAR
+                </Button>
+                <Button Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                    CANCELAR
+                </Button>
+            </Grid>
+            <!--#endregion-->
+        </Grid>
+    </Grid>
+</Window>

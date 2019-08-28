@@ -45,7 +45,7 @@
                 </Grid.RowDefinitions>
                 <!--#endregion-->
 
-                <!--#region Information Grid-->
+                <!--#region Information Grid (Avisos e informações de Login)-->
                 <Border x:Name="InformationBorder" BorderBrush="LightGray" BorderThickness="0 0 0 1">
                     <Grid>
                         <!--#region Columns-->
@@ -1322,7 +1322,7 @@
                 <!--#endregion-->
 
                 <!--#region Relatórios List/Actions Grid Menu-->
-                <Grid x:Name="RelatoriosGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="RelatoriosGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>

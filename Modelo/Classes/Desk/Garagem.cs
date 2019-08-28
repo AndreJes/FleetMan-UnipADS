@@ -62,7 +62,7 @@ namespace Modelo.Classes.Desk
         {
             get
             {
-                return Endereco.UF;
+                return Endereco.UF.ToString();
             }
         }
 

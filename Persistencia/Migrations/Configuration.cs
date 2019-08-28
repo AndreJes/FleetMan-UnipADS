@@ -39,7 +39,7 @@ namespace Persistencia.Migrations
                     Numero = "155",
                     Bairro = "Ermelino Matarazzo",
                     Cidade = "São Paulo",
-                    UF = "SP"
+                    UF = UnidadesFederativas.SP
                 },
                 "Carlos",
                 "Narutinho123@gmail.com",
@@ -54,7 +54,7 @@ namespace Persistencia.Migrations
                     Numero = "45",
                     Bairro = "Bras",
                     Cidade = "São Paulo",
-                    UF = "SP"
+                    UF = UnidadesFederativas.SP
                 },
                 "XingLing LTDA.",
                 "XinglingRoupas@hotmail.com",
@@ -93,7 +93,7 @@ namespace Persistencia.Migrations
                     Numero = "23",
                     Bairro = "Brás",
                     Cidade = "São Paulo",
-                    UF = "SP"
+                    UF = UnidadesFederativas.SP
                 },
                 Telefone = "11956783214"
             };
@@ -107,7 +107,7 @@ namespace Persistencia.Migrations
                     Numero = "11",
                     Bairro = "Vale do Silicio",
                     Cidade = "São Paulo",
-                    UF = "SP"
+                    UF = UnidadesFederativas.SP
                 },
                 Telefone = "2143534223",
                 CNPJ = "12343235433323"
@@ -138,7 +138,7 @@ namespace Persistencia.Migrations
                     Bairro = "Pimenta",
                     Numero = "122",
                     Cidade = "São Paulo",
-                    UF = "SP"
+                    UF = UnidadesFederativas.SP
                 },
                 LojaVirtual = false
             };
@@ -195,7 +195,7 @@ namespace Persistencia.Migrations
                     Numero = "21",
                     Bairro = "Mooca",
                     Cidade = "São Paulo",
-                    UF = "SP"
+                    UF = UnidadesFederativas.SP
                 }
             };
             Motorista Motorista2 = new Motorista()
@@ -215,7 +215,7 @@ namespace Persistencia.Migrations
                     Numero = "11",
                     Bairro = "Mooca",
                     Cidade = "São Paulo",
-                    UF = "SP"
+                    UF = UnidadesFederativas.SP
                 }
             };
             Veiculo Veiculo1 = new Veiculo()

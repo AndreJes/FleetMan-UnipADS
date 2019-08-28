@@ -99,6 +99,14 @@
     <Compile Include="Migrations\201908272315481_Nova-Financa.Designer.cs">
       <DependentUpon>201908272315481_Nova-Financa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908281620545_Remove-Older-Uf.cs" />
+    <Compile Include="Migrations\201908281620545_Remove-Older-Uf.Designer.cs">
+      <DependentUpon>201908281620545_Remove-Older-Uf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908281623051_New-Uf-as-Enum.cs" />
+    <Compile Include="Migrations\201908281623051_New-Uf-as-Enum.Designer.cs">
+      <DependentUpon>201908281623051_New-Uf-as-Enum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -144,6 +152,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908272315481_Nova-Financa.resx">
       <DependentUpon>201908272315481_Nova-Financa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908281620545_Remove-Older-Uf.resx">
+      <DependentUpon>201908281620545_Remove-Older-Uf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908281623051_New-Uf-as-Enum.resx">
+      <DependentUpon>201908281623051_New-Uf-as-Enum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

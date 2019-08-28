@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,6 @@ namespace Modelo.Classes.Auxiliares
         public string Numero { get; set; }
         public string Bairro { get; set; }
         public string Cidade { get; set; }
-        public string UF { get; set; }
+        public UnidadesFederativas UF { get; set; }
     }
 }

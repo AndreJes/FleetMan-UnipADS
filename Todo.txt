@@ -1,0 +1,6 @@
+- Alterar as informações/atributos de relatórios ao implementar os detalhes
+
+- Alterar as associações do entity framework para manutenção (refazer)
+
+-Separar funcionarios por ativos e inativos
+
