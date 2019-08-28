@@ -31,7 +31,7 @@ namespace Modelo.Classes.Web
         {
             get
             {
-                return CPF.Insert(3, ".").Insert(7, ".").Insert(11, "-");
+                return CPF.FormatarCPF();
             }
         }
         [NotMapped]

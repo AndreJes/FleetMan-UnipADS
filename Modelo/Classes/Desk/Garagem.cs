@@ -26,7 +26,7 @@ namespace Modelo.Classes.Desk
         {
             get
             {
-                return CNPJ.Insert(2, ".").Insert(6, ".").Insert(10, "/").Insert(15, "-");
+                return CNPJ.FormatarCNPJ();
             }
         }
 
@@ -35,7 +35,7 @@ namespace Modelo.Classes.Desk
         {
             get
             {
-                return Telefone.Insert(0, "(").Insert(3, ") ").Insert(9, "-");
+                return Telefone.FormatarTelefone();
             }
         }
 

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Auxiliares\Endereco.cs" />
+    <Compile Include="Classes\Auxiliares\StringsFormatersExtentions.cs" />
     <Compile Include="Classes\Clientes\ClientePF.cs" />
     <Compile Include="Classes\Clientes\ClientePJ.cs" />
     <Compile Include="Classes\Manutencao\Abastecimento.cs" />

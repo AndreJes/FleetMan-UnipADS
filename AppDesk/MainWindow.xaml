@@ -1260,8 +1260,8 @@
                                 Voltar
                             </Button>
 
-                            <Button  Grid.Column="1" Margin="20 10" FontSize="11">
-                                Registrar Motorista
+                            <Button  Grid.Column="1" Margin="20 10" FontSize="10">
+                                Registrar Funcionário
                             </Button>
                             <!--#endregion-->
                             <!--#region Pesquisa-->

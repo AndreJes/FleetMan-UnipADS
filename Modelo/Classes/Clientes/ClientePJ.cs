@@ -17,7 +17,7 @@ namespace Modelo.Classes.Clientes
         {
             get
             {
-                return CNPJ.Insert(2, ".").Insert(6, ".").Insert(10, "/").Insert(15, "-");
+                return CNPJ.FormatarCNPJ();
             }
         }
 
