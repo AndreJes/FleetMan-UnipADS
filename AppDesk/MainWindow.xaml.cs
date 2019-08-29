@@ -152,7 +152,7 @@ namespace AppDesk
         }
 
         //Define a fonte de dados de todos os DataGrids
-        private void PopulateDataGrid()
+        public void PopulateDataGrid()
         {
             VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().ToList();
 

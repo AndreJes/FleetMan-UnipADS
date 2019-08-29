@@ -20,13 +20,5 @@ namespace Modelo.Classes.Clientes
                 return CPF.Insert(3, ".").Insert(7, ".").Insert(11, "-");
             }
         }
-
-
-        public ClientePF() { }
-
-        public ClientePF(long clienteId, string telefone, Endereco endereco, string nome, string email, string cPF) : base(clienteId, telefone, endereco, nome, email)
-        {
-            CPF = cPF;
-        }
     }
 }

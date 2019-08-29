@@ -16,5 +16,10 @@ namespace Servicos.Cliente
         {
             return Context.ObterTodosOsClientesOrdPorId();
         }
+
+        public void RegistrarCliente(Modelo.Classes.Clientes.Cliente cliente)
+        {
+            Context.RegistrarCliente(cliente);
+        }
     }
 }

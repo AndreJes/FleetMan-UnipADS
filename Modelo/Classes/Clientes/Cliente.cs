@@ -37,18 +37,5 @@ namespace Modelo.Classes.Clientes
         }
         #endregion
 
-        public Cliente()
-        {
-            Ativo = true;
-        }
-
-        public Cliente(long clienteId, string telefone, Endereco endereco, string nome, string email) : this()
-        {
-            ClienteId = clienteId;
-            Telefone = telefone;
-            Endereco = endereco;
-            Nome = nome;
-            Email = email;
-        }
     }
 }

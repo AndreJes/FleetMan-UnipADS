@@ -31,9 +31,12 @@ namespace Persistencia.Migrations
             //  to avoid creating duplicate seed data.
             #region Clientes
             #region Cliente 1
-            ClientePF ClientesPF = new ClientePF(1,
-                "1126784567",
-                new Endereco()
+            ClientePF ClientesPF = new ClientePF()
+            {
+                Ativo = true,
+                ClienteId = 1,
+                Telefone = "1126784567",
+                Endereco = new Endereco()
                 {
                     Rua = "Rua Santos Batista",
                     Numero = "155",
@@ -42,14 +45,18 @@ namespace Persistencia.Migrations
                     CEP = "00000-000",
                     UF = UnidadesFederativas.SP
                 },
-                "Carlos",
-                "Narutinho123@gmail.com",
-                "44433322255");
+                Nome = "Carlos",
+                Email = "Narutinho123@gmail.com",
+                CPF = "44433322255"
+            };
             #endregion
             #region Cliente 2
-            ClientePJ ClientesPJ = new ClientePJ(2,
-                "1134562345",
-                new Endereco()
+            ClientePJ ClientesPJ = new ClientePJ()
+            {
+                Ativo = true,
+                ClienteId = 2,
+                Telefone = "1134562345",
+                Endereco = new Endereco()
                 {
                     Rua = "Rua um",
                     Numero = "45",
@@ -58,9 +65,11 @@ namespace Persistencia.Migrations
                     CEP = "00000-000",
                     UF = UnidadesFederativas.SP
                 },
-                "XingLing LTDA.",
-                "XinglingRoupas@hotmail.com",
-                "12341234123432");
+                Nome = "XingLing LTDA.",
+                Email = "XinglingRoupas@hotmail.com",
+                CNPJ = "12341234123432"
+                
+            };
             #endregion
             #endregion
             #region Financas

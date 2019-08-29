@@ -20,12 +20,5 @@ namespace Modelo.Classes.Clientes
                 return CNPJ.FormatarCNPJ();
             }
         }
-
-        public ClientePJ() { }
-
-        public ClientePJ(long clienteId, string telefone, Endereco endereco, string nome, string email, string cnpj) : base(clienteId, telefone, endereco, nome, email)
-        {
-            CNPJ = cnpj;
-        }
     }
 }

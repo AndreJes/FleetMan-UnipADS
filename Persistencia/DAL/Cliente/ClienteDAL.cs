@@ -25,5 +25,32 @@ namespace Persistencia.DAL.Cliente
 
             return Clientes;
         }
+
+        public void RegistrarCliente(Modelo.Classes.Clientes.Cliente cliente)
+        {
+            if(cliente is ClientePF)
+            {
+                if(cliente.ClienteId == null)
+                {
+                    Context.ClientesPF.Add(cliente as ClientePF);
+                }
+                else
+                {
+                    Context.Entry(cliente).State = EntityState.Modified;
+                }
+            }
+            else
+            {
+                if (cliente.ClienteId == null)
+                {
+                    Context.ClientesPJ.Add(cliente as ClientePJ);
+                }
+                else
+                {
+                    Context.Entry(cliente).State = EntityState.Modified;
+                }
+            }
+            Context.SaveChanges();
+        }
     }
 }

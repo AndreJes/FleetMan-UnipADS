@@ -53,16 +53,16 @@
                         <Label Style="{StaticResource MainLabelStyle}">Cliente</Label>
                         <Border BorderBrush="#FFABADB3" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
-                                <RadioButton Margin="5 0" GroupName="PFPJ" Content="Pessoa Física" IsChecked="True" VerticalAlignment="Center" />
-                                <RadioButton Margin="5 0" GroupName="PFPJ" Content="Pessoa Juridica" VerticalAlignment="Center" />
+                                <RadioButton x:Name="PFRBtn" Margin="5 0" GroupName="PFPJ" Content="Pessoa Física" VerticalAlignment="Center" Checked="ChangeLabelToCPF" />
+                                <RadioButton x:Name="PJRBtn" Margin="5 0" GroupName="PFPJ" Content="Pessoa Juridica" VerticalAlignment="Center" Checked="ChangeLabelToCNPJ"/>
                             </StackPanel>
                         </Border>
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region CPF/CNPJ - Telefone-->
                     <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">CPF/CNPJ</Label>
-                        <TextBox x:Name="CPFCNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Width="100"></TextBox>
+                        <Label Style="{StaticResource MainLabelStyle}" Width="50" x:Name="CPF_CNPJ_Label"></Label>
+                        <TextBox x:Name="CPFCNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Width="125"></TextBox>
                         <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
                         <TextBox x:Name="TelefoneTextBox" Style="{StaticResource MainTextBoxStyle}" Width="100"></TextBox>
                     </StackPanel>
@@ -76,7 +76,7 @@
                     <!--#region Email-->
                     <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
                         <Label Style="{StaticResource MainLabelStyle}">E-Mail</Label>
-                        <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="275"></TextBox>
+                        <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="275" ></TextBox>
                     </StackPanel>
                     <!--#endregion-->
                 </Grid>
@@ -112,7 +112,7 @@
                         <Label Style="{StaticResource MainLabelStyle}">Cidade</Label>
                         <TextBox x:Name="CidadeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="180"></TextBox>
                         <Label Style="{StaticResource MainLabelStyle}" Width="45">UF</Label>
-                        <ComboBox Width="50">
+                        <ComboBox x:Name="UfComboBox" Width="50">
                         </ComboBox>
                     </StackPanel>
                     <!--#endregion-->
