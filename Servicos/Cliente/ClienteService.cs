@@ -12,7 +12,7 @@ namespace Servicos.Cliente
     {
         private ClienteDAL Context = new ClienteDAL();
 
-        public  IEnumerable<Modelo.Classes.Clientes.Cliente> ObterClientesOrdPorId()
+        public IEnumerable<Modelo.Classes.Clientes.Cliente> ObterClientesOrdPorId()
         {
             return Context.ObterTodosOsClientesOrdPorId();
         }
@@ -20,6 +20,16 @@ namespace Servicos.Cliente
         public void RegistrarCliente(Modelo.Classes.Clientes.Cliente cliente)
         {
             Context.RegistrarCliente(cliente);
+        }
+
+        public Modelo.Classes.Clientes.ClientePF ObterClientePFPorId(long? id)
+        {
+            return Context.ObterClientePFPorId(id);
+        }
+
+        public Modelo.Classes.Clientes.ClientePJ ObterClientePJPorId(long? id)
+        {
+            return Context.ObterClientePJPorId(id);
         }
     }
 }

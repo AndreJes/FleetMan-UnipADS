@@ -111,6 +111,14 @@
     <Compile Include="Migrations\201908282147306_CEP-Endereco.Designer.cs">
       <DependentUpon>201908282147306_CEP-Endereco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908311649212_Virtual-List-Vehicle.cs" />
+    <Compile Include="Migrations\201908311649212_Virtual-List-Vehicle.Designer.cs">
+      <DependentUpon>201908311649212_Virtual-List-Vehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908311712093_NoVirtual.cs" />
+    <Compile Include="Migrations\201908311712093_NoVirtual.Designer.cs">
+      <DependentUpon>201908311712093_NoVirtual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -165,6 +173,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908282147306_CEP-Endereco.resx">
       <DependentUpon>201908282147306_CEP-Endereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908311649212_Virtual-List-Vehicle.resx">
+      <DependentUpon>201908311649212_Virtual-List-Vehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908311712093_NoVirtual.resx">
+      <DependentUpon>201908311712093_NoVirtual.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

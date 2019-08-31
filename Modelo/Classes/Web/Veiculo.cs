@@ -89,9 +89,9 @@ namespace Modelo.Classes.Web
         public long? SeguroId { get; set; }
         public Seguro Seguro { get; set; }
 
-        public List<Multa> Multas { get; set; }
-        public List<Sinistro> Sinistros { get; set; }
-        public List<Manutencao.Manutencao> Manutencoes { get; set; }
+        public virtual List<Multa> Multas { get; set; }
+        public virtual List<Sinistro> Sinistros { get; set; }
+        public virtual List<Manutencao.Manutencao> Manutencoes { get; set; }
 
     }
 }

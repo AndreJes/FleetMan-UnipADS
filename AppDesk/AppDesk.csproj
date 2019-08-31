@@ -64,6 +64,9 @@
     </ApplicationDefinition>
     <Compile Include="Serviço\ServicoDados.cs" />
     <Compile Include="Tools\HexaColorPicker.cs" />
+    <Compile Include="Windows\Clientes\FormDetalhesCliente.xaml.cs">
+      <DependentUpon>FormDetalhesCliente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Clientes\FormRegistroCliente.xaml.cs">
       <DependentUpon>FormRegistroCliente.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\Clientes\FormDetalhesCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Clientes\FormRegistroCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

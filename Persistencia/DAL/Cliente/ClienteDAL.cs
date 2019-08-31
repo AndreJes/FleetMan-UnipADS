@@ -52,5 +52,15 @@ namespace Persistencia.DAL.Cliente
             }
             Context.SaveChanges();
         }
+
+        public ClientePF ObterClientePFPorId(long? id)
+        {
+          return Context.ClientesPF.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Motoristas).Include(c => c.Alugueis).FirstOrDefault();
+        }
+
+        public ClientePJ ObterClientePJPorId(long? id)
+        {
+            return Context.ClientesPJ.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Alugueis).Include(c => c.Motoristas).FirstOrDefault();
+        }
     }
 }

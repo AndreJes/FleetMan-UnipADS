@@ -435,6 +435,13 @@
                                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
                                 <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" />
                                 <DataGridTextColumn Header="Status" Binding="{Binding AtivoTxt}" />
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="ClientePFDetailsButton" Click="ClientePFDetailsButton_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
@@ -450,6 +457,13 @@
                                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
                                 <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" />
                                 <DataGridTextColumn Header="Status" Binding="{Binding AtivoTxt}" />
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="ClientePJDetailsButton" Click="ClientePJDetailsButton_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
 

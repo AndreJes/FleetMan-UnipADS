@@ -46,11 +46,7 @@ namespace AppDesk.Windows.Clientes
         private void RegistrarCliente()
         {
             Cliente cliente = GerarCliente();
-            if (cliente == null)
-            {
-                MessageBox.Show("Falha ao registrar cliente!");
-            }
-            else
+            if(cliente != null)
             {
                 Serviço.ServicoDados.ServicoDadosClientes.RegistrarCliente(cliente);
                 MessageBox.Show("Cliente registrado com sucesso!");

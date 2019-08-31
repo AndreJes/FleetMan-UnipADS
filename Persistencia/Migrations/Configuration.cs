@@ -211,7 +211,8 @@ namespace Persistencia.Migrations
                     Cidade = "São Paulo",
                     CEP = "00000-000",
                     UF = UnidadesFederativas.SP
-                }
+                },
+                ClienteId = 3
             };
             Motorista Motorista2 = new Motorista()
             {
@@ -232,7 +233,8 @@ namespace Persistencia.Migrations
                     Cidade = "São Paulo",
                     CEP = "00000-000",
                     UF = UnidadesFederativas.SP
-                }
+                },
+                Cliente = ClientesPJ
             };
             Veiculo Veiculo1 = new Veiculo()
             {
@@ -251,7 +253,9 @@ namespace Persistencia.Migrations
                 EstadoDoVeiculo = EstadosDeVeiculo.NORMAL,
                 ParaLocacao = true,
                 GaragemId = 1,
-                SeguroId = 1
+                ClienteId = 1,
+                SeguroId = 1,
+                Cliente = ClientesPF
             };
             Veiculo Veiculo2 = new Veiculo()
             {
@@ -271,6 +275,7 @@ namespace Persistencia.Migrations
                 ParaLocacao = false,
                 GaragemId = 1,
                 ClienteId = 2,
+                Cliente = ClientesPJ,
                 SeguroId = 1
             };
 
