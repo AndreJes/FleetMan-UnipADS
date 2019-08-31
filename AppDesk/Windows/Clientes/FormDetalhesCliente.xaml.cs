@@ -20,6 +20,9 @@ namespace AppDesk.Windows.Clientes
     /// </summary>
     public partial class FormDetalhesCliente : Window
     {
+        private ClientePF _clientePF = null;
+        private ClientePJ _clientePJ = null;
+
         #region Construtores
         private FormDetalhesCliente()
         {
@@ -31,14 +34,16 @@ namespace AppDesk.Windows.Clientes
         {
             CPF_CNPJ_Label.Content = "CPF";
             CPFCNPJTextBox.Text = clientePF.CPFTxt;
-            PreencherTextBoxes(clientePF);
+            _clientePF = clientePF;
+            PreencherTextBoxes(_clientePF);
         }
 
         public FormDetalhesCliente(ClientePJ clientePJ) : this()
         {
             CPF_CNPJ_Label.Content = "CNPJ";
             CPFCNPJTextBox.Text = clientePJ.CNPJTxt;
-            PreencherTextBoxes(clientePJ);
+            _clientePJ = clientePJ;
+            PreencherTextBoxes(_clientePJ);
         }
         #endregion
 
@@ -57,6 +62,25 @@ namespace AppDesk.Windows.Clientes
             QuantidadeDeVeiculos.Content = cliente.Veiculos.ToList().Count.ToString();
             QuantidadeDeMotoristas.Content = cliente.Motoristas.ToList().Count.ToString();
             QuantidadeDeLocacoes.Content = cliente.Alugueis.ToList().Count.ToString();
+        }
+
+        private void EditarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormAlterarClientes formAlteracao = null;
+
+            if (_clientePF != null)
+            {
+                formAlteracao = new FormAlterarClientes(_clientePF);
+                formAlteracao.Show();
+                this.Close();
+            }
+            else if(_clientePJ != null)
+            {
+                formAlteracao = new FormAlterarClientes(_clientePJ);
+                formAlteracao.Show();
+                this.Close();
+            }
+            
         }
     }
 }
