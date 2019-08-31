@@ -129,7 +129,7 @@
                     <Button x:Name="EditarBtn" Click="EditarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
                         ALTERAR
                     </Button>
-                    <Button x:Name="RemoverBtn" Margin="20 5" Grid.Column="2" Background="#FFE66E6E">
+                    <Button x:Name="RemoverBtn" Margin="20 5" Grid.Column="2" Background="#FFE66E6E" Click="RemoverBtn_Click">
                         REMOVER
                     </Button>
                 </Grid>

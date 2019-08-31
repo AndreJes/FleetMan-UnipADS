@@ -1,4 +1,5 @@
-﻿using Modelo.Classes.Clientes;
+﻿using AppDesk.Serviço;
+using Modelo.Classes.Clientes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,6 +82,28 @@ namespace AppDesk.Windows.Clientes
                 this.Close();
             }
             
+        }
+
+        private void RemoverBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(_clientePF != null)
+            {
+                ServicoDados.ServicoDadosClientes.RemoverCliente(_clientePF);
+            }
+            else if( _clientePJ != null)
+            {
+                ServicoDados.ServicoDadosClientes.RemoverCliente(_clientePJ);
+            }
+            else
+            {
+                MessageBox.Show("Não foi possivel fazer a remoção");
+                return;
+            }
+
+            MessageBox.Show("Cliente removido com sucesso");
+            MainWindow main = Application.Current.Windows.OfType<MainWindow>().First();
+            main.PopulateDataGrid();
+            this.Close();
         }
     }
 }

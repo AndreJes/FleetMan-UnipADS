@@ -62,5 +62,11 @@ namespace Persistencia.DAL.Cliente
         {
             return Context.ClientesPJ.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Alugueis).Include(c => c.Motoristas).FirstOrDefault();
         }
+
+        public void RemoverCliente(Modelo.Classes.Clientes.Cliente cliente)
+        {
+            Context.Clientes.Remove(cliente);
+            Context.SaveChanges();
+        }
     }
 }

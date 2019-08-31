@@ -31,5 +31,10 @@ namespace Servicos.Cliente
         {
             return Context.ObterClientePJPorId(id);
         }
+
+        public void RemoverCliente(Modelo.Classes.Clientes.Cliente cliente)
+        {
+            Context.RemoverCliente(cliente);
+        }
     }
 }
