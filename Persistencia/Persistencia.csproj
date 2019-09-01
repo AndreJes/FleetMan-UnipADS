@@ -63,61 +63,13 @@
     <Compile Include="DAL\Web\SolicitacaoDAL.cs" />
     <Compile Include="DAL\Web\VeiculoDAL.cs" />
     <Compile Include="DAL\Web\ViagemDAL.cs" />
-    <Compile Include="Migrations\201908211755517_Initial.cs" />
-    <Compile Include="Migrations\201908211755517_Initial.Designer.cs">
-      <DependentUpon>201908211755517_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201909011617085_Initial.cs" />
+    <Compile Include="Migrations\201909011617085_Initial.Designer.cs">
+      <DependentUpon>201909011617085_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908240143531_Novo-Tipo-Endereco.cs" />
-    <Compile Include="Migrations\201908240143531_Novo-Tipo-Endereco.Designer.cs">
-      <DependentUpon>201908240143531_Novo-Tipo-Endereco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908240151386_Tipo-Int-Garagem.cs" />
-    <Compile Include="Migrations\201908240151386_Tipo-Int-Garagem.Designer.cs">
-      <DependentUpon>201908240151386_Tipo-Int-Garagem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908240207388_Change-Ushort-To-Int.cs" />
-    <Compile Include="Migrations\201908240207388_Change-Ushort-To-Int.Designer.cs">
-      <DependentUpon>201908240207388_Change-Ushort-To-Int.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908261745057_Data-Na-Solicitacao.cs" />
-    <Compile Include="Migrations\201908261745057_Data-Na-Solicitacao.Designer.cs">
-      <DependentUpon>201908261745057_Data-Na-Solicitacao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908261812509_Seguro-vinculado-a-Veiculo.cs" />
-    <Compile Include="Migrations\201908261812509_Seguro-vinculado-a-Veiculo.Designer.cs">
-      <DependentUpon>201908261812509_Seguro-vinculado-a-Veiculo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908261901026_Tipo-De-Financa.cs" />
-    <Compile Include="Migrations\201908261901026_Tipo-De-Financa.Designer.cs">
-      <DependentUpon>201908261901026_Tipo-De-Financa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908261914321_Financa-Update-Datas.cs" />
-    <Compile Include="Migrations\201908261914321_Financa-Update-Datas.Designer.cs">
-      <DependentUpon>201908261914321_Financa-Update-Datas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908272315481_Nova-Financa.cs" />
-    <Compile Include="Migrations\201908272315481_Nova-Financa.Designer.cs">
-      <DependentUpon>201908272315481_Nova-Financa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908281620545_Remove-Older-Uf.cs" />
-    <Compile Include="Migrations\201908281620545_Remove-Older-Uf.Designer.cs">
-      <DependentUpon>201908281620545_Remove-Older-Uf.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908281623051_New-Uf-as-Enum.cs" />
-    <Compile Include="Migrations\201908281623051_New-Uf-as-Enum.Designer.cs">
-      <DependentUpon>201908281623051_New-Uf-as-Enum.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908282147306_CEP-Endereco.cs" />
-    <Compile Include="Migrations\201908282147306_CEP-Endereco.Designer.cs">
-      <DependentUpon>201908282147306_CEP-Endereco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908311649212_Virtual-List-Vehicle.cs" />
-    <Compile Include="Migrations\201908311649212_Virtual-List-Vehicle.Designer.cs">
-      <DependentUpon>201908311649212_Virtual-List-Vehicle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908311712093_NoVirtual.cs" />
-    <Compile Include="Migrations\201908311712093_NoVirtual.Designer.cs">
-      <DependentUpon>201908311712093_NoVirtual.cs</DependentUpon>
+    <Compile Include="Migrations\201909011622024_MigrateMethodChange.cs" />
+    <Compile Include="Migrations\201909011622024_MigrateMethodChange.Designer.cs">
+      <DependentUpon>201909011622024_MigrateMethodChange.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,47 +90,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908211755517_Initial.resx">
-      <DependentUpon>201908211755517_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909011617085_Initial.resx">
+      <DependentUpon>201909011617085_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908240143531_Novo-Tipo-Endereco.resx">
-      <DependentUpon>201908240143531_Novo-Tipo-Endereco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908240151386_Tipo-Int-Garagem.resx">
-      <DependentUpon>201908240151386_Tipo-Int-Garagem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908240207388_Change-Ushort-To-Int.resx">
-      <DependentUpon>201908240207388_Change-Ushort-To-Int.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908261745057_Data-Na-Solicitacao.resx">
-      <DependentUpon>201908261745057_Data-Na-Solicitacao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908261812509_Seguro-vinculado-a-Veiculo.resx">
-      <DependentUpon>201908261812509_Seguro-vinculado-a-Veiculo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908261901026_Tipo-De-Financa.resx">
-      <DependentUpon>201908261901026_Tipo-De-Financa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908261914321_Financa-Update-Datas.resx">
-      <DependentUpon>201908261914321_Financa-Update-Datas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908272315481_Nova-Financa.resx">
-      <DependentUpon>201908272315481_Nova-Financa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908281620545_Remove-Older-Uf.resx">
-      <DependentUpon>201908281620545_Remove-Older-Uf.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908281623051_New-Uf-as-Enum.resx">
-      <DependentUpon>201908281623051_New-Uf-as-Enum.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908282147306_CEP-Endereco.resx">
-      <DependentUpon>201908282147306_CEP-Endereco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908311649212_Virtual-List-Vehicle.resx">
-      <DependentUpon>201908311649212_Virtual-List-Vehicle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908311712093_NoVirtual.resx">
-      <DependentUpon>201908311712093_NoVirtual.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909011622024_MigrateMethodChange.resx">
+      <DependentUpon>201909011622024_MigrateMethodChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

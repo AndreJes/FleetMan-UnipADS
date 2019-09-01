@@ -88,11 +88,11 @@ namespace AppDesk.Windows.Clientes
         {
             if(_clientePF != null)
             {
-                ServicoDados.ServicoDadosClientes.RemoverCliente(_clientePF);
+                ServicoDados.ServicoDadosClientes.RemoverClientePorId(_clientePF.ClienteId);
             }
             else if( _clientePJ != null)
             {
-                ServicoDados.ServicoDadosClientes.RemoverCliente(_clientePJ);
+                ServicoDados.ServicoDadosClientes.RemoverClientePorId(_clientePJ.ClienteId);
             }
             else
             {

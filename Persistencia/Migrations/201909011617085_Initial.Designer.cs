@@ -7,13 +7,13 @@ namespace Persistencia.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class NovaFinanca : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NovaFinanca));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908272315481_Nova-Financa"; }
+            get { return "201909011617085_Initial"; }
         }
         
         string IMigrationMetadata.Source

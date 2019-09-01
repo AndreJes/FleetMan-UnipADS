@@ -7,13 +7,13 @@ namespace Persistencia.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ChangeUshortToInt : IMigrationMetadata
+    public sealed partial class MigrateMethodChange : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeUshortToInt));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(MigrateMethodChange));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908240207388_Change-Ushort-To-Int"; }
+            get { return "201909011622024_MigrateMethodChange"; }
         }
         
         string IMigrationMetadata.Source
