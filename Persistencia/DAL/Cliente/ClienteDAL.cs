@@ -26,7 +26,7 @@ namespace Persistencia.DAL.Cliente
             return Clientes;
         }
 
-        public void RegistrarCliente(Modelo.Classes.Clientes.Cliente cliente)
+        public void GravarCliente(Modelo.Classes.Clientes.Cliente cliente)
         {
             if(cliente is ClientePF)
             {

@@ -20,7 +20,8 @@ namespace Modelo.Classes.Desk
         public DateTime DataContratacao { get; set; }
         public DateTime Vencimento_Contrato { get; set; }
         public EstadosDePagamento EstadoPagamento { get; set; }
+        public CoberturasSeguro TipoCobertura { get; set; }
 
-        public List<Veiculo> Veiculos { get; set; }
+        public virtual ICollection<Veiculo> Veiculos { get; set; }
     }
 }

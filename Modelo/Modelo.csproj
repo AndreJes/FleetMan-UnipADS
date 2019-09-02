@@ -81,7 +81,7 @@
     <Compile Include="Enums\TiposDeSolicitacao.cs" />
     <Compile Include="Enums\TiposDeVeiculo.cs" />
     <Compile Include="Enums\TiposRelatorios.cs" />
-    <Compile Include="Enums\UnidadesFederativass.cs" />
+    <Compile Include="Enums\UnidadesFederativas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Web\Aluguel.cs" />
     <Compile Include="Classes\Clientes\Cliente.cs" />

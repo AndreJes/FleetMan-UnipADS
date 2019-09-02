@@ -9,7 +9,6 @@ namespace Modelo.Enums
     public enum CoberturasSeguro
     {
         TOTAL,
-        PARCIAL,
-        AMBOS
+        PARCIAL
     }
 }

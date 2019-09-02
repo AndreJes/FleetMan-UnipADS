@@ -24,5 +24,6 @@ namespace AppDesk.Serviço
         public static FinancaService ServicoDadosFinancas = new FinancaService();
         public static FuncionarioService ServicoDadosFuncionario = new FuncionarioService();
         public static RelatorioService ServicoDadosRelatorio = new RelatorioService();
+        public static SeguroService ServicoDadosSeguro = new SeguroService();
     }
 }

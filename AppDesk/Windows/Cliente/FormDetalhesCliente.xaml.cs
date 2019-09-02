@@ -31,6 +31,7 @@ namespace AppDesk.Windows.Clientes
             
         }
 
+        //Construtor para cliente PF
         public FormDetalhesCliente(ClientePF clientePF) : this()
         {
             CPF_CNPJ_Label.Content = "CPF";
@@ -39,6 +40,7 @@ namespace AppDesk.Windows.Clientes
             PreencherTextBoxes(_clientePF);
         }
 
+        //Construtor para cliente PJ
         public FormDetalhesCliente(ClientePJ clientePJ) : this()
         {
             CPF_CNPJ_Label.Content = "CNPJ";

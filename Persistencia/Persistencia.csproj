@@ -56,6 +56,7 @@
     <Compile Include="DAL\Desk\FuncionarioDAL.cs" />
     <Compile Include="DAL\Desk\GaragenDAL.cs" />
     <Compile Include="DAL\Desk\MultaDAL.cs" />
+    <Compile Include="DAL\Desk\SeguroDAL.cs" />
     <Compile Include="DAL\Desk\SinistroDAL.cs" />
     <Compile Include="DAL\Relatorios\RelatorioDAL.cs" />
     <Compile Include="DAL\Web\AluguelDAL.cs" />
@@ -70,6 +71,10 @@
     <Compile Include="Migrations\201909011622024_MigrateMethodChange.cs" />
     <Compile Include="Migrations\201909011622024_MigrateMethodChange.Designer.cs">
       <DependentUpon>201909011622024_MigrateMethodChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909012351319_CoberturaSeguro.cs" />
+    <Compile Include="Migrations\201909012351319_CoberturaSeguro.Designer.cs">
+      <DependentUpon>201909012351319_CoberturaSeguro.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909011622024_MigrateMethodChange.resx">
       <DependentUpon>201909011622024_MigrateMethodChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909012351319_CoberturaSeguro.resx">
+      <DependentUpon>201909012351319_CoberturaSeguro.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

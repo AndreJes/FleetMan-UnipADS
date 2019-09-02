@@ -19,7 +19,7 @@ namespace Servicos.Cliente
 
         public void RegistrarCliente(Modelo.Classes.Clientes.Cliente cliente)
         {
-            Context.RegistrarCliente(cliente);
+            Context.GravarCliente(cliente);
         }
 
         public Modelo.Classes.Clientes.ClientePF ObterClientePFPorId(long? id)

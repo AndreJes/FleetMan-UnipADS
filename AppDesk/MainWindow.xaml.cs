@@ -18,6 +18,7 @@ using Modelo.Classes.Clientes;
 using Modelo.Classes.Web;
 using Modelo.Enums;
 using AppDesk.Windows.Clientes;
+using AppDesk.Windows.Seguro;
 
 namespace AppDesk
 {
@@ -116,6 +117,21 @@ namespace AppDesk
         {
             MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
             FuncionariosGrid.Visibility = Visibility.Visible;
+        }
+
+        //Botão de acesso a lista de Seguros
+        private void SegurosListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SegurosList SeguroWindow = Application.Current.Windows.OfType<SegurosList>().FirstOrDefault();
+            if(SeguroWindow == null)
+            {
+                SeguroWindow = new SegurosList();
+                SeguroWindow.Show();
+            }
+            else
+            {
+                SeguroWindow.Focus();
+            }
         }
         #endregion
 

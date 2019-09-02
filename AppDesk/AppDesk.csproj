@@ -64,14 +64,35 @@
     </ApplicationDefinition>
     <Compile Include="Serviço\ServicoDados.cs" />
     <Compile Include="Tools\HexaColorPicker.cs" />
-    <Compile Include="Windows\Clientes\FormAlterarClientes.xaml.cs">
+    <Compile Include="Windows\Cliente\FormAlterarClientes.xaml.cs">
       <DependentUpon>FormAlterarClientes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Clientes\FormDetalhesCliente.xaml.cs">
+    <Compile Include="Windows\Cliente\FormDetalhesCliente.xaml.cs">
       <DependentUpon>FormDetalhesCliente.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Clientes\FormRegistroCliente.xaml.cs">
+    <Compile Include="Windows\Cliente\FormRegistroCliente.xaml.cs">
       <DependentUpon>FormRegistroCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Garagem\FormAlterarGaragem.xaml.cs">
+      <DependentUpon>FormAlterarGaragem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Garagem\FormDetalhesGaragem.xaml.cs">
+      <DependentUpon>FormDetalhesGaragem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Garagem\FormRegistrarGaragem.xaml.cs">
+      <DependentUpon>FormRegistrarGaragem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Seguro\FormAlterarSeguro.xaml.cs">
+      <DependentUpon>FormAlterarSeguro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Seguro\FormDetalhesSeguro.xaml.cs">
+      <DependentUpon>FormDetalhesSeguro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Seguro\FormRegistrarSeguro.xaml.cs">
+      <DependentUpon>FormRegistrarSeguro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Seguro\SegurosList.xaml.cs">
+      <DependentUpon>SegurosList.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -85,15 +106,43 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\Clientes\FormAlterarClientes.xaml">
+    <Page Include="Windows\Cliente\FormAlterarClientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Clientes\FormDetalhesCliente.xaml">
+    <Page Include="Windows\Cliente\FormDetalhesCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Clientes\FormRegistroCliente.xaml">
+    <Page Include="Windows\Cliente\FormRegistroCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Garagem\FormAlterarGaragem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Garagem\FormDetalhesGaragem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Garagem\FormRegistrarGaragem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Seguro\FormAlterarSeguro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Seguro\FormDetalhesSeguro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Seguro\FormRegistrarSeguro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Seguro\SegurosList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -136,7 +185,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Windows\Veiculos\" />
+    <Folder Include="Windows\Veiculo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

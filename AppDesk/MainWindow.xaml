@@ -240,7 +240,7 @@
                 <!--#region Todos os grids de listas-->
 
                 <!--#region Vehicles List/Actions Grid Menu-->
-                <Grid x:Name="VehicleGrid" Visibility="Collapsed" Grid.Row="1">
+                <Grid x:Name="VehicleGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -254,9 +254,9 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="85*"/>
                                 <ColumnDefinition Width="140*"/>
-                                <ColumnDefinition Width="234*"/>
-                                <ColumnDefinition Width="229*"/>
-                                <ColumnDefinition Width="358*"/>
+                                <ColumnDefinition Width="140*"/>
+                                <ColumnDefinition Width="330*"/>
+                                <ColumnDefinition Width="350*"/>
                             </Grid.ColumnDefinitions>
                             <!--#endregion-->
 
@@ -270,7 +270,7 @@
                             </Button>
                             <!--#endregion-->
                             <!--#region Seleção de Cliente-->
-                            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 5">
+                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Selecionar Cliente:</Label>
                                 <ComboBox>
@@ -279,7 +279,7 @@
                             </StackPanel>
                             <!--#endregion-->
                             <!--#region Pesquisa-->
-                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
+                            <StackPanel Grid.Column="4" Orientation="Vertical" Margin="10 5">
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
@@ -288,38 +288,10 @@
                                 </TextBox>
                             </StackPanel>
                             <!--#endregion-->
-                            <!--#region Filtros-->
-                            <Grid Grid.Column="4" Margin="10,5,-5,5">
-                                <!--#region Columns e Rows-->
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="50*"/>
-                                    <RowDefinition Height="50*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="15*"/>
-                                    <ColumnDefinition Width="85*"/>
-                                </Grid.ColumnDefinitions>
-                                <!--#endregion-->
-                                <!--#region Label e OK btn-->
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">
-                                Situação:
-                                </TextBlock>
-                                <Button Grid.Row="1" Grid.Column="0" x:Name="ConfirmVehicleFiltersBtn" Margin="5 2">Ok</Button>
-                                <!--#endregion-->
-                                <!--#region CheckBoxes-->
-                                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                                    <CheckBox VerticalContentAlignment="Center">Normal</CheckBox>
-                                    <CheckBox Margin="20 0" VerticalContentAlignment="Center">Alugados</CheckBox>
-                                    <CheckBox VerticalContentAlignment="Center">Em Manutenção</CheckBox>
-                                </StackPanel>
-                                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                                    <CheckBox VerticalContentAlignment="Center">Sem Combustivel</CheckBox>
-                                    <CheckBox Margin="5 0" VerticalContentAlignment="Center">Acidentados</CheckBox>
-                                    <CheckBox VerticalContentAlignment="Center">Em Viagem</CheckBox>
-                                </StackPanel>
-
-                                <!--#endregion-->
-                            </Grid>
+                            <!--#region Lista Seguros-->
+                            <Button Margin="20 10" Grid.Column="2" x:Name="SegurosListBtn" Click="SegurosListBtn_Click">
+                                Seguradoras
+                            </Button>
                             <!--#endregion-->
                             <!--#region Separators-->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
@@ -358,7 +330,7 @@
                 <!--#endregion-->
 
                 <!--#region Clientes List/Actions Grid Menu-->
-                <Grid x:Name="ClientesGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="ClientesGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -1443,7 +1415,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
-                        
+
                         <!--#region Relatórios Multas-->
                         <DataGrid x:Name="RelatoriosMultaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="3" Grid.Column="0">
                             <DataGrid.Columns>
@@ -1452,7 +1424,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
-                        
+
                         <!--#region Relatórios Sinistros-->
                         <DataGrid x:Name="RelatoriosSinistroDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="3" Grid.Column="1">
                             <DataGrid.Columns>
@@ -1461,7 +1433,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
-                        
+
                         <!--#region Relatórios Reprovadas-->
                         <DataGrid x:Name="RelatoriosViagemDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="3" Grid.Column="2">
                             <DataGrid.Columns>
