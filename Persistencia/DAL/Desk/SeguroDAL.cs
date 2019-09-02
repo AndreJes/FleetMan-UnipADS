@@ -27,5 +27,17 @@ namespace Persistencia.DAL.Desk
             }
             Context.SaveChanges();
         }
+
+        public Seguro ObterSeguroPorId(long? id)
+        {
+            return Context.Seguro.Where(s => s.SeguroId == id).FirstOrDefault();
+        }
+
+        public void RemoverSeguroPorId(long? id)
+        {
+            Seguro seguro = ObterSeguroPorId(id);
+            Context.Seguro.Remove(seguro);
+            Context.SaveChanges();
+        }
     }
 }

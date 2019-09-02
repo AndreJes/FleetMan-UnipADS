@@ -40,6 +40,8 @@ namespace AppDesk.Windows.Seguro
         {
             EditarDados();
             ServicoDados.ServicoDadosSeguro.GravarSeguro(_seguroEditavel);
+            MessageBox.Show("Seguradora alterada com sucesso!");
+            this.Close();
         }
 
         private void CancelarBtn_Click(object sender, RoutedEventArgs e)
@@ -53,9 +55,9 @@ namespace AppDesk.Windows.Seguro
             NomeTextBox.Text = _seguroEditavel.Nome;
             EmailTextBox.Text = _seguroEditavel.Email;
             TelefoneTextBox.Text = _seguroEditavel.Telefone;
-            DataContratacaoDatePic.DisplayDate = _seguroEditavel.DataContratacao;
-            VencimentoContratoDatePic.DisplayDate = _seguroEditavel.Vencimento_Contrato;
-            VencimentoProxParcelaDatePic.DisplayDate = _seguroEditavel.DataVencimentoParcela;
+            DataContratacaoDatePic.SelectedDate = _seguroEditavel.DataContratacao;
+            VencimentoContratoDatePic.SelectedDate = _seguroEditavel.Vencimento_Contrato;
+            VencimentoProxParcelaDatePic.SelectedDate = _seguroEditavel.DataVencimentoParcela;
             ValorParcelaTextBox.Text = _seguroEditavel.PrecoParcela.ToString("F2");
         }
 

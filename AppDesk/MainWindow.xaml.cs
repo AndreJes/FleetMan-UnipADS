@@ -19,6 +19,7 @@ using Modelo.Classes.Web;
 using Modelo.Enums;
 using AppDesk.Windows.Clientes;
 using AppDesk.Windows.Seguro;
+using AppDesk.Windows.Garagem;
 
 namespace AppDesk
 {
@@ -141,6 +142,12 @@ namespace AppDesk
             FormRegistroCliente formRegistroCliente = new FormRegistroCliente();
             formRegistroCliente.Show();
         }
+
+        private void RegistrarGaragemBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormRegistrarGaragem formRegistrarGaragem = new FormRegistrarGaragem();
+            formRegistrarGaragem.Show();
+        }
         #endregion
 
         #region Metodos Auxiliares
@@ -244,6 +251,5 @@ namespace AppDesk
             detalhesCliente.Show();
         }
         #endregion
-
     }
 }

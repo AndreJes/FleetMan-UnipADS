@@ -68,6 +68,6 @@ namespace Modelo.Classes.Desk
 
         #endregion
 
-        public List<Veiculo> Veiculos { get; set; }
+        public virtual ICollection<Veiculo> Veiculos { get; set; }
     }
 }

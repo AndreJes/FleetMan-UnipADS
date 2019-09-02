@@ -240,7 +240,7 @@
                 <!--#region Todos os grids de listas-->
 
                 <!--#region Vehicles List/Actions Grid Menu-->
-                <Grid x:Name="VehicleGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="VehicleGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -662,7 +662,7 @@
                 <!--#endregion-->
 
                 <!--#region Garagens List/Actions Grid Menu-->
-                <Grid x:Name="GaragensGrid" Visibility="Collapsed" Grid.Row="1">
+                <Grid x:Name="GaragensGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -687,7 +687,7 @@
                                 Voltar
                             </Button>
 
-                            <Button  Grid.Column="1" Margin="20 10" FontSize="11">
+                            <Button x:Name="RegistrarGaragemBtn" Click="RegistrarGaragemBtn_Click" Grid.Column="1" Margin="20 10" FontSize="11">
                                 Registrar Garagem
                             </Button>
                             <!--#endregion-->

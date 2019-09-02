@@ -16,5 +16,10 @@ namespace Servicos.Desk
         {
             return Context.ObterGaragensOrdPorId();
         }
+
+        public void GravarGaragem(Garagem garagem)
+        {
+            Context.GravarGaragem(garagem);
+        }
     }
 }

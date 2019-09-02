@@ -21,5 +21,15 @@ namespace Servicos.Desk
         {
             Context.GravarSeguro(seguro);
         }
+
+        public Seguro ObterSeguroPorId(long? id)
+        {
+            return Context.ObterSeguroPorId(id);
+        }
+
+        public void RemoverSeguroPorId(long? id)
+        {
+            Context.RemoverSeguroPorId(id);
+        }
     }
 }

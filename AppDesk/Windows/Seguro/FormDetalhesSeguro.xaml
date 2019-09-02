@@ -114,8 +114,8 @@
                 <Button x:Name="AlterarBtn" Click="AlterarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
                     ALTERAR
                 </Button>
-                <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
-                    CANCELAR
+                <Button x:Name="RemoveBtn" Click="RemoveBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                    REMOVER
                 </Button>
             </Grid>
             <!--#endregion-->

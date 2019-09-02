@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppDesk.Serviço;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,9 +38,9 @@ namespace AppDesk.Windows.Seguro
             NomeTextBox.Text = _seguro.Nome;
             EmailTextBox.Text = _seguro.Email;
             TelefoneTextBox.Text = _seguro.Telefone;
-            DataContratacaoDatePic.DisplayDate = _seguro.DataContratacao;
-            VencimentoContratoDatePic.DisplayDate = _seguro.Vencimento_Contrato;
-            VencimentoProxParcelaDatePic.DisplayDate = _seguro.DataVencimentoParcela;
+            DataContratacaoDatePic.SelectedDate = _seguro.DataContratacao;
+            VencimentoContratoDatePic.SelectedDate = _seguro.Vencimento_Contrato;
+            VencimentoProxParcelaDatePic.SelectedDate = _seguro.DataVencimentoParcela;
             ValorParcelaTextBox.Text = _seguro.PrecoParcela.ToString("F2");
             QuantidadeVeiculosLabel.Content = _seguro.Veiculos.Count();
         }
@@ -48,11 +49,20 @@ namespace AppDesk.Windows.Seguro
         {
             FormAlterarSeguro formAlterar = new FormAlterarSeguro(_seguro);
             formAlterar.Show();
+            Application.Current.Windows.OfType<SegurosList>().FirstOrDefault().UpdateDataGrid();
+            this.Close();
         }
 
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
+        private void RemoveBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MessageBoxResult confirmRemove = MessageBox.Show("Remover seguradora?", "Confirmar remoção", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (confirmRemove == MessageBoxResult.Yes)
+            {
+                ServicoDados.ServicoDadosSeguro.RemoverSeguroPorId(_seguro.SeguroId);
+                Application.Current.Windows.OfType<SegurosList>().FirstOrDefault().UpdateDataGrid();
+                MessageBox.Show("Seguradora removida com sucesso!");
+                this.Close();
+            }
         }
     }
 }
