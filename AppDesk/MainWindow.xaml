@@ -754,6 +754,14 @@
                                 <DataGridTextColumn Header="Cidade" Binding="{Binding Cidade}"/>
                                 <DataGridTextColumn Header="Endereço" Binding="{Binding EnderecoParcial}"/>
                                 <DataGridTextColumn Header="Capacidade Máxima" Binding="{Binding Capacidade}"/>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.Header>Detalhes</DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="GaragemDetailsBtn" Click="GaragemDetailsBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

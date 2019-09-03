@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,18 @@ namespace AppDesk.Windows.Garagem
     /// </summary>
     public partial class FormDetalhesGaragem : Window
     {
-        public FormDetalhesGaragem()
+        private Modelo.Classes.Desk.Garagem _garagem = null;
+
+        private FormDetalhesGaragem()
         {
             InitializeComponent();
         }
+
+        public FormDetalhesGaragem(Modelo.Classes.Desk.Garagem garagem) : this()
+        {
+            _garagem = garagem;
+        }
+
+
     }
 }

@@ -235,6 +235,9 @@ namespace AppDesk
         #endregion
 
         #region Botões de detalhes
+
+        //Botões de detalhes de Clientes PJ e PF
+        #region Clientes
         //Botão abre a janela de detalhes dos clientes PF's ao clicar no botão no data grid
         private void ClientePFDetailsButton_Click(object sender, RoutedEventArgs e)
         {
@@ -249,6 +252,13 @@ namespace AppDesk
             ClientePJ clientepj = ServicoDados.ServicoDadosClientes.ObterClientePJPorId((ClientePJDataGrid.SelectedItem as ClientePJ).ClienteId);
             FormDetalhesCliente detalhesCliente = new FormDetalhesCliente(clientepj);
             detalhesCliente.Show();
+        }
+        #endregion
+
+        //Detalhes de garagem
+        private void GaragemDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            fir
         }
         #endregion
     }

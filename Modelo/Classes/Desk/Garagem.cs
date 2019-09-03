@@ -66,6 +66,14 @@ namespace Modelo.Classes.Desk
             }
         }
 
+        [NotMapped]
+        public string Lotacao
+        {
+            get
+            {
+                return Veiculos.Count.ToString();
+            }
+        }
         #endregion
 
         public virtual ICollection<Veiculo> Veiculos { get; set; }
