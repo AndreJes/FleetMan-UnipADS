@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Garagem"
         mc:Ignorable="d"
-        Title="FormRegistrarGaragem" Height="400" Width="380">
+        Title="Registrar Garagem" Height="400" Width="380">
     <Grid>
         <Grid x:Name="FormContentGrid">
             <!--#region Columns/ Rows-->

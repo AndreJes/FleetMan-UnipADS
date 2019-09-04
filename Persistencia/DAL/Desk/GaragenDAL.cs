@@ -27,5 +27,18 @@ namespace Persistencia.DAL.Desk
             }
             Context.SaveChanges();
         }
+
+        public Garagem ObterGaragemPorId(long? id)
+        {
+            Garagem garagem = Context.Garagens.Where(g => g.GaragemId == id).Include(g => g.Veiculos).First();
+            return garagem;
+        }
+
+        public void RemoverGaragemPorId(long? id)
+        {
+            Garagem garagem = ObterGaragemPorId(id);
+            Context.Garagens.Remove(garagem);
+            Context.SaveChanges();
+        }
     }
 }

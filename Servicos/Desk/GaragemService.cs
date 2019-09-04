@@ -21,5 +21,15 @@ namespace Servicos.Desk
         {
             Context.GravarGaragem(garagem);
         }
+
+        public Garagem ObterGaragemPorId(long? id)
+        {
+            return Context.ObterGaragemPorId(id);
+        }
+
+        public void RemoverGaragemPorId(long? id)
+        {
+            Context.RemoverGaragemPorId(id);
+        }
     }
 }

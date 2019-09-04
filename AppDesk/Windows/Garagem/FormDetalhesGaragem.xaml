@@ -41,14 +41,14 @@
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region Capacidade-->
-                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Lotação</Label>
-                        <Border BorderThickness="1" BorderBrush="LightSlateGray">
-                            <Slider Maximum="{Binding Capacidade}"  IsEnabled="False" TickPlacement="BottomRight" TickFrequency="50" Width="180" Margin="2 0 0 0" x:Name="CapacidadeSlider" Value="{Binding Lotacao}"></Slider>
-                        </Border>
-                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="45" Text="{Binding Lotacao}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
-
-                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="45" Text="{Binding ElementName=CapacidadeSlider, Path=Value, UpdateSourceTrigger=PropertyChanged, StringFormat=N0}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
+                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                            <Label Style="{StaticResource MainLabelStyle}" Width="120">Lotação</Label>
+                            <TextBox Style="{StaticResource MainTextBoxStyle}" Width="100" x:Name="LotacaoTextBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                            <TextBox IsEnabled="False" Style="{StaticResource MainTextBoxStyle}">/</TextBox>
+                            <TextBox Style="{StaticResource MainTextBoxStyle}" Width="100" x:Name="CapacidadeTextBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsEnabled="False"/>
+                        </StackPanel>
+                        <ProgressBar x:Name="LotacaoProgressBar" Height="10" Foreground="#FFFF3232" />
                     </StackPanel>
                     <!--#endregion-->
                 </Grid>
@@ -98,10 +98,10 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="RegistrarBtn" Click="RegistrarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+                <Button x:Name="AlterarBtn" Click="AlterarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
                     ALTERAR GARAGEM
                 </Button>
-                <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
                     REMOVER GARAGEM
                 </Button>
             </Grid>
@@ -119,7 +119,12 @@
             <!--#endregion-->
             <Grid Grid.Row="1" Grid.RowSpan="3">
                 <DataGrid AutoGenerateColumns="False" x:Name="VeiculosDataGrid">
-                    
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Placa" Binding="{Binding Placa}"/>
+                        <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}"/>
+                        <DataGridTextColumn Header="Situação" Binding="{Binding EstadoTxt}"/>
+
+                    </DataGrid.Columns>
                 </DataGrid>
             </Grid>
         </Grid>

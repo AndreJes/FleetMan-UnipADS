@@ -20,6 +20,7 @@ using Modelo.Enums;
 using AppDesk.Windows.Clientes;
 using AppDesk.Windows.Seguro;
 using AppDesk.Windows.Garagem;
+using Modelo.Classes.Desk;
 
 namespace AppDesk
 {
@@ -254,11 +255,12 @@ namespace AppDesk
             detalhesCliente.Show();
         }
         #endregion
-
-        //Detalhes de garagem
+        // Botão Detalhes de garagem
         private void GaragemDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
-            fir
+            Garagem garagem = ServicoDados.ServicoDadosGaragem.ObterGaragemPorId((GaragensDataGrid.SelectedItem as Garagem).GaragemId);
+            FormDetalhesGaragem formDetalhesGaragem = new FormDetalhesGaragem(garagem);
+            formDetalhesGaragem.Show();
         }
         #endregion
     }
