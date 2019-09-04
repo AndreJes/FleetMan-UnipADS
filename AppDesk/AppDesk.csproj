@@ -94,6 +94,15 @@
     <Compile Include="Windows\Seguro\SegurosList.xaml.cs">
       <DependentUpon>SegurosList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Veiculos\FormAlterarVeiculo.xaml.cs">
+      <DependentUpon>FormAlterarVeiculo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Veiculos\FormDetalhesVeiculo.xaml.cs">
+      <DependentUpon>FormDetalhesVeiculo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Veiculos\FormRegistrarVeiculo.xaml.cs">
+      <DependentUpon>FormRegistrarVeiculo.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -146,6 +155,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Veiculos\FormAlterarVeiculo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Veiculos\FormDetalhesVeiculo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Veiculos\FormRegistrarVeiculo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -184,8 +205,6 @@
       <Name>Servicos</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Windows\Veiculo\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

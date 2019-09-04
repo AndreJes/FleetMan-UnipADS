@@ -1,0 +1,184 @@
+﻿<Window x:Class="AppDesk.Windows.Veiculos.FormRegistrarVeiculo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDesk.Windows.Veiculos"
+        mc:Ignorable="d"
+        Title="Registrar Veiculo" Height="450" Width="600" MinHeight="450" MinWidth="600" MaxHeight="450" MaxWidth="600">
+    <Grid>
+        <Grid>
+            <!--#region Columns/Rows-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+            <!--#region Content-->
+            <!--#region Header-->
+            <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.ColumnSpan="2">REGISTRAR NOVO VEÍCULO</Label>
+            <!--#endregion-->
+            <!--#region Body-->
+            <GroupBox Grid.Row="1" Grid.RowSpan="2" Header="Dados do Veículo">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <!--#region Placa-->
+                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Label Style="{StaticResource MainLabelStyle}">
+                            PLACA
+                        </Label>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="170"></TextBox>
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    <!--#region Codigo Renavam-->
+                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1" Grid.ColumnSpan="2">
+                        <Label Style="{StaticResource MainLabelStyle}">
+                            RENAVAM
+                        </Label>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="150" Grid.Row="2"></TextBox>
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    <!--#region Marca-->
+                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="2" Grid.ColumnSpan="2">
+                        <Label Style="{StaticResource MainLabelStyle}">
+                            MARCA
+                        </Label>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="165" ></TextBox>
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    <!--#region Modelo-->
+                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="3" Grid.ColumnSpan="2">
+                        <Label Style="{StaticResource MainLabelStyle}">
+                            MODELO
+                        </Label>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="160" ></TextBox>
+                    </StackPanel>
+                    <!--#endregion -->
+
+                    <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource MainStackPanelStyle}">
+                        <!--#region Ano-->
+                        <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="4" Grid.ColumnSpan="2">
+                            <Label Style="{StaticResource MainLabelStyle}">
+                                ANO
+                            </Label>
+                            <TextBox Style="{StaticResource MainTextBoxStyle}" Width="60" ></TextBox>
+                        </StackPanel>
+                        <!--#endregion-->
+
+                        <!--#region Cor-->
+                        <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="4" Grid.ColumnSpan="2">
+                            <Label Style="{StaticResource MainLabelStyle}">
+                                COR
+                            </Label>
+                            <TextBox Style="{StaticResource MainTextBoxStyle}" Width="90"></TextBox>
+                        </StackPanel>
+                        <!--#endregion-->
+                    </StackPanel>
+
+                    <!--#region Locação/Adaptado-->
+                    <GroupBox Header="Opcional" Grid.Row="6" Grid.ColumnSpan="2">
+                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                            <CheckBox x:Name="ParaLocacaoCheckBox" Content="Para Locação"/>
+                            <CheckBox x:Name="AdaptadoCheckBox" Content="Adaptado" Margin="10 0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <!--#endregion-->
+                </Grid>
+            </GroupBox>
+            <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Row="0" Header="Garagem destino">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                            <Label Style="{StaticResource MainLabelStyle}">UF</Label>
+                            <ComboBox x:Name="UFGaragemComboBox" Width="50"/>
+
+                            <Label Style="{StaticResource MainLabelStyle}" Margin="5 0 0 0">Garagem</Label>
+                            <ComboBox x:Name="GaragemComboBox" Width="100">
+
+                            </ComboBox>
+                        </StackPanel>
+
+                        <GroupBox Grid.Row="1" Header="Endereço">
+                            <TextBox x:Name="GaragemEnderecoTextBox" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
+                        </GroupBox>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Header="Seguradora">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                            <ComboBox x:Name="SeguradorasComboBox" Width="230">
+
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1" Grid.Column="0">
+                            <Label Style="{StaticResource MainLabelStyle}">Cobertura</Label>
+                            <TextBox Style="{StaticResource MainTextBoxStyle}" IsEnabled="False" Width="80"></TextBox>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Header="Cliente" x:Name="ClienteGroupBox">
+                    <Grid>
+                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton GroupName="PFPJ" Content="Pessoa Física" />
+                                    <RadioButton Margin="40 0 0 0" GroupName="PFPJ" Content="Pessoa Juridica" />
+                                </StackPanel>
+                                <ComboBox x:Name="ClienteComboBox" Width="250">
+
+                                </ComboBox>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+            <!--#endregion-->
+            <!--#region Botões-->
+            <Button Grid.Row="3" Background="#FF6EE66E" Margin="40 5" >
+                REGISTRAR
+            </Button>
+
+            <Button Grid.Row="3" Grid.Column="1" Background="#FFE66E6E" Margin="40 5">
+                CANCELAR
+            </Button>
+            <!--#endregion-->
+        </Grid>
+    </Grid>
+</Window>

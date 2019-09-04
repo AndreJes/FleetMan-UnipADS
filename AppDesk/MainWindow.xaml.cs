@@ -21,6 +21,7 @@ using AppDesk.Windows.Clientes;
 using AppDesk.Windows.Seguro;
 using AppDesk.Windows.Garagem;
 using Modelo.Classes.Desk;
+using AppDesk.Windows.Veiculos;
 
 namespace AppDesk
 {
@@ -149,6 +150,12 @@ namespace AppDesk
             FormRegistrarGaragem formRegistrarGaragem = new FormRegistrarGaragem();
             formRegistrarGaragem.Show();
         }
+
+        private void RegistrarVeiculoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormRegistrarVeiculo formRegistrarVeiculo = new FormRegistrarVeiculo();
+            formRegistrarVeiculo.Show();
+        }
         #endregion
 
         #region Metodos Auxiliares
@@ -263,5 +270,6 @@ namespace AppDesk
             formDetalhesGaragem.Show();
         }
         #endregion
+
     }
 }
