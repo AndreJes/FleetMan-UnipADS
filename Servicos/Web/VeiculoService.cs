@@ -16,5 +16,10 @@ namespace Servicos.Web
         {
             return Context.ObterVeiculosOrdPorId();
         }
+
+        public void GravarVeiculo(Veiculo veiculo)
+        {
+            Context.GravarVeiculo(veiculo);
+        }
     }
 }

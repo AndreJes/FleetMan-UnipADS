@@ -86,6 +86,7 @@ namespace Modelo.Classes.Web
         public long? ClienteId { get; set; }
         public Clientes.Cliente Cliente { get; set; }
 
+        //Seguro que cobre o veiculo
         public long? SeguroId { get; set; }
         public Seguro Seguro { get; set; }
 

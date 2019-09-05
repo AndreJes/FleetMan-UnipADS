@@ -44,7 +44,7 @@ namespace Modelo.Classes.Desk
         {
             get
             {
-                return $"{Endereco.Rua}, {Endereco.Numero} - {Endereco.Bairro} - {Endereco.CEP}";
+                return $"{Endereco.Rua}, nº {Endereco.Numero} - {Endereco.Bairro} - CEP: {Endereco.CEP}";
             }
         }
 
