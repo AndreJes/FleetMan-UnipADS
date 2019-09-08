@@ -17,9 +17,19 @@ namespace Servicos.Web
             return Context.ObterVeiculosOrdPorId();
         }
 
+        public Veiculo ObterVeiculoPorId(long? id)
+        {
+            return Context.ObterVeiculoPorId(id);
+        }
+
         public void GravarVeiculo(Veiculo veiculo)
         {
             Context.GravarVeiculo(veiculo);
+        }
+
+        public void RemoverVeiculoPorId(long? id)
+        {
+            Context.RemoverVeiculoPorId(id);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Modelo.Classes.Web
         public long? VeiculoId { get; set; }
         public string Nome { get; set; }
         public string Placa { get; set; }
-        public ushort Ano { get; set; }
+        public int Ano { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string CodRenavam { get; set; }
@@ -90,9 +90,9 @@ namespace Modelo.Classes.Web
         public long? SeguroId { get; set; }
         public Seguro Seguro { get; set; }
 
-        public virtual List<Multa> Multas { get; set; }
-        public virtual List<Sinistro> Sinistros { get; set; }
-        public virtual List<Manutencao.Manutencao> Manutencoes { get; set; }
+        public virtual ICollection<Multa> Multas { get; set; }
+        public virtual ICollection<Sinistro> Sinistros { get; set; }
+        public virtual ICollection<Manutencao.Manutencao> Manutencoes { get; set; }
 
     }
 }

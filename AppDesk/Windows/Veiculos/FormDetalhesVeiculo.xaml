@@ -5,8 +5,286 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Veiculos"
         mc:Ignorable="d"
-        Title="FormDetalhesVeiculo" Height="450" Width="800">
+        Title="Detalhes do Veiculo" Height="450" Width="650" MinHeight="450" MinWidth="650" MaxHeight="450" MaxWidth="650">
     <Grid>
-        
+        <Grid>
+            <!--#region Columns/Rows-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+            <!--#region Content-->
+            <!--#region Header-->
+            <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.ColumnSpan="2">DETALHES DO VEICULO</Label>
+            <!--#endregion-->
+            <!--#region Body-->
+            <TabControl Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                <TabItem Header="Dados do Veiculo">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Grid.Row="1" Grid.RowSpan="2" Header="Dados do Veículo">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <!--#region Placa-->
+                                <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="0" Grid.ColumnSpan="2">
+                                    <Label Style="{StaticResource MainLabelStyle}">
+                                        PLACA
+                                    </Label>
+                                    <TextBox x:Name="PlacaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170" IsEnabled="False" Text="{Binding Placa}"></TextBox>
+                                </StackPanel>
+                                <!--#endregion-->
+
+                                <!--#region Codigo Renavam-->
+                                <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1" Grid.ColumnSpan="2">
+                                    <Label Style="{StaticResource MainLabelStyle}">
+                                        RENAVAM
+                                    </Label>
+                                    <TextBox IsEnabled="False" x:Name="RenavamTextBox" Style="{StaticResource MainTextBoxStyle}" Width="150" Grid.Row="2" Text="{Binding CodRenavam}"></TextBox>
+                                </StackPanel>
+                                <!--#endregion-->
+
+                                <!--#region Marca-->
+                                <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="2" Grid.ColumnSpan="2">
+                                    <Label Style="{StaticResource MainLabelStyle}">
+                                        MARCA
+                                    </Label>
+                                    <TextBox Text="{Binding Marca}" IsEnabled="False" x:Name="MarcaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="165" ></TextBox>
+                                </StackPanel>
+                                <!--#endregion-->
+
+                                <!--#region Modelo-->
+                                <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="3" Grid.ColumnSpan="2">
+                                    <Label Style="{StaticResource MainLabelStyle}">
+                                        MODELO
+                                    </Label>
+                                    <TextBox Text="{Binding Modelo}" IsEnabled="False" x:Name="ModeloTextbox" Style="{StaticResource MainTextBoxStyle}" Width="160" ></TextBox>
+                                </StackPanel>
+                                <!--#endregion -->
+
+                                <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource MainStackPanelStyle}">
+                                    <!--#region Ano-->
+                                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="4" Grid.ColumnSpan="2">
+                                        <Label Style="{StaticResource MainLabelStyle}">
+                                            ANO
+                                        </Label>
+                                        <TextBox Text="{Binding Ano}" IsEnabled="False" x:Name="AnoTextBox" Style="{StaticResource MainTextBoxStyle}" Width="60" ></TextBox>
+                                    </StackPanel>
+                                    <!--#endregion-->
+
+                                    <!--#region Cor-->
+                                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="4" Grid.ColumnSpan="2">
+                                        <Label Style="{StaticResource MainLabelStyle}">
+                                            COR
+                                        </Label>
+                                        <TextBox Text="{Binding Cor}" IsEnabled="False" x:Name="CorTextBox" Style="{StaticResource MainTextBoxStyle}" Width="90"></TextBox>
+                                    </StackPanel>
+                                    <!--#endregion-->
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource MainStackPanelStyle}">
+                                    <Label Style="{StaticResource MainLabelStyle}">TIPO DE VEICULO</Label>
+                                    <TextBox Style="{StaticResource MainTextBoxStyle}" Text="{Binding Tipo, StringFormat=G}" IsEnabled="False" x:Name="TipoDeVeiculoTextBox" Width="115"/>
+                                </StackPanel>
+
+                                <!--#region Locação/Adaptado-->
+                                <GroupBox Header="Opcional" Grid.Row="6" Grid.ColumnSpan="2">
+                                    <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                                        <CheckBox IsEnabled="False" IsChecked="{Binding ParaLocacao}" x:Name="ParaLocacaoCheckBox" Content="Para Locação"/>
+                                        <CheckBox IsEnabled="False" IsChecked="{Binding Adaptado}" x:Name="AdaptadoCheckBox" Content="Adaptado" Margin="10 0"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <!--#endregion-->
+                            </Grid>
+                        </GroupBox>
+                        <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30*"/>
+                                <RowDefinition Height="30*"/>
+                                <RowDefinition Height="30*"/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Grid.Row="0" Header="Garagem Atual">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30*"/>
+                                        <RowDefinition Height="30*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="0">
+                                        <Label Style="{StaticResource MainLabelStyle}">CNPJ</Label>
+                                        <TextBox Text="{Binding Garagem.CNPJTxt, Mode=OneWay}" x:Name="GaragemCNPJTextBox" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}" Width="130"></TextBox>
+                                        <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
+                                        <TextBox Text="{Binding Garagem.TelefoneTxt, Mode=OneWay}" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}" Width="105"></TextBox>
+                                    </StackPanel>
+
+                                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1">
+                                        <Label Style="{StaticResource MainLabelStyle}">Endereço</Label>
+                                        <TextBox Text="{Binding Garagem.EnderecoCompleto, Mode=OneWay}" x:Name="EnderecoGaragemTextBox" Style="{StaticResource MainTextBoxStyle}" Width="270" IsReadOnly="True" Foreground="#FF6C6C6C"/>
+                                    </StackPanel>
+                                </Grid>
+                            </GroupBox>
+
+                            <GroupBox Grid.Row="1" Header="Seguradora">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="0">
+                                        <Label Style="{StaticResource MainLabelStyle}">CNPJ</Label>
+                                        <TextBox Text="{Binding Seguro.CNPJ, Mode=OneWay}" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}" Width="130"></TextBox>
+                                        <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
+                                        <TextBox Text="{Binding Seguro.Telefone, Mode=OneWay}" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}" Width="105"></TextBox>
+                                    </StackPanel>
+
+                                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1">
+                                        <Label Style="{StaticResource MainLabelStyle}">Nome</Label>
+                                        <TextBox Text="{Binding Seguro.Nome, Mode=OneWay}" Style="{StaticResource MainTextBoxStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" Width="160"></TextBox>
+                                        <Label Style="{StaticResource MainLabelStyle}">Cobertura</Label>
+                                        <TextBox Text="{Binding Seguro.TipoCobertura, Mode=OneWay, StringFormat=G}" Style="{StaticResource MainTextBoxStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" Width="60"></TextBox>
+                                    </StackPanel>
+                                </Grid>
+                            </GroupBox>
+
+                            <GroupBox Grid.Row="2" Header="Cliente" x:Name="ClienteGroupBox">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="0">
+                                        <Label Style="{StaticResource MainLabelStyle}">CPF/CNPJ</Label>
+                                        <TextBox x:Name="CPFCNPJClienteTextBox" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}" Width="180"></TextBox>
+                                    </StackPanel>
+
+                                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1">
+                                        <Label Style="{StaticResource MainLabelStyle}">Nome</Label>
+                                        <TextBox Text="{Binding Cliente.Nome, Mode=OneWay}" Style="{StaticResource MainTextBoxStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" Width="198"></TextBox>
+                                    </StackPanel>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Multas/Sinistros">
+                    <Grid>
+                        <Grid x:Name="MultaSinisListGrid" Grid.Row="1">
+                            <!--#region Columns/Rows-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*"/>
+                                <ColumnDefinition Width="50*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="90*"/>
+                            </Grid.RowDefinitions>
+                            <!--#endregion-->
+                            <!--#region Multas-->
+                            <Label Style="{StaticResource MainLabelStyle}" Margin="5 0 10 0">MULTAS REGISTRADAS</Label>
+                            <DataGrid x:Name="MultasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Código" Binding="{Binding CodigoMulta}"/>
+                                    <DataGridTextColumn Header="Valor" Binding="{Binding Valor}"/>
+                                    <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoDoPagamento}" />
+                                    <DataGridTextColumn Header="Gravidade" Binding="{Binding GravidadeDaInfracao}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <!--#endregion-->
+                            <!--#region Separador-->
+                            <StackPanel Orientation="Horizontal" Grid.RowSpan="2" HorizontalAlignment="Right" Width="5">
+                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            </StackPanel>
+                            <!--#endregion-->
+                            <!--#region Sinistros-->
+                            <Label Style="{StaticResource MainLabelStyle}" Grid.Column="1" Margin="5 0">SINISTROS REGISTRADOS</Label>
+                            <DataGrid x:Name="SinistrosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Código" Binding="{Binding CodSinistro}"/>
+                                    <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoPagamento}"/>
+                                    <DataGridTextColumn Header="Gravidade" Binding="{Binding Gravidade}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <!--#endregion-->
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Manutenção">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Header="Próxima manutenção">
+                            <Grid>
+
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Header="Combustivel" Grid.Row="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <GroupBox Header="Quantidade de combustível atual">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <ProgressBar HorizontalAlignment="Center" Width="200" Height="15" Maximum="100" x:Name="TanqueProgressBar"/>
+                                        <TextBox IsEnabled="False" Grid.Row="1" Margin="35 0" HorizontalAlignment="Left">Vazio</TextBox>
+                                        <TextBox IsEnabled="False" Grid.Row="1" HorizontalAlignment="Right" Margin="30 0">Cheio</TextBox>
+                                    </Grid>
+                                </GroupBox>
+
+                                <Button Grid.Row="1" HorizontalAlignment="Center" Height="30">Registrar abastecimento</Button>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Header="Lista de manutenções" Grid.Column="1" Grid.RowSpan="2">
+                            <Grid>
+                                <DataGrid>
+
+                                </DataGrid>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <!--#endregion-->
+            <!--#region Botões-->
+            <Button x:Name="AlterarBtn" Click="AlterarBtn_Click"  Grid.Row="3" Background="#FF6EE66E" Margin="40 5" >
+                ALTERAR VEICULO
+            </Button>
+
+            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Grid.Row="3" Grid.Column="1" Background="#FFE66E6E" Margin="40 5">
+                REMOVER
+            </Button>
+            <!--#endregion-->
+        </Grid>
     </Grid>
 </Window>

@@ -15,6 +15,11 @@ namespace Persistencia.DAL.Web
             return Context.Veiculos.OrderBy(v => v.VeiculoId);
         }
 
+        public Veiculo ObterVeiculoPorId(long? id)
+        {
+            return Context.Veiculos.Where(v => v.VeiculoId == id).Include(v => v.Multas).Include(v => v.Sinistros).Include(v => v.Garagem).Include(v => v.Cliente).Include(v => v.Seguro).First();
+        }
+
         public void GravarVeiculo(Veiculo veiculo)
         {
             if(veiculo.VeiculoId == null)
@@ -25,6 +30,13 @@ namespace Persistencia.DAL.Web
             {
                 Context.Entry(veiculo).State = EntityState.Modified;
             }
+            Context.SaveChanges();
+        }
+
+        public void RemoverVeiculoPorId(long? id)
+        {
+            Veiculo veiculo = ObterVeiculoPorId(id);
+            Context.Veiculos.Remove(veiculo);
             Context.SaveChanges();
         }
     }

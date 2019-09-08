@@ -49,6 +49,15 @@ namespace Modelo.Classes.Desk
         }
 
         [NotMapped]
+        public string EnderecoCompleto
+        {
+            get
+            {
+                return $"{Endereco.Rua}, nº {Endereco.Numero} - {Endereco.Bairro} - CEP: {Endereco.CEP}, {Endereco.Cidade} - {Endereco.UF.ToString("G")}";
+            }
+        }
+
+        [NotMapped]
         public string Cidade
         {
             get

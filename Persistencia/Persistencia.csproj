@@ -76,6 +76,10 @@
     <Compile Include="Migrations\201909012351319_CoberturaSeguro.Designer.cs">
       <DependentUpon>201909012351319_CoberturaSeguro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909081414409_Int-Ano-Veiculo.cs" />
+    <Compile Include="Migrations\201909081414409_Int-Ano-Veiculo.Designer.cs">
+      <DependentUpon>201909081414409_Int-Ano-Veiculo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -103,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909012351319_CoberturaSeguro.resx">
       <DependentUpon>201909012351319_CoberturaSeguro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909081414409_Int-Ano-Veiculo.resx">
+      <DependentUpon>201909081414409_Int-Ano-Veiculo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
