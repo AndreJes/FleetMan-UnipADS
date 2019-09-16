@@ -22,6 +22,7 @@ using AppDesk.Windows.Seguro;
 using AppDesk.Windows.Garagem;
 using Modelo.Classes.Desk;
 using AppDesk.Windows.Veiculos;
+using AppDesk.Windows.Motoristas;
 
 namespace AppDesk
 {
@@ -156,6 +157,12 @@ namespace AppDesk
             FormRegistrarVeiculo formRegistrarVeiculo = new FormRegistrarVeiculo();
             formRegistrarVeiculo.Show();
         }
+
+        private void RegistrarMotoristaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormRegistrarMotorista formRegistrarMotorista = new FormRegistrarMotorista();
+            formRegistrarMotorista.Show();
+        }
         #endregion
 
         #region Metodos Auxiliares
@@ -277,8 +284,14 @@ namespace AppDesk
             FormDetalhesVeiculo formDetalhesVeiculo = new FormDetalhesVeiculo(veiculo);
             formDetalhesVeiculo.Show();
         }
-        #endregion
 
+        private void MotoristaDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Motorista motorista = ServicoDados.ServicoDadosMotorista.ObterMotoristaPorId((MotoristasDataGrid.SelectedItem as Motorista).MotoristaId);
+            FormDetalhesMotorista formDetalhesMotorista = new FormDetalhesMotorista(motorista);
+            formDetalhesMotorista.Show();
+        }
+        #endregion
 
     }
 }

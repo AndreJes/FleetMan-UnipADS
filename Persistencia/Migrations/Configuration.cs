@@ -5,11 +5,12 @@ namespace Persistencia.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Persistencia.Contexts.EFContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Contexts.EFContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "Persistencia.Contexts.EFContext";
         }
 
         protected override void Seed(Persistencia.Contexts.EFContext context)

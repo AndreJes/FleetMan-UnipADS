@@ -64,21 +64,13 @@
     <Compile Include="DAL\Web\SolicitacaoDAL.cs" />
     <Compile Include="DAL\Web\VeiculoDAL.cs" />
     <Compile Include="DAL\Web\ViagemDAL.cs" />
-    <Compile Include="Migrations\201909011617085_Initial.cs" />
-    <Compile Include="Migrations\201909011617085_Initial.Designer.cs">
-      <DependentUpon>201909011617085_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201909121508002_InitialCreate.cs" />
+    <Compile Include="Migrations\201909121508002_InitialCreate.Designer.cs">
+      <DependentUpon>201909121508002_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909011622024_MigrateMethodChange.cs" />
-    <Compile Include="Migrations\201909011622024_MigrateMethodChange.Designer.cs">
-      <DependentUpon>201909011622024_MigrateMethodChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909012351319_CoberturaSeguro.cs" />
-    <Compile Include="Migrations\201909012351319_CoberturaSeguro.Designer.cs">
-      <DependentUpon>201909012351319_CoberturaSeguro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909081414409_Int-Ano-Veiculo.cs" />
-    <Compile Include="Migrations\201909081414409_Int-Ano-Veiculo.Designer.cs">
-      <DependentUpon>201909081414409_Int-Ano-Veiculo.cs</DependentUpon>
+    <Compile Include="Migrations\201909121510270_Initial.cs" />
+    <Compile Include="Migrations\201909121510270_Initial.Designer.cs">
+      <DependentUpon>201909121510270_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,17 +91,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909011617085_Initial.resx">
-      <DependentUpon>201909011617085_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909121508002_InitialCreate.resx">
+      <DependentUpon>201909121508002_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909011622024_MigrateMethodChange.resx">
-      <DependentUpon>201909011622024_MigrateMethodChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909012351319_CoberturaSeguro.resx">
-      <DependentUpon>201909012351319_CoberturaSeguro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909081414409_Int-Ano-Veiculo.resx">
-      <DependentUpon>201909081414409_Int-Ano-Veiculo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909121510270_Initial.resx">
+      <DependentUpon>201909121510270_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -43,6 +43,7 @@ namespace AppDesk.Windows.Seguro
             VencimentoProxParcelaDatePic.SelectedDate = _seguro.DataVencimentoParcela;
             ValorParcelaTextBox.Text = _seguro.PrecoParcela.ToString("F2");
             QuantidadeVeiculosLabel.Content = _seguro.Veiculos.Count();
+            TipoCoberturaComboBox.Text = _seguro.TipoCobertura.ToString("G");
         }
 
         private void AlterarBtn_Click(object sender, RoutedEventArgs e)

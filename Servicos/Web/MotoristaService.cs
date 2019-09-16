@@ -16,5 +16,20 @@ namespace Servicos.Web
         {
             return Context.ObterMotoristasOrdPorId();
         }
+
+        public void GravarMotorista(Motorista motorista)
+        {
+            Context.GravarMotorista(motorista);
+        }
+
+        public Motorista ObterMotoristaPorId(long? id)
+        {
+            return Context.ObterMotoristaPorId(id);
+        }
+
+        public void RemoverMotoristaPorId(long? id)
+        {
+            Context.RemoverMotoristaPorId(id);
+        }
     }
 }

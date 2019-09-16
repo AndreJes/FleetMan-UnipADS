@@ -82,6 +82,18 @@
     <Compile Include="Windows\Garagem\FormRegistrarGaragem.xaml.cs">
       <DependentUpon>FormRegistrarGaragem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Motoristas\FormAlterarMotorista.xaml.cs">
+      <DependentUpon>FormAlterarMotorista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Motoristas\FormDetalhesMotorista.xaml.cs">
+      <DependentUpon>FormDetalhesMotorista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Motoristas\FormRegistrarMotorista.xaml.cs">
+      <DependentUpon>FormRegistrarMotorista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MultaESinistro\FormRegistrarMultaSinistro.xaml.cs">
+      <DependentUpon>FormRegistrarMultaSinistro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Seguro\FormAlterarSeguro.xaml.cs">
       <DependentUpon>FormAlterarSeguro.xaml</DependentUpon>
     </Compile>
@@ -136,6 +148,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Garagem\FormRegistrarGaragem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Motoristas\FormAlterarMotorista.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Motoristas\FormDetalhesMotorista.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Motoristas\FormRegistrarMotorista.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MultaESinistro\FormRegistrarMultaSinistro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,6 +233,9 @@
       <Name>Servicos</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Windows\MultaESinistro\Multa\" />
+    <Folder Include="Windows\MultaESinistro\Sinistro\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

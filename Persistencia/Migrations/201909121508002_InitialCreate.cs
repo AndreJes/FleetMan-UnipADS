@@ -3,7 +3,7 @@ namespace Persistencia.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -45,10 +45,13 @@ namespace Persistencia.Migrations
                 c => new
                     {
                         MotoristaId = c.Long(nullable: false, identity: true),
-                        NumeroCNH = c.String(),
-                        PontosCNH = c.Int(nullable: false),
                         Nome = c.String(),
                         CPF = c.String(),
+                        RG = c.String(),
+                        Celular = c.String(),
+                        Email = c.String(),
+                        NumeroCNH = c.String(),
+                        PontosCNH = c.Int(nullable: false),
                         Endereco_Rua = c.String(),
                         Endereco_Numero = c.String(),
                         Endereco_Bairro = c.String(),
@@ -107,6 +110,7 @@ namespace Persistencia.Migrations
                         VeiculoId = c.Long(nullable: false, identity: true),
                         Nome = c.String(),
                         Placa = c.String(),
+                        Ano = c.Int(nullable: false),
                         Marca = c.String(),
                         Modelo = c.String(),
                         CodRenavam = c.String(),
@@ -216,6 +220,7 @@ namespace Persistencia.Migrations
                         DataContratacao = c.DateTime(nullable: false),
                         Vencimento_Contrato = c.DateTime(nullable: false),
                         EstadoPagamento = c.Int(nullable: false),
+                        TipoCobertura = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.SeguroId);
             
@@ -483,10 +488,25 @@ namespace Persistencia.Migrations
                 .Index(t => t.UsuarioId)
                 .Index(t => t.FuncionarioId);
             
+            CreateTable(
+                "dbo.UsuariosMotoristas",
+                c => new
+                    {
+                        UsuarioId = c.Long(nullable: false),
+                        MotoristaId = c.Long(),
+                    })
+                .PrimaryKey(t => t.UsuarioId)
+                .ForeignKey("dbo.Usuario", t => t.UsuarioId)
+                .ForeignKey("dbo.Motorista", t => t.MotoristaId)
+                .Index(t => t.UsuarioId)
+                .Index(t => t.MotoristaId);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.UsuariosMotoristas", "MotoristaId", "dbo.Motorista");
+            DropForeignKey("dbo.UsuariosMotoristas", "UsuarioId", "dbo.Usuario");
             DropForeignKey("dbo.UsuariosFuncionarios", "FuncionarioId", "dbo.Funcionario");
             DropForeignKey("dbo.UsuariosFuncionarios", "UsuarioId", "dbo.Usuario");
             DropForeignKey("dbo.UsuariosClientes", "ClienteId", "dbo.Cliente");
@@ -524,6 +544,8 @@ namespace Persistencia.Migrations
             DropForeignKey("dbo.Veiculo", "GaragemId", "dbo.Garagem");
             DropForeignKey("dbo.Veiculo", "ClienteId", "dbo.Cliente");
             DropForeignKey("dbo.Aluguel", "ClienteId", "dbo.Cliente");
+            DropIndex("dbo.UsuariosMotoristas", new[] { "MotoristaId" });
+            DropIndex("dbo.UsuariosMotoristas", new[] { "UsuarioId" });
             DropIndex("dbo.UsuariosFuncionarios", new[] { "FuncionarioId" });
             DropIndex("dbo.UsuariosFuncionarios", new[] { "UsuarioId" });
             DropIndex("dbo.UsuariosClientes", new[] { "ClienteId" });
@@ -561,6 +583,7 @@ namespace Persistencia.Migrations
             DropIndex("dbo.Manutencao", new[] { "RelatorioConsumo_RelatorioId" });
             DropIndex("dbo.Manutencao", new[] { "MotoristaId" });
             DropIndex("dbo.Manutencao", new[] { "VeiculoId" });
+            DropTable("dbo.UsuariosMotoristas");
             DropTable("dbo.UsuariosFuncionarios");
             DropTable("dbo.UsuariosClientes");
             DropTable("dbo.RelatoriosViagens");

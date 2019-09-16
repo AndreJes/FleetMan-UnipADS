@@ -80,8 +80,7 @@
                         <Label Style="{StaticResource MainLabelStyle}">Valor/Parcela</Label>
                         <TextBox Style="{StaticResource MainTextBoxStyle}" Width="70" x:Name="ValorParcelaTextBox" IsEnabled="False"></TextBox>
                         <Label Style="{StaticResource MainLabelStyle}">Cobertura</Label>
-                        <ComboBox x:Name="TipoCoberturaComboBox" Width="70" IsEnabled="False">
-                        </ComboBox>
+                        <TextBox x:Name="TipoCoberturaComboBox" Style="{StaticResource MainTextBoxStyle}" Width="70" IsEnabled="False"/>
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region Vencimento da prox. parcela-->

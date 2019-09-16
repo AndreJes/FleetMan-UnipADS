@@ -51,6 +51,7 @@ namespace Persistencia.Contexts
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<UsuarioFunc> UsuariosFuncionarios { get; set; }
         public DbSet<UsuarioCliente> UsuariosClientes { get; set; }
+        public DbSet<UsuarioMotorista> UsuariosMotoristas { get; set; }
         #endregion
         #region Web
         public DbSet<Aluguel> Alugueis { get; set; }
@@ -79,6 +80,7 @@ namespace Persistencia.Contexts
             modelBuilder.Entity<RelatorioViagem>().ToTable("RelatoriosViagens");
             modelBuilder.Entity<UsuarioCliente>().ToTable("UsuariosClientes");
             modelBuilder.Entity<UsuarioFunc>().ToTable("UsuariosFuncionarios");
+            modelBuilder.Entity<UsuarioMotorista>().ToTable("UsuariosMotoristas");
             modelBuilder.Entity<ClientePF>().ToTable("ClientesPF");
             modelBuilder.Entity<ClientePJ>().ToTable("ClientesPJ");
         }

@@ -62,6 +62,7 @@
     <Compile Include="Classes\Relatorios\RelatorioManutencao.cs" />
     <Compile Include="Classes\Relatorios\RelatorioMulta.cs" />
     <Compile Include="Classes\Relatorios\RelatorioViagem.cs" />
+    <Compile Include="Classes\Usuarios\UsuarioMotorista.cs" />
     <Compile Include="Enums\CategoriasCNH.cs" />
     <Compile Include="Enums\CoberturasSeguro.cs" />
     <Compile Include="Enums\EstadosAluguel.cs" />

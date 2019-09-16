@@ -118,7 +118,7 @@
             <Label FontFamily="Arial" Style="{StaticResource MainLabelStyle}" Width="auto" FontSize="20">VEÍCULOS NA GARAGEM</Label>
             <!--#endregion-->
             <Grid Grid.Row="1" Grid.RowSpan="3">
-                <DataGrid AutoGenerateColumns="False" x:Name="VeiculosDataGrid">
+                <DataGrid AutoGenerateColumns="False" x:Name="VeiculosDataGrid" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Placa" Binding="{Binding Placa}"/>
                         <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}"/>
