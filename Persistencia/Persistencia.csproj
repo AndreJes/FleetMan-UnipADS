@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201909121510270_Initial.Designer.cs">
       <DependentUpon>201909121510270_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909171632079_Date-Sinistro.cs" />
+    <Compile Include="Migrations\201909171632079_Date-Sinistro.Designer.cs">
+      <DependentUpon>201909171632079_Date-Sinistro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -96,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909121510270_Initial.resx">
       <DependentUpon>201909121510270_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909171632079_Date-Sinistro.resx">
+      <DependentUpon>201909171632079_Date-Sinistro.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

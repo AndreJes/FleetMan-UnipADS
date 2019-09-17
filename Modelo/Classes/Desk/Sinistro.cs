@@ -14,6 +14,7 @@ namespace Modelo.Classes.Desk
         public string CodSinistro { get; set; }
         public string Descricao { get; set; }
         public int QntEnvolvidos { get; set; }
+        public DateTime DataSinistro { get; set; }
         public EstadosDePagamento EstadoPagamento { get; set; }
         public GravidadesDeSinistro Gravidade { get; set; }
 

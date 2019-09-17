@@ -23,6 +23,7 @@ using AppDesk.Windows.Garagem;
 using Modelo.Classes.Desk;
 using AppDesk.Windows.Veiculos;
 using AppDesk.Windows.Motoristas;
+using AppDesk.Windows.MultaESinistro;
 
 namespace AppDesk
 {
@@ -163,6 +164,12 @@ namespace AppDesk
             FormRegistrarMotorista formRegistrarMotorista = new FormRegistrarMotorista();
             formRegistrarMotorista.Show();
         }
+
+        private void RegistrarMultaSinisBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormRegistrarMultaSinistro formRegistrarMultaSinistro = new FormRegistrarMultaSinistro();
+            formRegistrarMultaSinistro.Show();
+        }
         #endregion
 
         #region Metodos Auxiliares
@@ -292,6 +299,5 @@ namespace AppDesk
             formDetalhesMotorista.Show();
         }
         #endregion
-
     }
 }
