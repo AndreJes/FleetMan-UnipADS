@@ -27,6 +27,11 @@ namespace Servicos.Web
             return Context.ObterMotoristaPorId(id);
         }
 
+        public Motorista ObterMotoristaPorCPF(string cpf)
+        {
+            return Context.ObterMotoristaPorCPF(cpf);
+        }
+
         public void RemoverMotoristaPorId(long? id)
         {
             Context.RemoverMotoristaPorId(id);

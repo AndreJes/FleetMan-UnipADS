@@ -22,6 +22,11 @@ namespace Servicos.Web
             return Context.ObterVeiculoPorId(id);
         }
 
+        public Veiculo ObterVeiculoPorPlaca(string placa)
+        {
+            return Context.ObterVeiculoPorPlaca(placa);
+        }
+
         public void GravarVeiculo(Veiculo veiculo)
         {
             Context.GravarVeiculo(veiculo);

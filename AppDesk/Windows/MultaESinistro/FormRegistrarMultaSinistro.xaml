@@ -77,8 +77,8 @@
                                             </Grid.RowDefinitions>
                                             <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
                                                 <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarVeiculoPMulta" Margin="0" Height="25"></TextBox>
-                                                    <Button Height="25">Pesquisar Placa</Button>
+                                                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarVeiculoPMultaTextBox" Margin="0" Height="25"></TextBox>
+                                                    <Button x:Name="PesquisarPlacaVeiculoPMulta" Click="PesquisarPlacaVeiculoPMulta_Click" Height="25">Pesquisar Placa</Button>
                                                 </StackPanel>
                                             </StackPanel>
                                             <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
@@ -119,7 +119,7 @@
                                                 <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
                                                     <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarMotoristaPMultaTextBox" Width="120" Height="25"></TextBox>
                                                 </StackPanel>
-                                                <Button Height="25">Pesquisar CPF</Button>
+                                                <Button Height="25" x:Name="PesquisarMotoristaPMultaBtn" Click="PesquisarMotoristaPMultaBtn_Click">Pesquisar CPF</Button>
                                             </StackPanel>
                                             <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
                                                 <Label Style="{StaticResource MainLabelStyle}">Motorista Selecionado</Label>
@@ -137,10 +137,10 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="RegistrarMultaBtn" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+                        <Button x:Name="RegistrarMultaBtn" Click="RegistrarMultaBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
                             REGISTRAR MULTA
                         </Button>
-                        <Button Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                        <Button Margin="20 5" Grid.Column="1" Background="#FFE66E6E" Click="CancelarBtn_Click">
                             CANCELAR
                         </Button>
                     </Grid>
@@ -202,7 +202,7 @@
                                                 <DataGridTemplateColumn>
                                                     <DataGridTemplateColumn.CellTemplate>
                                                         <DataTemplate>
-                                                            <Button Width="auto" FontSize="8">Selecionar</Button>
+                                                            <Button Width="auto" FontSize="8" x:Name="SelecionarVeiculoPSinistroBtn" Click="SelecionarVeiculoPSinistroBtn_Click">Selecionar</Button>
                                                         </DataTemplate>
                                                     </DataGridTemplateColumn.CellTemplate>
                                                 </DataGridTemplateColumn>
@@ -216,13 +216,13 @@
                                             </Grid.RowDefinitions>
                                             <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
                                                 <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarVeiculoPSinistro" Width="80" Height="25"></TextBox>
+                                                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarVeiculoPSinistroTextBox" Width="80" Height="25"></TextBox>
                                                 </StackPanel>
-                                                <Button Height="25">Pesquisar</Button>
+                                                <Button Height="25" x:Name="PesquisarVeiculoPSinistroBtn" Click="PesquisarVeiculoPSinistroBtn_Click">Pesquisar</Button>
                                             </StackPanel>
                                             <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
                                                 <Label Style="{StaticResource MainLabelStyle}">Veiculo Selecionado</Label>
-                                                <TextBox Style="{StaticResource MainTextBoxStyle}" IsEnabled="False" Width="80" Height="25" Text="{Binding Placa}"></TextBox>
+                                                <TextBox Style="{StaticResource MainTextBoxStyle}" IsEnabled="False" Width="80" Height="25" Text="{Binding Placa}" x:Name="VeiculoSelecionadoPSinistroTextBox"></TextBox>
                                             </StackPanel>
                                         </Grid>
 
@@ -241,7 +241,7 @@
                                                 <DataGridTemplateColumn>
                                                     <DataGridTemplateColumn.CellTemplate>
                                                         <DataTemplate>
-                                                            <Button Width="auto" FontSize="8">Selecionar</Button>
+                                                            <Button Width="auto" FontSize="8" x:Name="SelecionarMotoristaPSinistroBtn" Click="SelecionarMotoristaPSinistroBtn_Click">Selecionar</Button>
                                                         </DataTemplate>
                                                     </DataGridTemplateColumn.CellTemplate>
                                                 </DataGridTemplateColumn>
@@ -258,11 +258,11 @@
                                                 <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
                                                     <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarMotoristaPSinistroTextBox" Width="120" Height="25"></TextBox>
                                                 </StackPanel>
-                                                <Button Height="25">Pesquisar CPF</Button>
+                                                <Button Height="25" x:Name="PesquisarMotoristaPSinistroBtn" Click="PesquisarMotoristaPSinistroBtn_Click">Pesquisar CPF</Button>
                                             </StackPanel>
                                             <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
                                                 <Label Style="{StaticResource MainLabelStyle}">Motorista Selecionado</Label>
-                                                <TextBox Style="{StaticResource MainTextBoxStyle}" IsReadOnly="True"  Margin="0" Height="25" Text="{Binding Nome}"></TextBox>
+                                                <TextBox Style="{StaticResource MainTextBoxStyle}" IsReadOnly="True"  Margin="0" Height="25" Text="{Binding Nome}" x:Name="MotoristaSelecionadoPSinistroTextBox"></TextBox>
                                             </StackPanel>
                                         </Grid>
                                     </Grid>
@@ -288,10 +288,10 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="RegistrarSinistroBtn" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+                        <Button x:Name="RegistrarSinistroBtn" Click="RegistrarSinistroBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
                             REGISTRAR SINISTRO
                         </Button>
-                        <Button Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                        <Button Click="CancelarBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
                             CANCELAR
                         </Button>
                     </Grid>

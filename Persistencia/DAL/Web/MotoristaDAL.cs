@@ -33,6 +33,12 @@ namespace Persistencia.DAL.Web
             return Context.Motoristas.Where(m => m.MotoristaId == id).Include(m => m.Cliente).Include(m => m.Multas).Include(m => m.Sinistros).Include(m => m.Viagens).First();
         }
 
+        public Motorista ObterMotoristaPorCPF(string cpf)
+        {
+            Motorista motorista = ObterMotoristasOrdPorId().Where(m => m.CPF == cpf).FirstOrDefault();
+            return motorista;
+        }
+
         public void RemoverMotoristaPorId(long? id)
         {
             Motorista motorista = ObterMotoristaPorId(id);

@@ -16,5 +16,20 @@ namespace Servicos.Desk
         {
             return Context.ObterSinistrosOrdPorId();
         }
+
+        public Sinistro ObterSinistroPorId(long? id)
+        {
+            return Context.ObterSinistroPorId(id);
+        }
+
+        public void GravarSinistro(Sinistro sinistro)
+        {
+            Context.GravarSinistro(sinistro);
+        }
+
+        public void RemoverSinistroPorId(long? id)
+        {
+            Context.RemoverSinistroPorId(id);
+        }
     }
 }

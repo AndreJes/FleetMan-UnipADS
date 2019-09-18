@@ -16,5 +16,20 @@ namespace Servicos.Desk
         {
             return Context.ObterMultasOrdPorId();
         }
+
+        public Multa ObterMultaPorId(long? id)
+        {
+            return Context.ObterMultaPorId(id);
+        }
+
+        public void GravarMulta(Multa multa)
+        {
+            Context.GravarMulta(multa);
+        }
+
+        public void RemoverMultaPorId(long? id)
+        {
+            Context.RemoverMultaPorId(id);
+        }
     }
 }

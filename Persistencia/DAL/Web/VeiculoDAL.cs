@@ -20,6 +20,12 @@ namespace Persistencia.DAL.Web
             return Context.Veiculos.Where(v => v.VeiculoId == id).Include(v => v.Multas).Include(v => v.Sinistros).Include(v => v.Garagem).Include(v => v.Cliente).Include(v => v.Seguro).First();
         }
 
+        public Veiculo ObterVeiculoPorPlaca(string placa)
+        {
+            Veiculo veiculo = ObterVeiculosOrdPorId().Where(v => v.Placa == placa).FirstOrDefault();
+            return veiculo;
+        }
+
         public void GravarVeiculo(Veiculo veiculo)
         {
             if(veiculo.VeiculoId == null)

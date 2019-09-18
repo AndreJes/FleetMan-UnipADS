@@ -64,6 +64,7 @@
     </ApplicationDefinition>
     <Compile Include="Serviço\ServicoDados.cs" />
     <Compile Include="Tools\HexaColorPicker.cs" />
+    <Compile Include="Tools\MainWindowUpdater.cs" />
     <Compile Include="Windows\Cliente\FormAlterarClientes.xaml.cs">
       <DependentUpon>FormAlterarClientes.xaml</DependentUpon>
     </Compile>
