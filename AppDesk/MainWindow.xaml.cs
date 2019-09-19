@@ -24,6 +24,7 @@ using Modelo.Classes.Desk;
 using AppDesk.Windows.Veiculos;
 using AppDesk.Windows.Motoristas;
 using AppDesk.Windows.MultaESinistro;
+using AppDesk.Windows.MultaESinistro.Multas;
 
 namespace AppDesk
 {
@@ -298,6 +299,15 @@ namespace AppDesk
             FormDetalhesMotorista formDetalhesMotorista = new FormDetalhesMotorista(motorista);
             formDetalhesMotorista.Show();
         }
+
+
+        private void MultaDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Multa multa = ServicoDados.ServicoDadosMulta.ObterMultaPorId((MultasDataGrid.SelectedItem as Multa).MultaId);
+            FormDetalhesAlterarMulta formDetalhesAlterarMulta = new FormDetalhesAlterarMulta(multa);
+            formDetalhesAlterarMulta.Show();
+        }
         #endregion
+
     }
 }

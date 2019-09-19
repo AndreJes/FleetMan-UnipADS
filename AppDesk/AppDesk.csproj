@@ -95,6 +95,9 @@
     <Compile Include="Windows\MultaESinistro\FormRegistrarMultaSinistro.xaml.cs">
       <DependentUpon>FormRegistrarMultaSinistro.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\MultaESinistro\Multas\FormDetalhesAlterarMulta.xaml.cs">
+      <DependentUpon>FormDetalhesAlterarMulta.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Seguro\FormAlterarSeguro.xaml.cs">
       <DependentUpon>FormAlterarSeguro.xaml</DependentUpon>
     </Compile>
@@ -168,6 +171,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\MultaESinistro\Multas\FormDetalhesAlterarMulta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Seguro\FormAlterarSeguro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -235,8 +242,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Windows\MultaESinistro\Multa\" />
-    <Folder Include="Windows\MultaESinistro\Sinistro\" />
+    <Folder Include="Windows\MultaESinistro\Sinistros\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

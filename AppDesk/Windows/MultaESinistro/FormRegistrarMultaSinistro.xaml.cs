@@ -235,6 +235,7 @@ namespace AppDesk.Windows.MultaESinistro
             multa.Valor = double.Parse(ValorMultaTextBox.Text);
             multa.DataDaMulta = DataDaMultaDatePicker.DisplayDate;
             multa.EstadoDoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), EstadoPagamentoInfracaoComboBox.SelectedItem.ToString().Replace(' ', '_'));
+            multa.GravidadeDaInfracao = (GravidadesDeInfracao)Enum.Parse(typeof(GravidadesDeInfracao), GravidadeInfracaoComboBox.SelectedItem.ToString());
             multa.MotoristaId = _motoristaPMulta.MotoristaId;
             multa.VeiculoId = _veiculoPMulta.VeiculoId;
 

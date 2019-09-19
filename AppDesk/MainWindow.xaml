@@ -527,10 +527,19 @@
                         <DataGrid x:Name="MultasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding CodigoMulta}"/>
-                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor}"/>
+                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=F2}"/>
                                 <DataGridTextColumn Header="Data da infração" Binding="{Binding DataDaMulta}" />
-                                <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoDoPagamento}" />
+                                <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoDoPagamento}" Width="auto"/>
                                 <DataGridTextColumn Header="Gravidade" Binding="{Binding GravidadeDaInfracao}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="MultaDetailsBtn" Click="MultaDetailsBtn_Click">
+                                                Detalhes
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->

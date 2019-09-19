@@ -1,0 +1,88 @@
+﻿<Window x:Class="AppDesk.Windows.MultaESinistro.Multas.FormDetalhesAlterarMulta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDesk.Windows.MultaESinistro.Multas"
+        mc:Ignorable="d"
+        Title="Detalhes da Multa" Height="500" Width="350" MaxHeight="500" MaxWidth="350" MinHeight="500" MinWidth="350">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+
+            <Label Style="{StaticResource MainLabelStyle}" FontSize="20">DETALHES DA MULTA</Label>
+            <GroupBox Grid.Row="1" Header="Dados da Multa">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="20*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}" Width="50">Código</Label>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="150" Text="{Binding CodigoMulta}" IsEnabled="False"></TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">Valor</Label>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="75" Text="{Binding Valor, StringFormat=F2}" IsEnabled="False"></TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">Pagamento</Label>
+                        <ComboBox x:Name="EstadoPagamentoInfracaoComboBox" Width="130" SelectionChanged="EstadoPagamentoInfracaoComboBox_SelectionChanged">
+                        </ComboBox>
+
+                        <Button x:Name="SalvarAlteracaoPagamentoBtn" Click="SalvarAlteracaoPagamentoBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0" IsEnabled="False">
+                            Salvar
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">Gravidade</Label>
+                        <TextBox IsEnabled="False" x:Name="GravidadeInfracaoTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding GravidadeDaInfracao, StringFormat=G}" Width="135">
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">Data da infração</Label>
+                        <DatePicker IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectedDate="{Binding DataDaMulta}"></DatePicker>
+                    </StackPanel>
+                    <GroupBox Header="Dados do veiculo" Grid.Row="5">
+                        <Grid>
+                            <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">Placa</Label>
+                                <TextBox IsEnabled="False" x:Name="VeiculoMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="115" Text="{Binding Veiculo.Placa, Mode=OneWay}"></TextBox>
+                                <Button x:Name="DetalhesDoVeiculoBtn" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
+                                    Detalhes
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Dados do motorista" Grid.Row="6" >
+                        <Grid>
+                            <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">CPF</Label>
+                                <TextBox IsEnabled="False" x:Name="MotoristaMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120" Text="{Binding Motorista.CPFTxt, Mode=OneWay}"></TextBox>
+                                <Button x:Name="DetalhesDoMotoristaBtn" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
+                                    Detalhes
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+
+                    </GroupBox>
+                </Grid>
+            </GroupBox>
+
+            <Grid Grid.Row="2">
+                <Button x:Name="RemoverMultaBtn" Click="RemoverMultaBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                    REMOVER
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
