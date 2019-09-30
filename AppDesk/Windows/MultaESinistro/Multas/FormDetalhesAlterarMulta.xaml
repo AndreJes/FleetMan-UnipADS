@@ -57,7 +57,7 @@
                             <StackPanel Style="{StaticResource MainStackPanelStyle}">
                                 <Label Style="{StaticResource MainLabelStyle}">Placa</Label>
                                 <TextBox IsEnabled="False" x:Name="VeiculoMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="115" Text="{Binding Veiculo.Placa, Mode=OneWay}"></TextBox>
-                                <Button x:Name="DetalhesDoVeiculoBtn" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
+                                <Button x:Name="DetalhesDoVeiculoBtn" Click="DetalhesDoVeiculoBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
                                     Detalhes
                                 </Button>
                             </StackPanel>
@@ -68,7 +68,7 @@
                             <StackPanel Style="{StaticResource MainStackPanelStyle}">
                                 <Label Style="{StaticResource MainLabelStyle}">CPF</Label>
                                 <TextBox IsEnabled="False" x:Name="MotoristaMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120" Text="{Binding Motorista.CPFTxt, Mode=OneWay}"></TextBox>
-                                <Button x:Name="DetalhesDoMotoristaBtn" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
+                                <Button x:Name="DetalhesDoMotoristaBtn" Click="DetalhesDoMotoristaBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
                                     Detalhes
                                 </Button>
                             </StackPanel>

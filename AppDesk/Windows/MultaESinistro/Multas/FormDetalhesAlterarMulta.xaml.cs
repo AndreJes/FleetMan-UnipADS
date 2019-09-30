@@ -1,5 +1,7 @@
 ﻿using AppDesk.Serviço;
 using AppDesk.Tools;
+using AppDesk.Windows.Motoristas;
+using AppDesk.Windows.Veiculos;
 using Modelo.Classes.Desk;
 using Modelo.Enums;
 using System;
@@ -73,6 +75,18 @@ namespace AppDesk.Windows.MultaESinistro.Multas
             _multa.EstadoDoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento),EstadoPagamentoInfracaoComboBox.SelectedItem.ToString().Replace(' ', '_'));
             ServicoDados.ServicoDadosMulta.GravarMulta(_multa);
             MainWindowUpdater.UpdateDataGrids();
+        }
+
+        private void DetalhesDoMotoristaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormDetalhesMotorista formDetalhesMotorista = new FormDetalhesMotorista(ServicoDados.ServicoDadosMotorista.ObterMotoristaPorId(_multa.MotoristaId));
+            formDetalhesMotorista.Show();
+        }
+
+        private void DetalhesDoVeiculoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormDetalhesVeiculo formDetalhesVeiculo = new FormDetalhesVeiculo(ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorId(_multa.VeiculoId));
+            formDetalhesVeiculo.Show();
         }
     }
 }

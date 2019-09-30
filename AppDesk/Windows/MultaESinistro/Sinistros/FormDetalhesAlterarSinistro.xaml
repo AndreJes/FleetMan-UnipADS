@@ -1,0 +1,109 @@
+﻿<Window x:Class="AppDesk.Windows.MultaESinistro.Sinistros.FormDetalhesAlterarSinistro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDesk.Windows.MultaESinistro.Sinistros"
+        mc:Ignorable="d"
+        Title="Detalhes do Sinistro" Height="500" Width="350" MaxHeight="500" MaxWidth="350" MinHeight="500" MinWidth="350">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+
+            <Label Style="{StaticResource MainLabelStyle}" FontSize="20">DETALHES DA MULTA</Label>
+            <GroupBox Grid.Row="1" Header="Dados da Multa">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="20*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}" Width="50">Código</Label>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="150" Text="{Binding CodSinistro}" IsEnabled="False"></TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">Envolvidos</Label>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="45" Text="{Binding QntEnvolvidos}" IsEnabled="False"></TextBox>
+                        <StackPanel Margin="5 0" Style="{StaticResource MainStackPanelStyle}">
+                            <Label Style="{StaticResource MainLabelStyle}">Gravidade</Label>
+                            <TextBox IsEnabled="False" x:Name="GravidadeInfracaoTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Gravidade, StringFormat=G}" Width="125">
+                            </TextBox>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">Pagamento</Label>
+                        <ComboBox x:Name="EstadoPagamentoSinistro" Width="130" SelectionChanged="EstadoPagamentoSinistro_SelectionChanged">
+                        </ComboBox>
+
+                        <Button x:Name="SalvarAlteracaoPagamentoBtn" Click="SalvarAlteracaoPagamentoBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0" IsEnabled="False">
+                            Salvar
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
+                        <Label Style="{StaticResource MainLabelStyle}">Data</Label>
+                        <DatePicker IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectedDate="{Binding DataSinistro}"></DatePicker>
+                    </StackPanel>
+                    <TabControl Grid.Row="4" Grid.RowSpan="3">
+                        <TabItem Header="Veiculo/Motorista">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <GroupBox Header="Dados do veiculo" Grid.Row="0">
+                                    <Grid>
+                                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                                            <Label Style="{StaticResource MainLabelStyle}">Placa</Label>
+                                            <TextBox IsEnabled="False" x:Name="VeiculoMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="115" Text="{Binding Veiculo.Placa, Mode=OneWay}"></TextBox>
+                                            <Button x:Name="DetalhesDoVeiculoBtn" Click="DetalhesDoVeiculoBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
+                                                Detalhes
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Header="Dados do motorista" Grid.Row="1" >
+                                    <Grid>
+                                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                                            <Label Style="{StaticResource MainLabelStyle}">CPF</Label>
+                                            <TextBox IsEnabled="False" x:Name="MotoristaMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120" Text="{Binding Motorista.CPFTxt, Mode=OneWay}"></TextBox>
+                                            <Button x:Name="DetalhesDoMotoristaBtn" Click="DetalhesDoMotoristaBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
+                                                Detalhes
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+
+                                </GroupBox>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Descrição">
+                            <Grid>
+                                <RichTextBox Margin="5 5 5 25" IsEnabled="False" x:Name="DescricaoSinistroTextBox">
+                                    <RichTextBox.Resources>
+                                        <Style TargetType="{x:Type Paragraph}">
+                                            <Setter Property="Margin" Value="0"/>
+                                        </Style>
+                                    </RichTextBox.Resources>
+                                </RichTextBox>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </GroupBox>
+
+            <Grid Grid.Row="2">
+                <Button x:Name="RemoverSinistroBtn" Click="RemoverSinistroBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                    REMOVER
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
