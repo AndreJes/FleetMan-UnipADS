@@ -86,8 +86,6 @@
                                                 <TextBox Style="{StaticResource MainTextBoxStyle}" IsEnabled="False" Width="80" Height="25" Text="{Binding Placa}" x:Name="VeiculoSelecionadoMultaTextBox"></TextBox>
                                             </StackPanel>
                                         </Grid>
-
-
                                     </Grid>
                                 </TabItem>
                                 <TabItem Header="Motorista">

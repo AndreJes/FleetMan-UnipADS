@@ -934,7 +934,7 @@
                                 Voltar
                             </Button>
 
-                            <Button  Grid.Column="1" Margin="20 10" FontSize="11">
+                            <Button x:Name="RegistrarViagemBtn" Click="RegistrarViagemBtn_Click"  Grid.Column="1" Margin="20 10" FontSize="11">
                                 Registrar Viagem
                             </Button>
                             <!--#endregion-->

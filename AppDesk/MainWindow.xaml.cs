@@ -26,6 +26,7 @@ using AppDesk.Windows.Motoristas;
 using AppDesk.Windows.MultaESinistro;
 using AppDesk.Windows.MultaESinistro.Multas;
 using AppDesk.Windows.MultaESinistro.Sinistros;
+using AppDesk.Windows.Viagens;
 
 namespace AppDesk
 {
@@ -171,6 +172,13 @@ namespace AppDesk
         {
             FormRegistrarMultaSinistro formRegistrarMultaSinistro = new FormRegistrarMultaSinistro();
             formRegistrarMultaSinistro.Show();
+        }
+
+
+        private void RegistrarViagemBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormRegistrarViagem formRegistrarViagem = new FormRegistrarViagem();
+            formRegistrarViagem.Show();
         }
         #endregion
 

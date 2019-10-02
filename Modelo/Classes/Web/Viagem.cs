@@ -14,10 +14,8 @@ namespace Modelo.Classes.Web
         public long? ViagemId { get; set; }
         public Endereco EnderecoOrigem { get; set; }
         public Endereco EnderecoDestino { get; set; }
-        public Garagem GaragemOrigem { get; set; }
-        public Garagem GaragemRetorno { get; set; }
         public DateTime DataSaida { get; set; }
-        public DateTime DataChegada { get; set; }
+        public DateTime? DataChegada { get; set; }
         public int QuantidadePassageiros { get; set; }
         public EstadosDeViagem EstadoDaViagem { get; set; }
 
@@ -26,5 +24,11 @@ namespace Modelo.Classes.Web
 
         public long? MotoristaId { get; set; }
         public Motorista Motorista { get; set; }
+
+        public long? GaragemOrigemId { get; set; }
+        public Garagem GaragemOrigem { get; set; }
+
+        public long? GaragemRetornoId { get; set; }
+        public Garagem GaragemRetorno { get; set; }
     }
 }

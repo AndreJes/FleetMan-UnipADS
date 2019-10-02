@@ -76,6 +76,14 @@
     <Compile Include="Migrations\201909171632079_Date-Sinistro.Designer.cs">
       <DependentUpon>201909171632079_Date-Sinistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910021709005_Update-Garagem-Associations-to-Viagem.cs" />
+    <Compile Include="Migrations\201910021709005_Update-Garagem-Associations-to-Viagem.Designer.cs">
+      <DependentUpon>201910021709005_Update-Garagem-Associations-to-Viagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910021713508_Update-Date-Viagem.cs" />
+    <Compile Include="Migrations\201910021713508_Update-Date-Viagem.Designer.cs">
+      <DependentUpon>201910021713508_Update-Date-Viagem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -103,6 +111,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909171632079_Date-Sinistro.resx">
       <DependentUpon>201909171632079_Date-Sinistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910021709005_Update-Garagem-Associations-to-Viagem.resx">
+      <DependentUpon>201910021709005_Update-Garagem-Associations-to-Viagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910021713508_Update-Date-Viagem.resx">
+      <DependentUpon>201910021713508_Update-Date-Viagem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,5 +16,15 @@ namespace Servicos.Web
         {
             return Context.ObterViagensOrdPorId();
         }
+
+        public Viagem ObterViagemPorId(long? id)
+        {
+            return Context.ObterViagemPorId(id);
+        }
+
+        public void GravarViagem(Viagem viagem)
+        {
+            Context.GravarViagem(viagem);
+        }
     }
 }
