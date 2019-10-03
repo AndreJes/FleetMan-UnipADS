@@ -99,7 +99,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Endereço">
+            <TabItem Header="Itinerário">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -107,7 +107,7 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
-                    <GroupBox x:Name="EnderecoOrigemGroupBox" Grid.Row="0" Header="Origem" IsEnabled="False">
+                    <GroupBox x:Name="EnderecoOrigemGroupBox" Grid.Row="0" Header="Origem" IsEnabled="True">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"/>

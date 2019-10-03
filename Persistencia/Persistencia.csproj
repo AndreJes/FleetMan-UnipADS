@@ -84,6 +84,14 @@
     <Compile Include="Migrations\201910021713508_Update-Date-Viagem.Designer.cs">
       <DependentUpon>201910021713508_Update-Date-Viagem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910031803500_Update-Viagem.cs" />
+    <Compile Include="Migrations\201910031803500_Update-Viagem.Designer.cs">
+      <DependentUpon>201910031803500_Update-Viagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910031830265_Post-Delete-Viagem.cs" />
+    <Compile Include="Migrations\201910031830265_Post-Delete-Viagem.Designer.cs">
+      <DependentUpon>201910031830265_Post-Delete-Viagem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -117,6 +125,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910021713508_Update-Date-Viagem.resx">
       <DependentUpon>201910021713508_Update-Date-Viagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910031803500_Update-Viagem.resx">
+      <DependentUpon>201910031803500_Update-Viagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910031830265_Post-Delete-Viagem.resx">
+      <DependentUpon>201910031830265_Post-Delete-Viagem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

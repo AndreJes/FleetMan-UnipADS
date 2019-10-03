@@ -17,7 +17,10 @@ namespace Persistencia.DAL.Web
 
         public Viagem ObterViagemPorId(long? id)
         {
-            return Context.Viagens.Where(v => v.ViagemId == id).FirstOrDefault();
+            Viagem viagem = Context.Viagens.Where(v => v.ViagemId == id).Include(v => v.Veiculo).Include(v => v.Motorista).FirstOrDefault();
+            viagem.GaragemOrigem = Context.Garagens.Where(g => g.GaragemId == viagem.GaragemOrigem_GaragemId).FirstOrDefault();
+            viagem.GaragemRetorno = Context.Garagens.Where(g => g.GaragemId == viagem.GaragemRetorno_GaragemId).FirstOrDefault();
+            return viagem;
         }
 
         public void GravarViagem(Viagem viagem)
@@ -30,6 +33,13 @@ namespace Persistencia.DAL.Web
             {
                 Context.Entry(viagem).State = EntityState.Modified;
             }
+            Context.SaveChanges();
+        }
+
+        public void RemoverViagemPorId(long? id)
+        {
+            Viagem viagem = ObterViagemPorId(id);
+            Context.Viagens.Remove(viagem);
             Context.SaveChanges();
         }
     }

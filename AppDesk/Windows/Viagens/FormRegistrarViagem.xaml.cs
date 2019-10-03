@@ -55,7 +55,7 @@ namespace AppDesk.Windows.Viagens
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Confirmar registro de viagem?", "Confirmar registro", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosViagem.GravarViagem(GerarViagem());
                 MessageBox.Show("Viagem registrada com sucesso!");
@@ -155,13 +155,13 @@ namespace AppDesk.Windows.Viagens
                 Bairro = BairroDestinoTextBox.Text,
                 UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfDestinoComboBox.SelectedItem.ToString())
             };
-            viagem.GaragemOrigemId = _veiculoSelecionado.Garagem.GaragemId;
-            viagem.GaragemRetornoId = (GaragemRetornoComboBox.SelectedItem as Modelo.Classes.Desk.Garagem).GaragemId;
+            viagem.GaragemOrigem_GaragemId = _veiculoSelecionado.Garagem.GaragemId;
+            viagem.GaragemRetorno_GaragemId = (GaragemRetornoComboBox.SelectedItem as Modelo.Classes.Desk.Garagem).GaragemId;
             viagem.DataSaida = DataSaidaDatePicker.DisplayDate;
             viagem.DataChegada = null;
             viagem.QuantidadePassageiros = int.Parse(QuantidadeDePassageirosTextBox.Text);
 
             return viagem;
+        }
     }
-}
 }

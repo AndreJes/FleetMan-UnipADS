@@ -26,5 +26,10 @@ namespace Servicos.Web
         {
             Context.GravarViagem(viagem);
         }
+
+        public void RemoverViagemPorId(long? id)
+        {
+            Context.RemoverViagemPorId(id);
+        }
     }
 }

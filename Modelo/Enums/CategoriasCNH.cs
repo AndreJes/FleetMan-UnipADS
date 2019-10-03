@@ -10,12 +10,12 @@ namespace Modelo.Enums
     {
         A,
         B,
-        C,
-        D,
-        E,
         AB,
+        C,
         AC,
+        D,
         AD,
+        E,
         AE
     }
 }

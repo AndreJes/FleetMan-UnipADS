@@ -996,6 +996,13 @@
                                 <DataGridTextColumn Header="ID" Binding="{Binding ViagemId}"/>
                                 <DataGridTextColumn Header="Saida Prevista" Binding="{Binding DataSaida}"/>
                                 <DataGridTextColumn Header="Passageiros" Binding="{Binding QuantidadePassageiros}" />
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="DetalhesViagemBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
@@ -1011,6 +1018,13 @@
                                 <DataGridTextColumn Header="Saida" Binding="{Binding Valor}"/>
                                 <DataGridTextColumn Header="Chegada Prevista" Binding="{Binding DataChegada}" />
                                 <DataGridTextColumn Header="Passageiros" Binding="{Binding QuantidadePassageiros}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="DetalhesViagemBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
@@ -1024,6 +1038,13 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding ViagemId}"/>
                                 <DataGridTextColumn Header="Data de Chegada" Binding="{Binding DataChegada}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="DetalhesViagemBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->

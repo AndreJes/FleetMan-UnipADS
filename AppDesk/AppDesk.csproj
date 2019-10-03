@@ -122,6 +122,9 @@
     <Compile Include="Windows\Veiculos\FormRegistrarVeiculo.xaml.cs">
       <DependentUpon>FormRegistrarVeiculo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Viagens\FormDetalhesAlterarViagem.xaml.cs">
+      <DependentUpon>FormDetalhesAlterarViagem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Viagens\FormRegistrarViagem.xaml.cs">
       <DependentUpon>FormRegistrarViagem.xaml</DependentUpon>
     </Compile>
@@ -210,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Veiculos\FormRegistrarVeiculo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Viagens\FormDetalhesAlterarViagem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

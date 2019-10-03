@@ -25,10 +25,10 @@ namespace Modelo.Classes.Web
         public long? MotoristaId { get; set; }
         public Motorista Motorista { get; set; }
 
-        public long? GaragemOrigemId { get; set; }
+        public long? GaragemOrigem_GaragemId { get; set; }
         public Garagem GaragemOrigem { get; set; }
 
-        public long? GaragemRetornoId { get; set; }
+        public long? GaragemRetorno_GaragemId { get; set; }
         public Garagem GaragemRetorno { get; set; }
     }
 }

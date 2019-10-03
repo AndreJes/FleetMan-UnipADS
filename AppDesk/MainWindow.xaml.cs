@@ -324,6 +324,31 @@ namespace AppDesk
             FormDetalhesAlterarSinistro formDetalhesAlterarSinistro = new FormDetalhesAlterarSinistro(sinistro);
             formDetalhesAlterarSinistro.Show();
         }
+
+        private void DetalhesViagemBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Viagem viagem = null;
+
+            if(ViagensAguardandoDataGrid.SelectedItem != null)
+            {
+                viagem = ServicoDados.ServicoDadosViagem.ObterViagemPorId((ViagensAguardandoDataGrid.SelectedItem as Viagem).ViagemId);
+            }
+            else if(ViagensEmAndamentoDataGrid.SelectedItem != null)
+            {
+                viagem = ServicoDados.ServicoDadosViagem.ObterViagemPorId((ViagensEmAndamentoDataGrid.SelectedItem as Viagem).ViagemId);
+            }
+            else if((ViagensConcluidasDataGrid.SelectedItem != null))
+            {
+                viagem = ServicoDados.ServicoDadosViagem.ObterViagemPorId((ViagensConcluidasDataGrid.SelectedItem as Viagem).ViagemId);
+            }
+
+            if(viagem != null)
+            {
+                FormDetalhesAlterarViagem formDetalhesAlterarViagem = new FormDetalhesAlterarViagem(viagem);
+                formDetalhesAlterarViagem.Show();
+            }
+        }
+
         #endregion
 
     }
