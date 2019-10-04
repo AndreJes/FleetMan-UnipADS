@@ -358,8 +358,21 @@ namespace AppDesk
 
         private void FinancasDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
-            FormDetalhesAlterarFinanca formDetalhesAlterarFinanca = new FormDetalhesAlterarFinanca();
-            formDetalhesAlterarFinanca.Show();
+            Financa financa = null;
+            if(FinancaEntradaDataGrid.SelectedItem != null)
+            {
+                financa = ServicoDados.ServicoDadosFinancas.ObterFinancaPorId((FinancaEntradaDataGrid.SelectedItem as Financa).FinancaId);
+            }
+            else if(FinancaSaidaDataGrid.SelectedItem != null)
+            {
+                financa = ServicoDados.ServicoDadosFinancas.ObterFinancaPorId((FinancaSaidaDataGrid.SelectedItem as Financa).FinancaId);
+            }
+
+            if(financa != null)
+            {
+                FormDetalhesAlterarFinanca formDetalhesAlterarFinanca = new FormDetalhesAlterarFinanca(financa);
+                formDetalhesAlterarFinanca.Show();
+            }
         }
         #endregion
 

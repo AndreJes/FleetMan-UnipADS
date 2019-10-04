@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:AppDesk.Windows.Financas"
         mc:Ignorable="d"
         Title="Detalhes da Finança"  Height="450" Width="400" MaxHeight="450" MaxWidth="400" MinHeight="450" MinWidth="400">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -24,27 +29,18 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
-            <GroupBox Grid.Row="0" Header="Tipo">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <RadioButton GroupName="TipoFinanca" x:Name="FinancaEntradaRadioBtn" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">Entrada</RadioButton>
-                    <RadioButton GroupName="TipoFinanca" x:Name="FinancaSaidaRadioBtn" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">Saida</RadioButton>
-                </Grid>
-            </GroupBox>
-
-            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                <Label Style="{StaticResource MainLabelStyle}">Tipo</Label>
+                <TextBox Text="{Binding Tipo}" Width="80"></TextBox>
                 <Label Style="{StaticResource MainLabelStyle}">Codigo</Label>
-                <TextBox x:Name="CodigoFinancaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170"></TextBox>
+                <TextBox Text="{Binding Codigo}" Width="150"></TextBox>
             </StackPanel>
 
-            <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
                 <Label Style="{StaticResource MainLabelStyle}">
                     Valor
                 </Label>
-                <TextBox x:Name="ValorFinancaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="80"></TextBox>
+                <TextBox x:Name="ValorFinancaTextBox" Text="{Binding Valor, StringFormat=F2}" Style="{StaticResource MainTextBoxStyle}" Width="80"></TextBox>
                 <Label Style="{StaticResource MainLabelStyle}">
                     Pagamento
                 </Label>
@@ -52,13 +48,13 @@
                 </ComboBox>
             </StackPanel>
 
-            <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
+            <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
                 <GroupBox Header="Data de Vencimento">
-                    <DatePicker x:Name="DataVencimentoDatePicker"></DatePicker>
+                    <DatePicker x:Name="DataVencimentoDatePicker" SelectedDate="{Binding DataVencimento}"></DatePicker>
                 </GroupBox>
                 <Border Margin="10"></Border>
                 <GroupBox Header="Data do Pagamento">
-                    <DatePicker x:Name="DataPagamentoDatePicker"></DatePicker>
+                    <DatePicker x:Name="DataPagamentoDatePicker" SelectedDate="{Binding DataPagamento}"></DatePicker>
                 </GroupBox>
             </StackPanel>
 
@@ -70,28 +66,28 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
                         <Label Style="{StaticResource MainLabelStyle}">Referente a</Label>
-                        <TextBox x:Name="ReferenciaFinancaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="240"></TextBox>
+                        <TextBox Text="{Binding Referente, Mode=OneWay}"  Width="240"></TextBox>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
                         <Label Style="{StaticResource MainLabelStyle}">Comentário</Label>
-                        <TextBox x:Name="ComentarioFinancaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="240"></TextBox>
+                        <TextBox Text="{Binding Comentario, Mode=OneWay}" Width="240"></TextBox>
                     </StackPanel>
                 </Grid>
             </GroupBox>
         </Grid>
 
         <Grid Grid.Row="2">
-            <Button>SALVAR ALTERAÇÕES</Button>
+            <Button x:Name="SalvarAlteracoesBtn" Click="SalvarAlteracoesBtn_Click" Margin="40 5" Background="LightGreen">SALVAR ALTERAÇÕES</Button>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="RegistrarBtn" Click="RegistrarBtn_Click" Grid.Row="3" Background="#FF6EE66E" Margin="5" HorizontalAlignment="Center">
-                REGISTRAR FINANÇA
+            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Grid.Row="3" Background="#FFE66E6E" Margin="5" HorizontalAlignment="Center">
+                REMOVER FINANÇA
             </Button>
-            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Grid.Row="3" Grid.Column="1" Background="#FFE66E6E" Margin="40 5">
+            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Grid.Row="3" Grid.Column="1" Background="Yellow" Margin="40 5">
                 CANCELAR
             </Button>
         </Grid>

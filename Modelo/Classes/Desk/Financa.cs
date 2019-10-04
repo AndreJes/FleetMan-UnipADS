@@ -42,11 +42,25 @@ namespace Modelo.Classes.Desk
         }
 
         [NotMapped]
-        public string DescricaoParcial
+        public string Referente
         {
             get
             {
-                return Descricao.Substring(0, Descricao.IndexOf('/'));
+                int index = 0;
+                index = Descricao.IndexOf('/');
+                return Descricao.Substring(0, index);
+            }
+        }
+
+        [NotMapped]
+        public string Comentario
+        {
+            get
+            {
+                int index = 0;
+                index = Descricao.IndexOf('/');
+                int index2 = Descricao.Length - 1;
+                return Descricao.Substring(index, index2);
             }
         }
         #endregion

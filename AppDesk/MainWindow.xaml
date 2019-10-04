@@ -1251,7 +1251,7 @@
                         <DataGrid x:Name="FinancaSaidaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
-                                <DataGridTextColumn Header="Descrição" Binding="{Binding DescricaoParcial}"/>
+                                <DataGridTextColumn Header="Descrição" Binding="{Binding Referente}"/>
                                 <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=N2}" />
                                 <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoPagamentoTxt}" />
                                 <DataGridTextColumn Header="Data vencimento" Binding="{Binding DataVencimento, StringFormat=\{0:MM/yyyy\}}" />
@@ -1274,7 +1274,7 @@
                         <DataGrid x:Name="FinancaEntradaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
-                                <DataGridTextColumn Header="Descrição" Binding="{Binding DescricaoParcial}"/>
+                                <DataGridTextColumn Header="Descrição" Binding="{Binding Referente}"/>
                                 <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=N2}" />
                                 <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoPagamentoTxt}" />
                                 <DataGridTextColumn Header="Data recebimento" Binding="{Binding DataPagamento, StringFormat=\{0:dd/MM/yyyy\}}" />
