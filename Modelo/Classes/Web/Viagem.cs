@@ -3,6 +3,7 @@ using Modelo.Classes.Desk;
 using Modelo.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,9 +27,13 @@ namespace Modelo.Classes.Web
         public Motorista Motorista { get; set; }
 
         public long? GaragemOrigem_GaragemId { get; set; }
+
+        [ForeignKey("GaragemOrigem_GaragemId")]
         public Garagem GaragemOrigem { get; set; }
 
         public long? GaragemRetorno_GaragemId { get; set; }
+
+        [ForeignKey("GaragemRetorno_GaragemId")]
         public Garagem GaragemRetorno { get; set; }
     }
 }

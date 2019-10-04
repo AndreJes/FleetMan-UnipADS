@@ -74,6 +74,12 @@
     <Compile Include="Windows\Cliente\FormRegistroCliente.xaml.cs">
       <DependentUpon>FormRegistroCliente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Financas\FormDetalhesAlterarFinanca.xaml.cs">
+      <DependentUpon>FormDetalhesAlterarFinanca.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Financas\FormRegistrarFinanca.xaml.cs">
+      <DependentUpon>FormRegistrarFinanca.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Garagem\FormAlterarGaragem.xaml.cs">
       <DependentUpon>FormAlterarGaragem.xaml</DependentUpon>
     </Compile>
@@ -149,6 +155,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Cliente\FormRegistroCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Financas\FormDetalhesAlterarFinanca.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Financas\FormRegistrarFinanca.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

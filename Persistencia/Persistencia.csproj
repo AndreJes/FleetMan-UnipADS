@@ -92,6 +92,14 @@
     <Compile Include="Migrations\201910031830265_Post-Delete-Viagem.Designer.cs">
       <DependentUpon>201910031830265_Post-Delete-Viagem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910041353061_New-ForeignKey-Association-Viagem.cs" />
+    <Compile Include="Migrations\201910041353061_New-ForeignKey-Association-Viagem.Designer.cs">
+      <DependentUpon>201910041353061_New-ForeignKey-Association-Viagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041622051_Codigo-Financa.cs" />
+    <Compile Include="Migrations\201910041622051_Codigo-Financa.Designer.cs">
+      <DependentUpon>201910041622051_Codigo-Financa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -131,6 +139,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910031830265_Post-Delete-Viagem.resx">
       <DependentUpon>201910031830265_Post-Delete-Viagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041353061_New-ForeignKey-Association-Viagem.resx">
+      <DependentUpon>201910041353061_New-ForeignKey-Association-Viagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041622051_Codigo-Financa.resx">
+      <DependentUpon>201910041622051_Codigo-Financa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

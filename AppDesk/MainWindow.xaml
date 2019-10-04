@@ -1202,8 +1202,8 @@
                                 Voltar
                             </Button>
 
-                            <Button  Grid.Column="1" Margin="20 10" FontSize="9">
-                                Registrar Multa/Sinistro
+                            <Button Grid.Column="1" Margin="20 10" FontSize="9" x:Name="RegistrarFinancaBtn" Click="RegistrarFinancaBtn_Click">
+                                Registrar Nova Finança
                             </Button>
                             <!--#endregion-->
 
@@ -1250,11 +1250,18 @@
                         <!--#region Saidas-->
                         <DataGrid x:Name="FinancaSaidaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Binding="{Binding FinancaId}"/>
-                                <DataGridTextColumn Header="Descrição" Binding="{Binding Descricao}"/>
+                                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
+                                <DataGridTextColumn Header="Descrição" Binding="{Binding DescricaoParcial}"/>
                                 <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=N2}" />
                                 <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoPagamentoTxt}" />
                                 <DataGridTextColumn Header="Data vencimento" Binding="{Binding DataVencimento, StringFormat=\{0:MM/yyyy\}}" />
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="FinancasDetailsBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
@@ -1266,11 +1273,18 @@
                         <!--#region Entradas-->
                         <DataGrid x:Name="FinancaEntradaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" Binding="{Binding FinancaId}"/>
-                                <DataGridTextColumn Header="Descrição" Binding="{Binding Descricao}"/>
+                                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
+                                <DataGridTextColumn Header="Descrição" Binding="{Binding DescricaoParcial}"/>
                                 <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=N2}" />
                                 <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoPagamentoTxt}" />
                                 <DataGridTextColumn Header="Data recebimento" Binding="{Binding DataPagamento, StringFormat=\{0:dd/MM/yyyy\}}" />
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="FinancasDetailsBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
 

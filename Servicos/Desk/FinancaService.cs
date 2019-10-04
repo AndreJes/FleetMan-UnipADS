@@ -16,5 +16,20 @@ namespace Servicos.Desk
         {
             return Context.ObterFinancasOrdPorId();
         }
+
+        public Financa ObterFinancaPorId(long? id)
+        {
+            return Context.ObterFinancaPorId(id);
+        }
+
+        public void GravarFinanca(Financa financa)
+        {
+            Context.GravarFinanca(financa);
+        }
+
+        public void RemoverFinancaPorId(long? id)
+        {
+            Context.RemoverFinancaPorId(id);
+        }
     }
 }

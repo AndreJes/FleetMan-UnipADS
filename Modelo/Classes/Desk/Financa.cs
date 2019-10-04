@@ -12,11 +12,12 @@ namespace Modelo.Classes.Desk
     {
         #region Props principais
         public long? FinancaId { get; set; }
+        public string Codigo { get; set; }
         public string Descricao { get; set; }
         public double Valor { get; set; }
         public DateTime? DataVencimento { get; set; }
         public DateTime? DataPagamento { get; set; }
-        public EstadosDePagamento EstadoPagamento{ get; set; }
+        public EstadosDePagamento EstadoPagamento { get; set; }
         public TipoDeFinanca Tipo { get; set; }
         #endregion
 
@@ -37,6 +38,15 @@ namespace Modelo.Classes.Desk
                     default:
                         return "Pagamento Inválido";
                 }
+            }
+        }
+
+        [NotMapped]
+        public string DescricaoParcial
+        {
+            get
+            {
+                return Descricao.Substring(0, Descricao.IndexOf('/'));
             }
         }
         #endregion
