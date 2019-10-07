@@ -17,7 +17,7 @@ namespace Persistencia.DAL.Web
 
         public Aluguel ObterAluguelPorId(long? id)
         {
-            return Context.Alugueis.Where(a => a.AluguelId == id).FirstOrDefault();
+            return Context.Alugueis.Where(a => a.AluguelId == id).Include(a => a.Cliente).Include(a => a.Veiculo).FirstOrDefault();
         }
 
         public void GravarAluguel(Aluguel aluguel)

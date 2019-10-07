@@ -1,0 +1,148 @@
+﻿<Window x:Class="AppDesk.Windows.Locacoes.FormDetalhesAlterarAluguel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDesk.Windows.Locacoes"
+        mc:Ignorable="d"
+        Title="Detalhes do Aluguel" Height="550" Width="400" MaxHeight="550" MaxWidth="400" MinHeight="550" MinWidth="400">
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource MainTextBoxStyle}">
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">DETALHES DA LOCAÇÃO</Label>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">Situação</Label>
+                    <TextBox Width="100" Text="{Binding EstadoAluguelTxt, Mode=OneWay}"></TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">Data da Contratação</Label>
+                    <DatePicker SelectedDate="{Binding DataContratacao}" >
+                    </DatePicker>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">Data de Vencimento</Label>
+                    <DatePicker SelectedDate="{Binding DataVencimento}">
+                    </DatePicker>
+                </StackPanel>
+
+                <GroupBox Grid.Row="3">
+                    <GroupBox.Header>
+                        <Grid HorizontalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Padding="0">Pagamento</Label>
+                            <Button Grid.Column="1" Margin="10 0 0 0" IsEnabled="False" x:Name="SalvarPagamentoBtn" Click="SalvarPagamentoBtn_Click">Salvar</Button>
+                        </Grid>
+                    </GroupBox.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Name="AguardandoPagamentoRadioBtn" Checked="PagamentoCheckChanged_Event" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" GroupName="PagamentoGroup">Aguardando</RadioButton>
+                        <RadioButton x:Name="PagoRadioBtn" Checked="PagamentoCheckChanged_Event" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" GroupName="PagamentoGroup">Pago</RadioButton>
+                        <RadioButton x:Name="VencidoRadioBtn" Checked="PagamentoCheckChanged_Event" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" GroupName="PagamentoGroup">Vencido</RadioButton>
+
+                    </Grid>
+                </GroupBox>
+            </Grid>
+
+            <GroupBox Header="Veiculo / Cliente" Grid.Row="1">
+                <TabControl>
+                    <TabItem Header="Veiculo">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                                <TextBox Width="200" Height="28" Text="{Binding Veiculo.Nome, Mode=OneWay}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">Placa</Label>
+                                <TextBox Width="100" Text="{Binding Veiculo.Placa, Mode=OneWay}"></TextBox>
+                            </StackPanel>
+
+                            <Button Grid.Row="2" Width="150" VerticalAlignment="Center" x:Name="DetalhesVeiculoBtn" Click="DetalhesVeiculoBtn_Click">
+                                Detalhes do veiculo
+                            </Button>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Cliente">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">Nome</Label>
+                                <TextBox Width="200" Height="28" Text="{Binding Cliente.Nome, Mode=OneWay}"></TextBox>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">CPF/CNPJ</Label>
+                                <TextBox Width="150" x:Name="CpfCnpjTextBox"></TextBox>
+                            </StackPanel>
+
+                            <Button Grid.Row="2" Width="150" VerticalAlignment="Center" x:Name="DetalhesClienteBtn" Click="DetalhesClienteBtn_Click">
+                                Detalhes do cliente
+                            </Button>
+                            
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </GroupBox>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CancelarLocacaoBtn" Click="CancelarLocacaoBtn_Click" Margin="20 5" Grid.Column="0" Background="#FFE4E414">
+                CANCELAR LOCAÇÃO
+            </Button>
+            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                REMOVER
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

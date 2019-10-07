@@ -381,6 +381,14 @@ namespace AppDesk
                 formDetalhesAlterarFinanca.Show();
             }
         }
+
+        private void AluguelDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Aluguel aluguel = ServicoDados.ServicoDadosAluguel.ObterAluguelPorId((LocacoesDataGrid.SelectedItem as Aluguel).AluguelId);
+            FormDetalhesAlterarAluguel formDetalhesAlterarAluguel = new FormDetalhesAlterarAluguel(aluguel);
+            formDetalhesAlterarAluguel.Show();
+        }
         #endregion
+
     }
 }

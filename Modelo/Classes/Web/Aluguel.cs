@@ -50,7 +50,7 @@ namespace Modelo.Classes.Web
                     case EstadosAluguel.CANCELADO:
                         return "Cancelado";
                     case EstadosAluguel.VENCIDO:
-                        return "Prazo vencido";
+                        return "Vencido";
                     default:
                         return "Estado não definido";
                 }

@@ -901,6 +901,13 @@
                                 <DataGridTextColumn Header="Data Vencimento" Binding="{Binding DataVencimento}"/>
                                 <DataGridTextColumn Header="Estado do pagamento" Binding="{Binding EstadoDoPagamento}"/>
                                 <DataGridTextColumn Header="Situação da locação" Binding="{Binding EstadoDoAluguel}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="AluguelDetailsBtn" Click="AluguelDetailsBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
