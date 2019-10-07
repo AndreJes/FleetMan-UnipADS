@@ -89,6 +89,9 @@
     <Compile Include="Windows\Garagem\FormRegistrarGaragem.xaml.cs">
       <DependentUpon>FormRegistrarGaragem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Locacoes\FormRegistrarAluguel.xaml.cs">
+      <DependentUpon>FormRegistrarAluguel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Motoristas\FormAlterarMotorista.xaml.cs">
       <DependentUpon>FormAlterarMotorista.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Garagem\FormRegistrarGaragem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Locacoes\FormRegistrarAluguel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

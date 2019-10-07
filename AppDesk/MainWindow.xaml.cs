@@ -28,6 +28,7 @@ using AppDesk.Windows.MultaESinistro.Multas;
 using AppDesk.Windows.MultaESinistro.Sinistros;
 using AppDesk.Windows.Viagens;
 using AppDesk.Windows.Financas;
+using AppDesk.Windows.Locacoes;
 
 namespace AppDesk
 {
@@ -186,6 +187,12 @@ namespace AppDesk
         {
             FormRegistrarFinanca formRegistrarFinanca = new FormRegistrarFinanca();
             formRegistrarFinanca.Show();
+        }
+
+        private void RegistrarAluguelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormRegistrarAluguel formRegistrarAluguel = new FormRegistrarAluguel();
+            formRegistrarAluguel.Show();
         }
         #endregion
 
@@ -375,6 +382,5 @@ namespace AppDesk
             }
         }
         #endregion
-
     }
 }

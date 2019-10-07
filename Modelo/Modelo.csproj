@@ -76,6 +76,7 @@
     <Compile Include="Enums\GravidadesDaInfracao.cs" />
     <Compile Include="Enums\GravidadesDeSinistro.cs" />
     <Compile Include="Enums\ItemSolicitacao.cs" />
+    <Compile Include="Enums\TipoCliente.cs" />
     <Compile Include="Enums\TipoDeFinanca.cs" />
     <Compile Include="Enums\TiposDeAviso.cs" />
     <Compile Include="Enums\TiposDeManutencao.cs" />

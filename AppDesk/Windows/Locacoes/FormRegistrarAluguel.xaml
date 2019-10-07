@@ -1,0 +1,164 @@
+﻿<Window x:Class="AppDesk.Windows.Locacoes.FormRegistrarAluguel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDesk.Windows.Locacoes"
+        mc:Ignorable="d"
+        Title="Registrar Nova Locação" Height="550" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">REGISTRAR NOVA LOCAÇÃO</Label>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="70*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">Data da Contratação</Label>
+                    <DatePicker x:Name="DataContratacaoDatePicker" IsTodayHighlighted="True">
+
+                    </DatePicker>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">Data de Vencimento</Label>
+                    <DatePicker x:Name="DataVencimentoDatePicker">
+
+                    </DatePicker>
+                </StackPanel>
+
+                <GroupBox Grid.Row="2" Header="Pagamento">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Name="AguardandoPagamentoRadioBtn" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" GroupName="PagamentoGroup">Aguardando</RadioButton>
+                        <RadioButton x:Name="PagoRadioBtn" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" GroupName="PagamentoGroup">Pago</RadioButton>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+
+            <GroupBox Header="Veiculo / Cliente" Grid.Row="1">
+                <TabControl>
+                    <TabItem Header="Veiculo" x:Name="VeiculoTabItem">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Grid.Row="0" x:Name="VeiculosDataGrid" Style="{StaticResource MainDataGridStyle}">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="Selecionar">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="SelecionarVeiculoBtn" Click="SelecionarVeiculoBtn_Click">Selecionar</Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="Placa" Binding="{Binding Placa}"/>
+                                    <DataGridTemplateColumn Header="Detalhes">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="DetalhesVeiculoBtn" Click="DetalhesVeiculoBtn_Click">Detalhes</Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">Pesquisar Placa</Label>
+                                <TextBox x:Name="PesquisarPlacaVeiculoTextBox" Style="{StaticResource MainTextBoxStyle}" Width="100"></TextBox>
+                                <Button x:Name="PesquisarVeiculoBtn" Click="PesquisarVeiculoBtn_Click">Pesquisar</Button>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">Veiculo Selecionado</Label>
+                                <TextBox Text="{Binding Placa}" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}" Width="100"></TextBox>
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Cliente" x:Name="ClienteTabItem">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <DataGrid Grid.Row="0" x:Name="ClientesDataGrid" Style="{StaticResource MainDataGridStyle}">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Header="Selecionar">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="SelecionarClienteBtn" Click="SelecionarClienteBtn_Click">Selecionar</Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="CPF" Binding="{Binding CPFTxt}"/>
+                                    <DataGridTextColumn Header="CNPJ" Binding="{Binding CNPJTxt}"/>
+                                    <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
+                                    <DataGridTemplateColumn Header="Detalhes">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="DetalhesClienteBtn" Click="DetalhesClienteBtn_Click">Detalhes</Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">Pesquisar</Label>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <RadioButton Grid.Row="0" GroupName="TipoCliente" x:Name="PFRadioBtn">PF</RadioButton>
+                                    <RadioButton Grid.Row="1" GroupName="TipoCliente" x:Name="PJRadioBtn">PJ</RadioButton>
+
+                                </Grid>
+                                <TextBox x:Name="PesquisarCPFClienteTextBox" Style="{StaticResource MainTextBoxStyle}" Width="130"></TextBox>
+                                <Button x:Name="PesquisarClienteBtn" Click="PesquisarClienteBtn_Click">Pesquisar</Button>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">Cliente Selecionado</Label>
+                                <TextBox Text="{Binding Nome}" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}" Width="200"></TextBox>
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </GroupBox>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="RegistrarBtn" Click="RegistrarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E">
+                REGISTRAR
+            </Button>
+            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                CANCELAR
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

@@ -825,7 +825,7 @@
                                 Voltar
                             </Button>
 
-                            <Button  Grid.Column="1" Margin="20 10" FontSize="11">
+                            <Button x:Name="RegistrarAluguelBtn" Click="RegistrarAluguelBtn_Click" Grid.Column="1" Margin="20 10" FontSize="11">
                                 Registrar Locação
                             </Button>
                             <!--#endregion-->

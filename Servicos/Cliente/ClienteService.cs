@@ -1,4 +1,5 @@
 ﻿using Modelo.Classes.Clientes;
+using Modelo.Enums;
 using Persistencia.DAL.Cliente;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,11 @@ namespace Servicos.Cliente
         public Modelo.Classes.Clientes.ClientePJ ObterClientePJPorId(long? id)
         {
             return Context.ObterClientePJPorId(id);
+        }
+
+        public Modelo.Classes.Clientes.Cliente ObterClientePorCPFCNPJ(string cpfcnpj, TipoCliente tipo)
+        {
+            return Context.ObterClientePorCPFCNPJ(cpfcnpj, tipo);
         }
 
         public void RemoverClientePorId(long? id)

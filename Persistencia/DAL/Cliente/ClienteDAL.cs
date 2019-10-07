@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo.Classes.Clientes;
+using Modelo.Enums;
 
 namespace Persistencia.DAL.Cliente
 {
@@ -28,9 +29,9 @@ namespace Persistencia.DAL.Cliente
 
         public void GravarCliente(Modelo.Classes.Clientes.Cliente cliente)
         {
-            if(cliente is ClientePF)
+            if (cliente is ClientePF)
             {
-                if(cliente.ClienteId == null)
+                if (cliente.ClienteId == null)
                 {
                     Context.ClientesPF.Add(cliente as ClientePF);
                 }
@@ -55,12 +56,25 @@ namespace Persistencia.DAL.Cliente
 
         public ClientePF ObterClientePFPorId(long? id)
         {
-          return Context.ClientesPF.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Motoristas).Include(c => c.Alugueis).FirstOrDefault();
+            return Context.ClientesPF.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Motoristas).Include(c => c.Alugueis).FirstOrDefault();
         }
 
         public ClientePJ ObterClientePJPorId(long? id)
         {
             return Context.ClientesPJ.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Alugueis).Include(c => c.Motoristas).FirstOrDefault();
+        }
+
+        public Modelo.Classes.Clientes.Cliente ObterClientePorCPFCNPJ(string cpfcnpj, TipoCliente tipo)
+        {
+            switch (tipo)
+            {
+                case TipoCliente.PF:
+                    return Context.ClientesPF.Where(c => c.CPF == cpfcnpj).FirstOrDefault();
+                case TipoCliente.PJ:
+                    return Context.ClientesPJ.Where(c => c.CNPJ == cpfcnpj).FirstOrDefault();
+                default:
+                    return null;
+            }
         }
 
         public void RemoverClientePorId(long? id)
