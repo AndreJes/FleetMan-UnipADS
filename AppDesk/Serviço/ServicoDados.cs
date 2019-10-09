@@ -1,6 +1,7 @@
 ﻿using Servicos.Cliente;
 using Servicos.Desk;
 using Servicos.Relatorios;
+using Servicos.Usuarios;
 using Servicos.Web;
 using System;
 using System.Collections.Generic;
@@ -25,5 +26,7 @@ namespace AppDesk.Serviço
         public static FuncionarioService ServicoDadosFuncionario = new FuncionarioService();
         public static RelatorioService ServicoDadosRelatorio = new RelatorioService();
         public static SeguroService ServicoDadosSeguro = new SeguroService();
+
+        public static UsuariosFuncService ServicoDadosUsuarioF = new UsuariosFuncService();
     }
 }

@@ -226,7 +226,7 @@
                                 <Image x:Name="FuncionarioBtnImage"/>
                             </Button>
                             <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                FUNCIONÁRIOS
+                                USUÁRIOS
                             </Label>
                         </StackPanel>
                         <!--#endregion-->
@@ -1327,8 +1327,8 @@
                                 Voltar
                             </Button>
 
-                            <Button  Grid.Column="1" Margin="20 10" FontSize="10">
-                                Registrar Funcionário
+                            <Button x:Name="RegistrarFuncionarioBtn" Click="RegistrarFuncionarioBtn_Click" Grid.Column="1" Margin="20 10" FontSize="10">
+                                Registrar Usuário
                             </Button>
                             <!--#endregion-->
                             <!--#region Pesquisa-->

@@ -59,6 +59,7 @@
     <Compile Include="DAL\Desk\SeguroDAL.cs" />
     <Compile Include="DAL\Desk\SinistroDAL.cs" />
     <Compile Include="DAL\Relatorios\RelatorioDAL.cs" />
+    <Compile Include="DAL\Usuarios\UsuariosFuncDAL.cs" />
     <Compile Include="DAL\Web\AluguelDAL.cs" />
     <Compile Include="DAL\Web\MotoristaDAL.cs" />
     <Compile Include="DAL\Web\SolicitacaoDAL.cs" />
@@ -100,12 +101,23 @@
     <Compile Include="Migrations\201910041622051_Codigo-Financa.Designer.cs">
       <DependentUpon>201910041622051_Codigo-Financa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910081633035_New-Permission-Type.cs" />
+    <Compile Include="Migrations\201910081633035_New-Permission-Type.Designer.cs">
+      <DependentUpon>201910081633035_New-Permission-Type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910081750236_Funcionario-RG.cs" />
+    <Compile Include="Migrations\201910081750236_Funcionario-RG.Designer.cs">
+      <DependentUpon>201910081750236_Funcionario-RG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910091618351_Permissoes-Viagens.cs" />
+    <Compile Include="Migrations\201910091618351_Permissoes-Viagens.Designer.cs">
+      <DependentUpon>201910091618351_Permissoes-Viagens.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\Manutencao\" />
-    <Folder Include="DAL\Usuarios\" />
     <Folder Include="Initializers\" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +157,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910041622051_Codigo-Financa.resx">
       <DependentUpon>201910041622051_Codigo-Financa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910081633035_New-Permission-Type.resx">
+      <DependentUpon>201910081633035_New-Permission-Type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910081750236_Funcionario-RG.resx">
+      <DependentUpon>201910081750236_Funcionario-RG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910091618351_Permissoes-Viagens.resx">
+      <DependentUpon>201910091618351_Permissoes-Viagens.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

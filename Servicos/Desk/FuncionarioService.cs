@@ -16,5 +16,25 @@ namespace Servicos.Desk
         {
             return Context.ObterFuncionariosOrdPorId();
         }
+
+        public Funcionario ObterFuncionarioPorId(long? id)
+        {
+            return Context.ObterFuncionarioPorId(id);
+        }
+
+        public Funcionario ObterFuncionarioPorCPF(string cpf)
+        {
+            return Context.ObterFuncionarioPorCPF(cpf);
+        }
+
+        public void GravarFuncionario(Funcionario funcionario)
+        {
+            Context.GravarFuncionario(funcionario);
+        }
+
+        public void RemoverFuncionarioPorId(long? id)
+        {
+            Context.RemoverFuncionarioPorId(id);
+        }
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="Desk\SinistroService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relatorios\RelatorioService.cs" />
+    <Compile Include="Usuarios\UsuariosFuncService.cs" />
     <Compile Include="Web\AluguelService.cs" />
     <Compile Include="Web\MotoristaService.cs" />
     <Compile Include="Web\SolicitacaoService.cs" />
@@ -58,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Manutencao\" />
-    <Folder Include="Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Modelo\Modelo.csproj">

@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Auxiliares\ConversorBoolNullable.cs" />
     <Compile Include="Classes\Auxiliares\Endereco.cs" />
     <Compile Include="Classes\Auxiliares\StringsFormatersExtentions.cs" />
     <Compile Include="Classes\Clientes\ClientePF.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Classes\Manutencao\Fornecedor.cs" />
     <Compile Include="Classes\Manutencao\Manutencao.cs" />
     <Compile Include="Classes\Manutencao\Peca.cs" />
+    <Compile Include="Classes\Usuarios\Permissoes\Funcoes.cs" />
     <Compile Include="Classes\Usuarios\Permissoes\Permissoes.cs" />
     <Compile Include="Classes\Usuarios\Usuario.cs" />
     <Compile Include="Classes\Usuarios\UsuarioFunc.cs" />
