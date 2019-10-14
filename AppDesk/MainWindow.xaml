@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
         xmlns:local="clr-namespace:AppDesk"
         mc:Ignorable="d"
         Title="FleetManV0.1" Height="640" Width="1080" MaxHeight="640" MinHeight="640" MaxWidth="1080" MinWidth="1080">
@@ -27,16 +28,15 @@
     <Grid x:Name="MainGrid">
 
         <!--#region Login Area-->
-        <Border Visibility="Hidden" x:Name="LogonGridBorder" BorderBrush="DarkRed" BorderThickness="1" Margin="50" Grid.Row="1">
+        <Border Visibility="Visible" x:Name="LogonGridBorder" BorderBrush="DarkRed" BorderThickness="1" Margin="50" Grid.Row="1">
             <Grid>
-
-
+                <uc:Login></uc:Login>
             </Grid>
         </Border>
         <!--#endregion-->
 
         <!--#region Main Content-->
-        <Border x:Name="MainContentBorder" Margin="10" BorderBrush="Gray" BorderThickness="3">
+        <Border Visibility="Hidden" x:Name="MainContentBorder" Margin="10" BorderBrush="Gray" BorderThickness="3">
             <Grid ShowGridLines="False">
                 <!--#region Row Definitions-->
                 <Grid.RowDefinitions>
@@ -1380,6 +1380,13 @@
                                 <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
                                 <DataGridTextColumn Header="Telefone" Binding="{Binding TelefoneTxt}"/>
                                 <DataGridTextColumn Header="E-mail" Binding="{Binding Email}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="FuncionarioDetailsBtn" Click="FuncionarioDetailsBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

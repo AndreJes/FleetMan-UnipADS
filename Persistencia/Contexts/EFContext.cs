@@ -48,7 +48,6 @@ namespace Persistencia.Contexts
         public DbSet<RelatorioViagem> RelatoriosViagens { get; set; }
         #endregion
         #region Usuarios
-        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<UsuarioFunc> UsuariosFuncionarios { get; set; }
         public DbSet<UsuarioCliente> UsuariosClientes { get; set; }
         public DbSet<UsuarioMotorista> UsuariosMotoristas { get; set; }

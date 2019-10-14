@@ -39,7 +39,7 @@ namespace AppDesk.Windows.Usuarios
 
             ServicoDados.ServicoDadosFuncionario.GravarFuncionario(funcionario);
 
-            UsuarioFunc usuario = ServicoDados.ServicoDadosUsuarioF.GerarUsuarioFunc(funcionario, permissoes);
+            UsuarioFunc usuario = GerarUsuario(funcionario, permissoes);
 
             ServicoDados.ServicoDadosUsuarioF.GravarUsuarioFunc(usuario);
 
@@ -104,6 +104,18 @@ namespace AppDesk.Windows.Usuarios
                 Cadastrar = ConversorBoolNullable.ConversorBooleano(cadastrar),
                 Remover = ConversorBoolNullable.ConversorBooleano(remover)
             };
+        }
+
+        private UsuarioFunc GerarUsuario(Funcionario funcionario, Permissoes permissoes)
+        {
+            UsuarioFunc usuario = new UsuarioFunc();
+
+            usuario.FuncionarioId = ServicoDados.ServicoDadosFuncionario.ObterFuncionarioPorCPF(funcionario.CPF).FuncionarioId;
+            usuario.Login = funcionario.Email;
+            usuario.Senha = funcionario.RG.Substring(0, 4);
+            usuario.Permissoes = permissoes;
+
+            return usuario;
         }
 
     }

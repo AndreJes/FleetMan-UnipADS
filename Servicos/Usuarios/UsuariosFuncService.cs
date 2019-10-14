@@ -14,7 +14,6 @@ namespace Servicos.Usuarios
     public class UsuariosFuncService
     {
         private UsuariosFuncDAL Context = new UsuariosFuncDAL();
-        private FuncionarioService FuncionariosService = new FuncionarioService();
 
         public IEnumerable<UsuarioFunc> ObterUsuariosFuncOrdPorId()
         {
@@ -31,32 +30,14 @@ namespace Servicos.Usuarios
             Context.GravarUsuarioFunc(usuario);
         }
 
+        public void AlterarUsuarioFunc(UsuarioFunc usuario)
+        {
+            Context.AlterarUsuarioFunc(usuario);
+        }
+
         public void RemoverUsuarioFuncPorId(long? id)
         {
             Context.RemoverUsuarioFuncPorId(id);
-        }
-
-        /// <summary>
-        /// Gera um usuário para o funcionario especificado
-        /// </summary>
-        /// <param name="funcionario">Funcionario que tera seu usuário gerado</param>
-        /// <param name="permissoes">Permissoes do usuário dentro do sistemas</param>
-        /// <returns>Retorna um objeto do tipo UsuarioFunc: com login igual ao Email do usuário, e senha igual aos 4 primeiros digitos do RG</returns>
-        public UsuarioFunc GerarUsuarioFunc(Funcionario funcionario, Permissoes permissoes)
-        {
-            UsuarioFunc usuario = new UsuarioFunc();
-            usuario.FuncionarioId = FuncionariosService.ObterFuncionarioPorCPF(funcionario.CPF).FuncionarioId;
-            usuario.Permissoes = permissoes;
-            usuario.Login = funcionario.Email;
-            usuario.Senha = funcionario.RG.Substring(0, 4);
-            if(usuario.FuncionarioId != null && usuario.Permissoes != null)
-            {
-                return usuario;
-            }
-            else
-            {
-                return null;
-            }
         }
     }
 }

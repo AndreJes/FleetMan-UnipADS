@@ -12,31 +12,30 @@ namespace Persistencia.DAL.Usuarios
     {
         public IEnumerable<UsuarioFunc> ObterUsuariosFuncOrdPorId()
         {
-            return Context.UsuariosFuncionarios.OrderBy(u => u.UsuarioId).ToList();
+            return Context.UsuariosFuncionarios.OrderBy(u => u.FuncionarioId).ToList();
         }
 
         public UsuarioFunc ObterUsuarioFuncPorId(long? id)
         {
-            return Context.UsuariosFuncionarios.Where(u => u.UsuarioId == id).Include(f => f.Funcionario).FirstOrDefault();
+            return Context.UsuariosFuncionarios.Where(u => u.FuncionarioId == id).Include(f => f.Funcionario).FirstOrDefault();
         }
 
         public void GravarUsuarioFunc(UsuarioFunc usuario)
         {
-            if (usuario.UsuarioId == null)
-            {
-                Context.UsuariosFuncionarios.Add(usuario);
-            }
-            else
-            {
-                Context.Entry(usuario).State = EntityState.Modified;
-            }
+            Context.UsuariosFuncionarios.Add(usuario);
+            Context.SaveChanges();
+        }
+
+        public void AlterarUsuarioFunc(UsuarioFunc usuario)
+        {
+            Context.Entry(usuario).State = EntityState.Modified;
             Context.SaveChanges();
         }
 
         public void RemoverUsuarioFuncPorId(long? id)
         {
             UsuarioFunc usuario = ObterUsuarioFuncPorId(id);
-            if(usuario != null)
+            if (usuario != null)
             {
                 Context.UsuariosFuncionarios.Remove(usuario);
                 Context.SaveChanges();

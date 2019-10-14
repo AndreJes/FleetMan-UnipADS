@@ -113,6 +113,10 @@
     <Compile Include="Migrations\201910091618351_Permissoes-Viagens.Designer.cs">
       <DependentUpon>201910091618351_Permissoes-Viagens.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910111608011_NewUser-PrimaryForeignKey.cs" />
+    <Compile Include="Migrations\201910111608011_NewUser-PrimaryForeignKey.Designer.cs">
+      <DependentUpon>201910111608011_NewUser-PrimaryForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910091618351_Permissoes-Viagens.resx">
       <DependentUpon>201910091618351_Permissoes-Viagens.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910111608011_NewUser-PrimaryForeignKey.resx">
+      <DependentUpon>201910111608011_NewUser-PrimaryForeignKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

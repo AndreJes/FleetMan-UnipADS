@@ -395,6 +395,13 @@ namespace AppDesk
             FormDetalhesAlterarAluguel formDetalhesAlterarAluguel = new FormDetalhesAlterarAluguel(aluguel);
             formDetalhesAlterarAluguel.Show();
         }
+
+        private void FuncionarioDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Funcionario funcionario = ServicoDados.ServicoDadosFuncionario.ObterFuncionarioPorId((FuncionariosDataGrid.SelectedItem as Funcionario).FuncionarioId);
+            FormAlterarDetalhesUsuario formAlterarDetalhesUsuario = new FormAlterarDetalhesUsuario(funcionario);
+            formAlterarDetalhesUsuario.Show();
+        }
         #endregion
 
     }
