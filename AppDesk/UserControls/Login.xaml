@@ -29,14 +29,14 @@
                 <Label Style="{StaticResource MainLabelStyle}">e-Mail</Label>
                 <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200"></TextBox>
             </StackPanel>
-            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Margin="10">
                 <Label Style="{StaticResource MainLabelStyle}">Senha</Label>
-                <PasswordBox x:Name="PassWordTextBox" Width="150" VerticalContentAlignment="Center"></PasswordBox>
+                <PasswordBox x:Name="PassWordTextBox" Width="150" VerticalContentAlignment="Center" ></PasswordBox>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <Button x:Name="LoginBtn" Click="LoginBtn_Click" Width="200" Height="50" FontSize="20">
+            <Button x:Name="LoginBtn" Click="LoginBtn_Click" IsDefault="True" Width="200" Height="50" FontSize="20">
                 ACESSAR SISTEMA
             </Button>
         </Grid>

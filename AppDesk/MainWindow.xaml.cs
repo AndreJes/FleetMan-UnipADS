@@ -412,7 +412,7 @@ namespace AppDesk
         }
         #endregion
 
-        #region Botão LogOut
+        #region Botões Usuarios
         private void LogoutBtn_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Deseja encerrar a sessão atual?", "Sair do sistema", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
@@ -423,6 +423,13 @@ namespace AppDesk
                 MessageBox.Show("Sessão encerrada!");
             }
         }
-        #endregion  
+
+        private void CurrentUserBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormAlterarDetalhesUsuario formAlterarDetalhes = new FormAlterarDetalhesUsuario(DesktopLoginControlService.Usuario.Funcionario);
+            formAlterarDetalhes.Show();
+        }
+        #endregion
+
     }
 }

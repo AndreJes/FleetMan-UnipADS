@@ -28,7 +28,7 @@
     <Grid x:Name="MainGrid">
 
         <!--#region Login Area-->
-        <Border x:Name="LogonGridBorder" BorderBrush="DarkRed" BorderThickness="1" Margin="50" Grid.Row="1">
+        <Border Visibility="Hidden" x:Name="LogonGridBorder" BorderBrush="DarkRed" BorderThickness="1" Margin="50" Grid.Row="1">
             <Grid>
                 <uc:Login x:Name="LoginField"></uc:Login>
             </Grid>
@@ -64,7 +64,7 @@
 
                         <StackPanel x:Name="UserInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
 
-                            <Button Margin="0 8" x:Name="CurrentUserBtn" Background="Transparent">
+                            <Button Margin="0 8" x:Name="CurrentUserBtn" Click="CurrentUserBtn_Click" Background="Transparent">
                                 <Image x:Name="UserImage" Height="20" Width="24"/>
                             </Button>
 

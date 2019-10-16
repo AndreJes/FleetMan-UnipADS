@@ -31,6 +31,7 @@ namespace AppDesk.UserControls
             if (Logar())
             {
                 MessageBox.Show("Login realizado com sucesso!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                PassWordTextBox.Password = string.Empty;
                 Application.Current.Windows.OfType<MainWindow>().First().StartSession();
             }
         }

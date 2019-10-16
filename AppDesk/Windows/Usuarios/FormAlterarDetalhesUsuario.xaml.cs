@@ -53,6 +53,7 @@ namespace AppDesk.Windows.Usuarios
             {
                 AlterarDadosFuncionario();
                 AlterarPermissoesUsuario();
+                ServicoDados.ServicoDadosUsuarioF.AlterarUsuarioFunc(_usuario);
                 MessageBox.Show("Dados alterados com sucesso!");
                 MainWindowUpdater.UpdateDataGrids();
             }
@@ -221,6 +222,7 @@ namespace AppDesk.Windows.Usuarios
                 if (NovaSenhaPassBox.Password == NovaSenhaConfirmPassBox.Password)
                 {
                     _usuario.Senha = NovaSenhaPassBox.Password;
+                    ServicoDados.ServicoDadosUsuarioF.AlterarUsuarioFunc(_usuario);
                     MessageBox.Show("Senha alterada com sucesso!");
                 }
                 else
