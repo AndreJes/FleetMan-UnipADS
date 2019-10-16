@@ -13,7 +13,7 @@ namespace Persistencia.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201909121510270_Initial"; }
+            get { return "201910161559405_Initial"; }
         }
         
         string IMigrationMetadata.Source

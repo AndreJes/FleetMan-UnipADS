@@ -3,42 +3,34 @@ namespace Persistencia.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Manutencao",
+                "dbo.Abastecimento",
                 c => new
                     {
-                        ManutencaoId = c.Long(nullable: false, identity: true),
+                        AbastecimentoId = c.Long(nullable: false, identity: true),
+                        QuantidadeAbastecida = c.Double(nullable: false),
+                        Valor = c.Double(nullable: false),
                         Local_Rua = c.String(),
                         Local_Numero = c.String(),
                         Local_Bairro = c.String(),
                         Local_Cidade = c.String(),
                         Local_CEP = c.String(),
                         Local_UF = c.Int(nullable: false),
-                        DataEntrada = c.DateTime(nullable: false),
-                        DataSaida = c.DateTime(nullable: false),
-                        Tipo = c.Int(nullable: false),
-                        EstadoAtual = c.Int(nullable: false),
-                        VeiculoId = c.Long(),
-                        QuantidadeAbastecida = c.Double(),
-                        Valor = c.Double(),
                         MotoristaId = c.Long(),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
+                        VeiculoId = c.Long(),
                         RelatorioConsumo_RelatorioId = c.Long(),
-                        RelatorioManutencao_RelatorioId = c.Long(),
                     })
-                .PrimaryKey(t => t.ManutencaoId)
-                .ForeignKey("dbo.Veiculo", t => t.VeiculoId)
+                .PrimaryKey(t => t.AbastecimentoId)
                 .ForeignKey("dbo.Motorista", t => t.MotoristaId)
+                .ForeignKey("dbo.Veiculo", t => t.VeiculoId)
                 .ForeignKey("dbo.RelatoriosConsumos", t => t.RelatorioConsumo_RelatorioId)
-                .ForeignKey("dbo.RelatoriosManutencao", t => t.RelatorioManutencao_RelatorioId)
-                .Index(t => t.VeiculoId)
                 .Index(t => t.MotoristaId)
-                .Index(t => t.RelatorioConsumo_RelatorioId)
-                .Index(t => t.RelatorioManutencao_RelatorioId);
+                .Index(t => t.VeiculoId)
+                .Index(t => t.RelatorioConsumo_RelatorioId);
             
             CreateTable(
                 "dbo.Motorista",
@@ -151,6 +143,32 @@ namespace Persistencia.Migrations
                 .PrimaryKey(t => t.GaragemId);
             
             CreateTable(
+                "dbo.Manutencao",
+                c => new
+                    {
+                        ManutencaoId = c.Long(nullable: false, identity: true),
+                        Local_Rua = c.String(),
+                        Local_Numero = c.String(),
+                        Local_Bairro = c.String(),
+                        Local_Cidade = c.String(),
+                        Local_CEP = c.String(),
+                        Local_UF = c.Int(nullable: false),
+                        NomeResponsavel = c.String(),
+                        CPFCNPJResponsavel = c.String(),
+                        DataEntrada = c.DateTime(nullable: false),
+                        DataSaida = c.DateTime(nullable: false),
+                        Tipo = c.Int(nullable: false),
+                        EstadoAtual = c.Int(nullable: false),
+                        VeiculoId = c.Long(),
+                        RelatorioManutencao_RelatorioId = c.Long(),
+                    })
+                .PrimaryKey(t => t.ManutencaoId)
+                .ForeignKey("dbo.Veiculo", t => t.VeiculoId)
+                .ForeignKey("dbo.RelatoriosManutencao", t => t.RelatorioManutencao_RelatorioId)
+                .Index(t => t.VeiculoId)
+                .Index(t => t.RelatorioManutencao_RelatorioId);
+            
+            CreateTable(
                 "dbo.Peca",
                 c => new
                     {
@@ -232,6 +250,7 @@ namespace Persistencia.Migrations
                         CodSinistro = c.String(),
                         Descricao = c.String(),
                         QntEnvolvidos = c.Int(nullable: false),
+                        DataSinistro = c.DateTime(nullable: false),
                         EstadoPagamento = c.Int(nullable: false),
                         Gravidade = c.Int(nullable: false),
                         VeiculoId = c.Long(),
@@ -264,7 +283,7 @@ namespace Persistencia.Migrations
                         EnderecoDestino_CEP = c.String(),
                         EnderecoDestino_UF = c.Int(nullable: false),
                         DataSaida = c.DateTime(nullable: false),
-                        DataChegada = c.DateTime(nullable: false),
+                        DataChegada = c.DateTime(),
                         QuantidadePassageiros = c.Int(nullable: false),
                         EstadoDaViagem = c.Int(nullable: false),
                         VeiculoId = c.Long(),
@@ -300,6 +319,7 @@ namespace Persistencia.Migrations
                 c => new
                     {
                         FinancaId = c.Long(nullable: false, identity: true),
+                        Codigo = c.String(),
                         Descricao = c.String(),
                         Valor = c.Double(nullable: false),
                         DataVencimento = c.DateTime(),
@@ -319,14 +339,15 @@ namespace Persistencia.Migrations
                         FuncionarioId = c.Long(nullable: false, identity: true),
                         Nome = c.String(),
                         CPF = c.String(),
+                        RG = c.String(),
+                        Email = c.String(),
+                        Telefone = c.String(),
                         Endereco_Rua = c.String(),
                         Endereco_Numero = c.String(),
                         Endereco_Bairro = c.String(),
                         Endereco_Cidade = c.String(),
                         Endereco_CEP = c.String(),
                         Endereco_UF = c.Int(nullable: false),
-                        Email = c.String(),
-                        Telefone = c.String(),
                     })
                 .PrimaryKey(t => t.FuncionarioId);
             
@@ -359,14 +380,92 @@ namespace Persistencia.Migrations
                 .Index(t => t.ClienteId);
             
             CreateTable(
-                "dbo.Usuario",
+                "dbo.UsuariosClientes",
                 c => new
                     {
-                        UsuarioId = c.Long(nullable: false, identity: true),
+                        ClienteId = c.Long(nullable: false),
                         Login = c.String(),
                         Senha = c.String(),
                     })
-                .PrimaryKey(t => t.UsuarioId);
+                .PrimaryKey(t => t.ClienteId)
+                .ForeignKey("dbo.Cliente", t => t.ClienteId)
+                .Index(t => t.ClienteId);
+            
+            CreateTable(
+                "dbo.UsuariosFuncionarios",
+                c => new
+                    {
+                        FuncionarioId = c.Long(nullable: false),
+                        Permissoes_Veiculos_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Veiculos_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Veiculos_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Veiculos_Remover = c.Boolean(nullable: false),
+                        Permissoes_Motoristas_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Motoristas_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Motoristas_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Motoristas_Remover = c.Boolean(nullable: false),
+                        Permissoes_Clientes_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Clientes_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Clientes_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Clientes_Remover = c.Boolean(nullable: false),
+                        Permissoes_Funcionarios_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Funcionarios_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Funcionarios_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Funcionarios_Remover = c.Boolean(nullable: false),
+                        Permissoes_Garagens_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Garagens_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Garagens_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Garagens_Remover = c.Boolean(nullable: false),
+                        Permissoes_Seguros_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Seguros_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Seguros_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Seguros_Remover = c.Boolean(nullable: false),
+                        Permissoes_Financeiro_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Financeiro_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Financeiro_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Financeiro_Remover = c.Boolean(nullable: false),
+                        Permissoes_Manutencoes_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Manutencoes_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Manutencoes_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Manutencoes_Remover = c.Boolean(nullable: false),
+                        Permissoes_MultasSinistros_Alterar = c.Boolean(nullable: false),
+                        Permissoes_MultasSinistros_Consultar = c.Boolean(nullable: false),
+                        Permissoes_MultasSinistros_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_MultasSinistros_Remover = c.Boolean(nullable: false),
+                        Permissoes_Solicitacoes_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Solicitacoes_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Solicitacoes_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Solicitacoes_Remover = c.Boolean(nullable: false),
+                        Permissoes_Relatorios_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Relatorios_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Relatorios_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Relatorios_Remover = c.Boolean(nullable: false),
+                        Permissoes_Locacoes_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Locacoes_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Locacoes_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Locacoes_Remover = c.Boolean(nullable: false),
+                        Permissoes_Viagens_Alterar = c.Boolean(nullable: false),
+                        Permissoes_Viagens_Consultar = c.Boolean(nullable: false),
+                        Permissoes_Viagens_Cadastrar = c.Boolean(nullable: false),
+                        Permissoes_Viagens_Remover = c.Boolean(nullable: false),
+                        Login = c.String(),
+                        Senha = c.String(),
+                    })
+                .PrimaryKey(t => t.FuncionarioId)
+                .ForeignKey("dbo.Funcionario", t => t.FuncionarioId)
+                .Index(t => t.FuncionarioId);
+            
+            CreateTable(
+                "dbo.UsuariosMotoristas",
+                c => new
+                    {
+                        MotoristaId = c.Long(nullable: false),
+                        Login = c.String(),
+                        Senha = c.String(),
+                    })
+                .PrimaryKey(t => t.MotoristaId)
+                .ForeignKey("dbo.Motorista", t => t.MotoristaId)
+                .Index(t => t.MotoristaId);
             
             CreateTable(
                 "dbo.ClientesPF",
@@ -450,67 +549,10 @@ namespace Persistencia.Migrations
                 .ForeignKey("dbo.Relatorio", t => t.RelatorioId)
                 .Index(t => t.RelatorioId);
             
-            CreateTable(
-                "dbo.UsuariosClientes",
-                c => new
-                    {
-                        UsuarioId = c.Long(nullable: false),
-                        ClienteId = c.Long(),
-                    })
-                .PrimaryKey(t => t.UsuarioId)
-                .ForeignKey("dbo.Usuario", t => t.UsuarioId)
-                .ForeignKey("dbo.Cliente", t => t.ClienteId)
-                .Index(t => t.UsuarioId)
-                .Index(t => t.ClienteId);
-            
-            CreateTable(
-                "dbo.UsuariosFuncionarios",
-                c => new
-                    {
-                        UsuarioId = c.Long(nullable: false),
-                        FuncionarioId = c.Long(),
-                        Permissoes_Veiculos = c.Boolean(nullable: false),
-                        Permissoes_Motoristas = c.Boolean(nullable: false),
-                        Permissoes_Clientes = c.Boolean(nullable: false),
-                        Permissoes_Funcionarios = c.Boolean(nullable: false),
-                        Permissoes_Garagens = c.Boolean(nullable: false),
-                        Permissoes_Seguros = c.Boolean(nullable: false),
-                        Permissoes_Financeiro = c.Boolean(nullable: false),
-                        Permissoes_Manutencoes = c.Boolean(nullable: false),
-                        Permissoes_MultasSinistros = c.Boolean(nullable: false),
-                        Permissoes_Solicitacoes = c.Boolean(nullable: false),
-                        Permissoes_Relatorios = c.Boolean(nullable: false),
-                        Permissoes_Locacoes = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.UsuarioId)
-                .ForeignKey("dbo.Usuario", t => t.UsuarioId)
-                .ForeignKey("dbo.Funcionario", t => t.FuncionarioId)
-                .Index(t => t.UsuarioId)
-                .Index(t => t.FuncionarioId);
-            
-            CreateTable(
-                "dbo.UsuariosMotoristas",
-                c => new
-                    {
-                        UsuarioId = c.Long(nullable: false),
-                        MotoristaId = c.Long(),
-                    })
-                .PrimaryKey(t => t.UsuarioId)
-                .ForeignKey("dbo.Usuario", t => t.UsuarioId)
-                .ForeignKey("dbo.Motorista", t => t.MotoristaId)
-                .Index(t => t.UsuarioId)
-                .Index(t => t.MotoristaId);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.UsuariosMotoristas", "MotoristaId", "dbo.Motorista");
-            DropForeignKey("dbo.UsuariosMotoristas", "UsuarioId", "dbo.Usuario");
-            DropForeignKey("dbo.UsuariosFuncionarios", "FuncionarioId", "dbo.Funcionario");
-            DropForeignKey("dbo.UsuariosFuncionarios", "UsuarioId", "dbo.Usuario");
-            DropForeignKey("dbo.UsuariosClientes", "ClienteId", "dbo.Cliente");
-            DropForeignKey("dbo.UsuariosClientes", "UsuarioId", "dbo.Usuario");
             DropForeignKey("dbo.RelatoriosViagens", "RelatorioId", "dbo.Relatorio");
             DropForeignKey("dbo.RelatoriosMultas", "RelatorioId", "dbo.Relatorio");
             DropForeignKey("dbo.RelatoriosManutencao", "RelatorioId", "dbo.Relatorio");
@@ -519,14 +561,18 @@ namespace Persistencia.Migrations
             DropForeignKey("dbo.RelatoriosAcidentes", "RelatorioId", "dbo.Relatorio");
             DropForeignKey("dbo.ClientesPJ", "ClienteId", "dbo.Cliente");
             DropForeignKey("dbo.ClientesPF", "ClienteId", "dbo.Cliente");
+            DropForeignKey("dbo.UsuariosMotoristas", "MotoristaId", "dbo.Motorista");
+            DropForeignKey("dbo.UsuariosFuncionarios", "FuncionarioId", "dbo.Funcionario");
+            DropForeignKey("dbo.UsuariosClientes", "ClienteId", "dbo.Cliente");
             DropForeignKey("dbo.Solicitacao", "ClienteId", "dbo.Cliente");
             DropForeignKey("dbo.Viagem", "RelatorioViagem_RelatorioId", "dbo.RelatoriosViagens");
             DropForeignKey("dbo.Sinistro", "RelatorioSinistros_RelatorioId", "dbo.RelatoriosAcidentes");
             DropForeignKey("dbo.Multa", "RelatorioMulta_RelatorioId", "dbo.RelatoriosMultas");
             DropForeignKey("dbo.Manutencao", "RelatorioManutencao_RelatorioId", "dbo.RelatoriosManutencao");
             DropForeignKey("dbo.Financa", "RelatorioFinanceiro_RelatorioId", "dbo.RelatoriosFinanceiros");
-            DropForeignKey("dbo.Manutencao", "RelatorioConsumo_RelatorioId", "dbo.RelatoriosConsumos");
-            DropForeignKey("dbo.Manutencao", "MotoristaId", "dbo.Motorista");
+            DropForeignKey("dbo.Abastecimento", "RelatorioConsumo_RelatorioId", "dbo.RelatoriosConsumos");
+            DropForeignKey("dbo.Abastecimento", "VeiculoId", "dbo.Veiculo");
+            DropForeignKey("dbo.Abastecimento", "MotoristaId", "dbo.Motorista");
             DropForeignKey("dbo.Viagem", "VeiculoId", "dbo.Veiculo");
             DropForeignKey("dbo.Viagem", "MotoristaId", "dbo.Motorista");
             DropForeignKey("dbo.Viagem", "GaragemRetorno_GaragemId", "dbo.Garagem");
@@ -544,12 +590,6 @@ namespace Persistencia.Migrations
             DropForeignKey("dbo.Veiculo", "GaragemId", "dbo.Garagem");
             DropForeignKey("dbo.Veiculo", "ClienteId", "dbo.Cliente");
             DropForeignKey("dbo.Aluguel", "ClienteId", "dbo.Cliente");
-            DropIndex("dbo.UsuariosMotoristas", new[] { "MotoristaId" });
-            DropIndex("dbo.UsuariosMotoristas", new[] { "UsuarioId" });
-            DropIndex("dbo.UsuariosFuncionarios", new[] { "FuncionarioId" });
-            DropIndex("dbo.UsuariosFuncionarios", new[] { "UsuarioId" });
-            DropIndex("dbo.UsuariosClientes", new[] { "ClienteId" });
-            DropIndex("dbo.UsuariosClientes", new[] { "UsuarioId" });
             DropIndex("dbo.RelatoriosViagens", new[] { "RelatorioId" });
             DropIndex("dbo.RelatoriosMultas", new[] { "RelatorioId" });
             DropIndex("dbo.RelatoriosManutencao", new[] { "RelatorioId" });
@@ -558,6 +598,9 @@ namespace Persistencia.Migrations
             DropIndex("dbo.RelatoriosAcidentes", new[] { "RelatorioId" });
             DropIndex("dbo.ClientesPJ", new[] { "ClienteId" });
             DropIndex("dbo.ClientesPF", new[] { "ClienteId" });
+            DropIndex("dbo.UsuariosMotoristas", new[] { "MotoristaId" });
+            DropIndex("dbo.UsuariosFuncionarios", new[] { "FuncionarioId" });
+            DropIndex("dbo.UsuariosClientes", new[] { "ClienteId" });
             DropIndex("dbo.Solicitacao", new[] { "ClienteId" });
             DropIndex("dbo.Financa", new[] { "RelatorioFinanceiro_RelatorioId" });
             DropIndex("dbo.Viagem", new[] { "RelatorioViagem_RelatorioId" });
@@ -573,19 +616,17 @@ namespace Persistencia.Migrations
             DropIndex("dbo.Multa", new[] { "VeiculoId" });
             DropIndex("dbo.Peca", new[] { "Manutencao_ManutencaoId" });
             DropIndex("dbo.Peca", new[] { "FornecedorId" });
+            DropIndex("dbo.Manutencao", new[] { "RelatorioManutencao_RelatorioId" });
+            DropIndex("dbo.Manutencao", new[] { "VeiculoId" });
             DropIndex("dbo.Veiculo", new[] { "SeguroId" });
             DropIndex("dbo.Veiculo", new[] { "ClienteId" });
             DropIndex("dbo.Veiculo", new[] { "GaragemId" });
             DropIndex("dbo.Aluguel", new[] { "ClienteId" });
             DropIndex("dbo.Aluguel", new[] { "VeiculoId" });
             DropIndex("dbo.Motorista", new[] { "ClienteId" });
-            DropIndex("dbo.Manutencao", new[] { "RelatorioManutencao_RelatorioId" });
-            DropIndex("dbo.Manutencao", new[] { "RelatorioConsumo_RelatorioId" });
-            DropIndex("dbo.Manutencao", new[] { "MotoristaId" });
-            DropIndex("dbo.Manutencao", new[] { "VeiculoId" });
-            DropTable("dbo.UsuariosMotoristas");
-            DropTable("dbo.UsuariosFuncionarios");
-            DropTable("dbo.UsuariosClientes");
+            DropIndex("dbo.Abastecimento", new[] { "RelatorioConsumo_RelatorioId" });
+            DropIndex("dbo.Abastecimento", new[] { "VeiculoId" });
+            DropIndex("dbo.Abastecimento", new[] { "MotoristaId" });
             DropTable("dbo.RelatoriosViagens");
             DropTable("dbo.RelatoriosMultas");
             DropTable("dbo.RelatoriosManutencao");
@@ -594,7 +635,9 @@ namespace Persistencia.Migrations
             DropTable("dbo.RelatoriosAcidentes");
             DropTable("dbo.ClientesPJ");
             DropTable("dbo.ClientesPF");
-            DropTable("dbo.Usuario");
+            DropTable("dbo.UsuariosMotoristas");
+            DropTable("dbo.UsuariosFuncionarios");
+            DropTable("dbo.UsuariosClientes");
             DropTable("dbo.Solicitacao");
             DropTable("dbo.Relatorio");
             DropTable("dbo.Funcionario");
@@ -606,12 +649,13 @@ namespace Persistencia.Migrations
             DropTable("dbo.Multa");
             DropTable("dbo.Fornecedor");
             DropTable("dbo.Peca");
+            DropTable("dbo.Manutencao");
             DropTable("dbo.Garagem");
             DropTable("dbo.Veiculo");
             DropTable("dbo.Aluguel");
             DropTable("dbo.Cliente");
             DropTable("dbo.Motorista");
-            DropTable("dbo.Manutencao");
+            DropTable("dbo.Abastecimento");
         }
     }
 }

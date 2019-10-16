@@ -65,57 +65,9 @@
     <Compile Include="DAL\Web\SolicitacaoDAL.cs" />
     <Compile Include="DAL\Web\VeiculoDAL.cs" />
     <Compile Include="DAL\Web\ViagemDAL.cs" />
-    <Compile Include="Migrations\201909121508002_InitialCreate.cs" />
-    <Compile Include="Migrations\201909121508002_InitialCreate.Designer.cs">
-      <DependentUpon>201909121508002_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909121510270_Initial.cs" />
-    <Compile Include="Migrations\201909121510270_Initial.Designer.cs">
-      <DependentUpon>201909121510270_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909171632079_Date-Sinistro.cs" />
-    <Compile Include="Migrations\201909171632079_Date-Sinistro.Designer.cs">
-      <DependentUpon>201909171632079_Date-Sinistro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021709005_Update-Garagem-Associations-to-Viagem.cs" />
-    <Compile Include="Migrations\201910021709005_Update-Garagem-Associations-to-Viagem.Designer.cs">
-      <DependentUpon>201910021709005_Update-Garagem-Associations-to-Viagem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910021713508_Update-Date-Viagem.cs" />
-    <Compile Include="Migrations\201910021713508_Update-Date-Viagem.Designer.cs">
-      <DependentUpon>201910021713508_Update-Date-Viagem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910031803500_Update-Viagem.cs" />
-    <Compile Include="Migrations\201910031803500_Update-Viagem.Designer.cs">
-      <DependentUpon>201910031803500_Update-Viagem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910031830265_Post-Delete-Viagem.cs" />
-    <Compile Include="Migrations\201910031830265_Post-Delete-Viagem.Designer.cs">
-      <DependentUpon>201910031830265_Post-Delete-Viagem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910041353061_New-ForeignKey-Association-Viagem.cs" />
-    <Compile Include="Migrations\201910041353061_New-ForeignKey-Association-Viagem.Designer.cs">
-      <DependentUpon>201910041353061_New-ForeignKey-Association-Viagem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910041622051_Codigo-Financa.cs" />
-    <Compile Include="Migrations\201910041622051_Codigo-Financa.Designer.cs">
-      <DependentUpon>201910041622051_Codigo-Financa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910081633035_New-Permission-Type.cs" />
-    <Compile Include="Migrations\201910081633035_New-Permission-Type.Designer.cs">
-      <DependentUpon>201910081633035_New-Permission-Type.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910081750236_Funcionario-RG.cs" />
-    <Compile Include="Migrations\201910081750236_Funcionario-RG.Designer.cs">
-      <DependentUpon>201910081750236_Funcionario-RG.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910091618351_Permissoes-Viagens.cs" />
-    <Compile Include="Migrations\201910091618351_Permissoes-Viagens.Designer.cs">
-      <DependentUpon>201910091618351_Permissoes-Viagens.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910111608011_NewUser-PrimaryForeignKey.cs" />
-    <Compile Include="Migrations\201910111608011_NewUser-PrimaryForeignKey.Designer.cs">
-      <DependentUpon>201910111608011_NewUser-PrimaryForeignKey.cs</DependentUpon>
+    <Compile Include="Migrations\201910161559405_Initial.cs" />
+    <Compile Include="Migrations\201910161559405_Initial.Designer.cs">
+      <DependentUpon>201910161559405_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,44 +87,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909121508002_InitialCreate.resx">
-      <DependentUpon>201909121508002_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909121510270_Initial.resx">
-      <DependentUpon>201909121510270_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909171632079_Date-Sinistro.resx">
-      <DependentUpon>201909171632079_Date-Sinistro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021709005_Update-Garagem-Associations-to-Viagem.resx">
-      <DependentUpon>201910021709005_Update-Garagem-Associations-to-Viagem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021713508_Update-Date-Viagem.resx">
-      <DependentUpon>201910021713508_Update-Date-Viagem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910031803500_Update-Viagem.resx">
-      <DependentUpon>201910031803500_Update-Viagem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910031830265_Post-Delete-Viagem.resx">
-      <DependentUpon>201910031830265_Post-Delete-Viagem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910041353061_New-ForeignKey-Association-Viagem.resx">
-      <DependentUpon>201910041353061_New-ForeignKey-Association-Viagem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910041622051_Codigo-Financa.resx">
-      <DependentUpon>201910041622051_Codigo-Financa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910081633035_New-Permission-Type.resx">
-      <DependentUpon>201910081633035_New-Permission-Type.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910081750236_Funcionario-RG.resx">
-      <DependentUpon>201910081750236_Funcionario-RG.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910091618351_Permissoes-Viagens.resx">
-      <DependentUpon>201910091618351_Permissoes-Viagens.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910111608011_NewUser-PrimaryForeignKey.resx">
-      <DependentUpon>201910111608011_NewUser-PrimaryForeignKey.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910161559405_Initial.resx">
+      <DependentUpon>201910161559405_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

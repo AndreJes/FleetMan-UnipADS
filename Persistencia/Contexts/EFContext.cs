@@ -33,10 +33,10 @@ namespace Persistencia.Contexts
         public DbSet<Sinistro> Sinistros { get; set; }
         #endregion
         #region Manutenção
-        public DbSet<Manutencao> Manutencoes { get; set; }
-        public DbSet<Abastecimento> Abastecimentos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Peca> Pecas { get; set; }
+        public DbSet<Manutencao> Manutencoes { get; set; }
+        public DbSet<Abastecimento> Abastecimentos { get; set; }
         #endregion
         #region Relatorios
         public DbSet<Relatorio> Relatorios { get; set; }
