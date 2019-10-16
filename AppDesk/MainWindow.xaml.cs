@@ -135,7 +135,7 @@ namespace AppDesk
         private void SegurosListBtn_Click(object sender, RoutedEventArgs e)
         {
             SegurosList SeguroWindow = Application.Current.Windows.OfType<SegurosList>().FirstOrDefault();
-            if(SeguroWindow == null)
+            if (SeguroWindow == null)
             {
                 SeguroWindow = new SegurosList();
                 SeguroWindow.Show();
@@ -358,20 +358,20 @@ namespace AppDesk
         {
             Viagem viagem = null;
 
-            if(ViagensAguardandoDataGrid.SelectedItem != null)
+            if (ViagensAguardandoDataGrid.SelectedItem != null)
             {
                 viagem = ServicoDados.ServicoDadosViagem.ObterViagemPorId((ViagensAguardandoDataGrid.SelectedItem as Viagem).ViagemId);
             }
-            else if(ViagensEmAndamentoDataGrid.SelectedItem != null)
+            else if (ViagensEmAndamentoDataGrid.SelectedItem != null)
             {
                 viagem = ServicoDados.ServicoDadosViagem.ObterViagemPorId((ViagensEmAndamentoDataGrid.SelectedItem as Viagem).ViagemId);
             }
-            else if((ViagensConcluidasDataGrid.SelectedItem != null))
+            else if ((ViagensConcluidasDataGrid.SelectedItem != null))
             {
                 viagem = ServicoDados.ServicoDadosViagem.ObterViagemPorId((ViagensConcluidasDataGrid.SelectedItem as Viagem).ViagemId);
             }
 
-            if(viagem != null)
+            if (viagem != null)
             {
                 FormDetalhesAlterarViagem formDetalhesAlterarViagem = new FormDetalhesAlterarViagem(viagem);
                 formDetalhesAlterarViagem.Show();
@@ -381,16 +381,16 @@ namespace AppDesk
         private void FinancasDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
             Financa financa = null;
-            if(FinancaEntradaDataGrid.SelectedItem != null)
+            if (FinancaEntradaDataGrid.SelectedItem != null)
             {
                 financa = ServicoDados.ServicoDadosFinancas.ObterFinancaPorId((FinancaEntradaDataGrid.SelectedItem as Financa).FinancaId);
             }
-            else if(FinancaSaidaDataGrid.SelectedItem != null)
+            else if (FinancaSaidaDataGrid.SelectedItem != null)
             {
                 financa = ServicoDados.ServicoDadosFinancas.ObterFinancaPorId((FinancaSaidaDataGrid.SelectedItem as Financa).FinancaId);
             }
 
-            if(financa != null)
+            if (financa != null)
             {
                 FormDetalhesAlterarFinanca formDetalhesAlterarFinanca = new FormDetalhesAlterarFinanca(financa);
                 formDetalhesAlterarFinanca.Show();
@@ -412,5 +412,17 @@ namespace AppDesk
         }
         #endregion
 
+        #region Botão LogOut
+        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Deseja encerrar a sessão atual?", "Sair do sistema", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                DesktopLoginControlService.Deslogar();
+                MainContentBorder.Visibility = Visibility.Collapsed;
+                LogonGridBorder.Visibility = Visibility.Visible;
+                MessageBox.Show("Sessão encerrada!");
+            }
+        }
+        #endregion  
     }
 }

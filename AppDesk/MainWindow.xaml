@@ -71,7 +71,7 @@
                             <Label Content="{Binding Funcionario.CPFTxt}" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
                             <Label Content="{Binding Funcionario.Nome}" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
 
-                            <Button Margin="0 8 20 8">
+                            <Button Margin="0 8 20 8" x:Name="LogoutBtn" Click="LogoutBtn_Click">
                                 Logout
                                 <!--Colocar Imagem do simbolo de desligar-->
                             </Button>
