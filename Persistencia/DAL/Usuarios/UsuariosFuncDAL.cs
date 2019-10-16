@@ -20,6 +20,11 @@ namespace Persistencia.DAL.Usuarios
             return Context.UsuariosFuncionarios.Where(u => u.FuncionarioId == id).Include(f => f.Funcionario).FirstOrDefault();
         }
 
+        public UsuarioFunc ObterUsuarioFuncPorEmail(string email)
+        {
+            return Context.UsuariosFuncionarios.Where(u => u.Login == email).Include(f => f.Funcionario).FirstOrDefault();
+        }
+
         public void GravarUsuarioFunc(UsuarioFunc usuario)
         {
             Context.UsuariosFuncionarios.Add(usuario);

@@ -25,6 +25,11 @@ namespace Servicos.Usuarios
             return Context.ObterUsuarioFuncPorId(id);
         }
 
+        public UsuarioFunc ObterUsuarioFuncPorEmail(string email)
+        {
+            return Context.ObterUsuarioFuncPorEmail(email);
+        }
+
         public void GravarUsuarioFunc(UsuarioFunc usuario)
         {
             Context.GravarUsuarioFunc(usuario);

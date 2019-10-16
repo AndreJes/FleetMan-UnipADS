@@ -42,7 +42,8 @@ namespace AppDesk
         {
             InitializeComponent();
             PopulateDataGrid();
-            GotoMainMenu();
+            LogonGridBorder.Visibility = Visibility.Visible;
+            MainContentBorder.Visibility = Visibility.Collapsed;
         }
 
         #region Botão de Voltar Ao Menu Principal
@@ -285,6 +286,13 @@ namespace AppDesk
             #endregion
         }
 
+        public void StartSession()
+        {
+            UserInfoPanel.DataContext = DesktopLoginControlService.Usuario;
+            LogonGridBorder.Visibility = Visibility.Collapsed;
+            MainContentBorder.Visibility = Visibility.Visible;
+            GotoMainMenu();
+        }
         #endregion
 
         #region Botões de detalhes

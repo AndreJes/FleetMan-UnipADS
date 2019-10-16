@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Serviço\DesktopLoginControlService.cs" />
     <Compile Include="Serviço\ServicoDados.cs" />
     <Compile Include="Tools\HexaColorPicker.cs" />
     <Compile Include="Tools\MainWindowUpdater.cs" />
