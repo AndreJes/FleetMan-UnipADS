@@ -17,7 +17,7 @@ namespace AppDesk.Serviço
             UsuarioFunc usuarioFunc = ServicoDados.ServicoDadosUsuarioF.ObterUsuarioFuncPorEmail(email);
             if(usuarioFunc != null)
             {
-                if(usuarioFunc.Senha == senha)
+                if(usuarioFunc.Senha.Equals(senha))
                 {
                     Usuario = usuarioFunc;
                     return true;

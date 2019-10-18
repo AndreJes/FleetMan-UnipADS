@@ -131,6 +131,14 @@ namespace AppDesk
             FuncionariosGrid.Visibility = Visibility.Visible;
         }
 
+        //Botão de acesso a lista  de MANUTENÇÕES
+        private void ManutencaoMainMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
+            ManutencoesGrid.Visibility = Visibility.Visible;
+        }
+
+
         //Botão de acesso a lista de Seguros
         private void SegurosListBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -225,6 +233,7 @@ namespace AppDesk
             FinancasGrid.Visibility = Visibility.Collapsed;
             FuncionariosGrid.Visibility = Visibility.Collapsed;
             RelatoriosGrid.Visibility = Visibility.Collapsed;
+            ManutencoesGrid.Visibility = Visibility.Collapsed;
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
         }
 
@@ -431,5 +440,14 @@ namespace AppDesk
         }
         #endregion
 
+        private void RegistrarManutencaoBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AbastecimentosListBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

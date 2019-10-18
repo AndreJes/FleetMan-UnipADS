@@ -21,12 +21,12 @@ namespace Modelo.Classes.Manutencao
         public string CPFCNPJResponsavel { get; set; }
 
         public DateTime DataEntrada { get; set; }
-        public DateTime DataSaida { get; set; }
+        public DateTime? DataSaida { get; set; }
 
         public TiposDeManutencao Tipo { get; set; }
         public EstadosDeManutencao EstadoAtual { get; set; }
 
-        public List<Peca> PecasUtilizadas { get; set; }
+        public virtual ICollection<Peca> PecasUtilizadas { get; set; }
 
         public long? VeiculoId { get; set; }
         public Veiculo Veiculo { get; set; }

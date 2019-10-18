@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201910161559405_Initial.Designer.cs">
       <DependentUpon>201910161559405_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910181743385_Manutencao-Association-Virtual.cs" />
+    <Compile Include="Migrations\201910181743385_Manutencao-Association-Virtual.Designer.cs">
+      <DependentUpon>201910181743385_Manutencao-Association-Virtual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,6 +93,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201910161559405_Initial.resx">
       <DependentUpon>201910161559405_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910181743385_Manutencao-Association-Virtual.resx">
+      <DependentUpon>201910181743385_Manutencao-Association-Virtual.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
