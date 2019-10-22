@@ -32,6 +32,7 @@ using AppDesk.Windows.Locacoes;
 using AppDesk.Windows.Usuarios;
 using AppDesk.Windows.Fornecedores;
 using AppDesk.Windows.Estoque;
+using Modelo.Classes.Manutencao;
 
 namespace AppDesk
 {
@@ -159,7 +160,7 @@ namespace AppDesk
         private void FornecedoresListBtn_Click(object sender, RoutedEventArgs e)
         {
             FormFornecedoresList formFornecedoresList = Application.Current.Windows.OfType<FormFornecedoresList>().FirstOrDefault();
-            if(formFornecedoresList == null)
+            if (formFornecedoresList == null)
             {
                 formFornecedoresList = new FormFornecedoresList();
                 formFornecedoresList.Show();
@@ -456,6 +457,13 @@ namespace AppDesk
             FormAlterarDetalhesUsuario formAlterarDetalhesUsuario = new FormAlterarDetalhesUsuario(funcionario);
             formAlterarDetalhesUsuario.Show();
         }
+
+        private void PecaDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Peca peca = ServicoDados.ServicoDadosPeca.ObterPecaPorId((PecasDataGrid.SelectedItem as Peca).PecaId);
+            FormDetalhesAlterarPeca formDetalhesAlterarPeca = new FormDetalhesAlterarPeca(peca);
+            formDetalhesAlterarPeca.Show();
+        }
         #endregion
 
         #region Botões Usuarios
@@ -486,11 +494,6 @@ namespace AppDesk
         {
             ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
             EstoqueGrid.Visibility = Visibility.Visible;
-        }
-
-        private void PecaDetailsBtn_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

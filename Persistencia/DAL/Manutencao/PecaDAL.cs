@@ -17,7 +17,7 @@ namespace Persistencia.DAL.Manutencao
 
         public Peca ObterPecaPorId(long? id)
         {
-            return Context.Pecas.Where(p => p.PecaId == id).FirstOrDefault();
+            return Context.Pecas.Where(p => p.PecaId == id).Include(p => p.Fornecedor).FirstOrDefault();
         }
 
         public void GravarPeca(Peca peca)

@@ -19,7 +19,7 @@ namespace Servicos.Manutencao
 
         public Peca ObterPecaPorId(long? id)
         {
-            return ObterPecaPorId(id);
+            return Context.ObterPecaPorId(id);
         }
 
         public void GravarPeca(Peca peca)

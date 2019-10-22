@@ -1,4 +1,5 @@
 ﻿using AppDesk.Serviço;
+using AppDesk.Windows.Estoque;
 using Modelo.Classes.Auxiliares;
 using Modelo.Classes.Manutencao;
 using Modelo.Enums;
@@ -39,6 +40,7 @@ namespace AppDesk.Windows.Fornecedores
             {
                 EnderecoUC.UfComboBox.SelectedItem = _fornecedor.Endereco.UF.ToString("G");
             }
+            PecasDataGrid.ItemsSource = _fornecedor.Pecas;
         }
 
 
@@ -76,6 +78,13 @@ namespace AppDesk.Windows.Fornecedores
                 MessageBox.Show("Fornecedor alterado com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 Application.Current.Windows.OfType<FormFornecedoresList>().FirstOrDefault().FornecedoresDataGrid.ItemsSource = ServicoDados.ServicoDadosFornecedor.ObterFornecedoresOrdPorId();
             }
+        }
+
+        private void PecaDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Peca peca = ServicoDados.ServicoDadosPeca.ObterPecaPorId((PecasDataGrid.SelectedItem as Peca).PecaId);
+            FormDetalhesAlterarPeca formDetalhesAlterarPeca = new FormDetalhesAlterarPeca(peca);
+            formDetalhesAlterarPeca.Show();
         }
     }
 }
