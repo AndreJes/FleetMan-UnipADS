@@ -1,4 +1,5 @@
 ﻿using AppDesk.Serviço;
+using Modelo.Classes.Manutencao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,9 @@ namespace AppDesk.Windows.Fornecedores
 
         private void DetalhesFornecedorBtn_Click(object sender, RoutedEventArgs e)
         {
-            FormDetalhesAlterarFornecedor formDetalhesAlterarFornecedor = new FormDetalhesAlterarFornecedor();
+            FormDetalhesAlterarFornecedor formDetalhesAlterarFornecedor = new FormDetalhesAlterarFornecedor(
+                ServicoDados.ServicoDadosFornecedor.ObterFornecedorPorId((FornecedoresDataGrid.SelectedItem as Fornecedor).FornecedorId)
+                );
             formDetalhesAlterarFornecedor.Show();
         }
 

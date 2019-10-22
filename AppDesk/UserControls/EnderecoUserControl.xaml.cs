@@ -1,4 +1,5 @@
-﻿using Modelo.Enums;
+﻿using Modelo.Classes.Auxiliares;
+using Modelo.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

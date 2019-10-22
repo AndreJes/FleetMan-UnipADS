@@ -4,9 +4,89 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Fornecedores"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
         mc:Ignorable="d"
-        Title="FormDetalhesAlterarFornecedor" Height="450" Width="800">
+        Title="Detalhes Fornecedor" Height="550" Width="450" MinHeight="550" MinWidth="450" MaxHeight="550" MaxWidth="450">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">DETALHES DO FORNECEDOR</Label>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Dados">
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="0" Header="Informações">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">CNPJ</Label>
+                                <TextBox x:Name="CNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding CNPJ}" IsEnabled="False" Width="150"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">Razão Social</Label>
+                                <TextBox x:Name="RazaoSocialTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Razao_Social}" Width="150"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">e-Mail</Label>
+                                <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Email}" Width="150"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
+                                <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
+                                <TextBox x:Name="TelefoneTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Telefone}" Width="120"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="4" Style="{StaticResource MainStackPanelStyle}">
+                                <CheckBox x:Name="LojaVirtualCheckBox" IsChecked="{Binding LojaVirtual}" Checked="LojaVirtualCheckBox_Toggle" Unchecked="LojaVirtualCheckBox_Toggle">Loja Virtual</CheckBox>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="1" Header="Endereço">
+                        <uc:EnderecoUserControl x:Name="EnderecoUC"/>
+                    </GroupBox>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Lista de Peças">
+                
+            </TabItem>
+        </TabControl>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="SalvarAlteracoesBtn" Click="SalvarAlteracoesBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+                SALVAR ALTEÇÕES
+            </Button>
+
+            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                REMOVER
+            </Button>
+            
+            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Margin="20 5" Grid.Column="2" Background="#FFE4CD3D">
+                CANCELAR
+            </Button>
+        </Grid>
     </Grid>
 </Window>

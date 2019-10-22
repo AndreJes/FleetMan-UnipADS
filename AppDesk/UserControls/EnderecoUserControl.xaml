@@ -14,26 +14,26 @@
         <!--#region Rua / Nº-->
         <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
             <Label Style="{StaticResource MainLabelStyle}">Endereço</Label>
-            <TextBox x:Name="RuaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170"></TextBox>
+            <TextBox x:Name="RuaTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Rua}" Width="170"></TextBox>
             <Label Style="{StaticResource MainLabelStyle}" Width="45">Nº</Label>
-            <TextBox x:Name="NumeroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="60"></TextBox>
+            <TextBox x:Name="NumeroTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Numero}" Width="60"></TextBox>
         </StackPanel>
         <!--#endregion-->
         <!--#region Cidade/ UF-->
         <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
             <Label Style="{StaticResource MainLabelStyle}">Cidade</Label>
-            <TextBox x:Name="CidadeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="192"></TextBox>
+            <TextBox x:Name="CidadeTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Cidade}" Width="192"></TextBox>
             <Label Style="{StaticResource MainLabelStyle}" Width="45">UF</Label>
-            <ComboBox x:Name="UfComboBox" Width="50">
+            <ComboBox x:Name="UfComboBox" SelectedItem="{Binding UF, StringFormat=G}" Width="50">
             </ComboBox>
         </StackPanel>
         <!--#endregion-->
         <!--#region Bairro/ CEP-->
         <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
             <Label Style="{StaticResource MainLabelStyle}" Width="45">CEP</Label>
-            <TextBox x:Name="CEPTextBox" Style="{StaticResource MainTextBoxStyle}" Width="93"></TextBox>
+            <TextBox x:Name="CEPTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding CEP}" Width="93"></TextBox>
             <Label Style="{StaticResource MainLabelStyle}">Bairro</Label>
-            <TextBox x:Name="BairroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="155"></TextBox>
+            <TextBox x:Name="BairroTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Bairro}" Width="155"></TextBox>
         </StackPanel>
         <!--#endregion-->
     </Grid>

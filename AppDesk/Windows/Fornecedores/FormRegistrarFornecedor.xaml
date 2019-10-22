@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AppDesk.Windows.Fornecedores"
         xmlns:uc="clr-namespace:AppDesk.UserControls"
         mc:Ignorable="d"
-        Title="Registrar Fornecedor" Height="550" Width="450">
+        Title="Registrar Fornecedor" Height="550" Width="450" MaxHeight="550" MinHeight="550" MaxWidth="450" MinWidth="450">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
