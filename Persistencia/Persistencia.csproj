@@ -61,6 +61,7 @@
     <Compile Include="DAL\Desk\SeguroDAL.cs" />
     <Compile Include="DAL\Desk\SinistroDAL.cs" />
     <Compile Include="DAL\Manutencao\FornecedorDAL.cs" />
+    <Compile Include="DAL\Manutencao\PecaDAL.cs" />
     <Compile Include="DAL\Relatorios\RelatorioDAL.cs" />
     <Compile Include="DAL\Usuarios\UsuariosFuncDAL.cs" />
     <Compile Include="DAL\Web\AluguelDAL.cs" />
@@ -79,6 +80,14 @@
     <Compile Include="Migrations\201910221357012_Fornecedor-Peca-Virtual.cs" />
     <Compile Include="Migrations\201910221357012_Fornecedor-Peca-Virtual.Designer.cs">
       <DependentUpon>201910221357012_Fornecedor-Peca-Virtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910221653226_Lote-Peca.cs" />
+    <Compile Include="Migrations\201910221653226_Lote-Peca.Designer.cs">
+      <DependentUpon>201910221653226_Lote-Peca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910221805006_Peca-Quantidade-Tipo.cs" />
+    <Compile Include="Migrations\201910221805006_Peca-Quantidade-Tipo.Designer.cs">
+      <DependentUpon>201910221805006_Peca-Quantidade-Tipo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,6 +114,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910221357012_Fornecedor-Peca-Virtual.resx">
       <DependentUpon>201910221357012_Fornecedor-Peca-Virtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910221653226_Lote-Peca.resx">
+      <DependentUpon>201910221653226_Lote-Peca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910221805006_Peca-Quantidade-Tipo.resx">
+      <DependentUpon>201910221805006_Peca-Quantidade-Tipo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

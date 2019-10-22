@@ -51,6 +51,7 @@
     <Compile Include="Desk\SeguroService.cs" />
     <Compile Include="Desk\SinistroService.cs" />
     <Compile Include="Manutencao\FornecedorService.cs" />
+    <Compile Include="Manutencao\PecaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relatorios\RelatorioService.cs" />
     <Compile Include="Usuarios\UsuariosFuncService.cs" />

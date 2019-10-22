@@ -31,6 +31,7 @@ using AppDesk.Windows.Financas;
 using AppDesk.Windows.Locacoes;
 using AppDesk.Windows.Usuarios;
 using AppDesk.Windows.Fornecedores;
+using AppDesk.Windows.Estoque;
 
 namespace AppDesk
 {
@@ -235,6 +236,12 @@ namespace AppDesk
             FormRegistrarUsuario formRegistrarUsuario = new FormRegistrarUsuario();
             formRegistrarUsuario.Show();
         }
+
+        private void RegistrarPecaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormRegistrarPeca formRegistrarPeca = new FormRegistrarPeca();
+            formRegistrarPeca.Show();
+        }
         #endregion
 
         #region Metodos Auxiliares
@@ -260,6 +267,7 @@ namespace AppDesk
             RelatoriosGrid.Visibility = Visibility.Collapsed;
             ManutencoesGrid.Visibility = Visibility.Collapsed;
             ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
+            EstoqueGrid.Visibility = Visibility.Collapsed;
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
             MainMenuPrimaryButtonsGrid.Visibility = Visibility.Visible;
         }
@@ -320,6 +328,8 @@ namespace AppDesk
             RelatoriosSinistroDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosAcidenteOrdPorId().ToList();
             RelatoriosViagemDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosViagemOrdPorId().ToList();
             #endregion
+
+            PecasDataGrid.ItemsSource = ServicoDados.ServicoDadosPeca.ObterPecasOrdPorId();
         }
 
         public void StartSession()
@@ -474,8 +484,13 @@ namespace AppDesk
 
         private void EstoqueSubMenuBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
+            EstoqueGrid.Visibility = Visibility.Visible;
         }
 
+        private void PecaDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

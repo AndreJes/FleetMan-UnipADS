@@ -31,5 +31,10 @@ namespace Servicos.Manutencao
         {
             Context.RemoverFornecedorPorId(id);
         }
+
+        public Fornecedor ObterFornecedorPorCNPJ(string cnpj)
+        {
+            return Context.ObterFornecedorPorCNPJ(cnpj);
+        }
     }
 }

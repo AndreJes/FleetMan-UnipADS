@@ -1678,7 +1678,7 @@
                 </Grid>
                 <!--#endregion-->
 
-                <!--#region Manutenções List/Actions Grid Menu-->
+                <!--#region Estoque List/Actions Grid Menu-->
                 <Grid x:Name="EstoqueGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
@@ -1704,7 +1704,7 @@
                                 Voltar
                             </Button>
 
-                            <Button x:Name="RegistrarPecaBtn" Grid.Column="1" HorizontalAlignment="Center" Margin="6,10" Padding="5" Width="128">
+                            <Button x:Name="RegistrarPecaBtn" Click="RegistrarPecaBtn_Click" Grid.Column="1" HorizontalAlignment="Center" Margin="6,10" Padding="5" Width="128">
                                 Registrar Peça
                             </Button>
 
@@ -1741,7 +1741,18 @@
                     <Grid x:Name="PecasListGrid" Grid.Row="1">
                         <DataGrid x:Name="PecasDataGrid" Margin="10" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header=""/>
+                                <DataGridTextColumn Header="Lote" Binding="{Binding Lote}"/>
+                                <DataGridTextColumn Header="Descrição" Binding="{Binding Descricao}"/>
+                                <DataGridTextColumn Header="Quantidade em Estoque" Binding="{Binding Quantidade}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="PecaDetailsBtn" Click="PecaDetailsBtn_Click">
+                                                Detalhes
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

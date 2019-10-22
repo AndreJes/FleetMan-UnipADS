@@ -39,5 +39,10 @@ namespace Persistencia.DAL.Manutencao
             Context.Fornecedores.Remove(fornecedor);
             Context.SaveChanges();
         }
+
+        public Fornecedor ObterFornecedorPorCNPJ(string cnpj)
+        {
+            return Context.Fornecedores.Where(f => f.CNPJ == cnpj).FirstOrDefault();
+        }
     }
 }
