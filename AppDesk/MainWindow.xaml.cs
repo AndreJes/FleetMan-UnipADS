@@ -30,6 +30,7 @@ using AppDesk.Windows.Viagens;
 using AppDesk.Windows.Financas;
 using AppDesk.Windows.Locacoes;
 using AppDesk.Windows.Usuarios;
+using AppDesk.Windows.Fornecedores;
 
 namespace AppDesk
 {
@@ -131,13 +132,12 @@ namespace AppDesk
             FuncionariosGrid.Visibility = Visibility.Visible;
         }
 
-        //Botão de acesso a lista  de MANUTENÇÕES
+        //Botão de acesso ao CONTROLE de MANUTENÇÕES
         private void ManutencaoMainMenuBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainMenuBtnsGridBorder.Visibility = Visibility.Collapsed;
-            ManutencoesGrid.Visibility = Visibility.Visible;
+            MainMenuPrimaryButtonsGrid.Visibility = Visibility.Collapsed;
+            ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Visible;
         }
-
 
         //Botão de acesso a lista de Seguros
         private void SegurosListBtn_Click(object sender, RoutedEventArgs e)
@@ -153,6 +153,31 @@ namespace AppDesk
                 SeguroWindow.Focus();
             }
         }
+
+        //Botão de acesso a lista de Fornecedores
+        private void FornecedoresListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormFornecedoresList formFornecedoresList = Application.Current.Windows.OfType<FormFornecedoresList>().FirstOrDefault();
+            if(formFornecedoresList == null)
+            {
+                formFornecedoresList = new FormFornecedoresList();
+                formFornecedoresList.Show();
+            }
+            else
+            {
+                formFornecedoresList.Focus();
+            }
+        }
+
+        #region Manutenções Sub Menu
+        //Acesso a lista de manutenções
+        private void ManutencaoSubMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
+            ManutencoesGrid.Visibility = Visibility.Visible;
+        }
+        #endregion
+
         #endregion
 
         #region Botões Registro
@@ -234,7 +259,9 @@ namespace AppDesk
             FuncionariosGrid.Visibility = Visibility.Collapsed;
             RelatoriosGrid.Visibility = Visibility.Collapsed;
             ManutencoesGrid.Visibility = Visibility.Collapsed;
+            ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
+            MainMenuPrimaryButtonsGrid.Visibility = Visibility.Visible;
         }
 
         //Define a fonte de dados de todos os DataGrids
@@ -440,14 +467,15 @@ namespace AppDesk
         }
         #endregion
 
-        private void RegistrarManutencaoBtn_Click(object sender, RoutedEventArgs e)
+        private void AbastecimentosSubMenuBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void AbastecimentosListBtn_Click(object sender, RoutedEventArgs e)
+        private void EstoqueSubMenuBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
     }
 }

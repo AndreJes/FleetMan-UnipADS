@@ -68,7 +68,6 @@ namespace Persistencia.Contexts
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Entity<RelatorioSinistros>().ToTable("RelatoriosAcidentes");
@@ -82,6 +81,8 @@ namespace Persistencia.Contexts
             modelBuilder.Entity<UsuarioMotorista>().ToTable("UsuariosMotoristas");
             modelBuilder.Entity<ClientePF>().ToTable("ClientesPF");
             modelBuilder.Entity<ClientePJ>().ToTable("ClientesPJ");
+
+            base.OnModelCreating(modelBuilder);
         }
 
     }

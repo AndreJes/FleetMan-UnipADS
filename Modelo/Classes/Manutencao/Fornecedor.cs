@@ -17,6 +17,6 @@ namespace Modelo.Classes.Manutencao
         public bool LojaVirtual { get; set; }
         public Endereco Endereco { get; set; }
 
-        public List<Peca> Pecas { get; set; }
+        public virtual ICollection<Peca> Pecas { get; set; }
     }
 }

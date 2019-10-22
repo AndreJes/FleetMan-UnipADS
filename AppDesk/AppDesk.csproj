@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -66,6 +68,9 @@
     <Compile Include="Serviço\ServicoDados.cs" />
     <Compile Include="Tools\HexaColorPicker.cs" />
     <Compile Include="Tools\MainWindowUpdater.cs" />
+    <Compile Include="UserControls\EnderecoUserControl.xaml.cs">
+      <DependentUpon>EnderecoUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -84,6 +89,15 @@
     <Compile Include="Windows\Financas\FormRegistrarFinanca.xaml.cs">
       <DependentUpon>FormRegistrarFinanca.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Fornecedores\FormDetalhesAlterarFornecedor.xaml.cs">
+      <DependentUpon>FormDetalhesAlterarFornecedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Fornecedores\FormRegistrarFornecedor.xaml.cs">
+      <DependentUpon>FormRegistrarFornecedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Fornecedores\FornecedoresList.xaml.cs">
+      <DependentUpon>FornecedoresList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Garagem\FormAlterarGaragem.xaml.cs">
       <DependentUpon>FormAlterarGaragem.xaml</DependentUpon>
     </Compile>
@@ -98,6 +112,9 @@
     </Compile>
     <Compile Include="Windows\Locacoes\FormRegistrarAluguel.xaml.cs">
       <DependentUpon>FormRegistrarAluguel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Manutencoes\FormRegistrarManutencao.xaml.cs">
+      <DependentUpon>FormRegistrarManutencao.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Motoristas\FormAlterarMotorista.xaml.cs">
       <DependentUpon>FormAlterarMotorista.xaml</DependentUpon>
@@ -162,6 +179,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\EnderecoUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -186,6 +207,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\Fornecedores\FormDetalhesAlterarFornecedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Fornecedores\FormRegistrarFornecedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Fornecedores\FornecedoresList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Garagem\FormAlterarGaragem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -203,6 +236,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Locacoes\FormRegistrarAluguel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Manutencoes\FormRegistrarManutencao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

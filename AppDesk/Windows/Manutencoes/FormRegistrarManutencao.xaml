@@ -1,0 +1,177 @@
+﻿<Window x:Class="AppDesk.Windows.Manutencoes.FormRegistrarManutencao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDesk.Windows.Manutencoes"
+        mc:Ignorable="d"
+        Title="Registrar Manutenção" Height="600" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">
+            REGISTRAR NOVA MANUTENÇÃO
+        </Label>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            
+            <GroupBox Header="Tipo de Manutenção">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <RadioButton Grid.Column="0" GroupName="TipoManutencaoGroup" HorizontalAlignment="Center" VerticalAlignment="Center">Preventiva</RadioButton>
+                    <RadioButton Grid.Column="1" GroupName="TipoManutencaoGroup" HorizontalAlignment="Center" VerticalAlignment="Center">Corretiva</RadioButton>
+                </Grid>
+            </GroupBox>
+
+            <TabControl Grid.Row="1">
+                <TabItem Header="Local / Responsável">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <GroupBox Header="Local" Grid.Row="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <!--#region Rua / Nº-->
+                                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                                    <Label Style="{StaticResource MainLabelStyle}">Endereço</Label>
+                                    <TextBox x:Name="RuaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170"></TextBox>
+                                    <Label Style="{StaticResource MainLabelStyle}" Width="45">Nº</Label>
+                                    <TextBox x:Name="NumeroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="60"></TextBox>
+                                </StackPanel>
+                                <!--#endregion-->
+                                <!--#region Bairro/ CEP-->
+                                <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                                    <Label Style="{StaticResource MainLabelStyle}" Width="45">CEP</Label>
+                                    <TextBox x:Name="CEPTextBox" Style="{StaticResource MainTextBoxStyle}" Width="93"></TextBox>
+                                    <Label Style="{StaticResource MainLabelStyle}">Bairro</Label>
+                                    <TextBox x:Name="BairroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="155"></TextBox>
+                                </StackPanel>
+                                <!--#endregion-->
+                                <!--#region Cidade/ UF-->
+                                <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                                    <Label Style="{StaticResource MainLabelStyle}">Cidade</Label>
+                                    <TextBox x:Name="CidadeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="192"></TextBox>
+                                    <Label Style="{StaticResource MainLabelStyle}" Width="45">UF</Label>
+                                    <ComboBox x:Name="UfComboBox" Width="50">
+                                    </ComboBox>
+                                </StackPanel>
+                                <!--#endregion-->
+                            </Grid>
+
+                        </GroupBox>
+
+                        <GroupBox Header="Responsável" Grid.Row="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                                    <Label Style="{StaticResource MainLabelStyle}">
+                                        Nome
+                                    </Label>
+                                    <TextBox x:Name="NomeResponsavelTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200">
+                                        
+                                    </TextBox>
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                                    <Label Style="{StaticResource MainLabelStyle}">
+                                        CPF / CNPJ
+                                    </Label>
+                                    <TextBox x:Name="CPFCNPJResponsavelTextBox" Style="{StaticResource MainTextBoxStyle}" Width="175">
+
+                                    </TextBox>
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+                        
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Veiculo / Data">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <GroupBox Grid.Row="0" Header="Veiculo">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <DataGrid x:Name="VeiculosDataGrid" Style="{StaticResource MainDataGridStyle}">
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Width="auto" FontSize="8" x:Name="SelecionarVeiculoBtn" Click="SelecionarVeiculoBtn_Click">Selecionar</Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTextColumn Header="Placa" Binding="{Binding Placa}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
+                                        <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
+                                            <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarVeiculoTextBox" Margin="0" Height="25"></TextBox>
+                                            <Button x:Name="PesquisarPlacaVeiculo" Click="PesquisarPlacaVeiculo_Click" Height="25">Pesquisar Placa</Button>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
+                                        <Label Style="{StaticResource MainLabelStyle}">Veiculo Selecionado</Label>
+                                        <TextBox Style="{StaticResource MainTextBoxStyle}" IsEnabled="False" Width="80" Height="25" Text="{Binding Placa}" x:Name="VeiculoSelecionadoTextBox"></TextBox>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox Grid.Row="1" Header="Data">
+
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="RegistrarBtn" Click="RegistrarBtn_Click" Grid.Row="3" Background="#FF6EE66E" HorizontalAlignment="Center" Margin="0 5" >
+                REGISTRAR MANUTENÇÃO
+            </Button>
+
+            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Grid.Row="3" Grid.Column="1" Background="#FFE66E6E" Margin="40 5">
+                CANCELAR
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

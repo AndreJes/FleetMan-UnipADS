@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -58,6 +60,7 @@
     <Compile Include="DAL\Desk\MultaDAL.cs" />
     <Compile Include="DAL\Desk\SeguroDAL.cs" />
     <Compile Include="DAL\Desk\SinistroDAL.cs" />
+    <Compile Include="DAL\Manutencao\FornecedorDAL.cs" />
     <Compile Include="DAL\Relatorios\RelatorioDAL.cs" />
     <Compile Include="DAL\Usuarios\UsuariosFuncDAL.cs" />
     <Compile Include="DAL\Web\AluguelDAL.cs" />
@@ -73,11 +76,14 @@
     <Compile Include="Migrations\201910181743385_Manutencao-Association-Virtual.Designer.cs">
       <DependentUpon>201910181743385_Manutencao-Association-Virtual.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910221357012_Fornecedor-Peca-Virtual.cs" />
+    <Compile Include="Migrations\201910221357012_Fornecedor-Peca-Virtual.Designer.cs">
+      <DependentUpon>201910221357012_Fornecedor-Peca-Virtual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DAL\Manutencao\" />
     <Folder Include="Initializers\" />
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910181743385_Manutencao-Association-Virtual.resx">
       <DependentUpon>201910181743385_Manutencao-Association-Virtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910221357012_Fornecedor-Peca-Virtual.resx">
+      <DependentUpon>201910221357012_Fornecedor-Peca-Virtual.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
