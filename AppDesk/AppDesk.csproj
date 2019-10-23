@@ -74,6 +74,15 @@
     <Compile Include="UserControls\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SelecaoMotoristaUserControl.xaml.cs">
+      <DependentUpon>SelecaoMotoristaUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SelecaoVeiculoUserControl.xaml.cs">
+      <DependentUpon>SelecaoVeiculoUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Abastecimentos\FormRegistrarAbastecimento.xaml.cs">
+      <DependentUpon>FormRegistrarAbastecimento.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Cliente\FormAlterarClientes.xaml.cs">
       <DependentUpon>FormAlterarClientes.xaml</DependentUpon>
     </Compile>
@@ -190,6 +199,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SelecaoMotoristaUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SelecaoVeiculoUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Abastecimentos\FormRegistrarAbastecimento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

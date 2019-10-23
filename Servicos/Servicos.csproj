@@ -50,6 +50,7 @@
     <Compile Include="Desk\MultaService.cs" />
     <Compile Include="Desk\SeguroService.cs" />
     <Compile Include="Desk\SinistroService.cs" />
+    <Compile Include="Manutencao\AbastecimentoService.cs" />
     <Compile Include="Manutencao\FornecedorService.cs" />
     <Compile Include="Manutencao\PecaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

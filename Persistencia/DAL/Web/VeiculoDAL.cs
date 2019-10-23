@@ -10,9 +10,9 @@ namespace Persistencia.DAL.Web
 {
     public class VeiculoDAL : DALContext
     {
-        public IQueryable<Veiculo> ObterVeiculosOrdPorId()
+        public IEnumerable<Veiculo> ObterVeiculosOrdPorId()
         {
-            return Context.Veiculos.OrderBy(v => v.VeiculoId);
+            return Context.Veiculos.OrderBy(v => v.VeiculoId).ToList();
         }
 
         public Veiculo ObterVeiculoPorId(long? id)

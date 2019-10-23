@@ -69,6 +69,7 @@
     <Compile Include="Classes\Usuarios\UsuarioMotorista.cs" />
     <Compile Include="Enums\CategoriasCNH.cs" />
     <Compile Include="Enums\CoberturasSeguro.cs" />
+    <Compile Include="Enums\EstadoAbastecimento.cs" />
     <Compile Include="Enums\EstadosAluguel.cs" />
     <Compile Include="Enums\EstadosDaSolicitacao.cs" />
     <Compile Include="Enums\EstadosDeManutencao.cs" />

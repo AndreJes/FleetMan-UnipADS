@@ -12,7 +12,7 @@ namespace Persistencia.DAL.Web
     {
         public IEnumerable<Motorista> ObterMotoristasOrdPorId()
         {
-            return Context.Motoristas.OrderBy(m => m.MotoristaId);
+            return Context.Motoristas.OrderBy(m => m.MotoristaId).ToList();
         }
 
         public void GravarMotorista(Motorista motorista)

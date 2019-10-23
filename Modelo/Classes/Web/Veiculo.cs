@@ -75,6 +75,14 @@ namespace Modelo.Classes.Web
 
         }
 
+        [NotMapped]
+        public double EstadoDoTanqueValor
+        {
+            get
+            {
+                return (int)EstadoDoTanque;
+            }
+        }
 
         #endregion
 

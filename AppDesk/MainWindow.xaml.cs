@@ -33,6 +33,7 @@ using AppDesk.Windows.Usuarios;
 using AppDesk.Windows.Fornecedores;
 using AppDesk.Windows.Estoque;
 using Modelo.Classes.Manutencao;
+using AppDesk.Windows.Abastecimentos;
 
 namespace AppDesk
 {
@@ -52,7 +53,7 @@ namespace AppDesk
         #region Botão de Voltar Ao Menu Principal
         private void BackToMainMenuGridBackBtn_Click(object sender, RoutedEventArgs e)
         {
-            BackBtnFunction();
+            GotoMainMenu();
         }
         #endregion
 
@@ -246,11 +247,6 @@ namespace AppDesk
         #endregion
 
         #region Metodos Auxiliares
-        //Método faz o retorno ao menu principal, escondendo os grids anteriores e exibindo apenas o grid do menu.
-        private void BackBtnFunction()
-        {
-            GotoMainMenu();
-        }
 
         //Utilizado para iniciar o programa com os Grids corretos carregados e visiveis.
         private void GotoMainMenu()
@@ -269,6 +265,8 @@ namespace AppDesk
             ManutencoesGrid.Visibility = Visibility.Collapsed;
             ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
             EstoqueGrid.Visibility = Visibility.Collapsed;
+            AbastecimentoGrid.Visibility = Visibility.Collapsed;
+
             MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
             MainMenuPrimaryButtonsGrid.Visibility = Visibility.Visible;
         }
@@ -331,7 +329,11 @@ namespace AppDesk
             #endregion
 
             PecasDataGrid.ItemsSource = ServicoDados.ServicoDadosPeca.ObterPecasOrdPorId();
+
+            AbastecimentosAgendadosDataGrid.ItemsSource = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentosOrdPorId().Where(a => a.Estado == EstadoAbastecimento.AGENDADO).ToList();
+            AbastecimentosFinalizadosDataGrid.ItemsSource = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentosOrdPorId().Where(a => a.Estado == EstadoAbastecimento.REALIZADO).ToList();
         }
+
 
         public void StartSession()
         {
@@ -487,13 +489,30 @@ namespace AppDesk
 
         private void AbastecimentosSubMenuBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
+            AbastecimentoGrid.Visibility = Visibility.Visible;
         }
 
         private void EstoqueSubMenuBtn_Click(object sender, RoutedEventArgs e)
         {
             ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
             EstoqueGrid.Visibility = Visibility.Visible;
+        }
+
+        private void RegistrarAbastecimentoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormRegistrarAbastecimento formRegistrarAbastecimento = new FormRegistrarAbastecimento();
+            formRegistrarAbastecimento.Show();
+        }
+
+        private void DetalhesAbastecimentoBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AbastecimentosFinDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

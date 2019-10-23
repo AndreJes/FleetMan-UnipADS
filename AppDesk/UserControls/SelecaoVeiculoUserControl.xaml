@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="AppDesk.UserControls.SelecaoVeiculoUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppDesk.UserControls"
+             mc:Ignorable="d"
+             d:DesignWidth="380" d:DesignHeight="250">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="VeiculosDataGrid" Style="{StaticResource MainDataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="auto" FontSize="8" x:Name="SelecionarVeiculoBtn" Click="SelecionarVeiculoBtn_Click">Selecionar</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Placa" Binding="{Binding Placa}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
+                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
+                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarVeiculoTextBox" Margin="0" Height="25"></TextBox>
+                    <Button x:Name="PesquisarPlacaVeiculo" Click="PesquisarPlacaVeiculo_Click" Height="25">Pesquisar Placa</Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
+                <Label Style="{StaticResource MainLabelStyle}">Veiculo Selecionado</Label>
+                <TextBox Style="{StaticResource MainTextBoxStyle}" IsEnabled="False" Width="80" Height="25" Text="{Binding Placa}" x:Name="VeiculoSelecionadoTextBox"></TextBox>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</UserControl>

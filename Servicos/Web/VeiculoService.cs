@@ -12,7 +12,7 @@ namespace Servicos.Web
     {
         private VeiculoDAL Context = new VeiculoDAL();
 
-        public IQueryable<Veiculo> ObterVeiculosOrdPorId()
+        public IEnumerable<Veiculo> ObterVeiculosOrdPorId()
         {
             return Context.ObterVeiculosOrdPorId();
         }

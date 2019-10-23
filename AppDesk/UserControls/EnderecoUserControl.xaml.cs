@@ -22,6 +22,21 @@ namespace AppDesk.UserControls
     /// </summary>
     public partial class EnderecoUserControl : UserControl
     {
+        public Endereco Endereco 
+        { 
+            get
+            {
+                Endereco endereco = new Endereco();
+                endereco.Rua = RuaTextBox.Text;
+                endereco.Numero = NumeroTextBox.Text;
+                endereco.Bairro = BairroTextBox.Text;
+                endereco.CEP = CEPTextBox.Text;
+                endereco.Cidade = CidadeTextBox.Text;
+                endereco.UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas),UfComboBox.SelectedItem.ToString());
+                return endereco;
+            }
+        }
+
         public EnderecoUserControl()
         {
             InitializeComponent();
