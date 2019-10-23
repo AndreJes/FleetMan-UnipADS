@@ -55,7 +55,6 @@ namespace AppDesk.Windows.Estoque
                 ServicoDados.ServicoDadosPeca.GravarPeca(_peca);
                 MessageBox.Show("Peça alterada com sucesso!");
                 MainWindowUpdater.UpdateDataGrids();
-                this.Close();
             }
         }
 
@@ -105,6 +104,11 @@ namespace AppDesk.Windows.Estoque
             FornecedorSelecionadoTextBox.Text = "";
             SelecionarNovoFornecedorGrid.Visibility = Visibility.Collapsed;
             DadosFornecedorAtualGrid.Visibility = Visibility.Visible;
+        }
+
+        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
