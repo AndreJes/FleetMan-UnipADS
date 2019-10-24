@@ -15,9 +15,10 @@ namespace AppDesk.Serviço
         public static bool Logar(string email, string senha)
         {
             UsuarioFunc usuarioFunc = ServicoDados.ServicoDadosUsuarioF.ObterUsuarioFuncPorEmail(email);
-            if(usuarioFunc != null)
+
+            if(usuarioFunc != null && usuarioFunc.Login == email)
             {
-                if(usuarioFunc.Senha.Equals(senha))
+                if(usuarioFunc.Senha == senha)
                 {
                     Usuario = usuarioFunc;
                     return true;
