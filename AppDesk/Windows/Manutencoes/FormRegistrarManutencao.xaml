@@ -31,8 +31,8 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <RadioButton Grid.Column="0" GroupName="TipoManutencaoGroup" HorizontalAlignment="Center" VerticalAlignment="Center">Preventiva</RadioButton>
-                    <RadioButton Grid.Column="1" GroupName="TipoManutencaoGroup" HorizontalAlignment="Center" VerticalAlignment="Center">Corretiva</RadioButton>
+                    <RadioButton x:Name="PreventivaRadioButton" Grid.Column="0" GroupName="TipoManutencaoGroup" HorizontalAlignment="Center" VerticalAlignment="Center">Preventiva</RadioButton>
+                    <RadioButton x:Name="CorretivaRadioButton" Grid.Column="1" GroupName="TipoManutencaoGroup" HorizontalAlignment="Center" VerticalAlignment="Center">Corretiva</RadioButton>
                 </Grid>
             </GroupBox>
 
@@ -45,7 +45,7 @@
                         </Grid.RowDefinitions>
 
                         <GroupBox Header="Local" Grid.Row="0">
-                            <uc:EnderecoUserControl/>
+                            <uc:EnderecoUserControl x:Name="EnderecoUC"/>
                         </GroupBox>
 
                         <GroupBox Header="Responsável" Grid.Row="1">
@@ -85,11 +85,31 @@
                         </Grid.RowDefinitions>
 
                         <GroupBox Grid.Row="0" Header="Veiculo">
-                            <uc:SelecaoVeiculoUserControl/>
+                            <uc:SelecaoVeiculoUserControl x:Name="VeiculosUC"/>
                         </GroupBox>
 
                         <GroupBox Grid.Row="1" Header="Data">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource MainStackPanelStyle}">
+                                    <Label Style="{StaticResource MainLabelStyle}">Data de Entrada/Agendamento</Label>
+                                    <DatePicker x:Name="DataAgendamentoDatePicker"></DatePicker>
+                                </StackPanel>
 
+                                <CheckBox x:Name="ConcluidoCheckBox" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">Concluída</CheckBox>
+                                
+                                <StackPanel Grid.Row="1" Grid.Column="1" Style="{StaticResource MainStackPanelStyle}">
+                                    <Label Style="{StaticResource MainLabelStyle}">Data da Conclusão</Label>
+                                    <DatePicker x:Name="DataConclusaoDatePicker" IsEnabled="{Binding ElementName=ConcluidoCheckBox, Path=IsChecked}"></DatePicker>
+                                </StackPanel>
+                            </Grid>
                         </GroupBox>
                     </Grid>
                 </TabItem>

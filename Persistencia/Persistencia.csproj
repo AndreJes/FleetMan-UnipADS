@@ -62,6 +62,7 @@
     <Compile Include="DAL\Desk\SinistroDAL.cs" />
     <Compile Include="DAL\Manutencao\AbastecimentoDAL.cs" />
     <Compile Include="DAL\Manutencao\FornecedorDAL.cs" />
+    <Compile Include="DAL\Manutencao\ManutencaoDAL.cs" />
     <Compile Include="DAL\Manutencao\PecaDAL.cs" />
     <Compile Include="DAL\Relatorios\RelatorioDAL.cs" />
     <Compile Include="DAL\Usuarios\UsuariosFuncDAL.cs" />

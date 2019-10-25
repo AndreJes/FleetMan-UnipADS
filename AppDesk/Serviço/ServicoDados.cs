@@ -30,6 +30,7 @@ namespace AppDesk.Serviço
         public static FornecedorService ServicoDadosFornecedor = new FornecedorService();
         public static PecaService ServicoDadosPeca = new PecaService();
         public static AbastecimentoService ServicoDadosAbastecimento = new AbastecimentoService();
+        public static ManutencaoService ServicoDadosManutencao = new ManutencaoService();
 
         public static UsuariosFuncService ServicoDadosUsuarioF = new UsuariosFuncService();
     }
