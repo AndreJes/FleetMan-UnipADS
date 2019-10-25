@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo.Classes.Manutencao.Associacao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,7 @@ namespace Modelo.Classes.Manutencao
 
         public long? FornecedorId { get; set; }
         public Fornecedor Fornecedor { get; set; }
+
+        public virtual ICollection<PecasManutencao> Manutencoes { get; set; }
     }
 }

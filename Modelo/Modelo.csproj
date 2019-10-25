@@ -52,6 +52,7 @@
     <Compile Include="Classes\Clientes\ClientePJ.cs" />
     <Compile Include="Classes\Manutencao\Abastecimento.cs" />
     <Compile Include="Classes\Desk\Aviso.cs" />
+    <Compile Include="Classes\Manutencao\Associacao\PecasManutencao.cs" />
     <Compile Include="Classes\Manutencao\Fornecedor.cs" />
     <Compile Include="Classes\Manutencao\Manutencao.cs" />
     <Compile Include="Classes\Manutencao\Peca.cs" />

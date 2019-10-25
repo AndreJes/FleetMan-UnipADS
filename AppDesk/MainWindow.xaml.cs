@@ -34,6 +34,7 @@ using AppDesk.Windows.Fornecedores;
 using AppDesk.Windows.Estoque;
 using Modelo.Classes.Manutencao;
 using AppDesk.Windows.Abastecimentos;
+using AppDesk.Windows.Manutencoes;
 
 namespace AppDesk
 {
@@ -179,6 +180,19 @@ namespace AppDesk
             ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
             ManutencoesGrid.Visibility = Visibility.Visible;
         }
+
+        private void AbastecimentosSubMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
+            AbastecimentoGrid.Visibility = Visibility.Visible;
+        }
+
+        private void EstoqueSubMenuBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
+            EstoqueGrid.Visibility = Visibility.Visible;
+        }
+
         #endregion
 
         #endregion
@@ -243,6 +257,18 @@ namespace AppDesk
         {
             FormRegistrarPeca formRegistrarPeca = new FormRegistrarPeca();
             formRegistrarPeca.Show();
+        }
+
+        private void RegistrarAbastecimentoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormRegistrarAbastecimento formRegistrarAbastecimento = new FormRegistrarAbastecimento();
+            formRegistrarAbastecimento.Show();
+        }
+
+        private void RegistrarManutencaoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormRegistrarManutencao formRegistrarManutencao = new FormRegistrarManutencao();
+            formRegistrarManutencao.Show();
         }
         #endregion
 
@@ -466,6 +492,23 @@ namespace AppDesk
             FormDetalhesAlterarPeca formDetalhesAlterarPeca = new FormDetalhesAlterarPeca(peca);
             formDetalhesAlterarPeca.Show();
         }
+
+        private void DetalhesAbastecimentoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Abastecimento abastecimento = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentoPorId((AbastecimentosAgendadosDataGrid.SelectedItem as Abastecimento).AbastecimentoId);
+
+            FormAlterarDetalhesAbastecimento formAlterarDetalhesAbastecimento = new FormAlterarDetalhesAbastecimento(abastecimento);
+            formAlterarDetalhesAbastecimento.Show();
+        }
+
+        private void AbastecimentosFinDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Abastecimento abastecimento = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentoPorId((AbastecimentosFinalizadosDataGrid.SelectedItem as Abastecimento).AbastecimentoId);
+
+            FormAlterarDetalhesAbastecimento formAlterarDetalhesAbastecimento = new FormAlterarDetalhesAbastecimento(abastecimento);
+            formAlterarDetalhesAbastecimento.Show();
+        }
+
         #endregion
 
         #region Botões Usuarios
@@ -487,38 +530,5 @@ namespace AppDesk
         }
         #endregion
 
-        private void AbastecimentosSubMenuBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
-            AbastecimentoGrid.Visibility = Visibility.Visible;
-        }
-
-        private void EstoqueSubMenuBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
-            EstoqueGrid.Visibility = Visibility.Visible;
-        }
-
-        private void RegistrarAbastecimentoBtn_Click(object sender, RoutedEventArgs e)
-        {
-            FormRegistrarAbastecimento formRegistrarAbastecimento = new FormRegistrarAbastecimento();
-            formRegistrarAbastecimento.Show();
-        }
-
-        private void DetalhesAbastecimentoBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Abastecimento abastecimento = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentoPorId((AbastecimentosAgendadosDataGrid.SelectedItem as Abastecimento).AbastecimentoId);
-            
-            FormAlterarDetalhesAbastecimento formAlterarDetalhesAbastecimento = new FormAlterarDetalhesAbastecimento(abastecimento);
-            formAlterarDetalhesAbastecimento.Show();
-        }
-
-        private void AbastecimentosFinDetailsBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Abastecimento abastecimento = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentoPorId((AbastecimentosFinalizadosDataGrid.SelectedItem as Abastecimento).AbastecimentoId);
-
-            FormAlterarDetalhesAbastecimento formAlterarDetalhesAbastecimento = new FormAlterarDetalhesAbastecimento(abastecimento);
-            formAlterarDetalhesAbastecimento.Show();
-        }
     }
 }

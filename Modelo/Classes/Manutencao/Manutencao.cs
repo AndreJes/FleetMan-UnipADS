@@ -1,4 +1,5 @@
 ﻿using Modelo.Classes.Auxiliares;
+using Modelo.Classes.Manutencao.Associacao;
 using Modelo.Classes.Web;
 using Modelo.Enums;
 using System;
@@ -26,7 +27,7 @@ namespace Modelo.Classes.Manutencao
         public TiposDeManutencao Tipo { get; set; }
         public EstadosDeManutencao EstadoAtual { get; set; }
 
-        public virtual ICollection<Peca> PecasUtilizadas { get; set; }
+        public virtual ICollection<PecasManutencao> PecasUtilizadas { get; set; }
 
         public long? VeiculoId { get; set; }
         public Veiculo Veiculo { get; set; }

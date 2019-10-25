@@ -98,6 +98,10 @@
     <Compile Include="Migrations\201910231817096_Abastecimento-Changes.Designer.cs">
       <DependentUpon>201910231817096_Abastecimento-Changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910251657229_New-Manutencao-Peca-Association.cs" />
+    <Compile Include="Migrations\201910251657229_New-Manutencao-Peca-Association.Designer.cs">
+      <DependentUpon>201910251657229_New-Manutencao-Peca-Association.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -135,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910231817096_Abastecimento-Changes.resx">
       <DependentUpon>201910231817096_Abastecimento-Changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910251657229_New-Manutencao-Peca-Association.resx">
+      <DependentUpon>201910251657229_New-Manutencao-Peca-Association.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

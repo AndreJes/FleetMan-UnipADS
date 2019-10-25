@@ -1607,7 +1607,7 @@
                                 Voltar
                             </Button>
 
-                            <Button x:Name="RegistrarManutencaoBtn" Grid.Column="1" HorizontalAlignment="Center" Margin="6,10" Padding="5" Width="128">
+                            <Button x:Name="RegistrarManutencaoBtn" Click="RegistrarManutencaoBtn_Click" Grid.Column="1" HorizontalAlignment="Center" Margin="6,10" Padding="5" Width="128">
                                 Registrar Manutenção
                             </Button>
                             <!--#endregion-->
