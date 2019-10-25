@@ -35,12 +35,28 @@ namespace AppDesk.UserControls
                 endereco.UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas),UfComboBox.SelectedItem.ToString());
                 return endereco;
             }
+            set
+            {
+                DefinirEndereco(value);
+            }
         }
 
         public EnderecoUserControl()
         {
             InitializeComponent();
             UfComboBox.ItemsSource = Enum.GetNames(typeof(UnidadesFederativas));
+        }
+
+        private void DefinirEndereco(Endereco endereco)
+        {
+            this.DataContext = endereco;
+            UfComboBox.SelectedItem = endereco.UF.ToString("G");
+            BairroTextBox.IsEnabled = false;
+            CEPTextBox.IsEnabled = false;
+            CidadeTextBox.IsEnabled = false;
+            NumeroTextBox.IsEnabled = false;
+            RuaTextBox.IsEnabled = false;
+            UfComboBox.IsEnabled = false;
         }
     }
 }

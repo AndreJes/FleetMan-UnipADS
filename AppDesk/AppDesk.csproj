@@ -80,6 +80,9 @@
     <Compile Include="UserControls\SelecaoVeiculoUserControl.xaml.cs">
       <DependentUpon>SelecaoVeiculoUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Abastecimentos\FormAlterarDetalhesAbastecimento.xaml.cs">
+      <DependentUpon>FormAlterarDetalhesAbastecimento.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Abastecimentos\FormRegistrarAbastecimento.xaml.cs">
       <DependentUpon>FormRegistrarAbastecimento.xaml</DependentUpon>
     </Compile>
@@ -207,6 +210,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SelecaoVeiculoUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Abastecimentos\FormAlterarDetalhesAbastecimento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

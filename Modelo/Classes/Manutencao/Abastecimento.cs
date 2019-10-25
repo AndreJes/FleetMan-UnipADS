@@ -4,6 +4,7 @@ using Modelo.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,5 +30,14 @@ namespace Modelo.Classes.Manutencao
 
         public long? VeiculoId { get; set; }
         public Veiculo Veiculo { get; set; }
+
+        [NotMapped]
+        public double ValorNovoEstadoTanque
+        {
+            get
+            {
+                return (int)NovoEstadoTanque;
+            }
+        }
     }
 }

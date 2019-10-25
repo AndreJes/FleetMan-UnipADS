@@ -507,12 +507,18 @@ namespace AppDesk
 
         private void DetalhesAbastecimentoBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Abastecimento abastecimento = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentoPorId((AbastecimentosAgendadosDataGrid.SelectedItem as Abastecimento).AbastecimentoId);
+            
+            FormAlterarDetalhesAbastecimento formAlterarDetalhesAbastecimento = new FormAlterarDetalhesAbastecimento(abastecimento);
+            formAlterarDetalhesAbastecimento.Show();
         }
 
         private void AbastecimentosFinDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
+            Abastecimento abastecimento = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentoPorId((AbastecimentosFinalizadosDataGrid.SelectedItem as Abastecimento).AbastecimentoId);
 
+            FormAlterarDetalhesAbastecimento formAlterarDetalhesAbastecimento = new FormAlterarDetalhesAbastecimento(abastecimento);
+            formAlterarDetalhesAbastecimento.Show();
         }
     }
 }
