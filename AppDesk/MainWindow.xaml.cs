@@ -354,6 +354,8 @@ namespace AppDesk
             RelatoriosViagemDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosViagemOrdPorId().ToList();
             #endregion
 
+            ManutencaoDataGrid.ItemsSource = ServicoDados.ServicoDadosManutencao.ObterManutencoesOrdPorId();
+
             PecasDataGrid.ItemsSource = ServicoDados.ServicoDadosPeca.ObterPecasOrdPorId();
 
             AbastecimentosAgendadosDataGrid.ItemsSource = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentosOrdPorId().Where(a => a.Estado == EstadoAbastecimento.AGENDADO).ToList();
@@ -530,5 +532,11 @@ namespace AppDesk
         }
         #endregion
 
+        private void ManutencaoDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Manutencao manutencao = ServicoDados.ServicoDadosManutencao.ObterManutencaoPorId((ManutencaoDataGrid.SelectedItem as Manutencao).ManutencaoId);
+            FormAlterarDetalhesManutencao formAlterarDetalhesManutencao = new FormAlterarDetalhesManutencao(manutencao);
+            formAlterarDetalhesManutencao.Show();
+        }
     }
 }

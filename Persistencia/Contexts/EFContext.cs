@@ -12,6 +12,7 @@ using Modelo.Classes.Relatorios;
 using Modelo.Classes.Web;
 using Modelo.Classes.Usuarios;
 using Persistencia.Migrations;
+using Modelo.Classes.Manutencao.Associacao;
 
 namespace Persistencia.Contexts
 {
@@ -35,8 +36,9 @@ namespace Persistencia.Contexts
         #region Manutenção
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Peca> Pecas { get; set; }
-        public DbSet<Manutencao> Manutencoes { get; set; }
         public DbSet<Abastecimento> Abastecimentos { get; set; }
+        public DbSet<Manutencao> Manutencoes { get; set; }
+        public DbSet<PecasManutencao> PecasManutencao { get; set; }
         #endregion
         #region Relatorios
         public DbSet<Relatorio> Relatorios { get; set; }

@@ -4,6 +4,7 @@ using Modelo.Classes.Web;
 using Modelo.Enums;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace Modelo.Classes.Manutencao
         public TiposDeManutencao Tipo { get; set; }
         public EstadosDeManutencao EstadoAtual { get; set; }
 
-        public virtual ICollection<PecasManutencao> PecasUtilizadas { get; set; }
+        public virtual ObservableCollection<PecasManutencao> PecasUtilizadas { get; set; }
 
         public long? VeiculoId { get; set; }
         public Veiculo Veiculo { get; set; }

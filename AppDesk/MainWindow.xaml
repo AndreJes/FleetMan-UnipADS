@@ -1583,7 +1583,7 @@
                 <!--#endregion-->
 
                 <!--#region Manutenções List/Actions Grid Menu-->
-                <Grid x:Name="ManutencoesGrid" Visibility="Hidden" Grid.Row="1">
+                <Grid x:Name="ManutencoesGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -1670,7 +1670,22 @@
                     <Grid x:Name="ManutencoesListGrid" Grid.Row="1">
                         <DataGrid x:Name="ManutencaoDataGrid" Margin="10" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header=""/>
+                                <DataGridTextColumn Header="Código" Binding="{Binding ManutencaoId}"/>
+                                <DataGridTextColumn Header="Veiculo" Binding="{Binding Veiculo.Placa}"/>
+                                <DataGridTextColumn Header="Responsável" Binding="{Binding NomeResponsavel}"/>
+                                <DataGridTextColumn Header="Data de Entrada/Agendada" Binding="{Binding DataEntrada}"/>
+                                <DataGridTextColumn Header="Data de Saida" Binding="{Binding DataSaida}"/>
+                                <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}"/>
+                                <DataGridTextColumn Header="Estado" Binding="{Binding EstadoAtual}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="ManutencaoDetailsBtn" Click="ManutencaoDetailsBtn_Click">
+                                                Detalhes
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
@@ -1761,7 +1776,7 @@
                 <!--#endregion-->
 
                 <!--#region Abastecimentos List/Actions Grid Menu-->
-                <Grid x:Name="AbastecimentoGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="AbastecimentoGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>

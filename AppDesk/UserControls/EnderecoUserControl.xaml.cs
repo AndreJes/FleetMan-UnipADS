@@ -22,8 +22,10 @@ namespace AppDesk.UserControls
     /// </summary>
     public partial class EnderecoUserControl : UserControl
     {
-        public Endereco Endereco 
-        { 
+        public bool Editavel { get; set; }
+
+        public Endereco Endereco
+        {
             get
             {
                 Endereco endereco = new Endereco();
@@ -32,7 +34,7 @@ namespace AppDesk.UserControls
                 endereco.Bairro = BairroTextBox.Text;
                 endereco.CEP = CEPTextBox.Text;
                 endereco.Cidade = CidadeTextBox.Text;
-                endereco.UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas),UfComboBox.SelectedItem.ToString());
+                endereco.UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString());
                 return endereco;
             }
             set
@@ -51,12 +53,15 @@ namespace AppDesk.UserControls
         {
             this.DataContext = endereco;
             UfComboBox.SelectedItem = endereco.UF.ToString("G");
-            BairroTextBox.IsEnabled = false;
-            CEPTextBox.IsEnabled = false;
-            CidadeTextBox.IsEnabled = false;
-            NumeroTextBox.IsEnabled = false;
-            RuaTextBox.IsEnabled = false;
-            UfComboBox.IsEnabled = false;
+            if (Editavel == false)
+            {
+                BairroTextBox.IsEnabled = false;
+                CEPTextBox.IsEnabled = false;
+                CidadeTextBox.IsEnabled = false;
+                NumeroTextBox.IsEnabled = false;
+                RuaTextBox.IsEnabled = false;
+                UfComboBox.IsEnabled = false;
+            }
         }
     }
 }

@@ -103,6 +103,34 @@
     <Compile Include="Migrations\201910251657229_New-Manutencao-Peca-Association.Designer.cs">
       <DependentUpon>201910251657229_New-Manutencao-Peca-Association.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910281739495_UpdatePecaManutencao.cs" />
+    <Compile Include="Migrations\201910281739495_UpdatePecaManutencao.Designer.cs">
+      <DependentUpon>201910281739495_UpdatePecaManutencao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910292147107_PecaManutencao-New-Id.cs" />
+    <Compile Include="Migrations\201910292147107_PecaManutencao-New-Id.Designer.cs">
+      <DependentUpon>201910292147107_PecaManutencao-New-Id.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910292205501_PecaManutencao-Context-Prop.cs" />
+    <Compile Include="Migrations\201910292205501_PecaManutencao-Context-Prop.Designer.cs">
+      <DependentUpon>201910292205501_PecaManutencao-Context-Prop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910292225452_PecaManutencao-New-ForeignKey.cs" />
+    <Compile Include="Migrations\201910292225452_PecaManutencao-New-ForeignKey.Designer.cs">
+      <DependentUpon>201910292225452_PecaManutencao-New-ForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910292245482_PecaManutencao-New-ForeignKey-NoKey.cs" />
+    <Compile Include="Migrations\201910292245482_PecaManutencao-New-ForeignKey-NoKey.Designer.cs">
+      <DependentUpon>201910292245482_PecaManutencao-New-ForeignKey-NoKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910301648517_Fix-PK-PecaManu.cs" />
+    <Compile Include="Migrations\201910301648517_Fix-PK-PecaManu.Designer.cs">
+      <DependentUpon>201910301648517_Fix-PK-PecaManu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910301649272_Fix-PK-PecaManu-Fixed.cs" />
+    <Compile Include="Migrations\201910301649272_Fix-PK-PecaManu-Fixed.Designer.cs">
+      <DependentUpon>201910301649272_Fix-PK-PecaManu-Fixed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -143,6 +171,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910251657229_New-Manutencao-Peca-Association.resx">
       <DependentUpon>201910251657229_New-Manutencao-Peca-Association.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910281739495_UpdatePecaManutencao.resx">
+      <DependentUpon>201910281739495_UpdatePecaManutencao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910292147107_PecaManutencao-New-Id.resx">
+      <DependentUpon>201910292147107_PecaManutencao-New-Id.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910292205501_PecaManutencao-Context-Prop.resx">
+      <DependentUpon>201910292205501_PecaManutencao-Context-Prop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910292225452_PecaManutencao-New-ForeignKey.resx">
+      <DependentUpon>201910292225452_PecaManutencao-New-ForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910292245482_PecaManutencao-New-ForeignKey-NoKey.resx">
+      <DependentUpon>201910292245482_PecaManutencao-New-ForeignKey-NoKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301648517_Fix-PK-PecaManu.resx">
+      <DependentUpon>201910301648517_Fix-PK-PecaManu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301649272_Fix-PK-PecaManu-Fixed.resx">
+      <DependentUpon>201910301649272_Fix-PK-PecaManu-Fixed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

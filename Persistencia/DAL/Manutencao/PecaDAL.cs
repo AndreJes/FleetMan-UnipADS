@@ -36,6 +36,7 @@ namespace Persistencia.DAL.Manutencao
         public void RemoverPecaPorId(long? id)
         {
             Peca peca = ObterPecaPorId(id);
+            Context.PecasManutencao.RemoveRange(Context.PecasManutencao.Where(pm => pm.PecaId == peca.PecaId));
             Context.Pecas.Remove(peca);
             Context.SaveChanges();
         }

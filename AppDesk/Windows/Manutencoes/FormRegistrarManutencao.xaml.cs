@@ -1,6 +1,7 @@
 ﻿using AppDesk.Serviço;
 using AppDesk.Tools;
 using Modelo.Classes.Manutencao;
+using Modelo.Classes.Manutencao.Associacao;
 using Modelo.Enums;
 using System;
 using System.Collections.Generic;
@@ -33,9 +34,9 @@ namespace AppDesk.Windows.Manutencoes
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Confirmar registro de manutenção", "Confirmar registro?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Confirmar registro de manutenção", "Confirmar registro?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                ServicoDados.ServicoDadosManutencao.AdicionarManutencao(GerarManutencao(), PecasSelecionadasDataGrid.Items.OfType<Peca>().ToList());
+                ServicoDados.ServicoDadosManutencao.AdicionarManutencao(GerarManutencao(), PecasSelecionadasDataGrid.Items.OfType<PecasManutencao>().ToList());
                 MessageBox.Show("Manuteção adicionada com sucesso!");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
@@ -56,15 +57,8 @@ namespace AppDesk.Windows.Manutencoes
         {
             if (PecasSelecionadasDataGrid.SelectedItem != null)
             {
-                if ((PecasSelecionadasDataGrid.SelectedItem as Peca).Quantidade > 1)
-                {
-                    (PecasSelecionadasDataGrid.SelectedItem as Peca).Quantidade--;
-                    PecasSelecionadasDataGrid.Items.Refresh();
-                }
-                else
-                {
-                    PecasSelecionadasDataGrid.Items.Remove(PecasSelecionadasDataGrid.SelectedItem);
-                }
+                PecasManutencao pecasManutencao = PecasSelecionadasDataGrid.SelectedItem as PecasManutencao;
+                PecasSelecionadasDataGrid.Items.Remove(pecasManutencao);
             }
 
         }
@@ -76,17 +70,22 @@ namespace AppDesk.Windows.Manutencoes
             {
                 peca = (origem.SelectedItem as Peca);
             }
-            if (destino.Items.Contains(peca))
+
+            PecasManutencao PecaParaAdicionar = new PecasManutencao();
+            PecaParaAdicionar.PecaId = peca.PecaId;
+            PecaParaAdicionar.Peca = peca;
+
+            PecasManutencao PecaSelecionada = PecasSelecionadasDataGrid.Items.OfType<PecasManutencao>().Where(pm => pm.PecaId == PecaParaAdicionar.PecaId).FirstOrDefault();
+
+            if (PecaSelecionada != null)
             {
-                peca = (destino.Items[destino.Items.IndexOf(peca)] as Peca);
-                destino.Items.Remove(peca);
-                peca.Quantidade++;
-                destino.Items.Add(peca);
+                PecaSelecionada.QuantidadePecasUtilizadas++;
+                PecasSelecionadasDataGrid.Items.Refresh();
             }
-            else if (peca != null)
+            else
             {
-                peca.Quantidade = 1;
-                destino.Items.Add(peca);
+                PecaParaAdicionar.QuantidadePecasUtilizadas++;
+                PecasSelecionadasDataGrid.Items.Add(PecaParaAdicionar);
             }
         }
 

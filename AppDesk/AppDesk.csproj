@@ -80,6 +80,9 @@
     <Compile Include="UserControls\SelecaoVeiculoUserControl.xaml.cs">
       <DependentUpon>SelecaoVeiculoUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\VeiculoShowDataUserControl.xaml.cs">
+      <DependentUpon>VeiculoShowDataUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Abastecimentos\FormAlterarDetalhesAbastecimento.xaml.cs">
       <DependentUpon>FormAlterarDetalhesAbastecimento.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,9 @@
     </Compile>
     <Compile Include="Windows\Locacoes\FormRegistrarAluguel.xaml.cs">
       <DependentUpon>FormRegistrarAluguel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Manutencoes\FormAlterarDetalhesManutencao.xaml.cs">
+      <DependentUpon>FormAlterarDetalhesManutencao.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Manutencoes\FormRegistrarManutencao.xaml.cs">
       <DependentUpon>FormRegistrarManutencao.xaml</DependentUpon>
@@ -213,6 +219,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\VeiculoShowDataUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Abastecimentos\FormAlterarDetalhesAbastecimento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -278,6 +288,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Locacoes\FormRegistrarAluguel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Manutencoes\FormAlterarDetalhesManutencao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

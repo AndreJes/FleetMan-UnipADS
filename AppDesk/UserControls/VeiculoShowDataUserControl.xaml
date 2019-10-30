@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="AppDesk.UserControls.VeiculoShowDataUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppDesk.UserControls"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource MainTextBoxStyle}">
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
+            <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                <Label Style="{StaticResource MainLabelStyle}">Marca</Label>
+                <TextBox Width="100" Text="{Binding Marca}"></TextBox>
+            </StackPanel>
+            <StackPanel Style="{StaticResource MainStackPanelStyle}" Margin="0 20">
+                <Label Style="{StaticResource MainLabelStyle}">Modelo</Label>
+                <TextBox Width="100" Text="{Binding Modelo}"></TextBox>
+            </StackPanel>
+            <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                <Label Style="{StaticResource MainLabelStyle}">Ano</Label>
+                <TextBox Width="100" Text="{Binding Ano}"></TextBox>
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="1" Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                <Label Style="{StaticResource MainLabelStyle}">Estado</Label>
+                <TextBox Text="{Binding EstadoDoVeiculo}" Width="120"></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Style="{StaticResource MainStackPanelStyle}">
+                <Label Style="{StaticResource MainLabelStyle}">Placa</Label>
+                <TextBox Width="100" Text="{Binding Placa}" x:Name="PlacaTextBox"></TextBox>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
