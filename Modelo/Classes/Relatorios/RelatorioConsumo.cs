@@ -9,6 +9,12 @@ namespace Modelo.Classes.Relatorios
 {
     public class RelatorioConsumo : Relatorio
     {
-        public List<Abastecimento> Abastecimentos { get; set; }
+        public int QntVeiculosAbastecidos { get; set; }
+
+        public double TotalCombustivel { get; set; }
+        public double MediaDeCombustivel { get; set; }
+
+        public double ValorGastoTotal { get; set; }
+        public double ValorGastoMedio { get; set; }
     }
 }

@@ -131,6 +131,14 @@
     <Compile Include="Migrations\201910301649272_Fix-PK-PecaManu-Fixed.Designer.cs">
       <DependentUpon>201910301649272_Fix-PK-PecaManu-Fixed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910301749472_Relatorios-Abastecimento-NewTest.cs" />
+    <Compile Include="Migrations\201910301749472_Relatorios-Abastecimento-NewTest.Designer.cs">
+      <DependentUpon>201910301749472_Relatorios-Abastecimento-NewTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910301908210_Relatorios-New-Props.cs" />
+    <Compile Include="Migrations\201910301908210_Relatorios-New-Props.Designer.cs">
+      <DependentUpon>201910301908210_Relatorios-New-Props.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -192,6 +200,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910301649272_Fix-PK-PecaManu-Fixed.resx">
       <DependentUpon>201910301649272_Fix-PK-PecaManu-Fixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301749472_Relatorios-Abastecimento-NewTest.resx">
+      <DependentUpon>201910301749472_Relatorios-Abastecimento-NewTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301908210_Relatorios-New-Props.resx">
+      <DependentUpon>201910301908210_Relatorios-New-Props.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

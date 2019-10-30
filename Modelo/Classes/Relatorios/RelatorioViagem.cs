@@ -9,6 +9,11 @@ namespace Modelo.Classes.Relatorios
 {
     public class RelatorioViagem : Relatorio
     {
-        public List<Viagem> Viagens { get; set; }
+        public int QntTotalViagens { get; set; }
+
+        public int QntViagensAguardando { get; set; }
+        public int QntViagensEmAndamento { get; set; }
+        public int QntViagensConcluidas{ get; set; }
+        public int QntViagensCanceladas { get; set; }
     }
 }

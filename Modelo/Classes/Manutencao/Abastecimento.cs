@@ -1,4 +1,5 @@
 ﻿using Modelo.Classes.Auxiliares;
+using Modelo.Classes.Relatorios;
 using Modelo.Classes.Web;
 using Modelo.Enums;
 using System;

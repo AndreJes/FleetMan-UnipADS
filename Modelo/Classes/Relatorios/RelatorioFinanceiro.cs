@@ -9,6 +9,13 @@ namespace Modelo.Classes.Relatorios
 {
     public class RelatorioFinanceiro: Relatorio
     {
-        public List<Financa> Financas { get; set; }
+        public int QntTotalFinancas { get; set; }
+
+        public int QntFinancasVencidas { get; set; }
+        public int QntFinancasPagas { get; set; }
+        public int QntFinancasAguardando { get; set; }
+
+        public double TotalValorEntradas { get; set; }
+        public double TotalValorSaidas { get; set; }
     }
 }
