@@ -35,6 +35,7 @@ using AppDesk.Windows.Estoque;
 using Modelo.Classes.Manutencao;
 using AppDesk.Windows.Abastecimentos;
 using AppDesk.Windows.Manutencoes;
+using AppDesk.Windows.Relatorios;
 
 namespace AppDesk
 {
@@ -269,6 +270,12 @@ namespace AppDesk
         {
             FormRegistrarManutencao formRegistrarManutencao = new FormRegistrarManutencao();
             formRegistrarManutencao.Show();
+        }
+
+        private void GerarRelatorioBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FormGerarRelatorio formGerarRelatorio = new FormGerarRelatorio();
+            formGerarRelatorio.Show();
         }
         #endregion
 
@@ -511,6 +518,12 @@ namespace AppDesk
             formAlterarDetalhesAbastecimento.Show();
         }
 
+        private void ManutencaoDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Manutencao manutencao = ServicoDados.ServicoDadosManutencao.ObterManutencaoPorId((ManutencaoDataGrid.SelectedItem as Manutencao).ManutencaoId);
+            FormAlterarDetalhesManutencao formAlterarDetalhesManutencao = new FormAlterarDetalhesManutencao(manutencao);
+            formAlterarDetalhesManutencao.Show();
+        }
         #endregion
 
         #region Botões Usuarios
@@ -530,13 +543,7 @@ namespace AppDesk
             FormAlterarDetalhesUsuario formAlterarDetalhes = new FormAlterarDetalhesUsuario(DesktopLoginControlService.Usuario.Funcionario);
             formAlterarDetalhes.Show();
         }
-        #endregion
 
-        private void ManutencaoDetailsBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Manutencao manutencao = ServicoDados.ServicoDadosManutencao.ObterManutencaoPorId((ManutencaoDataGrid.SelectedItem as Manutencao).ManutencaoId);
-            FormAlterarDetalhesManutencao formAlterarDetalhesManutencao = new FormAlterarDetalhesManutencao(manutencao);
-            formAlterarDetalhesManutencao.Show();
-        }
+        #endregion
     }
 }

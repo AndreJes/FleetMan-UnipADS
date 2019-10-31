@@ -139,6 +139,10 @@
     <Compile Include="Migrations\201910301908210_Relatorios-New-Props.Designer.cs">
       <DependentUpon>201910301908210_Relatorios-New-Props.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910311721415_Relatorios-NewModel.cs" />
+    <Compile Include="Migrations\201910311721415_Relatorios-NewModel.Designer.cs">
+      <DependentUpon>201910311721415_Relatorios-NewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -206,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910301908210_Relatorios-New-Props.resx">
       <DependentUpon>201910301908210_Relatorios-New-Props.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910311721415_Relatorios-NewModel.resx">
+      <DependentUpon>201910311721415_Relatorios-NewModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

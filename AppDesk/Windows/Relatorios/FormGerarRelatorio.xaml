@@ -1,0 +1,95 @@
+﻿<Window x:Class="AppDesk.Windows.Relatorios.FormGerarRelatorio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDesk.Windows.Relatorios"
+        mc:Ignorable="d"
+        Title="Gerar Relatório" Height="550" Width="500" MinHeight="550" MinWidth="500" MaxHeight="550" MaxWidth="500">
+    <Window.Resources>
+        <Style TargetType="RadioButton">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="30">Gerar Relatório</Label>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <GroupBox Grid.Row="0" Header="Tipo de Relatório">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="0" Grid.Column="0">Consumo</RadioButton>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="1" Grid.Column="0">Financeiro</RadioButton>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="2" Grid.Column="0">Manutenção</RadioButton>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="0" Grid.Column="1">Multa</RadioButton>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="1" Grid.Column="1">Sinistro</RadioButton>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="2" Grid.Column="1">Viagens</RadioButton>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="1" Header="Seleção de data">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox Header="De" Grid.Column="0">
+                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                            <DatePicker></DatePicker>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Até" Grid.Column="1">
+                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                            <DatePicker></DatePicker>
+                        </StackPanel>
+            </GroupBox>
+        </Grid>
+
+            </GroupBox>
+
+            <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">Descrição(Opcional)</Label>
+                    <TextBox Style="{StaticResource MainTextBoxStyle}" Width="250"></TextBox>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="RegistrarBtn" Click="RegistrarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+                GERAR RELATÓRIO
+            </Button>
+            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                CANCELAR
+            </Button>
+        </Grid>
+        
+    </Grid>
+</Window>

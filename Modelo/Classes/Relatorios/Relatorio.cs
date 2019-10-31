@@ -1,4 +1,5 @@
-﻿using Modelo.Enums;
+﻿using Modelo.Classes.Web;
+using Modelo.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,7 +14,7 @@ namespace Modelo.Classes.Relatorios
     {
         [Key]
         public long? RelatorioId { get; set; }
-
+        
         public string Descricao { get; set; }
 
         public DateTime DataInicial { get; set; }
@@ -22,5 +23,13 @@ namespace Modelo.Classes.Relatorios
         public DateTime DataEmissao { get; set; }
 
         public TiposRelatorios Tipo { get; set; }
+
+        public Relatorio(DateTime dataInicio, DateTime dataFinal, TiposRelatorios tipo, string descricao = "") 
+        {
+            DataInicial = dataInicio;
+            DataFinal = dataFinal;
+            Tipo = tipo;
+            Descricao = descricao;
+        }
     }
 }

@@ -25,5 +25,39 @@ namespace Modelo.Classes.Relatorios
         public int QntMultasGravissimas { get; set; }
 
         public GravidadesDeInfracao GravidadeMaisComum { get; set; }
+
+        public RelatorioMulta(DateTime dataInicio, DateTime dataFinal, TiposRelatorios tipo, List<Multa> multas, string descricao = "") 
+            : base(dataInicio, dataFinal, tipo, descricao:descricao)
+        {
+            QntTotalMultas = multas.Count();
+
+            QntMultasVencidas = multas.Where(m => m.EstadoDoPagamento == EstadosDePagamento.VENCIDO).Count();
+            QntMultasPagas = multas.Where(m => m.EstadoDoPagamento == EstadosDePagamento.PAGO).Count();
+            QntMultasAguardando = multas.Where(m => m.EstadoDoPagamento == EstadosDePagamento.AGUARDANDO_PAGAMENTO).Count();
+
+            QntMultasLeves = multas.Where(m => m.GravidadeDaInfracao == GravidadesDeInfracao.LEVE).Count();
+            QntMultasMedias = multas.Where(m => m.GravidadeDaInfracao == GravidadesDeInfracao.MEDIA).Count();
+            QntMultasGraves = multas.Where(m => m.GravidadeDaInfracao == GravidadesDeInfracao.GRAVE).Count();
+            QntMultasGravissimas = multas.Where(m => m.GravidadeDaInfracao == GravidadesDeInfracao.GRAVISSIMA).Count();
+
+            if (QntMultasLeves >= QntMultasMedias && QntMultasLeves >= QntMultasGraves && QntMultasLeves >= QntMultasGravissimas)
+            {
+                GravidadeMaisComum = GravidadesDeInfracao.LEVE;
+            }
+            else if (QntMultasMedias >= QntMultasGraves && QntMultasMedias >= QntMultasGravissimas)
+            {
+                GravidadeMaisComum = GravidadesDeInfracao.MEDIA;
+            }
+            else if (QntMultasGraves >= QntMultasGravissimas)
+            {
+                GravidadeMaisComum = GravidadesDeInfracao.GRAVE;
+            }
+            else
+            {
+                GravidadeMaisComum = GravidadesDeInfracao.GRAVISSIMA;
+            }
+        }
+
+
     }
 }
