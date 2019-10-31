@@ -36,6 +36,7 @@ using Modelo.Classes.Manutencao;
 using AppDesk.Windows.Abastecimentos;
 using AppDesk.Windows.Manutencoes;
 using AppDesk.Windows.Relatorios;
+using Modelo.Classes.Relatorios;
 
 namespace AppDesk
 {
@@ -545,5 +546,12 @@ namespace AppDesk
         }
 
         #endregion
+
+        private void RelatorioConsumoDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RelatorioConsumo relatorioConsumo = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosConsumoOrdPorId().Where(rc => rc.RelatorioId == (RelatoriosAbastecimentoDataGrid.SelectedItem as RelatorioConsumo).RelatorioId).FirstOrDefault();
+            FormDetalhesRelatorioConsumo formDetalhesRelatorioConsumo = new FormDetalhesRelatorioConsumo(relatorioConsumo);
+            formDetalhesRelatorioConsumo.Show();
+        }
     }
 }

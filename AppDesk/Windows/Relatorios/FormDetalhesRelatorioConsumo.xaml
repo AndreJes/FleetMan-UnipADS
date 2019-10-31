@@ -4,13 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Relatorios"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="Detalhes Relatorio De Consumo" Height="500" Width="500" MaxHeight="500" MaxWidth="500" MinHeight="500" MinWidth="500">
+        Title="Detalhes Relatorio De Consumo" Height="700" Width="500" MaxHeight="700" MaxWidth="500" MinHeight="700" MinWidth="500">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="10*"/>
             <RowDefinition Height="80*"/>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">Relatório de Consumo</Label>
@@ -22,26 +23,50 @@
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
 
-            <GroupBox>
+            <GroupBox HorizontalAlignment="Center">
                 <GroupBox.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Grid.Column="0">Quantidade de abastecimentos entre:</TextBlock>
                         <Border Margin="5 0">
-                            <TextBlock Grid.Column="1" Text="{Binding DataInicial}"></TextBlock>
+                            <TextBlock Grid.Column="1" Text="{Binding Relatorio.DataInicial, StringFormat=dd/MM/yyyy}"></TextBlock>
                         </Border>
-                        <TextBlock Grid.Column="2"> e </TextBlock>
+                        <TextBlock Grid.Column="2"> e</TextBlock>
                         <Border Margin="5 0">
-                            <TextBlock Grid.Column="3" Text="{Binding DataFinal}"></TextBlock>
+                            <TextBlock Grid.Column="3" Text="{Binding Relatorio.DataFinal, StringFormat=dd/MM/yyyy}"></TextBlock>
                         </Border>
                     </StackPanel>
                 </GroupBox.Header>
                 <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="NumeroAbastecimentosTextBox" Text="{Binding QntVeiculosAbastecidos}" Width="50"></TextBox>
+                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="NumeroAbastecimentosTextBox" Text="{Binding Relatorio.QntVeiculosAbastecidos}" Width="40" IsEnabled="False" HorizontalContentAlignment="Center"/>
                 </StackPanel>
             </GroupBox>
 
             <Grid Grid.Row="1">
-                
+                <GroupBox Header="Combustivel abastecido">
+                    <Grid>
+                        <lvc:CartesianChart x:Name="GraficoTotalDeCombustivel">
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis Title="Valor" Labels="{Binding Legendas}"/>
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis Title="Quantidade combustível (Litros)"/>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <GroupBox Header="Custos com combustível">
+                    <lvc:CartesianChart x:Name="GraficoCustos">
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="Valor" Labels="{Binding Legendas}"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="Valor Gasto (Reais)"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+                </GroupBox>
             </Grid>
             
         </Grid>
@@ -51,11 +76,11 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            
-            <Button x:Name="RemoverViagemBtn" Click="RemoverBtn_Click" Grid.Column="0" Background="#FFE66E6E" Margin="40 5">
+
+            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Grid.Column="0" Background="#FFE66E6E" Margin="40 5">
                 REMOVER RELATÓRIO
             </Button>
-            <Button x:Name="CancelarViagemBtn" Click="CancelarViagemBtn_Click" Grid.Column="1" Background="#FFE28B23" Margin="40 5" >
+            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Grid.Column="1" Background="#FFE28B23" Margin="40 5" >
                 CANCELAR
             </Button>
 

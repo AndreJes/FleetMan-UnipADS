@@ -40,7 +40,7 @@ namespace Modelo.Classes.Relatorios
             {
                 totalEnvolvidos += s.QntEnvolvidos;
             }
-
+            
             MediaDeEnvolvidos = totalEnvolvidos / QntTotalSinistros;
 
             QntSinistrosVencidos = sinistros.Where(s => s.EstadoPagamento == EstadosDePagamento.VENCIDO).Count();

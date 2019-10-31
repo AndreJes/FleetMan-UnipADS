@@ -57,6 +57,11 @@ namespace Servicos.Relatorios
         }
         #endregion
 
+        public Relatorio ObterRelatorioPorId(long? id, TiposRelatorios tipo)
+        {
+            return Context.ObterRelatorioPorId(id, tipo);
+        }
+
         public Relatorio GerarRelatorio(DateTime dataInicio, DateTime dataFinal, TiposRelatorios tipo, string descricao = "")
         {
             switch (tipo)
@@ -128,5 +133,11 @@ namespace Servicos.Relatorios
         {
             Context.GravarRelatorio(relatorio, tipo);
         }
+
+        public void RemoverRelatorioPorId(long? id, TiposRelatorios tipo)
+        {
+            Context.RemoverRelatorioPorId(id, tipo);
+        }
+
     }
 }

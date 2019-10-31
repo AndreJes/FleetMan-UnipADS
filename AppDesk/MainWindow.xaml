@@ -1528,6 +1528,13 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
                                 <DataGridTextColumn Header="Data de emissão" Binding="{Binding DataEmissao}"/>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="RelatorioConsumoDetailsBtn" Click="RelatorioConsumoDetailsBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
