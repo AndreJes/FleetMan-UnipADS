@@ -41,5 +41,34 @@ namespace Persistencia.DAL.Relatorios
             return Context.RelatoriosViagens.OrderBy(rv => rv.RelatorioId);
         }
         #endregion
+
+        public void GravarRelatorio(Relatorio relatorio, TiposRelatorios tipo)
+        {
+            switch (tipo)
+            {
+                case TiposRelatorios.VIAGEM:
+                    Context.RelatoriosViagens.Add(relatorio as RelatorioViagem);
+                    break;
+                case TiposRelatorios.MULTA:
+                    Context.RelatoriosMultas.Add(relatorio as RelatorioMulta);
+                    break;
+                case TiposRelatorios.ACIDENTE:
+                    Context.RelatoriosAcidentes.Add(relatorio as RelatorioSinistros);
+                    break;
+                case TiposRelatorios.CONSUMO:
+                    Context.RelatoriosConsumos.Add(relatorio as RelatorioConsumo);
+                    break;
+                case TiposRelatorios.FINANCEIRO:
+                    Context.RelatoriosFinanceiros.Add(relatorio as RelatorioFinanceiro);
+                    break;
+                case TiposRelatorios.MANUTENCOES:
+                    Context.RelatoriosManutencao.Add(relatorio as RelatorioManutencao);
+                    break;
+                default:
+                    break;
+            }
+
+            Context.SaveChanges();
+        }
     }
 }

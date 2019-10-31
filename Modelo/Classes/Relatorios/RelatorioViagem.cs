@@ -17,6 +17,8 @@ namespace Modelo.Classes.Relatorios
         public int QntViagensConcluidas{ get; set; }
         public int QntViagensCanceladas { get; set; }
 
+        public RelatorioViagem() { }
+
         public RelatorioViagem(DateTime dataInicio, DateTime dataFinal, TiposRelatorios tipo, List<Viagem> viagens , string descricao = "")
             : base(dataInicio, dataFinal, tipo, descricao)
         {

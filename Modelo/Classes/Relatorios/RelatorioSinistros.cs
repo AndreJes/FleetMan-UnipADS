@@ -15,7 +15,7 @@ namespace Modelo.Classes.Relatorios
         public int MediaDeEnvolvidos { get; set; }
 
         public int QntSinistrosVencidos { get; set; }
-        public int QntSinistrosPagos  { get; set; }
+        public int QntSinistrosPagos { get; set; }
         public int QntSinistrosAguardando { get; set; }
 
         public int QntBatidas { get; set; }
@@ -27,11 +27,13 @@ namespace Modelo.Classes.Relatorios
 
         public GravidadesDeSinistro GravidadeMaisComum { get; set; }
 
+        public RelatorioSinistros(){ }
+
         public RelatorioSinistros(DateTime dataInicio, DateTime dataFinal, TiposRelatorios tipo, List<Sinistro> sinistros, string descricao = "")
-            : base(dataInicio, dataFinal, tipo, descricao:descricao)
+            : base(dataInicio, dataFinal, tipo, descricao: descricao)
         {
             QntTotalSinistros = sinistros.Count;
-            
+
             int totalEnvolvidos = 0;
 
             foreach (Sinistro s in sinistros)

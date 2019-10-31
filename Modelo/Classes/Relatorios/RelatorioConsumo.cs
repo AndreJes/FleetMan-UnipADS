@@ -18,6 +18,8 @@ namespace Modelo.Classes.Relatorios
         public double ValorGastoTotal { get; set; }
         public double ValorGastoMedio { get; set; }
 
+        public RelatorioConsumo() { }
+
         public RelatorioConsumo(DateTime dataInicio, DateTime dataFinal, TiposRelatorios tipo, List<Abastecimento> abastecimentos, string descricao = "")
             : base (dataInicio, dataFinal, tipo, descricao:descricao)
         {

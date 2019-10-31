@@ -39,12 +39,12 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <RadioButton GroupName="TipoRelatorio" Grid.Row="0" Grid.Column="0">Consumo</RadioButton>
-                    <RadioButton GroupName="TipoRelatorio" Grid.Row="1" Grid.Column="0">Financeiro</RadioButton>
-                    <RadioButton GroupName="TipoRelatorio" Grid.Row="2" Grid.Column="0">Manutenção</RadioButton>
-                    <RadioButton GroupName="TipoRelatorio" Grid.Row="0" Grid.Column="1">Multa</RadioButton>
-                    <RadioButton GroupName="TipoRelatorio" Grid.Row="1" Grid.Column="1">Sinistro</RadioButton>
-                    <RadioButton GroupName="TipoRelatorio" Grid.Row="2" Grid.Column="1">Viagens</RadioButton>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="0" Grid.Column="0" x:Name="ConsumoRB">Consumo</RadioButton>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="1" Grid.Column="0" x:Name="FinanceiroRB">Financeiro</RadioButton>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="2" Grid.Column="0" x:Name="ManutencaoRB">Manutenção</RadioButton>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="0" Grid.Column="1" x:Name="MultaRB">Multa</RadioButton>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="1" Grid.Column="1" x:Name="SinistroRB">Sinistro</RadioButton>
+                    <RadioButton GroupName="TipoRelatorio" Grid.Row="2" Grid.Column="1" x:Name="ViagemRB">Viagens</RadioButton>
                 </Grid>
             </GroupBox>
 
@@ -57,13 +57,13 @@
 
                     <GroupBox Header="De" Grid.Column="0">
                         <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                            <DatePicker></DatePicker>
+                            <DatePicker x:Name="InicioDatePicker"></DatePicker>
                         </StackPanel>
                     </GroupBox>
 
                     <GroupBox Header="Até" Grid.Column="1">
                         <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                            <DatePicker></DatePicker>
+                            <DatePicker x:Name="FinalDatePicker"></DatePicker>
                         </StackPanel>
             </GroupBox>
         </Grid>
@@ -73,7 +73,7 @@
             <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Style="{StaticResource MainStackPanelStyle}">
                     <Label Style="{StaticResource MainLabelStyle}">Descrição(Opcional)</Label>
-                    <TextBox Style="{StaticResource MainTextBoxStyle}" Width="250"></TextBox>
+                    <TextBox Style="{StaticResource MainTextBoxStyle}" Width="250" x:Name="DescricaoTextBox"></TextBox>
                 </StackPanel>
             </Grid>
         </Grid>

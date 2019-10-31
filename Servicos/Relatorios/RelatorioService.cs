@@ -67,7 +67,7 @@ namespace Servicos.Relatorios
                         .Where(v => v.DataChegada <= dataFinal)
                         .ToList();
 
-                    RelatorioViagem relatorioViagem = new RelatorioViagem(dataInicio, dataFinal, tipo, viagens, descricao:descricao);
+                    RelatorioViagem relatorioViagem = new RelatorioViagem(dataInicio, dataFinal, tipo, viagens, descricao: descricao);
 
                     return relatorioViagem;
 
@@ -93,8 +93,8 @@ namespace Servicos.Relatorios
 
                 case TiposRelatorios.CONSUMO:
                     List<Abastecimento> abastecimentos = AbastecimentoContext.ObterAbastecimentosOrdPorId()
-                        .Where(a => a.DataAgendada >= dataInicio)
-                        .Where(a => a.DataAgendada <= dataFinal)
+                        .Where(a => a.DataAgendada >= dataInicio || a.DataConclusao >= dataInicio)
+                        .Where(a => a.DataAgendada <= dataFinal || a.DataConclusao <= dataFinal)
                         .ToList();
 
                     RelatorioConsumo relatorioConsumo = new RelatorioConsumo(dataInicio, dataFinal, tipo, abastecimentos, descricao: descricao);
@@ -122,6 +122,11 @@ namespace Servicos.Relatorios
                 default:
                     throw new Exception("Tipo de relatório inválido");
             }
+        }
+
+        public void GravarRelatorio(Relatorio relatorio, TiposRelatorios tipo)
+        {
+            Context.GravarRelatorio(relatorio, tipo);
         }
     }
 }

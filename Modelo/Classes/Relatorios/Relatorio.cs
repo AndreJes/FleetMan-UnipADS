@@ -24,12 +24,15 @@ namespace Modelo.Classes.Relatorios
 
         public TiposRelatorios Tipo { get; set; }
 
+        public Relatorio() { }
+
         public Relatorio(DateTime dataInicio, DateTime dataFinal, TiposRelatorios tipo, string descricao = "") 
         {
             DataInicial = dataInicio;
             DataFinal = dataFinal;
             Tipo = tipo;
             Descricao = descricao;
+            DataEmissao = DateTime.Now;
         }
     }
 }

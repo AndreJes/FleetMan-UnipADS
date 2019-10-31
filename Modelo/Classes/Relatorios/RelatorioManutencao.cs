@@ -19,8 +19,10 @@ namespace Modelo.Classes.Relatorios
         public int QntManPreventivas { get; set; }
         public int QntManCorretivas { get; set; }
 
+        public RelatorioManutencao() { }
+
         public RelatorioManutencao(DateTime dataInicio, DateTime dataFinal, TiposRelatorios tipo, List<Modelo.Classes.Manutencao.Manutencao> manutencoes, string descricao = "")
-            : base(dataInicio, dataFinal, tipo, descricao:descricao)
+            : base(dataInicio, dataFinal, tipo, descricao: descricao)
         {
             QntTotalMan = manutencoes.Count;
             QntManAguardando = manutencoes.Where(m => m.EstadoAtual == EstadosDeManutencao.AGUARDANDO).Count();

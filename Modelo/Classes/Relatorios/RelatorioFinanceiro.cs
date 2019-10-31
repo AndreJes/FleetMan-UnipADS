@@ -19,6 +19,8 @@ namespace Modelo.Classes.Relatorios
         public double TotalValorEntradas { get; set; }
         public double TotalValorSaidas { get; set; }
 
+        public RelatorioFinanceiro() { }
+
         public RelatorioFinanceiro(DateTime dataInicio, DateTime dataFinal, TiposRelatorios tipo, List<Financa> financas, string descricao = "")
             : base(dataInicio, dataFinal, tipo, descricao: descricao)
         {

@@ -26,6 +26,8 @@ namespace Modelo.Classes.Relatorios
 
         public GravidadesDeInfracao GravidadeMaisComum { get; set; }
 
+        public RelatorioMulta() { }
+
         public RelatorioMulta(DateTime dataInicio, DateTime dataFinal, TiposRelatorios tipo, List<Multa> multas, string descricao = "") 
             : base(dataInicio, dataFinal, tipo, descricao:descricao)
         {
