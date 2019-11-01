@@ -1544,6 +1544,13 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
                                 <DataGridTextColumn Header="Data de emissão" Binding="{Binding DataEmissao}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="RelatorioFinanceiroDetailsBtn" Click="RelatorioFinanceiroDetailsBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
@@ -1553,6 +1560,15 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
                                 <DataGridTextColumn Header="Data de emissão" Binding="{Binding DataEmissao}"/>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="RelatorioManutencaoDetailsBtn" Click="RelatorioManutencaoDetailsBtn_Click">
+                                                Detalhes
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->

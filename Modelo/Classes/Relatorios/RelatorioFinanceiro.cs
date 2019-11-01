@@ -52,5 +52,7 @@ namespace Modelo.Classes.Relatorios
             TotalValorSaidas = valorTotalSaidas;
             
         }
+
+
     }
 }

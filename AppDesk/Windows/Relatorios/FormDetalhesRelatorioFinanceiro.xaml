@@ -1,0 +1,84 @@
+﻿<Window x:Class="AppDesk.Windows.Relatorios.FormDetalhesRelatorioFinanceiro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDesk.Windows.Relatorios"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="Detalhes relatorio financeiro" Height="700" Width="500" MaxHeight="700" MaxWidth="500" MinHeight="700" MinWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">Relatório de Finanças</Label>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+
+            <GroupBox HorizontalAlignment="Center">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Grid.Column="0">Quantidade de finanças entre:</TextBlock>
+                        <Border Margin="5 0">
+                            <TextBlock Grid.Column="1" Text="{Binding Relatorio.DataInicial, StringFormat=dd/MM/yyyy}"></TextBlock>
+                        </Border>
+                        <TextBlock Grid.Column="2"> e</TextBlock>
+                        <Border Margin="5 0">
+                            <TextBlock Grid.Column="3" Text="{Binding Relatorio.DataFinal, StringFormat=dd/MM/yyyy}"></TextBlock>
+                        </Border>
+                    </StackPanel>
+                </GroupBox.Header>
+                <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="NumeroAbastecimentosTextBox" Text="{Binding Relatorio.QntTotalFinancas}" Width="40" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                </StackPanel>
+            </GroupBox>
+
+            <Grid Grid.Row="1">
+                <GroupBox Header="Relação entre o pagamento de finanças">
+                    <Grid>
+                        <lvc:PieChart x:Name="GraficoPizzaPagamentos" LegendLocation="Bottom" Hoverable="False">
+                        </lvc:PieChart>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <GroupBox Header="Entradas e Saidas">
+                    <lvc:CartesianChart x:Name="GraficoBarraEntradasSaidas">
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="Tipo" Labels="{Binding Legendas}"/>
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="Valor (R$)" LabelFormatter="{Binding Formatador}"/>
+                        </lvc:CartesianChart.AxisY>
+                    </lvc:CartesianChart>
+                </GroupBox>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Grid.Column="0" Background="#FFE66E6E" Margin="40 5">
+                REMOVER RELATÓRIO
+            </Button>
+            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Grid.Column="1" Background="#FFE28B23" Margin="40 5" >
+                CANCELAR
+            </Button>
+
+        </Grid>
+
+    </Grid>
+</Window>

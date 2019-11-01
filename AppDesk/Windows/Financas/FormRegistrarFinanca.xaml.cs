@@ -49,7 +49,7 @@ namespace AppDesk.Windows.Financas
             financa.Valor = double.Parse(ValorFinancaTextBox.Text);
             financa.DataVencimento = DataVencimentoDatePicker.DisplayDate;
             financa.DataPagamento = DataPagamentoDatePicker.DisplayDate;
-            financa.EstadoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), PagamentoFinancaComboBox.SelectedItem.ToString().Replace('_', ' '));
+            financa.EstadoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), PagamentoFinancaComboBox.SelectedItem.ToString().Replace(' ', '_'));
             if (FinancaEntradaRadioBtn.IsChecked == true)
             {
                 financa.Tipo = TipoDeFinanca.ENTRADA;

@@ -549,9 +549,21 @@ namespace AppDesk
 
         private void RelatorioConsumoDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
-            RelatorioConsumo relatorioConsumo = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosConsumoOrdPorId().Where(rc => rc.RelatorioId == (RelatoriosAbastecimentoDataGrid.SelectedItem as RelatorioConsumo).RelatorioId).FirstOrDefault();
+            RelatorioConsumo relatorioConsumo = ServicoDados.ServicoDadosRelatorio.ObterRelatorioPorId((RelatoriosAbastecimentoDataGrid.SelectedItem as RelatorioConsumo).RelatorioId, TiposRelatorios.CONSUMO) as RelatorioConsumo;
             FormDetalhesRelatorioConsumo formDetalhesRelatorioConsumo = new FormDetalhesRelatorioConsumo(relatorioConsumo);
             formDetalhesRelatorioConsumo.Show();
+        }
+
+        private void RelatorioFinanceiroDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RelatorioFinanceiro relatorioFinanceiro = ServicoDados.ServicoDadosRelatorio.ObterRelatorioPorId((RelatoriosFinanceiroDataGrid.SelectedItem as RelatorioFinanceiro).RelatorioId, TiposRelatorios.FINANCEIRO) as RelatorioFinanceiro;
+            FormDetalhesRelatorioFinanceiro formDetalhesRelatorioFinanceiro = new FormDetalhesRelatorioFinanceiro(relatorioFinanceiro);
+            formDetalhesRelatorioFinanceiro.Show();
+        }
+
+        private void RelatorioManutencaoDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
