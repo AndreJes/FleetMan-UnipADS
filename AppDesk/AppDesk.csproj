@@ -182,6 +182,9 @@
     <Compile Include="Windows\MultaESinistro\Sinistros\FormDetalhesAlterarSinistro.xaml.cs">
       <DependentUpon>FormDetalhesAlterarSinistro.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Relatorios\FormDetalhesRelatorioAcidentes.xaml.cs">
+      <DependentUpon>FormDetalhesRelatorioAcidentes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Relatorios\FormDetalhesRelatorioConsumo.xaml.cs">
       <DependentUpon>FormDetalhesRelatorioConsumo.xaml</DependentUpon>
     </Compile>
@@ -362,6 +365,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\MultaESinistro\Sinistros\FormDetalhesAlterarSinistro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Relatorios\FormDetalhesRelatorioAcidentes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

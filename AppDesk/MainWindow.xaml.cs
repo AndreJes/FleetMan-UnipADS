@@ -584,7 +584,9 @@ namespace AppDesk
 
         private void RelatorioSinistrosDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            RelatorioSinistros relatorioSinistros = (RelatorioSinistros)ServicoDados.ServicoDadosRelatorio.ObterRelatorioPorId((RelatoriosSinistroDataGrid.SelectedItem as RelatorioSinistros).RelatorioId, TiposRelatorios.ACIDENTE);
+            FormDetalhesRelatorioAcidentes formDetalhesRelatorioAcidentes = new FormDetalhesRelatorioAcidentes(relatorioSinistros);
+            formDetalhesRelatorioAcidentes.Show();
         }
     }
 }

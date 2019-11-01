@@ -251,6 +251,7 @@ namespace AppDesk.Windows.MultaESinistro
             sinistro.DataSinistro = DataDoSinistroDatePicker.DisplayDate;
             sinistro.QntEnvolvidos = int.Parse(QtnEnvolvidosSinistroTextBox.Text);
             sinistro.Gravidade = (GravidadesDeSinistro)Enum.Parse(typeof(GravidadesDeSinistro), GravidadeSinistroComboBox.SelectedItem.ToString().Replace(' ', '_'));
+            sinistro.EstadoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), EstadoPagamentoSinistroComboBox.SelectedItem.ToString().Replace(' ', '_'));
             sinistro.VeiculoId = _veiculoPSinistro.VeiculoId;
             sinistro.MotoristaId = _motoristaPSinistro.MotoristaId;
             sinistro.Descricao = descricao;

@@ -11,8 +11,7 @@ namespace Modelo.Classes.Relatorios
     public class RelatorioSinistros : Relatorio
     {
         public int QntTotalSinistros { get; set; }
-
-        public int MediaDeEnvolvidos { get; set; }
+        public int TotalDeEnvolvidos { get; set; }
 
         public int QntSinistrosVencidos { get; set; }
         public int QntSinistrosPagos { get; set; }
@@ -34,14 +33,10 @@ namespace Modelo.Classes.Relatorios
         {
             QntTotalSinistros = sinistros.Count;
 
-            int totalEnvolvidos = 0;
-
             foreach (Sinistro s in sinistros)
             {
-                totalEnvolvidos += s.QntEnvolvidos;
+                TotalDeEnvolvidos += s.QntEnvolvidos;
             }
-            
-            MediaDeEnvolvidos = totalEnvolvidos / QntTotalSinistros;
 
             QntSinistrosVencidos = sinistros.Where(s => s.EstadoPagamento == EstadosDePagamento.VENCIDO).Count();
             QntSinistrosPagos = sinistros.Where(s => s.EstadoPagamento == EstadosDePagamento.PAGO).Count();
