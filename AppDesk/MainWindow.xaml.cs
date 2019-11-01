@@ -570,6 +570,18 @@ namespace AppDesk
 
         private void RelatorioViagensDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
+            RelatorioViagem relatorioViagem = (RelatorioViagem)ServicoDados.ServicoDadosRelatorio.ObterRelatorioPorId((RelatoriosViagemDataGrid.SelectedItem as RelatorioViagem).RelatorioId, TiposRelatorios.VIAGEM);
+            FormDetalhesRelatorioViagens formDetalhesRelatorioViagens = new FormDetalhesRelatorioViagens(relatorioViagem);
+            formDetalhesRelatorioViagens.Show();
+        }
+
+        private void RelatorioMultasDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RelatorioSinistrosDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

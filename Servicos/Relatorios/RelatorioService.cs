@@ -69,7 +69,7 @@ namespace Servicos.Relatorios
                 case TiposRelatorios.VIAGEM:
                     List<Viagem> viagens = ViagemContext.ObterViagensOrdPorId()
                         .Where(v => v.DataSaida >= dataInicio)
-                        .Where(v => v.DataChegada <= dataFinal)
+                        .Where(v => v.DataSaida <= dataFinal)
                         .ToList();
 
                     RelatorioViagem relatorioViagem = new RelatorioViagem(dataInicio, dataFinal, tipo, viagens, descricao: descricao);

@@ -191,6 +191,9 @@
     <Compile Include="Windows\Relatorios\FormDetalhesRelatorioManutencao.xaml.cs">
       <DependentUpon>FormDetalhesRelatorioManutencao.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Relatorios\FormDetalhesRelatorioViagens.xaml.cs">
+      <DependentUpon>FormDetalhesRelatorioViagens.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Relatorios\FormGerarRelatorio.xaml.cs">
       <DependentUpon>FormGerarRelatorio.xaml</DependentUpon>
     </Compile>
@@ -368,6 +371,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Relatorios\FormDetalhesRelatorioManutencao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Relatorios\FormDetalhesRelatorioViagens.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

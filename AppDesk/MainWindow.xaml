@@ -1578,6 +1578,15 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
                                 <DataGridTextColumn Header="Data de emissão" Binding="{Binding DataEmissao}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="RelatorioMultasDetailsBtn" Click="RelatorioMultasDetailsBtn_Click">
+                                                Detalhes
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
@@ -1587,6 +1596,15 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
                                 <DataGridTextColumn Header="Data de emissão" Binding="{Binding DataEmissao}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="RelatorioSinistrosDetailsBtn" Click="RelatorioSinistrosDetailsBtn_Click">
+                                                Detalhes
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
