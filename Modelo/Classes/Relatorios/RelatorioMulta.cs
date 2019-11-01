@@ -58,6 +58,14 @@ namespace Modelo.Classes.Relatorios
             {
                 GravidadeMaisComum = GravidadesDeInfracao.GRAVISSIMA;
             }
+
+            foreach (Multa multa in multas)
+            {
+                ValorTotal += multa.Valor;
+            }
+
+            ValorMedio = ValorTotal / QntTotalMultas;
+
         }
 
 

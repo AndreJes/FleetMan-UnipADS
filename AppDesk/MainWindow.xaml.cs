@@ -577,7 +577,9 @@ namespace AppDesk
 
         private void RelatorioMultasDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            RelatorioMulta relatorioMulta = (RelatorioMulta)ServicoDados.ServicoDadosRelatorio.ObterRelatorioPorId((RelatoriosMultaDataGrid.SelectedItem as RelatorioMulta).RelatorioId, TiposRelatorios.MULTA);
+            FormDetalhesRelatorioMultas formDetalhesRelatorioMultas = new FormDetalhesRelatorioMultas(relatorioMulta);
+            formDetalhesRelatorioMultas.Show();
         }
 
         private void RelatorioSinistrosDetailsBtn_Click(object sender, RoutedEventArgs e)
