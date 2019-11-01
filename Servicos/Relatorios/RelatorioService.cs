@@ -118,7 +118,7 @@ namespace Servicos.Relatorios
                 case TiposRelatorios.MANUTENCOES:
                     List<Modelo.Classes.Manutencao.Manutencao> manutencoes = ManutencaoContext.ObterManutencoesOrdPorId()
                         .Where(m => m.DataEntrada >= dataInicio)
-                        .Where(m => m.DataSaida <= dataFinal)
+                        .Where(m => m.DataEntrada <= dataFinal)
                         .ToList();
 
                     RelatorioManutencao relatorioManutencao = new RelatorioManutencao(dataInicio, dataFinal, tipo, manutencoes, descricao: descricao);

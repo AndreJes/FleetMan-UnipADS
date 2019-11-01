@@ -563,6 +563,13 @@ namespace AppDesk
 
         private void RelatorioManutencaoDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
+            RelatorioManutencao relatorioManutencao = (RelatorioManutencao)ServicoDados.ServicoDadosRelatorio.ObterRelatorioPorId((RelatoriosManutencaoDataGrid.SelectedItem as RelatorioManutencao).RelatorioId, TiposRelatorios.MANUTENCOES);
+            FormDetalhesRelatorioManutencao formDetalhesRelatorioManutencao = new FormDetalhesRelatorioManutencao(relatorioManutencao);
+            formDetalhesRelatorioManutencao.Show();
+        }
+
+        private void RelatorioViagensDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
