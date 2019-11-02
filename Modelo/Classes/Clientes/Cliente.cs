@@ -21,9 +21,9 @@ namespace Modelo.Classes.Clientes
         #endregion
 
         #region Props de carregamento
-        public ICollection<Veiculo> Veiculos { get; set; }
-        public ICollection<Motorista> Motoristas { get; set; }
-        public ICollection<Aluguel> Alugueis { get; set; }
+        public virtual ICollection<Veiculo> Veiculos { get; set; }
+        public virtual ICollection<Motorista> Motoristas { get; set; }
+        public virtual ICollection<Aluguel> Alugueis { get; set; }
         #endregion
 
         #region Props não Mapeadas

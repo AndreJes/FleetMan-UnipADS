@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Modelo.Classes.Clientes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Usuarios
 {
-    public class UsuarioCliente : Usuario
+    public class UsuarioCliente : IdentityUser
     {
-        [Key, ForeignKey("Cliente")]
+        [ForeignKey("Cliente")]
         public long? ClienteId { get; set; }
-        public Clientes.Cliente Cliente { get; set; }
+        public Cliente Cliente { get; set; }
     }
 }

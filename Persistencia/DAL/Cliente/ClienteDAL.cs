@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo.Classes.Clientes;
+using Modelo.Classes.Usuarios;
 using Modelo.Enums;
+using Persistencia.DAL.Usuarios;
 
 namespace Persistencia.DAL.Cliente
 {
@@ -52,6 +54,7 @@ namespace Persistencia.DAL.Cliente
                 }
             }
             Context.SaveChanges();
+            GerarUsuarioCliente(Context.Entry(cliente).Entity);
         }
 
         public ClientePF ObterClientePFPorId(long? id)
@@ -79,9 +82,29 @@ namespace Persistencia.DAL.Cliente
 
         public void RemoverClientePorId(long? id)
         {
+            UsuarioClienteDAL usuarioClienteDAL = new UsuarioClienteDAL();
+            usuarioClienteDAL.RemoverUsuarioClientePorId(id.ToString());
             Modelo.Classes.Clientes.Cliente cliente = Context.Clientes.Where(c => c.ClienteId == id).FirstOrDefault();
             Context.Clientes.Remove(cliente);
             Context.SaveChanges();
+        }
+
+        private void GerarUsuarioCliente(Modelo.Classes.Clientes.Cliente cliente)
+        {
+            UsuarioClienteDAL usuarioClienteDAL = new UsuarioClienteDAL();
+            UsuarioClienteView clienteView = new UsuarioClienteView();
+            clienteView.ClienteId = cliente.ClienteId;
+            clienteView.Email = cliente.Email;
+            clienteView.Login = cliente.Email;
+            if (cliente is ClientePF)
+            {
+                clienteView.Senha = (cliente as ClientePF).CPF.Substring(0, 8);
+            }
+            else
+            {
+                clienteView.Senha = (cliente as ClientePJ).CNPJ.Substring(0, 8);
+            }
+            usuarioClienteDAL.AdicionarUsuarioCliente(clienteView);
         }
     }
 }
