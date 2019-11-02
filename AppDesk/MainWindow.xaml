@@ -1472,27 +1472,8 @@
                             </Button>
                             <!--#endregion-->
 
-                            <!--#region Seleção de Cliente-->
-                            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 5">
-                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                    Selecionar Cliente:</Label>
-                                <ComboBox>
-
-                                </ComboBox>
-                            </StackPanel>
-                            <!--#endregion-->
-
                             <!--#region Separators-->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
-                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
-                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
-                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <!--#endregion-->
