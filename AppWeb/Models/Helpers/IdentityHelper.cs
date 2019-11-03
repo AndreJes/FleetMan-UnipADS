@@ -7,9 +7,11 @@ using System.Web.Mvc;
 
 namespace AppWeb.Models.Helpers
 {
-    public class IdentityHelper
+    public static class IdentityHelper
     {
-        private ClienteService ClienteService = new ClienteService();
-
+        public static MvcHtmlString GetAuthenticatedUser(this HtmlHelper html)
+        {
+            return new MvcHtmlString(HttpContext.Current.User.Identity.Name);
+        }
     }
 }

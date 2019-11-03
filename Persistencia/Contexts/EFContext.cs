@@ -64,7 +64,7 @@ namespace Persistencia.Contexts
 
         public EFContext() : base("Banco_Pim_IV")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFContext, IdentityConfig>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

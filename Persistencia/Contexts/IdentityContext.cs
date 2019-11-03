@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Modelo.Classes.Usuarios;
+using Persistencia.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,20 +17,10 @@ namespace Persistencia.Contexts
             
         }
 
-        static IdentityContext()
-        {
-            Database.SetInitializer<IdentityContext>(new IdentityDbInit());
-        }
-
         public static IdentityContext Create()
         {
             return new IdentityContext();
         }
-
-    }
-
-    public class IdentityDbInit : DropCreateDatabaseIfModelChanges<IdentityContext>
-    {
 
     }
 }

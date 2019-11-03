@@ -23,12 +23,12 @@ namespace Servicos.Cliente
             Context.GravarCliente(cliente);
         }
 
-        public Modelo.Classes.Clientes.ClientePF ObterClientePFPorId(long? id)
+        public ClientePF ObterClientePFPorId(long? id)
         {
             return Context.ObterClientePFPorId(id);
         }
 
-        public Modelo.Classes.Clientes.ClientePJ ObterClientePJPorId(long? id)
+        public ClientePJ ObterClientePJPorId(long? id)
         {
             return Context.ObterClientePJPorId(id);
         }
@@ -36,6 +36,19 @@ namespace Servicos.Cliente
         public Modelo.Classes.Clientes.Cliente ObterClientePorCPFCNPJ(string cpfcnpj, TipoCliente tipo)
         {
             return Context.ObterClientePorCPFCNPJ(cpfcnpj, tipo);
+        }
+
+        public Modelo.Classes.Clientes.Cliente ObterClientePorIdTipo(long? id, TipoCliente tipo)
+        {
+            switch (tipo)
+            {
+                case TipoCliente.PF:
+                    return ObterClientePFPorId(id);
+                case TipoCliente.PJ:
+                    return ObterClientePJPorId(id);
+                default:
+                    throw new Exception("Tipo cliente inválido!");
+            }
         }
 
         public void RemoverClientePorId(long? id)

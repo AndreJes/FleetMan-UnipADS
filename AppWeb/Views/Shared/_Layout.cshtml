@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using AppWeb.Models.Helpers
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,22 +11,34 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body style="margin: 0">
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-            @Html.ActionLink("FleetMan", "Index", "Home", null, new { @class = "navbar-brand" })
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarNav" aria-controls="NavbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="NavbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">@Html.ActionLink("Início", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
-                    <li class="nav-item">@Html.ActionLink("Veículos", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
-                    <li class="nav-item">@Html.ActionLink("Motoristas", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
-                    <li class="nav-item">@Html.ActionLink("Aluguel", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
-                    <li class="nav-item">@Html.ActionLink("Viagens", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
-                    <li class="nav-item">@Html.ActionLink("Meu Perfil", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
-                </ul>
-            </div>
-        </nav>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+        @Html.ActionLink("FleetMan", "Index", "Home", null, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarNav" aria-controls="NavbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="NavbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">@Html.ActionLink("Início", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
+                <li class="nav-item">@Html.ActionLink("Veículos", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
+                <li class="nav-item">@Html.ActionLink("Motoristas", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
+                <li class="nav-item">@Html.ActionLink("Aluguel", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
+                <li class="nav-item">@Html.ActionLink("Viagens", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
+                <li class="nav-item">@Html.ActionLink("Meu Perfil", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
+                <li class="nav-item">
+                    @{
+                        if (Html.GetAuthenticatedUser().ToString() != "")
+                        {
+                            @Html.ActionLink("Sair", "Logout", "Account", null, new { @class = "nav-link btn btn-danger" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Realizar Login", "Login", "Account", null, new { @class = "nav-link btn btn-success" })
+                        }
+                    }
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
         @RenderBody()
         <hr />
