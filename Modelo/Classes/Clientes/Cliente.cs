@@ -1,5 +1,6 @@
 ﻿using Modelo.Classes.Auxiliares;
 using Modelo.Classes.Web;
+using Modelo.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,6 +19,7 @@ namespace Modelo.Classes.Clientes
         public string Nome { get; set; }
         public string Email { get; set; }
         public bool Ativo { get; set; }
+        public TipoCliente Tipo { get; set; }
         #endregion
 
         #region Props de carregamento

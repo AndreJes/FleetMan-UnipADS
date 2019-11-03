@@ -185,6 +185,10 @@
     <Compile Include="Migrations\201911022049572_NewUserCliente.Designer.cs">
       <DependentUpon>201911022049572_NewUserCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911031308414_Cliente-Tipo.cs" />
+    <Compile Include="Migrations\201911031308414_Cliente-Tipo.Designer.cs">
+      <DependentUpon>201911031308414_Cliente-Tipo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -261,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911022049572_NewUserCliente.resx">
       <DependentUpon>201911022049572_NewUserCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911031308414_Cliente-Tipo.resx">
+      <DependentUpon>201911031308414_Cliente-Tipo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

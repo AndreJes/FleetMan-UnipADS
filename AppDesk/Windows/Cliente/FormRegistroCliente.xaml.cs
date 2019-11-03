@@ -77,8 +77,9 @@ namespace AppDesk.Windows.Clientes
                         CEP = CEPTextBox.Text,
                         Cidade = CidadeTextBox.Text,
                         Numero = NumeroTextBox.Text,
-                        UF = (UnidadesFederativas) Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString())
-                    }
+                        UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString())
+                    },
+                    Tipo = TipoCliente.PF
                 };
                 return clientePF;
             }
@@ -99,7 +100,8 @@ namespace AppDesk.Windows.Clientes
                         Cidade = CidadeTextBox.Text,
                         Numero = NumeroTextBox.Text,
                         UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString())
-                    }
+                    },
+                    Tipo = TipoCliente.PJ
                 };
                 return clientePJ;
             }

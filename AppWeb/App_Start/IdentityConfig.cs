@@ -22,7 +22,7 @@ namespace AppWeb
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Login")
+                LoginPath = new PathString("/Account/Login")
             });
         }
     }
