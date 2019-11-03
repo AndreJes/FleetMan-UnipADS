@@ -189,6 +189,10 @@
     <Compile Include="Migrations\201911031308414_Cliente-Tipo.Designer.cs">
       <DependentUpon>201911031308414_Cliente-Tipo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911031431278_Funcionario-NewForeignForUser.cs" />
+    <Compile Include="Migrations\201911031431278_Funcionario-NewForeignForUser.Designer.cs">
+      <DependentUpon>201911031431278_Funcionario-NewForeignForUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -268,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911031308414_Cliente-Tipo.resx">
       <DependentUpon>201911031308414_Cliente-Tipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911031431278_Funcionario-NewForeignForUser.resx">
+      <DependentUpon>201911031431278_Funcionario-NewForeignForUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

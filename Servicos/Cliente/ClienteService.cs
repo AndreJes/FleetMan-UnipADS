@@ -38,14 +38,14 @@ namespace Servicos.Cliente
             return Context.ObterClientePorCPFCNPJ(cpfcnpj, tipo);
         }
 
-        public Modelo.Classes.Clientes.Cliente ObterClientePorIdTipo(long? id, TipoCliente tipo)
+        public Modelo.Classes.Clientes.Cliente ObterClientePorEmailTipo(string email, TipoCliente tipo)
         {
             switch (tipo)
             {
                 case TipoCliente.PF:
-                    return ObterClientePFPorId(id);
+                    return ObterClientesOrdPorId().Where(c => c.Tipo == TipoCliente.PF).Where(c => c.Email == email).FirstOrDefault();
                 case TipoCliente.PJ:
-                    return ObterClientePJPorId(id);
+                    return ObterClientesOrdPorId().Where(c => c.Tipo == TipoCliente.PJ).Where(c => c.Email == email).FirstOrDefault();
                 default:
                     throw new Exception("Tipo cliente inválido!");
             }

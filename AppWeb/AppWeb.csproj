@@ -161,6 +161,7 @@
     </Compile>
     <Compile Include="Models\Helpers\IdentityHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

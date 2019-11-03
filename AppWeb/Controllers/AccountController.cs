@@ -53,7 +53,7 @@ namespace AppWeb.Controllers
                 UsuarioCliente usuario = Gerenciador.Find(model.Email, model.Senha);
                 if(usuario == null)
                 {
-                    @ViewBag.Error = "Usuário não encontrado!";
+                    @ViewBag.Error = "Usuário não encontrado ou senha inválida!";
                 }
                 else
                 {

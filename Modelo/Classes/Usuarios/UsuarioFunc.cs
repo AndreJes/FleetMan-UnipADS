@@ -12,7 +12,9 @@ namespace Modelo.Classes.Usuarios
 {
     public class UsuarioFunc : Usuario
     {
-        [Key, ForeignKey("Funcionario")]
+        [Key]
+        public long? UsuarioId { get; set; }
+        [ForeignKey("Funcionario")]
         public long? FuncionarioId { get; set; }
         public Funcionario Funcionario { get; set; }
         public Permissoes.Permissoes Permissoes { get; set; }
