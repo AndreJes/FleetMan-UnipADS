@@ -154,14 +154,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClienteUsuario\ClientePFViewModel.cs" />
+    <Compile Include="Models\ClienteUsuario\ClientePJViewModel.cs" />
+    <Compile Include="Models\ClienteUsuario\UsuarioEditViewModel.cs" />
     <Compile Include="Models\Helpers\IdentityHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
-    <Compile Include="Models\UsuarioViewModel.cs" />
+    <Compile Include="Models\ClienteUsuario\ClienteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +216,23 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JqueryMaskPlugin\.gitignore" />
+    <Content Include="Scripts\JqueryMaskPlugin\CHANGELOG.txt" />
+    <Content Include="Scripts\JqueryMaskPlugin\Gruntfile.js" />
+    <Content Include="Scripts\JqueryMaskPlugin\jquery.mask.js" />
+    <Content Include="Scripts\JqueryMaskPlugin\jquery.mask.min.js" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\jquery.mask.test.js" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\qunit.css" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\qunit.js" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\test-for-jquery-1.11.1.html" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\test-for-jquery-1.7.2.html" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\test-for-jquery-1.8.3.html" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\test-for-jquery-1.9.1.html" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\test-for-jquery-2.1.1.html" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\test-for-zepto.html" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\zepto\data.js" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\zepto\event.js" />
+    <Content Include="Scripts\JqueryMaskPlugin\test\zepto\zepto.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -243,6 +264,17 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Scripts\JqueryMaskPlugin\.ruby-version" />
+    <Content Include="Scripts\JqueryMaskPlugin\.travis.yml" />
+    <Content Include="Scripts\JqueryMaskPlugin\bower.json" />
+    <Content Include="Scripts\JqueryMaskPlugin\component.json" />
+    <Content Include="Scripts\JqueryMaskPlugin\deploy.rb" />
+    <Content Include="Scripts\JqueryMaskPlugin\jquery.mask.min.js.gz" />
+    <Content Include="Scripts\JqueryMaskPlugin\LICENSE" />
+    <Content Include="Scripts\JqueryMaskPlugin\mask.jquery.json" />
+    <Content Include="Scripts\JqueryMaskPlugin\package.json" />
+    <Content Include="Scripts\JqueryMaskPlugin\README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

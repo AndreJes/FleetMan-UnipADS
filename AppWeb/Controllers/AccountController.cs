@@ -38,10 +38,11 @@ namespace AppWeb.Controllers
             return View();
         }
 
-        public ActionResult Logout()
+        public ActionResult Edit(string id)
         {
-            AuthManager.SignOut();
-            return RedirectToAction("Login");
+
+
+            return View();
         }
 
         [HttpPost]
@@ -51,7 +52,7 @@ namespace AppWeb.Controllers
             if (ModelState.IsValid)
             {
                 UsuarioCliente usuario = Gerenciador.Find(model.Email, model.Senha);
-                if(usuario == null)
+                if (usuario == null)
                 {
                     @ViewBag.Error = "Usuário não encontrado ou senha inválida!";
                 }
@@ -60,7 +61,7 @@ namespace AppWeb.Controllers
                     ClaimsIdentity identity = Gerenciador.CreateIdentity(usuario, DefaultAuthenticationTypes.ApplicationCookie);
                     AuthManager.SignOut();
                     AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
-                    if(returnUrl == null)
+                    if (returnUrl == null)
                     {
                         returnUrl = "/Home";
                     }
@@ -68,6 +69,12 @@ namespace AppWeb.Controllers
                 }
             }
             return View(model);
+        }
+
+        public ActionResult Logout()
+        {
+            AuthManager.SignOut();
+            return RedirectToAction("Login");
         }
     }
 }

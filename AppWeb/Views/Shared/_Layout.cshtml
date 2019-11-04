@@ -6,13 +6,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - FleetMan</title>
+    <title>@ViewBag.Title - FleetManWeb</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body style="margin: 0">
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        @Html.ActionLink("FleetMan", "Index", "Home", null, new { @class = "navbar-brand" })
+        @Html.ActionLink("FleetManWeb", "Index", "Home", null, new { @class = "navbar-brand" })
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarNav" aria-controls="NavbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,7 +23,7 @@
                 <li class="nav-item">@Html.ActionLink("Motoristas", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">@Html.ActionLink("Aluguel", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">@Html.ActionLink("Viagens", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
-                <li class="nav-item">@Html.ActionLink("Meu Perfil", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
+                <li class="nav-item">@Html.ActionLink("Meu Perfil", "Details", "Cliente", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">
                     @{
                         if (Html.GetAuthenticatedUser().ToString() != "")
@@ -39,11 +39,11 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - FleetMan</p>
+            <p>&copy; @DateTime.Now.Year - FleetManWeb</p>
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")
