@@ -81,6 +81,10 @@
             {
                 @Html.ActionLink("Solicitar alteração de Informações", "EditPF", null, new { @class = "col-md-3 col-sm-12 btn btn-primary" })
             }
+            @if (Model is ClientePJViewModel)
+            {
+                @Html.ActionLink("Solicitar alteração de Informações", "EditPJ", null, new { @class = "col-md-3 col-sm-12 btn btn-primary" })
+            }
             @Html.ActionLink("Alterar e-mail e/ou senha", "Edit", "Account", new { id = Model.ClienteId.ToString() }, new { @class = "col-md-3 col-sm-12 btn btn-warning" })
         </div>
     </div>

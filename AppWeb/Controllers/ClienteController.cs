@@ -80,6 +80,28 @@ namespace AppWeb.Controllers
             return HttpNotFound("Informações do usuário não encontradas");
         }
 
+        [Authorize]
+        public ActionResult EditPJ()
+        {
+            string email = HttpContext.GetOwinContext().Authentication.User.Identity.Name;
+
+            Cliente cliente = ClienteService.ObterClientePorEmailTipo(email, TipoCliente.PJ);
+
+            if (cliente != null)
+            {
+                ClientePJViewModel clienteView = new ClientePJViewModel();
+                clienteView.CNPJ = (cliente as ClientePJ).CNPJ;
+                clienteView.ClienteId = cliente.ClienteId;
+                clienteView.Nome = cliente.Nome;
+                clienteView.Telefone = cliente.Telefone;
+                clienteView.Endereco = cliente.Endereco;
+                return View(clienteView);
+            }
+
+
+            return HttpNotFound("Informações do usuário não encontradas");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditPF(ClientePFViewModel pageModel)
@@ -98,6 +120,33 @@ namespace AppWeb.Controllers
                 clientePF.Endereco.CEP = cep;
                 Solicitacao solicitacao = SolicitacaoService.GerarSolicitacao(ItemSolicitacao.CLIENTE, TiposDeSolicitacao.ALTERACAO, clientePF.ClienteId);
                 solicitacao.ItemSerializado = JsonConvert.SerializeObject(clientePF);
+                SolicitacaoService.GravarSolicitacao(solicitacao);
+                TempData["Message"] = "Solicitação enviada com sucesso!";
+                return RedirectToAction("Details");
+
+            }
+
+            return View(pageModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPJ(ClientePJViewModel pageModel)
+        {
+            if (ModelState.IsValid)
+            {
+                ClientePJ clientePJ = null;
+                clientePJ = ClienteService.ObterClientePJPorId(pageModel.ClienteId);
+                clientePJ.Nome = pageModel.Nome;
+                string telefone = TrimUnwantedChars(pageModel.Telefone, new char[] { '-', '(', ')' });
+                clientePJ.Telefone = telefone;
+                string cnpj = TrimUnwantedChars(pageModel.CNPJ, new char[] { '.', '-', '/' });
+                clientePJ.CNPJ = cnpj;
+                string cep = TrimUnwantedChars(pageModel.Endereco.CEP, new char[] { '-' });
+                clientePJ.Endereco = pageModel.Endereco;
+                clientePJ.Endereco.CEP = cep;
+                Solicitacao solicitacao = SolicitacaoService.GerarSolicitacao(ItemSolicitacao.CLIENTE, TiposDeSolicitacao.ALTERACAO, clientePJ.ClienteId);
+                solicitacao.ItemSerializado = JsonConvert.SerializeObject(clientePJ);
                 SolicitacaoService.GravarSolicitacao(solicitacao);
                 TempData["Message"] = "Solicitação enviada com sucesso!";
                 return RedirectToAction("Details");

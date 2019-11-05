@@ -286,6 +286,7 @@
     <Content Include="Scripts\JqueryMaskPlugin\README.md" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Cliente\EditPF.cshtml" />
+    <Content Include="Views\Cliente\EditPJ.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

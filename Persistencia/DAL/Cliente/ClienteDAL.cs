@@ -64,6 +64,7 @@ namespace Persistencia.DAL.Cliente
                     Context.Entry(cliente).State = EntityState.Modified;
                 }
             }
+
             Context.SaveChanges();
 
             if (add)
