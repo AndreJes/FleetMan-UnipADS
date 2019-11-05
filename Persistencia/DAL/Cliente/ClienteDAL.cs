@@ -13,6 +13,14 @@ namespace Persistencia.DAL.Cliente
 {
     public class ClienteDAL : DALContext
     {
+        private UsuarioClienteDAL UsuarioClienteDAL
+        {
+            get
+            {
+                return new UsuarioClienteDAL();
+            }
+        }
+
         public IEnumerable<Modelo.Classes.Clientes.Cliente> ObterTodosOsClientesOrdPorId()
         {
             IList<Modelo.Classes.Clientes.Cliente> Clientes = new List<Modelo.Classes.Clientes.Cliente>();
@@ -28,15 +36,6 @@ namespace Persistencia.DAL.Cliente
 
             return Clientes;
         }
-
-        private UsuarioClienteDAL UsuarioClienteDAL
-        {
-            get
-            {
-                return new UsuarioClienteDAL();
-            }
-        }
-
 
         public void GravarCliente(Modelo.Classes.Clientes.Cliente cliente)
         {

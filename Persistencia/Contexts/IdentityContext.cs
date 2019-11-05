@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Modelo.Classes.Usuarios;
-using Persistencia.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,7 +14,7 @@ namespace Persistencia.Contexts
     {
         public IdentityContext() : base("Banco_Pim_IV")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFContext, IdentityConfig>());
+            Database.SetInitializer<IdentityContext>(null);
         }
 
         public static IdentityContext Create()

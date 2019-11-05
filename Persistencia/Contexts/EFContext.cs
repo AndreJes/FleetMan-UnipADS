@@ -11,8 +11,8 @@ using Modelo.Classes.Manutencao;
 using Modelo.Classes.Relatorios;
 using Modelo.Classes.Web;
 using Modelo.Classes.Usuarios;
-using Persistencia.Migrations;
 using Modelo.Classes.Manutencao.Associacao;
+using Persistencia.Migrations.Entity;
 
 namespace Persistencia.Contexts
 {
@@ -64,7 +64,7 @@ namespace Persistencia.Contexts
 
         public EFContext() : base("Banco_Pim_IV")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFContext, IdentityConfig>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<EFContext, Configuration>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

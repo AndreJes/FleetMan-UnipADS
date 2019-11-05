@@ -9,12 +9,6 @@ namespace Persistencia.DAL
 {
     public abstract class DALContext
     {
-        protected EFContext Context
-        {
-            get
-            {
-                return new EFContext();
-            }
-        }
+        protected EFContext Context = new EFContext();
     }
 }

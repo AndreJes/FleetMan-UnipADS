@@ -12,8 +12,6 @@ namespace Modelo.Classes.Usuarios
 {
     public class UsuarioCliente : IdentityUser
     {
-        [ForeignKey("Cliente")]
-        public long? ClienteId { get; set; }
-        public Cliente Cliente { get; set; }
+        long? ClienteId { get; set; }
     }
 }

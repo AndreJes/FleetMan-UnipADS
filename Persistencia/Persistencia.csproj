@@ -105,99 +105,16 @@
     <Compile Include="DAL\Web\SolicitacaoDAL.cs" />
     <Compile Include="DAL\Web\VeiculoDAL.cs" />
     <Compile Include="DAL\Web\ViagemDAL.cs" />
-    <Compile Include="Migrations\201910161559405_Initial.cs" />
-    <Compile Include="Migrations\201910161559405_Initial.Designer.cs">
-      <DependentUpon>201910161559405_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\Entity\201911051229201_Initial.cs" />
+    <Compile Include="Migrations\Entity\201911051229201_Initial.Designer.cs">
+      <DependentUpon>201911051229201_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910181743385_Manutencao-Association-Virtual.cs" />
-    <Compile Include="Migrations\201910181743385_Manutencao-Association-Virtual.Designer.cs">
-      <DependentUpon>201910181743385_Manutencao-Association-Virtual.cs</DependentUpon>
+    <Compile Include="Migrations\Entity\Configuration.cs" />
+    <Compile Include="Migrations\Identity\201911051231263_Initial.cs" />
+    <Compile Include="Migrations\Identity\201911051231263_Initial.Designer.cs">
+      <DependentUpon>201911051231263_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910221357012_Fornecedor-Peca-Virtual.cs" />
-    <Compile Include="Migrations\201910221357012_Fornecedor-Peca-Virtual.Designer.cs">
-      <DependentUpon>201910221357012_Fornecedor-Peca-Virtual.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910221653226_Lote-Peca.cs" />
-    <Compile Include="Migrations\201910221653226_Lote-Peca.Designer.cs">
-      <DependentUpon>201910221653226_Lote-Peca.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910221805006_Peca-Quantidade-Tipo.cs" />
-    <Compile Include="Migrations\201910221805006_Peca-Quantidade-Tipo.Designer.cs">
-      <DependentUpon>201910221805006_Peca-Quantidade-Tipo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910231539343_Abastecimento-NewProps.cs" />
-    <Compile Include="Migrations\201910231539343_Abastecimento-NewProps.Designer.cs">
-      <DependentUpon>201910231539343_Abastecimento-NewProps.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910231817096_Abastecimento-Changes.cs" />
-    <Compile Include="Migrations\201910231817096_Abastecimento-Changes.Designer.cs">
-      <DependentUpon>201910231817096_Abastecimento-Changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910251657229_New-Manutencao-Peca-Association.cs" />
-    <Compile Include="Migrations\201910251657229_New-Manutencao-Peca-Association.Designer.cs">
-      <DependentUpon>201910251657229_New-Manutencao-Peca-Association.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910281739495_UpdatePecaManutencao.cs" />
-    <Compile Include="Migrations\201910281739495_UpdatePecaManutencao.Designer.cs">
-      <DependentUpon>201910281739495_UpdatePecaManutencao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910292147107_PecaManutencao-New-Id.cs" />
-    <Compile Include="Migrations\201910292147107_PecaManutencao-New-Id.Designer.cs">
-      <DependentUpon>201910292147107_PecaManutencao-New-Id.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910292205501_PecaManutencao-Context-Prop.cs" />
-    <Compile Include="Migrations\201910292205501_PecaManutencao-Context-Prop.Designer.cs">
-      <DependentUpon>201910292205501_PecaManutencao-Context-Prop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910292225452_PecaManutencao-New-ForeignKey.cs" />
-    <Compile Include="Migrations\201910292225452_PecaManutencao-New-ForeignKey.Designer.cs">
-      <DependentUpon>201910292225452_PecaManutencao-New-ForeignKey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910292245482_PecaManutencao-New-ForeignKey-NoKey.cs" />
-    <Compile Include="Migrations\201910292245482_PecaManutencao-New-ForeignKey-NoKey.Designer.cs">
-      <DependentUpon>201910292245482_PecaManutencao-New-ForeignKey-NoKey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910301648517_Fix-PK-PecaManu.cs" />
-    <Compile Include="Migrations\201910301648517_Fix-PK-PecaManu.Designer.cs">
-      <DependentUpon>201910301648517_Fix-PK-PecaManu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910301649272_Fix-PK-PecaManu-Fixed.cs" />
-    <Compile Include="Migrations\201910301649272_Fix-PK-PecaManu-Fixed.Designer.cs">
-      <DependentUpon>201910301649272_Fix-PK-PecaManu-Fixed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910301749472_Relatorios-Abastecimento-NewTest.cs" />
-    <Compile Include="Migrations\201910301749472_Relatorios-Abastecimento-NewTest.Designer.cs">
-      <DependentUpon>201910301749472_Relatorios-Abastecimento-NewTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910301908210_Relatorios-New-Props.cs" />
-    <Compile Include="Migrations\201910301908210_Relatorios-New-Props.Designer.cs">
-      <DependentUpon>201910301908210_Relatorios-New-Props.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910311721415_Relatorios-NewModel.cs" />
-    <Compile Include="Migrations\201910311721415_Relatorios-NewModel.Designer.cs">
-      <DependentUpon>201910311721415_Relatorios-NewModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911011841243_RelatorioSinistros-EnvolvidosChange.cs" />
-    <Compile Include="Migrations\201911011841243_RelatorioSinistros-EnvolvidosChange.designer.cs">
-      <DependentUpon>201911011841243_RelatorioSinistros-EnvolvidosChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911022049572_NewUserCliente.cs" />
-    <Compile Include="Migrations\201911022049572_NewUserCliente.Designer.cs">
-      <DependentUpon>201911022049572_NewUserCliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911031308414_Cliente-Tipo.cs" />
-    <Compile Include="Migrations\201911031308414_Cliente-Tipo.Designer.cs">
-      <DependentUpon>201911031308414_Cliente-Tipo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911031431278_Funcionario-NewForeignForUser.cs" />
-    <Compile Include="Migrations\201911031431278_Funcionario-NewForeignForUser.Designer.cs">
-      <DependentUpon>201911031431278_Funcionario-NewForeignForUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201911041917192_UserChanged.cs" />
-    <Compile Include="Migrations\201911041917192_UserChanged.Designer.cs">
-      <DependentUpon>201911041917192_UserChanged.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Identity\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,74 +131,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201910161559405_Initial.resx">
-      <DependentUpon>201910161559405_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Entity\201911051229201_Initial.resx">
+      <DependentUpon>201911051229201_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910181743385_Manutencao-Association-Virtual.resx">
-      <DependentUpon>201910181743385_Manutencao-Association-Virtual.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910221357012_Fornecedor-Peca-Virtual.resx">
-      <DependentUpon>201910221357012_Fornecedor-Peca-Virtual.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910221653226_Lote-Peca.resx">
-      <DependentUpon>201910221653226_Lote-Peca.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910221805006_Peca-Quantidade-Tipo.resx">
-      <DependentUpon>201910221805006_Peca-Quantidade-Tipo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910231539343_Abastecimento-NewProps.resx">
-      <DependentUpon>201910231539343_Abastecimento-NewProps.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910231817096_Abastecimento-Changes.resx">
-      <DependentUpon>201910231817096_Abastecimento-Changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910251657229_New-Manutencao-Peca-Association.resx">
-      <DependentUpon>201910251657229_New-Manutencao-Peca-Association.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910281739495_UpdatePecaManutencao.resx">
-      <DependentUpon>201910281739495_UpdatePecaManutencao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910292147107_PecaManutencao-New-Id.resx">
-      <DependentUpon>201910292147107_PecaManutencao-New-Id.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910292205501_PecaManutencao-Context-Prop.resx">
-      <DependentUpon>201910292205501_PecaManutencao-Context-Prop.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910292225452_PecaManutencao-New-ForeignKey.resx">
-      <DependentUpon>201910292225452_PecaManutencao-New-ForeignKey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910292245482_PecaManutencao-New-ForeignKey-NoKey.resx">
-      <DependentUpon>201910292245482_PecaManutencao-New-ForeignKey-NoKey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910301648517_Fix-PK-PecaManu.resx">
-      <DependentUpon>201910301648517_Fix-PK-PecaManu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910301649272_Fix-PK-PecaManu-Fixed.resx">
-      <DependentUpon>201910301649272_Fix-PK-PecaManu-Fixed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910301749472_Relatorios-Abastecimento-NewTest.resx">
-      <DependentUpon>201910301749472_Relatorios-Abastecimento-NewTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910301908210_Relatorios-New-Props.resx">
-      <DependentUpon>201910301908210_Relatorios-New-Props.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910311721415_Relatorios-NewModel.resx">
-      <DependentUpon>201910311721415_Relatorios-NewModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911011841243_RelatorioSinistros-EnvolvidosChange.resx">
-      <DependentUpon>201911011841243_RelatorioSinistros-EnvolvidosChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911022049572_NewUserCliente.resx">
-      <DependentUpon>201911022049572_NewUserCliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911031308414_Cliente-Tipo.resx">
-      <DependentUpon>201911031308414_Cliente-Tipo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911031431278_Funcionario-NewForeignForUser.resx">
-      <DependentUpon>201911031431278_Funcionario-NewForeignForUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911041917192_UserChanged.resx">
-      <DependentUpon>201911041917192_UserChanged.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Identity\201911051231263_Initial.resx">
+      <DependentUpon>201911051231263_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
