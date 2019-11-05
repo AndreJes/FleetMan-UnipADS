@@ -78,7 +78,7 @@ namespace AppWeb.Controllers
 
             UsuarioEditViewModel usuarioClienteView = new UsuarioEditViewModel();
             usuarioClienteView.UsuarioId = usuarioCliente.Id;
-            usuarioClienteView.EmailAtual = usuarioCliente.Email;
+            usuarioClienteView.EmailAntigo = usuarioCliente.Email;
 
             return View(usuarioClienteView);
         }
@@ -115,10 +115,11 @@ namespace AppWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = Gerenciador.Find(usuarioEditView.EmailAtual, usuarioEditView.SenhaAtual);
+                var user = Gerenciador.Find(usuarioEditView.EmailAntigo, usuarioEditView.SenhaAtual);
 
                 if (user == null)
                 {
+                    TempData["UserChangeError"] = "Senha atual inválida!";
                     return View(usuarioEditView);
                 }
 
@@ -129,19 +130,19 @@ namespace AppWeb.Controllers
                     cliente = ClienteService.ObterClientePJPorId(long.Parse(usuarioEditView.UsuarioId));
                 }
 
-                if (!string.IsNullOrEmpty(usuarioEditView.EmailAtual) || !string.IsNullOrWhiteSpace(usuarioEditView.EmailAtual))
+                if (!string.IsNullOrEmpty(usuarioEditView.NovoEmail) || !string.IsNullOrWhiteSpace(usuarioEditView.NovoEmail))
                 {
-                    cliente.Email = usuarioEditView.EmailAtual;
+                    cliente.Email = usuarioEditView.NovoEmail;
                     ClienteService.GravarCliente(cliente);
-                    UsuarioClienteDAL.AlterarUsuarioCliente(usuarioEditView.UsuarioId, novoEmail: usuarioEditView.EmailAtual);
+                    UsuarioClienteDAL.AlterarUsuarioCliente(usuarioEditView.UsuarioId, novoEmail: usuarioEditView.NovoEmail);
                 }
                 #endregion
                 if (!string.IsNullOrEmpty(usuarioEditView.NovaSenha) || !string.IsNullOrEmpty(usuarioEditView.NovaSenha))
                 {
                     UsuarioClienteDAL.AlterarUsuarioCliente(usuarioEditView.UsuarioId, novaSenha: usuarioEditView.NovaSenha);
                 }
-
-                return RedirectToAction("Details", "Cliente");
+                TempData["Message"] = "Usuário alterado com sucesso! Por favor realize login novamente.";
+                return Logout();
             }
 
             return View(usuarioEditView);

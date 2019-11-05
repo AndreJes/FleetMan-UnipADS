@@ -11,9 +11,12 @@ namespace AppWeb.Models.ClienteUsuario
         [Required]
         public string UsuarioId { get; set; }
 
+        [Display(Name = "e-Mail Atual")]
+        public string EmailAntigo { get; set; }
+
         [Required]
-        [Display(Name = "E-Mail")]
-        public string EmailAtual { get; set; }
+        [Display(Name = "Novo e-Mail")]
+        public string NovoEmail { get; set; }
 
         [Required(ErrorMessage = "É necessário informar a senha atual!")]
         [Display(Name = "Senha Atual")]
