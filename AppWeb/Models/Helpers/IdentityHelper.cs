@@ -1,4 +1,4 @@
-﻿using Servicos.Cliente;
+﻿using Servicos.Clientes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -109,6 +109,10 @@
     <Compile Include="Migrations\Entity\201911051229201_Initial.Designer.cs">
       <DependentUpon>201911051229201_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Entity\201911051340297_Solicitacao-Association.cs" />
+    <Compile Include="Migrations\Entity\201911051340297_Solicitacao-Association.Designer.cs">
+      <DependentUpon>201911051340297_Solicitacao-Association.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Entity\Configuration.cs" />
     <Compile Include="Migrations\Identity\201911051231263_Initial.cs" />
     <Compile Include="Migrations\Identity\201911051231263_Initial.Designer.cs">
@@ -133,6 +137,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\Entity\201911051229201_Initial.resx">
       <DependentUpon>201911051229201_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Entity\201911051340297_Solicitacao-Association.resx">
+      <DependentUpon>201911051340297_Solicitacao-Association.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201911051231263_Initial.resx">
       <DependentUpon>201911051231263_Initial.cs</DependentUpon>

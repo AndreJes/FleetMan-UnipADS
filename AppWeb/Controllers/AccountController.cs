@@ -7,7 +7,7 @@ using Modelo.Classes.Clientes;
 using Modelo.Classes.Usuarios;
 using Persistencia.DAL.Usuarios;
 using Persistencia.DAL.Usuarios.Web;
-using Servicos.Cliente;
+using Servicos.Clientes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

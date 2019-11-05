@@ -1,6 +1,7 @@
 ﻿using Modelo.Classes.Auxiliares;
 using Modelo.Classes.Web;
 using Modelo.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,13 +24,19 @@ namespace Modelo.Classes.Clientes
         #endregion
 
         #region Props de carregamento
+        [JsonIgnore]
         public virtual ICollection<Veiculo> Veiculos { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Motorista> Motoristas { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Aluguel> Alugueis { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Solicitacao> Solicitacoes { get; set; }
         #endregion
 
         #region Props não Mapeadas
         [NotMapped]
+        [JsonIgnore]
         public string AtivoTxt
         {
             get

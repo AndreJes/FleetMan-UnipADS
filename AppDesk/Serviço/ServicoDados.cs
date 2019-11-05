@@ -1,4 +1,4 @@
-﻿using Servicos.Cliente;
+﻿using Servicos.Clientes;
 using Servicos.Desk;
 using Servicos.Manutencao;
 using Servicos.Relatorios;

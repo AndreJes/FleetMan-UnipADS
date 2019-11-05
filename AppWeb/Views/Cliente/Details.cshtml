@@ -11,6 +11,12 @@
     <div class="card">
         <div class="card-header">
             <h2 class="h2 card-title">@ViewBag.Title</h2>
+            @if ( @TempData["Message"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["Message"]
+                </div>
+            }
         </div>
 
         <div class="card-body">
@@ -56,7 +62,7 @@
 
             <div class="form-group form-inline">
                 @Html.LabelFor(model => model.Endereco.CEP, new { @class = "form-control col-2 bg-secondary text-white" })
-                @Html.EditorFor(model => model.Endereco.CEP, new { htmlAttributes = new { @class = "form-control col-10", disabled = "disabled" } })
+                @Html.EditorFor(model => model.Endereco.CEP, new { htmlAttributes = new { @class = "form-control col-10", disabled = "disabled", data_mask = "99999-999" } })
             </div>
 
             <div class="form-group form-inline">
@@ -71,7 +77,10 @@
         </div>
 
         <div class="card-footer">
-            <button class="col-md-3 col-sm-12 btn btn-primary">Solicitar alteração de Informações</button>
+            @if (Model is ClientePFViewModel)
+            {
+                @Html.ActionLink("Solicitar alteração de Informações", "EditPF", null, new { @class = "col-md-3 col-sm-12 btn btn-primary" })
+            }
             @Html.ActionLink("Alterar e-mail e/ou senha", "Edit", "Account", new { id = Model.ClienteId.ToString() }, new { @class = "col-md-3 col-sm-12 btn btn-warning" })
         </div>
     </div>

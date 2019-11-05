@@ -10,6 +10,6 @@ namespace Modelo.Enums
     {
         APROVADA,
         REPROVADA,
-        AGUARDANDO_APROVACAO
+        AGUARDANDO
     }
 }

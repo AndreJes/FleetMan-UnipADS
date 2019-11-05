@@ -10,6 +10,7 @@ namespace Modelo.Enums
     {
         VEICULO,
         MOTORISTA,
-        ALUGUEL
+        ALUGUEL,
+        CLIENTE
     }
 }

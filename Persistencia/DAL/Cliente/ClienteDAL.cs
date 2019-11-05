@@ -78,12 +78,13 @@ namespace Persistencia.DAL.Cliente
 
         public ClientePF ObterClientePFPorId(long? id)
         {
-            return Context.ClientesPF.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Motoristas).Include(c => c.Alugueis).FirstOrDefault();
+            ClientePF clientePF = Context.ClientesPF.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Motoristas).Include(c => c.Alugueis).Include(c => c.Solicitacoes).FirstOrDefault();
+            return clientePF;
         }
 
         public ClientePJ ObterClientePJPorId(long? id)
         {
-            return Context.ClientesPJ.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Alugueis).Include(c => c.Motoristas).FirstOrDefault();
+            return Context.ClientesPJ.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Alugueis).Include(c => c.Motoristas).Include(c => c.Solicitacoes).FirstOrDefault();
         }
 
         public Modelo.Classes.Clientes.Cliente ObterClientePorCPFCNPJ(string cpfcnpj, TipoCliente tipo)

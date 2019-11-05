@@ -13,7 +13,7 @@ namespace Modelo.Classes.Web
         public long? SolicitacaoId { get; set; }
         public string ItemSerializado { get; set; }
         public DateTime DataDaSolicitacao { get; set; }
-        public DateTime DataProcessamento { get; set; }
+        public DateTime? DataProcessamento { get; set; }
         public ItemSolicitacao TipoDeItem { get; set; }
         public EstadosDaSolicitacao Estado { get; set; }
         public TiposDeSolicitacao Tipo { get; set; }
@@ -32,6 +32,8 @@ namespace Modelo.Classes.Web
                         return "Motorista";
                     case ItemSolicitacao.ALUGUEL:
                         return "Aluguel";
+                    case ItemSolicitacao.CLIENTE:
+                        return "Cliente";
                     default:
                         return "Tipo Inválido";
                 }
@@ -61,6 +63,7 @@ namespace Modelo.Classes.Web
         }
         #endregion
 
+        [ForeignKey("Cliente")]
         public long? ClienteId { get; set; }
         public Clientes.Cliente Cliente { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using Modelo.Classes.Auxiliares;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,6 +14,7 @@ namespace Modelo.Classes.Clientes
         public string CPF { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public string CPFTxt
         {
             get

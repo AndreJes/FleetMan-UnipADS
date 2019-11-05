@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Servicos.Cliente
+namespace Servicos.Clientes
 {
     public class ClienteService
     {
