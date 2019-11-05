@@ -29,13 +29,24 @@ namespace Persistencia.DAL.Cliente
             return Clientes;
         }
 
+        private UsuarioClienteDAL UsuarioClienteDAL
+        {
+            get
+            {
+                return new UsuarioClienteDAL();
+            }
+        }
+
+
         public void GravarCliente(Modelo.Classes.Clientes.Cliente cliente)
         {
+            bool add = false;
             if (cliente is ClientePF)
             {
                 if (cliente.ClienteId == null)
                 {
                     Context.ClientesPF.Add(cliente as ClientePF);
+                    add = true;
                 }
                 else
                 {
@@ -47,6 +58,7 @@ namespace Persistencia.DAL.Cliente
                 if (cliente.ClienteId == null)
                 {
                     Context.ClientesPJ.Add(cliente as ClientePJ);
+                    add = true;
                 }
                 else
                 {
@@ -54,7 +66,15 @@ namespace Persistencia.DAL.Cliente
                 }
             }
             Context.SaveChanges();
-            GerarUsuarioCliente(Context.Entry(cliente).Entity);
+
+            if (add)
+            {
+                GerarUsuarioCliente(Context.Entry(cliente).Entity);
+            }
+            else
+            {
+                UsuarioClienteDAL.AlterarUsuarioCliente(cliente.ClienteId.ToString(), novoEmail: cliente.Email);
+            }
         }
 
         public ClientePF ObterClientePFPorId(long? id)
@@ -82,8 +102,7 @@ namespace Persistencia.DAL.Cliente
 
         public void RemoverClientePorId(long? id)
         {
-            UsuarioClienteDAL usuarioClienteDAL = new UsuarioClienteDAL();
-            usuarioClienteDAL.RemoverUsuarioClientePorId(id.ToString());
+            UsuarioClienteDAL.RemoverUsuarioClientePorId(id.ToString());
             Modelo.Classes.Clientes.Cliente cliente = Context.Clientes.Where(c => c.ClienteId == id).FirstOrDefault();
             Context.Clientes.Remove(cliente);
             Context.SaveChanges();
@@ -91,7 +110,6 @@ namespace Persistencia.DAL.Cliente
 
         private void GerarUsuarioCliente(Modelo.Classes.Clientes.Cliente cliente)
         {
-            UsuarioClienteDAL usuarioClienteDAL = new UsuarioClienteDAL();
             UsuarioClienteView clienteView = new UsuarioClienteView();
             clienteView.ClienteId = cliente.ClienteId;
             clienteView.Email = cliente.Email;
@@ -104,7 +122,7 @@ namespace Persistencia.DAL.Cliente
             {
                 clienteView.Senha = (cliente as ClientePJ).CNPJ.Substring(0, 8);
             }
-            usuarioClienteDAL.AdicionarUsuarioCliente(clienteView);
+            UsuarioClienteDAL.AdicionarUsuarioCliente(clienteView);
         }
     }
 }

@@ -9,11 +9,17 @@ namespace AppWeb.Models.ClienteUsuario
     public class UsuarioEditViewModel
     {
         [Required]
-        public string EmailAtual { get; set; }
-        public string NovoEmail { get; set; }
+        public string UsuarioId { get; set; }
 
         [Required]
+        [Display(Name = "E-Mail")]
+        public string EmailAtual { get; set; }
+
+        [Required(ErrorMessage = "É necessário informar a senha atual!")]
+        [Display(Name = "Senha Atual")]
         public string SenhaAtual { get; set; }
+
+        [Display(Name = "Nova Senha")]
         public string NovaSenha { get; set; }
     }
 }

@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL
 {
-    public class DALContext
+    public abstract class DALContext
     {
-        protected EFContext Context = new EFContext();
+        protected EFContext Context
+        {
+            get
+            {
+                return new EFContext();
+            }
+        }
     }
 }

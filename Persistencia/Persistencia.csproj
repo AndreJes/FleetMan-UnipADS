@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201911031431278_Funcionario-NewForeignForUser.Designer.cs">
       <DependentUpon>201911031431278_Funcionario-NewForeignForUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911041917192_UserChanged.cs" />
+    <Compile Include="Migrations\201911041917192_UserChanged.Designer.cs">
+      <DependentUpon>201911041917192_UserChanged.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -275,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911031431278_Funcionario-NewForeignForUser.resx">
       <DependentUpon>201911031431278_Funcionario-NewForeignForUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911041917192_UserChanged.resx">
+      <DependentUpon>201911041917192_UserChanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,12 +1,17 @@
 ﻿using AppWeb.Models;
+using AppWeb.Models.ClienteUsuario;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Modelo.Classes.Clientes;
 using Modelo.Classes.Usuarios;
+using Persistencia.DAL.Usuarios;
 using Persistencia.DAL.Usuarios.Web;
+using Servicos.Cliente;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
@@ -31,6 +36,16 @@ namespace AppWeb.Controllers
             }
         }
 
+        private ClienteService ClienteService = new ClienteService();
+
+        private UsuarioClienteDAL UsuarioClienteDAL
+        {
+            get
+            {
+                return new UsuarioClienteDAL();
+            }
+        }
+
         // GET: Login
         public ActionResult Login(string returnUrl)
         {
@@ -38,11 +53,34 @@ namespace AppWeb.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Edit(string id)
         {
+            UsuarioCliente usuarioCliente = null;
 
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                usuarioCliente = Gerenciador.FindById(id);
+                if (usuarioCliente.Email != HttpContext.User.Identity.Name)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+                }
+            }
 
-            return View();
+            if (usuarioCliente == null)
+            {
+                return new HttpNotFoundResult();
+            }
+
+            UsuarioEditViewModel usuarioClienteView = new UsuarioEditViewModel();
+            usuarioClienteView.UsuarioId = usuarioCliente.Id;
+            usuarioClienteView.EmailAtual = usuarioCliente.Email;
+
+            return View(usuarioClienteView);
         }
 
         [HttpPost]
@@ -69,6 +107,44 @@ namespace AppWeb.Controllers
                 }
             }
             return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(UsuarioEditViewModel usuarioEditView)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = Gerenciador.Find(usuarioEditView.EmailAtual, usuarioEditView.SenhaAtual);
+
+                if (user == null)
+                {
+                    return View(usuarioEditView);
+                }
+
+                #region Editar dados do cliente e Email do Usuario
+                Cliente cliente =  ClienteService.ObterClientePFPorId(long.Parse(usuarioEditView.UsuarioId));
+                if(cliente == null)
+                {
+                    cliente = ClienteService.ObterClientePJPorId(long.Parse(usuarioEditView.UsuarioId));
+                }
+
+                if (!string.IsNullOrEmpty(usuarioEditView.EmailAtual) || !string.IsNullOrWhiteSpace(usuarioEditView.EmailAtual))
+                {
+                    cliente.Email = usuarioEditView.EmailAtual;
+                    ClienteService.GravarCliente(cliente);
+                    UsuarioClienteDAL.AlterarUsuarioCliente(usuarioEditView.UsuarioId, novoEmail: usuarioEditView.EmailAtual);
+                }
+                #endregion
+                if (!string.IsNullOrEmpty(usuarioEditView.NovaSenha) || !string.IsNullOrEmpty(usuarioEditView.NovaSenha))
+                {
+                    UsuarioClienteDAL.AlterarUsuarioCliente(usuarioEditView.UsuarioId, novaSenha: usuarioEditView.NovaSenha);
+                }
+
+                return RedirectToAction("Details", "Cliente");
+            }
+
+            return View(usuarioEditView);
         }
 
         public ActionResult Logout()

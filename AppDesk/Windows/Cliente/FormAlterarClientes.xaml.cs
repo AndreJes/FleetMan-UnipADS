@@ -63,7 +63,7 @@ namespace AppDesk.Windows.Clientes
             Cliente clienteAlterado = AlterarCliente();
             if (clienteAlterado != null)
             {
-                ServicoDados.ServicoDadosClientes.RegistrarCliente(clienteAlterado);
+                ServicoDados.ServicoDadosClientes.GravarCliente(clienteAlterado);
                 MessageBox.Show("Cliente alterado com sucesso!");
                 MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
                 window.PopulateDataGrid();

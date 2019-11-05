@@ -48,7 +48,7 @@ namespace AppDesk.Windows.Clientes
             Cliente cliente = GerarCliente();
             if(cliente != null)
             {
-                Serviço.ServicoDados.ServicoDadosClientes.RegistrarCliente(cliente);
+                Serviço.ServicoDados.ServicoDadosClientes.GravarCliente(cliente);
                 MessageBox.Show("Cliente registrado com sucesso!");
                 MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
                 window.PopulateDataGrid();

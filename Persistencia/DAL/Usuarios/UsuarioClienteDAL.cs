@@ -33,5 +33,20 @@ namespace Persistencia.DAL.Usuarios
                 gerenciador.Delete(usuarioCliente);
             }
         }
+
+        public void AlterarUsuarioCliente(string id, string novoEmail = "", string novaSenha = "")
+        {
+            UsuarioCliente usuario = gerenciador.FindById(id);
+            if(!string.IsNullOrEmpty(novoEmail))
+            {
+                usuario.Email = novoEmail;
+                usuario.UserName = novoEmail;
+            }
+            if(!string.IsNullOrEmpty(novaSenha))
+            {
+                usuario.PasswordHash = gerenciador.PasswordHasher.HashPassword(novaSenha);
+            }
+            gerenciador.Update(usuario);
+        }
     }
 }
