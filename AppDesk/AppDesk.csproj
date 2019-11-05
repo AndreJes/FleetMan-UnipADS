@@ -215,6 +215,9 @@
     <Compile Include="Windows\Seguro\SegurosList.xaml.cs">
       <DependentUpon>SegurosList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Solicitacoes\FormSolicitacaoCliente.xaml.cs">
+      <DependentUpon>FormSolicitacaoCliente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Usuarios\FormAlterarDetalhesUsuario.xaml.cs">
       <DependentUpon>FormAlterarDetalhesUsuario.xaml</DependentUpon>
     </Compile>
@@ -409,6 +412,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Seguro\SegurosList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Solicitacoes\FormSolicitacaoCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
