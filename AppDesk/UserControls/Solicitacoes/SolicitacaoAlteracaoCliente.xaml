@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="AppDesk.UserControls.Solicitacoes.SolicitacaoAlteracaoCliente"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppDesk.UserControls.Solicitacoes"
+             xmlns:uc="clr-namespace:AppDesk.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource MainTextBoxStyle}">
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Grid.Row="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}">Dados do Cliente</Label>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">Nome</Label>
+                    <TextBox Width="200" x:Name="NomeAntigoTextBox"></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">CPF/CNPJ</Label>
+                    <TextBox Width="200" x:Name="CpfCnpjAntigoTextBox"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
+                    <TextBox Width="200" x:Name="TelefoneAntigoTextBox"></TextBox>
+                </StackPanel>
+
+                <uc:EnderecoUserControl Grid.Row="3" x:Name="EnderecoAntigoUC"/>
+            </Grid>
+            
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}">Dados a serem atualizados</Label>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">Nome</Label>
+                    <TextBox Width="200" x:Name="NomeNovoTextBox"></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">CPF/CNPJ</Label>
+                    <TextBox Width="200" x:Name="CpfCnpjNovoTextBox"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
+                    <TextBox Width="200" x:Name="TelefoneNovoTextBox"></TextBox>
+                </StackPanel>
+
+                <uc:EnderecoUserControl Grid.Row="3" x:Name="EnderecoNovoUC"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

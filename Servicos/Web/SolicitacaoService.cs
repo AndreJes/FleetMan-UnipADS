@@ -20,6 +20,11 @@ namespace Servicos.Web
             return Context.ObterSolicitacoesOrdPorId();
         }
 
+        public Solicitacao ObterSolicitacaoPorId(long? id)
+        {
+            return Context.ObterSolicitacaoPorId(id);
+        }
+
         public void GravarSolicitacao(Solicitacao solicitacao)
         {
             Context.GravarSolicitacao(solicitacao);

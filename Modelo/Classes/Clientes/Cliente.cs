@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Clientes
 {
-    public abstract class Cliente
+    public class Cliente
     {
         #region Props Principais
         public long? ClienteId { get; set; }

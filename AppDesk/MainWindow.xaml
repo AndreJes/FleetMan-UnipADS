@@ -238,7 +238,7 @@
                         </Grid>
 
                         <!--#region Manutenção SubMenu-->
-                        <Grid Visibility="Visible" x:Name="ManutencaoSubMenuButtonsGrid">
+                        <Grid Visibility="Collapsed" x:Name="ManutencaoSubMenuButtonsGrid">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
@@ -1108,7 +1108,7 @@
                 <!--#endregion-->
 
                 <!--#region Solicitações List/Actions Grid Menu-->
-                <Grid x:Name="SolicitacoesGrid" Visibility="Collapsed" Grid.Row="1">
+                <Grid x:Name="SolicitacoesGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -1132,17 +1132,6 @@
                             <Button x:Name="SolicitacoesGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
                                 Voltar
                             </Button>
-                            <!--#endregion-->
-
-                            <!--#region Pesquisa-->
-                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
-                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                    Pesquisar:
-                                </Label>
-                                <TextBox x:Name="SolicitacoesSearchTextBox">
-
-                                </TextBox>
-                            </StackPanel>
                             <!--#endregion-->
 
                             <!--#region Seleção de Cliente-->
@@ -1192,6 +1181,13 @@
                                 <DataGridTextColumn Header="Item" Binding="{Binding TipoDeItemTxt}"/>
                                 <DataGridTextColumn Header="Tipo" Binding="{Binding TipoDeSoliciTxt}" />
                                 <DataGridTextColumn Header="Data de Solicitação" Binding="{Binding DataDaSolicitacao}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="SolicitacaoAguardandoDetailsBtn" Click="SolicitacaoAguardandoDetailsBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
@@ -1207,6 +1203,13 @@
                                 <DataGridTextColumn Header="Item" Binding="{Binding TipoDeItemTxt}"/>
                                 <DataGridTextColumn Header="Tipo" Binding="{Binding TipoDeSoliciTxt}" />
                                 <DataGridTextColumn Header="Data de Processamento" Binding="{Binding DataProcessamento}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="SolicitacaoAprovadaDetailsBtn" Click="SolicitacaoAprovadaDetailsBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
@@ -1222,6 +1225,13 @@
                                 <DataGridTextColumn Header="Item" Binding="{Binding TipoDeItemTxt}"/>
                                 <DataGridTextColumn Header="Tipo" Binding="{Binding TipoDeSoliciTxt}" />
                                 <DataGridTextColumn Header="Data de Processamento" Binding="{Binding DataProcessamento}"/>
+                                <DataGridTemplateColumn Header="Detalhes">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="SolicitacaoReprovadaDetailsBtn" Click="SolicitacaoReprovadaDetailsBtn_Click">Detalhes</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                         <!--#endregion-->
@@ -1442,7 +1452,7 @@
                 <!--#endregion-->
 
                 <!--#region Relatórios List/Actions Grid Menu-->
-                <Grid x:Name="RelatoriosGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="RelatoriosGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>

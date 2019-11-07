@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Solicitacoes"
+        xmlns:ucs="clr-namespace:AppDesk.UserControls.Solicitacoes"
         mc:Ignorable="d"
-        Title="Solicitação de cliente" Height="500" Width="600" MinHeight="500" MinWidth="600" MaxHeight="500" MaxWidth="600">
+        Title="Solicitação Web" Height="500" Width="700" MinHeight="500" MinWidth="700" MaxHeight="500" MaxWidth="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -29,34 +30,17 @@
 
                 <StackPanel Grid.Column="0" Style="{StaticResource MainStackPanelStyle}">
                     <Label Style="{StaticResource MainLabelStyle}">Tipo de Solicitação</Label>
-                    <TextBox x:Name="TipoSolicitacaoTextBox" Width="120"></TextBox>
+                    <TextBox x:Name="TipoSolicitacaoTextBox" Width="120" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Style="{StaticResource MainStackPanelStyle}">
                     <Label Style="{StaticResource MainLabelStyle}">Item de Solicitação</Label>
-                    <TextBox x:Name="ItemSolicitação" Width="120"></TextBox>
+                    <TextBox x:Name="ItemSolicitação" Width="120" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
                 </StackPanel>
             </Grid>
 
             <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="8*"/>
-                    </Grid.RowDefinitions>
-                </Grid>
-
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="8*"/>
-                    </Grid.RowDefinitions>
-                </Grid>
+                <ucs:SolicitacaoAlteracaoCliente x:Name="SolicitacaoClienteUC" Visibility="Collapsed"/>
             </Grid>
         </Grid>
 

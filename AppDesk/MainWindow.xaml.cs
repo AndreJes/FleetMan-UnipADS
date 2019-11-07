@@ -37,6 +37,7 @@ using AppDesk.Windows.Abastecimentos;
 using AppDesk.Windows.Manutencoes;
 using AppDesk.Windows.Relatorios;
 using Modelo.Classes.Relatorios;
+using AppDesk.Windows.Solicitacoes;
 
 namespace AppDesk
 {
@@ -587,6 +588,27 @@ namespace AppDesk
             RelatorioSinistros relatorioSinistros = (RelatorioSinistros)ServicoDados.ServicoDadosRelatorio.ObterRelatorioPorId((RelatoriosSinistroDataGrid.SelectedItem as RelatorioSinistros).RelatorioId, TiposRelatorios.ACIDENTE);
             FormDetalhesRelatorioAcidentes formDetalhesRelatorioAcidentes = new FormDetalhesRelatorioAcidentes(relatorioSinistros);
             formDetalhesRelatorioAcidentes.Show();
+        }
+
+        private void SolicitacaoAguardandoDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Solicitacao solicitacao = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacaoPorId((SolicitacoesAguardandoDataGrid.SelectedItem as Solicitacao).SolicitacaoId);
+            FormSolicitacaoCliente formSolicitacaoCliente = new FormSolicitacaoCliente(solicitacao);
+            formSolicitacaoCliente.Show();
+        }
+
+        private void SolicitacaoReprovadaDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Solicitacao solicitacao = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacaoPorId((SolicitacoesAguardandoDataGrid.SelectedItem as Solicitacao).SolicitacaoId);
+            FormSolicitacaoCliente formSolicitacaoCliente = new FormSolicitacaoCliente(solicitacao);
+            formSolicitacaoCliente.Show();
+        }
+
+        private void SolicitacaoAprovadaDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Solicitacao solicitacao = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacaoPorId((SolicitacoesAguardandoDataGrid.SelectedItem as Solicitacao).SolicitacaoId);
+            FormSolicitacaoCliente formSolicitacaoCliente = new FormSolicitacaoCliente(solicitacao);
+            formSolicitacaoCliente.Show();
         }
     }
 }

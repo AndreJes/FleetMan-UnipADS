@@ -14,6 +14,11 @@ namespace Persistencia.DAL.Web
             return Context.Solicitacoes.OrderBy(s => s.SolicitacaoId).ToList();
         }
 
+        public Solicitacao ObterSolicitacaoPorId(long? id)
+        {
+            return Context.Solicitacoes.Where(s => s.SolicitacaoId == id).FirstOrDefault();
+        }
+
         public void GravarSolicitacao(Solicitacao solicitacao)
         {
             Context.Solicitacoes.Add(solicitacao);

@@ -118,6 +118,7 @@ namespace AppWeb.Controllers
                 string cep = TrimUnwantedChars(pageModel.Endereco.CEP, new char[] { '-' });
                 clientePF.Endereco = pageModel.Endereco;
                 clientePF.Endereco.CEP = cep;
+                clientePF.Tipo = TipoCliente.PF;
                 Solicitacao solicitacao = SolicitacaoService.GerarSolicitacao(ItemSolicitacao.CLIENTE, TiposDeSolicitacao.ALTERACAO, clientePF.ClienteId);
                 solicitacao.ItemSerializado = JsonConvert.SerializeObject(clientePF);
                 SolicitacaoService.GravarSolicitacao(solicitacao);
@@ -145,6 +146,7 @@ namespace AppWeb.Controllers
                 string cep = TrimUnwantedChars(pageModel.Endereco.CEP, new char[] { '-' });
                 clientePJ.Endereco = pageModel.Endereco;
                 clientePJ.Endereco.CEP = cep;
+                clientePJ.Tipo = TipoCliente.PJ;
                 Solicitacao solicitacao = SolicitacaoService.GerarSolicitacao(ItemSolicitacao.CLIENTE, TiposDeSolicitacao.ALTERACAO, clientePJ.ClienteId);
                 solicitacao.ItemSerializado = JsonConvert.SerializeObject(clientePJ);
                 SolicitacaoService.GravarSolicitacao(solicitacao);
