@@ -51,6 +51,16 @@ namespace Servicos.Clientes
             }
         }
 
+        public ClientePF ObterClientePFPorEmail(string email)
+        {
+            return ObterClientePFPorId(ObterClientePorEmailTipo(email, TipoCliente.PF).ClienteId);
+        }
+
+        public ClientePJ ObterClientePJPorEmail(string email)
+        {
+            return ObterClientePJPorId(ObterClientePorEmailTipo(email, TipoCliente.PJ).ClienteId);
+        }
+
         public void RemoverClientePorId(long? id)
         {
             Context.RemoverClientePorId(id);

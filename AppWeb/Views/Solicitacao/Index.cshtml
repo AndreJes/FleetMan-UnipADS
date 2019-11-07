@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Modelo.Classes.Web.Solicitacao>
+
+@{
+    ViewBag.Title = "Solicitações";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Solicitações Enviadas</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-bordered table-responsive-md table-responsive-sm">
+            <thead>
+                <tr>
+                    <th>
+                        Data da solicitação
+                    </th>
+                    <th>
+                        Estado da Solicitacao
+                    </th>
+                    <th>
+                        Data do processamento
+                    </th>
+                    <th>
+                        Tipo de Item
+                    </th>
+                    <th>
+                        Tipo de Solicitação
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataDaSolicitacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataProcessamento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoDeItem)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipo)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Remover","Delete", new { id = item.SolicitacaoId}, new { @class="btn btn-danger"})
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section styles{
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/jquery.dataTables.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () { $('.table').DataTable(); });
+    </script>
+}

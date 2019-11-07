@@ -18,11 +18,11 @@
         </button>
         <div class="collapse navbar-collapse" id="NavbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">@Html.ActionLink("Início", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">@Html.ActionLink("Veículos", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">@Html.ActionLink("Motoristas", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">@Html.ActionLink("Aluguel", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">@Html.ActionLink("Viagens", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
+                <li class="nav-item">@Html.ActionLink("Solicitações", "Index", "Solicitacao", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">@Html.ActionLink("Meu Perfil", "Details", "Cliente", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">
                     @{
@@ -49,5 +49,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("styles", required: false)
 </body>
 </html>

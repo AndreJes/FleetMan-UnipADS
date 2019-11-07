@@ -37,14 +37,13 @@ namespace AppDesk.UserControls.Solicitacoes
             {
                 if (value != null)
                 {
-                    Cliente clienteModelo = JsonConvert.DeserializeObject<Cliente>(value.ItemSerializado);
-                    if (clienteModelo.Tipo == TipoCliente.PF)
+                    if (value.ItemSerializado.Contains("CPF"))
                     {
                         ClientePF cliente = JsonConvert.DeserializeObject<ClientePF>(value.ItemSerializado);
                         ClienteNovo = cliente;
                         ClienteAntigo = ServicoDados.ServicoDadosClientes.ObterClientePFPorId(cliente.ClienteId);
                     }
-                    else if (clienteModelo.Tipo == TipoCliente.PJ)
+                    else if (value.ItemSerializado.Contains("CNPJ"))
                     {
                         ClientePJ cliente = JsonConvert.DeserializeObject<ClientePJ>(value.ItemSerializado);
                         ClienteNovo = cliente;

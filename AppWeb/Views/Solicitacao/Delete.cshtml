@@ -1,0 +1,70 @@
+﻿@model AppWeb.Models.Solicitacoes.SolicitacaoViewModel
+
+@{
+    ViewBag.Title = "Remover Solicitação";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+            <h2 class="card-title">@ViewBag.Title</h2>
+        </div>
+        @*Card Dados da Solicitação*@
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Informações da Solicitação</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-group form-inline">
+                    @Html.Label("Data da Solicitação", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                    @Html.EditorFor(model => model.Solicitacao.DataDaSolicitacao, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+                </div>
+                <div class="form-group form-inline">
+                    @Html.Label("Tipo de Solicitação", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                    @Html.EditorFor(model => model.Solicitacao.Tipo, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+                </div>
+                <div class="form-group form-inline">
+                    @Html.Label("Estado da Solicitação", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                    @Html.EditorFor(model => model.Solicitacao.Estado, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+                </div>
+                @if (Model.Solicitacao.DataProcessamento != null)
+                {
+                    <div class="form-group form-inline">
+                        @Html.Label("Data de Processamento", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                        @Html.EditorFor(model => model.Solicitacao.DataProcessamento, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+                    </div>
+                }
+            </div>
+        </div>
+        @if (Model.Cliente != null)
+        {
+            @*Card Dados de Cliente (se for o caso)*@
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Informações do Cliente</h4>
+                </div>
+                <div class="card-body">
+
+                </div>
+            </div>
+        }
+        @if (Model.Aluguel != null)
+        {
+            @*Card Dados de Aluguel (se for o caso)*@
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Informações do Aluguel</h4>
+                </div>
+                <div class="card-body">
+
+                </div>
+            </div>
+
+        }
+        <div class="card-footer">
+
+        </div>
+    </div>
+}
