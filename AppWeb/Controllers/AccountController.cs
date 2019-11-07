@@ -115,6 +115,7 @@ namespace AppWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                bool alterado = false;
                 var user = Gerenciador.Find(usuarioEditView.EmailAntigo, usuarioEditView.SenhaAtual);
 
                 if (user == null)
@@ -123,9 +124,8 @@ namespace AppWeb.Controllers
                     return View(usuarioEditView);
                 }
 
-                #region Editar dados do cliente e Email do Usuario
-                Cliente cliente =  ClienteService.ObterClientePFPorId(long.Parse(usuarioEditView.UsuarioId));
-                if(cliente == null)
+                Cliente cliente = ClienteService.ObterClientePFPorId(long.Parse(usuarioEditView.UsuarioId));
+                if (cliente == null)
                 {
                     cliente = ClienteService.ObterClientePJPorId(long.Parse(usuarioEditView.UsuarioId));
                 }
@@ -135,16 +135,25 @@ namespace AppWeb.Controllers
                     cliente.Email = usuarioEditView.NovoEmail;
                     ClienteService.GravarCliente(cliente);
                     UsuarioClienteDAL.AlterarUsuarioCliente(usuarioEditView.UsuarioId, novoEmail: usuarioEditView.NovoEmail);
+                    alterado = true;
                 }
-                #endregion
-                if (!string.IsNullOrEmpty(usuarioEditView.NovaSenha) || !string.IsNullOrEmpty(usuarioEditView.NovaSenha))
+
+                if (!string.IsNullOrEmpty(usuarioEditView.NovaSenha) || !string.IsNullOrWhiteSpace(usuarioEditView.NovaSenha))
                 {
                     UsuarioClienteDAL.AlterarUsuarioCliente(usuarioEditView.UsuarioId, novaSenha: usuarioEditView.NovaSenha);
+                    alterado = true;
                 }
-                TempData["Message"] = "Usuário alterado com sucesso! Por favor realize login novamente.";
-                return Logout();
-            }
 
+                if (alterado)
+                {
+                    TempData["Message"] = "Usuário alterado com sucesso! Por favor realize login novamente.";
+                    return Logout();
+                }
+                else
+                {
+                    TempData["UserChangeError"] = "Nenhuma informação para ser alterada";
+                }
+            }
             return View(usuarioEditView);
         }
 

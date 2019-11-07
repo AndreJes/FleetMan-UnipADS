@@ -26,16 +26,22 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-
+                
                 <StackPanel Grid.Column="0" Style="{StaticResource MainStackPanelStyle}">
-                    <Label Style="{StaticResource MainLabelStyle}">Tipo de Solicitação</Label>
-                    <TextBox x:Name="TipoSolicitacaoTextBox" Width="120" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
+                    <Label Style="{StaticResource MainLabelStyle}">Item de Solicitação</Label>
+                    <TextBox x:Name="ItemSolicitação" Width="100" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Style="{StaticResource MainStackPanelStyle}">
-                    <Label Style="{StaticResource MainLabelStyle}">Item de Solicitação</Label>
-                    <TextBox x:Name="ItemSolicitação" Width="120" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
+                    <Label Style="{StaticResource MainLabelStyle}">Tipo de Solicitação</Label>
+                    <TextBox x:Name="TipoSolicitacaoTextBox" Width="100" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelStyle}">Situação</Label>
+                    <TextBox x:Name="EstadoSolicitacaoTextBox" Width="100" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
                 </StackPanel>
             </Grid>
 

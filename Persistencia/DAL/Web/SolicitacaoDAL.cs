@@ -1,6 +1,7 @@
 ﻿using Modelo.Classes.Web;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,22 @@ namespace Persistencia.DAL.Web
 
         public void GravarSolicitacao(Solicitacao solicitacao)
         {
-            Context.Solicitacoes.Add(solicitacao);
+            if (solicitacao.SolicitacaoId == null)
+            {
+                Context.Solicitacoes.Add(solicitacao);
+            }
+            else
+            {
+                Context.Entry(solicitacao).State = EntityState.Modified;
+            }
+
+            Context.SaveChanges();
+        }
+
+        public void RemoverSolicitacaoPorId(long? id)
+        {
+            Solicitacao solicitacao = ObterSolicitacaoPorId(id);
+            Context.Solicitacoes.Remove(solicitacao);
             Context.SaveChanges();
         }
     }

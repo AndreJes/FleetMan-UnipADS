@@ -95,6 +95,7 @@
     <Compile Include="Serviço\ServicoDados.cs" />
     <Compile Include="Tools\HexaColorPicker.cs" />
     <Compile Include="Tools\MainWindowUpdater.cs" />
+    <Compile Include="Tools\StandardMessageBoxes.cs" />
     <Compile Include="UserControls\EnderecoUserControl.xaml.cs">
       <DependentUpon>EnderecoUserControl.xaml</DependentUpon>
     </Compile>

@@ -26,10 +26,6 @@ namespace Modelo.Classes.Web
             {
                 switch (TipoDeItem)
                 {
-                    case ItemSolicitacao.VEICULO:
-                        return "Veiculo";
-                    case ItemSolicitacao.MOTORISTA:
-                        return "Motorista";
                     case ItemSolicitacao.ALUGUEL:
                         return "Aluguel";
                     case ItemSolicitacao.CLIENTE:
@@ -46,10 +42,6 @@ namespace Modelo.Classes.Web
             {
                 switch (Tipo)
                 {
-                    case TiposDeSolicitacao.INCLUSAO:
-                        return "Inclusão";
-                    case TiposDeSolicitacao.EXCLUSAO:
-                        return "Remoção";
                     case TiposDeSolicitacao.ALTERACAO:
                         return "Alteração";
                     case TiposDeSolicitacao.RENOVACAO_ALUGUEL:

@@ -14,7 +14,6 @@ namespace AppWeb.Models.ClienteUsuario
         [Display(Name = "e-Mail Atual")]
         public string EmailAntigo { get; set; }
 
-        [Required]
         [Display(Name = "Novo e-Mail")]
         public string NovoEmail { get; set; }
 

@@ -23,7 +23,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="8*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}">Dados do Cliente</Label>
+            <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}">Dados atuais do Cliente</Label>
 
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -55,7 +55,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="8*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}">Dados a serem atualizados</Label>
+            <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}">Dados na solicitação</Label>
 
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>

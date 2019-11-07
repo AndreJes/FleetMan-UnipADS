@@ -1,4 +1,6 @@
-﻿using Modelo.Classes.Web;
+﻿using AppDesk.Serviço;
+using AppDesk.Tools;
+using Modelo.Classes.Web;
 using Modelo.Enums;
 using System;
 using System.Collections.Generic;
@@ -21,6 +23,8 @@ namespace AppDesk.Windows.Solicitacoes
     /// </summary>
     public partial class FormSolicitacaoCliente : Window
     {
+        private Solicitacao _solicitacao = null;
+
         private FormSolicitacaoCliente()
         {
             InitializeComponent();
@@ -28,30 +32,26 @@ namespace AppDesk.Windows.Solicitacoes
 
         public FormSolicitacaoCliente(Solicitacao solicitacao) : this()
         {
+            _solicitacao = solicitacao;
             switch (solicitacao.Tipo)
             {
-                case Modelo.Enums.TiposDeSolicitacao.INCLUSAO:
-                    break;
-                case Modelo.Enums.TiposDeSolicitacao.EXCLUSAO:
-                    break;
-                case Modelo.Enums.TiposDeSolicitacao.ALTERACAO:
+                case TiposDeSolicitacao.ALTERACAO:
                     TipoSolicitacaoTextBox.Text = "Alteração";
                     break;
-                case Modelo.Enums.TiposDeSolicitacao.RENOVACAO_ALUGUEL:
+                case TiposDeSolicitacao.RENOVACAO_ALUGUEL:
+                    TipoSolicitacaoTextBox.Text = "Renovação de Aluguel";
                     break;
-                case Modelo.Enums.TiposDeSolicitacao.CANCELAMENTO_ALUGUEL:
+                case TiposDeSolicitacao.CANCELAMENTO_ALUGUEL:
+                    TipoSolicitacaoTextBox.Text = "Cancelamento de Aluguel";
                     break;
             }
 
             switch (solicitacao.TipoDeItem)
             {
-                case Modelo.Enums.ItemSolicitacao.VEICULO:
+                case ItemSolicitacao.ALUGUEL:
+                    ItemSolicitação.Text = "Aluguel";
                     break;
-                case Modelo.Enums.ItemSolicitacao.MOTORISTA:
-                    break;
-                case Modelo.Enums.ItemSolicitacao.ALUGUEL:
-                    break;
-                case Modelo.Enums.ItemSolicitacao.CLIENTE:
+                case ItemSolicitacao.CLIENTE:
                     ItemSolicitação.Text = "Cliente";
                     SolicitacaoClienteUC.Visibility = Visibility.Visible;
                     SolicitacaoClienteUC.Solicitacao = solicitacao;
@@ -62,22 +62,52 @@ namespace AppDesk.Windows.Solicitacoes
             {
                 AprovarBtn.IsEnabled = false;
                 ReprovarBtn.IsEnabled = false;
+                if(solicitacao.Estado == EstadosDaSolicitacao.APROVADA)
+                {
+                    EstadoSolicitacaoTextBox.Text = "Aprovada";
+                }
+                else
+                {
+                    EstadoSolicitacaoTextBox.Text = "Reprovada";
+                }
+            }
+            else
+            {
+                EstadoSolicitacaoTextBox.Text = "Aguardando";
             }
         }
 
         private void AprovarBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (MessageBox.Show("Aprovar Solicitação?", "Aprovar", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                ServicoDados.ServicoDadosSolicitacao.AprovarSolicitacao(_solicitacao);
+                MessageBox.Show("Solicitação aprovada com sucesso!");
+                EstadoSolicitacaoTextBox.Text = "Aprovada";
+                MainWindowUpdater.UpdateDataGrids();
+            }
         }
 
         private void ReprovarBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (MessageBox.Show("Reprovar Solicitação?", "Reprovar", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                ServicoDados.ServicoDadosSolicitacao.ReprovarSolicitacao(_solicitacao);
+                MessageBox.Show("Solicitação reprovada com sucesso!");
+                EstadoSolicitacaoTextBox.Text = "Reprovada";
+                MainWindowUpdater.UpdateDataGrids();
+            }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if(StandardMessageBoxes.RemoverMessageBox("Solicitação") == MessageBoxResult.Yes)
+            {
+                ServicoDados.ServicoDadosSolicitacao.RemoverSolicitacaoPorId(_solicitacao.SolicitacaoId);
+                MessageBox.Show("Solicitação removida com sucesso!");
+                MainWindowUpdater.UpdateDataGrids();
+                this.Close();
+            }
         }
     }
 }

@@ -599,16 +599,21 @@ namespace AppDesk
 
         private void SolicitacaoReprovadaDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
-            Solicitacao solicitacao = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacaoPorId((SolicitacoesAguardandoDataGrid.SelectedItem as Solicitacao).SolicitacaoId);
+            Solicitacao solicitacao = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacaoPorId((SolicitacoesReprovadasDataGrid.SelectedItem as Solicitacao).SolicitacaoId);
             FormSolicitacaoCliente formSolicitacaoCliente = new FormSolicitacaoCliente(solicitacao);
             formSolicitacaoCliente.Show();
         }
 
         private void SolicitacaoAprovadaDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
-            Solicitacao solicitacao = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacaoPorId((SolicitacoesAguardandoDataGrid.SelectedItem as Solicitacao).SolicitacaoId);
+            Solicitacao solicitacao = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacaoPorId((SolicitacoesAprovadasDataGrid.SelectedItem as Solicitacao).SolicitacaoId);
             FormSolicitacaoCliente formSolicitacaoCliente = new FormSolicitacaoCliente(solicitacao);
             formSolicitacaoCliente.Show();
+        }
+
+        private void AtualizarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindowUpdater.UpdateDataGrids();
         }
     }
 }

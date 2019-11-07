@@ -52,7 +52,8 @@
                         <!--#region Columns-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="90*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="80*"/>
                         </Grid.ColumnDefinitions>
                         <!--#endregion-->
 
@@ -63,7 +64,9 @@
                             </StackPanel>
                         </Button>
 
-                        <StackPanel x:Name="UserInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+                        <Button x:Name="AtualizarBtn" Click="AtualizarBtn_Click" Grid.Column="1">Atualizar Dados</Button>
+                        
+                        <StackPanel x:Name="UserInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="2">
 
                             <Button Margin="0 8" x:Name="CurrentUserBtn" Click="CurrentUserBtn_Click" Background="Transparent">
                                 <Image x:Name="UserImage" Height="20" Width="24"/>
@@ -1135,7 +1138,7 @@
                             <!--#endregion-->
 
                             <!--#region Seleção de Cliente-->
-                            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 5">
+                            <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10 5">
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Selecionar Cliente:</Label>
                                 <ComboBox>
@@ -1146,9 +1149,6 @@
 
                             <!--#region Separators-->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
-                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">

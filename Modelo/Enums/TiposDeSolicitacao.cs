@@ -8,8 +8,6 @@ namespace Modelo.Enums
 {
     public enum TiposDeSolicitacao
     {
-        INCLUSAO,
-        EXCLUSAO,
         ALTERACAO,
         RENOVACAO_ALUGUEL,
         CANCELAMENTO_ALUGUEL
