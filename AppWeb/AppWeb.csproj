@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -167,13 +169,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\SolicitacaoController.cs" />
+    <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClienteUsuario\ClientePFViewModel.cs" />
     <Compile Include="Models\ClienteUsuario\ClientePJViewModel.cs" />
     <Compile Include="Models\ClienteUsuario\UsuarioEditViewModel.cs" />
-    <Compile Include="Models\Helpers\ClienteHelper.cs" />
     <Compile Include="Models\Helpers\IdentityHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ClienteUsuario\ClienteViewModel.cs" />
@@ -325,6 +327,7 @@
     <Content Include="Views\Cliente\EditPJ.cshtml" />
     <Content Include="Views\Solicitacao\Index.cshtml" />
     <Content Include="Views\Solicitacao\Delete.cshtml" />
+    <Content Include="Views\Veiculo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

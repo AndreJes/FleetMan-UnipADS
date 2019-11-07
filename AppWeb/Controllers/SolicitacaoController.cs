@@ -28,27 +28,18 @@ namespace AppWeb.Controllers
             }
         }
 
-        private ClienteHelper ClienteHelper = new ClienteHelper();
-        private ClienteService ClienteService = new ClienteService();
         private SolicitacaoService SolicitacaoService = new SolicitacaoService();
 
         // GET: Solicitacao
+        [Authorize]
         public ActionResult Index()
         {
             string email = HttpContext.GetOwinContext().Authentication.User.Identity.Name;
-            TipoCliente tipo = ClienteHelper.ObterTipoClientePorEmail(email);
-
-            switch (tipo)
+            long? id = (long?)long.Parse(Gerenciador.FindByEmail(email).Id);
+            if(id != null)
             {
-                case TipoCliente.PF:
-                    ClientePF clientePF = ClienteService.ObterClientePFPorEmail(email);
-                    List<Solicitacao> solicitacoesPF = SolicitacaoService.ObterSolicitacoesOrdPorId().Where(s => s.ClienteId == clientePF.ClienteId).ToList();
-                    return View(solicitacoesPF);
-
-                case TipoCliente.PJ:
-                    ClientePJ clientePJ = ClienteService.ObterClientePJPorEmail(email);
-                    List<Solicitacao> solicitacoesPJ = SolicitacaoService.ObterSolicitacoesOrdPorId().Where(s => s.ClienteId == clientePJ.ClienteId).ToList();
-                    return View(solicitacoesPJ);
+                List<Solicitacao> solicitacoes = SolicitacaoService.ObterSolicitacoesOrdPorId().Where(s => s.ClienteId == id).ToList();
+                return View(solicitacoes);
             }
 
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

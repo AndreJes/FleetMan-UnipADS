@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Modelo.Classes.Web.Veiculo>
+
+@{
+    ViewBag.Title = "Meus Veículos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">@ViewBag.Title</h2>
+    </div>
+
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Placa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ano)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Marca)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modelo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodRenavam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adaptado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParaLocacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AdaptadoTxt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParaLocacaoTxt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EstadoTxt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EstadoDoTanqueValor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GaragemId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClienteId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SeguroId)
+                </th>
+                <th></th>
+            </tr>
+
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Placa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ano)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Marca)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Modelo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CodRenavam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Adaptado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ParaLocacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdaptadoTxt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ParaLocacaoTxt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EstadoTxt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EstadoDoTanqueValor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GaragemId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClienteId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SeguroId)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.VeiculoId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.VeiculoId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.VeiculoId })
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+
+
+    </div>
+</div>
