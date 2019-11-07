@@ -78,5 +78,14 @@ namespace AppWeb.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(SolicitacaoViewModel solicitacaoView)
+        {
+            SolicitacaoService.RemoverSolicitacaoPorId(solicitacaoView.Solicitacao.SolicitacaoId);
+            TempData["Message"] = "Solicitação Removida com Sucesso!";
+            return RedirectToAction("Index");
+        }
     }
 }

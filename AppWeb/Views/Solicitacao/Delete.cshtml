@@ -1,4 +1,5 @@
 ﻿@model AppWeb.Models.Solicitacoes.SolicitacaoViewModel
+@using Modelo.Classes.Clientes
 
 @{
     ViewBag.Title = "Remover Solicitação";
@@ -7,6 +8,7 @@
 
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken();
     <div class="card">
         <div class="card-header bg-secondary text-white">
             <h2 class="card-title">@ViewBag.Title</h2>
@@ -17,6 +19,7 @@
                 <h4 class="card-title">Informações da Solicitação</h4>
             </div>
             <div class="card-body">
+                @Html.HiddenFor(model => model.Solicitacao.SolicitacaoId)
                 <div class="form-group form-inline">
                     @Html.Label("Data da Solicitação", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
                     @Html.EditorFor(model => model.Solicitacao.DataDaSolicitacao, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
@@ -43,10 +46,63 @@
             @*Card Dados de Cliente (se for o caso)*@
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Informações do Cliente</h4>
+                    <h4 class="card-title">Informações do Cliente na Solicitação</h4>
                 </div>
                 <div class="card-body">
+                    <div class="form-group form-inline">
+                        @Html.Label("Nome", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                        @Html.EditorFor(model => model.Cliente.Nome, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+                    </div>
+                    @if (Model.Cliente is ClientePF)
+                    {
+                        <div class="form-group form-inline">
+                            @Html.Label("CPF", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                            @Html.EditorFor(model => (model.Cliente as ClientePF).CPF, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled", data_mask = "999.999.999-99" } })
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group form-inline">
+                            @Html.Label("CNPJ", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                            @Html.EditorFor(model => (model.Cliente as ClientePJ).CNPJ, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled", data_mask = "99.999.999/9999-99" } })
+                        </div>
+                    }
+                    <div class="form-group form-inline">
+                        @Html.Label("Telefone", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                        @Html.EditorFor(model => model.Cliente.Telefone, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled", data_mask = "(99)99999-9999" } })
+                    </div>
 
+                    <hr />
+
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(model => model.Cliente.Endereco.Rua, new { @class = "form-control col-md-3 col-sm-12 bg-secondary text-white" })
+                        @Html.EditorFor(model => model.Cliente.Endereco.Rua, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+                    </div>
+
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(model => model.Cliente.Endereco.Numero, new { @class = "form-control col-md-3 col-sm-12 bg-secondary text-white" })
+                        @Html.EditorFor(model => model.Cliente.Endereco.Numero, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+                    </div>
+
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(model => model.Cliente.Endereco.Bairro, new { @class = "form-control col-md-3 col-sm-12 bg-secondary text-white" })
+                        @Html.EditorFor(model => model.Cliente.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+                    </div>
+
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(model => model.Cliente.Endereco.CEP, new { @class = "form-control col-md-3 col-sm-12 bg-secondary text-white" })
+                        @Html.EditorFor(model => model.Cliente.Endereco.CEP, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled", data_mask = "99999-999" } })
+                    </div>
+
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(model => model.Cliente.Endereco.Cidade, new { @class = "form-control col-md-3 col-sm-12 bg-secondary text-white" })
+                        @Html.EditorFor(model => model.Cliente.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+                    </div>
+
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(model => model.Cliente.Endereco.UF, new { @class = "form-control col-md-3 col-sm-12 bg-secondary text-white" })
+                        @Html.EditorFor(model => model.Cliente.Endereco.UF, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+                    </div>
                 </div>
             </div>
         }
@@ -55,7 +111,7 @@
             @*Card Dados de Aluguel (se for o caso)*@
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Informações do Aluguel</h4>
+                    <h4 class="card-title">Informações do Aluguel na Solicitação</h4>
                 </div>
                 <div class="card-body">
 
@@ -64,7 +120,13 @@
 
         }
         <div class="card-footer">
-
+            <input type="submit" class="btn btn-danger offset-md-2 col-md-4 col-sm-12" value="Remover Solicitação" />
+            @Html.ActionLink("Voltar para lista de Solicitações", "Index", null, new { @class="btn btn-warning col-md-4 col-sm-12"})
         </div>
     </div>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/JqueryMaskPlugin/jquery.mask.js")
 }
