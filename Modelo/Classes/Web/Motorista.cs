@@ -3,6 +3,7 @@ using Modelo.Classes.Desk;
 using Modelo.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace Modelo.Classes.Web
         public int PontosCNH { get; set; }
         public Endereco Endereco { get; set; }
         public bool MotoristaProprio { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0: dd/MM/yyyy}")]
         public DateTime VencimentoExame { get; set; }
         #endregion
         #region Enums

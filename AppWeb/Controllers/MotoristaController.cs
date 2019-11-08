@@ -43,19 +43,23 @@ namespace AppWeb.Controllers
             string email = HttpContext.GetOwinContext().Authentication.User.Identity.Name;
             long? idCliente = (long?)long.Parse(Gerenciador.FindByEmail(email).Id);
 
-            Motorista motorista = MotoristaService.ObterMotoristaPorId(id);
-            if (motorista != null)
+            if (id != null)
             {
-                if (motorista.ClienteId != idCliente)
+                Motorista motorista = MotoristaService.ObterMotoristaPorId(id);
+
+                if (motorista != null)
                 {
-                    return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+                    if (motorista.ClienteId != idCliente)
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+                    }
+
+                    MotoristaViewModel motoristaView = new MotoristaViewModel() { Motorista = motorista };
+
+                    return View(motoristaView);
                 }
 
-                MotoristaViewModel motoristaView = new MotoristaViewModel() { Motorista = motorista };
-
-                return View(motoristaView);
             }
-
             return new HttpStatusCodeResult(HttpStatusCode.NotFound);
         }
     }

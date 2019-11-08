@@ -72,22 +72,28 @@
                                 <td>
                                     Data da infração
                                 </td>
+                                <td>
+                                    Motorista
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (Multa item in Model.Multas)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CodigoMulta)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Valor)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DataDaMulta)
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CodigoMulta)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Valor)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DataDaMulta)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Motorista.Nome)
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
@@ -118,22 +124,28 @@
                                 <td>
                                     Data do sinistro
                                 </td>
+                                <td>
+                                    Motorista
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (Sinistro item in Model.Sinistros)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CodSinistro)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Descricao)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DataSinistro)
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CodSinistro)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descricao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DataSinistro)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Motorista.Nome)
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
@@ -160,6 +172,6 @@
     <script src="~/Content/DataTables/DataTables-1.10.20/js/responsive.bootstrap4.min.js"></script>
     <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.rowGroup.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () { $('.table').DataTable({ responsive: true, rowGroup: { dataSrc: 0 } }); });
+        $(document).ready(function () { $('.table').DataTable({ responsive: true, rowGroup: { dataSrc: 3 } }); });
     </script>
 }
