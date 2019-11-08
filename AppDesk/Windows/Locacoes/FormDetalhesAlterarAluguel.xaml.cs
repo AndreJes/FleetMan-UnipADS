@@ -49,7 +49,7 @@ namespace AppDesk.Windows.Locacoes
                 case Modelo.Enums.EstadosDePagamento.VENCIDO:
                     VencidoRadioBtn.IsChecked = true;
                     break;
-                case Modelo.Enums.EstadosDePagamento.AGUARDANDO_PAGAMENTO:
+                case Modelo.Enums.EstadosDePagamento.AGUARDANDO:
                     AguardandoPagamentoRadioBtn.IsChecked = true;
                     break;
                 default:
@@ -115,7 +115,7 @@ namespace AppDesk.Windows.Locacoes
         {
             if (AguardandoPagamentoRadioBtn.IsChecked == true)
             {
-                _aluguel.EstadoDoPagamento = EstadosDePagamento.AGUARDANDO_PAGAMENTO;
+                _aluguel.EstadoDoPagamento = EstadosDePagamento.AGUARDANDO;
             }
             else if (PagoRadioBtn.IsChecked == true)
             {
@@ -130,7 +130,7 @@ namespace AppDesk.Windows.Locacoes
 
         private void PagamentoCheckChanged_Event(object sender, RoutedEventArgs e)
         {
-            if (AguardandoPagamentoRadioBtn.IsChecked == true && _aluguel.EstadoDoPagamento != EstadosDePagamento.AGUARDANDO_PAGAMENTO)
+            if (AguardandoPagamentoRadioBtn.IsChecked == true && _aluguel.EstadoDoPagamento != EstadosDePagamento.AGUARDANDO)
             {
                 SalvarPagamentoBtn.IsEnabled = true;
             }

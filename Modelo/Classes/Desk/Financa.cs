@@ -33,7 +33,7 @@ namespace Modelo.Classes.Desk
                         return "Pago";
                     case EstadosDePagamento.VENCIDO:
                         return "Vencido";
-                    case EstadosDePagamento.AGUARDANDO_PAGAMENTO:
+                    case EstadosDePagamento.AGUARDANDO:
                         return "Aguardando";
                     default:
                         return "Pagamento Inválido";

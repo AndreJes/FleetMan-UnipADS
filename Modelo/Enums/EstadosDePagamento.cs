@@ -10,6 +10,6 @@ namespace Modelo.Enums
     {
         PAGO,
         VENCIDO,
-        AGUARDANDO_PAGAMENTO
+        AGUARDANDO
     }
 }

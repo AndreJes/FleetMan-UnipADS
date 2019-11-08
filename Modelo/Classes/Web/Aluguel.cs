@@ -31,7 +31,7 @@ namespace Modelo.Classes.Web
                         return "Pago";
                     case EstadosDePagamento.VENCIDO:
                         return "Pagamento Vencido";
-                    case EstadosDePagamento.AGUARDANDO_PAGAMENTO:
+                    case EstadosDePagamento.AGUARDANDO:
                         return "Aguardando Pagamento";
                     default:
                         return "Estado não definido";

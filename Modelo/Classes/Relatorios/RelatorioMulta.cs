@@ -35,7 +35,7 @@ namespace Modelo.Classes.Relatorios
 
             QntMultasVencidas = multas.Where(m => m.EstadoDoPagamento == EstadosDePagamento.VENCIDO).Count();
             QntMultasPagas = multas.Where(m => m.EstadoDoPagamento == EstadosDePagamento.PAGO).Count();
-            QntMultasAguardando = multas.Where(m => m.EstadoDoPagamento == EstadosDePagamento.AGUARDANDO_PAGAMENTO).Count();
+            QntMultasAguardando = multas.Where(m => m.EstadoDoPagamento == EstadosDePagamento.AGUARDANDO).Count();
 
             QntMultasLeves = multas.Where(m => m.GravidadeDaInfracao == GravidadesDeInfracao.LEVE).Count();
             QntMultasMedias = multas.Where(m => m.GravidadeDaInfracao == GravidadesDeInfracao.MEDIA).Count();

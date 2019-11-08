@@ -59,7 +59,7 @@ namespace AppDesk.Windows.Locacoes
             
             if (AguardandoPagamentoRadioBtn.IsChecked == true)
             {
-                aluguel.EstadoDoPagamento = EstadosDePagamento.AGUARDANDO_PAGAMENTO;
+                aluguel.EstadoDoPagamento = EstadosDePagamento.AGUARDANDO;
             }
             else if (PagoRadioBtn.IsChecked == true)
             {

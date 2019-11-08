@@ -28,7 +28,7 @@ namespace Modelo.Classes.Relatorios
 
             QntFinancasVencidas = financas.Where(f => f.EstadoPagamento == EstadosDePagamento.VENCIDO).Count();
             QntFinancasPagas = financas.Where(f => f.EstadoPagamento == EstadosDePagamento.PAGO).Count();
-            QntFinancasAguardando = financas.Where(f => f.EstadoPagamento == EstadosDePagamento.AGUARDANDO_PAGAMENTO).Count();
+            QntFinancasAguardando = financas.Where(f => f.EstadoPagamento == EstadosDePagamento.AGUARDANDO).Count();
 
             double valorTotalEntradas = 0;
             double valorTotalSaidas = 0;

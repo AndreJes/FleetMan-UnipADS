@@ -10,59 +10,39 @@
     </div>
 
     <div class="card-body">
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Placa)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Ano)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Marca)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Modelo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CodRenavam)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cor)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Adaptado)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ParaLocacao)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AdaptadoTxt)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ParaLocacaoTxt)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.EstadoTxt)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.EstadoDoTanqueValor)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.GaragemId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ClienteId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SeguroId)
-                </th>
-                <th></th>
-            </tr>
-
+        <table class="table table-responsive-sm table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Placa
+                    </th>
+                    <th>
+                        Ano
+                    </th>
+                    <th>
+                        Marca
+                    </th>
+                    <th>
+                        Modelo
+                    </th>
+                    <th>
+                        Código Renavam
+                    </th>
+                    <th>
+                        Cor
+                    </th>
+                    <th>
+                        Adaptado
+                    </th>
+                    <th>
+                        Alugado
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
             @if (Model.Count() > 0)
             {
                 foreach (var item in Model)
@@ -96,36 +76,23 @@
                             @Html.DisplayFor(modelItem => item.ParaLocacao)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.AdaptadoTxt)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ParaLocacaoTxt)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EstadoTxt)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EstadoDoTanqueValor)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.GaragemId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ClienteId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SeguroId)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.VeiculoId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.VeiculoId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.VeiculoId })
+                            @Html.ActionLink("Detalhes", "Details", new { id = item.VeiculoId }, new{@class="btn btn-info"})
                         </td>
                     </tr>
                 }
             }
         </table>
-
-
     </div>
 </div>
+
+@section styles{
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/jquery.dataTables.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () { $('.table').DataTable(); });
+    </script>
+}

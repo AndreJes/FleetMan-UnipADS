@@ -40,7 +40,7 @@ namespace Modelo.Classes.Relatorios
 
             QntSinistrosVencidos = sinistros.Where(s => s.EstadoPagamento == EstadosDePagamento.VENCIDO).Count();
             QntSinistrosPagos = sinistros.Where(s => s.EstadoPagamento == EstadosDePagamento.PAGO).Count();
-            QntSinistrosAguardando = sinistros.Where(s => s.EstadoPagamento == EstadosDePagamento.AGUARDANDO_PAGAMENTO).Count();
+            QntSinistrosAguardando = sinistros.Where(s => s.EstadoPagamento == EstadosDePagamento.AGUARDANDO).Count();
 
             QntBatidas = sinistros.Where(s => s.Gravidade == GravidadesDeSinistro.BATIDA).Count();
             QntAcidentesLevesCVitima = sinistros.Where(s => s.Gravidade == GravidadesDeSinistro.ACIDENTE_LEVE_COM_VITIMA).Count();

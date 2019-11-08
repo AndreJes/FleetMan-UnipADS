@@ -17,7 +17,7 @@ namespace Persistencia.DAL.Web
 
         public Veiculo ObterVeiculoPorId(long? id)
         {
-            return Context.Veiculos.Where(v => v.VeiculoId == id).Include(v => v.Multas).Include(v => v.Sinistros).Include(v => v.Garagem).Include(v => v.Cliente).Include(v => v.Seguro).First();
+            return Context.Veiculos.Where(v => v.VeiculoId == id).Include(v => v.Multas).Include(v => v.Sinistros).Include(v => v.Garagem).Include(v => v.Cliente).Include(v => v.Seguro).Include(v => v.Manutencoes).First();
         }
 
         public Veiculo ObterVeiculoPorPlaca(string placa)

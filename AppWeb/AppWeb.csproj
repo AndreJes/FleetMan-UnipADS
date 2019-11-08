@@ -168,6 +168,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\MotoristaController.cs" />
     <Compile Include="Controllers\SolicitacaoController.cs" />
     <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,6 +181,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ClienteUsuario\ClienteViewModel.cs" />
     <Compile Include="Models\Solicitacoes\SolicitacaoViewModel.cs" />
+    <Compile Include="Models\Veiculos\VeiculoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +203,8 @@
     <Content Include="Content\DataTables\DataTables-1.10.20\css\dataTables.semanticui.min.css" />
     <Content Include="Content\DataTables\DataTables-1.10.20\css\jquery.dataTables.css" />
     <Content Include="Content\DataTables\DataTables-1.10.20\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.20\css\responsive.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.20\css\rowGroup.bootstrap4.min.css" />
     <Content Include="Content\DataTables\DataTables-1.10.20\images\sort_asc.png" />
     <Content Include="Content\DataTables\DataTables-1.10.20\images\sort_asc_disabled.png" />
     <Content Include="Content\DataTables\DataTables-1.10.20\images\sort_both.png" />
@@ -214,10 +218,13 @@
     <Content Include="Content\DataTables\DataTables-1.10.20\js\dataTables.foundation.min.js" />
     <Content Include="Content\DataTables\DataTables-1.10.20\js\dataTables.jqueryui.js" />
     <Content Include="Content\DataTables\DataTables-1.10.20\js\dataTables.jqueryui.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.20\js\dataTables.responsive.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.20\js\dataTables.rowGroup.min.js" />
     <Content Include="Content\DataTables\DataTables-1.10.20\js\dataTables.semanticui.js" />
     <Content Include="Content\DataTables\DataTables-1.10.20\js\dataTables.semanticui.min.js" />
     <Content Include="Content\DataTables\DataTables-1.10.20\js\jquery.dataTables.js" />
     <Content Include="Content\DataTables\DataTables-1.10.20\js\jquery.dataTables.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.20\js\responsive.bootstrap4.min.js" />
     <Content Include="Content\DataTables\datatables.css" />
     <Content Include="Content\DataTables\datatables.js" />
     <Content Include="Content\DataTables\datatables.min.css" />
@@ -328,9 +335,11 @@
     <Content Include="Views\Solicitacao\Index.cshtml" />
     <Content Include="Views\Solicitacao\Delete.cshtml" />
     <Content Include="Views\Veiculo\Index.cshtml" />
+    <Content Include="Views\Veiculo\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Motorista\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
