@@ -1,9 +1,10 @@
-﻿@model IEnumerable<Modelo.Classes.Web.Veiculo>
+﻿@model IEnumerable<Modelo.Classes.Web.Motorista>
 
 @{
-    ViewBag.Title = "Meus Veículos";
+    ViewBag.Title = "Meus Motoristas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <div class="card">
     <div class="card-header">
@@ -18,28 +19,13 @@
                         Nome
                     </th>
                     <th>
-                        Placa
+                        CPF
                     </th>
                     <th>
-                        Ano
+                        Nº CNH
                     </th>
                     <th>
-                        Marca
-                    </th>
-                    <th>
-                        Modelo
-                    </th>
-                    <th>
-                        Código Renavam
-                    </th>
-                    <th>
-                        Cor
-                    </th>
-                    <th>
-                        Adaptado
-                    </th>
-                    <th>
-                        Alugado
+                        Pontos na CNH
                     </th>
                     <th></th>
                 </tr>
@@ -53,31 +39,16 @@
                             @Html.DisplayFor(modelItem => item.Nome)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Placa)
+                            @Html.DisplayFor(modelItem => item.CPFTxt)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Ano)
+                            @Html.DisplayFor(modelItem => item.NumeroCNH)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Marca)
+                            @Html.DisplayFor(modelItem => item.PontosCNH)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Modelo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CodRenavam)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cor)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Adaptado)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ParaLocacao)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Detalhes", "Details", new { id = item.VeiculoId }, new{@class="btn btn-info"})
+                            @Html.ActionLink("Detalhes", "Details", new { id = item.MotoristaId }, new { @class = "btn btn-info" })
                         </td>
                     </tr>
                 }
@@ -91,6 +62,7 @@
 }
 
 @section scripts{
+    @Scripts.Render("~/Scripts/JqueryMaskPlugin/jquery.mask.js")
     <script src="~/Content/DataTables/DataTables-1.10.20/js/jquery.dataTables.js"></script>
     <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.js"></script>
     <script type="text/javascript">

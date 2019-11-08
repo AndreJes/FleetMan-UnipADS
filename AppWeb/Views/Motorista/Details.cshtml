@@ -1,0 +1,194 @@
+﻿@model AppWeb.Models.Motoristas.MotoristaViewModel
+@using Modelo.Classes.Desk
+
+@{
+    ViewBag.Title = "Detalhes do Motorista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="card col-md-12 col-sm-12">
+        <div class="card-header">
+            <h2 class="card-title">@ViewBag.Title</h2>
+        </div>
+        <div class="card-body">
+            <div class="form-group form-inline">
+                @Html.Label("Nome", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                @Html.EditorFor(model => model.Motorista.Nome, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+            <div class="form-group form-inline">
+                @Html.Label("CPF", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                @Html.EditorFor(model => model.Motorista.CPFTxt, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+            <div class="form-group form-inline">
+                @Html.Label("RG", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                @Html.EditorFor(model => model.Motorista.RG, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+            <div class="form-group form-inline">
+                @Html.Label("Celular", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                @Html.EditorFor(model => model.Motorista.Celular, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+            <div class="form-group form-inline">
+                @Html.Label("Email", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                @Html.EditorFor(model => model.Motorista.Email, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+            <div class="form-group form-inline">
+                @Html.Label("CNH", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                @Html.EditorFor(model => model.Motorista.NumeroCNH, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+            <div class="form-group form-inline">
+                @Html.Label("Pontos na CNH", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                @Html.EditorFor(model => model.Motorista.PontosCNH, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+            <div class="form-group form-inline">
+                @Html.Label("Vencimento Exame CNH", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                @Html.EditorFor(model => model.Motorista.VencimentoExame, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+
+            <hr />
+
+            <div class="form-group form-inline">
+                @Html.LabelFor(model => model.Motorista.Endereco.Rua, new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+                @Html.EditorFor(model => model.Motorista.Endereco.Rua, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+
+            <div class="form-group form-inline">
+                @Html.LabelFor(model => model.Motorista.Endereco.Numero, new { @class = "form-control col-md-3 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Motorista.Endereco.Numero, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+
+            <div class="form-group form-inline">
+                @Html.LabelFor(model => model.Motorista.Endereco.CEP, new { @class = "form-control col-md-3 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Motorista.Endereco.CEP, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled", data_mask = "99999-999" } })
+            </div>
+
+            <div class="form-group form-inline">
+                @Html.LabelFor(model => model.Motorista.Endereco.Bairro, new { @class = "form-control col-md-3 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Motorista.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+
+            <div class="form-group form-inline">
+                @Html.LabelFor(model => model.Motorista.Endereco.Cidade, new { @class = "form-control col-md-3 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Motorista.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+
+            <div class="form-group form-inline">
+                @Html.LabelFor(model => model.Motorista.Endereco.UF, new { @class = "form-control col-md-3 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Motorista.Endereco.UF, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+            </div>
+        </div>
+    </div>
+
+    <div class="row flex-row">
+        <div class="card col-md-6">
+            <div class="card-header">
+                <h5 class="card-title">Multas</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Multas.Count() > 0)
+                {
+                    <table class="table table-hover table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Codigo
+                                </td>
+                                <td>
+                                    Valor
+                                </td>
+                                <td>
+                                    Data da infração
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Multa item in Model.Multas)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CodigoMulta)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Valor)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataDaMulta)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info">Motorista não possui multas registradas</div>
+                }
+            </div>
+        </div>
+
+        <div class="card col-md-6 col-sm-12">
+            <div class="card-header">
+                <h5 class="card-title">Sinistros</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Sinistros.Count() > 0)
+                {
+                    <table class="table table-responsive-sm table-hover">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Codigo
+                                </td>
+                                <td>
+                                    Descrição
+                                </td>
+                                <td>
+                                    Data do sinistro
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Sinistro item in Model.Sinistros)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CodSinistro)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descricao)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataSinistro)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info">Motorista não possui sinistros registrados</div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@section styles{
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/rowGroup.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+    @Scripts.Render("~/Scripts/JqueryMaskPlugin/jquery.mask.js")
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.rowGroup.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () { $('.table').DataTable({ responsive: true, rowGroup: { dataSrc: 0 } }); });
+    </script>
+}

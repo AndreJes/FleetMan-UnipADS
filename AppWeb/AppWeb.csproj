@@ -180,6 +180,7 @@
     <Compile Include="Models\Helpers\IdentityHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ClienteUsuario\ClienteViewModel.cs" />
+    <Compile Include="Models\Motoristas\MotoristaViewModel.cs" />
     <Compile Include="Models\Solicitacoes\SolicitacaoViewModel.cs" />
     <Compile Include="Models\Veiculos\VeiculoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -336,10 +337,11 @@
     <Content Include="Views\Solicitacao\Delete.cshtml" />
     <Content Include="Views\Veiculo\Index.cshtml" />
     <Content Include="Views\Veiculo\Details.cshtml" />
+    <Content Include="Views\Motorista\Index.cshtml" />
+    <Content Include="Views\Motorista\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Motorista\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
