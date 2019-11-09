@@ -45,6 +45,7 @@ namespace AppDesk.Windows.Viagens
             if(result == MessageBoxResult.Yes)
             {
                 _viagem.EstadoDaViagem = Modelo.Enums.EstadosDeViagem.CANCELADA;
+                _viagem.DataChegada = DateTime.Now;
                 EstadoViagemTextBox.Text = _viagem.EstadoDaViagem.ToString("G").Replace('_', ' ');
                 ServicoDados.ServicoDadosViagem.GravarViagem(_viagem);
                 MessageBox.Show("Viagem cancelada com sucesso!");

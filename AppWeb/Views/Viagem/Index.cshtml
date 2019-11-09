@@ -1,0 +1,258 @@
+﻿@model AppWeb.Models.Viagens.ViagemViewModel
+@using Modelo.Classes.Web
+
+@{
+    ViewBag.Title = "Viagens Registradas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">@ViewBag.Title</h2>
+    </div>
+    <div class="card-body">
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Aguardando Inicio</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.ViagensAguardando.Count() > 0)
+                {
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Placa Veiculo
+                                </td>
+                                <td>
+                                    Motorista
+                                </td>
+                                <td>
+                                    Quantidade de Passageiros
+                                </td>
+                                <td>
+                                    Data de Saida (Prevista)
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Viagem item in Model.ViagensAguardando)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Veiculo.Placa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Motorista.Nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.QuantidadePassageiros)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataSaida)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info">Nenhuma viagem registrada</div>
+                }
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Em Andamento</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.ViagensEmAndamento.Count() > 0)
+                {
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Placa Veiculo
+                                </td>
+                                <td>
+                                    Motorista
+                                </td>
+                                <td>
+                                    Quantidade de Passageiros
+                                </td>
+                                <td>
+                                    Data de Saida
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Viagem item in Model.ViagensEmAndamento)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Veiculo.Placa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Motorista.Nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.QuantidadePassageiros)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataSaida)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                }
+                else
+                {
+                    <div class="alert alert-info">Nenhuma viagem registrada</div>
+                }
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Concluidas</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.ViagensConcluidas.Count() > 0)
+                {
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Placa Veiculo
+                                </td>
+                                <td>
+                                    Motorista
+                                </td>
+                                <td>
+                                    Quantidade de Passageiros
+                                </td>
+                                <td>
+                                    Data de Saida(Prevista)
+                                </td>
+                                <td>
+                                    Data de Chegada
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Viagem item in Model.ViagensConcluidas)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Veiculo.Placa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Motorista.Nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.QuantidadePassageiros)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataSaida)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataChegada)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                }
+                else
+                {
+                    <div class="alert alert-info">Nenhuma viagem registrada</div>
+                }
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Canceladas</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.ViagensCanceladas.Count() > 0)
+                {
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Placa Veiculo
+                                </td>
+                                <td>
+                                    Motorista
+                                </td>
+                                <td>
+                                    Quantidade de Passageiros
+                                </td>
+                                <td>
+                                    Data de Saida(Prevista)
+                                </td>
+                                <td>
+                                    Data do Cancelamento
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Viagem item in Model.ViagensCanceladas)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Veiculo.Placa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Motorista.Nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.QuantidadePassageiros)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataSaida)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataChegada)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                }
+                else
+                {
+                    <div class="alert alert-info">Nenhuma viagem registrada</div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section styles{
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/rowGroup.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+    @Scripts.Render("~/Scripts/JqueryMaskPlugin/jquery.mask.js")
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.rowGroup.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () { $('.table').DataTable({ responsive: true, rowGroup: { dataSrc: 0 } }); });
+    </script>
+}

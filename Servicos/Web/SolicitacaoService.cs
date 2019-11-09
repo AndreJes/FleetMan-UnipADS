@@ -42,9 +42,8 @@ namespace Servicos.Web
             {
                 case ItemSolicitacao.ALUGUEL:
                     break;
-                case ItemSolicitacao.CLIENTE:
-                    Cliente clienteModelo = JsonConvert.DeserializeObject<Cliente>(solicitacao.ItemSerializado);
-                    if (clienteModelo.Tipo == TipoCliente.PF)
+                case ItemSolicitacao.CLIENTE:;
+                    if (solicitacao.ItemSerializado.Contains("CPF"))
                     {
                         ClientePF clienteSolicitacao = JsonConvert.DeserializeObject<ClientePF>(solicitacao.ItemSerializado);
                         ClientePF cliente = ClienteService.ObterClientePFPorId(clienteSolicitacao.ClienteId);
@@ -55,7 +54,7 @@ namespace Servicos.Web
                         ClienteService.GravarCliente(cliente);
                         GravarSolicitacao(solicitacao);
                     }
-                    else if (clienteModelo.Tipo == TipoCliente.PJ)
+                    else if (solicitacao.ItemSerializado.Contains("CNPJ"))
                     {
                         ClientePJ clienteSolicitacao = JsonConvert.DeserializeObject<ClientePJ>(solicitacao.ItemSerializado);
                         ClientePJ cliente = ClienteService.ObterClientePJPorId(clienteSolicitacao.ClienteId);

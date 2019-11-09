@@ -3,6 +3,7 @@ using Modelo.Classes.Desk;
 using Modelo.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,13 @@ namespace Modelo.Classes.Web
         public long? ViagemId { get; set; }
         public Endereco EnderecoOrigem { get; set; }
         public Endereco EnderecoDestino { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0: dd/MM/yyyy HH:mm}")]
         public DateTime DataSaida { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0: dd/MM/yyyy HH:mm}")]
         public DateTime? DataChegada { get; set; }
+
         public int QuantidadePassageiros { get; set; }
         public EstadosDeViagem EstadoDaViagem { get; set; }
 

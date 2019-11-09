@@ -12,7 +12,7 @@ namespace Persistencia.DAL.Web
     {
         public IEnumerable<Viagem> ObterViagensOrdPorId()
         {
-            return Context.Viagens.OrderBy(v => v.ViagemId);
+            return Context.Viagens.Include(v => v.Veiculo).Include(v => v.Motorista).OrderBy(v => v.ViagemId).ToList();
         }
 
         public Viagem ObterViagemPorId(long? id)
