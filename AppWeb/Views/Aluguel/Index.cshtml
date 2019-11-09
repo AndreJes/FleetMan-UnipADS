@@ -1,0 +1,202 @@
+﻿@model AppWeb.Models.Alugueis.AluguelViewModel
+@using Modelo.Classes.Web
+
+@{
+    ViewBag.Title = "Meus Alugueis Registrados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if(TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+<div class="card">
+    <div class="card-header bg-secondary text-white">
+        <h2 class="card-title">@ViewBag.Title</h2>
+    </div>
+    <div class="card-body">
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Em situação regular</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.AlugueisRegulares.Count() > 0)
+                {
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Placa do Veiculo
+                                </td>
+                                <td>
+                                    Pagamento
+                                </td>
+                                <td>
+                                    Data da Contratação
+                                </td>
+                                <td>
+                                    Data de Vencimento
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Aluguel item in Model.AlugueisRegulares)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Veiculo.Placa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EstadoDoPagamento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataContratacao)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataVencimento)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.AluguelId }, new { @class = "btn btn-info" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info">Nenhum aluguel registrado</div>
+                }
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title text-danger">Vencidos</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.AlugueisVencidos.Count() > 0)
+                {
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Placa do Veiculo
+                                </td>
+                                <td>
+                                    Pagamento
+                                </td>
+                                <td>
+                                    Data da Contratação
+                                </td>
+                                <td>
+                                    Data de Vencimento
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Aluguel item in Model.AlugueisRegulares)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Veiculo.Placa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EstadoDoPagamento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataContratacao)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataVencimento)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info">Nenhum aluguel registrado</div>
+                }
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title text-warning">Cancelados</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.AlugueisCancelados.Count() > 0)
+                {
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Placa do Veiculo
+                                </td>
+                                <td>
+                                    Pagamento
+                                </td>
+                                <td>
+                                    Data da Contratação
+                                </td>
+                                <td>
+                                    Data de Vencimento
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Aluguel item in Model.AlugueisRegulares)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Veiculo.Placa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EstadoDoPagamento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataContratacao)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataVencimento)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info">Nenhum aluguel registrado</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section styles{
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/rowGroup.bootstrap4.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+    @Scripts.Render("~/Scripts/JqueryMaskPlugin/jquery.mask.js")
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.rowGroup.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () { $('.table').DataTable({ responsive: true, rowGroup: { dataSrc: 1 } }); });
+    </script>
+}

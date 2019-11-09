@@ -82,9 +82,10 @@ namespace Servicos.Web
             Context.RemoverSolicitacaoPorId(id);
         }
 
-        public Solicitacao GerarSolicitacao(ItemSolicitacao tipoItem, TiposDeSolicitacao tipo, long? clienteId)
+        public Solicitacao GerarSolicitacao(ItemSolicitacao tipoItem, TiposDeSolicitacao tipo, long? clienteId, object item)
         {
             Solicitacao solicitacao = new Solicitacao();
+            solicitacao.ItemSerializado = JsonConvert.SerializeObject(item);
             solicitacao.DataDaSolicitacao = DateTime.Now;
             solicitacao.TipoDeItem = tipoItem;
             solicitacao.Tipo = tipo;

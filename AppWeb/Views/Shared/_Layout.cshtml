@@ -20,7 +20,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">@Html.ActionLink("Veículos", "Index", "Veiculo", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">@Html.ActionLink("Motoristas", "Index", "Motorista", null, new { @class = "nav-link text-white" })</li>
-                <li class="nav-item">@Html.ActionLink("Aluguel", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
+                <li class="nav-item">@Html.ActionLink("Aluguel", "Index", "Aluguel", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">@Html.ActionLink("Viagens", "Index", "Viagem", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">@Html.ActionLink("Solicitações", "Index", "Solicitacao", null, new { @class = "nav-link text-white" })</li>
                 <li class="nav-item">@Html.ActionLink("Meu Perfil", "Details", "Cliente", null, new { @class = "nav-link text-white" })</li>
@@ -40,7 +40,7 @@
         </div>
     </nav>
     <div class="container-fluid">
-        @RenderBody()
+            @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - FleetManWeb</p>

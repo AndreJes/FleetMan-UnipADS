@@ -1,0 +1,71 @@
+﻿@model Modelo.Classes.Web.Aluguel
+
+@{
+    ViewBag.Title = "Renovar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Detalhes Aluguel</h2>
+    </div>
+
+    <div class="card-body">
+        @Html.Label("Informações do aluguel", new { @class = "form-control bg-dark text-white col-md-12 col-sm-12" })
+
+        <div class="form-group form-inline">
+            @Html.Label("Data da contratação", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+            @Html.EditorFor(model => model.DataContratacao, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.Label("Data de vencimento", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+            @Html.EditorFor(model => model.DataVencimento, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.Label("Pagamento", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+            @Html.EditorFor(model => model.EstadoDoPagamento, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.Label("Situação", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+            @Html.EditorFor(model => model.EstadoDoAluguel, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+        </div>
+
+        <hr />
+
+        @Html.Label("Veiculo alugado", new { @class = "form-control bg-dark text-white col-md-12 col-sm-12" })
+
+        <div class="form-group form-inline">
+            @Html.Label("Placa", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+            @Html.EditorFor(model => model.Veiculo.Placa, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.Label("Marca", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+            @Html.EditorFor(model => model.Veiculo.Marca, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.Label("Modelo", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+            @Html.EditorFor(model => model.Veiculo.Modelo, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.Label("Ano", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+            @Html.EditorFor(model => model.Veiculo.Ano, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.Label("Adaptado", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
+            @Html.EditorFor(model => model.Veiculo.Adaptado, new { htmlAttributes = new { @class = "form-control col-md-9 col-sm-12", disabled = "disabled" } })
+        </div>
+
+        <hr />
+    </div>
+
+    <div class="card-footer">
+        @Html.ActionLink("Retornar a Lista", "Index", null, new { @class = "btn btn-warning col-md-4 col-sm-12" })
+    </div>
+</div>

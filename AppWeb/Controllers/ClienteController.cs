@@ -119,8 +119,7 @@ namespace AppWeb.Controllers
                 clientePF.Endereco = pageModel.Endereco;
                 clientePF.Endereco.CEP = cep;
                 clientePF.Tipo = TipoCliente.PF;
-                Solicitacao solicitacao = SolicitacaoService.GerarSolicitacao(ItemSolicitacao.CLIENTE, TiposDeSolicitacao.ALTERACAO, clientePF.ClienteId);
-                solicitacao.ItemSerializado = JsonConvert.SerializeObject(clientePF);
+                Solicitacao solicitacao = SolicitacaoService.GerarSolicitacao(ItemSolicitacao.CLIENTE, TiposDeSolicitacao.ALTERACAO, clientePF.ClienteId, clientePF);
                 SolicitacaoService.GravarSolicitacao(solicitacao);
                 TempData["Message"] = "Solicitação enviada com sucesso!";
                 return RedirectToAction("Details");
@@ -147,8 +146,7 @@ namespace AppWeb.Controllers
                 clientePJ.Endereco = pageModel.Endereco;
                 clientePJ.Endereco.CEP = cep;
                 clientePJ.Tipo = TipoCliente.PJ;
-                Solicitacao solicitacao = SolicitacaoService.GerarSolicitacao(ItemSolicitacao.CLIENTE, TiposDeSolicitacao.ALTERACAO, clientePJ.ClienteId);
-                solicitacao.ItemSerializado = JsonConvert.SerializeObject(clientePJ);
+                Solicitacao solicitacao = SolicitacaoService.GerarSolicitacao(ItemSolicitacao.CLIENTE, TiposDeSolicitacao.ALTERACAO, clientePJ.ClienteId, clientePJ);
                 SolicitacaoService.GravarSolicitacao(solicitacao);
                 TempData["Message"] = "Solicitação enviada com sucesso!";
                 return RedirectToAction("Details");

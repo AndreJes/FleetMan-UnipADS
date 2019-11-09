@@ -12,7 +12,7 @@ namespace Persistencia.DAL.Web
     {
         public IEnumerable<Aluguel> ObterAlugueisOrdPorId()
         {
-            return Context.Alugueis.OrderBy(a => a.AluguelId);
+            return Context.Alugueis.Include(a => a.Veiculo).OrderBy(a => a.AluguelId);
         }
 
         public Aluguel ObterAluguelPorId(long? id)

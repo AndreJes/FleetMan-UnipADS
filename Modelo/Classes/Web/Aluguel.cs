@@ -1,7 +1,9 @@
 ﻿using Modelo.Classes.Clientes;
 using Modelo.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -13,8 +15,13 @@ namespace Modelo.Classes.Web
     {
         #region Props principais
         public long? AluguelId { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataContratacao { get; set; }
+        
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Data de Vencimento")]
         public DateTime DataVencimento { get; set; }
+
         public EstadosDePagamento EstadoDoPagamento { get; set; }
         public EstadosAluguel EstadoDoAluguel { get; set; }
         #endregion
@@ -59,9 +66,11 @@ namespace Modelo.Classes.Web
         #endregion
 
         public long? VeiculoId { get; set; }
+        [JsonIgnore]
         public Veiculo Veiculo { get; set; }
 
         public long? ClienteId { get; set; }
+        [JsonIgnore]
         public Cliente Cliente { get; set; }
     }
 }
