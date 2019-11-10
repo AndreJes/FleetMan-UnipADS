@@ -22,11 +22,42 @@ textarea {
     max-width: 280px;
 }
 
-.main-icon-size{
+.main-icon-size {
     height: 200px;
     width: 200px;
 }
 
-.main-menu-hover:hover{
-    background-color:rgba(85, 160, 220, 0.25);
+.btn-pills {
+    text-decoration:none;
+    text-align:center;
+    padding: 10px;
+    border-radius: 25em;
+    margin: 3px 5px;
+}
+
+.mini-icon-size{
+    height: 16px;
+    width: 16px;
+    margin-bottom:3px;
+    margin-left:3px;
+}
+
+.center {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.vr {
+    display: inline;
+    height: 100%;
+    width: 1px;
+    border: 1px solid;
+    margin: 5px;
+}
+
+.main-menu-hover:hover {
+    background-color: rgba(85, 160, 220, 0.25);
 }

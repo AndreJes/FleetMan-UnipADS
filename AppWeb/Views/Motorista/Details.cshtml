@@ -6,12 +6,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section HeadStyles{
+    <style>
+        label.form-control {
+            text-align: center;
+        }
+    </style>
+}
+
 @using (Html.BeginForm())
 {
     <div class="card col-md-12 col-sm-12">
         <div class="card-header">
-            <h2 class="card-title">@ViewBag.Title</h2>
+            <h2 class="card-title">@ViewBag.Title <div class="vr"></div>  <i class="fas fa-users" style="margin-left:10px;"></i></h2>
         </div>
+
         <div class="card-body">
             <div class="form-group form-inline">
                 @Html.Label("Nome", new { @class = "form-control bg-secondary text-white col-md-3 col-sm-12" })
@@ -83,7 +92,7 @@
     <div class="row flex-row">
         <div class="card col-md-6">
             <div class="card-header">
-                <h5 class="card-title">Multas</h5>
+                <h4 class="card-title">Multas <div class="vr"></div>  <i class="fas fa-file-invoice" style="margin-left:10px;"></i></h4>
             </div>
             <div class="card-body">
                 @if (Model.Multas.Count() > 0)
@@ -135,7 +144,7 @@
 
         <div class="card col-md-6 col-sm-12">
             <div class="card-header">
-                <h5 class="card-title">Sinistros</h5>
+                <h4 class="card-title">Sinistros <div class="vr"></div>  <i class="fas fa-car-crash" style="margin-left:10px;"></i></h4>
             </div>
             <div class="card-body">
                 @if (Model.Sinistros.Count() > 0)
@@ -201,6 +210,6 @@
     <script src="~/Content/DataTables/DataTables-1.10.20/js/responsive.bootstrap4.min.js"></script>
     <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.rowGroup.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () { $('.table').DataTable({ responsive: true, rowGroup: { dataSrc: 3 } }); });
+        $(document).ready(function () { $('.table').DataTable({ responsive: true, rowGroup: { dataSrc: 3 }, autoWidth:false }); });
     </script>
 }

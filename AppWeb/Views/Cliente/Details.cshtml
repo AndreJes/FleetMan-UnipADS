@@ -2,16 +2,24 @@
 @model AppWeb.Models.ClienteUsuario.ClienteViewModel
 
 @{
-    ViewBag.Title = "Minhas informações";
+    ViewBag.Title = "Meu Perfil";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeadStyles{
+    <style>
+        label.form-control {
+            text-align: center;
+        }
+    </style>
 }
 
 @using (Html.BeginForm())
 {
     <div class="card">
         <div class="card-header">
-            <h2 class="h2 card-title">@ViewBag.Title</h2>
-            @if ( @TempData["Message"] != null)
+            <h2 class="card-title">@ViewBag.Title <div class="vr"></div>  <i class="fas fa-user-circle" style="margin-left:10px;"></i></h2>
+            @if (@TempData["Message"] != null)
             {
                 <div class="alert alert-success">
                     @TempData["Message"]

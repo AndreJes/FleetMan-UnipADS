@@ -25,6 +25,7 @@ namespace AppWeb.Controllers
         private ViagemService ViagemService = new ViagemService();
 
         // GET: Viagem
+        [Authorize]
         public ActionResult Index()
         {
             string email = HttpContext.GetOwinContext().Authentication.User.Identity.Name;

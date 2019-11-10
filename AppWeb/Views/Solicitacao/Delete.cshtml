@@ -6,6 +6,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section HeadStyles{
+    <style>
+        label.form-control {
+            text-align: center;
+        }
+    </style>
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken();
@@ -121,7 +129,7 @@
         }
         <div class="card-footer">
             <input type="submit" class="btn btn-danger offset-md-2 col-md-4 col-sm-12" value="Remover Solicitação" />
-            @Html.ActionLink("Voltar para lista de Solicitações", "Index", null, new { @class="btn btn-warning col-md-4 col-sm-12"})
+            @Html.ActionLink("Voltar para lista de Solicitações", "Index", null, new { @class = "btn btn-warning col-md-4 col-sm-12" })
         </div>
     </div>
 }

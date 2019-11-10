@@ -2,8 +2,16 @@
 @using AppWeb.Models.ClienteUsuario
 
 @{
-    ViewBag.Title = "Solicitar Alteração dos Dados";
+    ViewBag.Title = "Solicitar alteração de dados";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeadStyles{
+    <style>
+        label.form-control {
+            text-align: center;
+        }
+    </style>
 }
 
 @using (Html.BeginForm())
@@ -12,7 +20,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h2 class="h2 card-title">@ViewBag.Title</h2>
+            <h2 class="card-title">@ViewBag.Title <div class="vr"></div>  <i class="fas fa-user-edit" style="margin-left:10px;"></i></h2>
         </div>
 
         <div class="card-body">

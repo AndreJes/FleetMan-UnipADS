@@ -2,20 +2,13 @@
 @using Modelo.Classes.Web
 
 @{
-    ViewBag.Title = "Meus Alugueis Registrados";
+    ViewBag.Title = "Lista de Alugueis";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if(TempData["Message"] != null)
-{
-    <div class="alert alert-success">
-        @TempData["Message"]
-    </div>
-}
-
 <div class="card">
-    <div class="card-header bg-secondary text-white">
-        <h2 class="card-title">@ViewBag.Title</h2>
+    <div class="card-header">
+        <h2 class="card-title">@ViewBag.Title <div class="vr"></div> <i class="center"><img style="height:32px; width:32px; margin:0px 0px 10px 10px" src="~/Content/Icones/CarRent.png" /></i></h2>
     </div>
     <div class="card-body">
 
@@ -26,7 +19,7 @@
             <div class="card-body">
                 @if (Model.AlugueisRegulares.Count() > 0)
                 {
-                    <table class="table table-hover table-responsive">
+                    <table class="table table-responsive-sm table-hover">
                         <thead>
                             <tr>
                                 <td>
@@ -78,7 +71,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title text-danger">Vencidos</h5>
+                <h5 class="card-title">Vencidos</h5>
             </div>
             <div class="card-body">
                 @if (Model.AlugueisVencidos.Count() > 0)
@@ -130,7 +123,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title text-warning">Cancelados</h5>
+                <h5 class="card-title">Cancelados</h5>
             </div>
             <div class="card-body">
                 @if (Model.AlugueisCancelados.Count() > 0)
@@ -197,6 +190,6 @@
     <script src="~/Content/DataTables/DataTables-1.10.20/js/responsive.bootstrap4.min.js"></script>
     <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.rowGroup.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () { $('.table').DataTable({ responsive: true, rowGroup: { dataSrc: 1 } }); });
+        $(document).ready(function () { $('.table').DataTable({ responsive: true, rowGroup: { dataSrc: 1 }, autoWidth: false}); });
     </script>
 }

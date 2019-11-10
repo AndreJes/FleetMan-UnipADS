@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<Modelo.Classes.Web.Motorista>
 
 @{
-    ViewBag.Title = "Meus Motoristas";
+    ViewBag.Title = "Lista de Motoristas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 <div class="card">
     <div class="card-header">
-        <h2 class="card-title">@ViewBag.Title</h2>
+        <h2 class="card-title">@ViewBag.Title <div class="vr"></div>  <i class="fas fa-users" style="margin-left:10px;"></i></h2>
     </div>
 
     <div class="card-body">
@@ -58,14 +58,19 @@
 </div>
 
 @section styles{
-    <link href="~/Content/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/DataTables-1.10.20/css/rowGroup.bootstrap4.min.css" rel="stylesheet" />
 }
 
 @section scripts{
     @Scripts.Render("~/Scripts/JqueryMaskPlugin/jquery.mask.js")
-    <script src="~/Content/DataTables/DataTables-1.10.20/js/jquery.dataTables.js"></script>
-    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.rowGroup.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () { $('.table').DataTable(); });
+        $(document).ready(function () { $('.table').DataTable({ responsive: true, autoWidth: false }); });
     </script>
 }

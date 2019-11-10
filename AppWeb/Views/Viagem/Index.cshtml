@@ -2,13 +2,13 @@
 @using Modelo.Classes.Web
 
 @{
-    ViewBag.Title = "Viagens Registradas";
+    ViewBag.Title = "Lista de Viagens";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="card">
     <div class="card-header">
-        <h2 class="card-title">@ViewBag.Title</h2>
+        <h2 class="card-title">@ViewBag.Title <div class="vr"></div>  <i class="fas fa-map-marker-alt" style="margin-left:10px;"></i></h2>
     </div>
     <div class="card-body">
 
@@ -19,7 +19,7 @@
             <div class="card-body">
                 @if (Model.ViagensAguardando.Count() > 0)
                 {
-                    <table class="table table-hover table-responsive">
+                    <table class="table table-hover table-responsive-sm">
                         <thead>
                             <tr>
                                 <td>
@@ -71,7 +71,7 @@
             <div class="card-body">
                 @if (Model.ViagensEmAndamento.Count() > 0)
                 {
-                    <table class="table table-hover table-responsive">
+                    <table class="table table-hover table-responsive-sm">
                         <thead>
                             <tr>
                                 <td>
@@ -124,7 +124,7 @@
             <div class="card-body">
                 @if (Model.ViagensConcluidas.Count() > 0)
                 {
-                    <table class="table table-hover table-responsive">
+                    <table class="table table-hover table-responsive-sm">
                         <thead>
                             <tr>
                                 <td>
@@ -183,7 +183,7 @@
             <div class="card-body">
                 @if (Model.ViagensCanceladas.Count() > 0)
                 {
-                    <table class="table table-hover table-responsive">
+                    <table class="table table-hover table-responsive-sm">
                         <thead>
                             <tr>
                                 <td>
@@ -253,6 +253,6 @@
     <script src="~/Content/DataTables/DataTables-1.10.20/js/responsive.bootstrap4.min.js"></script>
     <script src="~/Content/DataTables/DataTables-1.10.20/js/dataTables.rowGroup.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () { $('.table').DataTable({ responsive: true, rowGroup: { dataSrc: 0 } }); });
+        $(document).ready(function () { $('.table').DataTable({ responsive: true, rowGroup: { dataSrc: 0 }, autoWidth:false }); });
     </script>
 }
