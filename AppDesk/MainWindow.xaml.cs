@@ -542,8 +542,15 @@ namespace AppDesk
 
         private void CurrentUserBtn_Click(object sender, RoutedEventArgs e)
         {
-            FormAlterarDetalhesUsuario formAlterarDetalhes = new FormAlterarDetalhesUsuario(DesktopLoginControlService.Usuario.Funcionario);
-            formAlterarDetalhes.Show();
+            if (DesktopLoginControlService.Usuario.Funcionario != null)
+            {
+                FormAlterarDetalhesUsuario formAlterarDetalhes = new FormAlterarDetalhesUsuario(DesktopLoginControlService.Usuario.Funcionario);
+                formAlterarDetalhes.Show();
+            }
+            else
+            {
+                StandardMessageBoxes.MensagemDeErro("Você não pode alterar as informações desse usuário");
+            }
         }
 
         #endregion
@@ -609,11 +616,6 @@ namespace AppDesk
             Solicitacao solicitacao = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacaoPorId((SolicitacoesAprovadasDataGrid.SelectedItem as Solicitacao).SolicitacaoId);
             FormSolicitacaoCliente formSolicitacaoCliente = new FormSolicitacaoCliente(solicitacao);
             formSolicitacaoCliente.Show();
-        }
-
-        private void AtualizarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindowUpdater.UpdateDataGrids();
         }
     }
 }

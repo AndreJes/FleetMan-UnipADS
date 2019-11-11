@@ -101,7 +101,7 @@ namespace AppDesk.Windows.Solicitacoes
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(StandardMessageBoxes.RemoverMessageBox("Solicitação") == MessageBoxResult.Yes)
+            if(StandardMessageBoxes.ConfirmarRemocaoMessageBox("Solicitação") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosSolicitacao.RemoverSolicitacaoPorId(_solicitacao.SolicitacaoId);
                 MessageBox.Show("Solicitação removida com sucesso!");

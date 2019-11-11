@@ -91,6 +91,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Exceptions\FieldException.cs" />
     <Compile Include="Serviço\DesktopLoginControlService.cs" />
     <Compile Include="Serviço\ServicoDados.cs" />
     <Compile Include="Tools\HexaColorPicker.cs" />
@@ -514,9 +515,38 @@
       <Name>Validacao</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Content\Icones\abastecimento.png" />
+    <Resource Include="Content\Icones\alerta.png" />
+    <Resource Include="Content\Icones\aluguel.png" />
+    <Resource Include="Content\Icones\Botoes\add.png" />
+    <Resource Include="Content\Icones\Botoes\cancel.png" />
+    <Resource Include="Content\Icones\Botoes\close.png" />
+    <Resource Include="Content\Icones\Botoes\delete.png" />
+    <Resource Include="Content\Icones\carro.png" />
+    <Resource Include="Content\Icones\clientes.png" />
+    <Resource Include="Content\Icones\financeiro.png" />
+    <Resource Include="Content\Icones\fornecedor.png" />
+    <Resource Include="Content\Icones\garagem.png" />
+    <Resource Include="Content\Icones\grafico.png" />
+    <Resource Include="Content\Icones\manutencao.png" />
+    <Resource Include="Content\Icones\manutencaoMain.png" />
+    <Resource Include="Content\Icones\motorista.png" />
+    <Resource Include="Content\Icones\multa.png" />
+    <Resource Include="Content\Icones\pecas.png" />
+    <Resource Include="Content\Icones\rent-a-car-sign.png" />
+    <Resource Include="Content\Icones\seguro.png" />
+    <Resource Include="Content\Icones\sinistro.png" />
+    <Resource Include="Content\Icones\solicitacoes.png" />
+    <Resource Include="Content\Icones\user.png" />
+    <Resource Include="Content\Icones\usuarios.png" />
+    <Resource Include="Content\Icones\viagem.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Content\Logo\LogoPim-IV.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Icones\Botoes\voltar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

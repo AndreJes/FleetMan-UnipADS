@@ -25,7 +25,7 @@ namespace AppDesk.Serviço
                 }
                 else
                 {
-                    throw new Exception("Senha Invalida!");
+                    throw new FieldException("Senha Invalida!");
                 }
             }
             else

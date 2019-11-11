@@ -1,4 +1,5 @@
 ﻿using AppDesk.Serviço;
+using AppDesk.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace AppDesk.UserControls
         {
             if (Logar())
             {
-                MessageBox.Show("Login realizado com sucesso!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                StandardMessageBoxes.MensagemSucesso("Login realizado com sucesso!", "Login");
                 PasswordUC.Password = string.Empty;
                 Application.Current.Windows.OfType<MainWindow>().First().StartSession();
             }
@@ -42,9 +43,14 @@ namespace AppDesk.UserControls
             {
                 return DesktopLoginControlService.Logar(EmailUC.Text, PasswordUC.Password);
             }
+            catch(FieldException fex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(fex.Message);
+                return false;
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Dados Inválidos", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
                 return false;
             }
         }

@@ -40,7 +40,7 @@ namespace AppDesk.UserControls.Campos
                 }
                 else
                 {
-                    throw new Exception("Campo email Invalido!");
+                    throw new FieldException("Email");
                 }
             }
         }

@@ -9,7 +9,7 @@ namespace AppDesk.Tools
 {
     public static class StandardMessageBoxes
     {
-        public static MessageBoxResult RegistrarMessageBox(string nomeItem)
+        public static MessageBoxResult ConfirmarRegistroMessageBox(string nomeItem)
         {
             if (MessageBox.Show("Confirmar registro de: " + nomeItem + "?", "Confirmar Registro", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -21,7 +21,7 @@ namespace AppDesk.Tools
             }
         }
 
-        public static MessageBoxResult RemoverMessageBox(string nomeItem)
+        public static MessageBoxResult ConfirmarRemocaoMessageBox(string nomeItem)
         {
             if (MessageBox.Show("Confirmar remoção de: " + nomeItem + "?", "Confirmar Remoção", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -31,6 +31,33 @@ namespace AppDesk.Tools
             {
                 return MessageBoxResult.No;
             }
+        }
+
+        public static MessageBoxResult ConfirmarAlteracaoMessageBox(string nomeItem)
+        {
+            if (MessageBox.Show("Confirmar alteração de: " + nomeItem + "?", "Confirmar Alteração", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                return MessageBoxResult.Yes;
+            }
+            else
+            {
+                return MessageBoxResult.No;
+            }
+        }
+
+        public static MessageBoxResult MensagemSucesso(string mensagem, string acao)
+        {
+            return MessageBox.Show(mensagem, acao, MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        public static MessageBoxResult MensagemDeErroCampoFormulario(string campo)
+        {
+            return MessageBox.Show("Verifique os seguintes campos: " + Environment.NewLine + campo, "Erro", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        public static MessageBoxResult MensagemDeErro(string mensagem)
+        {
+            return MessageBox.Show(mensagem, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

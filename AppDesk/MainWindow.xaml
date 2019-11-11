@@ -10,32 +10,39 @@
         Title="FleetManV0.1" Style="{StaticResource WindowBackgroundColorSetter}" Height="640" Width="1080" MaxHeight="640" MinHeight="640" MaxWidth="1080" MinWidth="1080">
     <Window.Resources>
         <Style x:Key="MainMenuBtnStyle" TargetType="Button">
-            <Setter Property="Height" Value="80"/>
+            <Setter Property="Height" Value="120"/>
             <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0 0 0 0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="20"/>
         </Style>
         <Style x:Key="MainMenuLabelStyle" TargetType="Label">
-            <Setter Property="Height" Value="30"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
-        <Style x:Key="MainMenuStackPanelStyle" TargetType="StackPanel">
-            <Setter Property="Margin" Value="50 30" />
-            <Setter Property="VerticalAlignment" Value="Stretch"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Style x:Key="MainToolBarStyle" TargetType="Border">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="0 1"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+        </Style>
+        <Style x:Key="AddImageStyle" TargetType="Image">
+            <Setter Property="Source" Value="Content/Icones/Botoes/add.png"/>
         </Style>
     </Window.Resources>
     <Grid x:Name="MainGrid">
 
         <!--#region Login Area-->
-        <Grid x:Name="LogonGridBorder" Visibility="Visible" HorizontalAlignment="Center">
+        <Grid x:Name="LogonGridBorder" Visibility="Hidden" HorizontalAlignment="Center">
             <uc:Login x:Name="LoginField"></uc:Login>
         </Grid>
         <!--#endregion-->
 
         <!--#region Main Content-->
-        <Border Visibility="Collapsed" x:Name="MainContentBorder" Margin="10" BorderBrush="Gray" BorderThickness="3">
+        <Border Visibility="Visible" x:Name="MainContentBorder" Margin="10" BorderBrush="Gray" BorderThickness="3">
             <Grid ShowGridLines="False">
                 <!--#region Row Definitions-->
                 <Grid.RowDefinitions>
@@ -45,7 +52,7 @@
                 <!--#endregion-->
 
                 <!--#region Information Grid (Avisos e informações de Login)-->
-                <Border x:Name="InformationBorder" BorderBrush="LightGray" BorderThickness="0 0 0 1">
+                <Border x:Name="InformationBorder" BorderBrush="LightGray" Background="LightGray" BorderThickness="0 0 0 1">
                     <Grid>
                         <!--#region Columns-->
                         <Grid.ColumnDefinitions>
@@ -55,26 +62,28 @@
                         </Grid.ColumnDefinitions>
                         <!--#endregion-->
 
-                        <Button>
-                            <StackPanel Orientation="Horizontal">
-                                <Label>Avisos</Label>
-                                <Label></Label>
-                            </StackPanel>
+                        <Button Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="/Content/Icones/alerta.png" HorizontalAlignment="Right"/>
+                                <Label Grid.Column="1" Foreground="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Center">1</Label>
+                            </Grid>
                         </Button>
-
-                        <Button x:Name="AtualizarBtn" Click="AtualizarBtn_Click" Grid.Column="1">Atualizar Dados</Button>
 
                         <StackPanel x:Name="UserInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="2">
 
-                            <Button Margin="0 8" x:Name="CurrentUserBtn" Click="CurrentUserBtn_Click" Background="Transparent">
-                                <Image x:Name="UserImage" Height="20" Width="24"/>
+                            <Button Margin="0 8" x:Name="CurrentUserBtn" Click="CurrentUserBtn_Click" Background="White">
+                                <Image Source="Content/Icones/user.png" Height="20" Width="24"/>
                             </Button>
 
-                            <Label Content="{Binding Funcionario.CPFTxt}" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
-                            <Label Content="{Binding Funcionario.Nome}" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1"/>
+                            <Label Content="{Binding Funcionario.CPFTxt}" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1" Background="White"/>
+                            <Label Content="{Binding Funcionario.Nome}" Margin="0 8" BorderBrush="Gray" BorderThickness="1 1 0 1" Background="White"/>
 
                             <Button Margin="0 8 20 8" x:Name="LogoutBtn" Click="LogoutBtn_Click">
-                                Logout
+                                SAIR
                                 <!--Colocar Imagem do simbolo de desligar-->
                             </Button>
 
@@ -84,7 +93,7 @@
                 <!--#endregion-->
 
                 <!--#region Main Menu Grid-->
-                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Visible">
+                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Hidden">
                     <Grid>
                         <Grid Visibility="Visible" x:Name="MainMenuPrimaryButtonsGrid" ShowGridLines="False" >
                             <!--#region Grid Columns and Row-->
@@ -103,135 +112,203 @@
                             <!--#region Menu Principal-->
 
                             <!--#region Clientes-->
-                            <StackPanel Grid.Column="0" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="ClientesMainMenuBtn" Click="ClientesMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="ClientesBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    CLIENTES
-                                </Label>
-                            </StackPanel>
+                            <Button x:Name="ClientesMainMenuBtn" Click="ClientesMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" x:Name="ClientesBtnImage" Source="/Content/Icones/clientes.png" Stretch="Uniform"/>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        CLIENTES
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#region Veiculos-->
-                            <StackPanel Grid.Column="1" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="VehicleMainMenuBtn" Click="VehicleMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="VeicBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    VEÍCULOS
-                                </Label>
-                            </StackPanel>
+                            <Button Grid.Column="1" x:Name="VehicleMainMenuBtn" Click="VehicleMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" x:Name="VeicBtnImage" Source="/Content/Icones/carro.png"/>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        VEÍCULOS
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#region Motoristas-->
-                            <StackPanel Grid.Column="2" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="MotoristaMainMenuBtn" Click="MotoristaMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="MotoristasBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    MOTORISTAS
-                                </Label>
-                            </StackPanel>
+                            <Button Grid.Column="2" x:Name="MotoristaMainMenuBtn" Click="MotoristaMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="/Content/Icones/motorista.png" Stretch="Uniform"/>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        MOTORISTAS
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#region Multas/Sinistros-->
-                            <StackPanel Grid.Column="3" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="MultaSinisMainMenuBtn" Click="MultaSinisMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="MultaSinisBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    MULTAS e SINISTROS
-                                </Label>
-                            </StackPanel>
+                            <Button Grid.Column="3" x:Name="MultaSinisMainMenuBtn" Click="MultaSinisMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" Source="/Content/Icones/multa.png" Stretch="Uniform"/>
+                                        <Image Grid.Column="1" Source="/Content/Icones/sinistro.png" Stretch="Uniform"/>
+
+                                    </Grid>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        MULTAS e SINISTROS
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#region Viagens-->
-                            <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="ViagensMainMenuBtn" Click="ViagensMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="ViagensBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    VIAGENS
-                                </Label>
-                            </StackPanel>
+                            <Button Grid.Row="1" Grid.Column="0" x:Name="ViagensMainMenuBtn" Click="ViagensMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="/Content/Icones/viagem.png" Stretch="Uniform"/>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        VIAGENS
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#region Solicitações-->
-                            <StackPanel Grid.Row="1" Grid.Column="1" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="SolicitacaoMainMenuBtn" Click="SolicitacaoMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="SolicitBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    SOLICITAÇÕES
-                                </Label>
-                            </StackPanel>
+                            <Button Grid.Row="1" Grid.Column="1" x:Name="SolicitacaoMainMenuBtn" Click="SolicitacaoMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="/Content/Icones/solicitacoes.png" Stretch="Uniform"/>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        SOLICITAÇÕES
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#region Garagens-->
-                            <StackPanel Grid.Row="1" Grid.Column="2" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="GaragensMainMenuBtn" Click="GaragensMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="GaragensBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    GARAGENS
-                                </Label>
-                            </StackPanel>
+                            <Button Grid.Row="1" Grid.Column="2" x:Name="GaragensMainMenuBtn" Click="GaragensMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="/Content/Icones/garagem.png" Stretch="Uniform"/>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        GARAGENS
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#region Locações-->
-                            <StackPanel Grid.Row="1" Grid.Column="3" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="LocacaoMainMenuBtn" Click="LocacaoMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="LocacaoBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    LOCAÇÕES
-                                </Label>
-                            </StackPanel>
+                            <Button Grid.Row="1" Grid.Column="3" x:Name="LocacaoMainMenuBtn" Click="LocacaoMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="/Content/Icones/aluguel.png" Stretch="Uniform"/>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        ALUGUEIS
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#region Manutenção-->
-                            <StackPanel Grid.Row="2" Grid.Column="0" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="ManutencaoMainMenuBtn" Click="ManutencaoMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="ManutencaoBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}" FontSize="9">
-                                    CONTROLE DE MANUTENÇÕES
-                                </Label>
-                            </StackPanel>
+                            <Button Grid.Row="2" Grid.Column="0" x:Name="ManutencaoMainMenuBtn" Click="ManutencaoMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="/Content/Icones/manutencao.png" Stretch="Uniform"/>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        CONTROLE DE MANUTENÇÕES
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#region Financeiro-->
-                            <StackPanel Grid.Row="2" Grid.Column="2" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="FinanceiroMainMenuBtn" Click="FinanceiroMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="FinanceiroBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    FINANCEIRO
-                                </Label>
-                            </StackPanel>
+                            <Button Grid.Row="2" Grid.Column="1" x:Name="FinanceiroMainMenuBtn" Click="FinanceiroMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="/Content/Icones/financeiro.png" Stretch="Uniform"/>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        FINANCEIRO
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#region Relatórios-->
-                            <StackPanel Grid.Row="2" Grid.Column="1" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="RelatorioMainMenuBtn" Click="RelatorioMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="RelatorioBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    RELATÓRIOS
-                                </Label>
-                            </StackPanel>
+                            <Button Grid.Row="2" Grid.Column="2" x:Name="RelatorioMainMenuBtn" Click="RelatorioMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="/Content/Icones/grafico.png" Stretch="Uniform"/>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        RELATORIOS
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#region Funcionários-->
-                            <StackPanel Grid.Row="2" Grid.Column="3" Style="{StaticResource MainMenuStackPanelStyle}">
-                                <Button x:Name="FuncionarioMainMenuBtn" Click="FuncionarioMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="FuncionarioBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    USUÁRIOS
-                                </Label>
-                            </StackPanel>
+                            <Button  Grid.Row="2" Grid.Column="3" x:Name="FuncionarioMainMenuBtn" Click="FuncionarioMainMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Source="/Content/Icones/usuarios.png" Stretch="Uniform"/>
+
+                                    <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                        USUARIOS
+                                    </Label>
+                                </Grid>
+                            </Button>
                             <!--#endregion-->
 
                             <!--#endregion-->
@@ -239,47 +316,64 @@
                         </Grid>
 
                         <!--#region Manutenção SubMenu-->
-                        <Grid Visibility="Collapsed" x:Name="ManutencaoSubMenuButtonsGrid">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                            </Grid.ColumnDefinitions>
+                        <Grid Visibility="Visible" x:Name="ManutencaoSubMenuButtonsGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="10*"/>
                                 <RowDefinition Height="90*"/>
                             </Grid.RowDefinitions>
 
-                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource MainMenuStackPanelStyle}" VerticalAlignment="Center">
-                                <Button x:Name="ManutencaoSubMenuBtn" Click="ManutencaoSubMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="ManutencaoSubBtnImage"/>
-                                </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    LISTA DE MANUTENÇÕES
-                                </Label>
-                            </StackPanel>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Row="1" Grid.Column="0" x:Name="ManutencaoSubMenuBtn" Click="ManutencaoSubMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}" Margin="50">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="4*"/>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Row="0" Source="/Content/Icones/manutencaoMain.png" Stretch="Uniform"/>
 
-                            <StackPanel Grid.Row="1" Grid.Column="1" Style="{StaticResource MainMenuStackPanelStyle}" VerticalAlignment="Center">
-                                <Button x:Name="AbastecimentosSubMenuBtn" Click="AbastecimentosSubMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="AbastecimentosSubBtnImage"/>
+                                        <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                            LISTA DE MANUTENÇÕES
+                                        </Label>
+                                    </Grid>
                                 </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    ABASTECIMENTOS
-                                </Label>
-                            </StackPanel>
 
-                            <StackPanel Grid.Row="1" Grid.Column="2" Style="{StaticResource MainMenuStackPanelStyle}" VerticalAlignment="Center">
-                                <Button x:Name="EstoqueSubMenuBtn" Click="EstoqueSubMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}">
-                                    <Image x:Name="EstoqueSubMenuImage"/>
+                                <Button Grid.Row="1" Grid.Column="1" x:Name="AbastecimentosSubMenuBtn" Click="AbastecimentosSubMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}" Margin="50">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="4*"/>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Row="0" Source="/Content/Icones/abastecimento.png" Stretch="Uniform"/>
+
+                                        <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                            ABASTECIMENTOS
+                                        </Label>
+                                    </Grid>
                                 </Button>
-                                <Label BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
-                                    ESTOQUE
-                                </Label>
-                            </StackPanel>
+
+                                <Button Grid.Row="1" Grid.Column="2" x:Name="EstoqueSubMenuBtn" Click="EstoqueSubMenuBtn_Click" Style="{StaticResource MainMenuBtnStyle}" Margin="50">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="4*"/>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Row="0" Source="/Content/Icones/pecas.png" Stretch="Uniform"/>
+
+                                        <Label Grid.Row="1" BorderBrush="LightGray" Style="{StaticResource MainMenuLabelStyle}">
+                                            ESTOQUE DE PEÇAS
+                                        </Label>
+                                    </Grid>
+                                </Button>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Border>
@@ -288,7 +382,7 @@
                 <!--#region Todos os grids de listas-->
 
                 <!--#region Vehicles List/Actions Grid Menu-->
-                <Grid x:Name="VehicleGrid" Visibility="Collapsed" Grid.Row="1">
+                <Grid x:Name="VehicleGrid" Visibility="Hidden" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -296,7 +390,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="VehicleToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -309,25 +403,16 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button x:Name="VehicleGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button x:Name="VehicleGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button x:Name="RegistrarVeiculoBtn" Click="RegistrarVeiculoBtn_Click" Grid.Column="1" Margin="20 10">
-                                Registrar Veículo
+                                Registrar Veiculo
                             </Button>
                             <!--#endregion-->
-                            <!--#region Seleção de Cliente-->
-                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
-                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                    Selecionar Cliente:</Label>
-                                <ComboBox>
-
-                                </ComboBox>
-                            </StackPanel>
-                            <!--#endregion-->
                             <!--#region Pesquisa-->
-                            <StackPanel Grid.Column="4" Orientation="Vertical" Margin="10 5">
+                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
@@ -393,7 +478,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="ClienteToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -406,8 +491,8 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button x:Name="ClienteGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button x:Name="RegistrarClienteBtn" Click="RegistrarClienteBtn_Click" Grid.Column="1" Margin="20 10">
@@ -416,7 +501,7 @@
                             <!--#endregion-->
 
                             <!--#region Pesquisa-->
-                            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 5">
+                            <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10 5">
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
@@ -431,9 +516,6 @@
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
-                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
@@ -456,6 +538,8 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Pessoa Fisica-->
+                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">PESSOA FÍSICA</Label>
+
                         <DataGrid x:Name="ClientePFDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="CPF" Binding="{Binding CPFTxt}"/>
@@ -473,11 +557,13 @@
                         </DataGrid>
                         <!--#endregion-->
                         <!--#region Separador-->
-                        <StackPanel Orientation="Horizontal" Grid.RowSpan="2" HorizontalAlignment="Right" Width="5">
+                        <StackPanel Orientation="Horizontal" Grid.RowSpan="2" HorizontalAlignment="Right" Width="2">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Pessoa Juridica-->
+                        <Label Style="{StaticResource MainLabelStyle}" Grid.Column="1" FontSize="20">PESSOA JURÍDICA</Label>
+
                         <DataGrid x:Name="ClientePJDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="CNPJ" Binding="{Binding CNPJTxt}"/>
@@ -509,7 +595,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="MultaSinisToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -522,8 +608,8 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button x:Name="MultaSinisGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button x:Name="RegistrarMultaSinisBtn" Click="RegistrarMultaSinisBtn_Click" Grid.Column="1" Margin="20 10" FontSize="9">
@@ -534,9 +620,18 @@
                             <!--#region Pesquisa-->
                             <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 5">
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                    Pesquisar:
+                                    Pesquisar Multa:
                                 </Label>
-                                <TextBox x:Name="MultaSinisSearchTextBox">
+                                <TextBox x:Name="MultaSearchTextBox">
+
+                                </TextBox>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
+                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
+                                    Pesquisar Sinistro:
+                                </Label>
+                                <TextBox x:Name="SinisSearchTextBox">
 
                                 </TextBox>
                             </StackPanel>
@@ -572,6 +667,7 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Multas-->
+                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">MULTAS</Label>
                         <DataGrid x:Name="MultasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding CodigoMulta}"/>
@@ -597,6 +693,8 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Sinistros-->
+                        <Label Style="{StaticResource MainLabelStyle}" Grid.Column="1" FontSize="20">SINISTROS</Label>
+
                         <DataGrid x:Name="SinistrosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding CodSinistro}"/>
@@ -627,7 +725,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="MotoristasToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -640,25 +738,16 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button x:Name="MotoristasGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button x:Name="RegistrarMotoristaBtn" Click="RegistrarMotoristaBtn_Click" Grid.Column="1" Margin="20 10" FontSize="11">
                                 Registrar Motorista
                             </Button>
                             <!--#endregion-->
-                            <!--#region Seleção de Cliente-->
-                            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 5">
-                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                    Selecionar Cliente:</Label>
-                                <ComboBox>
-
-                                </ComboBox>
-                            </StackPanel>
-                            <!--#endregion-->
                             <!--#region Pesquisa-->
-                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
+                            <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10 5">
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
@@ -667,46 +756,11 @@
                                 </TextBox>
                             </StackPanel>
                             <!--#endregion-->
-                            <!--#region Filtros-->
-                            <Grid Grid.Column="4" Margin="10,5,-5,5">
-                                <!--#region Columns e Rows-->
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="50*"/>
-                                    <RowDefinition Height="50*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="15*"/>
-                                    <ColumnDefinition Width="85*"/>
-                                </Grid.ColumnDefinitions>
-                                <!--#endregion-->
-                                <!--#region Label e OK btn-->
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">
-                                Situação:
-                                </TextBlock>
-                                <Button Grid.Row="1" Grid.Column="0" x:Name="ConfirmMotoristasFiltersBtn" Margin="5 2">Ok</Button>
-                                <!--#endregion-->
-                                <!--#region CheckBoxes-->
-                                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                                    <CheckBox VerticalContentAlignment="Center">Regular</CheckBox>
-                                    <CheckBox Margin="15 0" VerticalContentAlignment="Center">CNH Irregular</CheckBox>
-                                    <CheckBox VerticalContentAlignment="Center">Exame Vencido</CheckBox>
-                                </StackPanel>
-                                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                                    <CheckBox VerticalContentAlignment="Center">Em Viagem</CheckBox>
-                                    <CheckBox Margin="5 0" VerticalContentAlignment="Center">Acidentado</CheckBox>
-                                    <CheckBox VerticalContentAlignment="Center">Afastado</CheckBox>
-                                </StackPanel>
-                                <!--#endregion-->
-                            </Grid>
-                            <!--#endregion-->
                             <!--#region Separators-->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
-                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
@@ -748,7 +802,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="GaragensToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -761,42 +815,16 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button x:Name="GaragensGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button x:Name="RegistrarGaragemBtn" Click="RegistrarGaragemBtn_Click" Grid.Column="1" Margin="20 10" FontSize="11">
                                 Registrar Garagem
                             </Button>
                             <!--#endregion-->
-                            <!--#region Seleção de Estado/Cidade-->
-                            <Grid Grid.Column="2">
-                                <!--#region Columns-->
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30*"/>
-                                    <ColumnDefinition Width="70*"/>
-                                </Grid.ColumnDefinitions>
-                                <!--#endregion-->
-                                <StackPanel Orientation="Vertical" Margin="5">
-                                    <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                        Estado:
-                                    </Label>
-                                    <ComboBox>
-
-                                    </ComboBox>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0 5 10 5">
-                                    <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                        Cidade:
-                                    </Label>
-                                    <ComboBox>
-
-                                    </ComboBox>
-                                </StackPanel>
-                            </Grid>
-                            <!--#endregion-->
                             <!--#region Pesquisa-->
-                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
+                            <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10 5">
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
@@ -810,9 +838,6 @@
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
-                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
@@ -856,7 +881,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="locacoesToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -869,25 +894,16 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button x:Name="LocacoesGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button x:Name="RegistrarAluguelBtn" Click="RegistrarAluguelBtn_Click" Grid.Column="1" Margin="20 10" FontSize="11">
-                                Registrar Locação
+                                Registrar Aluguel
                             </Button>
                             <!--#endregion-->
-                            <!--#region Seleção de Cliente-->
-                            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 5">
-                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                    Selecionar Cliente:</Label>
-                                <ComboBox>
-
-                                </ComboBox>
-                            </StackPanel>
-                            <!--#endregion-->
                             <!--#region Pesquisa-->
-                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
+                            <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10 5">
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
@@ -896,41 +912,11 @@
                                 </TextBox>
                             </StackPanel>
                             <!--#endregion-->
-                            <!--#region Filtros-->
-                            <Grid Grid.Column="4" Margin="10,5,-5,5">
-                                <!--#region Columns e Rows-->
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="50*"/>
-                                    <RowDefinition Height="50*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="15*"/>
-                                    <ColumnDefinition Width="85*"/>
-                                </Grid.ColumnDefinitions>
-                                <!--#endregion-->
-                                <!--#region Label e OK btn-->
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">
-                                Situação:
-                                </TextBlock>
-                                <Button Grid.Row="1" Grid.Column="0" x:Name="ConfirmLocacoesFiltersBtn" Margin="5 2">Ok</Button>
-                                <!--#endregion-->
-                                <!--#region CheckBoxes-->
-                                <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Orientation="Horizontal">
-                                    <CheckBox Margin="20 0" VerticalContentAlignment="Center">Regular</CheckBox>
-                                    <CheckBox Margin="15 0" VerticalContentAlignment="Center">Cancelado</CheckBox>
-                                    <CheckBox VerticalContentAlignment="Center">Vencido</CheckBox>
-                                </StackPanel>
-                                <!--#endregion-->
-                            </Grid>
-                            <!--#endregion-->
                             <!--#region Separators-->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
-                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
@@ -972,7 +958,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="ViagensToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -985,8 +971,8 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button x:Name="ViagensGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button x:Name="RegistrarViagemBtn" Click="RegistrarViagemBtn_Click"  Grid.Column="1" Margin="20 10" FontSize="11">
@@ -995,7 +981,7 @@
                             <!--#endregion-->
 
                             <!--#region Pesquisa-->
-                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
+                            <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10 5">
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
@@ -1005,24 +991,11 @@
                             </StackPanel>
                             <!--#endregion-->
 
-                            <!--#region Seleção de Cliente-->
-                            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10 5">
-                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                    Selecionar Cliente:</Label>
-                                <ComboBox>
-
-                                </ComboBox>
-                            </StackPanel>
-                            <!--#endregion-->
-
                             <!--#region Separators-->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
-                                <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
@@ -1046,6 +1019,7 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Viagens aguardando inicio-->
+                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">VIAGENS AGUARDANDO INÍCIO</Label>
                         <DataGrid x:Name="ViagensAguardandoDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding ViagemId}"/>
@@ -1067,6 +1041,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Viagens em andamento-->
+                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.Column="1">VIAGENS EM ANDAMENTO</Label>
                         <DataGrid x:Name="ViagensEmAndamentoDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding ViagemId}"/>
@@ -1089,6 +1064,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Viagens encerradas/Canceladas-->
+                        <Label Style="{StaticResource MainLabelStyle}" Grid.Column="2" FontSize="20">VIAGENS CONCLUIDAS</Label>
                         <DataGrid x:Name="ViagensConcluidasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding ViagemId}"/>
@@ -1109,7 +1085,7 @@
                 <!--#endregion-->
 
                 <!--#region Solicitações List/Actions Grid Menu-->
-                <Grid x:Name="SolicitacoesGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="SolicitacoesGrid" Visibility="Hidden" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -1117,7 +1093,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="SolicitacoesToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -1130,19 +1106,9 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button x:Name="SolicitacoesGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
-                            <!--#endregion-->
-
-                            <!--#region Seleção de Cliente-->
-                            <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10 5">
-                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                    Selecionar Cliente:</Label>
-                                <ComboBox>
-
-                                </ComboBox>
-                            </StackPanel>
                             <!--#endregion-->
 
                             <!--#region Separators-->
@@ -1173,6 +1139,7 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Solicitações aguardando aprovação-->
+                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">AGUARDANDO APROVAÇÃO</Label>
                         <DataGrid x:Name="SolicitacoesAguardandoDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding SolicitacaoId}"/>
@@ -1195,6 +1162,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Solicitações aprovadas-->
+                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.Column="1">APROVADAS</Label>
                         <DataGrid x:Name="SolicitacoesAprovadasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding SolicitacaoId}"/>
@@ -1217,6 +1185,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Solicitações Reprovadas-->
+                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.Column="2">REPROVADAS</Label>
                         <DataGrid x:Name="SolicitacoesReprovadasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding SolicitacaoId}"/>
@@ -1247,7 +1216,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="FinancasToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -1260,12 +1229,12 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button x:Name="FinancasGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button Grid.Column="1" Margin="20 10" FontSize="9" x:Name="RegistrarFinancaBtn" Click="RegistrarFinancaBtn_Click">
-                                Registrar Nova Finança
+                                Registrar Finança
                             </Button>
                             <!--#endregion-->
 
@@ -1310,6 +1279,7 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Saidas-->
+                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">SAIDAS</Label>
                         <DataGrid x:Name="FinancaSaidaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
@@ -1333,6 +1303,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Entradas-->
+                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.Column="1">ENTRADAS</Label>
                         <DataGrid x:Name="FinancaEntradaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
@@ -1365,7 +1336,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="FuncionariosToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -1378,8 +1349,8 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button x:Name="FuncionariosGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button x:Name="RegistrarFuncionarioBtn" Click="RegistrarFuncionarioBtn_Click" Grid.Column="1" Margin="20 10" FontSize="10">
@@ -1458,7 +1429,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="RelatoriosToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -1471,8 +1442,8 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button x:Name="RelatoriosGridBackBtn" Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button Grid.Column="1" Margin="20 10" x:Name="GerarRelatorioBtn" Click="GerarRelatorioBtn_Click">
@@ -1497,10 +1468,10 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="45*"/>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="45*"/>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="42*"/>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="42*"/>
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Separador-->
@@ -1513,6 +1484,7 @@
                         <!--#endregion-->
                         <!--#region Listas-->
                         <!--#region Relatórios abastecimento-->
+                        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource MainLabelStyle}">RELATORIOS DE ABASTECIMENTOS</Label>
                         <DataGrid x:Name="RelatoriosAbastecimentoDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1529,6 +1501,7 @@
                         <!--#endregion-->
 
                         <!--#region Relatórios Financeiros-->
+                        <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource MainLabelStyle}">RELATÓRIOS FINANCEIROS</Label>
                         <DataGrid x:Name="RelatoriosFinanceiroDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1545,6 +1518,7 @@
                         <!--#endregion-->
 
                         <!--#region Relatórios Manutencao-->
+                        <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource MainLabelStyle}">RELATÓRIOS DE MANUTENÇÕES</Label>
                         <DataGrid x:Name="RelatoriosManutencaoDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1563,6 +1537,7 @@
                         <!--#endregion-->
 
                         <!--#region Relatórios Multas-->
+                        <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource MainLabelStyle}">RELATÓRIOS DE MULTAS</Label>
                         <DataGrid x:Name="RelatoriosMultaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="3" Grid.Column="0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1581,6 +1556,7 @@
                         <!--#endregion-->
 
                         <!--#region Relatórios Sinistros-->
+                        <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource MainLabelStyle}">RELATORIOS DE SINISTROS</Label>
                         <DataGrid x:Name="RelatoriosSinistroDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="3" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1599,6 +1575,7 @@
                         <!--#endregion-->
 
                         <!--#region Relatórios Reprovadas-->
+                        <Label Grid.Row="2" Grid.Column="2" Style="{StaticResource MainLabelStyle}">RELATORIOS DE VIAGENS</Label>
                         <DataGrid x:Name="RelatoriosViagemDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="3" Grid.Column="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1628,7 +1605,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="ManutencoesToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -1640,8 +1617,8 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button x:Name="RegistrarManutencaoBtn" Click="RegistrarManutencaoBtn_Click" Grid.Column="1" HorizontalAlignment="Center" Margin="6,10" Padding="5" Width="128">
@@ -1739,7 +1716,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid x:Name="EstoqueToolBarGrid">
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -1752,8 +1729,8 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
                             <Button x:Name="RegistrarPecaBtn" Click="RegistrarPecaBtn_Click" Grid.Column="1" HorizontalAlignment="Center" Margin="6,10" Padding="5" Width="128">
@@ -1763,16 +1740,6 @@
                             <Button x:Name="FornecedoresListBtn" Click="FornecedoresListBtn_Click" Grid.Column="2" HorizontalAlignment="Center" Margin="6,10" Padding="5" Width="128">
                                 Fornecedores
                             </Button>
-                            <!--#endregion-->
-                            <!--#region Seleção de Fornecedor-->
-                            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="10 5">
-                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                    Selecionar Fornecedor:
-                                </Label>
-                                <ComboBox>
-
-                                </ComboBox>
-                            </StackPanel>
                             <!--#endregion-->
 
                             <!--#region Separators-->
@@ -1813,7 +1780,7 @@
                 <!--#endregion-->
 
                 <!--#region Abastecimentos List/Actions Grid Menu-->
-                <Grid x:Name="AbastecimentoGrid" Visibility="Collapsed" Grid.Row="1">
+                <Grid x:Name="AbastecimentoGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -1821,7 +1788,7 @@
                     </Grid.RowDefinitions>
                     <!--#endregion-->
                     <!--#region ToolBar-->
-                    <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+                    <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                         <Grid>
                             <!--#region Columns-->
                             <Grid.ColumnDefinitions>
@@ -1834,11 +1801,11 @@
                             <!--#endregion-->
 
                             <!--#region Botoes Voltar e Registrar-->
-                            <Button Click="BackToMainMenuGridBackBtn_Click" Grid.Column="0" Margin="20 10">
-                                Voltar
+                            <Button Click="BackToMainMenuGridBackBtn_Click" Margin="10" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent">
+                                <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarAbastecimentoBtn" Click="RegistrarAbastecimentoBtn_Click" Grid.Column="1" Margin="20 10" FontSize="9">
+                            <Button x:Name="RegistrarAbastecimentoBtn" Click="RegistrarAbastecimentoBtn_Click" Grid.Column="1" Margin="15 10" FontSize="9">
                                 Registrar Abastecimento
                             </Button>
                             <!--#endregion-->
@@ -1876,7 +1843,8 @@
                             <RowDefinition Height="90*"/>
                         </Grid.RowDefinitions>
                         <!--#endregion-->
-                        <!--#region Multas-->
+                        <!--#region ABASTECIMENTOS AGENDADOS-->
+                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">ABASTECIMENTOS AGENDADOS</Label>
                         <DataGrid x:Name="AbastecimentosAgendadosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding AbastecimentoId}"/>
@@ -1901,6 +1869,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Sinistros-->
+                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.Column="1">ABASTECIMENTOS AGENDADOS</Label>
                         <DataGrid x:Name="AbastecimentosFinalizadosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
 

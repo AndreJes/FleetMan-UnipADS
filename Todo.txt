@@ -1,12 +1,8 @@
-- Alterar as informações/atributos de relatórios ao implementar os detalhes
-
 -Separar funcionarios por ativos e inativos
-
--Criar uma janela de listagem para cada item do menu principal (remover listas da janela principal)
 
 -ADICIONAR CATEGORIA CNH NO MOTORISTA SEU ANIMAL!!
 
--Alterar o estilo de estado de pagamento para Radio Buttons ao invés  de um combo-box
+-Implementar as funções de pesquisa.
 
--Adicionar Codigo ao aluguel, composto pelo Id do aluguel, Placa do veiculo e CPF do cliente.
+-ADICIONAR VIAGENS CANCELADAS A LISTA DE VIAGENS SEU ANIMAL!!
 
