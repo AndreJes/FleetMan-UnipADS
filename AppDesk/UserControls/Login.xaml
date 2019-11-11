@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AppDesk.UserControls"
+             xmlns:fuc="clr-namespace:AppDesk.UserControls.Campos"
+             xmlns:tool="clr-namespace:AppDesk.Tools"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="White">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -14,29 +16,21 @@
         </Grid.RowDefinitions>
 
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image>
-                
-            </Image>
-            <Label>LOGO</Label>
-        </Grid>
-        
-        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                <Label Style="{StaticResource MainLabelStyle}">e-Mail</Label>
-                <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200"></TextBox>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Margin="10">
-                <Label Style="{StaticResource MainLabelStyle}">Senha</Label>
-                <PasswordBox x:Name="PassWordTextBox" Width="150" VerticalContentAlignment="Center" ></PasswordBox>
-            </StackPanel>
+            <Image Source="/Content/Logo/LogoPim-IV.png" Stretch="Uniform" VerticalAlignment="Bottom" Margin="0"/>
         </Grid>
 
-        <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <Button x:Name="LoginBtn" Click="LoginBtn_Click" IsDefault="True" Width="200" Height="50" FontSize="20">
+        <Border Grid.Row="1" BorderThickness="3" BorderBrush="#FFBDBDBD" Background="#FFF7F7F7" HorizontalAlignment="Center" Padding="40 0">
+            <Grid VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <fuc:EmailFieldUC Grid.Row="0" x:Name="EmailUC"></fuc:EmailFieldUC>
+                <fuc:PasswordFieldUC Grid.Row="1" x:Name="PasswordUC"></fuc:PasswordFieldUC>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="LoginBtn" Click="LoginBtn_Click" IsDefault="True" Style="{StaticResource MainConfirmButtonStyle}" Height="50" Width="200" FontSize="20">
                 ACESSAR SISTEMA
             </Button>
         </Grid>

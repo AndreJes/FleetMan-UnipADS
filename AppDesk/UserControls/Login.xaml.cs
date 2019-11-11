@@ -31,7 +31,7 @@ namespace AppDesk.UserControls
             if (Logar())
             {
                 MessageBox.Show("Login realizado com sucesso!", "", MessageBoxButton.OK, MessageBoxImage.Information);
-                PassWordTextBox.Password = string.Empty;
+                PasswordUC.Password = string.Empty;
                 Application.Current.Windows.OfType<MainWindow>().First().StartSession();
             }
         }
@@ -40,7 +40,7 @@ namespace AppDesk.UserControls
         {
             try
             {
-                return DesktopLoginControlService.Logar(EmailTextBox.Text, PassWordTextBox.Password);
+                return DesktopLoginControlService.Logar(EmailUC.Text, PasswordUC.Password);
             }
             catch (Exception ex)
             {

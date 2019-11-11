@@ -96,6 +96,12 @@
     <Compile Include="Tools\HexaColorPicker.cs" />
     <Compile Include="Tools\MainWindowUpdater.cs" />
     <Compile Include="Tools\StandardMessageBoxes.cs" />
+    <Compile Include="UserControls\Campos\EmailFieldUC.xaml.cs">
+      <DependentUpon>EmailFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\PasswordFieldUC.xaml.cs">
+      <DependentUpon>PasswordFieldUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EnderecoUserControl.xaml.cs">
       <DependentUpon>EnderecoUserControl.xaml</DependentUpon>
     </Compile>
@@ -258,6 +264,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\Campos\EmailFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\PasswordFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\EnderecoUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -495,8 +509,15 @@
       <Project>{5421a323-fef5-476e-a247-c34e727beedc}</Project>
       <Name>Servicos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Validacao\Validacao.csproj">
+      <Project>{663f2820-6bb6-4ac7-8631-0718dc767fc1}</Project>
+      <Name>Validacao</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Content\Logo\LogoPim-IV.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

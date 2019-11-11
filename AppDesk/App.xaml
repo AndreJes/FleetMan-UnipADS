@@ -4,25 +4,53 @@
              xmlns:local="clr-namespace:AppDesk"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
+
+        <Style x:Key="WindowBackgroundColorSetter" TargetType="Window">
+            <Setter Property="Background" Value="#FFF7F7F7"/>
+        </Style>
+
         <Style x:Key="MainLabelStyle" TargetType="Label">
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BorderBrush" Value="Black" />
         </Style>
-        
+
+        <Style x:Key="MainLabelRoundStyle" TargetType="Label" BasedOn="{StaticResource MainLabelStyle}">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Label">
+                        <Border 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}" 
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="True"
+                            CornerRadius="5 0 0 5">
+                            <ContentPresenter 
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            RecognizesAccessKey="True" 
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="MainTextBoxStyle" TargetType="TextBox">
-                <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-            </Style>
-        
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
         <Style x:Key="MainStackPanelStyle" TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
-        
+
         <Style x:Key="MainDatePickerStyle" TargetType="DatePicker">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -32,5 +60,14 @@
             <Setter Property="IsReadOnly" Value="True"/>
             <Setter Property="AutoGenerateColumns" Value="False"/>
         </Style>
+
+        <Style x:Key="MainButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style x:Key="MainConfirmButtonStyle" TargetType="Button" BasedOn="{StaticResource MainButtonStyle}">
+            <Setter Property="Background" Value="#0f7528"/>
+        </Style>
+
     </Application.Resources>
 </Application>

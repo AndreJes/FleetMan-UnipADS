@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDesk", "AppDesk\AppDesk.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWeb", "AppWeb\AppWeb.csproj", "{924C2FBF-81C5-4527-9589-0C87E7E21287}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validacao", "Validacao\Validacao.csproj", "{663F2820-6BB6-4AC7-8631-0718DC767FC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{924C2FBF-81C5-4527-9589-0C87E7E21287}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{924C2FBF-81C5-4527-9589-0C87E7E21287}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{924C2FBF-81C5-4527-9589-0C87E7E21287}.Release|Any CPU.Build.0 = Release|Any CPU
+		{663F2820-6BB6-4AC7-8631-0718DC767FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{663F2820-6BB6-4AC7-8631-0718DC767FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{663F2820-6BB6-4AC7-8631-0718DC767FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663F2820-6BB6-4AC7-8631-0718DC767FC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

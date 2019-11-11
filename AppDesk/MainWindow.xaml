@@ -7,7 +7,7 @@
         xmlns:lc="clr-namespace:AppDesk.Serviço"
         xmlns:local="clr-namespace:AppDesk"
         mc:Ignorable="d"
-        Title="FleetManV0.1" Height="640" Width="1080" MaxHeight="640" MinHeight="640" MaxWidth="1080" MinWidth="1080">
+        Title="FleetManV0.1" Style="{StaticResource WindowBackgroundColorSetter}" Height="640" Width="1080" MaxHeight="640" MinHeight="640" MaxWidth="1080" MinWidth="1080">
     <Window.Resources>
         <Style x:Key="MainMenuBtnStyle" TargetType="Button">
             <Setter Property="Height" Value="80"/>
@@ -29,15 +29,13 @@
     <Grid x:Name="MainGrid">
 
         <!--#region Login Area-->
-        <Border Visibility="Hidden" x:Name="LogonGridBorder" BorderBrush="DarkRed" BorderThickness="1" Margin="50" Grid.Row="1">
-            <Grid>
-                <uc:Login x:Name="LoginField"></uc:Login>
-            </Grid>
-        </Border>
+        <Grid x:Name="LogonGridBorder" Visibility="Visible" HorizontalAlignment="Center">
+            <uc:Login x:Name="LoginField"></uc:Login>
+        </Grid>
         <!--#endregion-->
 
         <!--#region Main Content-->
-        <Border x:Name="MainContentBorder" Margin="10" BorderBrush="Gray" BorderThickness="3">
+        <Border Visibility="Collapsed" x:Name="MainContentBorder" Margin="10" BorderBrush="Gray" BorderThickness="3">
             <Grid ShowGridLines="False">
                 <!--#region Row Definitions-->
                 <Grid.RowDefinitions>
@@ -65,7 +63,7 @@
                         </Button>
 
                         <Button x:Name="AtualizarBtn" Click="AtualizarBtn_Click" Grid.Column="1">Atualizar Dados</Button>
-                        
+
                         <StackPanel x:Name="UserInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="2">
 
                             <Button Margin="0 8" x:Name="CurrentUserBtn" Click="CurrentUserBtn_Click" Background="Transparent">
@@ -1846,7 +1844,7 @@
                             <!--#endregion-->
 
                             <!--#region Pesquisa-->
-                            
+
                             <!--#endregion-->
 
                             <!--#region Separators-->
