@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="AppDesk.UserControls.Campos.Endereço.RuaFieldUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppDesk.UserControls.Campos.Endereço"
+             mc:Ignorable="d" 
+             HorizontalAlignment="Center" VerticalAlignment="Center">
+    <StackPanel Style="{StaticResource MainStackPanelStyle}">
+        <Label Style="{StaticResource MainLabelRoundStyle}">Endereço</Label>
+        <TextBox x:Name="RuaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170" TextChanged="RuaTextBox_TextChanged">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="0 5 5 0" />
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+    </StackPanel>
+</UserControl>

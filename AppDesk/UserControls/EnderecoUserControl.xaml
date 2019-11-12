@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AppDesk.UserControls"
+             xmlns:euc="clr-namespace:AppDesk.UserControls.Campos.Endereço"
              mc:Ignorable="d">
     <Grid Width="auto" Height="auto">
         <Grid.RowDefinitions>
@@ -13,28 +14,23 @@
         </Grid.RowDefinitions>
         <!--#region Rua / Nº-->
         <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-            <Label Style="{StaticResource MainLabelStyle}">Endereço</Label>
-            <TextBox x:Name="RuaTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Rua}" Width="170"></TextBox>
-            <Label Style="{StaticResource MainLabelStyle}" Width="45">Nº</Label>
-            <TextBox x:Name="NumeroTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Numero}" Width="60"></TextBox>
-        </StackPanel>
+            <euc:RuaFieldUC x:Name="RuaUC"></euc:RuaFieldUC>
+            <euc:NumeroFieldUC x:Name="NumeroUC"></euc:NumeroFieldUC>
+            </StackPanel>
         <!--#endregion-->
         <!--#region Cidade/ UF-->
         <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-            <Label Style="{StaticResource MainLabelStyle}">Cidade</Label>
-            <TextBox x:Name="CidadeTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Cidade}" Width="192"></TextBox>
-            <Label Style="{StaticResource MainLabelStyle}" Width="45">UF</Label>
-            <ComboBox x:Name="UfComboBox" SelectedItem="{Binding UF, StringFormat=G}" Width="50">
+            <euc:CidadeFieldUC x:Name="CidadeUC"></euc:CidadeFieldUC>
+            <Label Style="{StaticResource MainLabelRoundStyle}" Width="45">UF</Label>
+            <ComboBox x:Name="UfComboBox" Style="{StaticResource MainComboBoxStyle}" SelectedItem="{Binding UF, StringFormat=G}" Width="50">
             </ComboBox>
         </StackPanel>
         <!--#endregion-->
         <!--#region Bairro/ CEP-->
         <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-            <Label Style="{StaticResource MainLabelStyle}" Width="45">CEP</Label>
-            <TextBox x:Name="CEPTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding CEP}" Width="93"></TextBox>
-            <Label Style="{StaticResource MainLabelStyle}">Bairro</Label>
-            <TextBox x:Name="BairroTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Bairro}" Width="155"></TextBox>
-        </StackPanel>
+            <euc:CEPFieldUC x:Name="CEPUC"></euc:CEPFieldUC>
+            <euc:BairroFieldUC x:Name="BairroUC"></euc:BairroFieldUC>
+            </StackPanel>
         <!--#endregion-->
     </Grid>
 

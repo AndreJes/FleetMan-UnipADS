@@ -35,7 +35,8 @@ namespace AppDesk.Windows.Fornecedores
         {
             _fornecedor = fornecedor;
             this.DataContext = _fornecedor;
-            EnderecoUC.DataContext = _fornecedor.Endereco;
+            EnderecoUC.Editavel = true;
+            EnderecoUC.Endereco = _fornecedor.Endereco;
             if (!_fornecedor.LojaVirtual)
             {
                 EnderecoUC.UfComboBox.SelectedItem = _fornecedor.Endereco.UF.ToString("G");

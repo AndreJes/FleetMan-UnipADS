@@ -100,6 +100,21 @@
     <Compile Include="UserControls\Campos\EmailFieldUC.xaml.cs">
       <DependentUpon>EmailFieldUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Campos\Endereço\BairroFieldUC.xaml.cs">
+      <DependentUpon>BairroFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\Endereço\CEPFieldUC.xaml.cs">
+      <DependentUpon>CEPFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\Endereço\CidadeFieldUC.xaml.cs">
+      <DependentUpon>CidadeFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\Endereço\NumeroFieldUC.xaml.cs">
+      <DependentUpon>NumeroFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\Endereço\RuaFieldUC.xaml.cs">
+      <DependentUpon>RuaFieldUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Campos\PasswordFieldUC.xaml.cs">
       <DependentUpon>PasswordFieldUC.xaml</DependentUpon>
     </Compile>
@@ -266,6 +281,26 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControls\Campos\EmailFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\Endereço\BairroFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\Endereço\CEPFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\Endereço\CidadeFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\Endereço\NumeroFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\Endereço\RuaFieldUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

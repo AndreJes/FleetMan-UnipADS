@@ -62,11 +62,11 @@ namespace AppDesk.Windows.Fornecedores
 
             if (fornecedor.LojaVirtual == false)
             {
-                endereco.Rua = EnderecoUC.RuaTextBox.Text;
-                endereco.Numero = EnderecoUC.NumeroTextBox.Text;
-                endereco.Cidade = EnderecoUC.CidadeTextBox.Text;
-                endereco.CEP = EnderecoUC.CEPTextBox.Text;
-                endereco.Bairro = EnderecoUC.BairroTextBox.Text;
+                endereco.Rua = EnderecoUC.RuaUC.Text;
+                endereco.Numero = EnderecoUC.NumeroUC.Text;
+                endereco.Cidade = EnderecoUC.CidadeUC.Text;
+                endereco.CEP = EnderecoUC.CEPUC.Text;
+                endereco.Bairro = EnderecoUC.BairroUC.Text;
                 endereco.UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), EnderecoUC.UfComboBox.SelectedItem.ToString());
             }
 

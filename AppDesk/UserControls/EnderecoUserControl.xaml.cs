@@ -29,11 +29,11 @@ namespace AppDesk.UserControls
             get
             {
                 Endereco endereco = new Endereco();
-                endereco.Rua = RuaTextBox.Text;
-                endereco.Numero = NumeroTextBox.Text;
-                endereco.Bairro = BairroTextBox.Text;
-                endereco.CEP = CEPTextBox.Text;
-                endereco.Cidade = CidadeTextBox.Text;
+                endereco.Rua = RuaUC.Text;
+                endereco.Numero = NumeroUC.Text;
+                endereco.Bairro = BairroUC.Text;
+                endereco.CEP = CEPUC.Text;
+                endereco.Cidade = CidadeUC.Text;
                 endereco.UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString());
                 return endereco;
             }
@@ -52,14 +52,19 @@ namespace AppDesk.UserControls
         private void DefinirEndereco(Endereco endereco)
         {
             this.DataContext = endereco;
+            RuaUC.Text = endereco.Rua;
+            NumeroUC.Text = endereco.Numero;
+            CidadeUC.Text = endereco.Cidade;
+            CEPUC.Text = endereco.CEP;
+            BairroUC.Text = endereco.Bairro;
             UfComboBox.SelectedItem = endereco.UF.ToString("G");
             if (Editavel == false)
             {
-                BairroTextBox.IsEnabled = false;
-                CEPTextBox.IsEnabled = false;
-                CidadeTextBox.IsEnabled = false;
-                NumeroTextBox.IsEnabled = false;
-                RuaTextBox.IsEnabled = false;
+                BairroUC.IsEnabled = false;
+                CEPUC.IsEnabled = false;
+                CidadeUC.IsEnabled = false;
+                NumeroUC.IsEnabled = false;
+                RuaUC.IsEnabled = false;
                 UfComboBox.IsEnabled = false;
             }
         }

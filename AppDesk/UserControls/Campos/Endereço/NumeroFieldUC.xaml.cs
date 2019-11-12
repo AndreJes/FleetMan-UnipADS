@@ -1,9 +1,7 @@
 ﻿using AppDesk.Tools;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,59 +15,60 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Validacao;
 
-namespace AppDesk.UserControls.Campos
+namespace AppDesk.UserControls.Campos.Endereço
 {
     /// <summary>
-    /// Interação lógica para EmailFieldUC.xam
+    /// Interação lógica para NumeroFieldUC.xam
     /// </summary>
-    public partial class EmailFieldUC : UserControl
+    public partial class NumeroFieldUC : UserControl
     {
+        private bool validado = false;
+
         private string _text;
 
         public string Text
         {
+
             get
             {
-                if (EmailTextBox.Text == "Admin")
-                {
-                    return EmailTextBox.Text;
-                }
                 if (validado)
                 {
                     return _text;
                 }
                 else
                 {
-                    throw new FieldException("Email");
+                    throw new FieldException("Nº");
                 }
+            }
+            set
+            {
+                NumeroTextBox.Text = value;
+                validado = true;
             }
         }
 
-        public bool validado = false;
-
-        public EmailFieldUC()
+        public NumeroFieldUC()
         {
             InitializeComponent();
         }
 
         async void Validar()
         {
-            validado = await ValidadorDeEmail.ValidarEmail(EmailTextBox.Text);
-            if (validado)
+            validado = await ValidadorEndereco.ValidarNumero(NumeroTextBox.Text);
+            if(validado)
             {
-                _text = EmailTextBox.Text;
-                validado = true;
-                EmailTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
+                _text = NumeroTextBox.Text;
+                NumeroTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
             }
             else
             {
-                EmailTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
+                NumeroTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
             }
         }
 
-        private void EmailTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void NumeroTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EmailTextBox.Text))
+            if (!string.IsNullOrEmpty(NumeroTextBox.Text) || !string.IsNullOrWhiteSpace(NumeroTextBox.Text))
             {
                 Validar();
             }

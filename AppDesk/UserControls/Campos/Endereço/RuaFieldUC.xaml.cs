@@ -17,12 +17,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Validacao;
 
-namespace AppDesk.UserControls.Campos
+namespace AppDesk.UserControls.Campos.Endereço
 {
     /// <summary>
-    /// Interação lógica para EmailFieldUC.xam
+    /// Interação lógica para RuaFieldUC.xam
     /// </summary>
-    public partial class EmailFieldUC : UserControl
+    public partial class RuaFieldUC : UserControl
     {
         private string _text;
 
@@ -30,48 +30,48 @@ namespace AppDesk.UserControls.Campos
         {
             get
             {
-                if (EmailTextBox.Text == "Admin")
-                {
-                    return EmailTextBox.Text;
-                }
                 if (validado)
                 {
                     return _text;
                 }
                 else
                 {
-                    throw new FieldException("Email");
+                    throw new FieldException("Endereço");
                 }
+            }
+            set
+            {
+                RuaTextBox.Text = value;
             }
         }
 
         public bool validado = false;
 
-        public EmailFieldUC()
+        public RuaFieldUC()
         {
             InitializeComponent();
+            DataContext = this;
+        }
+
+        private void RuaTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(!string.IsNullOrWhiteSpace(RuaTextBox.Text))
+            {
+                Validar();
+            }
         }
 
         async void Validar()
         {
-            validado = await ValidadorDeEmail.ValidarEmail(EmailTextBox.Text);
-            if (validado)
+            validado = await ValidadorEndereco.ValidarTexto(RuaTextBox.Text);
+            if(validado)
             {
-                _text = EmailTextBox.Text;
-                validado = true;
-                EmailTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
+                _text = RuaTextBox.Text;
+                RuaTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
             }
             else
             {
-                EmailTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
-            }
-        }
-
-        private void EmailTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(EmailTextBox.Text))
-            {
-                Validar();
+                RuaTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
             }
         }
     }

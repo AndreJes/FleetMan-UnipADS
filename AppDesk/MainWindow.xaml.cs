@@ -332,10 +332,9 @@ namespace AppDesk
 
             ViagensEmAndamentoDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.EM_ANDAMENTO).ToList();
 
-            List<Viagem> ViagensConcluidasECanceladas = new List<Viagem>();
-            ViagensConcluidasECanceladas.AddRange(ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CONCLUIDA));
-            ViagensConcluidasECanceladas.AddRange(ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CANCELADA));
-            ViagensConcluidasDataGrid.ItemsSource = ViagensConcluidasECanceladas;
+            ViagensConcluidasDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CONCLUIDA).ToList();
+
+            ViagensCanceladasDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CANCELADA).ToList();
             #endregion
 
             #region Solicitações
@@ -456,8 +455,12 @@ namespace AppDesk
             {
                 viagem = ServicoDados.ServicoDadosViagem.ObterViagemPorId((ViagensConcluidasDataGrid.SelectedItem as Viagem).ViagemId);
             }
+            else if (ViagensCanceladasDataGrid.SelectedItem != null)
+            {
+                viagem = ServicoDados.ServicoDadosViagem.ObterViagemPorId((ViagensCanceladasDataGrid.SelectedItem as Viagem).ViagemId);
+            }
 
-            if (viagem != null)
+            if(viagem != null)
             {
                 FormDetalhesAlterarViagem formDetalhesAlterarViagem = new FormDetalhesAlterarViagem(viagem);
                 formDetalhesAlterarViagem.Show();

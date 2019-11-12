@@ -69,5 +69,10 @@
             <Setter Property="Background" Value="#0f7528"/>
         </Style>
 
+        <Style x:Key="MainComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
     </Application.Resources>
 </Application>
