@@ -52,7 +52,7 @@ namespace AppDesk.UserControls.Campos.Endereço
 
         async void Validar()
         {
-            validado = await ValidadorEndereco.ValidarCEP(CEPTextBox.Text.Replace("-", ""));
+            validado = await Validador.ValidarCEP(CEPTextBox.Text.Replace("-", ""));
             if(validado)
             {
                 _text = CEPTextBox.Text;

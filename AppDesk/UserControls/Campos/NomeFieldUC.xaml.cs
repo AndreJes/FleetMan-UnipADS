@@ -15,15 +15,16 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Validacao;
 
-namespace AppDesk.UserControls.Campos.Endereço
+namespace AppDesk.UserControls.Campos
 {
     /// <summary>
-    /// Interação lógica para BairroFieldUC.xam
+    /// Interação lógica para NomeFieldUC.xam
     /// </summary>
-    public partial class BairroFieldUC : UserControl
+    public partial class NomeFieldUC : UserControl
     {
-        private string _text;
         private bool validado = false;
+
+        private string _text;
 
         public string Text
         {
@@ -35,41 +36,38 @@ namespace AppDesk.UserControls.Campos.Endereço
                 }
                 else
                 {
-                    throw new FieldException("Bairro");
+                    throw new FieldException("Nome");
                 }
             }
             set
             {
-                BairroTextBox.Text = value;
+                NomeTextBox.Text = value;
                 validado = true;
             }
         }
 
-        public BairroFieldUC()
+        public NomeFieldUC()
         {
             InitializeComponent();
         }
 
         async void Validar()
         {
-            validado = await Validador.ValidarTextoAsync(BairroTextBox.Text);
-            if(validado)
+            validado = await Validador.ValidarTextoAsync(NomeTextBox.Text);
+            if (validado)
             {
-                _text = BairroTextBox.Text;
-                BairroTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
+                _text = NomeTextBox.Text;
+                NomeTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
             }
             else
             {
-                BairroTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
+                NomeTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
             }
         }
 
-        private void BairroTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(BairroTextBox.Text))
-            {
-                Validar();
-            }
+            Validar();
         }
     }
 }

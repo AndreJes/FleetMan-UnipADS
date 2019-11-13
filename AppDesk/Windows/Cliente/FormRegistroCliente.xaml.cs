@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AppDesk.Tools;
 using Modelo.Classes.Auxiliares;
 using Modelo.Classes.Clientes;
 using Modelo.Enums;
@@ -25,7 +26,6 @@ namespace AppDesk.Windows.Clientes
         public FormRegistroCliente()
         {
             InitializeComponent();
-            UfComboBox.ItemsSource = Enum.GetNames(typeof(UnidadesFederativas));
         }
 
         //Botão registro
@@ -45,81 +45,75 @@ namespace AppDesk.Windows.Clientes
         //Função que registra o cliente no banco
         private void RegistrarCliente()
         {
-            Cliente cliente = GerarCliente();
-            if(cliente != null)
+            try
             {
-                Serviço.ServicoDados.ServicoDadosClientes.GravarCliente(cliente);
-                MessageBox.Show("Cliente registrado com sucesso!");
-                MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
-                window.PopulateDataGrid();
-                this.Close();
+                Cliente cliente = GerarCliente();
+                if (cliente != null)
+                {
+                    Serviço.ServicoDados.ServicoDadosClientes.GravarCliente(cliente);
+                    MessageBox.Show("Cliente registrado com sucesso!");
+                    MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
+                    window.PopulateDataGrid();
+                    this.Close();
+                }
+            }
+            catch(FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
         //Função que valida o formulário e gera o cliente a ser registrado no banco.
         private Cliente GerarCliente()
         {
-            ClientePF clientePF = null;
-            ClientePJ clientePJ = null;
             if (PFRBtn.IsChecked == true)
             {
-                clientePF = new ClientePF()
+                ClientePF clientePF = new ClientePF()
                 {
                     Ativo = true,
-                    Nome = NomeTextBox.Text,
-                    CPF = CPFCNPJTextBox.Text,
-                    Email = EmailTextBox.Text,
-                    Telefone = TelefoneTextBox.Text,
-                    Endereco = new Endereco()
-                    {
-                        Rua = RuaTextBox.Text,
-                        Bairro = BairroTextBox.Text,
-                        CEP = CEPTextBox.Text,
-                        Cidade = CidadeTextBox.Text,
-                        Numero = NumeroTextBox.Text,
-                        UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString())
-                    },
+                    Nome = NomeUC.Text,
+                    CPF = CPFUC.Text,
+                    Email = EmailUC.Text,
+                    Telefone = TelefoneUC.Text,
+                    Endereco = EnderecoUC.Endereco,
                     Tipo = TipoCliente.PF
                 };
                 return clientePF;
             }
             else if (PJRBtn.IsChecked == true)
             {
-                clientePJ = new ClientePJ()
+                ClientePJ clientePJ = new ClientePJ()
                 {
                     Ativo = true,
-                    Nome = NomeTextBox.Text,
-                    CNPJ = CPFCNPJTextBox.Text,
-                    Email = EmailTextBox.Text,
-                    Telefone = TelefoneTextBox.Text,
-                    Endereco = new Endereco()
-                    {
-                        Rua = RuaTextBox.Text,
-                        Bairro = BairroTextBox.Text,
-                        CEP = CEPTextBox.Text,
-                        Cidade = CidadeTextBox.Text,
-                        Numero = NumeroTextBox.Text,
-                        UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString())
-                    },
+                    Nome = NomeUC.Text,
+                    CNPJ = CNPJUC.Text,
+                    Email = EmailUC.Text,
+                    Telefone = TelefoneUC.Text,
+                    Endereco = EnderecoUC.Endereco,
                     Tipo = TipoCliente.PJ
                 };
                 return clientePJ;
             }
             else
             {
-                MessageBox.Show("Falha ao registrar cliente: Informe se é pessoa física ou jurídica");
-                return null;
+                throw new FieldException("Tipo de Cliente");
             }
         }
 
         private void ChangeLabelToCPF(object sender, RoutedEventArgs e)
         {
-            CPF_CNPJ_Label.Content = "CPF";
+            CNPJUC.Visibility = Visibility.Collapsed;
+            CPFUC.Visibility = Visibility.Visible;
         }
 
         private void ChangeLabelToCNPJ(object sender, RoutedEventArgs e)
         {
-            CPF_CNPJ_Label.Content = "CNPJ";
+            CPFUC.Visibility = Visibility.Collapsed;
+            CNPJUC.Visibility = Visibility.Visible;
         }
         #endregion
     }

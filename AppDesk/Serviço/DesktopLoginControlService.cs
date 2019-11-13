@@ -8,19 +8,19 @@ using System.Windows;
 
 namespace AppDesk.Serviço
 {
-    public static class DesktopLoginControlService
+    public class DesktopLoginControlService
     {
-        public static UsuarioFunc Usuario { get; private set; }
+        public static UsuarioFunc _Usuario { get; private set; }
 
         public static bool Logar(string email, string senha)
         {
             UsuarioFunc usuarioFunc = ServicoDados.ServicoDadosUsuarioF.ObterUsuarioFuncPorEmail(email);
 
-            if(usuarioFunc != null && usuarioFunc.Login == email)
+            if (usuarioFunc != null && usuarioFunc.Login == email)
             {
-                if(usuarioFunc.Senha == senha)
+                if (usuarioFunc.Senha == senha)
                 {
-                    Usuario = usuarioFunc;
+                    _Usuario = usuarioFunc;
                     return true;
                 }
                 else
@@ -43,7 +43,7 @@ namespace AppDesk.Serviço
                     w.Close();
                 }
             }
-            Usuario = null;
+            _Usuario = null;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using AppDesk.Serviço;
+﻿using AppDesk.Interfaces;
+using AppDesk.Serviço;
+using AppDesk.Tools;
 using Modelo.Classes.Auxiliares;
 using Modelo.Classes.Clientes;
 using Modelo.Enums;
@@ -21,7 +23,7 @@ namespace AppDesk.Windows.Clientes
     /// <summary>
     /// Lógica interna para FormAlterarClientes.xaml
     /// </summary>
-    public partial class FormAlterarClientes : Window
+    public partial class FormAlterarClientes : Window, IFillTextBoxes
     {
         private ClientePF _clientePF = null;
         private ClientePJ _clientePJ = null;
@@ -33,17 +35,21 @@ namespace AppDesk.Windows.Clientes
 
         public FormAlterarClientes(Cliente cliente) : this()
         {
-            UfComboBox.ItemsSource = Enum.GetNames(typeof(UnidadesFederativas));
-
+            VehicleDataGrid.ItemsSource = cliente.Veiculos;
+            MotoristasDataGrid.ItemsSource = cliente.Motoristas;
+            LocacoesDataGrid.ItemsSource = cliente.Alugueis;
+            EnderecoUC.Editavel = true;
             if (cliente is ClientePF)
             {
                 _clientePF = cliente as ClientePF;
-                CPF_CNPJ_Label.Content = "CPF";
+                CPFUC.Text = _clientePF.CPF;
+                CPFUC.Visibility = Visibility.Visible;
             }
             if (cliente is ClientePJ)
             {
                 _clientePJ = cliente as ClientePJ;
-                CPF_CNPJ_Label.Content = "CNPJ";
+                CNPJUC.Text = _clientePJ.CNPJ;
+                CNPJUC.Visibility = Visibility.Visible;
             }
 
             if (cliente.Ativo)
@@ -64,14 +70,13 @@ namespace AppDesk.Windows.Clientes
             if (clienteAlterado != null)
             {
                 ServicoDados.ServicoDadosClientes.GravarCliente(clienteAlterado);
-                MessageBox.Show("Cliente alterado com sucesso!");
-                MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
-                window.PopulateDataGrid();
+                StandardMessageBoxes.MensagemSucesso("Cliente", "Alterado");
+                MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Falha ao alterar cliente");
+                StandardMessageBoxes.MensagemDeErro("Falha ao alterar cliente");
             }
         }
 
@@ -82,75 +87,81 @@ namespace AppDesk.Windows.Clientes
 
         private void PreencherTextBoxes(Cliente cliente)
         {
-            NomeTextBox.Text = cliente.Nome;
-            EmailTextBox.Text = cliente.Email;
-            TelefoneTextBox.Text = cliente.Telefone;
-            RuaTextBox.Text = cliente.Endereco.Rua;
-            NumeroTextBox.Text = cliente.Endereco.Numero;
-            CidadeTextBox.Text = cliente.Endereco.Cidade;
-            CEPTextBox.Text = cliente.Endereco.CEP;
-            BairroTextBox.Text = cliente.Endereco.Bairro;
-            UfComboBox.SelectedItem = cliente.Endereco.UF.ToString();
-
+            NomeUC.Text = cliente.Nome;
+            EmailUC.Text = cliente.Email;
+            TelefoneUC.Text = cliente.Telefone;
+            EnderecoUC.Endereco = cliente.Endereco;
             if (cliente is ClientePF)
             {
-                CPFCNPJTextBox.Text = (cliente as ClientePF).CPF;
+                CNPJUC.Text = (cliente as ClientePF).CPF;
             }
             else if (cliente is ClientePJ)
             {
-                CPFCNPJTextBox.Text = (cliente as ClientePJ).CNPJ;
+                CNPJUC.Text = (cliente as ClientePJ).CNPJ;
             }
         }
 
         private Cliente AlterarCliente()
         {
-            bool ativoInativo = true;
-            if (AtivoRadioBtn.IsChecked == true)
+            try
             {
-                ativoInativo = true;
-            }
-            else if (InativoRadioBtn.IsChecked == true)
-            {
-                ativoInativo = false;
-            }
+                bool ativoInativo = true;
+                if (AtivoRadioBtn.IsChecked == true)
+                {
+                    ativoInativo = true;
+                }
+                else if (InativoRadioBtn.IsChecked == true)
+                {
+                    ativoInativo = false;
+                }
 
-            if (_clientePF != null)
-            {
-                _clientePF.Ativo = ativoInativo;
-                _clientePF.Nome = NomeTextBox.Text;
-                _clientePF.CPF = CPFCNPJTextBox.Text;
-                _clientePF.Email = EmailTextBox.Text;
-                _clientePF.Telefone = TelefoneTextBox.Text;
-                _clientePF.Endereco.Rua = RuaTextBox.Text;
-                _clientePF.Endereco.Bairro = BairroTextBox.Text;
-                _clientePF.Endereco.CEP = CEPTextBox.Text;
-                _clientePF.Endereco.Cidade = CidadeTextBox.Text;
-                _clientePF.Endereco.Numero = NumeroTextBox.Text;
-                _clientePF.Endereco.UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString());
-
-                return _clientePF;
-            }
-            else if (_clientePJ != null)
-            {
-                _clientePJ.Ativo = ativoInativo;
-                _clientePJ.Nome = NomeTextBox.Text;
-                _clientePJ.CNPJ = CPFCNPJTextBox.Text;
-                _clientePJ.Email = EmailTextBox.Text;
-                _clientePJ.Telefone = TelefoneTextBox.Text;
-                _clientePJ.Endereco.Rua = RuaTextBox.Text;
-                _clientePJ.Endereco.Bairro = BairroTextBox.Text;
-                _clientePJ.Endereco.CEP = CEPTextBox.Text;
-                _clientePJ.Endereco.Cidade = CidadeTextBox.Text;
-                _clientePJ.Endereco.Numero = NumeroTextBox.Text;
-                _clientePJ.Endereco.UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString());
-
-                return _clientePJ;
-            }
-            else
-            {
-                MessageBox.Show("Erro ao alterar cliente!");
+                if (_clientePF != null)
+                {
+                    _clientePF.Ativo = ativoInativo;
+                    _clientePF.Nome = NomeUC.Text;
+                    _clientePF.CPF = CPFUC.Text;
+                    _clientePF.Email = EmailUC.Text;
+                    _clientePF.Telefone = TelefoneUC.Text;
+                    _clientePF.Endereco = EnderecoUC.Endereco;
+                    return _clientePF;
+                }
+                else if (_clientePJ != null)
+                {
+                    _clientePJ.Ativo = ativoInativo;
+                    _clientePJ.Nome = NomeUC.Text;
+                    _clientePJ.CNPJ = CNPJUC.Text;
+                    _clientePJ.Email = EmailUC.Text;
+                    _clientePJ.Telefone = TelefoneUC.Text;
+                    _clientePJ.Endereco = EnderecoUC.Endereco;
+                    return _clientePJ;
+                }
                 return null;
             }
-}
+            catch (FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+                return null;
+            }
+        }
+
+        private void DetalhesVeiculoBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AluguelDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MotoristaDetailsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

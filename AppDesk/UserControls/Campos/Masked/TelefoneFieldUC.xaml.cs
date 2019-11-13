@@ -15,15 +15,15 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Validacao;
 
-namespace AppDesk.UserControls.Campos.Endereço
+namespace AppDesk.UserControls.Campos.Masked
 {
     /// <summary>
-    /// Interação lógica para BairroFieldUC.xam
+    /// Interação lógica para TelefoneFieldUC.xam
     /// </summary>
-    public partial class BairroFieldUC : UserControl
+    public partial class TelefoneFieldUC : UserControl
     {
+        public bool validado = false;
         private string _text;
-        private bool validado = false;
 
         public string Text
         {
@@ -35,41 +35,39 @@ namespace AppDesk.UserControls.Campos.Endereço
                 }
                 else
                 {
-                    throw new FieldException("Bairro");
+                    throw new FieldException("Telefone");
                 }
             }
             set
             {
-                BairroTextBox.Text = value;
+                TelefoneTextBox.Text = value;
                 validado = true;
             }
         }
 
-        public BairroFieldUC()
+        public TelefoneFieldUC()
         {
             InitializeComponent();
         }
 
         async void Validar()
         {
-            validado = await Validador.ValidarTextoAsync(BairroTextBox.Text);
-            if(validado)
+            validado = await Validador.ValidarTelefoneAsync(TelefoneTextBox.Text.Replace("-","").Replace("(", "").Replace(")", ""));
+            if (validado)
             {
-                _text = BairroTextBox.Text;
-                BairroTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
+                _text = TelefoneTextBox.Text.Replace("-", "").Replace("(", "").Replace(")", "");
+                TelefoneTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
             }
             else
             {
-                BairroTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
+                TelefoneTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
             }
+
         }
 
-        private void BairroTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void TelefoneTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(BairroTextBox.Text))
-            {
-                Validar();
-            }
+            Validar();
         }
     }
 }

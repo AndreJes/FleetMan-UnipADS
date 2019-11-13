@@ -76,14 +76,14 @@ namespace AppDesk.Windows.Locacoes
 
         private void DetalhesClienteBtn_Click(object sender, RoutedEventArgs e)
         {
-            FormDetalhesCliente formDetalhesCliente = null;
+            FormAlterarClientes formDetalhesCliente = null;
             if (_aluguel.Cliente is ClientePF)
             {
-                formDetalhesCliente = new FormDetalhesCliente(ServicoDados.ServicoDadosClientes.ObterClientePFPorId(_aluguel.ClienteId));
+                formDetalhesCliente = new FormAlterarClientes(ServicoDados.ServicoDadosClientes.ObterClientePFPorId(_aluguel.ClienteId));
             }
             else if (_aluguel.Cliente is ClientePJ)
             {
-                formDetalhesCliente = new FormDetalhesCliente(ServicoDados.ServicoDadosClientes.ObterClientePJPorId(_aluguel.ClienteId));
+                formDetalhesCliente = new FormAlterarClientes(ServicoDados.ServicoDadosClientes.ObterClientePJPorId(_aluguel.ClienteId));
             }
             formDetalhesCliente.Show();
         }

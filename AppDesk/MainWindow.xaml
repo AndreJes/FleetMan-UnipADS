@@ -470,7 +470,7 @@
                 <!--#endregion-->
 
                 <!--#region Clientes List/Actions Grid Menu-->
-                <Grid x:Name="ClientesGrid" Visibility="Collapsed" Grid.Row="1">
+                <Grid x:Name="ClientesGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -950,7 +950,7 @@
                 <!--#endregion-->
 
                 <!--#region Viagens List/Actions Grid Menu-->
-                <Grid x:Name="ViagensGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="ViagensGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>

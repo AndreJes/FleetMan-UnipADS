@@ -38,6 +38,7 @@ using AppDesk.Windows.Manutencoes;
 using AppDesk.Windows.Relatorios;
 using Modelo.Classes.Relatorios;
 using AppDesk.Windows.Solicitacoes;
+using Modelo.Classes.Usuarios;
 
 namespace AppDesk
 {
@@ -373,7 +374,7 @@ namespace AppDesk
 
         public void StartSession()
         {
-            UserInfoPanel.DataContext = DesktopLoginControlService.Usuario;
+            UserInfoPanel.DataContext = DesktopLoginControlService._Usuario;
             LogonGridBorder.Visibility = Visibility.Collapsed;
             MainContentBorder.Visibility = Visibility.Visible;
             GotoMainMenu();
@@ -387,7 +388,7 @@ namespace AppDesk
         private void ClientePFDetailsButton_Click(object sender, RoutedEventArgs e)
         {
             ClientePF clientepf = ServicoDados.ServicoDadosClientes.ObterClientePFPorId((ClientePFDataGrid.SelectedItem as ClientePF).ClienteId);
-            FormDetalhesCliente detalhesCliente = new FormDetalhesCliente(clientepf);
+            FormAlterarClientes detalhesCliente = new FormAlterarClientes(clientepf);
             detalhesCliente.Show();
         }
 
@@ -395,7 +396,7 @@ namespace AppDesk
         private void ClientePJDetailsButton_Click(object sender, RoutedEventArgs e)
         {
             ClientePJ clientepj = ServicoDados.ServicoDadosClientes.ObterClientePJPorId((ClientePJDataGrid.SelectedItem as ClientePJ).ClienteId);
-            FormDetalhesCliente detalhesCliente = new FormDetalhesCliente(clientepj);
+            FormAlterarClientes detalhesCliente = new FormAlterarClientes(clientepj);
             detalhesCliente.Show();
         }
         #endregion
@@ -545,9 +546,9 @@ namespace AppDesk
 
         private void CurrentUserBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (DesktopLoginControlService.Usuario.Funcionario != null)
+            if (DesktopLoginControlService._Usuario.Funcionario != null)
             {
-                FormAlterarDetalhesUsuario formAlterarDetalhes = new FormAlterarDetalhesUsuario(DesktopLoginControlService.Usuario.Funcionario);
+                FormAlterarDetalhesUsuario formAlterarDetalhes = new FormAlterarDetalhesUsuario(DesktopLoginControlService._Usuario.Funcionario);
                 formAlterarDetalhes.Show();
             }
             else

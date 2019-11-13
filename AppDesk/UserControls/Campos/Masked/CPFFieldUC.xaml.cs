@@ -15,15 +15,16 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Validacao;
 
-namespace AppDesk.UserControls.Campos.Endereço
+namespace AppDesk.UserControls.Campos.Masked
 {
     /// <summary>
-    /// Interação lógica para BairroFieldUC.xam
+    /// Interação lógica para CPFFieldUC.xam
     /// </summary>
-    public partial class BairroFieldUC : UserControl
+    public partial class CPFFieldUC : UserControl
     {
-        private string _text;
         private bool validado = false;
+
+        private string _text;
 
         public string Text
         {
@@ -35,41 +36,38 @@ namespace AppDesk.UserControls.Campos.Endereço
                 }
                 else
                 {
-                    throw new FieldException("Bairro");
+                    throw new FieldException("CPF");
                 }
             }
             set
             {
-                BairroTextBox.Text = value;
+                CPFTextBox.Text = value;
                 validado = true;
             }
         }
 
-        public BairroFieldUC()
+        public CPFFieldUC()
         {
             InitializeComponent();
         }
 
         async void Validar()
         {
-            validado = await Validador.ValidarTextoAsync(BairroTextBox.Text);
-            if(validado)
+            validado = await Validador.ValidarCPFCNPJAsync(CPFTextBox.Text.Replace(".", "").Replace("-", ""));
+            if (validado)
             {
-                _text = BairroTextBox.Text;
-                BairroTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
+                _text = CPFTextBox.Text.Replace(".", "").Replace("-", "");
+                CPFTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
             }
             else
             {
-                BairroTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
+                CPFTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
             }
         }
 
-        private void BairroTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void CPFTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(BairroTextBox.Text))
-            {
-                Validar();
-            }
+            Validar();
         }
     }
 }

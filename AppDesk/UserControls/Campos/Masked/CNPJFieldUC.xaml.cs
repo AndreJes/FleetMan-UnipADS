@@ -15,15 +15,16 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Validacao;
 
-namespace AppDesk.UserControls.Campos.Endereço
+namespace AppDesk.UserControls.Campos.Masked
 {
     /// <summary>
-    /// Interação lógica para BairroFieldUC.xam
+    /// Interação lógica para CNPJFieldUC.xam
     /// </summary>
-    public partial class BairroFieldUC : UserControl
+    public partial class CNPJFieldUC : UserControl
     {
-        private string _text;
         private bool validado = false;
+
+        private string _text;
 
         public string Text
         {
@@ -35,41 +36,38 @@ namespace AppDesk.UserControls.Campos.Endereço
                 }
                 else
                 {
-                    throw new FieldException("Bairro");
+                    throw new FieldException("CNPJ");
                 }
             }
             set
             {
-                BairroTextBox.Text = value;
+                CNPJTextBox.Text = value;
                 validado = true;
             }
         }
 
-        public BairroFieldUC()
+        public CNPJFieldUC()
         {
             InitializeComponent();
         }
 
         async void Validar()
         {
-            validado = await Validador.ValidarTextoAsync(BairroTextBox.Text);
-            if(validado)
+            validado = await Validador.ValidarCPFCNPJAsync(CNPJTextBox.Text.Replace(".", "").Replace("-", "").Replace("/", ""));
+            if (validado)
             {
-                _text = BairroTextBox.Text;
-                BairroTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
+                _text = CNPJTextBox.Text.Replace(".", "").Replace("-", "").Replace("/", "");
+                CNPJTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
             }
             else
             {
-                BairroTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
+                CNPJTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
             }
         }
 
-        private void BairroTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void CNPJTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(BairroTextBox.Text))
-            {
-                Validar();
-            }
+            Validar();
         }
     }
 }

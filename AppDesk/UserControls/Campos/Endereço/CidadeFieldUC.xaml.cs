@@ -52,7 +52,7 @@ namespace AppDesk.UserControls.Campos.Endereço
 
         async void Validar()
         {
-            validado = await ValidadorEndereco.ValidarTexto(CidadeTextBox.Text);
+            validado = await Validador.ValidarTextoAsync(CidadeTextBox.Text);
             if(validado)
             {
                 _text = CidadeTextBox.Text;

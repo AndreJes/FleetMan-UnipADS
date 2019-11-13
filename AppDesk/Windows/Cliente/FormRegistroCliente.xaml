@@ -4,32 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Clientes"
+        xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
+        xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Registrar Novo Cliente" Height="400" Width="380">
-    <Window.Resources>
-        <Style x:Key="MainLabelStyle" TargetType="Label">
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Width" Value="75"/>
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="BorderBrush" Value="Black" />
-        </Style>
-        <Style x:Key="MainTextBoxStyle" TargetType="TextBox">
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="MainStackPanelStyle" TargetType="StackPanel">
-            <Setter Property="Orientation" Value="Horizontal"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-    </Window.Resources>
+        Title="Registrar Novo Cliente" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
-        <Grid x:Name="FormContentGrid">
+        <Grid Background="Transparent">
             <!--#region Columns/ Rows-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
-                <RowDefinition Height="40*"/>
+                <RowDefinition Height="50*"/>
                 <RowDefinition Height="40*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
@@ -47,10 +32,11 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <!--#region Cliente-->
                     <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Cliente</Label>
+                        <Label Style="{StaticResource MainLabelRoundStyle}">Cliente</Label>
                         <Border BorderBrush="#FFABADB3" BorderThickness="1">
                             <StackPanel Orientation="Horizontal">
                                 <RadioButton x:Name="PFRBtn" Margin="5 0" GroupName="PFPJ" Content="Pessoa Física" VerticalAlignment="Center" Checked="ChangeLabelToCPF" />
@@ -61,23 +47,20 @@
                     <!--#endregion-->
                     <!--#region CPF/CNPJ - Telefone-->
                     <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}" Width="50" x:Name="CPF_CNPJ_Label"></Label>
-                        <TextBox x:Name="CPFCNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Width="125"></TextBox>
-                        <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
-                        <TextBox x:Name="TelefoneTextBox" Style="{StaticResource MainTextBoxStyle}" Width="100"></TextBox>
+                        <ucm:CPFFieldUC x:Name="CPFUC" Visibility="Collapsed"></ucm:CPFFieldUC>
+                        <ucm:CNPJFieldUC x:Name="CNPJUC" Visibility="Collapsed"></ucm:CNPJFieldUC>
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region Nome-->
                     <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Nome</Label>
-                        <TextBox x:Name="NomeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="275"></TextBox>
+                        <ucc:NomeFieldUC x:Name="NomeUC"></ucc:NomeFieldUC>
                     </StackPanel>
                     <!--#endregion-->
+                    <!--#region Telefone-->
+                    <ucm:TelefoneFieldUC Grid.Row="3" x:Name="TelefoneUC"></ucm:TelefoneFieldUC>
+                    <!--#endregion-->
                     <!--#region Email-->
-                    <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">E-Mail</Label>
-                        <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="275" ></TextBox>
-                    </StackPanel>
+                    <ucc:EmailFieldUC x:Name="EmailUC" Grid.Row="4"></ucc:EmailFieldUC>
                     <!--#endregion-->
                 </Grid>
             </GroupBox>
@@ -86,36 +69,7 @@
             <GroupBox Grid.Row="2">
                 <GroupBox.Header>Dados para Localização</GroupBox.Header>
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <!--#region Rua / Nº-->
-                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Endereço</Label>
-                        <TextBox x:Name="RuaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170"></TextBox>
-                        <Label Style="{StaticResource MainLabelStyle}" Width="45">Nº</Label>
-                        <TextBox x:Name="NumeroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="60"></TextBox>
-                    </StackPanel>
-                    <!--#endregion-->
-                    <!--#region Bairro/ CEP-->
-                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}" Width="45">CEP</Label>
-                        <TextBox x:Name="CEPTextBox" Style="{StaticResource MainTextBoxStyle}" Width="75"></TextBox>
-                        <Label Style="{StaticResource MainLabelStyle}">Bairro</Label>
-                        <TextBox x:Name="BairroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="155"></TextBox>
-                    </StackPanel>
-                    <!--#endregion-->
-                    <!--#region Cidade/ UF-->
-                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Cidade</Label>
-                        <TextBox x:Name="CidadeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="180"></TextBox>
-                        <Label Style="{StaticResource MainLabelStyle}" Width="45">UF</Label>
-                        <ComboBox x:Name="UfComboBox" Width="50">
-                        </ComboBox>
-                    </StackPanel>
-                    <!--#endregion-->
+                    <uc:EnderecoUserControl x:Name="EnderecoUC"></uc:EnderecoUserControl>
                 </Grid>
             </GroupBox>
             <!--#endregion-->

@@ -54,7 +54,7 @@ namespace AppDesk.UserControls.Campos.Endereço
 
         async void Validar()
         {
-            validado = await ValidadorEndereco.ValidarNumero(NumeroTextBox.Text);
+            validado = await Validador.ValidarNumeroAsync(NumeroTextBox.Text);
             if(validado)
             {
                 _text = NumeroTextBox.Text;

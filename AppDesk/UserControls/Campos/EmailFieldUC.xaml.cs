@@ -43,6 +43,11 @@ namespace AppDesk.UserControls.Campos
                     throw new FieldException("Email");
                 }
             }
+            set
+            {
+                EmailTextBox.Text = value;
+                validado = true;
+            }
         }
 
         public bool validado = false;
@@ -54,7 +59,7 @@ namespace AppDesk.UserControls.Campos
 
         async void Validar()
         {
-            validado = await ValidadorDeEmail.ValidarEmail(EmailTextBox.Text);
+            validado = await Validador.ValidarEmailAsync(EmailTextBox.Text);
             if (validado)
             {
                 _text = EmailTextBox.Text;
@@ -69,10 +74,7 @@ namespace AppDesk.UserControls.Campos
 
         private void EmailTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EmailTextBox.Text))
-            {
-                Validar();
-            }
+            Validar();
         }
     }
 }

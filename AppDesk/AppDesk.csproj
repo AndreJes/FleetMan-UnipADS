@@ -92,6 +92,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Exceptions\FieldException.cs" />
+    <Compile Include="Interfaces\IFillTextBoxes.cs" />
     <Compile Include="Serviço\DesktopLoginControlService.cs" />
     <Compile Include="Serviço\ServicoDados.cs" />
     <Compile Include="Tools\HexaColorPicker.cs" />
@@ -114,6 +115,21 @@
     </Compile>
     <Compile Include="UserControls\Campos\Endereço\RuaFieldUC.xaml.cs">
       <DependentUpon>RuaFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\Masked\CNPJFieldUC.xaml.cs">
+      <DependentUpon>CNPJFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\Masked\CPFFieldUC.xaml.cs">
+      <DependentUpon>CPFFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\Masked\RenavamFieldUC.xaml.cs">
+      <DependentUpon>RenavamFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\Masked\TelefoneFieldUC.xaml.cs">
+      <DependentUpon>TelefoneFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\NomeFieldUC.xaml.cs">
+      <DependentUpon>NomeFieldUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Campos\PasswordFieldUC.xaml.cs">
       <DependentUpon>PasswordFieldUC.xaml</DependentUpon>
@@ -144,9 +160,6 @@
     </Compile>
     <Compile Include="Windows\Cliente\FormAlterarClientes.xaml.cs">
       <DependentUpon>FormAlterarClientes.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Cliente\FormDetalhesCliente.xaml.cs">
-      <DependentUpon>FormDetalhesCliente.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Cliente\FormRegistroCliente.xaml.cs">
       <DependentUpon>FormRegistroCliente.xaml</DependentUpon>
@@ -304,6 +317,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\Campos\Masked\CNPJFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\Masked\CPFFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\Masked\RenavamFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\Masked\TelefoneFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\NomeFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Campos\PasswordFieldUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -341,10 +374,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Cliente\FormAlterarClientes.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Cliente\FormDetalhesCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

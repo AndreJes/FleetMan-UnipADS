@@ -63,7 +63,7 @@ namespace AppDesk.UserControls.Campos.Endereço
 
         async void Validar()
         {
-            validado = await ValidadorEndereco.ValidarTexto(RuaTextBox.Text);
+            validado = await Validador.ValidarTextoAsync(RuaTextBox.Text);
             if(validado)
             {
                 _text = RuaTextBox.Text;

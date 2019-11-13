@@ -138,16 +138,16 @@ namespace AppDesk.Windows.Locacoes
         private void DetalhesClienteBtn_Click(object sender, RoutedEventArgs e)
         {
             Cliente cliente = ClientesDataGrid.SelectedItem as Cliente;
-            FormDetalhesCliente formDetalhesCliente = null;
+            FormAlterarClientes formDetalhesCliente = null;
             if (cliente is ClientePF)
             {
-                formDetalhesCliente = new FormDetalhesCliente(
+                formDetalhesCliente = new FormAlterarClientes(
                     ServicoDados.ServicoDadosClientes.ObterClientePFPorId(cliente.ClienteId)
                     );
             }
             else if (cliente is ClientePJ)
             {
-                formDetalhesCliente = new FormDetalhesCliente(
+                formDetalhesCliente = new FormAlterarClientes(
                     ServicoDados.ServicoDadosClientes.ObterClientePJPorId(cliente.ClienteId)
                     );
             }
