@@ -1,0 +1,41 @@
+ private bool validado = false;
+
+        private string _text;
+
+        public string Text
+        {
+            get
+            {
+                if (validado)
+                {
+                    return _text;
+                }
+                else
+                {
+                    throw new FieldException("Marca");
+                }
+
+            }
+            set
+            {
+                MarcaTextBox.Text = value;
+                validado = true;
+            }
+        }
+
+
+=============================
+
+async void Validar()
+        {
+            validado = await Validador.ValidarTextoAsync(MarcaTextBox.Text);
+            if(validado)
+            {
+                _text = MarcaTextBox.Text;
+                MarcaTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
+            }
+            else
+            {
+                MarcaTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
+            }
+        }

@@ -41,7 +41,7 @@ namespace Validacao
                     {
                         if (char.IsLetter(c))
                         {
-                            if(numero.Length == 1)
+                            if (numero.Length == 1)
                             {
                                 return false;
                             }
@@ -57,12 +57,12 @@ namespace Validacao
 
             return resultado;
         }
-  
+
         public static async Task<bool> ValidarCEP(string cep)
         {
             bool resultado = await Task.Run(() =>
             {
-                foreach(char c in cep.ToCharArray())
+                foreach (char c in cep.ToCharArray())
                 {
                     if (!char.IsDigit(c))
                     {
@@ -154,5 +154,33 @@ namespace Validacao
             return resultado;
         }
 
+        public static async Task<bool> ValidarPlacaVeiculoAsync(string placa)
+        {
+            try
+            {
+                return await Task.Run(() =>
+                {
+                    foreach (char c in placa.Substring(0, 3))
+                    {
+                        if (!char.IsDigit(c))
+                        {
+                            return false;
+                        }
+                    }
+                    foreach (char c in placa.Substring(3, placa.IndexOf(placa.Last())))
+                    {
+                        if (!char.IsDigit(c))
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                });
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

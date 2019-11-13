@@ -4,213 +4,184 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Veiculos"
+        xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
+        xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Registrar Veiculo" Height="450" Width="600" MinHeight="450" MinWidth="600" MaxHeight="450" MaxWidth="600">
+        Title="Registrar Veiculo" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid>
-            <!--#region Columns/Rows-->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
-                <RowDefinition Height="40*"/>
-                <RowDefinition Height="40*"/>
+                <RowDefinition Height="80*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            <!--#endregion-->
+
             <!--#region Content-->
             <!--#region Header-->
             <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.ColumnSpan="2">REGISTRAR NOVO VEÍCULO</Label>
             <!--#endregion-->
             <!--#region Body-->
-            <GroupBox Grid.Row="1" Grid.RowSpan="2" Header="Dados do Veículo">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <!--#region Placa-->
-                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="0" Grid.ColumnSpan="2">
-                        <Label Style="{StaticResource MainLabelStyle}">
-                            PLACA
-                        </Label>
-                        <TextBox x:Name="PlacaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170"></TextBox>
-                    </StackPanel>
-                    <!--#endregion-->
-
-                    <!--#region Codigo Renavam-->
-                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1" Grid.ColumnSpan="2">
-                        <Label Style="{StaticResource MainLabelStyle}">
-                            RENAVAM
-                        </Label>
-                        <TextBox x:Name="RenavamTextBox" Style="{StaticResource MainTextBoxStyle}" Width="150" Grid.Row="2"></TextBox>
-                    </StackPanel>
-                    <!--#endregion-->
-
-                    <!--#region Marca-->
-                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="2" Grid.ColumnSpan="2">
-                        <Label Style="{StaticResource MainLabelStyle}">
-                            MARCA
-                        </Label>
-                        <TextBox x:Name="MarcaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="165" ></TextBox>
-                    </StackPanel>
-                    <!--#endregion-->
-
-                    <!--#region Modelo-->
-                    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="3" Grid.ColumnSpan="2">
-                        <Label Style="{StaticResource MainLabelStyle}">
-                            MODELO
-                        </Label>
-                        <TextBox x:Name="ModeloTextbox" Style="{StaticResource MainTextBoxStyle}" Width="160" ></TextBox>
-                    </StackPanel>
-                    <!--#endregion -->
-
-                    <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource MainStackPanelStyle}">
-                        <!--#region Ano-->
-                        <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="4" Grid.ColumnSpan="2">
-                            <Label Style="{StaticResource MainLabelStyle}">
-                                ANO
-                            </Label>
-                            <TextBox x:Name="AnoTextBox" Style="{StaticResource MainTextBoxStyle}" Width="60" ></TextBox>
-                        </StackPanel>
-                        <!--#endregion-->
-
-                        <!--#region Cor-->
-                        <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="4" Grid.ColumnSpan="2">
-                            <Label Style="{StaticResource MainLabelStyle}">
-                                COR
-                            </Label>
-                            <TextBox x:Name="CorTextBox" Style="{StaticResource MainTextBoxStyle}" Width="90"></TextBox>
-                        </StackPanel>
-                        <!--#endregion-->
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">TIPO DE VEICULO</Label>
-                        <ComboBox x:Name="TipoDeVeiculoComboBox" Width="115"/>
-                    </StackPanel>
-
-                    <!--#region Locação/Adaptado-->
-                    <GroupBox Header="Opcional" Grid.Row="6" Grid.ColumnSpan="2">
-                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                            <CheckBox x:Name="ParaLocacaoCheckBox" Content="Para Locação" Checked="ClienteGroupBoxToggleDisable" Unchecked="ClienteGroupBoxToggleEnable"/>
-                            <CheckBox x:Name="AdaptadoCheckBox" Content="Adaptado" Margin="10 0"/>
-                        </StackPanel>
-                    </GroupBox>
-                    <!--#endregion-->
-                </Grid>
-            </GroupBox>
-            <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                </Grid.RowDefinitions>
-                <GroupBox Grid.Row="0" Header="Garagem destino">
+            <TabControl Grid.Row="1">
+                <TabItem Header="Dados do Veículo">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="30*"/>
-                            <RowDefinition Height="30*"/>
-                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
+
                         <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}">UF</Label>
-                            <ComboBox x:Name="UFGaragemComboBox" Width="50" SelectionChanged="UFGaragemComboBox_SelectionChanged"/>
+                            <!--#region Placa-->
+                            <ucm:PlacaFieldUC x:Name="PlacaUC"></ucm:PlacaFieldUC>
+                            <!--#endregion-->
+
+                            <!--#region Codigo Renavam-->
+                            <ucm:RenavamFieldUC x:Name="RenavamUC"></ucm:RenavamFieldUC>
+                            <!--#endregion-->
                         </StackPanel>
 
-                        <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1">
-                            <Label Style="{StaticResource MainLabelStyle}">Garagem</Label>
-                            <ComboBox x:Name="GaragemComboBox" Width="200" SelectionChanged="GaragemComboBox_SelectionChanged">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                            <Label Content="CNPJ:"/>
-                                            <TextBlock VerticalAlignment="Center" Text="{Binding CNPJTxt}"/>
-                                            <Label Content="Cidade:"/>
-                                            <TextBlock VerticalAlignment="Center" Text="{Binding Endereco.Cidade}"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
+                        <!--#region Marca-->
+                        <ucc:MarcaFieldUC Grid.Row="1" x:Name="MarcaUC"></ucc:MarcaFieldUC>
+                        <!--#endregion-->
+
+                        <!--#region Modelo-->
+                        <ucc:ModeloFieldUC Grid.Row="2" x:Name="ModeloUC"></ucc:ModeloFieldUC>
+                        <!--#endregion -->
+
+                        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource MainStackPanelStyle}">
+                            <!--#region Ano-->
+                            <ucc:AnoFieldUC x:Name="AnoUC"></ucc:AnoFieldUC>
+                            <!--#endregion-->
+
+                            <!--#region Cor-->
+                            <ucc:CorFieldUC x:Name="CorUC"></ucc:CorFieldUC>
+                            <!--#endregion-->
                         </StackPanel>
 
-                        <GroupBox Grid.Row="2" Header="Endereço completo">
-                            <TextBox x:Name="GaragemEnderecoTextBox" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
+                        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource MainStackPanelStyle}">
+                            <Label Style="{StaticResource MainLabelRoundStyle}">TIPO DE VEICULO</Label>
+                            <ComboBox x:Name="TipoDeVeiculoComboBox" Style="{StaticResource MainComboBoxStyle}" Width="115"/>
+                        </StackPanel>
+
+                        <!--#region Locação/Adaptado-->
+                        <GroupBox Header="Opcional" Grid.Row="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" x:Name="ParaLocacaoCheckBox" Content="Para Locação" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="ClienteGroupBoxToggleDisable" Unchecked="ClienteGroupBoxToggleEnable"/>
+                                <CheckBox Grid.Column="1" x:Name="AdaptadoCheckBox" Content="Adaptado" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Grid>
                         </GroupBox>
+                        <!--#endregion-->
                     </Grid>
-                </GroupBox>
-
-                <GroupBox Grid.Row="1" Header="Seguradora">
-                    <Grid>
+                </TabItem>
+                <TabItem Header="Garagem/Seguradora">
+                    <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="50*"/>
                         </Grid.RowDefinitions>
-                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                            <ComboBox x:Name="SeguradorasComboBox" Width="230" SelectionChanged="AlterarTextBoxCoberturaSeguro">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Nome}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                        </StackPanel>
-
-                        <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1" Grid.Column="0">
-                            <Label Style="{StaticResource MainLabelStyle}">Cobertura</Label>
-                            <TextBox x:Name="CoberturaTextBox" Style="{StaticResource MainTextBoxStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" Width="80"></TextBox>
-                        </StackPanel>
-                    </Grid>
-                </GroupBox>
-
-                <GroupBox Grid.Row="2" Header="Cliente" x:Name="ClienteGroupBox">
-                    <Grid>
-                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal">
-                                    <RadioButton x:Name="PfRadioBtn" GroupName="PFPJ" Content="Pessoa Física" Checked="PopularComboBoxComPF"/>
-                                    <RadioButton x:Name="PjRadioBtn" Margin="40 0 0 0" GroupName="PFPJ" Content="Pessoa Juridica" Checked="PopularComboBoxComPJ"/>
+                        <GroupBox Grid.Row="0" Header="Garagem destino">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                                    <Label Style="{StaticResource MainLabelStyle}">UF</Label>
+                                    <ComboBox x:Name="UFGaragemComboBox" Width="50" SelectionChanged="UFGaragemComboBox_SelectionChanged"/>
                                 </StackPanel>
-                                <ComboBox x:Name="ClienteComboBox" Width="250">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                <Label Content="Nome:" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                                                <TextBlock Text="{Binding Nome}" VerticalAlignment="Center"/>
 
-                                                <Label Content="CPF/CNPJ:" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
-                                                <TextBlock Text="{Binding CPFTxt}" VerticalAlignment="Center"/>
-                                                <TextBlock Text="{Binding CNPJTxt}" VerticalAlignment="Center"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                            </StackPanel>
+                                <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1">
+                                    <Label Style="{StaticResource MainLabelStyle}">Garagem</Label>
+                                    <ComboBox x:Name="GaragemComboBox" Width="200" SelectionChanged="GaragemComboBox_SelectionChanged">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                    <Label Content="CNPJ:"/>
+                                                    <TextBlock VerticalAlignment="Center" Text="{Binding CNPJTxt}"/>
+                                                    <Label Content="Cidade:"/>
+                                                    <TextBlock VerticalAlignment="Center" Text="{Binding Endereco.Cidade}"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </StackPanel>
 
-                        </StackPanel>
+                                <GroupBox Grid.Row="2" Header="Endereço completo">
+                                    <TextBox x:Name="GaragemEnderecoTextBox" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}">
+                                        <TextBox.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="15"/>
+                                            </Style>
+                                        </TextBox.Resources>
+                                    </TextBox>
+                                </GroupBox>
+                            </Grid>
+                        </GroupBox>
+
+                        <GroupBox Grid.Row="1" Header="Seguradora">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                                    <ComboBox x:Name="SeguradorasComboBox" Width="200" Style="{StaticResource MainComboBoxStyle}" SelectionChanged="AlterarTextBoxCoberturaSeguro">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Nome}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </StackPanel>
+
+                                <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1" Grid.Column="0">
+                                    <Label Style="{StaticResource MainLabelRoundStyle}">Cobertura</Label>
+                                    <TextBox x:Name="CoberturaTextBox" Style="{StaticResource MainTextBoxStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" Width="150">
+                                        <TextBox.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                            </Style>
+                                        </TextBox.Resources>
+                                    </TextBox>
+
+                                </StackPanel>
+                            </Grid>
+                        </GroupBox>
+
                     </Grid>
-                </GroupBox>
-            </Grid>
-            <!--#endregion-->
-            <!--#region Botões-->
-            <Button x:Name="RegistrarBtn" Click="RegistrarBtn_Click" Grid.Row="3" Background="#FF6EE66E" Margin="40 5" >
-                REGISTRAR
-            </Button>
+                </TabItem>
 
-            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Grid.Row="3" Grid.Column="1" Background="#FFE66E6E" Margin="40 5">
-                CANCELAR
-            </Button>
+                <TabItem Header="Cliente">
+                    <GroupBox Grid.Row="2" Header="Cliente" x:Name="ClienteGroupBox">
+
+                    </GroupBox>
+                </TabItem>
+
+                <!--#endregion-->
+            </TabControl>
+            <!--#region Botões-->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="RegistrarBtn" Click="RegistrarBtn_Click" Grid.Row="3" Background="#FF6EE66E" Margin="40 5" >
+                    REGISTRAR
+                </Button>
+
+                <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Grid.Row="3" Grid.Column="1" Background="#FFE66E6E" Margin="40 5">
+                    CANCELAR
+                </Button>
+            </Grid>
             <!--#endregion-->
         </Grid>
     </Grid>

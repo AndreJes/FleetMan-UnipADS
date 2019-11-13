@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppDesk.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Validacao;
 
-namespace AppDesk.UserControls.Campos.Masked
+namespace AppDesk.UserControls.Campos
 {
     /// <summary>
-    /// Interação lógica para RenavamFieldUC.xam
+    /// Interação lógica para ModeloFieldUC.xam
     /// </summary>
-    public partial class RenavamFieldUC : UserControl
+    public partial class ModeloFieldUC : UserControl
     {
-        private string _text;
         private bool validado = false;
+
+        private string _text;
 
         public string Text
         {
@@ -33,37 +36,34 @@ namespace AppDesk.UserControls.Campos.Masked
                 }
                 else
                 {
-                    throw new FieldException("Renavam");
+                    throw new FieldException("Marca");
                 }
+
             }
             set
             {
-                RenavamTextBox.Text = value;
+                ModeloTextbox.Text = value;
                 validado = true;
             }
         }
 
-
-        public RenavamFieldUC()
+        public ModeloFieldUC()
         {
             InitializeComponent();
         }
 
         async void Validar()
         {
-            validado = await Task.Run(() =>
+            validado = await Validador.ValidarTextoAsync(ModeloTextbox.Text);
+            if (validado)
             {
-                if (RenavamTextBox.Text.Length < 11)
-                {
-                    return false;
-                }
-                return true;
-            });
-        }
-
-        private void RenavamTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Validar();
+                _text = ModeloTextbox.Text;
+                ModeloTextbox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
+            }
+            else
+            {
+                ModeloTextbox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
+            }
         }
     }
 }

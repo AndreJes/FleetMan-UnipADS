@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppDesk.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,57 +14,69 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppDesk.UserControls.Campos.Masked
+namespace AppDesk.UserControls.Campos
 {
     /// <summary>
-    /// Interação lógica para RenavamFieldUC.xam
+    /// Interação lógica para AnoFieldUC.xam
     /// </summary>
-    public partial class RenavamFieldUC : UserControl
+    public partial class AnoFieldUC : UserControl
     {
-        private string _text;
         private bool validado = false;
+        private int _value;
 
-        public string Text
+        public int Value
         {
             get
             {
                 if (validado)
                 {
-                    return _text;
+                    return _value;
                 }
                 else
                 {
-                    throw new FieldException("Renavam");
+                    throw new FieldException("Ano");
                 }
+
             }
             set
             {
-                RenavamTextBox.Text = value;
+                AnoNumberUD.Value = value;
                 validado = true;
             }
         }
-
-
-        public RenavamFieldUC()
+        public AnoFieldUC()
         {
             InitializeComponent();
+        }
+
+        private void AnoNumberUD_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            Validar();
         }
 
         async void Validar()
         {
             validado = await Task.Run(() =>
             {
-                if (RenavamTextBox.Text.Length < 11)
+                if(AnoNumberUD.Value != null)
+                {
+                    return true;
+                }
+                else
                 {
                     return false;
                 }
-                return true;
             });
-        }
 
-        private void RenavamTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Validar();
+            if(validado)
+            {
+                _value = (int)AnoNumberUD.Value;
+                AnoNumberUD.BorderBrush = HexaColorPicker.TextBoxValidoColor;
+            }
+            else
+            {
+                AnoNumberUD.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
+            }
         }
     }
 }

@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="AppDesk.UserControls.Campos.AnoFieldUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppDesk.UserControls.Campos"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d">
+    <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="4" Grid.ColumnSpan="2">
+        <Label Style="{StaticResource MainLabelRoundStyle}">
+            ANO
+        </Label>
+        <xctk:IntegerUpDown x:Name="AnoNumberUD" ValueChanged="AnoNumberUD_ValueChanged" Width="70" Value="2000" Minimum="1900" Increment="1">
+        </xctk:IntegerUpDown>
+    </StackPanel>
+</UserControl>

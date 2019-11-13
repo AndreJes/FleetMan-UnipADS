@@ -98,6 +98,12 @@
     <Compile Include="Tools\HexaColorPicker.cs" />
     <Compile Include="Tools\MainWindowUpdater.cs" />
     <Compile Include="Tools\StandardMessageBoxes.cs" />
+    <Compile Include="UserControls\Campos\AnoFieldUC.xaml.cs">
+      <DependentUpon>AnoFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\CorFieldUC.xaml.cs">
+      <DependentUpon>CorFieldUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Campos\EmailFieldUC.xaml.cs">
       <DependentUpon>EmailFieldUC.xaml</DependentUpon>
     </Compile>
@@ -116,6 +122,9 @@
     <Compile Include="UserControls\Campos\Endereço\RuaFieldUC.xaml.cs">
       <DependentUpon>RuaFieldUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Campos\MarcaFieldUC.xaml.cs">
+      <DependentUpon>MarcaFieldUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Campos\Masked\CNPJFieldUC.xaml.cs">
       <DependentUpon>CNPJFieldUC.xaml</DependentUpon>
     </Compile>
@@ -128,11 +137,17 @@
     <Compile Include="UserControls\Campos\Masked\TelefoneFieldUC.xaml.cs">
       <DependentUpon>TelefoneFieldUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Campos\ModeloFieldUC.xaml.cs">
+      <DependentUpon>ModeloFieldUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Campos\NomeFieldUC.xaml.cs">
       <DependentUpon>NomeFieldUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Campos\PasswordFieldUC.xaml.cs">
       <DependentUpon>PasswordFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\Masked\PlacaFieldUC.xaml.cs">
+      <DependentUpon>PlacaFieldUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\EnderecoUserControl.xaml.cs">
       <DependentUpon>EnderecoUserControl.xaml</DependentUpon>
@@ -293,6 +308,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\Campos\AnoFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\CorFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Campos\EmailFieldUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -317,6 +340,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\Campos\MarcaFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Campos\Masked\CNPJFieldUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -333,11 +360,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\Campos\ModeloFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Campos\NomeFieldUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Campos\PasswordFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\Masked\PlacaFieldUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

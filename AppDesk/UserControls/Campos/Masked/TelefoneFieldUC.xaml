@@ -9,7 +9,7 @@
              mc:Ignorable="d">
     <StackPanel Style="{StaticResource MainStackPanelStyle}">
         <Label Style="{StaticResource MainLabelRoundStyle}">Telefone</Label>
-        <xctk:MaskedTextBox x:Name="TelefoneTextBox" Style="{StaticResource MainTextBoxStyle}" Width="100" Mask="(00)00000-0000" ValueDataType="{x:Type s:String}" TextChanged="TelefoneTextBox_TextChanged">
+        <xctk:MaskedTextBox x:Name="TelefoneTextBox" Style="{StaticResource MainTextBoxStyle}" Width="100" Mask="(00)90000-0000" ValueDataType="{x:Type s:String}" TextChanged="TelefoneTextBox_TextChanged">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="0 5 5 0" />

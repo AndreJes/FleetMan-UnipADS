@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppDesk.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Validacao;
 
 namespace AppDesk.UserControls.Campos.Masked
 {
     /// <summary>
-    /// Interação lógica para RenavamFieldUC.xam
+    /// Interação lógica para PlacaFieldUC.xam
     /// </summary>
-    public partial class RenavamFieldUC : UserControl
+    public partial class PlacaFieldUC : UserControl
     {
         private string _text;
         private bool validado = false;
+
 
         public string Text
         {
@@ -33,35 +36,35 @@ namespace AppDesk.UserControls.Campos.Masked
                 }
                 else
                 {
-                    throw new FieldException("Renavam");
+                    throw new FieldException("Placa");
                 }
             }
             set
             {
-                RenavamTextBox.Text = value;
+                PlacaTextBox.Text = value;
                 validado = true;
             }
         }
-
-
-        public RenavamFieldUC()
+        public PlacaFieldUC()
         {
             InitializeComponent();
         }
 
         async void Validar()
         {
-            validado = await Task.Run(() =>
+            validado = await Validador.ValidarPlacaVeiculoAsync(PlacaTextBox.Text.Replace("-", ""));
+            if (validado)
             {
-                if (RenavamTextBox.Text.Length < 11)
-                {
-                    return false;
-                }
-                return true;
-            });
+                _text = PlacaTextBox.Text;
+                PlacaTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
+            }
+            else
+            {
+                PlacaTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
+            }
         }
 
-        private void RenavamTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void PlacaTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             Validar();
         }
