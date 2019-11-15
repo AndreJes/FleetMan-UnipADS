@@ -14,7 +14,7 @@ namespace Servicos.Desk
 
         public IEnumerable<Seguro> ObterSegurosOrdPorId()
         {
-            return Context.ObterSegurosOrdPorId();
+            return Context.ObterSegurosOrdPorId().ToList();
         }
 
         public void GravarSeguro(Seguro seguro)

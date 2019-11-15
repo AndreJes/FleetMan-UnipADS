@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AppDesk.Interfaces
 {
-    public partial interface IFillTextBoxes
+    public interface IFillTextBoxes
     {
-        partial void PreencherTextBoxes();
+        void PreencherTextBoxes();
     }
 }

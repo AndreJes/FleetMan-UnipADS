@@ -1,11 +1,11 @@
-﻿<Window x:Class="AppDesk.Windows.Seguro.FormDetalhesSeguro"
+﻿<Window x:Class="AppDesk.Windows.Seguros.FormAlterarSeguro"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AppDesk.Windows.Seguro"
+        xmlns:local="clr-namespace:AppDesk.Windows.Seguros"
         mc:Ignorable="d"
-        Title="FormDetalhesSeguro" Height="560" Width="350" MaxHeight="560" MaxWidth="350" MinHeight="560" MinWidth="350">
+        Title="Alterar Seguradora" Height="500" Width="350" MaxHeight="500" MaxWidth="350" MinHeight="500" MinWidth="350">
     <Grid>
         <Grid x:Name="FormContentGrid">
             <!--#region Columns/ Rows-->
@@ -14,11 +14,10 @@
                 <RowDefinition Height="30*"/>
                 <RowDefinition Height="40*"/>
                 <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <!--#endregion-->
             <!--#region Header-->
-            <Label FontFamily="Arial" Style="{StaticResource MainLabelStyle}" Width="auto" FontSize="20">DETALHES SEGURADORA</Label>
+            <Label FontFamily="Arial" Style="{StaticResource MainLabelStyle}" Width="auto" FontSize="20">ALTERAR SEGURADORA</Label>
             <!--#endregion-->
             <!--#region Fields-->
             <!--#region Informações Principais-->
@@ -33,21 +32,21 @@
                     <!--#region CNPJ/ Telefone-->
                     <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
                         <Label Style="{StaticResource MainLabelStyle}" Width="50" x:Name="CNPJLabel">CNPJ</Label>
-                        <TextBox x:Name="CNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120" IsEnabled="False"></TextBox>
+                        <TextBox x:Name="CNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120"></TextBox>
                         <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
-                        <TextBox x:Name="TelefoneTextBox" Style="{StaticResource MainTextBoxStyle}" Width="90"  IsEnabled="False"></TextBox>
+                        <TextBox x:Name="TelefoneTextBox" Style="{StaticResource MainTextBoxStyle}" Width="90"></TextBox>
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region Razão Social-->
                     <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
                         <Label Style="{StaticResource MainLabelStyle}" Width="90">Razão Social</Label>
-                        <TextBox x:Name="NomeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="225" IsEnabled="False"></TextBox>
+                        <TextBox x:Name="NomeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="225"></TextBox>
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region Email-->
                     <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
                         <Label Style="{StaticResource MainLabelStyle}">E-Mail</Label>
-                        <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="265" IsEnabled="False" ></TextBox>
+                        <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="265" ></TextBox>
                     </StackPanel>
                     <!--#endregion-->
                 </Grid>
@@ -72,49 +71,39 @@
                     <!--#region Vencimento do Contrato-->
                     <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
                         <Label Style="{StaticResource MainLabelStyle}">Vencimento do contrato</Label>
-                        <DatePicker HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="VencimentoContratoDatePic" IsEnabled="False"></DatePicker>
+                        <DatePicker HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="VencimentoContratoDatePic"></DatePicker>
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region Valor da Parcela -->
                     <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
                         <Label Style="{StaticResource MainLabelStyle}">Valor/Parcela</Label>
-                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="70" x:Name="ValorParcelaTextBox" IsEnabled="False"></TextBox>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="70" x:Name="ValorParcelaTextBox"></TextBox>
                         <Label Style="{StaticResource MainLabelStyle}">Cobertura</Label>
-                        <TextBox x:Name="TipoCoberturaComboBox" Style="{StaticResource MainTextBoxStyle}" Width="70" IsEnabled="False"/>
+                        <ComboBox x:Name="TipoCoberturaComboBox" Width="70">
+                        </ComboBox>
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region Vencimento da prox. parcela-->
                     <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
                         <Label Style="{StaticResource MainLabelStyle}">Vencimento da prox. Parcela</Label>
-                        <DatePicker HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="VencimentoProxParcelaDatePic" IsEnabled="False"></DatePicker>
+                        <DatePicker HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="VencimentoProxParcelaDatePic"></DatePicker>
                     </StackPanel>
                     <!--#endregion-->
                 </Grid>
             </GroupBox>
             <!--#endregion-->
             <!--#endregion-->
-            <!--#region Quantidade de veiculos-->
+            <!--#region Botões confirmar-->
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-
-                <Label Grid.Column="0">QTD VEICULOS (IMAGEM)</Label>
-                <Label Grid.Column="1" x:Name="QuantidadeVeiculosLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
-            </Grid>
-            <!--#endregion-->
-            <!--#region Botões confirmar-->
-            <Grid Grid.Row="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
                 <Button x:Name="AlterarBtn" Click="AlterarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
-                    ALTERAR
+                    SALVAR ALTERAÇÕES
                 </Button>
-                <Button x:Name="RemoveBtn" Click="RemoveBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
-                    REMOVER
+                <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                    CANCELAR
                 </Button>
             </Grid>
             <!--#endregion-->

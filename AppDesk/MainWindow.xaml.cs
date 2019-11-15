@@ -18,7 +18,7 @@ using Modelo.Classes.Clientes;
 using Modelo.Classes.Web;
 using Modelo.Enums;
 using AppDesk.Windows.Clientes;
-using AppDesk.Windows.Seguro;
+using AppDesk.Windows.Seguros;
 using AppDesk.Windows.Garagem;
 using Modelo.Classes.Desk;
 using AppDesk.Windows.Veiculos;

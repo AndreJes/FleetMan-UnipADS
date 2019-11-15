@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AppDesk.Windows.Seguro
+namespace AppDesk.Windows.Seguros
 {
     /// <summary>
     /// Lógica interna para SegurosList.xaml

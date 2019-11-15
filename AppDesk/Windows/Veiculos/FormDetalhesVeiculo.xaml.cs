@@ -1,6 +1,11 @@
-﻿using AppDesk.Serviço;
+﻿using AppDesk.Interfaces;
+using AppDesk.Serviço;
+using AppDesk.Tools;
+using Modelo.Classes.Auxiliares;
 using Modelo.Classes.Clientes;
+using Modelo.Classes.Desk;
 using Modelo.Classes.Web;
+using Modelo.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +25,10 @@ namespace AppDesk.Windows.Veiculos
     /// <summary>
     /// Lógica interna para FormDetalhesVeiculo.xaml
     /// </summary>
-    public partial class FormDetalhesVeiculo : Window
+    public partial class FormDetalhesVeiculo : Window, IFillTextBoxes
     {
-        private Veiculo _veiculo = null;
+        private Veiculo _veiculo = new Veiculo();
+
         private FormDetalhesVeiculo()
         {
             InitializeComponent();
@@ -35,12 +41,15 @@ namespace AppDesk.Windows.Veiculos
             MultasDataGrid.ItemsSource = _veiculo.Multas.ToList();
             SinistrosDataGrid.ItemsSource = _veiculo.Sinistros.ToList();
             TanqueProgressBar.Value = (double)_veiculo.EstadoDoTanque;
+            SeguradorasComboBox.ItemsSource = ServicoDados.ServicoDadosSeguro.ObterSegurosOrdPorId().ToList();
+            TipoDeVeiculoTextBox.Text = _veiculo.Tipo.ToString("G");
             PreencherDadosCliente();
+            PreencherTextBoxes();
         }
 
         private void PreencherDadosCliente()
         {
-            if(_veiculo.Cliente is ClientePF)
+            if (_veiculo.Cliente is ClientePF)
             {
                 CPFCNPJClienteTextBox.Text = (_veiculo.Cliente as ClientePF).CPFTxt;
             }
@@ -48,29 +57,72 @@ namespace AppDesk.Windows.Veiculos
             {
                 CPFCNPJClienteTextBox.Text = (_veiculo.Cliente as ClientePJ).CNPJTxt;
             }
-            else if (_veiculo.Cliente == null)
+        }
+
+        private void AlterarDados()
+        {
+            try
+            { 
+            _veiculo.Placa = PlacaUC.Text;
+            _veiculo.CodRenavam = RenavamUC.Text;
+            _veiculo.Marca = MarcaUC.Text;
+            _veiculo.Modelo = ModeloUC.Text;
+            _veiculo.Ano = AnoUC.Value;
+            _veiculo.Cor = CorUC.Text;
+            _veiculo.Adaptado = ConversorBoolNullable.ConversorBooleano(AdaptadoCheckBox.IsChecked);
+            if(GaragemUC.Garagem != null)
             {
-                ClienteGroupBox.Visibility = Visibility.Collapsed;
+                _veiculo.GaragemId = GaragemUC.Garagem.GaragemId;
+            }
+            if(SeguradorasComboBox.SelectedItem != null)
+            {
+                _veiculo.SeguroId = (SeguradorasComboBox.SelectedItem as Seguro).SeguroId;
+            }
+            }
+            catch(FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
         private void AlterarBtn_Click(object sender, RoutedEventArgs e)
         {
-            FormAlterarVeiculo formAlterarVeiculo = new FormAlterarVeiculo(_veiculo);
-            formAlterarVeiculo.Show();
-            this.Close();
+            if (StandardMessageBoxes.ConfirmarAlteracaoMessageBox("veículo") == MessageBoxResult.Yes)
+            {
+                AlterarDados();
+                StandardMessageBoxes.MensagemSucesso("Veículo alterado com sucesso!", "Alteração");
+                MainWindowUpdater.UpdateDataGrids();
+            }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Confirmar remoção de veículo?", "Confirmar Remoção", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(result == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("veiculo") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosVeiculos.RemoverVeiculoPorId(_veiculo.VeiculoId);
-                MessageBox.Show("Veiculo removido com sucesso!");
-                Application.Current.Windows.OfType<MainWindow>().First().PopulateDataGrid();
+                StandardMessageBoxes.MensagemSucesso("Veiculo removido com sucesso!", "Remoção");
+                MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
+        }
+
+        private void SeguradorasComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CoberturaTextBox.Text = (SeguradorasComboBox.SelectedItem as Modelo.Classes.Desk.Seguro).TipoCobertura.ToString("G");
+        }
+
+        public void PreencherTextBoxes()
+        {
+            PlacaUC.Text = _veiculo.Placa;
+            RenavamUC.Text = _veiculo.CodRenavam;
+            MarcaUC.Text = _veiculo.Marca;
+            ModeloUC.Text = _veiculo.Modelo;
+            AnoUC.Value = _veiculo.Ano;
+            CorUC.Text = _veiculo.Cor;
         }
     }
 }

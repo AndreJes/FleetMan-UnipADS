@@ -102,8 +102,14 @@ namespace AppDesk.Windows.Veiculos
                 veiculo.Modelo = ModeloUC.Text;
                 veiculo.Ano = AnoUC.Value;
                 veiculo.Cor = CorUC.Text;
-                veiculo.GaragemId = GaragemUC.Garagem.GaragemId;
-
+                if (GaragemUC.Garagem != null)
+                {
+                    veiculo.GaragemId = GaragemUC.Garagem.GaragemId;
+                }
+                else
+                {
+                    throw new FieldException("Garagem");
+                }
                 if (SeguradorasComboBox.SelectedItem != null)
                 {
                     veiculo.SeguroId = (SeguradorasComboBox.SelectedItem as Modelo.Classes.Desk.Seguro).SeguroId;

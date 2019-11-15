@@ -23,7 +23,7 @@ namespace AppDesk.Windows.Clientes
     /// <summary>
     /// Lógica interna para FormAlterarClientes.xaml
     /// </summary>
-    public partial class FormAlterarClientes : Window, IFillTextBoxes
+    public partial class FormAlterarClientes : Window
     {
         private ClientePF _clientePF = null;
         private ClientePJ _clientePJ = null;

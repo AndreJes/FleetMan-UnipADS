@@ -38,7 +38,7 @@ namespace AppDesk.UserControls
                 }
                 else
                 {
-                    throw new FieldException("Garagem");
+                    return null;
                 }
             }
             private set

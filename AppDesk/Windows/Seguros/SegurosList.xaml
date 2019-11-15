@@ -1,9 +1,9 @@
-﻿<Window x:Class="AppDesk.Windows.Seguro.SegurosList"
+﻿<Window x:Class="AppDesk.Windows.Seguros.SegurosList"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AppDesk.Windows.Seguro"
+        xmlns:local="clr-namespace:AppDesk.Windows.Seguros"
         mc:Ignorable="d"
         Title="Seguradoras" Height="450" Width="700" MaxHeight="450" MaxWidth="700" MinHeight="450" MinWidth="700">
     <Grid>

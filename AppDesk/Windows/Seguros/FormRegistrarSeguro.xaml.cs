@@ -16,7 +16,7 @@ using AppDesk.Serviço;
 using Modelo.Classes.Desk;
 using Modelo.Enums;
 
-namespace AppDesk.Windows.Seguro
+namespace AppDesk.Windows.Seguros
 {
     /// <summary>
     /// Lógica interna para FormRegistrarSeguro.xaml

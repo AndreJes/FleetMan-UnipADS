@@ -266,16 +266,16 @@
     <Compile Include="Windows\Relatorios\FormGerarRelatorio.xaml.cs">
       <DependentUpon>FormGerarRelatorio.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Seguro\FormAlterarSeguro.xaml.cs">
+    <Compile Include="Windows\Seguros\FormAlterarSeguro.xaml.cs">
       <DependentUpon>FormAlterarSeguro.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Seguro\FormDetalhesSeguro.xaml.cs">
+    <Compile Include="Windows\Seguros\FormDetalhesSeguro.xaml.cs">
       <DependentUpon>FormDetalhesSeguro.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Seguro\FormRegistrarSeguro.xaml.cs">
+    <Compile Include="Windows\Seguros\FormRegistrarSeguro.xaml.cs">
       <DependentUpon>FormRegistrarSeguro.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Seguro\SegurosList.xaml.cs">
+    <Compile Include="Windows\Seguros\SegurosList.xaml.cs">
       <DependentUpon>SegurosList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Solicitacoes\FormSolicitacaoCliente.xaml.cs">
@@ -286,9 +286,6 @@
     </Compile>
     <Compile Include="Windows\Usuarios\FormRegistrarUsuario.xaml.cs">
       <DependentUpon>FormRegistrarUsuario.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Veiculos\FormAlterarVeiculo.xaml.cs">
-      <DependentUpon>FormAlterarVeiculo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Veiculos\FormDetalhesVeiculo.xaml.cs">
       <DependentUpon>FormDetalhesVeiculo.xaml</DependentUpon>
@@ -538,19 +535,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Seguro\FormAlterarSeguro.xaml">
+    <Page Include="Windows\Seguros\FormAlterarSeguro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Seguro\FormDetalhesSeguro.xaml">
+    <Page Include="Windows\Seguros\FormDetalhesSeguro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Seguro\FormRegistrarSeguro.xaml">
+    <Page Include="Windows\Seguros\FormRegistrarSeguro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Seguro\SegurosList.xaml">
+    <Page Include="Windows\Seguros\SegurosList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -563,10 +560,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Usuarios\FormRegistrarUsuario.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Veiculos\FormAlterarVeiculo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
