@@ -1,4 +1,7 @@
 ﻿using AppDesk.Serviço;
+using AppDesk.Tools;
+using Modelo.Classes.Desk;
+using Modelo.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,49 +23,88 @@ namespace AppDesk.Windows.Seguros
     /// </summary>
     public partial class FormDetalhesSeguro : Window
     {
-        private Modelo.Classes.Desk.Seguro _seguro = null;
+        private Seguro _seguro = null;
         private FormDetalhesSeguro()
         {
             InitializeComponent();
         }
 
-        public FormDetalhesSeguro(Modelo.Classes.Desk.Seguro seguro) : this()
+        public FormDetalhesSeguro(Seguro seguro) : this()
         {
             _seguro = seguro;
+            TipoCoberturaComboBox.ItemsSource = Enum.GetNames(typeof(CoberturasSeguro));
             PreencherDados();
         }
 
         private void PreencherDados()
         {
-            CNPJTextBox.Text = _seguro.CNPJ;
-            NomeTextBox.Text = _seguro.Nome;
-            EmailTextBox.Text = _seguro.Email;
-            TelefoneTextBox.Text = _seguro.Telefone;
-            DataContratacaoDatePic.SelectedDate = _seguro.DataContratacao;
-            VencimentoContratoDatePic.SelectedDate = _seguro.Vencimento_Contrato;
-            VencimentoProxParcelaDatePic.SelectedDate = _seguro.DataVencimentoParcela;
-            ValorParcelaTextBox.Text = _seguro.PrecoParcela.ToString("F2");
-            QuantidadeVeiculosLabel.Content = _seguro.Veiculos.Count();
+            CNPJUC.Text = _seguro.CNPJ;
+            NomeUC.Text = _seguro.Nome;
+            EmailUC.Text = _seguro.Email;
+            TelefoneUC.Text = _seguro.Telefone;
+            DataContratacaoUC.Date = _seguro.DataContratacao;
+            DataVencimentoUC.Date = _seguro.Vencimento_Contrato;
+            VencimentoProxParcelaUC.Date = _seguro.DataVencimentoParcela;
+            ValorParcelaUC.Valor = _seguro.PrecoParcela;
             TipoCoberturaComboBox.Text = _seguro.TipoCobertura.ToString("G");
+
+        }
+
+        private void Alterar()
+        {
+            try
+            {
+                _seguro.Nome = NomeUC.Text;
+                _seguro.Email = EmailUC.Text;
+                _seguro.Telefone = TelefoneUC.Text;
+                _seguro.Vencimento_Contrato = DataVencimentoUC.Date;
+                _seguro.PrecoParcela = ValorParcelaUC.Valor;
+                _seguro.DataVencimentoParcela = VencimentoProxParcelaUC.Date;
+                _seguro.TipoCobertura = (CoberturasSeguro)Enum.Parse(typeof(CoberturasSeguro), TipoCoberturaComboBox.SelectedItem.ToString());
+            }
+            catch (FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void AlterarBtn_Click(object sender, RoutedEventArgs e)
         {
-            FormAlterarSeguro formAlterar = new FormAlterarSeguro(_seguro);
-            formAlterar.Show();
-            Application.Current.Windows.OfType<SegurosList>().FirstOrDefault().UpdateDataGrid();
-            this.Close();
+            try
+            {
+                if (StandardMessageBoxes.ConfirmarAlteracaoMessageBox("Seguradora") == MessageBoxResult.Yes)
+                {
+                    Alterar();
+                    ServicoDados.ServicoDadosSeguro.GravarSeguro(_seguro);
+                    StandardMessageBoxes.MensagemSucesso("Seguradora alterada com sucesso!", "Alteração");
+                    Application.Current.Windows.OfType<SegurosList>().FirstOrDefault().UpdateDataGrid();
+                }
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
         }
 
         private void RemoveBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult confirmRemove = MessageBox.Show("Remover seguradora?", "Confirmar remoção", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (confirmRemove == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosSeguro.RemoverSeguroPorId(_seguro.SeguroId);
-                Application.Current.Windows.OfType<SegurosList>().FirstOrDefault().UpdateDataGrid();
-                MessageBox.Show("Seguradora removida com sucesso!");
-                this.Close();
+                if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Seguradora") == MessageBoxResult.Yes)
+                {
+                    ServicoDados.ServicoDadosSeguro.RemoverSeguroPorId(_seguro.SeguroId);
+                    Application.Current.Windows.OfType<SegurosList>().FirstOrDefault().UpdateDataGrid();
+                    StandardMessageBoxes.MensagemSucesso("Seguradora removida com sucesso!", "Remoção");
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
     }

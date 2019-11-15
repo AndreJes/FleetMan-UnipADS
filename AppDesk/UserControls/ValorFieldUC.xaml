@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="AppDesk.UserControls.ValorFieldUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppDesk.UserControls"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d">
+    <StackPanel Style="{StaticResource MainStackPanelStyle}">
+        <Label Style="{StaticResource MainLabelRoundStyle}" x:Name="LabelValor"></Label>
+        <xctk:DoubleUpDown Width="80" x:Name="ValorParcelaUD" FormatString="C" Value="0" Increment="1.00"></xctk:DoubleUpDown>
+    </StackPanel>
+</UserControl>

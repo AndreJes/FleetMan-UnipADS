@@ -24,11 +24,6 @@
             <Setter Property="Background" Value="Gray"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
-        <Style x:Key="MainToolBarStyle" TargetType="Border">
-            <Setter Property="Background" Value="LightGray"/>
-            <Setter Property="BorderThickness" Value="0 1"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-        </Style>
         <Style x:Key="AddImageStyle" TargetType="Image">
             <Setter Property="Source" Value="Content/Icones/Botoes/add.png"/>
         </Style>

@@ -149,6 +149,9 @@
     <Compile Include="UserControls\Campos\Masked\PlacaFieldUC.xaml.cs">
       <DependentUpon>PlacaFieldUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\DataFieldUC.xaml.cs">
+      <DependentUpon>DataFieldUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\EnderecoUserControl.xaml.cs">
       <DependentUpon>EnderecoUserControl.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,9 @@
     </Compile>
     <Compile Include="UserControls\Solicitacoes\SolicitacaoAlteracaoCliente.xaml.cs">
       <DependentUpon>SolicitacaoAlteracaoCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ValorFieldUC.xaml.cs">
+      <DependentUpon>ValorFieldUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\VeiculoShowDataUserControl.xaml.cs">
       <DependentUpon>VeiculoShowDataUserControl.xaml</DependentUpon>
@@ -265,9 +271,6 @@
     </Compile>
     <Compile Include="Windows\Relatorios\FormGerarRelatorio.xaml.cs">
       <DependentUpon>FormGerarRelatorio.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Seguros\FormAlterarSeguro.xaml.cs">
-      <DependentUpon>FormAlterarSeguro.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Seguros\FormDetalhesSeguro.xaml.cs">
       <DependentUpon>FormDetalhesSeguro.xaml</DependentUpon>
@@ -379,6 +382,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\DataFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\EnderecoUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -404,6 +411,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Solicitacoes\SolicitacaoAlteracaoCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ValorFieldUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -532,10 +543,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Relatorios\FormGerarRelatorio.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Seguros\FormAlterarSeguro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

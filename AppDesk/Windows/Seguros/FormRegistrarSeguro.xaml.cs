@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AppDesk.Serviço;
+using AppDesk.Tools;
 using Modelo.Classes.Desk;
 using Modelo.Enums;
 
@@ -41,36 +42,49 @@ namespace AppDesk.Windows.Seguros
 
         private void RegistrarSeguro()
         {
-            Modelo.Classes.Desk.Seguro seguro = GerarSeguro();
-            if (seguro != null)
+            try
             {
-                ServicoDados.ServicoDadosSeguro.GravarSeguro(seguro);
-                MessageBox.Show("Seguro registrado com sucesso!");
-                Application.Current.Windows.OfType<SegurosList>().First().UpdateDataGrid();
-                this.Close();
+                Seguro seguro = GerarSeguro();
+                if (seguro != null)
+                {
+                    ServicoDados.ServicoDadosSeguro.GravarSeguro(seguro);
+                    StandardMessageBoxes.MensagemSucesso("Seguro registrado com sucesso!", "Registro");
+                    Application.Current.Windows.OfType<SegurosList>().FirstOrDefault().UpdateDataGrid();
+                    this.Close();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Falha ao registrar seguradora!");
+                StandardMessageBoxes.MensagemDeErro("Ocorreu um erro: " + Environment.NewLine + ex.Message);
             }
         }
 
-        private Modelo.Classes.Desk.Seguro GerarSeguro()
+        private Seguro GerarSeguro()
         {
-            Modelo.Classes.Desk.Seguro seguro = new Modelo.Classes.Desk.Seguro()
+            try
             {
-                CNPJ = CNPJTextBox.Text,
-                Nome = NomeTextBox.Text,
-                Email = EmailTextBox.Text,
-                Telefone = TelefoneTextBox.Text,
-                DataContratacao = DataContratacaoDatePic.DisplayDate,
-                Vencimento_Contrato = VencimentoContratoDatePic.DisplayDate,
-                DataVencimentoParcela = VencimentoProxParcelaDatePic.DisplayDate,
-                PrecoParcela = double.Parse(ValorParcelaTextBox.Text),
-                TipoCobertura = (CoberturasSeguro)Enum.Parse(typeof(CoberturasSeguro), TipoCoberturaComboBox.SelectedItem.ToString())
-            };
-
-            return seguro;
+                Seguro seguro = new Seguro();
+                seguro.CNPJ = CNPJUC.Text;
+                seguro.Telefone = TelefoneUC.Text;
+                seguro.Email = EmailUC.Text;
+                seguro.Nome = NomeUC.Text;
+                seguro.DataContratacao = DataContratacaoUC.Date;
+                seguro.Vencimento_Contrato = DataVencimentoUC.Date;
+                seguro.DataVencimentoParcela = DataVencimentoUC.Date;
+                seguro.PrecoParcela = ValorParcelaUC.Valor;
+                seguro.TipoCobertura = (CoberturasSeguro)Enum.Parse(typeof(CoberturasSeguro), TipoCoberturaComboBox.SelectedItem.ToString());
+                return seguro;
+            }
+            catch (FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+                throw ex;
+            }
         }
 
     }

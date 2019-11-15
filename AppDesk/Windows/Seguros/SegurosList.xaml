@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Seguros"
         mc:Ignorable="d"
-        Title="Seguradoras" Height="450" Width="700" MaxHeight="450" MaxWidth="700" MinHeight="450" MinWidth="700">
+        Title="Seguradoras" Style="{StaticResource MediumFormWindowStyle}">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -13,7 +13,7 @@
                 <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
             <!--#region ToolBar-->
-            <Border Grid.Row="0" BorderBrush="LightSlateGray" BorderThickness="0 1" Background="AliceBlue">
+            <Border Grid.Row="0" Style="{StaticResource MainToolBarStyle}">
                 <Grid x:Name="VehicleToolBarGrid">
                     <!--#region Columns-->
                     <Grid.ColumnDefinitions>
@@ -23,15 +23,8 @@
                         <ColumnDefinition Width="350*"/>
                     </Grid.ColumnDefinitions>
                     <!--#endregion-->
-                    <Button x:Name="RegistrarSeguradoraBtn" Click="RegistrarSeguradoraBtn_Click" Grid.ColumnSpan="2" Margin="20 10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="9,4,9,0">Registrar</TextBlock>
-                            <TextBlock Grid.Row="1" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Top">Seguradora</TextBlock>
-                        </Grid>
+                    <Button x:Name="RegistrarSeguradoraBtn" Click="RegistrarSeguradoraBtn_Click" Grid.ColumnSpan="2" Margin="20 15">
+                        Registrar Seguradora
                     </Button>
                     <!--#endregion-->
                     <!--#region Separators-->

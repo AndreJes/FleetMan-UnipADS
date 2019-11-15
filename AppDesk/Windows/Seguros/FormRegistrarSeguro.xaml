@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Seguros"
+        xmlns:ucc="clr-namespace:AppDesk.UserControls"
+        xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
+        xmlns:uc="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Registrar Nova Seguradora" Height="500" Width="350" MaxHeight="500" MaxWidth="350" MinHeight="500" MinWidth="350">
+        Title="Registrar Seguradora" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid x:Name="FormContentGrid">
             <!--#region Columns/ Rows-->
@@ -17,7 +20,7 @@
             </Grid.RowDefinitions>
             <!--#endregion-->
             <!--#region Header-->
-            <Label FontFamily="Arial" Style="{StaticResource MainLabelStyle}" Width="auto" FontSize="20">REGISTRAR SEGURO</Label>
+            <Label FontFamily="Arial" Style="{StaticResource MainLabelStyle}" Width="auto" FontSize="20">REGISTRAR SEGURADORA</Label>
             <!--#endregion-->
             <!--#region Fields-->
             <!--#region Informações Principais-->
@@ -31,23 +34,15 @@
                     </Grid.RowDefinitions>
                     <!--#region CNPJ/ Telefone-->
                     <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}" Width="50" x:Name="CNPJLabel">CNPJ</Label>
-                        <TextBox x:Name="CNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120"></TextBox>
-                        <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
-                        <TextBox x:Name="TelefoneTextBox" Style="{StaticResource MainTextBoxStyle}" Width="90"></TextBox>
+                        <ucm:CNPJFieldUC x:Name="CNPJUC"></ucm:CNPJFieldUC>
+                        <ucm:TelefoneFieldUC x:Name="TelefoneUC"></ucm:TelefoneFieldUC>   
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region Razão Social-->
-                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}" Width="90">Razão Social</Label>
-                        <TextBox x:Name="NomeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="225"></TextBox>
-                    </StackPanel>
+                    <uc:NomeFieldUC x:Name="NomeUC" Grid.Row="1"></uc:NomeFieldUC>
                     <!--#endregion-->
                     <!--#region Email-->
-                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">E-Mail</Label>
-                        <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="265" ></TextBox>
-                    </StackPanel>
+                    <uc:EmailFieldUC x:Name="EmailUC" Grid.Row="2"></uc:EmailFieldUC>
                     <!--#endregion-->
                 </Grid>
             </GroupBox>
@@ -63,31 +58,21 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <!--#region Data de contratação-->
-                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
-                        <Label Style="{StaticResource MainLabelStyle}">Data de contratação</Label>
-                        <DatePicker HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="DataContratacaoDatePic"></DatePicker>
-                    </StackPanel>
+                    <ucc:DataFieldUC Label="Data da Contratação" Grid.Row="0" x:Name="DataContratacaoUC"></ucc:DataFieldUC>
                     <!--#endregion-->
                     <!--#region Vencimento do Contrato-->
-                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
-                        <Label Style="{StaticResource MainLabelStyle}">Vencimento do contrato</Label>
-                        <DatePicker HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="VencimentoContratoDatePic"></DatePicker>
-                    </StackPanel>
+                    <ucc:DataFieldUC Label="Vencimento do contrato" Grid.Row="1" x:Name="DataVencimentoUC"></ucc:DataFieldUC>
                     <!--#endregion-->
                     <!--#region Valor da Parcela -->
-                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
-                        <Label Style="{StaticResource MainLabelStyle}">Valor/Parcela</Label>
-                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="70" x:Name="ValorParcelaTextBox"></TextBox>
-                        <Label Style="{StaticResource MainLabelStyle}">Cobertura</Label>
-                        <ComboBox x:Name="TipoCoberturaComboBox" Width="70">
+                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                        <ucc:ValorFieldUC Label="Valor da Parcela" x:Name="ValorParcelaUC"></ucc:ValorFieldUC>
+                        <Label Style="{StaticResource MainLabelRoundStyle}">Cobertura</Label>
+                        <ComboBox x:Name="TipoCoberturaComboBox" Style="{StaticResource MainComboBoxStyle}" Width="70">
                         </ComboBox>
                     </StackPanel>
                     <!--#endregion-->
                     <!--#region Vencimento da prox. parcela-->
-                    <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
-                        <Label Style="{StaticResource MainLabelStyle}">Vencimento da prox. Parcela</Label>
-                        <DatePicker HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="VencimentoProxParcelaDatePic"></DatePicker>
-                    </StackPanel>
+                    <ucc:DataFieldUC Label="Vencimento da prox. Parcela" x:Name="VencimentoProxParcelaUC" Grid.Row="3"></ucc:DataFieldUC>
                     <!--#endregion-->
                 </Grid>
             </GroupBox>

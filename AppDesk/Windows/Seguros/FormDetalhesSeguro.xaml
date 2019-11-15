@@ -4,120 +4,106 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Seguros"
+        xmlns:ucc="clr-namespace:AppDesk.UserControls"
+        xmlns:uc="clr-namespace:AppDesk.UserControls.Campos"
+        xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
         mc:Ignorable="d"
-        Title="FormDetalhesSeguro" Height="560" Width="350" MaxHeight="560" MaxWidth="350" MinHeight="560" MinWidth="350">
+        Title="FormDetalhesSeguro" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid x:Name="FormContentGrid">
             <!--#region Columns/ Rows-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
-                <RowDefinition Height="30*"/>
-                <RowDefinition Height="40*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="90*"/>
             </Grid.RowDefinitions>
             <!--#endregion-->
             <!--#region Header-->
             <Label FontFamily="Arial" Style="{StaticResource MainLabelStyle}" Width="auto" FontSize="20">DETALHES SEGURADORA</Label>
             <!--#endregion-->
-            <!--#region Fields-->
-            <!--#region Informações Principais-->
-            <GroupBox Grid.Row="1">
-                <GroupBox.Header>Informações da seguradora</GroupBox.Header>
-                <Grid Background="Transparent">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <!--#region CNPJ/ Telefone-->
-                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}" Width="50" x:Name="CNPJLabel">CNPJ</Label>
-                        <TextBox x:Name="CNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120" IsEnabled="False"></TextBox>
-                        <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
-                        <TextBox x:Name="TelefoneTextBox" Style="{StaticResource MainTextBoxStyle}" Width="90"  IsEnabled="False"></TextBox>
-                    </StackPanel>
-                    <!--#endregion-->
-                    <!--#region Razão Social-->
-                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}" Width="90">Razão Social</Label>
-                        <TextBox x:Name="NomeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="225" IsEnabled="False"></TextBox>
-                    </StackPanel>
-                    <!--#endregion-->
-                    <!--#region Email-->
-                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">E-Mail</Label>
-                        <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="265" IsEnabled="False" ></TextBox>
-                    </StackPanel>
-                    <!--#endregion-->
-                </Grid>
-            </GroupBox>
-            <!--#endregion-->
-            <!--#region Endereço-->
-            <GroupBox Grid.Row="2">
-                <GroupBox.Header>Dados do contrato</GroupBox.Header>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <!--#region Data de contratação-->
-                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
-                        <Label Style="{StaticResource MainLabelStyle}">Data de contratação</Label>
-                        <DatePicker HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="DataContratacaoDatePic" IsEnabled="False"></DatePicker>
-                    </StackPanel>
-                    <!--#endregion-->
-                    <!--#region Vencimento do Contrato-->
-                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
-                        <Label Style="{StaticResource MainLabelStyle}">Vencimento do contrato</Label>
-                        <DatePicker HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="VencimentoContratoDatePic" IsEnabled="False"></DatePicker>
-                    </StackPanel>
-                    <!--#endregion-->
-                    <!--#region Valor da Parcela -->
-                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
-                        <Label Style="{StaticResource MainLabelStyle}">Valor/Parcela</Label>
-                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="70" x:Name="ValorParcelaTextBox" IsEnabled="False"></TextBox>
-                        <Label Style="{StaticResource MainLabelStyle}">Cobertura</Label>
-                        <TextBox x:Name="TipoCoberturaComboBox" Style="{StaticResource MainTextBoxStyle}" Width="70" IsEnabled="False"/>
-                    </StackPanel>
-                    <!--#endregion-->
-                    <!--#region Vencimento da prox. parcela-->
-                    <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
-                        <Label Style="{StaticResource MainLabelStyle}">Vencimento da prox. Parcela</Label>
-                        <DatePicker HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="VencimentoProxParcelaDatePic" IsEnabled="False"></DatePicker>
-                    </StackPanel>
-                    <!--#endregion-->
-                </Grid>
-            </GroupBox>
-            <!--#endregion-->
-            <!--#endregion-->
-            <!--#region Quantidade de veiculos-->
-            <Grid Grid.Row="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1">
+                <TabControl>
+                    <TabItem Header="Alterar dados da seguradora">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <!--#region Informações Principais-->
+                            <GroupBox Grid.Row="0">
+                                <GroupBox.Header>Informações da seguradora</GroupBox.Header>
+                                <Grid Background="Transparent">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <!--#region CNPJ/ Telefone-->
+                                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                                        <ucm:CNPJFieldUC x:Name="CNPJUC" IsEnabled="False"></ucm:CNPJFieldUC>
+                                        <ucm:TelefoneFieldUC x:Name="TelefoneUC"></ucm:TelefoneFieldUC>
+                                    </StackPanel>
+                                    <!--#endregion-->
+                                    <!--#region Razão Social-->
+                                    <uc:NomeFieldUC x:Name="NomeUC" Grid.Row="1"></uc:NomeFieldUC>
+                                    <!--#endregion-->
+                                    <!--#region Email-->
+                                    <uc:EmailFieldUC x:Name="EmailUC" Grid.Row="2"></uc:EmailFieldUC>
+                                    <!--#endregion-->
+                                </Grid>
+                            </GroupBox>
+                            <!--#endregion-->
+                            <!--#region Endereço-->
+                            <GroupBox Grid.Row="1">
+                                <GroupBox.Header>Dados do contrato</GroupBox.Header>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <!--#region Data de contratação-->
+                                    <ucc:DataFieldUC Label="Data da Contratação" Grid.Row="0" IsEnabled="False" x:Name="DataContratacaoUC"></ucc:DataFieldUC>
+                                    <!--#endregion-->
+                                    <!--#region Vencimento do Contrato-->
+                                    <ucc:DataFieldUC Label="Vencimento do contrato" Grid.Row="1" x:Name="DataVencimentoUC"></ucc:DataFieldUC>
+                                    <!--#endregion-->
+                                    <!--#region Valor da Parcela -->
+                                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
+                                        <ucc:ValorFieldUC Label="Valor da Parcela" x:Name="ValorParcelaUC"></ucc:ValorFieldUC>
+                                        <Label Style="{StaticResource MainLabelRoundStyle}">Cobertura</Label>
+                                        <ComboBox x:Name="TipoCoberturaComboBox" Style="{StaticResource MainComboBoxStyle}" Width="70">
+                                        </ComboBox>
+                                    </StackPanel>
+                                    <!--#endregion-->
+                                    <!--#region Vencimento da prox. parcela-->
+                                    <ucc:DataFieldUC Label="Vencimento da prox. Parcela" x:Name="VencimentoProxParcelaUC" Grid.Row="3"></ucc:DataFieldUC>
+                                    <!--#endregion-->
+                                </Grid>
+                            </GroupBox>
+                            <!--#endregion-->
+                            <!--#region Botões confirmar-->
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="AlterarBtn" Click="AlterarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+                                    Salvar Alterações
+                                </Button>
+                                <Button x:Name="RemoveBtn" Click="RemoveBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                                    Remover
+                                </Button>
+                            </Grid>
+                            <!--#endregion-->
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Veiculos">
 
-                <Label Grid.Column="0">QTD VEICULOS (IMAGEM)</Label>
-                <Label Grid.Column="1" x:Name="QuantidadeVeiculosLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
+                    </TabItem>
+                </TabControl>
             </Grid>
-            <!--#endregion-->
-            <!--#region Botões confirmar-->
-            <Grid Grid.Row="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="AlterarBtn" Click="AlterarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
-                    ALTERAR
-                </Button>
-                <Button x:Name="RemoveBtn" Click="RemoveBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
-                    REMOVER
-                </Button>
-            </Grid>
-            <!--#endregion-->
         </Grid>
     </Grid>
 </Window>
