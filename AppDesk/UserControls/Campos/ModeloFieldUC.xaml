@@ -9,7 +9,7 @@
         <Label Style="{StaticResource MainLabelRoundStyle}">
             MODELO
         </Label>
-        <TextBox x:Name="ModeloTextbox" Style="{StaticResource MainTextBoxStyle}" Width="100" >
+        <TextBox x:Name="ModeloTextbox" TextChanged="ModeloTextbox_TextChanged" Style="{StaticResource MainTextBoxStyle}" Width="100" >
             <TextBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="0 5 5 0"/>

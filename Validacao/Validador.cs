@@ -160,19 +160,26 @@ namespace Validacao
             {
                 return await Task.Run(() =>
                 {
-                    foreach (char c in placa.Substring(0, 3))
+                    if (placa.Length >= 7)
                     {
-                        if (!char.IsDigit(c))
+                        foreach (char c in placa.Substring(0, 3))
                         {
-                            return false;
+                            if (!char.IsLetter(c))
+                            {
+                                return false;
+                            }
+                        }
+                        foreach (char c in placa.Substring(3, placa.IndexOf(placa.Last())))
+                        {
+                            if (!char.IsDigit(c))
+                            {
+                                return false;
+                            }
                         }
                     }
-                    foreach (char c in placa.Substring(3, placa.IndexOf(placa.Last())))
+                    else
                     {
-                        if (!char.IsDigit(c))
-                        {
-                            return false;
-                        }
+                        return false;
                     }
                     return true;
                 });

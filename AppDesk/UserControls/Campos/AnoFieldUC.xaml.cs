@@ -56,9 +56,10 @@ namespace AppDesk.UserControls.Campos
 
         async void Validar()
         {
+            int? valor = AnoNumberUD.Value;
             validado = await Task.Run(() =>
             {
-                if(AnoNumberUD.Value != null)
+                if(valor != null)
                 {
                     return true;
                 }

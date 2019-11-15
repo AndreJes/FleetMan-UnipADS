@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppDesk.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,14 +52,25 @@ namespace AppDesk.UserControls.Campos.Masked
 
         async void Validar()
         {
+            string texto = RenavamTextBox.Text.Replace("_", "");
             validado = await Task.Run(() =>
             {
-                if (RenavamTextBox.Text.Length < 11)
+                if (texto.Length < 11)
                 {
                     return false;
                 }
                 return true;
             });
+
+            if(validado)
+            {
+                _text = RenavamTextBox.Text;
+                RenavamTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
+            }
+            else
+            {
+                RenavamTextBox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
+            }
         }
 
         private void RenavamTextBox_TextChanged(object sender, TextChangedEventArgs e)

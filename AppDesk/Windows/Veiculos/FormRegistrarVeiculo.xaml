@@ -22,7 +22,7 @@
             <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.ColumnSpan="2">REGISTRAR NOVO VEÍCULO</Label>
             <!--#endregion-->
             <!--#region Body-->
-            <TabControl Grid.Row="1">
+            <TabControl Grid.Row="1" Background="Transparent">
                 <TabItem Header="Dados do Veículo">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -81,88 +81,43 @@
                         <!--#endregion-->
                     </Grid>
                 </TabItem>
-                <TabItem Header="Garagem/Seguradora">
+                <TabItem Header="Garagem">
                     <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50*"/>
-                            <RowDefinition Height="50*"/>
-                        </Grid.RowDefinitions>
-                        <GroupBox Grid.Row="0" Header="Garagem destino">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                                    <Label Style="{StaticResource MainLabelStyle}">UF</Label>
-                                    <ComboBox x:Name="UFGaragemComboBox" Width="50" SelectionChanged="UFGaragemComboBox_SelectionChanged"/>
-                                </StackPanel>
-
-                                <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1">
-                                    <Label Style="{StaticResource MainLabelStyle}">Garagem</Label>
-                                    <ComboBox x:Name="GaragemComboBox" Width="200" SelectionChanged="GaragemComboBox_SelectionChanged">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                                    <Label Content="CNPJ:"/>
-                                                    <TextBlock VerticalAlignment="Center" Text="{Binding CNPJTxt}"/>
-                                                    <Label Content="Cidade:"/>
-                                                    <TextBlock VerticalAlignment="Center" Text="{Binding Endereco.Cidade}"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                </StackPanel>
-
-                                <GroupBox Grid.Row="2" Header="Endereço completo">
-                                    <TextBox x:Name="GaragemEnderecoTextBox" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}">
-                                        <TextBox.Resources>
-                                            <Style TargetType="Border">
-                                                <Setter Property="CornerRadius" Value="15"/>
-                                            </Style>
-                                        </TextBox.Resources>
-                                    </TextBox>
-                                </GroupBox>
-                            </Grid>
-                        </GroupBox>
-
-                        <GroupBox Grid.Row="1" Header="Seguradora">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                                    <ComboBox x:Name="SeguradorasComboBox" Width="200" Style="{StaticResource MainComboBoxStyle}" SelectionChanged="AlterarTextBoxCoberturaSeguro">
-                                        <ComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Nome}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </DataTemplate>
-                                        </ComboBox.ItemTemplate>
-                                    </ComboBox>
-                                </StackPanel>
-
-                                <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1" Grid.Column="0">
-                                    <Label Style="{StaticResource MainLabelRoundStyle}">Cobertura</Label>
-                                    <TextBox x:Name="CoberturaTextBox" Style="{StaticResource MainTextBoxStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" Width="150">
-                                        <TextBox.Resources>
-                                            <Style TargetType="Border">
-                                                <Setter Property="CornerRadius" Value="0 5 5 0"/>
-                                            </Style>
-                                        </TextBox.Resources>
-                                    </TextBox>
-
-                                </StackPanel>
-                            </Grid>
-                        </GroupBox>
-
+                        <uc:SelecaoGaragemUC x:Name="GaragemUC"></uc:SelecaoGaragemUC>
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="Cliente">
-                    <GroupBox Grid.Row="2" Header="Cliente" x:Name="ClienteGroupBox">
+                <TabItem Header="Seguradora">
+                    <Grid VerticalAlignment="Center">
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource MainStackPanelStyle}">
+                                <ComboBox x:Name="SeguradorasComboBox" Width="200" Style="{StaticResource MainComboBoxStyle}" SelectionChanged="AlterarTextBoxCoberturaSeguro" Height="28">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Nome}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+                            <Border Margin="0 30"></Border>
+                            <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="1" Grid.Column="0">
+                                <Label Style="{StaticResource MainLabelRoundStyle}">Cobertura</Label>
+                                <TextBox x:Name="CoberturaTextBox" Style="{StaticResource MainTextBoxStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEnabled="False" Width="150">
+                                    <TextBox.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                        </Style>
+                                    </TextBox.Resources>
+                                </TextBox>
 
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Cliente" x:Name="ClienteTabItem">
+                    <GroupBox Grid.Row="2" Header="Cliente">
+                        <uc:SelecionarClienteUC x:Name="SeletorClienteUC"></uc:SelecionarClienteUC>
                     </GroupBox>
                 </TabItem>
 

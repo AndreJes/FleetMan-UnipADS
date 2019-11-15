@@ -12,7 +12,7 @@ namespace Persistencia.DAL.Desk
     {
         public IEnumerable<Garagem> ObterGaragensOrdPorId()
         {
-            return Context.Garagens.OrderBy(g => g.GaragemId);
+            return Context.Garagens.Include(g => g.Veiculos).OrderBy(g => g.GaragemId);
         }
 
         public void GravarGaragem(Garagem garagem)

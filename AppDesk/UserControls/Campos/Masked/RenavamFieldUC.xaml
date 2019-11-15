@@ -11,7 +11,7 @@
         <Label Style="{StaticResource MainLabelRoundStyle}">
             RENAVAM
         </Label>
-        <xctk:MaskedTextBox x:Name="RenavamTextBox" TextChanged="RenavamTextBox_TextChanged" Style="{StaticResource MainTextBoxStyle}" Width="70" ValueDataType="{x:Type s:String}" Mask="99999999999">
+        <xctk:MaskedTextBox x:Name="RenavamTextBox" TextChanged="RenavamTextBox_TextChanged" Style="{StaticResource MainTextBoxStyle}" Width="100" ValueDataType="{x:Type s:String}" Mask="99999999999">
             <TextBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="0 5 5 0"/>

@@ -65,5 +65,10 @@ namespace AppDesk.UserControls.Campos
                 ModeloTextbox.BorderBrush = HexaColorPicker.TextBoxInvalidoColor;
             }
         }
+
+        private void ModeloTextbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Validar();
+        }
     }
 }

@@ -233,17 +233,11 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <GroupBox Header="Próxima manutenção">
-                            <Grid>
-
-                            </Grid>
-                        </GroupBox>
                         <GroupBox Header="Combustivel" Grid.Row="1">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -257,8 +251,8 @@
                                             <RowDefinition Height="1*"/>
                                         </Grid.RowDefinitions>
                                         <ProgressBar HorizontalAlignment="Center" Width="200" Height="15" Maximum="100" x:Name="TanqueProgressBar"/>
-                                        <TextBox IsEnabled="False" Grid.Row="1" Margin="35 0" HorizontalAlignment="Left">Vazio</TextBox>
-                                        <TextBox IsEnabled="False" Grid.Row="1" HorizontalAlignment="Right" Margin="30 0">Cheio</TextBox>
+                                        <TextBox IsEnabled="False" Grid.Row="1" Margin="35 0" HorizontalAlignment="Left" VerticalAlignment="Top">Vazio</TextBox>
+                                        <TextBox IsEnabled="False" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30 0">Cheio</TextBox>
                                     </Grid>
                                 </GroupBox>
 

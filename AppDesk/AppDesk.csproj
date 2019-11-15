@@ -155,11 +155,17 @@
     <Compile Include="UserControls\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SelecaoGaragemUC.xaml.cs">
+      <DependentUpon>SelecaoGaragemUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SelecaoMotoristaUserControl.xaml.cs">
       <DependentUpon>SelecaoMotoristaUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SelecaoVeiculoUserControl.xaml.cs">
       <DependentUpon>SelecaoVeiculoUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SelecionarClienteUC.xaml.cs">
+      <DependentUpon>SelecionarClienteUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Solicitacoes\SolicitacaoAlteracaoCliente.xaml.cs">
       <DependentUpon>SolicitacaoAlteracaoCliente.xaml</DependentUpon>
@@ -384,11 +390,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\SelecaoGaragemUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\SelecaoMotoristaUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\SelecaoVeiculoUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SelecionarClienteUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

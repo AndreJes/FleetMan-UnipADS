@@ -59,5 +59,10 @@ namespace AppDesk.Tools
         {
             return MessageBox.Show(mensagem, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
+        public static MessageBoxResult MensagemSelecao(string item)
+        {
+            return MessageBox.Show("Deseja selecionar " + item + " agora?", "Confirmar Seleção", MessageBoxButton.YesNo, MessageBoxImage.Question);
+        }
     }
 }

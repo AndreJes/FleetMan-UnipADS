@@ -1,4 +1,5 @@
 ﻿using AppDesk.Serviço;
+using AppDesk.Tools;
 using Modelo.Classes.Clientes;
 using Modelo.Classes.Web;
 using Modelo.Enums;
@@ -30,30 +31,17 @@ namespace AppDesk.Windows.Veiculos
         }
 
         #region Eventos
-        //Evento ativado ao mudar item da ComboBox de seleção de UF
-        private void UFGaragemComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            GaragemComboBox.ItemsSource = ServicoDados.ServicoDadosGaragem.ObterGaragensOrdPorId()
-                .Where(g => g.Endereco.UF == (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UFGaragemComboBox.SelectedItem.ToString()))
-                .ToList();
-        }
-
-        //Evento ativado ao mudar item da ComboBox de seleção de Garagem
-        private void GaragemComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            GaragemEnderecoTextBox.Text = (GaragemComboBox.SelectedItem as Modelo.Classes.Desk.Garagem).EnderecoParcial;
-        }
 
         //Evento ativa a groupbox de clientes
         private void ClienteGroupBoxToggleEnable(object sender, RoutedEventArgs e)
         {
-            ClienteGroupBox.IsEnabled = true;
+            ClienteTabItem.IsEnabled = true;
         }
 
         //Evento desativa a groupbox de clientes
         private void ClienteGroupBoxToggleDisable(object sender, RoutedEventArgs e)
         {
-            ClienteGroupBox.IsEnabled = false;
+            ClienteTabItem.IsEnabled = false;
         }
 
         //Evento altera o texto do textbox que mostra a cobertura do seguro
@@ -61,26 +49,13 @@ namespace AppDesk.Windows.Veiculos
         {
             CoberturaTextBox.Text = (SeguradorasComboBox.SelectedItem as Modelo.Classes.Desk.Seguro).TipoCobertura.ToString("G");
         }
-
-        //Evento popula a ComboBox de seleção de clientes apenas com Pessoas Fisicas
-        private void PopularComboBoxComPF(object sender, RoutedEventArgs e)
-        {
-            ClienteComboBox.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(c => c is ClientePF).ToList();
-        }
-
-        //Evento popula a ComboBox de seleção de clientes apenas com Pessoas Juridicas
-        private void PopularComboBoxComPJ(object sender, RoutedEventArgs e)
-        {
-            ClienteComboBox.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(c => c is ClientePJ).ToList();
-        }
         #endregion
 
         private void PopularComboBoxes()
         {
-            UFGaragemComboBox.ItemsSource = Enum.GetNames(typeof(UnidadesFederativas));
             SeguradorasComboBox.ItemsSource = ServicoDados.ServicoDadosSeguro.ObterSegurosOrdPorId().ToList();
             List<string> tiposVeiculo = new List<string>(Enum.GetNames(typeof(TiposDeVeiculo)));
-            for(int i = 0; i < tiposVeiculo.Count; i++)
+            for (int i = 0; i < tiposVeiculo.Count; i++)
             {
                 string novo = tiposVeiculo[i].Replace('_', ' ');
                 tiposVeiculo[i] = novo;
@@ -90,11 +65,25 @@ namespace AppDesk.Windows.Veiculos
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            Veiculo veiculo = GerarVeiculo();
-            ServicoDados.ServicoDadosVeiculos.GravarVeiculo(veiculo);
-            MessageBox.Show("Veiculo registrado com sucesso!");
-            Application.Current.Windows.OfType<MainWindow>().First().PopulateDataGrid();
-            this.Close();
+            try
+            {
+                Veiculo veiculo = GerarVeiculo();
+                if (veiculo != null)
+                {
+                    ServicoDados.ServicoDadosVeiculos.GravarVeiculo(veiculo);
+                    StandardMessageBoxes.MensagemSucesso("Veiculo registrado com sucesso!", "Registro");
+                    Application.Current.Windows.OfType<MainWindow>().First().PopulateDataGrid();
+                    this.Close();
+                }
+            }
+            catch (FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
         }
 
         private void CancelarBtn_Click(object sender, RoutedEventArgs e)
@@ -104,79 +93,88 @@ namespace AppDesk.Windows.Veiculos
 
         private Veiculo GerarVeiculo()
         {
-            long? clienteId = null;
-            if (PfRadioBtn.IsChecked == true)
+            try
             {
-                clienteId = (ClienteComboBox.SelectedItem as ClientePF).ClienteId;
-            }
-            if (PjRadioBtn.IsChecked == true)
-            {
-                clienteId = (ClienteComboBox.SelectedItem as ClientePJ).ClienteId;
-            }
+                Veiculo veiculo = new Veiculo();
+                veiculo.Placa = PlacaUC.Text;
+                veiculo.CodRenavam = RenavamUC.Text;
+                veiculo.Marca = MarcaUC.Text;
+                veiculo.Modelo = ModeloUC.Text;
+                veiculo.Ano = AnoUC.Value;
+                veiculo.Cor = CorUC.Text;
+                veiculo.GaragemId = GaragemUC.Garagem.GaragemId;
 
-            bool locacao = false;
-            if(ParaLocacaoCheckBox.IsChecked == true)
-            {
-                locacao = true;
-                clienteId = null;
+                if (SeguradorasComboBox.SelectedItem != null)
+                {
+                    veiculo.SeguroId = (SeguradorasComboBox.SelectedItem as Modelo.Classes.Desk.Seguro).SeguroId;
+                }
+                else
+                {
+                    throw new FieldException("Seguradora");
+                }
+
+                veiculo.ClienteId = SeletorClienteUC.Cliente.ClienteId;
+
+
+                if (ParaLocacaoCheckBox.IsChecked == true)
+                {
+                    veiculo.ParaLocacao = true;
+                }
+                else
+                {
+                    veiculo.ParaLocacao = false;
+                    veiculo.ClienteId = SeletorClienteUC.Cliente.ClienteId;
+                }
+                if (AdaptadoCheckBox.IsChecked == true)
+                {
+                    veiculo.Adaptado = true;
+                }
+
+                veiculo.Tipo = (TiposDeVeiculo)Enum.Parse(typeof(TiposDeVeiculo), TipoDeVeiculoComboBox.SelectedItem.ToString().Replace(' ', '_'));
+
+                CategoriasCNH categoria;
+
+                switch (veiculo.Tipo)
+                {
+                    case TiposDeVeiculo.MOTO:
+                        categoria = CategoriasCNH.A;
+                        break;
+                    case TiposDeVeiculo.CARRO:
+                    case TiposDeVeiculo.CAMINHONETE:
+                    case TiposDeVeiculo.UTILITARIO:
+                        categoria = CategoriasCNH.B;
+                        break;
+
+                    case TiposDeVeiculo.CAMINHAO_LEVE:
+                    case TiposDeVeiculo.CAMINHAO_PESADO:
+                        categoria = CategoriasCNH.C;
+                        break;
+                    case TiposDeVeiculo.VAN:
+                    case TiposDeVeiculo.ONIBUS:
+                        categoria = CategoriasCNH.D;
+                        break;
+                    case TiposDeVeiculo.OUTROS:
+                        categoria = CategoriasCNH.B;
+                        break;
+                    default:
+                        categoria = CategoriasCNH.B;
+                        break;
+                }
+
+                veiculo.CategoriaExigida = categoria;
+
+                veiculo.EstadoDoTanque = EstadosTanqueCombustivel.CHEIO;
+
+                return veiculo;
             }
-
-            bool adaptado = false;
-            if(AdaptadoCheckBox.IsChecked == true)
+            catch (FieldException ex)
             {
-                adaptado = true;
+                throw ex;
             }
-
-            TiposDeVeiculo tipo = (TiposDeVeiculo)Enum.Parse(typeof(TiposDeVeiculo), TipoDeVeiculoComboBox.SelectedItem.ToString().Replace(' ', '_'));
-            CategoriasCNH categoria;
-            switch (tipo)
+            catch
             {
-                case TiposDeVeiculo.MOTO:
-                    categoria = CategoriasCNH.A;
-                    break;
-                case TiposDeVeiculo.CARRO:
-                case TiposDeVeiculo.CAMINHONETE:
-                case TiposDeVeiculo.UTILITARIO:
-                    categoria = CategoriasCNH.B;
-                    break;
-                
-                case TiposDeVeiculo.CAMINHAO_LEVE:
-                case TiposDeVeiculo.CAMINHAO_PESADO:
-                    categoria = CategoriasCNH.C;
-                    break;
-                case TiposDeVeiculo.VAN:
-                case TiposDeVeiculo.ONIBUS:
-                    categoria = CategoriasCNH.D;
-                    break;
-                case TiposDeVeiculo.OUTROS:
-                    categoria = CategoriasCNH.B;
-                    break;
-                default:
-                    categoria = CategoriasCNH.B;
-                    break;
+                throw new Exception("Verifique se todos os campos foram preenchidos corretamente");
             }
-
-            Veiculo veiculo = new Veiculo()
-            {
-                Placa = PlacaTextBox.Text,
-                CodRenavam = RenavamTextBox.Text,
-                Marca = MarcaTextBox.Text,
-                Modelo = ModeloTextbox.Text,
-                Ano = ushort.Parse(AnoTextBox.Text),
-                Nome = MarcaTextBox.Text + " " + ModeloTextbox.Text + " " + AnoTextBox.Text,
-                Cor = CorTextBox.Text,
-                Tipo = tipo,
-                ParaLocacao = locacao,
-                Adaptado = adaptado,
-                CategoriaExigida = categoria,
-                EstadoDoTanque = EstadosTanqueCombustivel.CHEIO,
-                EstadoDoVeiculo = EstadosDeVeiculo.NORMAL,
-                ClienteId = clienteId,
-                GaragemId = (GaragemComboBox.SelectedItem as Modelo.Classes.Desk.Garagem).GaragemId,
-                SeguroId = (SeguradorasComboBox.SelectedItem as Modelo.Classes.Desk.Seguro).SeguroId
-            };
-
-            return veiculo;
         }
     }
 }
