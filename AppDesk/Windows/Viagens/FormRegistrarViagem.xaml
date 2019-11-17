@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Viagens"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
+        xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Registrar Nova Viagem" Height="500" Width="400" MaxHeight="500" MaxWidth="400" MinHeight="500" MinWidth="400">
+        Title="Registrar Nova Viagem" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -23,78 +25,10 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <GroupBox Grid.Row="0" Header="Veiculo">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <DataGrid x:Name="VeiculosDataGrid" Style="{StaticResource MainDataGridStyle}">
-                                <DataGrid.Columns>
-                                    <DataGridTemplateColumn>
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Button Width="auto" FontSize="8" x:Name="SelecionarVeiculoBtn" Click="SelecionarVeiculoBtn_Click">Selecionar</Button>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="Placa" Binding="{Binding Placa}"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                            <Grid Grid.Column="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                        <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarVeiculoTextBox" Margin="0" Height="25"></TextBox>
-                                        <Button x:Name="PesquisarPlacaVeiculo" Click="PesquisarPlacaVeiculo_Click" Height="25">Pesquisar Placa</Button>
-                                    </StackPanel>
-                                </StackPanel>
-                                <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                    <Label Style="{StaticResource MainLabelStyle}">Veiculo Selecionado</Label>
-                                    <TextBox Style="{StaticResource MainTextBoxStyle}" IsEnabled="False" Width="80" Height="25" Text="{Binding Placa}" x:Name="VeiculoSelecionadoTextBox"></TextBox>
-                                </StackPanel>
-                            </Grid>
-                        </Grid>
+                        <uc:SelecaoVeiculoUserControl x:Name="SeletorVeiculoUC"></uc:SelecaoVeiculoUserControl>
                     </GroupBox>
                     <GroupBox Grid.Row="1" Header="Motorista">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <DataGrid x:Name="MotoristasDataGrid" Style="{StaticResource MainDataGridStyle}">
-                                <DataGrid.Columns>
-                                    <DataGridTemplateColumn>
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Button Width="auto" FontSize="8" x:Name="SelecionarMotoristaBtn" Click="SelecionarMotoristaBtn_Click">Selecionar</Button>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="CPF" Binding="{Binding CPFTxt}"/>
-                                    <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                            <Grid Grid.Column="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*"/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                        <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarMotoristaTextBox" Width="120" Height="25"></TextBox>
-                                    </StackPanel>
-                                    <Button Height="25" x:Name="PesquisarMotoristaBtn" Click="PesquisarMotoristaBtn_Click">Pesquisar CPF</Button>
-                                </StackPanel>
-                                <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                    <Label Style="{StaticResource MainLabelStyle}">Motorista Selecionado</Label>
-                                    <TextBox Style="{StaticResource MainTextBoxStyle}" IsReadOnly="True"  Margin="0" Height="25" Text="{Binding Nome}" x:Name="MotoristaSelecionadoTextBox"></TextBox>
-                                </StackPanel>
-                            </Grid>
-                        </Grid>
+                        <uc:SelecaoMotoristaUserControl x:Name="SeletorMotoristaUC"></uc:SelecaoMotoristaUserControl>
                     </GroupBox>
                 </Grid>
             </TabItem>
@@ -104,107 +38,20 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
-                    <GroupBox x:Name="EnderecoOrigemGroupBox" Grid.Row="0" Header="Origem" IsEnabled="True">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <!--#region Rua / Nº-->
-                            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}">Endereço</Label>
-                                <TextBox Text="{Binding Rua}" Style="{StaticResource MainTextBoxStyle}" Width="170"></TextBox>
-                                <Label Style="{StaticResource MainLabelStyle}" Width="45">Nº</Label>
-                                <TextBox Text="{Binding Numero}" Style="{StaticResource MainTextBoxStyle}" Width="60"></TextBox>
+                    <GroupBox x:Name="EnderecoOrigemGroupBox" Grid.Row="0" IsEnabled="True">
+                        <GroupBox.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Padding="0" VerticalAlignment="Center">Origem</Label>
+                                <Button Margin="5 0 0 0" x:Name="AtualizarOrigem" Click="AtualizarOrigem_Click">Obter do veiculo selecionado</Button>
                             </StackPanel>
-                            <!--#endregion-->
-                            <!--#region Bairro/ CEP-->
-                            <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}" Width="45">CEP</Label>
-                                <TextBox Text="{Binding CEP}" Style="{StaticResource MainTextBoxStyle}" Width="93"></TextBox>
-                                <Label Style="{StaticResource MainLabelStyle}">Bairro</Label>
-                                <TextBox Text="{Binding Bairro}" Style="{StaticResource MainTextBoxStyle}" Width="155"></TextBox>
-                            </StackPanel>
-                            <!--#endregion-->
-                            <!--#region Cidade/ UF-->
-                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}">Cidade</Label>
-                                <TextBox Text="{Binding Cidade}" Style="{StaticResource MainTextBoxStyle}" Width="192"></TextBox>
-                                <Label Style="{StaticResource MainLabelStyle}" Width="45">UF</Label>
-                                <TextBox Text="{Binding UF, StringFormat=G}" Style="{StaticResource MainTextBoxStyle}" Width="50">
-                                </TextBox>
-                            </StackPanel>
-                            <!--#endregion-->
-                        </Grid>
+                        </GroupBox.Header>
+                        <uc:EnderecoUserControl x:Name="EnderecoOrigemUC" Editavel="True"></uc:EnderecoUserControl>
                     </GroupBox>
 
                     <GroupBox Grid.Row="1" Header="Destino">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <!--#region Rua / Nº-->
-                            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}">Endereço</Label>
-                                <TextBox x:Name="RuaDestinoTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170"></TextBox>
-                                <Label Style="{StaticResource MainLabelStyle}" Width="45">Nº</Label>
-                                <TextBox x:Name="NumeroDestinoTextBox" Style="{StaticResource MainTextBoxStyle}" Width="60"></TextBox>
-                            </StackPanel>
-                            <!--#endregion-->
-                            <!--#region Bairro/ CEP-->
-                            <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}" Width="45">CEP</Label>
-                                <TextBox x:Name="CEPDestinoTextBox" Style="{StaticResource MainTextBoxStyle}" Width="93"></TextBox>
-                                <Label Style="{StaticResource MainLabelStyle}">Bairro</Label>
-                                <TextBox x:Name="BairroDestinoTextBox" Style="{StaticResource MainTextBoxStyle}" Width="155"></TextBox>
-                            </StackPanel>
-                            <!--#endregion-->
-                            <!--#region Cidade/ UF-->
-                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}">Cidade</Label>
-                                <TextBox x:Name="CidadeDestinoTextBox" Style="{StaticResource MainTextBoxStyle}" Width="192"></TextBox>
-                                <Label Style="{StaticResource MainLabelStyle}" Width="45">UF</Label>
-                                <ComboBox x:Name="UfDestinoComboBox" Width="50">
-                                </ComboBox>
-                            </StackPanel>
-                            <!--#endregion-->
-                        </Grid>
-                    </GroupBox>
-
-                    <GroupBox Grid.Row="2" Header="Garagem de Retorno">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Style="{StaticResource MainStackPanelStyle}" Orientation="Horizontal">
-                                <Label Style="{StaticResource MainLabelStyle}">UF</Label>
-                                <ComboBox x:Name="UFGaragemRetornoComboBox" Width="50" SelectionChanged="UFGaragemRetornoComboBox_SelectionChanged"/>
-                                <Label Style="{StaticResource MainLabelStyle}">Garagem</Label>
-                                <ComboBox x:Name="GaragemRetornoComboBox" Width="200" SelectionChanged="GaragemRetornoComboBox_SelectionChanged">
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                                <Label Content="CNPJ:"/>
-                                                <TextBlock VerticalAlignment="Center" Text="{Binding CNPJTxt}"/>
-                                                <Label Content="Cidade:"/>
-                                                <TextBlock VerticalAlignment="Center" Text="{Binding Endereco.Cidade}"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                            </StackPanel>
-
-                            <GroupBox Grid.Row="2" Header="Endereço completo">
-                                <TextBox x:Name="GaragemEnderecoTextBox" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}" Text="{Binding EnderecoCompleto}"></TextBox>
-                            </GroupBox>
-                        </Grid>
+                        <uc:EnderecoUserControl x:Name="EnderecoDestinoUC" Editavel="True"></uc:EnderecoUserControl>
                     </GroupBox>
                 </Grid>
             </TabItem>
@@ -212,23 +59,18 @@
             <TabItem Header="Data/Passageiros">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="40*"/>
-                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="40*"/>
-                            <RowDefinition Height="60*"/>
-                        </Grid.RowDefinitions>
-                        <GroupBox Grid.Row="0" Header="Data Saida" VerticalAlignment="Center">
-                            <DatePicker x:Name="DataSaidaDatePicker" IsTodayHighlighted="True">
 
-                            </DatePicker>
-                        </GroupBox>
-                        <GroupBox Grid.Row="1" Header="Quantidade de Passageiros" VerticalAlignment="Center">
-                            <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="QuantidadeDePassageirosTextBox" Height="25"></TextBox>
-                        </GroupBox>
-                    </Grid>
+                    <uc:DataFieldUC Grid.Row="0" Label="Data de Saída" x:Name="DataSaidaUC"></uc:DataFieldUC>
+
+                    <ucm:NumericFieldUC Grid.Row="1" Label="Quantidade de Passageiros" x:Name="PassageirosUC"></ucm:NumericFieldUC>
+
+                    <GroupBox Grid.Row="2" Header="Garagem de Retorno">
+                        <uc:SelecaoGaragemUC x:Name="GaragemRetornoUC"></uc:SelecaoGaragemUC>
+                    </GroupBox>
                 </Grid>
             </TabItem>
         </TabControl>

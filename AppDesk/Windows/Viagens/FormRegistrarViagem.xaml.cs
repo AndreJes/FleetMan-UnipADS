@@ -24,24 +24,15 @@ namespace AppDesk.Windows.Viagens
     /// </summary>
     public partial class FormRegistrarViagem : Window
     {
-        private Motorista _motoristaSelecionado = null;
-        private Veiculo _veiculoSelecionado = null;
-
         public FormRegistrarViagem()
         {
             InitializeComponent();
 
-            UFGaragemRetornoComboBox.ItemsSource = Enum.GetNames(typeof(UnidadesFederativas));
-            UfDestinoComboBox.ItemsSource = Enum.GetNames(typeof(UnidadesFederativas));
-
-            VeiculoSelecionadoTextBox.DataContext = _veiculoSelecionado;
-            MotoristaSelecionadoTextBox.DataContext = _motoristaSelecionado;
-
-            VeiculosDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId()
+            SeletorVeiculoUC.ListaVeiculos = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId()
                 .Where(v => v.EstadoDoVeiculo == EstadosDeVeiculo.NORMAL || v.EstadoDoVeiculo == EstadosDeVeiculo.ALUGADO)
                 .ToList();
 
-            MotoristasDataGrid.ItemsSource = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId()
+            SeletorMotoristaUC.ListaMotoristas = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId()
                 .Where(m => m.Estado == EstadosDeMotorista.REGULAR)
                 .ToList();
         }
@@ -54,114 +45,64 @@ namespace AppDesk.Windows.Viagens
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Confirmar registro de viagem?", "Confirmar registro", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosViagem.GravarViagem(GerarViagem());
-                MessageBox.Show("Viagem registrada com sucesso!");
-                MainWindowUpdater.UpdateDataGrids();
-                this.Close();
-            }
-        }
-
-        #endregion
-        #region Seleçao/Pesquisa
-        private void SelecionarMotoristaBtn_Click(object sender, RoutedEventArgs e)
-        {
-            SelecionarMotorista(MotoristasDataGrid.SelectedItem as Motorista);
-        }
-
-        private void PesquisarMotoristaBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Motorista motorista = ServicoDados.ServicoDadosMotorista.ObterMotoristaPorCPF(PesquisarMotoristaTextBox.Text);
-            if (motorista != null)
-            {
-                MessageBoxResult result = MessageBox.Show("Motorista encontrado. Deseja selecioná-lo(a) agora?", "Motorista encontrado", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
+                if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Viagem") == MessageBoxResult.Yes)
                 {
-                    SelecionarMotorista(motorista);
-                    MessageBox.Show("Motorista selecionado!");
+                    ServicoDados.ServicoDadosViagem.GravarViagem(GerarViagem());
+                    StandardMessageBoxes.MensagemSucesso("Viagem registrada com sucesso!", "Registro");
+                    MainWindowUpdater.UpdateDataGrids();
+                    this.Close();
                 }
             }
-            else
+            catch (FieldException ex)
             {
-                MessageBox.Show("Motorista não encontrado!");
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
             }
-        }
-
-        private void SelecionarVeiculoBtn_Click(object sender, RoutedEventArgs e)
-        {
-            SelecionarVeiculo(VeiculosDataGrid.SelectedItem as Veiculo);
-        }
-
-        private void PesquisarPlacaVeiculo_Click(object sender, RoutedEventArgs e)
-        {
-            Veiculo veiculo = ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorPlaca(PesquisarVeiculoTextBox.Text);
-            if (veiculo != null)
+            catch (Exception ex)
             {
-                MessageBoxResult result = MessageBox.Show("Veiculo encontrado. Deseja selecioná-lo agora?", "Veiculo encontrado", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
-                {
-                    SelecionarVeiculo(veiculo);
-                    MessageBox.Show("Veiculo selecionado!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Veiculo não encontrado!");
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
         #endregion
-        #region SelecionarGaragem
-        private void UFGaragemRetornoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            GaragemRetornoComboBox.ItemsSource = ServicoDados.ServicoDadosGaragem.ObterGaragensOrdPorId()
-                .Where(g => g.Endereco.UF == (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UFGaragemRetornoComboBox.SelectedItem.ToString()))
-                .ToList();
-        }
-
-        private void GaragemRetornoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            GaragemEnderecoTextBox.Text = (GaragemRetornoComboBox.SelectedItem as Modelo.Classes.Desk.Garagem).EnderecoCompleto;
-        }
-        #endregion
-
-        private void SelecionarVeiculo(Veiculo veiculo)
-        {
-            _veiculoSelecionado = ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorId(veiculo.VeiculoId);
-            VeiculoSelecionadoTextBox.DataContext = _veiculoSelecionado;
-            EnderecoOrigemGroupBox.DataContext = _veiculoSelecionado.Garagem.Endereco;
-        }
-
-        private void SelecionarMotorista(Motorista motorista)
-        {
-            _motoristaSelecionado = ServicoDados.ServicoDadosMotorista.ObterMotoristaPorId(motorista.MotoristaId);
-            MotoristaSelecionadoTextBox.DataContext = _motoristaSelecionado;
-        }
 
         private Viagem GerarViagem()
         {
-            Viagem viagem = new Viagem();
-
-            viagem.MotoristaId = _motoristaSelecionado.MotoristaId;
-            viagem.VeiculoId = _veiculoSelecionado.VeiculoId;
-            viagem.EnderecoOrigem = _veiculoSelecionado.Garagem.Endereco;
-            viagem.EnderecoDestino = new Endereco()
+            try
             {
-                Rua = RuaDestinoTextBox.Text,
-                CEP = CEPDestinoTextBox.Text,
-                Numero = NumeroDestinoTextBox.Text,
-                Cidade = CidadeDestinoTextBox.Text,
-                Bairro = BairroDestinoTextBox.Text,
-                UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfDestinoComboBox.SelectedItem.ToString())
-            };
-            viagem.GaragemOrigem_GaragemId = _veiculoSelecionado.Garagem.GaragemId;
-            viagem.GaragemRetorno_GaragemId = (GaragemRetornoComboBox.SelectedItem as Modelo.Classes.Desk.Garagem).GaragemId;
-            viagem.DataSaida = DataSaidaDatePicker.DisplayDate;
-            viagem.DataChegada = null;
-            viagem.QuantidadePassageiros = int.Parse(QuantidadeDePassageirosTextBox.Text);
+                Viagem viagem = new Viagem();
+                viagem.MotoristaId = SeletorMotoristaUC.Motorista.MotoristaId;
+                viagem.VeiculoId = SeletorVeiculoUC.Veiculo.VeiculoId;
+                viagem.EnderecoOrigem = EnderecoOrigemUC.Endereco;
+                viagem.EnderecoDestino = EnderecoDestinoUC.Endereco;
+                viagem.GaragemOrigem_GaragemId = SeletorVeiculoUC.Veiculo.Garagem.GaragemId;
+                viagem.GaragemRetorno_GaragemId = GaragemRetornoUC.Garagem.GaragemId;
+                viagem.DataSaida = DataSaidaUC.Date;
+                viagem.DataChegada = null;
+                viagem.QuantidadePassageiros = PassageirosUC.Value;
 
-            return viagem;
+                return viagem;
+            }
+            catch (FieldException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void AtualizarOrigem_Click(object sender, RoutedEventArgs e)
+        {
+            if (SeletorVeiculoUC.Veiculo != null)
+            {
+                EnderecoOrigemUC.Endereco = SeletorVeiculoUC.Veiculo.Garagem.Endereco;
+            }
+            else
+            {
+                StandardMessageBoxes.MensagemDeErro("Nenhum veiculo selecionado!");
+            }
         }
     }
 }

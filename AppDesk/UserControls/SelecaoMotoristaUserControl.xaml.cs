@@ -2,6 +2,7 @@
 using Modelo.Classes.Web;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,14 @@ namespace AppDesk.UserControls
     public partial class SelecaoMotoristaUserControl : UserControl
     {
         public Motorista Motorista { get; private set; }
+
+        public List<Motorista> ListaMotoristas 
+        {
+            set
+            {
+                MotoristasDataGrid.ItemsSource = value;
+            }
+        }
 
         public SelecaoMotoristaUserControl()
         {

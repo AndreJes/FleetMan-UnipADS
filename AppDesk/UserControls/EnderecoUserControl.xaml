@@ -16,13 +16,13 @@
         <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
             <euc:RuaFieldUC x:Name="RuaUC"></euc:RuaFieldUC>
             <euc:NumeroFieldUC x:Name="NumeroUC"></euc:NumeroFieldUC>
-            </StackPanel>
+        </StackPanel>
         <!--#endregion-->
         <!--#region Cidade/ UF-->
         <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
             <euc:CidadeFieldUC x:Name="CidadeUC"></euc:CidadeFieldUC>
             <Label Style="{StaticResource MainLabelRoundStyle}" Width="45">UF</Label>
-            <ComboBox x:Name="UfComboBox" Style="{StaticResource MainComboBoxStyle}" SelectedItem="{Binding UF, StringFormat=G}" Width="50">
+            <ComboBox x:Name="UfComboBox" Style="{StaticResource MainComboBoxStyle}" Width="50">
             </ComboBox>
         </StackPanel>
         <!--#endregion-->
@@ -30,7 +30,7 @@
         <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
             <euc:CEPFieldUC x:Name="CEPUC"></euc:CEPFieldUC>
             <euc:BairroFieldUC x:Name="BairroUC"></euc:BairroFieldUC>
-            </StackPanel>
+        </StackPanel>
         <!--#endregion-->
     </Grid>
 

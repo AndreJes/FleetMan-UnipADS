@@ -2,6 +2,7 @@
 using Modelo.Classes.Web;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -24,7 +25,8 @@ namespace AppDesk.UserControls
     /// </summary>
     public partial class SelecaoVeiculoUserControl : UserControl, INotifyPropertyChanged
     {
-        private Veiculo _veiculo { get; set; }
+        private Veiculo _veiculo;
+
         public Veiculo Veiculo { 
             get
             {
@@ -37,6 +39,15 @@ namespace AppDesk.UserControls
                     _veiculo = value;
                     NotifyPropertyChanged();
                 }
+            }
+        }
+
+        public List<Veiculo> ListaVeiculos
+        {
+            set
+            {
+                VeiculosDataGrid.ItemsSource = value;
+                NotifyPropertyChanged();
             }
         }
 

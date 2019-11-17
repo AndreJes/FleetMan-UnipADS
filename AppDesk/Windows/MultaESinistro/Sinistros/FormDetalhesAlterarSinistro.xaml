@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.MultaESinistro.Sinistros"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
+        xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
         mc:Ignorable="d"
-        Title="Detalhes do Sinistro" Height="500" Width="350" MaxHeight="500" MaxWidth="350" MinHeight="500" MinWidth="350">
+        Title="Detalhes do Sinistro" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -14,8 +16,8 @@
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
 
-            <Label Style="{StaticResource MainLabelStyle}" FontSize="20">DETALHES DA MULTA</Label>
-            <GroupBox Grid.Row="1" Header="Dados da Multa">
+            <Label Style="{StaticResource MainLabelStyle}" FontSize="20">DETALHES DO SINISTRO</Label>
+            <GroupBox Grid.Row="1" Header="Dados do Sinistro">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -27,31 +29,47 @@
                         <RowDefinition Height="20*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}" Width="50">Código</Label>
-                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="150" Text="{Binding CodSinistro}" IsEnabled="False"></TextBox>
+                        <Label Style="{StaticResource MainLabelRoundStyle}" Width="50">Código</Label>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="150" Text="{Binding CodSinistro}" IsEnabled="False">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Envolvidos</Label>
-                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="45" Text="{Binding QntEnvolvidos}" IsEnabled="False"></TextBox>
+                        <Label Style="{StaticResource MainLabelRoundStyle}">Qnt. Envolvidos</Label>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="45" Text="{Binding QntEnvolvidos}" IsEnabled="False">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
                         <StackPanel Margin="5 0" Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}">Gravidade</Label>
+                            <Label Style="{StaticResource MainLabelRoundStyle}">Gravidade</Label>
                             <TextBox IsEnabled="False" x:Name="GravidadeInfracaoTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Gravidade, StringFormat=G}" Width="125">
+                                <TextBox.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                    </Style>
+                                </TextBox.Resources>
                             </TextBox>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Pagamento</Label>
-                        <ComboBox x:Name="EstadoPagamentoSinistro" Width="130" SelectionChanged="EstadoPagamentoSinistro_SelectionChanged">
+                        <Label Style="{StaticResource MainLabelRoundStyle}">Pagamento</Label>
+                        <ComboBox Style="{StaticResource MainComboBoxStyle}" x:Name="EstadoPagamentoSinistro" Width="130" SelectionChanged="EstadoPagamentoSinistro_SelectionChanged">
                         </ComboBox>
 
                         <Button x:Name="SalvarAlteracaoPagamentoBtn" Click="SalvarAlteracaoPagamentoBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0" IsEnabled="False">
                             Salvar
                         </Button>
                     </StackPanel>
-                    <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Data</Label>
-                        <DatePicker IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectedDate="{Binding DataSinistro}"></DatePicker>
-                    </StackPanel>
+
+                    <uc:DataFieldUC Label="Data do Sinistro" x:Name="DataSinistroUC" Grid.Row="3" IsEnabled="False"></uc:DataFieldUC>
+                    
                     <TabControl Grid.Row="4" Grid.RowSpan="3">
                         <TabItem Header="Veiculo/Motorista">
                             <Grid>
@@ -62,8 +80,7 @@
                                 <GroupBox Header="Dados do veiculo" Grid.Row="0">
                                     <Grid>
                                         <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                                            <Label Style="{StaticResource MainLabelStyle}">Placa</Label>
-                                            <TextBox IsEnabled="False" x:Name="VeiculoMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="115" Text="{Binding Veiculo.Placa, Mode=OneWay}"></TextBox>
+                                            <ucm:PlacaFieldUC x:Name="PlacaVeiculoUC" IsEnabled="False"></ucm:PlacaFieldUC>
                                             <Button x:Name="DetalhesDoVeiculoBtn" Click="DetalhesDoVeiculoBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
                                                 Detalhes
                                             </Button>
@@ -73,8 +90,7 @@
                                 <GroupBox Header="Dados do motorista" Grid.Row="1" >
                                     <Grid>
                                         <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                                            <Label Style="{StaticResource MainLabelStyle}">CPF</Label>
-                                            <TextBox IsEnabled="False" x:Name="MotoristaMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120" Text="{Binding Motorista.CPFTxt, Mode=OneWay}"></TextBox>
+                                            <ucm:CPFFieldUC x:Name="CPFUC" IsEnabled="False"></ucm:CPFFieldUC>
                                             <Button x:Name="DetalhesDoMotoristaBtn" Click="DetalhesDoMotoristaBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
                                                 Detalhes
                                             </Button>

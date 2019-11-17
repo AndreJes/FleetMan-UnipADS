@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.MultaESinistro"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
+        xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Registrar Multa/Sinistro" Height="500" Width="350" MaxHeight="500" MaxWidth="350" MinHeight="500" MinWidth="350">
+        Title="Registrar Multa/Sinistro" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <TabControl>
             <TabItem Header="Registrar Multa" >
@@ -20,8 +22,8 @@
                     <GroupBox Grid.Row="1" Header="Dados da Multa">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="3*"/>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
                                 <Grid.RowDefinitions>
@@ -30,101 +32,39 @@
                                     <RowDefinition Height="1*"/>
                                 </Grid.RowDefinitions>
                                 <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                    <Label Style="{StaticResource MainLabelStyle}" Width="50">Código</Label>
-                                    <TextBox x:Name="CodigoMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120"></TextBox>
-                                    <Label Style="{StaticResource MainLabelStyle}">Valor</Label>
-                                    <TextBox x:Name="ValorMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="90"></TextBox>
-                                </StackPanel>
+                                    <Label Style="{StaticResource MainLabelRoundStyle}" Width="50">Código</Label>
+                                    <TextBox x:Name="CodigoMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120">
+                                        <TextBox.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                            </Style>
+                                        </TextBox.Resources>
+                                    </TextBox>
+
+                                    <uc:ValorFieldUC Label="Valor" x:Name="ValorMultaUC"></uc:ValorFieldUC>
+                                    
+                                    </StackPanel>
                                 <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
                                     <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
-                                        <Label Style="{StaticResource MainLabelStyle}">Pagamento</Label>
-                                        <ComboBox x:Name="EstadoPagamentoInfracaoComboBox" Width="80">
+                                        <Label Style="{StaticResource MainLabelRoundStyle}">Pagamento</Label>
+                                        <ComboBox x:Name="EstadoPagamentoInfracaoComboBox" Style="{StaticResource MainComboBoxStyle}" Width="80">
                                         </ComboBox>
-                                        <Label Style="{StaticResource MainLabelStyle}">Gravidade</Label>
-                                        <ComboBox x:Name="GravidadeInfracaoComboBox" Width="80">
+                                        <Label Style="{StaticResource MainLabelRoundStyle}">Gravidade</Label>
+                                        <ComboBox x:Name="GravidadeInfracaoComboBox" Style="{StaticResource MainComboBoxStyle}" Width="80">
                                         </ComboBox>
                                     </StackPanel>
                                 </StackPanel>
-                                <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
-                                    <Label Style="{StaticResource MainLabelStyle}">Data da infração</Label>
-                                    <DatePicker HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="DataDaMultaDatePicker"></DatePicker>
-                                </StackPanel>
+
+                                <uc:DataFieldUC Grid.Row="2" Label="Data da Infração" x:Name="DataInfraçãoUC"></uc:DataFieldUC>
+                                
                             </Grid>
 
                             <TabControl Grid.Row="1">
                                 <TabItem Header="Veiculo">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <DataGrid x:Name="VeiculosParaMultasDataGrid" Style="{StaticResource MainDataGridStyle}">
-                                            <DataGrid.Columns>
-                                                <DataGridTemplateColumn>
-                                                    <DataGridTemplateColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <Button Width="auto" FontSize="8" x:Name="SelecionarVeiculoMultaBtn" Click="SelecionarVeiculoMultaBtn_Click">Selecionar</Button>
-                                                        </DataTemplate>
-                                                    </DataGridTemplateColumn.CellTemplate>
-                                                </DataGridTemplateColumn>
-                                                <DataGridTextColumn Header="Placa" Binding="{Binding Placa}"/>
-                                            </DataGrid.Columns>
-                                        </DataGrid>
-                                        <Grid Grid.Column="1">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="1*"/>
-                                                <RowDefinition Height="1*"/>
-                                            </Grid.RowDefinitions>
-                                            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarVeiculoPMultaTextBox" Margin="0" Height="25"></TextBox>
-                                                    <Button x:Name="PesquisarPlacaVeiculoPMulta" Click="PesquisarPlacaVeiculoPMulta_Click" Height="25">Pesquisar Placa</Button>
-                                                </StackPanel>
-                                            </StackPanel>
-                                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                                <Label Style="{StaticResource MainLabelStyle}">Veiculo Selecionado</Label>
-                                                <TextBox Style="{StaticResource MainTextBoxStyle}" IsEnabled="False" Width="80" Height="25" Text="{Binding Placa}" x:Name="VeiculoSelecionadoMultaTextBox"></TextBox>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
+                                    <uc:SelecaoVeiculoUserControl x:Name="SeletorVeiculoMultaUC"></uc:SelecaoVeiculoUserControl>
                                 </TabItem>
                                 <TabItem Header="Motorista">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <DataGrid x:Name="MotoristaParaMultaDataGrid" Style="{StaticResource MainDataGridStyle}">
-                                            <DataGrid.Columns>
-                                                <DataGridTemplateColumn>
-                                                    <DataGridTemplateColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <Button Width="auto" FontSize="8" x:Name="SelecionarMotoristaMultaBtn" Click="SelecionarMotoristaMultaBtn_Click">Selecionar</Button>
-                                                        </DataTemplate>
-                                                    </DataGridTemplateColumn.CellTemplate>
-                                                </DataGridTemplateColumn>
-                                                <DataGridTextColumn Header="CPF" Binding="{Binding CPFTxt}"/>
-                                                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
-                                            </DataGrid.Columns>
-                                        </DataGrid>
-                                        <Grid Grid.Column="1">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="1*"/>
-                                                <RowDefinition Height="1*"/>
-                                            </Grid.RowDefinitions>
-                                            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarMotoristaPMultaTextBox" Width="120" Height="25"></TextBox>
-                                                </StackPanel>
-                                                <Button Height="25" x:Name="PesquisarMotoristaPMultaBtn" Click="PesquisarMotoristaPMultaBtn_Click">Pesquisar CPF</Button>
-                                            </StackPanel>
-                                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                                <Label Style="{StaticResource MainLabelStyle}">Motorista Selecionado</Label>
-                                                <TextBox Style="{StaticResource MainTextBoxStyle}" IsReadOnly="True"  Margin="0" Height="25" Text="{Binding Nome}" x:Name="MotoristaSelecionadoMultaTextBox"></TextBox>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
+                                    <uc:SelecaoMotoristaUserControl x:Name="SeletorMotoristaMultaUC"></uc:SelecaoMotoristaUserControl>
                                 </TabItem>
                             </TabControl>
                         </Grid>
@@ -136,10 +76,10 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Button x:Name="RegistrarMultaBtn" Click="RegistrarMultaBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
-                            REGISTRAR MULTA
+                            Registrar Multa
                         </Button>
                         <Button Margin="20 5" Grid.Column="1" Background="#FFE66E6E" Click="CancelarBtn_Click">
-                            CANCELAR
+                            Cancelar
                         </Button>
                     </Grid>
                 </Grid>
@@ -157,8 +97,8 @@
                     <GroupBox Grid.Row="1" Header="Dados do Sinistro">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="3*"/>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
                                 <Grid.RowDefinitions>
@@ -167,103 +107,37 @@
                                     <RowDefinition Height="1*"/>
                                 </Grid.RowDefinitions>
                                 <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                    <Label Style="{StaticResource MainLabelStyle}" Width="50">Código</Label>
-                                    <TextBox x:Name="CodigoSinistroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="105"></TextBox>
-                                    <Label Style="{StaticResource MainLabelStyle}">Nº de Envolvidos</Label>
-                                    <TextBox x:Name="QtnEnvolvidosSinistroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="50"></TextBox>
+                                    <Label Style="{StaticResource MainLabelRoundStyle}" Width="50">Código</Label>
+                                    <TextBox x:Name="CodigoSinistroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="100">
+                                        <TextBox.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                            </Style>
+                                        </TextBox.Resources>
+                                    </TextBox>
+                                    <ucc:NumericFieldUC Label="Qnt. Envolvidos" x:Name="QntEnvolvidosUC"></ucc:NumericFieldUC>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
                                     <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
-                                        <Label Style="{StaticResource MainLabelStyle}">Pagamento</Label>
-                                        <ComboBox x:Name="EstadoPagamentoSinistroComboBox" Width="85">
+                                        <Label Style="{StaticResource MainLabelRoundStyle}">Pagamento</Label>
+                                        <ComboBox Style="{StaticResource MainComboBoxStyle}" x:Name="EstadoPagamentoSinistroComboBox" Width="85">
                                         </ComboBox>
-                                        <Label Style="{StaticResource MainLabelStyle}">Gravidade</Label>
-                                        <ComboBox x:Name="GravidadeSinistroComboBox" Width="85">
+                                        <Label Style="{StaticResource MainLabelRoundStyle}">Gravidade</Label>
+                                        <ComboBox Style="{StaticResource MainComboBoxStyle}" x:Name="GravidadeSinistroComboBox" Width="85">
                                         </ComboBox>
                                     </StackPanel>
                                 </StackPanel>
-                                <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
-                                    <Label Style="{StaticResource MainLabelStyle}">Data do sinistro</Label>
-                                    <DatePicker x:Name="DataDoSinistroDatePicker" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></DatePicker>
-                                </StackPanel>
+
+                                <uc:DataFieldUC Grid.Row="2" Label="Data do Sinistro" x:Name="DataSinistroUC"></uc:DataFieldUC>
+                                
                             </Grid>
 
                             <TabControl Grid.Row="1">
                                 <TabItem Header="Veiculo">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <DataGrid x:Name="VeiculosParaSinistrosDataGrid" Style="{StaticResource MainDataGridStyle}">
-                                            <DataGrid.Columns>
-                                                <DataGridTemplateColumn>
-                                                    <DataGridTemplateColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <Button Width="auto" FontSize="8" x:Name="SelecionarVeiculoPSinistroBtn" Click="SelecionarVeiculoPSinistroBtn_Click">Selecionar</Button>
-                                                        </DataTemplate>
-                                                    </DataGridTemplateColumn.CellTemplate>
-                                                </DataGridTemplateColumn>
-                                                <DataGridTextColumn Header="Placa" Binding="{Binding Placa}"/>
-                                            </DataGrid.Columns>
-                                        </DataGrid>
-                                        <Grid Grid.Column="1">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="1*"/>
-                                                <RowDefinition Height="1*"/>
-                                            </Grid.RowDefinitions>
-                                            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarVeiculoPSinistroTextBox" Width="80" Height="25"></TextBox>
-                                                </StackPanel>
-                                                <Button Height="25" x:Name="PesquisarVeiculoPSinistroBtn" Click="PesquisarVeiculoPSinistroBtn_Click">Pesquisar</Button>
-                                            </StackPanel>
-                                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                                <Label Style="{StaticResource MainLabelStyle}">Veiculo Selecionado</Label>
-                                                <TextBox Style="{StaticResource MainTextBoxStyle}" IsEnabled="False" Width="80" Height="25" Text="{Binding Placa}" x:Name="VeiculoSelecionadoPSinistroTextBox"></TextBox>
-                                            </StackPanel>
-                                        </Grid>
-
-
-                                    </Grid>
+                                    <uc:SelecaoVeiculoUserControl x:Name="SeletorVeiculoSinistro"></uc:SelecaoVeiculoUserControl>
                                 </TabItem>
                                 <TabItem Header="Motorista">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"/>
-                                            <ColumnDefinition Width="1*"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <DataGrid x:Name="MotoristaParaSinistroDataGrid" Style="{StaticResource MainDataGridStyle}">
-                                            <DataGrid.Columns>
-                                                <DataGridTemplateColumn>
-                                                    <DataGridTemplateColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <Button Width="auto" FontSize="8" x:Name="SelecionarMotoristaPSinistroBtn" Click="SelecionarMotoristaPSinistroBtn_Click">Selecionar</Button>
-                                                        </DataTemplate>
-                                                    </DataGridTemplateColumn.CellTemplate>
-                                                </DataGridTemplateColumn>
-                                                <DataGridTextColumn Header="CPF" Binding="{Binding CPFTxt}"/>
-                                                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
-                                            </DataGrid.Columns>
-                                        </DataGrid>
-                                        <Grid Grid.Column="1">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="1*"/>
-                                                <RowDefinition Height="1*"/>
-                                            </Grid.RowDefinitions>
-                                            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                                    <TextBox Style="{StaticResource MainTextBoxStyle}" x:Name="PesquisarMotoristaPSinistroTextBox" Width="120" Height="25"></TextBox>
-                                                </StackPanel>
-                                                <Button Height="25" x:Name="PesquisarMotoristaPSinistroBtn" Click="PesquisarMotoristaPSinistroBtn_Click">Pesquisar CPF</Button>
-                                            </StackPanel>
-                                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                                                <Label Style="{StaticResource MainLabelStyle}">Motorista Selecionado</Label>
-                                                <TextBox Style="{StaticResource MainTextBoxStyle}" IsReadOnly="True"  Margin="0" Height="25" Text="{Binding Nome}" x:Name="MotoristaSelecionadoPSinistroTextBox"></TextBox>
-                                            </StackPanel>
-                                        </Grid>
-                                    </Grid>
+                                    <uc:SelecaoMotoristaUserControl x:Name="SeletorMotoristaSinistro"></uc:SelecaoMotoristaUserControl>
                                 </TabItem>
 
                                 <TabItem Header="Descrição (Opcional)">
@@ -287,10 +161,10 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Button x:Name="RegistrarSinistroBtn" Click="RegistrarSinistroBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
-                            REGISTRAR SINISTRO
+                            Registrar Sinistro
                         </Button>
                         <Button Click="CancelarBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
-                            CANCELAR
+                            Cancelar
                         </Button>
                     </Grid>
                 </Grid>

@@ -35,10 +35,13 @@ namespace AppDesk.Windows.MultaESinistro.Sinistros
         public FormDetalhesAlterarSinistro(Sinistro sinistro) : this()
         {
             _sinistro = sinistro;
-            this.DataContext = _sinistro;
+            DataContext = _sinistro;
             PopularComboBox();
-            EstadoPagamentoSinistro.SelectedItem = _sinistro.EstadoPagamento.ToString("G").Replace('_', ' ');
+            EstadoPagamentoSinistro.SelectedItem = _sinistro.EstadoPagamento.ToString("G");
             PreencherRichTextBox();
+            CPFUC.Text = _sinistro.Motorista.CPF;
+            PlacaVeiculoUC.Text = _sinistro.Veiculo.Placa;
+            DataSinistroUC.Date = _sinistro.DataSinistro;
         }
 
         private void PopularComboBox()
@@ -59,7 +62,7 @@ namespace AppDesk.Windows.MultaESinistro.Sinistros
 
         private void EstadoPagamentoSinistro_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (EstadoPagamentoSinistro.SelectedItem.ToString() != _sinistro.EstadoPagamento.ToString("G").Replace('_', ' '))
+            if (EstadoPagamentoSinistro.SelectedItem.ToString() != _sinistro.EstadoPagamento.ToString("G"))
             {
                 SalvarAlteracaoPagamentoBtn.IsEnabled = true;
             }
@@ -67,7 +70,7 @@ namespace AppDesk.Windows.MultaESinistro.Sinistros
 
         private void SalvarAlteracaoPagamentoBtn_Click(object sender, RoutedEventArgs e)
         {
-            _sinistro.EstadoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), EstadoPagamentoSinistro.SelectedItem.ToString().Replace(' ', '_'));
+            _sinistro.EstadoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), EstadoPagamentoSinistro.SelectedItem.ToString());
             ServicoDados.ServicoDadosSinistro.GravarSinistro(_sinistro);
             MainWindowUpdater.UpdateDataGrids();
         }

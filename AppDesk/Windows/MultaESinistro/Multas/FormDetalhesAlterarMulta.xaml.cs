@@ -36,8 +36,12 @@ namespace AppDesk.Windows.MultaESinistro.Multas
         {
             _multa = multa;
             PopularComboBox();
-            EstadoPagamentoInfracaoComboBox.SelectedItem = _multa.EstadoDoPagamento.ToString("G").Replace('_', ' ');
+            EstadoPagamentoInfracaoComboBox.SelectedItem = _multa.EstadoDoPagamento.ToString("G");
             this.DataContext = _multa;
+            CPFUC.Text = _multa.Motorista.CPF;
+            PlacaUC.Text = _multa.Veiculo.Placa;
+            DataMultaUC.Date = _multa.DataDaMulta;
+            ValorMultaUC.Valor = _multa.Valor;
         }
 
         private void PopularComboBox()
@@ -52,11 +56,10 @@ namespace AppDesk.Windows.MultaESinistro.Multas
 
         private void RemoverMultaBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Confirmar remoção de multa?", "Confirmar Remoção", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(result == MessageBoxResult.Yes)
+            if(StandardMessageBoxes.ConfirmarRemocaoMessageBox("Multa") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosMulta.RemoverMultaPorId(_multa.MultaId);
-                MessageBox.Show("Multa removida com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Multa removida com sucesso!","Remoção");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
@@ -64,7 +67,7 @@ namespace AppDesk.Windows.MultaESinistro.Multas
 
         private void EstadoPagamentoInfracaoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (EstadoPagamentoInfracaoComboBox.SelectedItem.ToString().Replace(' ', '_') != _multa.EstadoDoPagamento.ToString("G"))
+            if (EstadoPagamentoInfracaoComboBox.SelectedItem.ToString() != _multa.EstadoDoPagamento.ToString("G"))
             {
                 SalvarAlteracaoPagamentoBtn.IsEnabled = true;
             }
@@ -72,7 +75,7 @@ namespace AppDesk.Windows.MultaESinistro.Multas
 
         private void SalvarAlteracaoPagamentoBtn_Click(object sender, RoutedEventArgs e)
         {
-            _multa.EstadoDoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento),EstadoPagamentoInfracaoComboBox.SelectedItem.ToString().Replace(' ', '_'));
+            _multa.EstadoDoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento),EstadoPagamentoInfracaoComboBox.SelectedItem.ToString());
             ServicoDados.ServicoDadosMulta.GravarMulta(_multa);
             MainWindowUpdater.UpdateDataGrids();
         }

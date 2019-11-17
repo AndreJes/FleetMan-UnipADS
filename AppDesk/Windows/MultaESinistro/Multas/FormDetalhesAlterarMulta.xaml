@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.MultaESinistro.Multas"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
+        xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
         mc:Ignorable="d"
-        Title="Detalhes da Multa" Height="500" Width="350" MaxHeight="500" MaxWidth="350" MinHeight="500" MinWidth="350">
+        Title="Detalhes da Multa" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -27,16 +29,21 @@
                         <RowDefinition Height="20*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}" Width="50">Código</Label>
-                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="150" Text="{Binding CodigoMulta}" IsEnabled="False"></TextBox>
+                        <Label Style="{StaticResource MainLabelRoundStyle}" Width="50">Código</Label>
+                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="150" Text="{Binding CodigoMulta}" IsEnabled="False">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
                     </StackPanel>
-                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Valor</Label>
-                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="75" Text="{Binding Valor, StringFormat=F2}" IsEnabled="False"></TextBox>
-                    </StackPanel>
+
+                    <uc:ValorFieldUC x:Name="ValorMultaUC" Label="Valor" IsEnabled="False" Grid.Row="1"></uc:ValorFieldUC>
+                    
                     <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Pagamento</Label>
-                        <ComboBox x:Name="EstadoPagamentoInfracaoComboBox" Width="130" SelectionChanged="EstadoPagamentoInfracaoComboBox_SelectionChanged">
+                        <Label Style="{StaticResource MainLabelRoundStyle}">Pagamento</Label>
+                        <ComboBox Style="{StaticResource MainComboBoxStyle}" x:Name="EstadoPagamentoInfracaoComboBox" Width="130" SelectionChanged="EstadoPagamentoInfracaoComboBox_SelectionChanged">
                         </ComboBox>
 
                         <Button x:Name="SalvarAlteracaoPagamentoBtn" Click="SalvarAlteracaoPagamentoBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0" IsEnabled="False">
@@ -44,19 +51,22 @@
                         </Button>
                     </StackPanel>
                     <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Gravidade</Label>
+                        <Label Style="{StaticResource MainLabelRoundStyle}">Gravidade</Label>
                         <TextBox IsEnabled="False" x:Name="GravidadeInfracaoTextBox" Style="{StaticResource MainTextBoxStyle}" Text="{Binding GravidadeDaInfracao, StringFormat=G}" Width="135">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                </Style>
+                            </TextBox.Resources>
                         </TextBox>
                     </StackPanel>
-                    <StackPanel Grid.Row="4" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Data da infração</Label>
-                        <DatePicker IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectedDate="{Binding DataDaMulta}"></DatePicker>
-                    </StackPanel>
+
+                    <uc:DataFieldUC Grid.Row="4" IsEnabled="False" x:Name="DataMultaUC" Label="Data da Infração"></uc:DataFieldUC>
+                    
                     <GroupBox Header="Dados do veiculo" Grid.Row="5">
                         <Grid>
                             <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}">Placa</Label>
-                                <TextBox IsEnabled="False" x:Name="VeiculoMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="115" Text="{Binding Veiculo.Placa, Mode=OneWay}"></TextBox>
+                                <ucm:PlacaFieldUC IsEnabled="False" x:Name="PlacaUC"></ucm:PlacaFieldUC>
                                 <Button x:Name="DetalhesDoVeiculoBtn" Click="DetalhesDoVeiculoBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
                                     Detalhes
                                 </Button>
@@ -66,8 +76,7 @@
                     <GroupBox Header="Dados do motorista" Grid.Row="6" >
                         <Grid>
                             <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}">CPF</Label>
-                                <TextBox IsEnabled="False" x:Name="MotoristaMultaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120" Text="{Binding Motorista.CPFTxt, Mode=OneWay}"></TextBox>
+                                <ucm:CPFFieldUC IsEnabled="False" x:Name="CPFUC"></ucm:CPFFieldUC>
                                 <Button x:Name="DetalhesDoMotoristaBtn" Click="DetalhesDoMotoristaBtn_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0">
                                     Detalhes
                                 </Button>
@@ -80,7 +89,7 @@
 
             <Grid Grid.Row="2">
                 <Button x:Name="RemoverMultaBtn" Click="RemoverMultaBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
-                    REMOVER
+                    Remover
                 </Button>
             </Grid>
         </Grid>
