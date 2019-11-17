@@ -131,8 +131,14 @@
     <Compile Include="UserControls\Campos\Masked\CPFFieldUC.xaml.cs">
       <DependentUpon>CPFFieldUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Campos\Masked\NumeroCNHFieldUC.xaml.cs">
+      <DependentUpon>NumeroCNHFieldUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Campos\Masked\RenavamFieldUC.xaml.cs">
       <DependentUpon>RenavamFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\Masked\RGFieldUC.xaml.cs">
+      <DependentUpon>RGFieldUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Campos\Masked\TelefoneFieldUC.xaml.cs">
       <DependentUpon>TelefoneFieldUC.xaml</DependentUpon>
@@ -142,6 +148,9 @@
     </Compile>
     <Compile Include="UserControls\Campos\NomeFieldUC.xaml.cs">
       <DependentUpon>NomeFieldUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Campos\NumericFieldUC.xaml.cs">
+      <DependentUpon>NumericFieldUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Campos\PasswordFieldUC.xaml.cs">
       <DependentUpon>PasswordFieldUC.xaml</DependentUpon>
@@ -232,9 +241,6 @@
     </Compile>
     <Compile Include="Windows\Manutencoes\FormRegistrarManutencao.xaml.cs">
       <DependentUpon>FormRegistrarManutencao.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Motoristas\FormAlterarMotorista.xaml.cs">
-      <DependentUpon>FormAlterarMotorista.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Motoristas\FormDetalhesMotorista.xaml.cs">
       <DependentUpon>FormDetalhesMotorista.xaml</DependentUpon>
@@ -358,7 +364,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\Campos\Masked\NumeroCNHFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Campos\Masked\RenavamFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\Masked\RGFieldUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -371,6 +385,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Campos\NomeFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\NumericFieldUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -491,10 +509,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Manutencoes\FormRegistrarManutencao.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Motoristas\FormAlterarMotorista.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

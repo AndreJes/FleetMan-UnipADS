@@ -4,187 +4,85 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Motoristas"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
+        xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
+        xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
         mc:Ignorable="d"
-        Title="Registrar novo motorista" Height="500" Width="760" MaxHeight="500" MaxWidth="760" MinHeight="500" MinWidth="760">
+        Title="Registrar novo motorista" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="80*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
 
         <Label Style="{StaticResource MainLabelStyle}" Grid.ColumnSpan="2" FontSize="20">REGISTRAR NOVO MOTORISTA</Label>
+        <GroupBox Grid.Row="1">
+            <TabControl>
+                <TabItem Header="Dados do Motorista">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
 
-        <GroupBox Grid.Row="1" Grid.ColumnSpan="2" Header="Dados do Motorista">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <GroupBox Grid.RowSpan="2">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}" Width="50">Nome</Label>
-                            <TextBox x:Name="NomeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200"></TextBox>
-                        </StackPanel>
-                        <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}" Width="50">CPF</Label>
-                            <TextBox x:Name="CPFTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200"></TextBox>
-                        </StackPanel>
-                        <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}" Width="50">RG</Label>
-                            <TextBox x:Name="RGTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200"></TextBox>
-                        </StackPanel>
-                        <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}" Width="50">Email</Label>
-                            <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200"></TextBox>
-                        </StackPanel>
-                        <StackPanel Grid.Row="4" Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}" Width="50">Celular</Label>
-                            <TextBox x:Name="CelularTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200"></TextBox>
-                        </StackPanel>
-                    </Grid>
-                </GroupBox>
-                <GroupBox Grid.Row="3" Header="Dados CNH">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}">Numero</Label>
-                            <TextBox x:Name="NumeroCNHTextBox" Style="{StaticResource MainTextBoxStyle}" Width="130"></TextBox>
-                            <Label Style="{StaticResource MainLabelStyle}" Width="50">Pontos</Label>
-                            <TextBox x:Name="PontosCNHTextBox" Style="{StaticResource MainTextBoxStyle}" Width="50"></TextBox>
-                        </StackPanel>
-                        <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}">Vencimento do Exame</Label>
-                            <DatePicker Style="{StaticResource MainDatePickerStyle}" x:Name="VencimentoDatePicker"/>
-                        </StackPanel>
-                    </Grid>
-                </GroupBox>
-                <GroupBox Header="Localização" Grid.Row="0" Grid.Column="1">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <!--#region Rua / Nº-->
-                        <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}">Endereço</Label>
-                            <TextBox x:Name="RuaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170"></TextBox>
-                            <Label Style="{StaticResource MainLabelStyle}" Width="45">Nº</Label>
-                            <TextBox x:Name="NumeroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="60"></TextBox>
-                        </StackPanel>
-                        <!--#endregion-->
-                        <!--#region Bairro/ CEP-->
-                        <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}" Width="45">CEP</Label>
-                            <TextBox x:Name="CEPTextBox" Style="{StaticResource MainTextBoxStyle}" Width="93"></TextBox>
-                            <Label Style="{StaticResource MainLabelStyle}">Bairro</Label>
-                            <TextBox x:Name="BairroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="155"></TextBox>
-                        </StackPanel>
-                        <!--#endregion-->
-                        <!--#region Cidade/ UF-->
-                        <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                            <Label Style="{StaticResource MainLabelStyle}">Cidade</Label>
-                            <TextBox x:Name="CidadeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="192"></TextBox>
-                            <Label Style="{StaticResource MainLabelStyle}" Width="45">UF</Label>
-                            <ComboBox x:Name="UfComboBox" Width="50">
-                            </ComboBox>
-                        </StackPanel>
-                        <!--#endregion-->
-                    </Grid>
-                </GroupBox>
-                <GroupBox Header="Opcional" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10*"/>
-                            <RowDefinition Height="90*"/>
-                        </Grid.RowDefinitions>
-                        <CheckBox x:Name="MotoristaProprioCheckBox" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ClienteGroupBoxToggler" Unchecked="ClienteGroupBoxToggler">Motorista próprio</CheckBox>
+                        <ucc:NomeFieldUC Grid.Row="0" x:Name="NomeUC"></ucc:NomeFieldUC>
 
-                        <GroupBox Grid.Row="1" Header="Cliente" x:Name="ClienteGroupBox">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="10*"/>
-                                    <RowDefinition Height="50*"/>
-                                    <RowDefinition Height="30*"/>
-                                </Grid.RowDefinitions>
-                                <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                                    <StackPanel Orientation="Vertical">
-                                        <StackPanel Orientation="Horizontal">
-                                            <RadioButton x:Name="PfRadioBtn" GroupName="PFPJ" Content="Pessoa Física" Checked="PopularDataGridClienteComPF"/>
-                                            <RadioButton x:Name="PjRadioBtn" Margin="40 0 0 0" GroupName="PFPJ" Content="Pessoa Juridica" Checked="PopularDataGridClienteComPJ"/>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </StackPanel>
-                                <!--#region Pessoa Fisica-->
-                                <DataGrid x:Name="ClientePFDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Visibility="Collapsed">
-                                    <DataGrid.Columns>
-                                        <DataGridTemplateColumn Header="Selecionar">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Button x:Name="SelectClientePFBtn" Click="SelectClientePFBtn_Click">Selecionar</Button>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                        <DataGridTextColumn Header="ID" Binding="{Binding ClienteId}"/>
-                                        <DataGridTextColumn Header="CPF" Binding="{Binding CPFTxt}"/>
-                                        <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                                <!--#endregion-->
-                                <!--#region Pessoa Juridica-->
-                                <DataGrid x:Name="ClientePJDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Visibility="Collapsed">
-                                    <DataGrid.Columns>
-                                        <DataGridTemplateColumn Header="Selecionar">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Button x:Name="SelectClientePJBtn" Click="SelectClientePJBtn_Click">Selecionar</Button>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                        <DataGridTextColumn Header="ID" Binding="{Binding ClienteId}"/>
-                                        <DataGridTextColumn Header="CNPJ" Binding="{Binding CNPJTxt}"/>
-                                        <DataGridTextColumn Header="Nome" Binding="{Binding Nome}"/>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                                <!--#endregion-->
-                                <GroupBox Grid.Row="3" Header="Cliente Selecionado">
-                                    <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                                        <Label Style="{StaticResource MainLabelStyle}" Width="45">ID</Label>
-                                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="40" Text="{Binding ClienteId}"/>
-                                        <Label Style="{StaticResource MainLabelStyle}">Nome</Label>
-                                        <TextBox Style="{StaticResource MainTextBoxStyle}" Width="200" Text="{Binding Nome}"/>
-                                    </StackPanel>
-                                </GroupBox>
-                            </Grid>
-                        </GroupBox>
+                        <ucm:CPFFieldUC Grid.Row="1" x:Name="CPFUC"></ucm:CPFFieldUC>
+
+                        <ucm:RGFieldUC Grid.Row="2" x:Name="RGUC"></ucm:RGFieldUC>
+
+                        <ucc:EmailFieldUC Grid.Row="3" x:Name="EmailUC"></ucc:EmailFieldUC>
+
+                        <ucm:TelefoneFieldUC Grid.Row="4" x:Name="TelefoneUC"></ucm:TelefoneFieldUC>
                     </Grid>
-                </GroupBox>
-            </Grid>
+                </TabItem>
+                <TabItem Header="CNH">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <ucm:NumeroCNHFieldUC Grid.Row="0" x:Name="NumeroCNHUC"></ucm:NumeroCNHFieldUC>
+
+                        <ucc:NumericFieldUC Grid.Row="1" x:Name="PontosCNHUC" Label="Qnt. Pontos"></ucc:NumericFieldUC>
+
+                        <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="2">
+                            <Label Style="{StaticResource MainLabelRoundStyle}">CATEGORIA</Label>
+                            <ComboBox x:Name="CategoriaComboBox" Style="{StaticResource MainComboBoxStyle}" Width="80"></ComboBox>
+                        </StackPanel>
+
+                        <uc:DataFieldUC Grid.Row="3" x:Name="DataVencimentoUC" Label="VENCIMENTO EXAME"></uc:DataFieldUC>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Localização">
+                    <uc:EnderecoUserControl x:Name="EnderecoUC"></uc:EnderecoUserControl>
+                </TabItem>
+                <TabItem Header="Cliente">
+                    <GroupBox Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="90*"/>
+                            </Grid.RowDefinitions>
+                            <CheckBox x:Name="MotoristaProprioCheckBox" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ClienteGroupBoxToggler" Unchecked="ClienteGroupBoxToggler">Motorista próprio</CheckBox>
+
+                            <GroupBox Grid.Row="1" Header="Cliente" x:Name="ClienteGroupBox">
+                                <uc:SelecionarClienteUC x:Name="ClienteUC"></uc:SelecionarClienteUC>
+                            </GroupBox>
+                        </Grid>
+                    </GroupBox>
+
+                </TabItem>
+            </TabControl>
         </GroupBox>
 
-
-        <Grid Grid.Row="4" Grid.ColumnSpan="2">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>

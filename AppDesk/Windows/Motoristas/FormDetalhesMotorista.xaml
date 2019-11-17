@@ -4,124 +4,79 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Motoristas"
+        xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
+        xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
         mc:Ignorable="d"
-        Title="Detalhes do Motorista" Height="500" Width="760" MaxHeight="500" MaxWidth="760" MinHeight="500" MinWidth="760">
+        Title="Detalhes do Motorista" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="80*"/>
-            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
 
         <Label Style="{StaticResource MainLabelStyle}" Grid.ColumnSpan="2" FontSize="20">DETALHES DE MOTORISTA</Label>
 
-        <TabControl Grid.Row="1" Grid.ColumnSpan="2">
-            <TabItem Header="Dados">
+        <TabControl Grid.Row="1">
+            <TabItem Header="Alterar Dados do Motorista">
                 <Grid>
-                    <GroupBox Grid.Row="1" Grid.ColumnSpan="2" Header="Dados do Motorista">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30*"/>
-                                <RowDefinition Height="30*"/>
-                                <RowDefinition Height="30*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                            </Grid.ColumnDefinitions>
-                            <GroupBox Grid.RowSpan="2">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                    </Grid.RowDefinitions>
-                                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                        <Label Style="{StaticResource MainLabelStyle}" Width="50">Nome</Label>
-                                        <TextBox x:Name="NomeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200" Text="{Binding Nome}" IsEnabled="False"></TextBox>
-                                    </StackPanel>
-                                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                                        <Label Style="{StaticResource MainLabelStyle}" Width="50">CPF</Label>
-                                        <TextBox x:Name="CPFTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200" Text="{Binding CPFTxt, Mode=OneWay}" IsEnabled="False"></TextBox>
-                                    </StackPanel>
-                                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                                        <Label Style="{StaticResource MainLabelStyle}" Width="50">RG</Label>
-                                        <TextBox x:Name="RGTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200" Text="{Binding RG}" IsEnabled="False"></TextBox>
-                                    </StackPanel>
-                                    <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
-                                        <Label Style="{StaticResource MainLabelStyle}" Width="50">Email</Label>
-                                        <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200" Text="{Binding Email}" IsEnabled="False"></TextBox>
-                                    </StackPanel>
-                                    <StackPanel Grid.Row="4" Style="{StaticResource MainStackPanelStyle}">
-                                        <Label Style="{StaticResource MainLabelStyle}" Width="50">Celular</Label>
-                                        <TextBox x:Name="CelularTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200" Text="{Binding Celular}" IsEnabled="False"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                            </GroupBox>
-                            <GroupBox Grid.Row="3" Header="Dados CNH">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                    </Grid.RowDefinitions>
-                                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                        <Label Style="{StaticResource MainLabelStyle}">Numero</Label>
-                                        <TextBox x:Name="NumeroCNHTextBox" Style="{StaticResource MainTextBoxStyle}" Width="130" Text="{Binding NumeroCNH}" IsEnabled="False"></TextBox>
-                                        <Label Style="{StaticResource MainLabelStyle}" Width="50">Pontos</Label>
-                                        <TextBox x:Name="PontosCNHTextBox" Style="{StaticResource MainTextBoxStyle}" Width="50" Text="{Binding PontosCNH}" IsEnabled="False"></TextBox>
-                                    </StackPanel>
-                                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                                        <Label Style="{StaticResource MainLabelStyle}">Vencimento do Exame</Label>
-                                        <DatePicker Style="{StaticResource MainDatePickerStyle}" x:Name="VencimentoDatePicker" SelectedDate="{Binding VencimentoExame}" IsEnabled="False"/>
-                                    </StackPanel>
-                                </Grid>
-                            </GroupBox>
-                            <GroupBox Header="Localização" Grid.Row="0" Grid.Column="1">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                    </Grid.RowDefinitions>
-                                    <!--#region Rua / Nº-->
-                                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                        <Label Style="{StaticResource MainLabelStyle}">Endereço</Label>
-                                        <TextBox x:Name="RuaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170" Text="{Binding Endereco.Rua, Mode=OneWay}" IsEnabled="False"></TextBox>
-                                        <Label Style="{StaticResource MainLabelStyle}" Width="45">Nº</Label>
-                                        <TextBox x:Name="NumeroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="60" Text="{Binding Endereco.Numero, Mode=OneWay}" IsEnabled="False"></TextBox>
-                                    </StackPanel>
-                                    <!--#endregion-->
-                                    <!--#region Bairro/ CEP-->
-                                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                                        <Label Style="{StaticResource MainLabelStyle}" Width="45">CEP</Label>
-                                        <TextBox x:Name="CEPTextBox" Style="{StaticResource MainTextBoxStyle}" Width="93" Text="{Binding Endereco.CEP, Mode=OneWay}" IsEnabled="False"></TextBox>
-                                        <Label Style="{StaticResource MainLabelStyle}">Bairro</Label>
-                                        <TextBox x:Name="BairroTextBox" Style="{StaticResource MainTextBoxStyle}" Width="155" Text="{Binding Endereco.Bairro, Mode=OneWay}" IsEnabled="False"></TextBox>
-                                    </StackPanel>
-                                    <!--#endregion-->
-                                    <!--#region Cidade/ UF-->
-                                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                                        <Label Style="{StaticResource MainLabelStyle}">Cidade</Label>
-                                        <TextBox x:Name="CidadeTextBox" Style="{StaticResource MainTextBoxStyle}" Width="192" Text="{Binding Endereco.Cidade, Mode=OneWay}" IsEnabled="False"></TextBox>
-                                        <Label Style="{StaticResource MainLabelStyle}" Width="45">UF</Label>
-                                        <TextBox x:Name="UfComboBox" Style="{StaticResource MainTextBoxStyle}" Width="50" Text="{Binding Endereco.UF, Mode=OneWay, StringFormat=G}" IsEnabled="False"/>
-                                    </StackPanel>
-                                    <!--#endregion-->
-                                </Grid>
-                            </GroupBox>
-                            <GroupBox Header="Outros" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TabControl>
+                        <TabItem Header="Dados do Motorista">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                
+                                <ucc:NomeFieldUC x:Name="NomeUC" Grid.Row="0"></ucc:NomeFieldUC>
+                                
+                                <ucm:CPFFieldUC x:Name="CPFUC" Grid.Row="1" IsEnabled="False"></ucm:CPFFieldUC>
+
+                                <ucm:RGFieldUC x:Name="RGUC" Grid.Row="2"></ucm:RGFieldUC>
+
+                                <ucc:EmailFieldUC x:Name="EmailUC" Grid.Row="3"></ucc:EmailFieldUC>
+
+                                <ucm:TelefoneFieldUC x:Name="TelefoneUC" Grid.Row="4"></ucm:TelefoneFieldUC>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="CNH">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <ucm:NumeroCNHFieldUC Grid.Row="0" x:Name="NumeroCNHUC" IsEnabled="False"></ucm:NumeroCNHFieldUC>
+
+                                <ucc:NumericFieldUC Grid.Row="1" x:Name="PontosCNHUC" Label="Qnt. PONTOS"></ucc:NumericFieldUC>
+
+                                <StackPanel Style="{StaticResource MainStackPanelStyle}" Grid.Row="2">
+                                    <Label Style="{StaticResource MainLabelRoundStyle}">CATEGORIA</Label>
+                                    <ComboBox x:Name="CategoriaComboBox" Style="{StaticResource MainComboBoxStyle}" Width="80"></ComboBox>
+                                </StackPanel>
+
+                                <uc:DataFieldUC Grid.Row="3" x:Name="DataVencimentoUC" Label="VENCIMENTO EXAME"></uc:DataFieldUC>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Localização">
+                            <uc:EnderecoUserControl x:Name="EnderecoUC" Editavel="True"></uc:EnderecoUserControl>
+                        </TabItem>
+                        <TabItem Header="Cliente">
+                            <GroupBox Header="Outros" IsEnabled="False">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="10*"/>
                                         <RowDefinition Height="90*"/>
                                     </Grid.RowDefinitions>
-                                    <CheckBox IsEnabled="False" IsChecked="{Binding MotoristaProprio}" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ClienteGroupBoxToggler" Unchecked="ClienteGroupBoxToggler">Motorista próprio</CheckBox>
+                                    <CheckBox IsEnabled="False" x:Name="MotoristaProprioCB" HorizontalAlignment="Center" VerticalAlignment="Center">Motorista próprio</CheckBox>
 
                                     <GroupBox Grid.Row="1" Header="Cliente" x:Name="ClienteGroupBox">
                                         <Grid>
@@ -129,44 +84,42 @@
                                                 <RowDefinition Height="1*"/>
                                                 <RowDefinition Height="1*"/>
                                                 <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
                                             </Grid.RowDefinitions>
-                                            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                                <Label Style="{StaticResource MainLabelStyle}" Width="70">Nome</Label>
-                                                <TextBox x:Name="NomeClienteTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200" Text="{Binding Cliente.Nome, Mode=OneWay}" IsEnabled="False"></TextBox>
-                                            </StackPanel>
+                                            <ucc:NomeFieldUC x:Name="NomeClienteUC"></ucc:NomeFieldUC>
+                                            
                                             <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                                                <Label Style="{StaticResource MainLabelStyle}" >CPF / CNPJ</Label>
-                                                <TextBox x:Name="CPFCNPJClienteTextBox" Style="{StaticResource MainTextBoxStyle}" Width="200" IsEnabled="False"/>
+                                                <ucm:CPFFieldUC x:Name="CPFClienteUC" Visibility="Collapsed"></ucm:CPFFieldUC>
+                                                <ucm:CNPJFieldUC x:Name="CNPJClienteUC" Visibility="Collapsed"></ucm:CNPJFieldUC>
                                             </StackPanel>
-                                            <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                                                <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
-                                                <TextBox x:Name="EmailClienteTextBox" Style="{StaticResource MainTextBoxStyle}" Width="90" Text="{Binding Cliente.Telefone, Mode=OneWay}" IsEnabled="False"></TextBox>
-                                                <Label Style="{StaticResource MainLabelStyle}">E-Mail</Label>
-                                                <TextBox x:Name="TelefoneClienteTextBox" Style="{StaticResource MainTextBoxStyle}" Width="125" Text="{Binding Cliente.Email, Mode=OneWay}" IsEnabled="False"></TextBox>
-                                            </StackPanel>
+
+                                            <ucm:TelefoneFieldUC Grid.Row="2" x:Name="TelefoneClienteUC"></ucm:TelefoneFieldUC>
+
+                                            <ucc:EmailFieldUC Grid.Row="3" x:Name="EmailClienteUC"></ucc:EmailFieldUC>
                                         </Grid>
                                     </GroupBox>
                                 </Grid>
                             </GroupBox>
-                        </Grid>
-                    </GroupBox>
+                        </TabItem>
+                    </TabControl>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="AlterarBtn" Click="AlterarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E">
+                            Salvar Alterações
+                        </Button>
+                        <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                            Remover
+                        </Button>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Multas/Sinistros">
-                <Grid>
-                    <Grid x:Name="MultaSinisListGrid" Grid.Row="1">
-                        <!--#region Columns/Rows-->
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50*"/>
-                            <ColumnDefinition Width="50*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10*"/>
-                            <RowDefinition Height="90*"/>
-                        </Grid.RowDefinitions>
-                        <!--#endregion-->
-                        <!--#region Multas-->
-                        <Label Style="{StaticResource MainLabelStyle}" Margin="5 0 10 0">MULTAS REGISTRADAS</Label>
+                <TabControl>
+                    <TabItem Header="Multas">
                         <DataGrid x:Name="MultasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding CodigoMulta}"/>
@@ -175,14 +128,8 @@
                                 <DataGridTextColumn Header="Gravidade" Binding="{Binding GravidadeDaInfracao}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                        <!--#endregion-->
-                        <!--#region Separador-->
-                        <StackPanel Orientation="Horizontal" Grid.RowSpan="2" HorizontalAlignment="Right" Width="5">
-                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                        </StackPanel>
-                        <!--#endregion-->
-                        <!--#region Sinistros-->
-                        <Label Style="{StaticResource MainLabelStyle}" Grid.Column="1" Margin="5 0">SINISTROS REGISTRADOS</Label>
+                    </TabItem>
+                    <TabItem Header="Sinistros">
                         <DataGrid x:Name="SinistrosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding CodSinistro}"/>
@@ -190,23 +137,9 @@
                                 <DataGridTextColumn Header="Gravidade" Binding="{Binding Gravidade}" />
                             </DataGrid.Columns>
                         </DataGrid>
-
-                        <!--#endregion-->
-                    </Grid>
-                </Grid>
+                    </TabItem>
+                </TabControl>
             </TabItem>
         </TabControl>
-        <Grid Grid.Row="4" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="AlterarBtn" Click="AlterarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E">
-                ALTERAR MOTORISTA
-            </Button>
-            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
-                REMOVER
-            </Button>
-        </Grid>
     </Grid>
 </Window>

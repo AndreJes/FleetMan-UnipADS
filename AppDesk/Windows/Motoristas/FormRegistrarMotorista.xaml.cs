@@ -1,4 +1,5 @@
 ﻿using AppDesk.Serviço;
+using AppDesk.Tools;
 using Modelo.Classes.Clientes;
 using Modelo.Classes.Web;
 using Modelo.Enums;
@@ -23,50 +24,22 @@ namespace AppDesk.Windows.Motoristas
     /// </summary>
     public partial class FormRegistrarMotorista : Window
     {
-        private Cliente clienteSelecionado = null;
         public FormRegistrarMotorista()
         {
             InitializeComponent();
-            UfComboBox.ItemsSource = Enum.GetNames(typeof(UnidadesFederativas));
+            CategoriaComboBox.ItemsSource = Enum.GetNames(typeof(CategoriasCNH));
         }
         #region Eventos
-        private void PopularDataGridClienteComPF(object sender, RoutedEventArgs e)
-        {
-            ClientePJDataGrid.Visibility = Visibility.Collapsed;
-            ClientePFDataGrid.Visibility = Visibility.Visible;
-            ClientePFDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(c => c is ClientePF).Where(c => c.Ativo == true).ToList();
-        }
-
-        private void PopularDataGridClienteComPJ(object sender, RoutedEventArgs e)
-        {
-            ClientePFDataGrid.Visibility = Visibility.Collapsed;
-            ClientePJDataGrid.Visibility = Visibility.Visible;
-            ClientePJDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(c => c is ClientePJ).Where(c => c.Ativo == true).ToList();
-        }
-
         private void ClienteGroupBoxToggler(object sender, RoutedEventArgs e)
         {
             if (ClienteGroupBox.Visibility == Visibility.Visible)
             {
                 ClienteGroupBox.Visibility = Visibility.Collapsed;
-                clienteSelecionado = null;
             }
             else
             {
                 ClienteGroupBox.Visibility = Visibility.Visible;
             }
-        }
-
-        private void SelectClientePJBtn_Click(object sender, RoutedEventArgs e)
-        {
-            clienteSelecionado = ClientePJDataGrid.SelectedItem as ClientePJ;
-            ClienteGroupBox.DataContext = clienteSelecionado;
-        }
-
-        private void SelectClientePFBtn_Click(object sender, RoutedEventArgs e)
-        {
-            clienteSelecionado = ClientePFDataGrid.SelectedItem as ClientePF;
-            ClienteGroupBox.DataContext = clienteSelecionado;
         }
 
         private void CancelarBtn_Click(object sender, RoutedEventArgs e)
@@ -76,49 +49,63 @@ namespace AppDesk.Windows.Motoristas
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Confirmar registro de motorista?", "Confirmar Registro", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(result == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosMotorista.GravarMotorista(GerarMotorista());
-                MessageBox.Show("Motorista registrado com sucesso!");
-                Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().PopulateDataGrid();
-                this.Close();
+                if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Motorista") == MessageBoxResult.Yes)
+                {
+                    ServicoDados.ServicoDadosMotorista.GravarMotorista(GerarMotorista());
+                    StandardMessageBoxes.MensagemSucesso("Motorista registrado com sucesso!", "Registro");
+                    MainWindowUpdater.UpdateDataGrids();
+                    this.Close();
+                }
+            }
+            catch (FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
         #endregion
 
         private Motorista GerarMotorista()
         {
-            Motorista novoMotorista = new Motorista();
-            novoMotorista.Nome = NomeTextBox.Text;
-            novoMotorista.CPF = CPFTextBox.Text;
-            novoMotorista.RG = RGTextBox.Text;
-            novoMotorista.Email = EmailTextBox.Text;
-            novoMotorista.Celular = CelularTextBox.Text;
-            novoMotorista.NumeroCNH = NumeroCNHTextBox.Text;
-            novoMotorista.PontosCNH = int.Parse(PontosCNHTextBox.Text);
-            novoMotorista.VencimentoExame = VencimentoDatePicker.DisplayDate;
-            novoMotorista.Endereco = new Modelo.Classes.Auxiliares.Endereco()
+            try
             {
-                Bairro = BairroTextBox.Text,
-                Rua = RuaTextBox.Text,
-                CEP = CEPTextBox.Text,
-                Cidade = CidadeTextBox.Text,
-                Numero = NumeroTextBox.Text,
-                UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString())
-            };
-            if(MotoristaProprioCheckBox.IsChecked == true)
-            {
-                clienteSelecionado = null;
-                novoMotorista.MotoristaProprio = true;
-                novoMotorista.ClienteId = null;
-            }
-            else
-            {
-                novoMotorista.ClienteId = clienteSelecionado.ClienteId;
-            }
+                Motorista novoMotorista = new Motorista();
+                novoMotorista.Nome = NomeUC.Text;
+                novoMotorista.CPF = CPFUC.Text;
+                novoMotorista.RG = RGUC.Text;
+                novoMotorista.Email = EmailUC.Text;
+                novoMotorista.Celular = TelefoneUC.Text;
+                novoMotorista.NumeroCNH = NumeroCNHUC.Text;
+                novoMotorista.PontosCNH = PontosCNHUC.Value;
+                novoMotorista.VencimentoExame = DataVencimentoUC.Date;
+                novoMotorista.Endereco = EnderecoUC.Endereco;
+                if (MotoristaProprioCheckBox.IsChecked == true)
+                {
+                    novoMotorista.MotoristaProprio = true;
+                    novoMotorista.ClienteId = null;
+                }
+                else
+                {
+                    novoMotorista.ClienteId = ClienteUC.Cliente.ClienteId;
+                }
 
-            return novoMotorista;
+                novoMotorista.Categoria = (CategoriasCNH)Enum.Parse(typeof(CategoriasCNH), CategoriaComboBox.SelectedItem.ToString());
+
+                return novoMotorista;
+            }
+            catch (FieldException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
