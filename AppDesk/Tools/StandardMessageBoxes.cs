@@ -64,5 +64,10 @@ namespace AppDesk.Tools
         {
             return MessageBox.Show("Deseja selecionar " + item + " agora?", "Confirmar Seleção", MessageBoxButton.YesNo, MessageBoxImage.Question);
         }
+
+        public static MessageBoxResult MensagemCancelamento(string item)
+        {
+            return MessageBox.Show("Deseja cancelar: " + item + "?", "Cancelar " + item, MessageBoxButton.YesNo, MessageBoxImage.Question);
+        }
     }
 }

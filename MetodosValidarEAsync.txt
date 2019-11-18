@@ -12,7 +12,7 @@
                 }
                 else
                 {
-                    throw new FieldException("Marca");
+                    throw new FieldException("");
                 }
 
             }

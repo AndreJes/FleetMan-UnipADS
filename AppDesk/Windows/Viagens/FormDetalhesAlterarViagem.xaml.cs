@@ -1,5 +1,8 @@
-﻿using AppDesk.Serviço;
+﻿using AppDesk.Interfaces;
+using AppDesk.Serviço;
 using AppDesk.Tools;
+using AppDesk.Windows.Motoristas;
+using AppDesk.Windows.Veiculos;
 using Modelo.Classes.Web;
 using System;
 using System.Collections.Generic;
@@ -20,7 +23,7 @@ namespace AppDesk.Windows.Viagens
     /// <summary>
     /// Lógica interna para FormDetalhesAlterarViagem.xaml
     /// </summary>
-    public partial class FormDetalhesAlterarViagem : Window
+    public partial class FormDetalhesAlterarViagem : Window, IFillTextBoxes
     {
         private Viagem _viagem = null;
 
@@ -33,35 +36,76 @@ namespace AppDesk.Windows.Viagens
         {
             _viagem = viagem;
             this.DataContext = _viagem;
-            TipoVeiculoTextBox.Text = _viagem.Veiculo.Tipo.ToString("G").Replace('_', ' ');
-            EstadoViagemTextBox.Text = _viagem.EstadoDaViagem.ToString("G").Replace('_', ' ');
-            GaragemRetornoCNPJ.Text = _viagem.GaragemRetorno.CNPJTxt;
-            GaragemRetornoEndereco.Text = _viagem.GaragemRetorno.EnderecoCompleto;
+            PreencherTextBoxes();
         }
 
         private void CancelarViagemBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Cancelar essa viagem?", "Cancelar Viagem", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(result == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.MensagemCancelamento("Viagem") == MessageBoxResult.Yes)
             {
                 _viagem.EstadoDaViagem = Modelo.Enums.EstadosDeViagem.CANCELADA;
                 _viagem.DataChegada = DateTime.Now;
                 EstadoViagemTextBox.Text = _viagem.EstadoDaViagem.ToString("G").Replace('_', ' ');
                 ServicoDados.ServicoDadosViagem.GravarViagem(_viagem);
-                MessageBox.Show("Viagem cancelada com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Viagem cancelada com sucesso!", "Cancelamento");
+                MainWindowUpdater.UpdateDataGrids();
             }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Remover essa viagem?", "Remover Viagem", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Viagem") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosViagem.RemoverViagemPorId(_viagem.ViagemId);
-                MessageBox.Show("Viagem removida com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Viagem removida com sucesso!", "Remoção");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
+        }
+
+        public void PreencherTextBoxes()
+        {
+            TipoVeiculoTextBox.Text = _viagem.Veiculo.Tipo.ToString("G").Replace('_', ' ');
+            EstadoViagemTextBox.Text = _viagem.EstadoDaViagem.ToString("G").Replace('_', ' ');
+            CNPJGaragemUC.Text = _viagem.GaragemRetorno.CNPJ;
+            GaragemRetornoEndereco.Text = _viagem.GaragemRetorno.EnderecoCompleto;
+            NomeUC.Text = _viagem.Motorista.Nome;
+            TelefoneUC.Text = _viagem.Motorista.Celular;
+            PlacaUC.Text = _viagem.Veiculo.Placa;
+            ModeloUC.Text = _viagem.Veiculo.Modelo;
+            MarcaUC.Text = _viagem.Veiculo.Marca;
+            QntPassageirosUC.Value = _viagem.QuantidadePassageiros;
+            EnderecoOrigemUC.Endereco = _viagem.EnderecoOrigem;
+            EnderecoDestinoUC.Endereco = _viagem.EnderecoDestino;
+
+            DataSaidaUC.Date = _viagem.DataSaida;
+
+            switch (_viagem.EstadoDaViagem)
+            {
+                case Modelo.Enums.EstadosDeViagem.CONCLUIDA:
+                    DataChegadaUC.Date = _viagem.DataChegada.GetValueOrDefault();
+                    DataChegadaUC.Visibility = Visibility.Visible;
+                    break;
+                case Modelo.Enums.EstadosDeViagem.CANCELADA:
+                    DataCancelamentoUC.Date = _viagem.DataChegada.GetValueOrDefault();
+                    DataCancelamentoUC.Visibility = Visibility.Visible;
+                    break;
+            }
+
+        }
+
+        private void DetalhesMotoristaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Motorista motorista = ServicoDados.ServicoDadosMotorista.ObterMotoristaPorId(_viagem.MotoristaId);
+            FormDetalhesMotorista formDetalhesMotorista = new FormDetalhesMotorista(motorista);
+            formDetalhesMotorista.ShowDialog();
+        }
+
+        private void DetalhesVeiculoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Veiculo veiculo = ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorId(_viagem.VeiculoId);
+            FormDetalhesVeiculo FormDetalhesVeiculo = new FormDetalhesVeiculo(veiculo);
+            FormDetalhesVeiculo.ShowDialog();
         }
     }
 }

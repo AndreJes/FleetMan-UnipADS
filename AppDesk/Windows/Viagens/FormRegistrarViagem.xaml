@@ -64,7 +64,7 @@
                         <RowDefinition Height="5*"/>
                     </Grid.RowDefinitions>
 
-                    <uc:DataFieldUC Grid.Row="0" Label="Data de Saída" x:Name="DataSaidaUC"></uc:DataFieldUC>
+                    <ucm:DateHourFieldUC Grid.Row="0" Label="Data/Horário de Saida" x:Name="DataSaidaUC"></ucm:DateHourFieldUC>
 
                     <ucm:NumericFieldUC Grid.Row="1" Label="Quantidade de Passageiros" x:Name="PassageirosUC"></ucm:NumericFieldUC>
 

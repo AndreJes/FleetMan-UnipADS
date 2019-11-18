@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="AppDesk.UserControls.Campos.DateHourFieldUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppDesk.UserControls.Campos"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d">
+    <StackPanel Style="{StaticResource MainStackPanelStyle}">
+        <Label Style="{StaticResource MainLabelRoundStyle}" x:Name="DataLabel">
+        </Label>
+        <xctk:DateTimePicker x:Name="DatePickerField" Width="150" Format="Custom" FormatString="dd/MM/yyyy HH:mm">
+        </xctk:DateTimePicker>
+    </StackPanel>
+</UserControl>

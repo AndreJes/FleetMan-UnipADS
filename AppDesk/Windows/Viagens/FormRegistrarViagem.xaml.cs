@@ -35,6 +35,8 @@ namespace AppDesk.Windows.Viagens
             SeletorMotoristaUC.ListaMotoristas = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId()
                 .Where(m => m.Estado == EstadosDeMotorista.REGULAR)
                 .ToList();
+
+            DataSaidaUC.DataMinima = DateTime.Now;
         }
 
         #region Cancelar/Registrar

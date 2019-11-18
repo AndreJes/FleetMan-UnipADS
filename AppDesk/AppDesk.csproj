@@ -104,6 +104,9 @@
     <Compile Include="UserControls\Campos\CorFieldUC.xaml.cs">
       <DependentUpon>CorFieldUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Campos\DateHourFieldUC.xaml.cs">
+      <DependentUpon>DateHourFieldUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Campos\EmailFieldUC.xaml.cs">
       <DependentUpon>EmailFieldUC.xaml</DependentUpon>
     </Compile>
@@ -325,6 +328,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Campos\CorFieldUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Campos\DateHourFieldUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
