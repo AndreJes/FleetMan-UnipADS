@@ -34,11 +34,11 @@ namespace AppDesk.Windows.Estoque
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Confirmar registro de Peça?", "Confirmar registro", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Peça") == MessageBoxResult.Yes)
             {
-                _peca.Quantidade = int.Parse(QuantidadeTextBox.Text);
+                _peca.Quantidade = QuantidadeUC.Value;
                 ServicoDados.ServicoDadosPeca.GravarPeca(_peca);
-                MessageBox.Show("Peça registrada com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Peça registrada com sucesso!", "Registro");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
@@ -56,26 +56,43 @@ namespace AppDesk.Windows.Estoque
 
         private void PesquisarFornecedorBtn_Click(object sender, RoutedEventArgs e)
         {
-            Fornecedor fornecedor = ServicoDados.ServicoDadosFornecedor.ObterFornecedorPorCNPJ(PesquisarFornecedorTextBox.Text);
-            if(fornecedor != null)
+            try
             {
-                MessageBox.Show("Fornecedor encontrado!");
-                SelecionarFornecedor(fornecedor);
+                Fornecedor fornecedor = ServicoDados.ServicoDadosFornecedor.ObterFornecedorPorCNPJ(CNPJTextBox.Text);
+                if (fornecedor != null)
+                {
+                    MessageBox.Show("Fornecedor encontrado!");
+                    SelecionarFornecedor(fornecedor);
+                }
+                else
+                {
+                    StandardMessageBoxes.MensagemDeErro("Fornecedor não encontrado!");
+                }
             }
-            else
+            catch (FieldException ex)
             {
-                MessageBox.Show("Fornecedor não encontrado!");
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
         private void SelecionarFornecedor(Fornecedor fornecedor)
         {
-            if(MessageBox.Show("Selecionar fornecedor?", "Confirmar seleção", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            try
             {
-                _fornecedor = fornecedor;
-                FornecedorSelecionadoTextBox.Text = _fornecedor.Razao_Social;
-                _peca.FornecedorId = _fornecedor.FornecedorId;
-                MessageBox.Show("Fornecedor selecionado com sucesso!");
+                if (MessageBox.Show("Selecionar fornecedor?", "Confirmar seleção", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    _fornecedor = fornecedor;
+                    FornecedorSelecionadoTextBox.Text = _fornecedor.Razao_Social;
+                    _peca.FornecedorId = _fornecedor.FornecedorId;
+                }
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
     }

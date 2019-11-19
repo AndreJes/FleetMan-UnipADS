@@ -4,42 +4,54 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Estoque"
+        xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
+        xmlns:masked="clr-namespace:AppDesk.UserControls.Campos.Masked"
         mc:Ignorable="d"
-        Title="Registrar Peça" Height="400" Width="450" MinHeight="400" MaxHeight="400" MinWidth="450" MaxWidth="450">
+        Title="Registrar Peça" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="10*"/>
             <RowDefinition Height="80*"/>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">REGISTRAR PEÇA</Label>
 
-        <TabControl Grid.Row="1">
-            <TabItem Header="Informações Basicas" >
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Lote</Label>
-                        <TextBox x:Name="CodigoLoteTextBox" Text="{Binding Lote}" Width="200" Style="{StaticResource MainTextBoxStyle}"></TextBox>
-                    </StackPanel>
-                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Descrição</Label>
-                        <TextBox x:Name="DescricaoTextBox" Text="{Binding Descricao}" Width="250" Style="{StaticResource MainTextBoxStyle}"></TextBox>
-                    </StackPanel>
-                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Quantidade em Estoque</Label>
-                        <TextBox x:Name="QuantidadeTextBox" Text="{Binding Quantidade}" Width="50" Style="{StaticResource MainTextBoxStyle}"></TextBox>
-
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Fornecedor">
+                <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelRoundStyle}">Lote</Label>
+                    <TextBox x:Name="CodigoLoteTextBox" Text="{Binding Lote}" Width="200" Style="{StaticResource MainTextBoxStyle}">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                    <Label Style="{StaticResource MainLabelRoundStyle}">Descrição</Label>
+                    <TextBox x:Name="DescricaoTextBox" Text="{Binding Descricao}" Width="250" Style="{StaticResource MainTextBoxStyle}">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+                <ucc:NumericFieldUC Grid.Row="2" Label="Quantidade no Estoque" x:Name="QuantidadeUC"></ucc:NumericFieldUC>
+            </Grid>
+            <GroupBox Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="3*"/>
@@ -67,19 +79,20 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                            <TextBox x:Name="PesquisarFornecedorTextBox" Width="150" Height="28"></TextBox>
+                            <masked:CNPJFieldUC x:Name="CNPJTextBox"></masked:CNPJFieldUC>
                             <Button x:Name="PesquisarFornecedorBtn" Click="PesquisarFornecedorBtn_Click">Pesquisar Fornecedor</Button>
                         </StackPanel>
 
                         <StackPanel Grid.Column="1" Style="{StaticResource MainStackPanelStyle}" Orientation="Vertical">
-                            <Label Style="{StaticResource MainLabelStyle}" Padding="0">Fornecedor selecionado</Label>
+                            <Label Style="{StaticResource MainLabelFullRoundStyle}" Padding="0">Fornecedor selecionado</Label>
                             <TextBox x:Name="FornecedorSelecionadoTextBox" Width="180" Height="28" Style="{StaticResource MainTextBoxStyle}" HorizontalContentAlignment="Center"></TextBox>
                         </StackPanel>
                     </Grid>
                 </Grid>
-            </TabItem>
-        </TabControl>
-        
+
+            </GroupBox>
+        </Grid>
+
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>

@@ -23,7 +23,6 @@ namespace AppDesk.Windows.Estoque
     public partial class FormDetalhesAlterarPeca : Window
     {
         private Peca _peca = null;
-        private Fornecedor _fornecedor = null;
 
         private FormDetalhesAlterarPeca()
         {
@@ -34,78 +33,46 @@ namespace AppDesk.Windows.Estoque
         {
             _peca = peca;
             this.DataContext = _peca;
-            FornecedoresDataGrid.ItemsSource = ServicoDados.ServicoDadosFornecedor.ObterFornecedoresOrdPorId();
-        }
-
-        private void AlterarFornecedorBtn_Click(object sender, RoutedEventArgs e)
-        {
-            DadosFornecedorAtualGrid.Visibility = Visibility.Collapsed;
-            SelecionarNovoFornecedorGrid.Visibility = Visibility.Visible;
+            QuantidadeUC.Value = _peca.Quantidade;
+            CNPJFornecedorUC.Text = _peca.Fornecedor.CNPJ;
+            EmailFornecedorUC.Text = _peca.Fornecedor.Email;
+            TelefoneFornecedorUC.Text = _peca.Fornecedor.Telefone;
+            NomeFornecedorUC.Text = _peca.Fornecedor.Razao_Social;
         }
 
         private void SalvarAlteracoesBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmar alteração de Peça?", "Confirmar alteração", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            try
             {
-                _peca.Quantidade = int.Parse(QuantidadeTextBox.Text);
-                if (_fornecedor != null)
+                if (StandardMessageBoxes.ConfirmarAlteracaoMessageBox("Peça") == MessageBoxResult.Yes)
                 {
-                    _peca.FornecedorId = _fornecedor.FornecedorId;
+                    _peca.Quantidade = QuantidadeUC.Value;
+                    _peca.Descricao = DescricaoTextBox.Text;
+                    ServicoDados.ServicoDadosPeca.GravarPeca(_peca);
+                    StandardMessageBoxes.MensagemSucesso("Peça alterada com sucesso!", "Alteração");
+                    MainWindowUpdater.UpdateDataGrids();
                 }
-                ServicoDados.ServicoDadosPeca.GravarPeca(_peca);
-                MessageBox.Show("Peça alterada com sucesso!");
-                MainWindowUpdater.UpdateDataGrids();
+            }
+            catch(FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmar remoção de peça?", "Confirmar remoção", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Peça") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosPeca.RemoverPecaPorId(_peca.PecaId);
-                MessageBox.Show("Peca removida com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Peca removida com sucesso!", "Remoção");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
         }
-
-        private void SelecionarFornecedorBtn_Click(object sender, RoutedEventArgs e)
-        {
-            SelecionarFornecedor(FornecedoresDataGrid.SelectedItem as Fornecedor);
-        }
-
-        private void PesquisarFornecedorBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Fornecedor fornecedor = ServicoDados.ServicoDadosFornecedor.ObterFornecedorPorCNPJ(PesquisarFornecedorTextBox.Text);
-            if (fornecedor != null)
-            {
-                MessageBox.Show("Fornecedor encontrado!");
-                SelecionarFornecedor(fornecedor);
-            }
-            else
-            {
-                MessageBox.Show("Fornecedor não encontrado!");
-            }
-        }
-
-        private void SelecionarFornecedor(Fornecedor fornecedor)
-        {
-            if (MessageBox.Show("Selecionar fornecedor?", "Confirmar seleção", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                _fornecedor = fornecedor;
-                FornecedorSelecionadoTextBox.Text = _fornecedor.Razao_Social;
-                MessageBox.Show("Fornecedor selecionado com sucesso!");
-            }
-        }
-
-        private void CancelarAlteracaoBtn_Click(object sender, RoutedEventArgs e)
-        {
-            _fornecedor = null;
-            FornecedorSelecionadoTextBox.Text = "";
-            SelecionarNovoFornecedorGrid.Visibility = Visibility.Collapsed;
-            DadosFornecedorAtualGrid.Visibility = Visibility.Visible;
-        }
-
         private void CancelarBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
