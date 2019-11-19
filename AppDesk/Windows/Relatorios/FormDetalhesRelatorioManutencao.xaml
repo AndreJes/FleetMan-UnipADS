@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AppDesk.Windows.Relatorios"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="Detalhes Relatorio Manutencao" Height="700" Width="500" MaxHeight="700" MaxWidth="500" MinHeight="700" MinWidth="500">
+        Title="Detalhes Relatorio Manutencao" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>

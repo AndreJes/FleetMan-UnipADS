@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Relatorios"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
         mc:Ignorable="d"
-        Title="Gerar Relatório" Height="550" Width="500" MinHeight="550" MinWidth="500" MaxHeight="550" MaxWidth="500">
+        Title="Gerar Relatório" Style="{StaticResource SmallFormWindowStyle}">
     <Window.Resources>
         <Style TargetType="RadioButton">
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -48,36 +49,35 @@
                 </Grid>
             </GroupBox>
 
-            <GroupBox Grid.Row="1" Header="Seleção de data">
+            <GroupBox Grid.Row="1" Header="Seleção de datas">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <GroupBox Header="De" Grid.Column="0">
-                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                            <DatePicker x:Name="InicioDatePicker"></DatePicker>
-                        </StackPanel>
-                    </GroupBox>
+                    <uc:DataFieldUC Grid.Column="0" Label="De" x:Name="DataInicialUC"></uc:DataFieldUC>
 
-                    <GroupBox Header="Até" Grid.Column="1">
-                        <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                            <DatePicker x:Name="FinalDatePicker"></DatePicker>
-                        </StackPanel>
-            </GroupBox>
-        </Grid>
+                    <uc:DataFieldUC Grid.Column="1" Label="Até" x:Name="DataFinalUC"></uc:DataFieldUC>
+
+                </Grid>
 
             </GroupBox>
 
             <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                    <Label Style="{StaticResource MainLabelStyle}">Descrição(Opcional)</Label>
-                    <TextBox Style="{StaticResource MainTextBoxStyle}" Width="250" x:Name="DescricaoTextBox"></TextBox>
+                    <Label Style="{StaticResource MainLabelRoundStyle}">Descrição(Opcional)</Label>
+                    <TextBox Style="{StaticResource MainTextBoxStyle}" Width="250" x:Name="DescricaoTextBox">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
                 </StackPanel>
             </Grid>
         </Grid>
-        
+
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -90,6 +90,6 @@
                 CANCELAR
             </Button>
         </Grid>
-        
+
     </Grid>
 </Window>

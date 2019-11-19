@@ -32,7 +32,6 @@ namespace AppDesk.Windows.Usuarios
         private FormAlterarDetalhesUsuario()
         {
             InitializeComponent();
-            UfComboBox.ItemsSource = Enum.GetNames(typeof(UnidadesFederativas));
         }
 
         public FormAlterarDetalhesUsuario(Funcionario funcionario) : this()
@@ -42,19 +41,17 @@ namespace AppDesk.Windows.Usuarios
 
             this.DataContext = _funcionario;
             PopularPermissoes(_usuario.Permissoes);
-
-            UfComboBox.SelectedItem = _funcionario.Endereco.UF.ToString("G");
+            PreencherTextBoxes();
         }
 
         private void SalvarAlteracoesBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Confirmar alteração dos dados?", "Confirmar alteração", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarAlteracaoMessageBox("Usuário") == MessageBoxResult.Yes)
             {
                 AlterarDadosFuncionario();
                 AlterarPermissoesUsuario();
                 ServicoDados.ServicoDadosUsuarioF.AlterarUsuarioFunc(_usuario);
-                MessageBox.Show("Dados alterados com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Dados alterados com sucesso!", "Alteração");
                 MainWindowUpdater.UpdateDataGrids();
             }
         }
@@ -66,8 +63,7 @@ namespace AppDesk.Windows.Usuarios
 
         private void AlterarSenhaBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Confirmar alteração de senha?", "Alterar Senha", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarAlteracaoMessageBox("Senha") == MessageBoxResult.Yes)
             {
                 AlterarSenhaUsuario();
             }
@@ -157,22 +153,25 @@ namespace AppDesk.Windows.Usuarios
 
         private void AlterarDadosFuncionario()
         {
-            _funcionario.Nome = NomeTextBox.Text;
-            _funcionario.RG = RGTextBox.Text;
-            _funcionario.Telefone = TelefoneTextBox.Text;
-            _funcionario.Email = EmailTextBox.Text;
-
-            Endereco endereco = new Endereco()
+            try
             {
-                Rua = RuaTextBox.Text,
-                Cidade = CidadeTextBox.Text,
-                CEP = CEPTextBox.Text,
-                Numero = NumeroTextBox.Text,
-                Bairro = BairroTextBox.Text,
-                UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString())
-            };
+                _funcionario.Nome = NomeTextBox.Text;
+                _funcionario.RG = RGTextBox.Text;
+                _funcionario.Telefone = TelefoneTextBox.Text;
+                _funcionario.Email = EmailTextBox.Text;
 
-            _funcionario.Endereco = endereco;
+                Endereco endereco = EnderecoUC.Endereco;
+
+                _funcionario.Endereco = endereco;
+            }
+            catch(FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
         }
 
         private void AlterarPermissoesUsuario()
@@ -223,30 +222,39 @@ namespace AppDesk.Windows.Usuarios
                 {
                     _usuario.Senha = NovaSenhaPassBox.Password;
                     ServicoDados.ServicoDadosUsuarioF.AlterarUsuarioFunc(_usuario);
-                    MessageBox.Show("Senha alterada com sucesso!");
+                    StandardMessageBoxes.MensagemSucesso("Senha alterada com sucesso!", "Alteração");
                 }
                 else
                 {
-                    MessageBox.Show("Não foi possível alterar a senha! A senha de confirmação deve ser igual a nova senha!");
+                    StandardMessageBoxes.MensagemDeErro("Não foi possível alterar a senha! A senha de confirmação deve ser igual a nova senha!");
                 }
             }
             else
             {
-                MessageBox.Show("Senha atual invalida! Verifique se digitou os dados corretamente e tente novamente!");
+                StandardMessageBoxes.MensagemDeErro("Senha atual invalida! Verifique se digitou os dados corretamente e tente novamente!");
             }
         }
 
         private void RemoverFuncionarioUsuario()
         {
-            MessageBoxResult result = MessageBox.Show("Confirmar remoção de Usuário?", "Confirmar Remoção", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Usuário") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosUsuarioF.RemoverUsuarioFuncPorId(_usuario.FuncionarioId);
                 ServicoDados.ServicoDadosFuncionario.RemoverFuncionarioPorId(_funcionario.FuncionarioId);
                 MainWindowUpdater.UpdateDataGrids();
-                MessageBox.Show("Usuario removido com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                StandardMessageBoxes.MensagemSucesso("Usuário removido com sucesso!", "Remoção");
                 this.Close();
             }
+        }
+
+        private void PreencherTextBoxes()
+        {
+            NomeTextBox.Text = _funcionario.Nome;
+            CPFTextBox.Text = _funcionario.CPF;
+            RGTextBox.Text = _funcionario.RG;
+            EmailTextBox.Text = _funcionario.Email;
+            TelefoneTextBox.Text = _funcionario.Telefone;
+            EnderecoUC.Endereco = _funcionario.Endereco;
         }
     }
 }

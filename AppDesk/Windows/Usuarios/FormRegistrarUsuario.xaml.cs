@@ -29,25 +29,34 @@ namespace AppDesk.Windows.Usuarios
         public FormRegistrarUsuario()
         {
             InitializeComponent();
-            UfComboBox.ItemsSource = Enum.GetNames(typeof(UnidadesFederativas));
         }
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            Funcionario funcionario = GerarFuncionario();
-            Permissoes permissoes = GerarPermissoes();
+            try
+            {
+                Funcionario funcionario = GerarFuncionario();
+                Permissoes permissoes = GerarPermissoes();
 
-            ServicoDados.ServicoDadosFuncionario.GravarFuncionario(funcionario);
+                ServicoDados.ServicoDadosFuncionario.GravarFuncionario(funcionario);
 
-            UsuarioFunc usuario = GerarUsuario(funcionario, permissoes);
+                UsuarioFunc usuario = GerarUsuario(funcionario, permissoes);
 
-            ServicoDados.ServicoDadosUsuarioF.GravarUsuarioFunc(usuario);
+                ServicoDados.ServicoDadosUsuarioF.GravarUsuarioFunc(usuario);
 
-            MessageBox.Show("Usuario registrado com sucesso!");
-            MessageBox.Show("Login: " + usuario.Login + Environment.NewLine + "Senha: " + usuario.Senha);
+                StandardMessageBoxes.MensagemSucesso("Usuario registrado com sucesso!", "Registro");
 
-            MainWindowUpdater.UpdateDataGrids();
-            this.Close();
+                MainWindowUpdater.UpdateDataGrids();
+                this.Close();
+            }
+            catch(FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
         }
 
         private void CancelarBtn_Click(object sender, RoutedEventArgs e)
@@ -57,22 +66,26 @@ namespace AppDesk.Windows.Usuarios
 
         private Funcionario GerarFuncionario()
         {
-            Funcionario funcionario = new Funcionario();
-            funcionario.CPF = CPFTextBox.Text;
-            funcionario.Nome = NomeTextBox.Text;
-            funcionario.RG = RGTextBox.Text;
-            funcionario.Telefone = TelefoneTextBox.Text;
-            funcionario.Email = EmailTextBox.Text;
-            funcionario.Endereco = new Endereco()
+            try
             {
-                Rua = RuaTextBox.Text,
-                CEP = CEPTextBox.Text,
-                Bairro = BairroTextBox.Text,
-                Cidade = CidadeTextBox.Text,
-                Numero = NumeroTextBox.Text,
-                UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString())
-            };
-            return funcionario;
+                Funcionario funcionario = new Funcionario();
+                funcionario.CPF = CPFTextBox.Text;
+                funcionario.Nome = NomeTextBox.Text;
+                funcionario.RG = RGTextBox.Text;
+                funcionario.Telefone = TelefoneTextBox.Text;
+                funcionario.Email = EmailTextBox.Text;
+                funcionario.Endereco = EnderecoUC.Endereco;
+                return funcionario;
+            }
+            catch (FieldException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         private Permissoes GerarPermissoes()

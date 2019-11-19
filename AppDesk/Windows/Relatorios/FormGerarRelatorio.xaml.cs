@@ -29,45 +29,66 @@ namespace AppDesk.Windows.Relatorios
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmar registro de relatório?", "Confirmar registro", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            try
             {
-                TiposRelatorios tipo = TiposRelatorios.ACIDENTE;
-                if(ConsumoRB.IsChecked == true)
+                if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Relatório") == MessageBoxResult.Yes)
                 {
-                    tipo = TiposRelatorios.CONSUMO;
-                }
-                else if(FinanceiroRB.IsChecked == true)
-                {
-                    tipo = TiposRelatorios.FINANCEIRO;
-                }
-                else if (ManutencaoRB.IsChecked == true)
-                {
-                    tipo = TiposRelatorios.MANUTENCOES;
-                }
-                else if (ViagemRB.IsChecked == true)
-                {
-                    tipo = TiposRelatorios.VIAGEM;
-                }
-                else if (SinistroRB.IsChecked == true)
-                {
-                    tipo = TiposRelatorios.ACIDENTE;
-                }
-                else if (MultaRB.IsChecked == true)
-                {
-                    tipo = TiposRelatorios.MULTA;
-                }
+                    TiposRelatorios tipo = 0;
 
-                ServicoDados.ServicoDadosRelatorio.GravarRelatorio(
-                    ServicoDados.ServicoDadosRelatorio.GerarRelatorio(
-                        InicioDatePicker.SelectedDate.GetValueOrDefault(),
-                        FinalDatePicker.SelectedDate.GetValueOrDefault(),
-                        tipo, DescricaoTextBox.Text),
-                    tipo);
+                    if (ConsumoRB.IsChecked == true)
+                    {
+                        tipo = TiposRelatorios.CONSUMO;
+                    }
+                    else if (FinanceiroRB.IsChecked == true)
+                    {
+                        tipo = TiposRelatorios.FINANCEIRO;
+                    }
+                    else if (ManutencaoRB.IsChecked == true)
+                    {
+                        tipo = TiposRelatorios.MANUTENCOES;
+                    }
+                    else if (ViagemRB.IsChecked == true)
+                    {
+                        tipo = TiposRelatorios.VIAGEM;
+                    }
+                    else if (SinistroRB.IsChecked == true)
+                    {
+                        tipo = TiposRelatorios.ACIDENTE;
+                    }
+                    else if (MultaRB.IsChecked == true)
+                    {
+                        tipo = TiposRelatorios.MULTA;
+                    }
+                    else if (SinistroRB.IsChecked == true)
+                    {
+                        tipo = TiposRelatorios.ACIDENTE;
+                    }
+                    else
+                    {
+                        throw new FieldException("Tipo de Relatório");
+                    }
 
-                MessageBox.Show("Relatorio Gerado com sucesso!");
+                    ServicoDados.ServicoDadosRelatorio.GravarRelatorio(
+                        relatorio: ServicoDados.ServicoDadosRelatorio.GerarRelatorio(
+                            dataInicio: DataInicialUC.Date,
+                            dataFinal: DataFinalUC.Date,
+                            tipo: tipo,
+                            descricao: DescricaoTextBox.Text),
+                        tipo: tipo);
 
-                MainWindowUpdater.UpdateDataGrids();
-                this.Close();
+                    MessageBox.Show("Relatorio Gerado com sucesso!");
+
+                    MainWindowUpdater.UpdateDataGrids();
+                    this.Close();
+                }
+            }
+            catch (FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
