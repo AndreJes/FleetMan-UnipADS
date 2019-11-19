@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Fornecedores"
         xmlns:uc="clr-namespace:AppDesk.UserControls"
+        xmlns:masked="clr-namespace:AppDesk.UserControls.Campos.Masked"
+        xmlns:campos="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Registrar Fornecedor" Height="550" Width="450" MaxHeight="550" MinHeight="550" MaxWidth="450" MinWidth="450">
+        Title="Registrar Fornecedor" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -31,25 +33,13 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">CNPJ</Label>
-                        <TextBox x:Name="CNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Width="150"/>
-                    </StackPanel>
+                    <masked:CNPJFieldUC Grid.Row="0" x:Name="CNPJTextBox"></masked:CNPJFieldUC>
 
-                    <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Razão Social</Label>
-                        <TextBox x:Name="RazaoSocialTextBox" Style="{StaticResource MainTextBoxStyle}" Width="150"/>
-                    </StackPanel>
+                    <campos:NomeFieldUC Grid.Row="1" x:Name="NomeTextBox"></campos:NomeFieldUC>
 
-                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">e-Mail</Label>
-                        <TextBox x:Name="EmailTextBox" Style="{StaticResource MainTextBoxStyle}" Width="150"/>
-                    </StackPanel>
+                    <campos:EmailFieldUC Grid.Row="2" x:Name="EmailTextBox"></campos:EmailFieldUC>
 
-                    <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Telefone</Label>
-                        <TextBox x:Name="TelefoneTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120"/>
-                    </StackPanel>
+                    <masked:TelefoneFieldUC Grid.Row="3" x:Name="TelefoneTextBox"></masked:TelefoneFieldUC>
 
                     <StackPanel Grid.Row="4" Style="{StaticResource MainStackPanelStyle}">
                         <CheckBox x:Name="LojaVirtualCheckBox" IsChecked="False" Checked="LojaVirtualCheckBox_Toggle" Unchecked="LojaVirtualCheckBox_Toggle">Loja Virtual</CheckBox>

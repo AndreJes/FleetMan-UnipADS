@@ -1,4 +1,5 @@
 ﻿using AppDesk.Serviço;
+using AppDesk.Tools;
 using AppDesk.Windows.Estoque;
 using Modelo.Classes.Auxiliares;
 using Modelo.Classes.Manutencao;
@@ -37,11 +38,11 @@ namespace AppDesk.Windows.Fornecedores
             this.DataContext = _fornecedor;
             EnderecoUC.Editavel = true;
             EnderecoUC.Endereco = _fornecedor.Endereco;
-            if (!_fornecedor.LojaVirtual)
-            {
-                EnderecoUC.UfComboBox.SelectedItem = _fornecedor.Endereco.UF.ToString("G");
-            }
             PecasDataGrid.ItemsSource = _fornecedor.Pecas;
+            CNPJTextbox.Text = _fornecedor.CNPJ;
+            EmailTextBox.Text = _fornecedor.Email;
+            NomeTextBox.Text = _fornecedor.Razao_Social;
+            TelefoneTextBox.Text = _fornecedor.Telefone;
         }
 
 
@@ -58,10 +59,10 @@ namespace AppDesk.Windows.Fornecedores
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmar Remoção de Fornecedor?", "Confirmar Remoção", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Fornecedor") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosFornecedor.RemoverFornecedorPorId(_fornecedor.FornecedorId);
-                MessageBox.Show("Fornecedor removido com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                StandardMessageBoxes.MensagemSucesso("Fornecedor removido com sucesso!", "Remoção");
                 Application.Current.Windows.OfType<FormFornecedoresList>().FirstOrDefault().FornecedoresDataGrid.ItemsSource = ServicoDados.ServicoDadosFornecedor.ObterFornecedoresOrdPorId();
                 this.Close();
             }
@@ -69,15 +70,23 @@ namespace AppDesk.Windows.Fornecedores
 
         private void SalvarAlteracoesBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmar Alteração de Fornecedor?", "Confirmar Alteração", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            try
             {
-                if (!_fornecedor.LojaVirtual)
+                if (StandardMessageBoxes.ConfirmarAlteracaoMessageBox("Fornecedor") == MessageBoxResult.Yes)
                 {
-                    _fornecedor.Endereco.UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), EnderecoUC.UfComboBox.SelectedItem.ToString());
+                    AlterarFornecedor();
+                    ServicoDados.ServicoDadosFornecedor.GravarFornecedor(_fornecedor);
+                    StandardMessageBoxes.MensagemSucesso("Fornecedor alterado com sucesso!", "Alteração");
+                    Application.Current.Windows.OfType<FormFornecedoresList>().FirstOrDefault().FornecedoresDataGrid.ItemsSource = ServicoDados.ServicoDadosFornecedor.ObterFornecedoresOrdPorId();
                 }
-                ServicoDados.ServicoDadosFornecedor.GravarFornecedor(_fornecedor);
-                MessageBox.Show("Fornecedor alterado com sucesso!", "Sucesso!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                Application.Current.Windows.OfType<FormFornecedoresList>().FirstOrDefault().FornecedoresDataGrid.ItemsSource = ServicoDados.ServicoDadosFornecedor.ObterFornecedoresOrdPorId();
+            }
+            catch(FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
@@ -86,6 +95,24 @@ namespace AppDesk.Windows.Fornecedores
             Peca peca = ServicoDados.ServicoDadosPeca.ObterPecaPorId((PecasDataGrid.SelectedItem as Peca).PecaId);
             FormDetalhesAlterarPeca formDetalhesAlterarPeca = new FormDetalhesAlterarPeca(peca);
             formDetalhesAlterarPeca.Show();
+        }
+
+        private void AlterarFornecedor()
+        {
+            try
+            {
+                _fornecedor.Razao_Social = NomeTextBox.Text;
+                _fornecedor.Email = EmailTextBox.Text;
+                _fornecedor.Telefone = TelefoneTextBox.Text;
+            }
+            catch (FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
         }
     }
 }
