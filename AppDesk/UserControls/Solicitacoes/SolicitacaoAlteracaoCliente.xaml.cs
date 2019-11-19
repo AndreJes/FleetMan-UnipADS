@@ -41,43 +41,12 @@ namespace AppDesk.UserControls.Solicitacoes
                     {
                         ClientePF cliente = JsonConvert.DeserializeObject<ClientePF>(value.ItemSerializado);
                         ClienteNovo = cliente;
-                        ClienteAntigo = ServicoDados.ServicoDadosClientes.ObterClientePFPorId(cliente.ClienteId);
                     }
                     else if (value.ItemSerializado.Contains("CNPJ"))
                     {
                         ClientePJ cliente = JsonConvert.DeserializeObject<ClientePJ>(value.ItemSerializado);
                         ClienteNovo = cliente;
-                        ClienteAntigo = ServicoDados.ServicoDadosClientes.ObterClientePJPorId(cliente.ClienteId);
                     }
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private Cliente _clienteAntigo;
-        private Cliente ClienteAntigo
-        {
-            get
-            {
-                return _clienteAntigo;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    _clienteAntigo = value;
-                    switch (ClienteAntigo.Tipo)
-                    {
-                        case TipoCliente.PF:
-                            CpfCnpjAntigoTextBox.Text = (value as ClientePF).CPFTxt;
-                            break;
-                        case TipoCliente.PJ:
-                            CpfCnpjAntigoTextBox.Text = (value as ClientePJ).CNPJTxt;
-                            break;
-                    }
-                    NomeAntigoTextBox.Text = value.Nome;
-                    TelefoneAntigoTextBox.Text = value.Telefone;
-                    EnderecoAntigoUC.Endereco = value.Endereco;
                     NotifyPropertyChanged();
                 }
             }
@@ -98,15 +67,16 @@ namespace AppDesk.UserControls.Solicitacoes
                     switch (ClienteNovo.Tipo)
                     {
                         case TipoCliente.PF:
-                            CpfCnpjNovoTextBox.Text = (value as ClientePF).CPFTxt;
-                            
+                            CPFTextBox.Text = (value as ClientePF).CPF;
+                            CPFTextBox.Visibility = Visibility.Visible;
                             break;
                         case TipoCliente.PJ:
-                            CpfCnpjNovoTextBox.Text = (value as ClientePJ).CNPJTxt;
+                            CNPJTextBox.Text = (value as ClientePJ).CNPJ;
+                            CNPJTextBox.Visibility = Visibility.Visible;
                             break;
                     }
-                    NomeNovoTextBox.Text = value.Nome;
-                    TelefoneNovoTextBox.Text = value.Telefone;
+                    NomeTextBox.Text = value.Nome;
+                    TelefoneTextBox.Text = value.Telefone;
                     EnderecoNovoUC.Endereco = value.Endereco;
                     NotifyPropertyChanged();
                 }

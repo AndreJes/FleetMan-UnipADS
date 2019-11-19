@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AppDesk.Windows.Solicitacoes"
         xmlns:ucs="clr-namespace:AppDesk.UserControls.Solicitacoes"
         mc:Ignorable="d"
-        Title="Solicitação Web" Height="500" Width="700" MinHeight="500" MinWidth="700" MaxHeight="500" MaxWidth="700">
+        Title="Solicitação Web" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -23,30 +23,20 @@
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                
-                <StackPanel Grid.Column="0" Style="{StaticResource MainStackPanelStyle}">
-                    <Label Style="{StaticResource MainLabelStyle}">Item de Solicitação</Label>
-                    <TextBox x:Name="ItemSolicitação" Width="100" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
-                </StackPanel>
-
-                <StackPanel Grid.Column="1" Style="{StaticResource MainStackPanelStyle}">
-                    <Label Style="{StaticResource MainLabelStyle}">Tipo de Solicitação</Label>
-                    <TextBox x:Name="TipoSolicitacaoTextBox" Width="100" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
-                </StackPanel>
-
                 <StackPanel Grid.Column="2" Style="{StaticResource MainStackPanelStyle}">
-                    <Label Style="{StaticResource MainLabelStyle}">Situação</Label>
-                    <TextBox x:Name="EstadoSolicitacaoTextBox" Width="100" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}"></TextBox>
+                    <Label Style="{StaticResource MainLabelRoundStyle}">Situação</Label>
+                    <TextBox x:Name="EstadoSolicitacaoTextBox" Width="100" IsEnabled="False" Style="{StaticResource MainTextBoxStyle}">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
                 </StackPanel>
             </Grid>
 
             <Grid Grid.Row="1">
-                <ucs:SolicitacaoAlteracaoCliente x:Name="SolicitacaoClienteUC" Visibility="Collapsed"/>
+                <ucs:SolicitacaoAlteracaoCliente x:Name="SolicitacaoClienteUC"/>
             </Grid>
         </Grid>
 
@@ -57,15 +47,15 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="AprovarBtn" Click="AprovarBtn_Click" Grid.Row="3" Background="#FF6EE66E" HorizontalAlignment="Center" Margin="0 5" >
-                APROVAR SOLICITAÇÃO
+                APROVAR
             </Button>
 
             <Button x:Name="ReprovarBtn" Click="ReprovarBtn_Click" Grid.Row="3" Grid.Column="1" Background="#FFE2D01B" Margin="10 5" HorizontalAlignment="Center">
-                REPROVAR SOLICITAÇÃO
+                REPROVAR
             </Button>
 
             <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Grid.Row="3" Grid.Column="2" Background="#FFE66E6E" Margin="10 5" HorizontalAlignment="Center" >
-                REMOVER SOLICITAÇÃO
+                REMOVER
             </Button>
         </Grid>
     </Grid>

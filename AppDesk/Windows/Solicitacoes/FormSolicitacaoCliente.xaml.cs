@@ -33,26 +33,10 @@ namespace AppDesk.Windows.Solicitacoes
         public FormSolicitacaoCliente(Solicitacao solicitacao) : this()
         {
             _solicitacao = solicitacao;
-            switch (solicitacao.Tipo)
-            {
-                case TiposDeSolicitacao.ALTERACAO:
-                    TipoSolicitacaoTextBox.Text = "Alteração";
-                    break;
-                case TiposDeSolicitacao.RENOVACAO_ALUGUEL:
-                    TipoSolicitacaoTextBox.Text = "Renovação de Aluguel";
-                    break;
-                case TiposDeSolicitacao.CANCELAMENTO_ALUGUEL:
-                    TipoSolicitacaoTextBox.Text = "Cancelamento de Aluguel";
-                    break;
-            }
 
             switch (solicitacao.TipoDeItem)
             {
-                case ItemSolicitacao.ALUGUEL:
-                    ItemSolicitação.Text = "Aluguel";
-                    break;
                 case ItemSolicitacao.CLIENTE:
-                    ItemSolicitação.Text = "Cliente";
                     SolicitacaoClienteUC.Visibility = Visibility.Visible;
                     SolicitacaoClienteUC.Solicitacao = solicitacao;
                     break;
@@ -82,7 +66,7 @@ namespace AppDesk.Windows.Solicitacoes
             if (MessageBox.Show("Aprovar Solicitação?", "Aprovar", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosSolicitacao.AprovarSolicitacao(_solicitacao);
-                MessageBox.Show("Solicitação aprovada com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Solicitação aprovada com sucesso!", "Aprovar Solicitação");
                 EstadoSolicitacaoTextBox.Text = "Aprovada";
                 MainWindowUpdater.UpdateDataGrids();
             }
@@ -93,7 +77,7 @@ namespace AppDesk.Windows.Solicitacoes
             if (MessageBox.Show("Reprovar Solicitação?", "Reprovar", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosSolicitacao.ReprovarSolicitacao(_solicitacao);
-                MessageBox.Show("Solicitação reprovada com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Solicitação reprovada com sucesso!", "Reprovar Solicitação");
                 EstadoSolicitacaoTextBox.Text = "Reprovada";
                 MainWindowUpdater.UpdateDataGrids();
             }
@@ -104,7 +88,7 @@ namespace AppDesk.Windows.Solicitacoes
             if(StandardMessageBoxes.ConfirmarRemocaoMessageBox("Solicitação") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosSolicitacao.RemoverSolicitacaoPorId(_solicitacao.SolicitacaoId);
-                MessageBox.Show("Solicitação removida com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Solicitação removida com sucesso!", "Remoção");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }

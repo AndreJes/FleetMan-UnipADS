@@ -88,7 +88,7 @@
                 <!--#endregion-->
 
                 <!--#region Main Menu Grid-->
-                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Hidden">
+                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Collapsed">
                     <Grid>
                         <Grid Visibility="Visible" x:Name="MainMenuPrimaryButtonsGrid" ShowGridLines="False" >
                             <!--#region Grid Columns and Row-->
@@ -465,7 +465,7 @@
                 <!--#endregion-->
 
                 <!--#region Clientes List/Actions Grid Menu-->
-                <Grid x:Name="ClientesGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="ClientesGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -1097,7 +1097,7 @@
                 <!--#endregion-->
 
                 <!--#region Solicitações List/Actions Grid Menu-->
-                <Grid x:Name="SolicitacoesGrid" Visibility="Hidden" Grid.Row="1">
+                <Grid x:Name="SolicitacoesGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -1169,7 +1169,7 @@
                         </DataGrid>
                         <!--#endregion-->
                         <!--#region Separador-->
-                        <StackPanel Orientation="Horizontal" Grid.RowSpan="2" HorizontalAlignment="Right" Width="5">
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Width="5">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                         </StackPanel>
                         <!--#endregion-->
@@ -1192,7 +1192,7 @@
                         </DataGrid>
                         <!--#endregion-->
                         <!--#region Separador-->
-                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Right" Width="5">
+                        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Width="5">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                         </StackPanel>
                         <!--#endregion-->
