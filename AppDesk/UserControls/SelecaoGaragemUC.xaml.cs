@@ -1,6 +1,6 @@
 ﻿using AppDesk.Serviço;
 using AppDesk.Tools;
-using AppDesk.Windows.Garagem;
+using AppDesk.Windows.Garagens;
 using Modelo.Classes.Desk;
 using System;
 using System.Collections.Generic;
@@ -65,8 +65,8 @@ namespace AppDesk.UserControls
 
         private void GaragemDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
-            FormAlterarGaragem formAlterarGaragem = new FormAlterarGaragem((GaragensDataGrid.SelectedItem as Garagem));
-            formAlterarGaragem.Show();
+            FormDetalhesGaragem detalhesGaragem = new FormDetalhesGaragem((GaragensDataGrid.SelectedItem as Garagem));
+            detalhesGaragem.Show();
         }
 
         private void PesquisarGaragemBtn_Click(object sender, RoutedEventArgs e)

@@ -9,7 +9,7 @@
              mc:Ignorable="d">
     <StackPanel Style="{StaticResource MainStackPanelStyle}">
         <Label Style="{StaticResource MainLabelRoundStyle}" Width="50">CNPJ</Label>
-        <xctk:MaskedTextBox x:Name="CNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Width="125" Mask="000,000,000/0000-0" ValueDataType="{x:Type s:String}" TextChanged="CNPJTextBox_TextChanged">
+        <xctk:MaskedTextBox x:Name="CNPJTextBox" Style="{StaticResource MainTextBoxStyle}" Width="125" Mask="00,000,0000/0000-0" ValueDataType="{x:Type s:String}" TextChanged="CNPJTextBox_TextChanged">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="0 5 5 0" />

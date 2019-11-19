@@ -43,13 +43,13 @@ namespace AppDesk.Windows.Locacoes
         {
             switch (_aluguel.EstadoDoPagamento)
             {
-                case Modelo.Enums.EstadosDePagamento.PAGO:
+                case EstadosDePagamento.PAGO:
                     PagoRadioBtn.IsChecked = true;
                     break;
-                case Modelo.Enums.EstadosDePagamento.VENCIDO:
+                case EstadosDePagamento.VENCIDO:
                     VencidoRadioBtn.IsChecked = true;
                     break;
-                case Modelo.Enums.EstadosDePagamento.AGUARDANDO:
+                case EstadosDePagamento.AGUARDANDO:
                     AguardandoPagamentoRadioBtn.IsChecked = true;
                     break;
                 default:
@@ -58,12 +58,19 @@ namespace AppDesk.Windows.Locacoes
 
             if (_aluguel.Cliente is ClientePF)
             {
-                CpfCnpjTextBox.Text = (_aluguel.Cliente as ClientePF).CPFTxt;
+                CPFTextBox.Text = (_aluguel.Cliente as ClientePF).CPFTxt;
+                CPFTextBox.Visibility = Visibility.Visible;
             }
             else if (_aluguel.Cliente is ClientePJ)
             {
-                CpfCnpjTextBox.Text = (_aluguel.Cliente as ClientePJ).CNPJTxt;
+                CNPJTextBox.Text = (_aluguel.Cliente as ClientePJ).CNPJTxt;
+                CNPJTextBox.Visibility = Visibility.Visible;
             }
+
+            DataContratacaoUC.Date = _aluguel.DataContratacao;
+            DataVencimentoUC.Date = _aluguel.DataVencimento;
+
+            PlacaVeiculoTextBox.Text = _aluguel.Veiculo.Placa;
 
             this.DataContext = _aluguel;
         }
@@ -90,12 +97,12 @@ namespace AppDesk.Windows.Locacoes
 
         private void CancelarLocacaoBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Cancelar locação?" + Environment.NewLine + "Atenção está ação não poderá ser desfeita", "Cancelar locação", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult result = MessageBox.Show("Cancelar Aluguel?" + Environment.NewLine + "Atenção está ação não poderá ser desfeita!", "Cancelar locação", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             {
                 _aluguel.EstadoDoAluguel = EstadosAluguel.CANCELADO;
                 ServicoDados.ServicoDadosAluguel.GravarAluguel(_aluguel);
-                MessageBox.Show("Locação cancelada com sucesso!");
+                MessageBox.Show("Aluguel cancelado com sucesso!");
             }
         }
 

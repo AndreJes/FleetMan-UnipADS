@@ -88,7 +88,7 @@
                 <!--#endregion-->
 
                 <!--#region Main Menu Grid-->
-                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Collapsed">
+                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Visible">
                     <Grid>
                         <Grid Visibility="Visible" x:Name="MainMenuPrimaryButtonsGrid" ShowGridLines="False" >
                             <!--#region Grid Columns and Row-->
@@ -1097,7 +1097,7 @@
                 <!--#endregion-->
 
                 <!--#region Solicitações List/Actions Grid Menu-->
-                <Grid x:Name="SolicitacoesGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="SolicitacoesGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>

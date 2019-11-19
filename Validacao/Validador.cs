@@ -141,6 +141,10 @@ namespace Validacao
         {
             bool resultado = await Task.Run(() =>
             {
+                if(telefone.Length < 10)
+                {
+                    return false;
+                }
                 foreach (char c in telefone.ToCharArray())
                 {
                     if (!char.IsDigit(c))

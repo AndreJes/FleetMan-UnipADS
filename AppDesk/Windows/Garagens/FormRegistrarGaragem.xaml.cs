@@ -13,8 +13,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Modelo.Classes.Desk;
+using AppDesk.Tools;
 
-namespace AppDesk.Windows.Garagem
+namespace AppDesk.Windows.Garagens
 {
     /// <summary>
     /// Lógica interna para FormRegistrarGaragem.xaml
@@ -24,15 +26,17 @@ namespace AppDesk.Windows.Garagem
         public FormRegistrarGaragem()
         {
             InitializeComponent();
-            UfComboBox.ItemsSource = Enum.GetNames(typeof(UnidadesFederativas));
         }
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            RegistrarGaragem();
-            MessageBox.Show("Garagem registrada com sucesso!");
-            Application.Current.Windows.OfType<MainWindow>().FirstOrDefault().PopulateDataGrid();
-            this.Close();
+            if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Garagem") == MessageBoxResult.Yes)
+            {
+                RegistrarGaragem();
+                StandardMessageBoxes.MensagemSucesso("Garagem registrada com sucesso!", "Registro");
+                MainWindowUpdater.UpdateDataGrids();
+                this.Close();
+            }
         }
 
         private void CancelarBtn_Click(object sender, RoutedEventArgs e)
@@ -45,22 +49,14 @@ namespace AppDesk.Windows.Garagem
             ServicoDados.ServicoDadosGaragem.GravarGaragem(GerarGaragem());
         }
 
-        public Modelo.Classes.Desk.Garagem GerarGaragem()
+        public Garagem GerarGaragem()
         {
-            Modelo.Classes.Desk.Garagem garagem = new Modelo.Classes.Desk.Garagem()
+            Garagem garagem = new Garagem()
             {
-                CNPJ = CPFCNPJTextBox.Text,
+                CNPJ = CNPJTextBox.Text,
                 Telefone = TelefoneTextBox.Text,
                 Capacidade = int.Parse(CapacidadeSlider.Value.ToString()),
-                Endereco = new Modelo.Classes.Auxiliares.Endereco()
-                {
-                    Rua = RuaTextBox.Text,
-                    Numero = NumeroTextBox.Text,
-                    CEP = CEPTextBox.Text,
-                    Bairro = BairroTextBox.Text,
-                    Cidade = CidadeTextBox.Text,
-                    UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), UfComboBox.SelectedItem.ToString())
-                }
+                Endereco = EnderecoUC.Endereco
             };
             return garagem;
         }

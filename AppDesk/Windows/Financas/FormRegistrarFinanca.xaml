@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Financas"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
         mc:Ignorable="d"
-        Title="Registrar Nova Financa" Height="450" Width="400" MaxHeight="450" MaxWidth="400" MinHeight="450" MinWidth="400">
+        Title="Registrar Nova Financa" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
@@ -17,6 +18,7 @@
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -36,31 +38,26 @@
             </GroupBox>
 
             <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                <Label Style="{StaticResource MainLabelStyle}">Codigo</Label>
-                <TextBox x:Name="CodigoFinancaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170"></TextBox>
+                <Label Style="{StaticResource MainLabelRoundStyle}">Codigo</Label>
+                <TextBox x:Name="CodigoFinancaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="170">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                <Label Style="{StaticResource MainLabelStyle}">
-                    Valor
-                </Label>
-                <TextBox x:Name="ValorFinancaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="80"></TextBox>
-                <Label Style="{StaticResource MainLabelStyle}">
-                    Pagamento
-                </Label>
+                <uc:ValorFieldUC x:Name="ValorTextBox" Label="Valor"></uc:ValorFieldUC>
                 <ComboBox x:Name="PagamentoFinancaComboBox" Width="100">
                 </ComboBox>
             </StackPanel>
 
-            <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
-                <GroupBox Header="Data de Vencimento">
-                    <DatePicker x:Name="DataVencimentoDatePicker"></DatePicker>
-                </GroupBox>
-                <Border Margin="10"></Border>
-                <GroupBox Header="Data do Pagamento">
-                    <DatePicker x:Name="DataPagamentoDatePicker"></DatePicker>
-                </GroupBox>
-            </StackPanel>
+            <uc:DataFieldUC Grid.Row="3" Label="Data de Vencimento" x:Name="DataVencimentoUC"></uc:DataFieldUC>
+
+            <uc:DataFieldUC Grid.Row="4" Label="Data do Pagamento(Opcional)" x:Name="DataPagamentoUC"></uc:DataFieldUC>
+
 
             <GroupBox Header="Descrição" Grid.Row="5">
                 <Grid>
@@ -69,12 +66,24 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Referente a</Label>
-                        <TextBox x:Name="ReferenciaFinancaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="240"></TextBox>
+                        <Label Style="{StaticResource MainLabelRoundStyle}">Referente a</Label>
+                        <TextBox x:Name="ReferenciaFinancaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="240">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Comentário</Label>
-                        <TextBox x:Name="ComentarioFinancaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="240"></TextBox>
+                        <Label Style="{StaticResource MainLabelRoundStyle}">Comentário</Label>
+                        <TextBox x:Name="ComentarioFinancaTextBox" Style="{StaticResource MainTextBoxStyle}" Width="240">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
                     </StackPanel>
                 </Grid>
             </GroupBox>

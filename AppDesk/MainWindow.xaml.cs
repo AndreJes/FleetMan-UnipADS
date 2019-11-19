@@ -19,7 +19,7 @@ using Modelo.Classes.Web;
 using Modelo.Enums;
 using AppDesk.Windows.Clientes;
 using AppDesk.Windows.Seguros;
-using AppDesk.Windows.Garagem;
+using AppDesk.Windows.Garagens;
 using Modelo.Classes.Desk;
 using AppDesk.Windows.Veiculos;
 using AppDesk.Windows.Motoristas;

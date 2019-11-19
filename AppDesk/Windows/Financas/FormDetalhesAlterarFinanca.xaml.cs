@@ -35,18 +35,23 @@ namespace AppDesk.Windows.Financas
         {
             _financa = financa;
             this.DataContext = _financa;
-            PreencherComboBox();
+            PreencherBoxes();
         }
 
         private void SalvarAlteracoesBtn_Click(object sender, RoutedEventArgs e)
         {
-            AlterarFinanca();
+            if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Finança") == MessageBoxResult.Yes)
+            {
+                AlterarFinanca();
+                StandardMessageBoxes.MensagemSucesso("Finança alterada com sucesso!", "Alteração");
+                MainWindowUpdater.UpdateDataGrids();
+            }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Remover finança?", "Remover Finança", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosFinancas.RemoverFinancaPorId(_financa.FinancaId);
                 MessageBox.Show("Finança removida com sucesso!");
@@ -60,34 +65,46 @@ namespace AppDesk.Windows.Financas
             this.Close();
         }
 
-        private void PreencherComboBox()
+        private void PreencherBoxes()
         {
             string[] estados = Enum.GetNames(typeof(EstadosDePagamento));
-
-            for (int i = 0; i < estados.Length; i++)
-            {
-                estados[i] = estados[i].Replace('_', ' ');
-            }
-
             PagamentoFinancaComboBox.ItemsSource = estados;
             PagamentoFinancaComboBox.SelectedItem = _financa.EstadoPagamento.ToString("G").Replace('_', ' ');
+            DataVencimentoUC.Date = _financa.DataVencimento.GetValueOrDefault();
+            if(_financa.EstadoPagamento == EstadosDePagamento.PAGO)
+            {
+                DataPagamentoUC.Date = _financa.DataPagamento.GetValueOrDefault();
+            }
+            ValorTextBox.Valor = _financa.Valor;
         }
 
         private void AlterarFinanca()
         {
-            _financa.Valor = double.Parse(ValorFinancaTextBox.Text, CultureInfo.InvariantCulture);
-            _financa.DataVencimento = DataVencimentoDatePicker.DisplayDate;
-            _financa.EstadoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), PagamentoFinancaComboBox.SelectedItem.ToString().Replace(' ', '_'));
+            try
+            {
+                _financa.Valor = ValorTextBox.Valor;
+                _financa.DataVencimento = DataVencimentoUC.Date;
+                _financa.EstadoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), PagamentoFinancaComboBox.SelectedItem.ToString().Replace(' ', '_'));
 
-            if (_financa.EstadoPagamento == EstadosDePagamento.PAGO)
-            {
-                _financa.DataPagamento = DataPagamentoDatePicker.DisplayDate;
+                if (_financa.EstadoPagamento == EstadosDePagamento.PAGO)
+                {
+                    _financa.DataPagamento = DataPagamentoUC.Date;
+                }
+                else
+                {
+                    _financa.DataPagamento = null;
+                }
+
+                ServicoDados.ServicoDadosFinancas.GravarFinanca(_financa);
             }
-            else
+            catch (FieldException ex)
             {
-                _financa.DataPagamento = null;
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
             }
-            ServicoDados.ServicoDadosFinancas.GravarFinanca(_financa);
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
         }
     }
 }

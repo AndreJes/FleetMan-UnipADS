@@ -32,45 +32,60 @@ namespace AppDesk.Windows.Financas
         private void PreencherComboBox()
         {
             string[] estados = Enum.GetNames(typeof(EstadosDePagamento));
-
-            for (int i = 0; i < estados.Length; i++)
-            {
-                estados[i] = estados[i].Replace('_', ' ');
-            }
-
             PagamentoFinancaComboBox.ItemsSource = estados;
         }
 
         private Financa GerarFinanca()
         {
-            Financa financa = new Financa();
-            financa.Codigo = CodigoFinancaTextBox.Text;
-            financa.Descricao = "Referente a: " + ReferenciaFinancaTextBox.Text + " / " + ComentarioFinancaTextBox.Text;
-            financa.Valor = double.Parse(ValorFinancaTextBox.Text);
-            financa.DataVencimento = DataVencimentoDatePicker.DisplayDate;
-            financa.DataPagamento = DataPagamentoDatePicker.DisplayDate;
-            financa.EstadoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), PagamentoFinancaComboBox.SelectedItem.ToString().Replace(' ', '_'));
-            if (FinancaEntradaRadioBtn.IsChecked == true)
+            try
             {
-                financa.Tipo = TipoDeFinanca.ENTRADA;
-            }
-            if(FinancaSaidaRadioBtn.IsChecked == true)
-            {
-                financa.Tipo = TipoDeFinanca.SAIDA;
-            }
+                Financa financa = new Financa();
+                financa.Codigo = CodigoFinancaTextBox.Text;
+                financa.Descricao = "Referente a: " + ReferenciaFinancaTextBox.Text + " / " + "Comentário: " + ComentarioFinancaTextBox.Text;
+                financa.Valor = ValorTextBox.Valor;
+                financa.DataVencimento = DataVencimentoUC.Date;
+                financa.DataPagamento = DataPagamentoUC.Date;
+                financa.EstadoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), PagamentoFinancaComboBox.SelectedItem.ToString().Replace(' ', '_'));
+                if (FinancaEntradaRadioBtn.IsChecked == true)
+                {
+                    financa.Tipo = TipoDeFinanca.ENTRADA;
+                }
+                if (FinancaSaidaRadioBtn.IsChecked == true)
+                {
+                    financa.Tipo = TipoDeFinanca.SAIDA;
+                }
 
-            return financa;
+                return financa;
+            }
+            catch (FieldException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Registrar Finança?", "Registrar Finança", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(result == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosFinancas.GravarFinanca(GerarFinanca());
-                MessageBox.Show("Finança registrada com sucesso!");
-                MainWindowUpdater.UpdateDataGrids();
-                this.Close();
+                if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Finança") == MessageBoxResult.Yes)
+                {
+                    ServicoDados.ServicoDadosFinancas.GravarFinanca(GerarFinanca());
+                    StandardMessageBoxes.MensagemSucesso("Finança registrada com sucesso!", "Registro");
+                    MainWindowUpdater.UpdateDataGrids();
+                    this.Close();
+                }
+            }
+            catch(FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 

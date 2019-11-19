@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Financas"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
         mc:Ignorable="d"
-        Title="Detalhes da Finança"  Height="450" Width="400" MaxHeight="450" MaxWidth="400" MinHeight="450" MinWidth="400">
+        Title="Detalhes da Finança" Style="{StaticResource SmallFormWindowStyle}">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="IsEnabled" Value="False"/>
@@ -14,15 +15,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">REGISTRAR NOVA FINANÇA</Label>
+        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">DETALHES DA FINANÇA</Label>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -30,33 +31,36 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                <Label Style="{StaticResource MainLabelStyle}">Tipo</Label>
-                <TextBox Text="{Binding Tipo}" Width="80"></TextBox>
-                <Label Style="{StaticResource MainLabelStyle}">Codigo</Label>
-                <TextBox Text="{Binding Codigo}" Width="150"></TextBox>
+                <Label Style="{StaticResource MainLabelRoundStyle}">Tipo</Label>
+                <TextBox Text="{Binding Tipo}" Width="80">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <Label Style="{StaticResource MainLabelRoundStyle}">Codigo</Label>
+                <TextBox Text="{Binding Codigo}" Width="150">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                <Label Style="{StaticResource MainLabelStyle}">
-                    Valor
-                </Label>
-                <TextBox x:Name="ValorFinancaTextBox" Text="{Binding Valor, StringFormat=F2}" Style="{StaticResource MainTextBoxStyle}" Width="80"></TextBox>
-                <Label Style="{StaticResource MainLabelStyle}">
+                <uc:ValorFieldUC x:Name="ValorTextBox" Label="Valor"></uc:ValorFieldUC>
+                <Label Style="{StaticResource MainLabelRoundStyle}">
                     Pagamento
                 </Label>
                 <ComboBox x:Name="PagamentoFinancaComboBox" Width="100">
                 </ComboBox>
             </StackPanel>
 
-            <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                <GroupBox Header="Data de Vencimento">
-                    <DatePicker x:Name="DataVencimentoDatePicker" SelectedDate="{Binding DataVencimento}"></DatePicker>
-                </GroupBox>
-                <Border Margin="10"></Border>
-                <GroupBox Header="Data do Pagamento">
-                    <DatePicker x:Name="DataPagamentoDatePicker" SelectedDate="{Binding DataPagamento}"></DatePicker>
-                </GroupBox>
-            </StackPanel>
+            <uc:DataFieldUC Grid.Row="2" Label="Data de Vencimento" x:Name="DataVencimentoUC"></uc:DataFieldUC>
+
+            <uc:DataFieldUC Grid.Row="3" Label="Data do Pagamento" x:Name="DataPagamentoUC"></uc:DataFieldUC>
 
             <GroupBox Header="Descrição" Grid.Row="5">
                 <Grid>
@@ -65,30 +69,39 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Referente a</Label>
-                        <TextBox Text="{Binding Referente, Mode=OneWay}"  Width="240"></TextBox>
+                        <Label Style="{StaticResource MainLabelRoundStyle}">Referente a</Label>
+                        <TextBox Text="{Binding Referente, Mode=OneWay}"  Width="240">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Comentário</Label>
-                        <TextBox Text="{Binding Comentario, Mode=OneWay}" Width="240"></TextBox>
+                        <Label Style="{StaticResource MainLabelRoundStyle}">Comentário</Label>
+                        <TextBox Text="{Binding Comentario, Mode=OneWay}" Width="240">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
                     </StackPanel>
                 </Grid>
             </GroupBox>
-        </Grid>
-
-        <Grid Grid.Row="2">
-            <Button x:Name="SalvarAlteracoesBtn" Click="SalvarAlteracoesBtn_Click" Margin="40 5" Background="LightGreen">SALVAR ALTERAÇÕES</Button>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Grid.Row="3" Background="#FFE66E6E" Margin="5" HorizontalAlignment="Center">
-                REMOVER FINANÇA
+            <Button x:Name="SalvarAlteracoesBtn" Click="SalvarAlteracoesBtn_Click" Margin="40 5" Background="LightGreen">
+                SALVAR ALTERAÇÕES
             </Button>
-            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Grid.Row="3" Grid.Column="1" Background="Yellow" Margin="40 5">
-                CANCELAR
+
+            <Button Grid.Column="1" x:Name="RemoverBtn" Click="RemoverBtn_Click" Grid.Row="3" Background="#FFE66E6E" Margin="40 5" >
+                REMOVER
             </Button>
         </Grid>
     </Grid>

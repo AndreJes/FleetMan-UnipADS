@@ -52,10 +52,10 @@ namespace AppDesk.UserControls.Campos.Masked
 
         async void Validar()
         {
-            validado = await Validador.ValidarTelefoneAsync(TelefoneTextBox.Text.Replace("-","").Replace("(", "").Replace(")", ""));
+            validado = await Validador.ValidarTelefoneAsync(TelefoneTextBox.Text.Replace("-","").Replace("(", "").Replace(")", "").Replace("_", ""));
             if (validado)
             {
-                _text = TelefoneTextBox.Text.Replace("-", "").Replace("(", "").Replace(")", "");
+                _text = TelefoneTextBox.Text.Replace("-", "").Replace("(", "").Replace(")", "").Replace("_", "");
                 TelefoneTextBox.BorderBrush = HexaColorPicker.TextBoxValidoColor;
             }
             else

@@ -1,4 +1,5 @@
 ﻿using AppDesk.Serviço;
+using AppDesk.Tools;
 using Modelo.Classes.Web;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,8 @@ namespace AppDesk.UserControls
     {
         private Veiculo _veiculo;
 
-        public Veiculo Veiculo { 
+        public Veiculo Veiculo
+        {
             get
             {
                 return _veiculo;
@@ -70,18 +72,29 @@ namespace AppDesk.UserControls
 
         private void PesquisarPlacaVeiculo_Click(object sender, RoutedEventArgs e)
         {
-            Veiculo veiculo = ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorPlaca(PesquisarVeiculoTextBox.Text);
-            if (veiculo != null)
+            try
             {
-                MessageBoxResult result = MessageBox.Show("Veiculo encontrado. Deseja selecioná-lo agora?", "Veiculo encontrado", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
+                Veiculo veiculo = ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorPlaca(PlacaTextBox.Text);
+                if (veiculo != null)
                 {
-                    SelecionarVeiculo(veiculo);
+                    MessageBoxResult result = MessageBox.Show("Veiculo encontrado. Deseja selecioná-lo agora?", "Veiculo encontrado", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        SelecionarVeiculo(veiculo);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Veiculo não encontrado!");
                 }
             }
-            else
+            catch(FieldException ex)
             {
-                MessageBox.Show("Veiculo não encontrado!");
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
@@ -89,7 +102,6 @@ namespace AppDesk.UserControls
         {
             Veiculo = ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorId(veiculo.VeiculoId);
             VeiculoSelecionadoTextBox.DataContext = Veiculo;
-            MessageBox.Show("Veiculo selecionado!");
         }
 
     }

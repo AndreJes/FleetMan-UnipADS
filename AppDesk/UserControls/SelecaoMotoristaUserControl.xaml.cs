@@ -1,4 +1,5 @@
 ﻿using AppDesk.Serviço;
+using AppDesk.Tools;
 using Modelo.Classes.Web;
 using System;
 using System.Collections.Generic;
@@ -45,18 +46,29 @@ namespace AppDesk.UserControls
 
         private void PesquisarMotoristaBtn_Click(object sender, RoutedEventArgs e)
         {
-            Motorista motorista = ServicoDados.ServicoDadosMotorista.ObterMotoristaPorCPF(PesquisarMotoristaTextBox.Text);
-            if (motorista != null)
+            try
             {
-                MessageBoxResult result = MessageBox.Show("Motorista encontrado. Deseja selecioná-lo(a) agora?", "Motorista encontrado", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
+                Motorista motorista = ServicoDados.ServicoDadosMotorista.ObterMotoristaPorCPF(CPFTextBox.Text);
+                if (motorista != null)
                 {
-                    SelecionarMotorista(motorista);
+                    MessageBoxResult result = MessageBox.Show("Motorista encontrado. Deseja selecioná-lo(a) agora?", "Motorista encontrado", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        SelecionarMotorista(motorista);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Motorista não encontrado!");
                 }
             }
-            else
+            catch (FieldException ex)
             {
-                MessageBox.Show("Motorista não encontrado!");
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
@@ -64,7 +76,6 @@ namespace AppDesk.UserControls
         {
             Motorista = ServicoDados.ServicoDadosMotorista.ObterMotoristaPorId(motorista.MotoristaId);
             MotoristaSelecionadoTextBox.DataContext = Motorista;
-            MessageBox.Show("Motorista selecionado!");
         }
 
     }

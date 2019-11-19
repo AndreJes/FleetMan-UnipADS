@@ -26,181 +26,78 @@ namespace AppDesk.Windows.Locacoes
     /// </summary>
     public partial class FormRegistrarAluguel : Window
     {
-        private Veiculo _veiculoSelecionado = null;
-        private Cliente _clienteSelecionado = null;
 
         public FormRegistrarAluguel()
         {
             InitializeComponent();
-            VeiculosDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().Where(v => v.ParaLocacao == true).Where(v => v.ClienteId == null).ToList();
-            ClientesDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(c => c.Ativo == true).ToList();
-            DataContratacaoDatePicker.SelectedDate = DateTime.Today;
-        }
-
-        private void SelecionarVeiculo(Veiculo veiculo)
-        {
-            _veiculoSelecionado = veiculo;
-            VeiculoTabItem.DataContext = _veiculoSelecionado;
-            MessageBox.Show("Veiculo Selecionado com sucesso!");
-        }
-
-        private void SelecionarCliente(Cliente cliente)
-        {
-            _clienteSelecionado = cliente;
-            ClienteTabItem.DataContext = _clienteSelecionado;
-            MessageBox.Show("Cliente Selecionado com sucesso!");
+            SeletorVeiculoUC.ListaVeiculos = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().Where(v => v.ParaLocacao == true).Where(v => v.ClienteId == null).ToList();
         }
 
         private Aluguel GerarAluguel()
         {
-            Aluguel aluguel = new Aluguel();
-            aluguel.DataContratacao = DataContratacaoDatePicker.DisplayDate;
-            aluguel.DataVencimento = DataVencimentoDatePicker.DisplayDate;
-            
-            if (AguardandoPagamentoRadioBtn.IsChecked == true)
+            try
             {
-                aluguel.EstadoDoPagamento = EstadosDePagamento.AGUARDANDO;
-            }
-            else if (PagoRadioBtn.IsChecked == true)
-            {
-                aluguel.EstadoDoPagamento = EstadosDePagamento.PAGO;
-            }
-            else
-            {
-                MessageBox.Show("Selecione o estado do pagamento!");
-                return null;
-            }
-            
-            aluguel.EstadoDoAluguel = EstadosAluguel.REGULAR;
-            
-            if(_veiculoSelecionado != null)
-            {
-                aluguel.VeiculoId = _veiculoSelecionado.VeiculoId;
-            }
-            else
-            {
-                MessageBox.Show("Selecione o veiculo!");
-                return null;
-            }
-            
-            if(_clienteSelecionado != null)
-            {
-                aluguel.ClienteId = _clienteSelecionado.ClienteId;
-            }
-            else
-            {
-                MessageBox.Show("Selecione o cliente!");
-                return null;
-            }
+                Aluguel aluguel = new Aluguel();
+                aluguel.DataContratacao = DataContratacaoDP.Date;
+                aluguel.DataVencimento = DataVencimentoDP.Date;
 
-            return aluguel;
+                if (AguardandoPagamentoRadioBtn.IsChecked == true)
+                {
+                    aluguel.EstadoDoPagamento = EstadosDePagamento.AGUARDANDO;
+                }
+                else if (PagoRadioBtn.IsChecked == true)
+                {
+                    aluguel.EstadoDoPagamento = EstadosDePagamento.PAGO;
+                }
+                else
+                {
+                    throw new FieldException("Estado do pagamento!");
+                }
+
+                aluguel.EstadoDoAluguel = EstadosAluguel.REGULAR;
+
+                aluguel.VeiculoId = SeletorVeiculoUC.Veiculo.VeiculoId;
+
+                aluguel.ClienteId = SeletorClienteUC.Cliente.ClienteId;
+
+                return aluguel;
+            }
+            catch (FieldException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Registrar aluguel?", "Confirmar Registro", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            try
             {
-                Aluguel aluguel = GerarAluguel();
-                if(aluguel != null)
+                if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Aluguel") == MessageBoxResult.Yes)
                 {
+                    Aluguel aluguel = GerarAluguel();
                     ServicoDados.ServicoDadosAluguel.GravarAluguel(aluguel);
-                    MessageBox.Show("Aluguel registrado com sucesso!");
+                    StandardMessageBoxes.MensagemSucesso("Aluguel registrado com sucesso!", "Registro");
                     MainWindowUpdater.UpdateDataGrids();
                     this.Close();
                 }
+            }
+            catch (FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
         private void CancelarBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void SelecionarVeiculoBtn_Click(object sender, RoutedEventArgs e)
-        {
-            SelecionarVeiculo(VeiculosDataGrid.SelectedItem as Veiculo);
-        }
-
-        private void SelecionarClienteBtn_Click(object sender, RoutedEventArgs e)
-        {
-            SelecionarCliente(ClientesDataGrid.SelectedItem as Cliente);
-        }
-
-        private void DetalhesVeiculoBtn_Click(object sender, RoutedEventArgs e)
-        {
-            FormDetalhesVeiculo formDetalhesVeiculo = new FormDetalhesVeiculo(
-                ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorId((VeiculosDataGrid.SelectedItem as Veiculo).VeiculoId)
-                );
-            formDetalhesVeiculo.Show();
-        }
-
-        private void DetalhesClienteBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Cliente cliente = ClientesDataGrid.SelectedItem as Cliente;
-            FormAlterarClientes formDetalhesCliente = null;
-            if (cliente is ClientePF)
-            {
-                formDetalhesCliente = new FormAlterarClientes(
-                    ServicoDados.ServicoDadosClientes.ObterClientePFPorId(cliente.ClienteId)
-                    );
-            }
-            else if (cliente is ClientePJ)
-            {
-                formDetalhesCliente = new FormAlterarClientes(
-                    ServicoDados.ServicoDadosClientes.ObterClientePJPorId(cliente.ClienteId)
-                    );
-            }
-
-            formDetalhesCliente.Show();
-        }
-
-        private void PesquisarVeiculoBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Veiculo veiculo = ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorPlaca(PesquisarPlacaVeiculoTextBox.Text);
-            if (veiculo != null)
-            {
-                MessageBoxResult result = MessageBox.Show("Veiculo encontrado! Deseja selecioná-lo agora?", "Veiculo Encontrado!", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
-                {
-                    SelecionarVeiculo(veiculo);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Veiculo não encontrado!");
-            }
-        }
-
-        private void PesquisarClienteBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Cliente cliente = null;
-
-            if (PFRadioBtn.IsChecked == true)
-            {
-                cliente = ServicoDados.ServicoDadosClientes.ObterClientePorCPFCNPJ(PesquisarCPFClienteTextBox.Text, TipoCliente.PF);
-            }
-            else if (PJRadioBtn.IsChecked == true)
-            {
-                cliente = ServicoDados.ServicoDadosClientes.ObterClientePorCPFCNPJ(PesquisarCPFClienteTextBox.Text, TipoCliente.PJ);
-            }
-            else
-            {
-                MessageBox.Show("Selecione o tipo de cliente para pesquisar!");
-            }
-
-            if (cliente != null)
-            {
-                MessageBoxResult result = MessageBox.Show("Cliente encontrado! Deseja selecioná-lo agora?", "Cliente Selecionado!", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
-                {
-                    SelecionarCliente(cliente);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Cliente não encontrado!");
-            }
         }
     }
 }

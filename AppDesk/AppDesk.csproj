@@ -224,13 +224,10 @@
     <Compile Include="Windows\Fornecedores\FornecedoresList.xaml.cs">
       <DependentUpon>FornecedoresList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Garagem\FormAlterarGaragem.xaml.cs">
-      <DependentUpon>FormAlterarGaragem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\Garagem\FormDetalhesGaragem.xaml.cs">
+    <Compile Include="Windows\Garagens\FormDetalhesGaragem.xaml.cs">
       <DependentUpon>FormDetalhesGaragem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Garagem\FormRegistrarGaragem.xaml.cs">
+    <Compile Include="Windows\Garagens\FormRegistrarGaragem.xaml.cs">
       <DependentUpon>FormRegistrarGaragem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Locacoes\FormDetalhesAlterarAluguel.xaml.cs">
@@ -491,15 +488,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Garagem\FormAlterarGaragem.xaml">
+    <Page Include="Windows\Garagens\FormDetalhesGaragem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Garagem\FormDetalhesGaragem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\Garagem\FormRegistrarGaragem.xaml">
+    <Page Include="Windows\Garagens\FormRegistrarGaragem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

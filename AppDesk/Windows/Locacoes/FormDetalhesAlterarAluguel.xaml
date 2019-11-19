@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Locacoes"
+        xmlns:uc="clr-namespace:AppDesk.UserControls"
+        xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
+        xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Detalhes do Aluguel" Height="550" Width="400" MaxHeight="550" MaxWidth="400" MinHeight="550" MinWidth="400">
+        Title="Detalhes do Aluguel" Style="{StaticResource SmallFormWindowStyle}">
     <Window.Resources>
         <Style TargetType="TextBox" BasedOn="{StaticResource MainTextBoxStyle}">
             <Setter Property="IsEnabled" Value="False"/>
@@ -37,21 +40,19 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                    <Label Style="{StaticResource MainLabelStyle}">Situação</Label>
-                    <TextBox Width="100" Text="{Binding EstadoAluguelTxt, Mode=OneWay}"></TextBox>
+                    <Label Style="{StaticResource MainLabelRoundStyle}">Situação</Label>
+                    <TextBox Width="100" Text="{Binding EstadoAluguelTxt, Mode=OneWay}">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="0 5 5 0"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
                 </StackPanel>
 
-                <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                    <Label Style="{StaticResource MainLabelStyle}">Data da Contratação</Label>
-                    <DatePicker SelectedDate="{Binding DataContratacao}" >
-                    </DatePicker>
-                </StackPanel>
+                <uc:DataFieldUC Grid.Row="1" x:Name="DataContratacaoUC" Label="Data da Contratação"></uc:DataFieldUC>
 
-                <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                    <Label Style="{StaticResource MainLabelStyle}">Data de Vencimento</Label>
-                    <DatePicker SelectedDate="{Binding DataVencimento}">
-                    </DatePicker>
-                </StackPanel>
+                <uc:DataFieldUC Grid.Row="2" x:Name="DataVencimentoUC" Label="Data de Vencimento"></uc:DataFieldUC>
 
                 <GroupBox Grid.Row="3">
                     <GroupBox.Header>
@@ -62,7 +63,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Grid.Column="0" Padding="0">Pagamento</Label>
-                            <Button Grid.Column="1" Margin="10 0 0 0" IsEnabled="False" x:Name="SalvarPagamentoBtn" Click="SalvarPagamentoBtn_Click">Salvar</Button>
+                            <Button Grid.Column="1" Margin="10 0 0 0" IsEnabled="False" x:Name="SalvarPagamentoBtn" Click="SalvarPagamentoBtn_Click">Salvar Alterações</Button>
                         </Grid>
                     </GroupBox.Header>
                     <Grid>
@@ -90,13 +91,16 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                <TextBox Width="200" Height="28" Text="{Binding Veiculo.Nome, Mode=OneWay}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                                <TextBox Width="250" Height="28" Text="{Binding Veiculo.Nome, Mode=OneWay}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                    <TextBox.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                        </Style>
+                                    </TextBox.Resources>
+                                </TextBox>
                             </StackPanel>
 
-                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}">Placa</Label>
-                                <TextBox Width="100" Text="{Binding Veiculo.Placa, Mode=OneWay}"></TextBox>
-                            </StackPanel>
+                            <ucm:PlacaFieldUC Grid.Row="1" x:Name="PlacaVeiculoTextBox" IsEnabled="False"></ucm:PlacaFieldUC>
 
                             <Button Grid.Row="2" Width="150" VerticalAlignment="Center" x:Name="DetalhesVeiculoBtn" Click="DetalhesVeiculoBtn_Click">
                                 Detalhes do veiculo
@@ -112,16 +116,11 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}">Nome</Label>
-                                <TextBox Width="200" Height="28" Text="{Binding Cliente.Nome, Mode=OneWay}"></TextBox>
-                            </StackPanel>
+                            <ucc:NomeFieldUC x:Name="NomeTextBox" IsEnabled="False"></ucc:NomeFieldUC>
 
-                            <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}">CPF/CNPJ</Label>
-                                <TextBox Width="150" x:Name="CpfCnpjTextBox"></TextBox>
-                            </StackPanel>
-
+                            <ucm:CPFFieldUC x:Name="CPFTextBox" IsEnabled="False" Grid.Row="1" Visibility="Collapsed"></ucm:CPFFieldUC>
+                            <ucm:CNPJFieldUC x:Name="CNPJTextBox" IsEnabled="False" Grid.Row="1" Visibility="Collapsed"></ucm:CNPJFieldUC>
+                            
                             <Button Grid.Row="2" Width="150" VerticalAlignment="Center" x:Name="DetalhesClienteBtn" Click="DetalhesClienteBtn_Click">
                                 Detalhes do cliente
                             </Button>
@@ -138,7 +137,7 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="CancelarLocacaoBtn" Click="CancelarLocacaoBtn_Click" Margin="20 5" Grid.Column="0" Background="#FFE4E414">
-                CANCELAR LOCAÇÃO
+                CANCELAR
             </Button>
             <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
                 REMOVER
