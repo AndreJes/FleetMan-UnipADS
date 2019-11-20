@@ -19,7 +19,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">DETALHES DA FINANÇA</Label>
+        <Label Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">DETALHES DA FINANÇA</Label>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>

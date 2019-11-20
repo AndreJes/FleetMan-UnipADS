@@ -19,7 +19,7 @@
 
             <!--#region Content-->
             <!--#region Header-->
-            <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.ColumnSpan="2">REGISTRAR NOVO VEÍCULO</Label>
+            <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20" Grid.ColumnSpan="2">REGISTRAR NOVO VEÍCULO</Label>
             <!--#endregion-->
             <!--#region Body-->
             <TabControl Grid.Row="1" Background="Transparent">

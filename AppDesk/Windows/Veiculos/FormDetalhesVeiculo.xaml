@@ -18,7 +18,7 @@
             <!--#endregion-->
             <!--#region Content-->
             <!--#region Header-->
-            <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.ColumnSpan="2">DETALHES DO VEICULO</Label>
+            <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20" Grid.ColumnSpan="2">DETALHES DO VEICULO</Label>
             <!--#endregion-->
             <!--#region Body-->
             <Grid Grid.Row="1">

@@ -16,7 +16,7 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">DETALHES ABASTECIMENTO</Label>
+        <Label Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">DETALHES ABASTECIMENTO</Label>
 
         <TabControl Grid.Row="1">
             <TabItem Header="Veiculo / Motorista">

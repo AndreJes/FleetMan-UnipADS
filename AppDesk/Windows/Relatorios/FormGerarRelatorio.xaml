@@ -20,7 +20,7 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="30">Gerar Relatório</Label>
+        <Label Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}" FontSize="30">Gerar Relatório</Label>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>

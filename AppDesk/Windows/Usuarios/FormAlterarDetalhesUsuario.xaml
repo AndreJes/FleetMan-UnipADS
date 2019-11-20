@@ -25,7 +25,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Style="{StaticResource MainLabelStyle}" FontSize="20">ALTERAR USUÁRIO</Label>
+        <Label Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">ALTERAR USUÁRIO</Label>
 
 
         <TabControl Grid.Row="1">

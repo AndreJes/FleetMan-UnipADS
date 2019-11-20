@@ -13,7 +13,6 @@ namespace Modelo.Enums
         PAGAMENTO_VENCIDO,
         VEICULO_SEM_COMBUSTIVEL,
         REALIZAR_MANUTENCAO,
-        MENSAGEM_DE_MOTORISTA,
         VIAGEM_IRREGULAR,
         ALUGUEL_IRREGULAR
     }

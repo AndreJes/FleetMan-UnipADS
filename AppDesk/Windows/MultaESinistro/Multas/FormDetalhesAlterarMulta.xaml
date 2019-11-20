@@ -16,7 +16,7 @@
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
 
-            <Label Style="{StaticResource MainLabelStyle}" FontSize="20">DETALHES DA MULTA</Label>
+            <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">DETALHES DA MULTA</Label>
             <GroupBox Grid.Row="1" Header="Dados da Multa">
                 <Grid>
                     <Grid.RowDefinitions>

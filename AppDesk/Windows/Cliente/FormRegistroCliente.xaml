@@ -20,7 +20,7 @@
             </Grid.RowDefinitions>
             <!--#endregion-->
             <!--#region Header-->
-            <Label FontFamily="Arial" Style="{StaticResource MainLabelStyle}" Width="auto" FontSize="20">REGISTRAR NOVO CLIENTE</Label>
+            <Label FontFamily="Arial" Style="{StaticResource MainLabelFullRoundStyle}" Width="auto" FontSize="20">REGISTRAR NOVO CLIENTE</Label>
             <!--#endregion-->
             <!--#region Fields-->
             <!--#region Informações Principais-->

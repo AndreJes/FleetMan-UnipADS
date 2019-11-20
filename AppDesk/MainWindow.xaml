@@ -57,16 +57,7 @@
                         </Grid.ColumnDefinitions>
                         <!--#endregion-->
 
-                        <Button Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="/Content/Icones/alerta.png" HorizontalAlignment="Right"/>
-                                <Label Grid.Column="1" Foreground="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Center">1</Label>
-                            </Grid>
-                        </Button>
+                        <uc:AlertasController></uc:AlertasController>
 
                         <StackPanel x:Name="UserInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="2">
 
@@ -533,7 +524,7 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Pessoa Fisica-->
-                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">PESSOA FÍSICA</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">PESSOA FÍSICA</Label>
 
                         <DataGrid x:Name="ClientePFDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
@@ -557,7 +548,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Pessoa Juridica-->
-                        <Label Style="{StaticResource MainLabelStyle}" Grid.Column="1" FontSize="20">PESSOA JURÍDICA</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" Grid.Column="1" FontSize="20">PESSOA JURÍDICA</Label>
 
                         <DataGrid x:Name="ClientePJDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
@@ -662,7 +653,7 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Multas-->
-                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">MULTAS</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">MULTAS</Label>
                         <DataGrid x:Name="MultasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding CodigoMulta}"/>
@@ -688,7 +679,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Sinistros-->
-                        <Label Style="{StaticResource MainLabelStyle}" Grid.Column="1" FontSize="20">SINISTROS</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" Grid.Column="1" FontSize="20">SINISTROS</Label>
 
                         <DataGrid x:Name="SinistrosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
@@ -1015,7 +1006,7 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Viagens aguardando inicio-->
-                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">VIAGENS AGUARDANDO INÍCIO</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">VIAGENS AGUARDANDO INÍCIO</Label>
                         <DataGrid x:Name="ViagensAguardandoDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding ViagemId}"/>
@@ -1037,7 +1028,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Viagens em andamento-->
-                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.Column="1">VIAGENS EM ANDAMENTO</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20" Grid.Column="1">VIAGENS EM ANDAMENTO</Label>
                         <DataGrid x:Name="ViagensEmAndamentoDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding ViagemId}"/>
@@ -1059,7 +1050,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Viagens encerradas/Canceladas-->
-                        <Label Style="{StaticResource MainLabelStyle}" Grid.Column="0" Grid.Row="2" FontSize="20">VIAGENS CONCLUIDAS</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" Grid.Column="0" Grid.Row="2" FontSize="20">VIAGENS CONCLUIDAS</Label>
                         <DataGrid x:Name="ViagensConcluidasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="0" Grid.Row="3">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding ViagemId}"/>
@@ -1076,7 +1067,7 @@
                         <!--#endregion-->
 
                         <!--#region Viagens encerradas/Canceladas-->
-                        <Label Style="{StaticResource MainLabelStyle}" Grid.Column="1" Grid.Row="2" FontSize="20">VIAGENS CANCELADAS</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" Grid.Column="1" Grid.Row="2" FontSize="20">VIAGENS CANCELADAS</Label>
                         <DataGrid x:Name="ViagensCanceladasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Grid.Row="3">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding ViagemId}"/>
@@ -1151,7 +1142,7 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Solicitações aguardando aprovação-->
-                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">AGUARDANDO APROVAÇÃO</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">AGUARDANDO APROVAÇÃO</Label>
                         <DataGrid x:Name="SolicitacoesAguardandoDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding SolicitacaoId}"/>
@@ -1174,7 +1165,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Solicitações aprovadas-->
-                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.Column="1">APROVADAS</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20" Grid.Column="1">APROVADAS</Label>
                         <DataGrid x:Name="SolicitacoesAprovadasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding SolicitacaoId}"/>
@@ -1197,7 +1188,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Solicitações Reprovadas-->
-                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.Column="2">REPROVADAS</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20" Grid.Column="2">REPROVADAS</Label>
                         <DataGrid x:Name="SolicitacoesReprovadasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding SolicitacaoId}"/>
@@ -1291,7 +1282,7 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region Saidas-->
-                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">SAIDAS</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">SAIDAS</Label>
                         <DataGrid x:Name="FinancaSaidaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
@@ -1315,7 +1306,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Entradas-->
-                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.Column="1">ENTRADAS</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20" Grid.Column="1">ENTRADAS</Label>
                         <DataGrid x:Name="FinancaEntradaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
@@ -1496,7 +1487,7 @@
                         <!--#endregion-->
                         <!--#region Listas-->
                         <!--#region Relatórios abastecimento-->
-                        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource MainLabelStyle}">RELATORIOS DE ABASTECIMENTOS</Label>
+                        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource MainLabelFullRoundStyle}">RELATORIOS DE ABASTECIMENTOS</Label>
                         <DataGrid x:Name="RelatoriosAbastecimentoDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1513,7 +1504,7 @@
                         <!--#endregion-->
 
                         <!--#region Relatórios Financeiros-->
-                        <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource MainLabelStyle}">RELATÓRIOS FINANCEIROS</Label>
+                        <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource MainLabelFullRoundStyle}">RELATÓRIOS FINANCEIROS</Label>
                         <DataGrid x:Name="RelatoriosFinanceiroDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1530,7 +1521,7 @@
                         <!--#endregion-->
 
                         <!--#region Relatórios Manutencao-->
-                        <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource MainLabelStyle}">RELATÓRIOS DE MANUTENÇÕES</Label>
+                        <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}">RELATÓRIOS DE MANUTENÇÕES</Label>
                         <DataGrid x:Name="RelatoriosManutencaoDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1549,7 +1540,7 @@
                         <!--#endregion-->
 
                         <!--#region Relatórios Multas-->
-                        <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource MainLabelStyle}">RELATÓRIOS DE MULTAS</Label>
+                        <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource MainLabelFullRoundStyle}">RELATÓRIOS DE MULTAS</Label>
                         <DataGrid x:Name="RelatoriosMultaDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="3" Grid.Column="0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1568,7 +1559,7 @@
                         <!--#endregion-->
 
                         <!--#region Relatórios Sinistros-->
-                        <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource MainLabelStyle}">RELATORIOS DE SINISTROS</Label>
+                        <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource MainLabelFullRoundStyle}">RELATORIOS DE SINISTROS</Label>
                         <DataGrid x:Name="RelatoriosSinistroDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="3" Grid.Column="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1587,7 +1578,7 @@
                         <!--#endregion-->
 
                         <!--#region Relatórios Reprovadas-->
-                        <Label Grid.Row="2" Grid.Column="2" Style="{StaticResource MainLabelStyle}">RELATORIOS DE VIAGENS</Label>
+                        <Label Grid.Row="2" Grid.Column="2" Style="{StaticResource MainLabelFullRoundStyle}">RELATORIOS DE VIAGENS</Label>
                         <DataGrid x:Name="RelatoriosViagemDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="3" Grid.Column="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding RelatorioId}"/>
@@ -1856,7 +1847,7 @@
                         </Grid.RowDefinitions>
                         <!--#endregion-->
                         <!--#region ABASTECIMENTOS AGENDADOS-->
-                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20">ABASTECIMENTOS AGENDADOS</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">ABASTECIMENTOS AGENDADOS</Label>
                         <DataGrid x:Name="AbastecimentosAgendadosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding AbastecimentoId}"/>
@@ -1881,7 +1872,7 @@
                         </StackPanel>
                         <!--#endregion-->
                         <!--#region Sinistros-->
-                        <Label Style="{StaticResource MainLabelStyle}" FontSize="20" Grid.Column="1">ABASTECIMENTOS FINALIZADOS</Label>
+                        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20" Grid.Column="1">ABASTECIMENTOS FINALIZADOS</Label>
                         <DataGrid x:Name="AbastecimentosFinalizadosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
 

@@ -15,7 +15,7 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource MainLabelStyle}" FontSize="25">REGISTRAR VIAGEM</Label>
+        <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="25">REGISTRAR VIAGEM</Label>
 
         <TabControl Grid.Row="1">
             <TabItem Header="Motorista/Veiculo">

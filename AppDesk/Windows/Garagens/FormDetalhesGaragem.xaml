@@ -15,7 +15,7 @@
                 <RowDefinition Height="90*"/>
             </Grid.RowDefinitions>
 
-            <Label FontFamily="Arial" Style="{StaticResource MainLabelStyle}" Width="auto" FontSize="20">DETALHES DA GARAGEM</Label>
+            <Label FontFamily="Arial" Style="{StaticResource MainLabelFullRoundStyle}" Width="auto" FontSize="20">DETALHES DA GARAGEM</Label>
             <TabControl Grid.Row="1">
                 <TabItem Grid.Row="0" Header="Alterar dados da Garagem">
                     <Grid>

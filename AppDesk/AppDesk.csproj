@@ -98,6 +98,9 @@
     <Compile Include="Tools\HexaColorPicker.cs" />
     <Compile Include="Tools\MainWindowUpdater.cs" />
     <Compile Include="Tools\StandardMessageBoxes.cs" />
+    <Compile Include="UserControls\AlertasController.xaml.cs">
+      <DependentUpon>AlertasController.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Campos\AnoFieldUC.xaml.cs">
       <DependentUpon>AnoFieldUC.xaml</DependentUpon>
     </Compile>
@@ -320,6 +323,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\AlertasController.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Campos\AnoFieldUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

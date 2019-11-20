@@ -18,7 +18,7 @@
             </Grid.RowDefinitions>
             <!--#endregion-->
             <!--#region Header-->
-            <Label FontFamily="Arial" Style="{StaticResource MainLabelStyle}" Width="auto" FontSize="20">REGISTRAR NOVA GARAGEM</Label>
+            <Label FontFamily="Arial" Style="{StaticResource MainLabelFullRoundStyle}" Width="auto" FontSize="20">REGISTRAR NOVA GARAGEM</Label>
             <!--#endregion-->
             <!--#region Fields-->
             <!--#region Informações Principais-->

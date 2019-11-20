@@ -96,14 +96,32 @@ namespace AppWeb.Controllers
                 }
                 else
                 {
-                    ClaimsIdentity identity = Gerenciador.CreateIdentity(usuario, DefaultAuthenticationTypes.ApplicationCookie);
-                    AuthManager.SignOut();
-                    AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
-                    if (returnUrl == null)
+                    Cliente cliente = ClienteService.ObterClientePFPorId(long.Parse(usuario.Id));
+                    if (cliente == null)
                     {
-                        returnUrl = "/Home";
+                        ClienteService.ObterClientePFPorId(long.Parse(usuario.Id));
                     }
-                    return Redirect(returnUrl);
+                    if (cliente == null)
+                    {
+                        @ViewBag.Error = "Usuário não encontrado ou senha inválida!";
+                    }
+                    else
+                    {
+                        if (cliente.Ativo == false)
+                        {
+                            TempData["Error"] = "Cadastro desativado!" + Environment.NewLine + "Entre em contato com a empresa para mais detalhes.";
+                            return View(model);
+                        }
+
+                        ClaimsIdentity identity = Gerenciador.CreateIdentity(usuario, DefaultAuthenticationTypes.ApplicationCookie);
+                        AuthManager.SignOut();
+                        AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
+                        if (returnUrl == null)
+                        {
+                            returnUrl = "/Home";
+                        }
+                        return Redirect(returnUrl);
+                    }
                 }
             }
             return View(model);

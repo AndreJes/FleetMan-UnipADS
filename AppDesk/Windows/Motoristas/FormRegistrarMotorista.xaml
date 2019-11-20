@@ -16,7 +16,7 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource MainLabelStyle}" Grid.ColumnSpan="2" FontSize="20">REGISTRAR NOVO MOTORISTA</Label>
+        <Label Style="{StaticResource MainLabelFullRoundStyle}" Grid.ColumnSpan="2" FontSize="20">REGISTRAR NOVO MOTORISTA</Label>
         <GroupBox Grid.Row="1">
             <TabControl>
                 <TabItem Header="Dados do Motorista">
