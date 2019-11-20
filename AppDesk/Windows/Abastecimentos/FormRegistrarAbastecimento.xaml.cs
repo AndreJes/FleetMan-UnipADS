@@ -28,16 +28,16 @@ namespace AppDesk.Windows.Abastecimentos
         public FormRegistrarAbastecimento()
         {
             InitializeComponent();
-            MotoristaUC.MotoristasDataGrid.ItemsSource = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId();
-            SeletorVeiculo.VeiculosDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId();
+            MotoristaUC.ListaMotoristas = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId().Where(m => m.Estado == EstadosDeMotorista.REGULAR).ToList();
+            SeletorVeiculo.ListaVeiculos = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().ToList();
         }
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmar registro de Abastecimento?", "Confirmar registro", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Abastecimento") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosAbastecimento.GravarAbastecimento(GerarAbastecimento());
-                MessageBox.Show("Abastecimento registrado com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Abastecimento registrado com sucesso!", "Registro");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
@@ -58,19 +58,17 @@ namespace AppDesk.Windows.Abastecimentos
             if (AgendarRB.IsChecked == true)
             {
                 abastecimento.Estado = EstadoAbastecimento.AGENDADO;
-                abastecimento.DataAgendada = DataAgendamentoDatePicker.SelectedDate;
+                abastecimento.DataAgendada = DataAgendamentoUC.Date;
             }
             if (RegistrarRB.IsChecked == true)
             {
                 abastecimento.Estado = EstadoAbastecimento.REALIZADO;
-                abastecimento.DataConclusao = DataConclusaoDatePicker.SelectedDate;
-                abastecimento.Valor = double.Parse(ValorTextBox.Text);
+                abastecimento.DataConclusao = DataConclusaoUC.Date;
+                abastecimento.Valor = ValorUC.Valor;
             }
 
-            if (!string.IsNullOrEmpty(QuantidadeDeCombustivelTextBox.Text))
-            {
-                abastecimento.QuantidadeAbastecida = double.Parse(QuantidadeDeCombustivelTextBox.Text);
-            }
+            abastecimento.QuantidadeAbastecida = QuantidadeLitrosUC.Value;
+
 
             abastecimento.Local = EnderecoUC.Endereco;
 

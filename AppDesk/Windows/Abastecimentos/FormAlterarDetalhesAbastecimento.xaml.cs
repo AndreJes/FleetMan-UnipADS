@@ -1,4 +1,5 @@
-﻿using AppDesk.Serviço;
+﻿using AppDesk.Interfaces;
+using AppDesk.Serviço;
 using AppDesk.Tools;
 using AppDesk.UserControls;
 using Modelo.Classes.Manutencao;
@@ -22,7 +23,7 @@ namespace AppDesk.Windows.Abastecimentos
     /// <summary>
     /// Lógica interna para FormAlterarDetalhesAbastecimento.xaml
     /// </summary>
-    public partial class FormAlterarDetalhesAbastecimento : Window
+    public partial class FormAlterarDetalhesAbastecimento : Window, IFillTextBoxes
     {
         private Abastecimento _abastecimento = null;
         private FormAlterarDetalhesAbastecimento()
@@ -36,66 +37,63 @@ namespace AppDesk.Windows.Abastecimentos
 
             this.DataContext = _abastecimento;
 
-            if (_abastecimento.Estado == EstadoAbastecimento.AGENDADO)
-            {
-                DataAgendamentoDatePicker.SelectedDate = abastecimento.DataAgendada;
-                DataConclusaoDatePicker.IsEnabled = false;
-            }
-            else if (_abastecimento.Estado == EstadoAbastecimento.REALIZADO)
-            {
-                DataAgendamentoDatePicker.SelectedDate = abastecimento.DataConclusao;
-                DataConclusaoDatePicker.SelectedDate = abastecimento.DataConclusao;
-                DataConclusaoDatePicker.IsEnabled = false;
-
-                AbastecimentoConcluidoCheckBox.IsChecked = true;
-                AbastecimentoConcluidoCheckBox.IsEnabled = false;
-                SalvarAlteracoesBtn.IsEnabled = false;
-            }
-
-            EnderecoUC.Endereco = _abastecimento.Local;
+            PreencherTextBoxes();
         }
 
         private void SalvarAlteracoesBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmar alteração de Abastecimento?", "Confirmar alteração", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarAlteracaoMessageBox("Abastecimento") == MessageBoxResult.Yes)
             {
                 AlterarInformacoes();
                 ServicoDados.ServicoDadosAbastecimento.GravarAbastecimento(_abastecimento);
-                MessageBox.Show("Abastecimento alterado com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Abastecimento alterado com sucesso!","Alteração");
                 MainWindowUpdater.UpdateDataGrids();
             }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmar Remoção de Abastecimento?", "Confirmar remoção", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Abastecimento") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosAbastecimento.RemoverAbastecimentoPorId(_abastecimento.AbastecimentoId);
-                MessageBox.Show("Abastecimento removido com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Abastecimento removido com sucesso!", "Remoção");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
         }
 
-        private void AbastecimentoConcluidoCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            if (_abastecimento.Estado != EstadoAbastecimento.REALIZADO)
-            {
-                DataConclusaoDatePicker.IsEnabled = true;
-            }
-        }
-
-        private void AbastecimentoConcluidoCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            DataConclusaoDatePicker.IsEnabled = false;
-        }
 
         private void AlterarInformacoes()
         {
-            _abastecimento.DataConclusao = DataConclusaoDatePicker.SelectedDate;
-            _abastecimento.Valor = double.Parse(ValorTextBox.Text);
-            _abastecimento.QuantidadeAbastecida = double.Parse(QuantidadeDeCombustivelTextBox.Text);
+            _abastecimento.DataConclusao = DataConclusaoUC.Date;
+            _abastecimento.Valor = ValorUC.Valor;
+            _abastecimento.QuantidadeAbastecida = QntCombustivelUC.Value;
             _abastecimento.Estado = EstadoAbastecimento.REALIZADO;
+        }
+
+        public void PreencherTextBoxes()
+        {
+            PlacaVeiculoUC.Text = _abastecimento.Veiculo.Placa;
+            CPFMotoristaUC.Text = _abastecimento.Motorista.CPF;
+            NomeMotoristaUC.Text = _abastecimento.Motorista.Nome;
+            EnderecoUC.Endereco = _abastecimento.Local;
+
+            if (_abastecimento.Estado == EstadoAbastecimento.AGENDADO)
+            {
+                DataAgendamentoUC.Date = _abastecimento.DataAgendada.GetValueOrDefault();
+            }
+            else if (_abastecimento.Estado == EstadoAbastecimento.REALIZADO)
+            {
+                DataAgendamentoUC.Date = _abastecimento.DataConclusao.GetValueOrDefault();
+                DataConclusaoUC.Date = _abastecimento.DataConclusao.GetValueOrDefault();
+                DataConclusaoUC.IsEnabled = false;
+                QntCombustivelUC.Value = Convert.ToInt32(_abastecimento.QuantidadeAbastecida.GetValueOrDefault());
+                ValorUC.Valor = _abastecimento.Valor.GetValueOrDefault();
+
+                AbastecimentoConcluidoCheckBox.IsChecked = true;
+                AbastecimentoConcluidoCheckBox.IsEnabled = false;
+                SalvarAlteracoesBtn.IsEnabled = false;
+            }
         }
     }
 }

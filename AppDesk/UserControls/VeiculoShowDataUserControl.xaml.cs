@@ -36,7 +36,10 @@ namespace AppDesk.UserControls
 
         private void DefinirVeiculo(Veiculo veiculo)
         {
-            this.DataContext = veiculo;
+            MarcaUC.Text = veiculo.Marca;
+            PlacaUC.Text = veiculo.Placa;
+            ModeloUC.Text = veiculo.Modelo;
+            AnoUC.Value = veiculo.Ano;
         }
     }
 }

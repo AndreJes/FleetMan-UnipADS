@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Abastecimentos"
         xmlns:uc="clr-namespace:AppDesk.UserControls"
+        xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Registrar Abastecimento" Height="650" Width="450" MinHeight="650" MinWidth="450" MaxHeight="650" MaxWidth="450">
+        Title="Registrar Abastecimento" Style="{StaticResource SmallFormWindowStyle}" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -77,7 +78,7 @@
                         <uc:SelecaoMotoristaUserControl x:Name="MotoristaUC"/>
                     </GroupBox>
 
-                    <GroupBox Header="Local" Grid.Row="1">
+                    <GroupBox Header="Local onde o veiculo será abastecido" Grid.Row="1">
                         <uc:EnderecoUserControl x:Name="EnderecoUC"/>
                     </GroupBox>
                 </Grid>
@@ -105,7 +106,7 @@
 
                                 <Border Margin="20 0"/>
 
-                                <DatePicker x:Name="DataAgendamentoDatePicker" IsEnabled="{Binding ElementName=AgendarRB, Path=IsChecked}"></DatePicker>
+                                <ucc:DateHourFieldUC x:Name="DataAgendamentoUC" Label="Data/Hora" IsEnabled="{Binding ElementName=AgendarRB, Path=IsChecked}"></ucc:DateHourFieldUC>
                             </StackPanel>
 
                             <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
@@ -115,20 +116,14 @@
 
                                 <Border Margin="20 0"/>
 
-                                <DatePicker x:Name="DataConclusaoDatePicker" IsEnabled="{Binding ElementName=RegistrarRB, Path=IsChecked}"></DatePicker>
+                                <ucc:DateHourFieldUC x:Name="DataConclusaoUC" Label="Data/Hora" IsEnabled="{Binding ElementName=RegistrarRB, Path=IsChecked}"></ucc:DateHourFieldUC>
                             </StackPanel>
                         </Grid>
                     </GroupBox>
 
-                    <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Especificar a quantidade de combustivel (em litros)</Label>
-                        <TextBox x:Name="QuantidadeDeCombustivelTextBox" Style="{StaticResource MainTextBoxStyle}" Width="50"></TextBox>
-                    </StackPanel>
+                    <ucc:NumericFieldUC Grid.Row="2" x:Name="QuantidadeLitrosUC" Label="Quantidade de Combústivel (em litros)"></ucc:NumericFieldUC>
 
-                    <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Valor</Label>
-                        <TextBox x:Name="ValorTextBox" Style="{StaticResource MainTextBoxStyle}" IsEnabled="{Binding ElementName=RegistrarRB, Path=IsChecked}" Width="100"></TextBox>
-                    </StackPanel>
+                    <uc:ValorFieldUC Grid.Row="3" x:Name="ValorUC" Label="Valor do Abastecimento"></uc:ValorFieldUC>
                 </Grid>
             </TabItem>
         </TabControl>

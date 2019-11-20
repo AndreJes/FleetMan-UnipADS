@@ -29,17 +29,28 @@ namespace AppDesk.Windows.Manutencoes
         {
             InitializeComponent();
             PecasDataGrid.ItemsSource = ServicoDados.ServicoDadosPeca.ObterPecasOrdPorId();
-            VeiculosUC.VeiculosDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId();
+            VeiculosUC.ListaVeiculos = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().ToList();
         }
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmar registro de manutenção", "Confirmar registro?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosManutencao.AdicionarManutencao(GerarManutencao(), PecasSelecionadasDataGrid.Items.OfType<PecasManutencao>().ToList());
-                MessageBox.Show("Manuteção adicionada com sucesso!");
-                MainWindowUpdater.UpdateDataGrids();
-                this.Close();
+                if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Manutenção") == MessageBoxResult.Yes)
+                {
+                    ServicoDados.ServicoDadosManutencao.AdicionarManutencao(GerarManutencao(), PecasSelecionadasDataGrid.Items.OfType<PecasManutencao>().ToList());
+                    StandardMessageBoxes.MensagemSucesso("Manuteção adicionada com sucesso!", "Registro");
+                    MainWindowUpdater.UpdateDataGrids();
+                    this.Close();
+                }
+            }
+            catch (FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
@@ -91,30 +102,81 @@ namespace AppDesk.Windows.Manutencoes
 
         private Manutencao GerarManutencao()
         {
-            Manutencao manutencao = new Manutencao();
-            manutencao.CPFCNPJResponsavel = CPFCNPJResponsavelTextBox.Text;
-            manutencao.NomeResponsavel = NomeResponsavelTextBox.Text;
-            manutencao.Local = EnderecoUC.Endereco;
-            manutencao.VeiculoId = VeiculosUC.Veiculo.VeiculoId;
-
-            if (PreventivaRadioButton.IsChecked == true)
+            try
             {
-                manutencao.Tipo = TiposDeManutencao.PREVENTIVA;
+                Manutencao manutencao = new Manutencao();
+
+                if (PfRB.IsChecked == true)
+                {
+                    manutencao.CPFCNPJResponsavel = CPFUC.Text;
+                }
+                else
+                {
+                    manutencao.CPFCNPJResponsavel = CNPJUC.Text;
+                }
+
+                manutencao.NomeResponsavel = NomeResponsavelField.Text;
+
+                manutencao.Local = EnderecoUC.Endereco;
+                manutencao.VeiculoId = VeiculosUC.Veiculo.VeiculoId;
+
+                if (PreventivaRadioButton.IsChecked == true)
+                {
+                    manutencao.Tipo = TiposDeManutencao.PREVENTIVA;
+                }
+                else if (CorretivaRadioButton.IsChecked == true)
+                {
+                    manutencao.Tipo = TiposDeManutencao.CORRETIVA;
+                }
+
+                manutencao.DataEntrada = DataAgendamento.Date;
+
+                if (ConcluidoCheckBox.IsChecked == true)
+                {
+                    manutencao.DataSaida = DataConclusaoUC.Date;
+                    manutencao.EstadoAtual = EstadosDeManutencao.CONCLUIDA;
+                }
+
+                return manutencao;
             }
-            else if (CorretivaRadioButton.IsChecked == true)
+            catch (FieldException ex)
             {
-                manutencao.Tipo = TiposDeManutencao.CORRETIVA;
+                throw ex;
             }
-
-            manutencao.DataEntrada = (DateTime)DataAgendamentoDatePicker.SelectedDate;
-
-            if (ConcluidoCheckBox.IsChecked == true)
+            catch (Exception ex)
             {
-                manutencao.DataSaida = (DateTime)DataConclusaoDatePicker.SelectedDate;
-                manutencao.EstadoAtual = EstadosDeManutencao.CONCLUIDA;
+                throw ex;
             }
+        }
 
-            return manutencao;
+        private void PfRB_Checked(object sender, RoutedEventArgs e)
+        {
+            if (PfRB.IsChecked == true)
+            {
+                if (CNPJUC != null)
+                {
+                    CNPJUC.Visibility = Visibility.Collapsed;
+                }
+                if (CPFUC != null)
+                {
+                    CPFUC.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        private void PjRB_Checked(object sender, RoutedEventArgs e)
+        {
+            if (PjRB.IsChecked == true)
+            {
+                if (CNPJUC != null)
+                {
+                    CPFUC.Visibility = Visibility.Collapsed;
+                }
+                if (CPFUC != null)
+                {
+                    CNPJUC.Visibility = Visibility.Visible;
+                }
+            }
         }
     }
 }

@@ -37,17 +37,29 @@ namespace AppDesk.Windows.Manutencoes
         {
             _manutencao = manutencao;
             this.DataContext = _manutencao;
-            VeiculoUC.Veiculo = manutencao.Veiculo;
+            VeiculoUC.Veiculo = _manutencao.Veiculo;
             EnderecoUC.Editavel = true;
-            EnderecoUC.Endereco = manutencao.Local;
-            NomeResponsavelTextBox.Text = manutencao.NomeResponsavel;
-            CPFCNPJResponsavelTextBox.Text = manutencao.CPFCNPJResponsavel;
-            DataAgendamentoDatePicker.SelectedDate = manutencao.DataEntrada;
+            EnderecoUC.Endereco = _manutencao.Local;
+            NomeResponsavelTextBox.Text = _manutencao.NomeResponsavel;
+            if (_manutencao.CPFCNPJResponsavel.Length > 11)
+            {
+                PjRB.IsChecked = true;
+                CNPJUC.Text = _manutencao.CPFCNPJResponsavel;
+            }
+            else
+            {
+                PfRB.IsChecked = true;
+                CPFUC.Text = _manutencao.CPFCNPJResponsavel;
+            }
+
+            DataAgendamento.Date = manutencao.DataEntrada;
             if (manutencao.DataSaida != null)
             {
                 ConcluidoCheckBox.IsChecked = true;
-                DataConclusaoDatePicker.SelectedDate = manutencao.DataSaida;
-                DataConclusaoDatePicker.IsEnabled = false;
+                ConcluidoCheckBox.IsEnabled = false;
+                DataConclusaoUC.Date = _manutencao.DataSaida.GetValueOrDefault();
+                DataConclusaoUC.IsEnabled = false;
+                DataAgendamento.IsEnabled = false;
             }
             switch (manutencao.Tipo)
             {
@@ -61,7 +73,7 @@ namespace AppDesk.Windows.Manutencoes
                     break;
             }
             PecasDataGrid.ItemsSource = ServicoDados.ServicoDadosPeca.ObterPecasOrdPorId();
-            foreach(PecasManutencao p in manutencao.PecasUtilizadas)
+            foreach (PecasManutencao p in manutencao.PecasUtilizadas)
             {
                 PecasSelecionadasDataGrid.Items.Add(p);
             }
@@ -69,20 +81,31 @@ namespace AppDesk.Windows.Manutencoes
 
         private void SalvarAlteracoesBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmar alteração de manutenção?", "Confirmar Alteração", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosManutencao.AlterarManutencao(AlterarInformacoes(), PecasSelecionadasDataGrid.Items.OfType<PecasManutencao>().ToList());
-                MessageBox.Show("Manutenção alterada com sucesso!");
-                MainWindowUpdater.UpdateDataGrids();
+                if (StandardMessageBoxes.ConfirmarAlteracaoMessageBox("Manutenção") == MessageBoxResult.Yes)
+                {
+                    ServicoDados.ServicoDadosManutencao.AlterarManutencao(AlterarInformacoes(), PecasSelecionadasDataGrid.Items.OfType<PecasManutencao>().ToList());
+                    StandardMessageBoxes.MensagemSucesso("Manutenção alterada com sucesso!", "Alteração");
+                    MainWindowUpdater.UpdateDataGrids();
+                }
+            }
+            catch (FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Confirmar remoção de manutenção?", "Confirmar Remoção", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Manutenção") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosManutencao.RemoverManutencaoPorId(_manutencao.ManutencaoId);
-                MessageBox.Show("Manutenção removida com sucesso!");
+                StandardMessageBoxes.MensagemSucesso("Manutenção removida com sucesso!", "Remoção");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
@@ -131,16 +154,64 @@ namespace AppDesk.Windows.Manutencoes
 
         private Manutencao AlterarInformacoes()
         {
-            _manutencao.NomeResponsavel = NomeResponsavelTextBox.Text;
-            _manutencao.CPFCNPJResponsavel = CPFCNPJResponsavelTextBox.Text;
-            _manutencao.Local = EnderecoUC.Endereco;
-            if (ConcluidoCheckBox.IsChecked == true)
+            try
             {
-                _manutencao.DataSaida = DataConclusaoDatePicker.SelectedDate;
-                _manutencao.EstadoAtual = EstadosDeManutencao.CONCLUIDA;
-            }
+                _manutencao.NomeResponsavel = NomeResponsavelTextBox.Text;
+                if (PjRB.IsChecked == true)
+                {
+                    _manutencao.CPFCNPJResponsavel = CNPJUC.Text;
+                }
+                else
+                {
+                    _manutencao.CPFCNPJResponsavel = CPFUC.Text;
+                }
+                _manutencao.Local = EnderecoUC.Endereco;
+                if (ConcluidoCheckBox.IsChecked == true)
+                {
+                    _manutencao.DataSaida = DataConclusaoUC.Date;
+                    _manutencao.EstadoAtual = EstadosDeManutencao.CONCLUIDA;
+                }
 
-            return _manutencao;
+                return _manutencao;
+            }
+            catch (FieldException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void PfRB_Checked(object sender, RoutedEventArgs e)
+        {
+            if (PfRB.IsChecked == true)
+            {
+                if (CNPJUC != null)
+                {
+                    CNPJUC.Visibility = Visibility.Collapsed;
+                }
+                if (CPFUC != null)
+                {
+                    CPFUC.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        private void PjRB_Checked(object sender, RoutedEventArgs e)
+        {
+            if (PjRB.IsChecked == true)
+            {
+                if (CNPJUC != null)
+                {
+                    CPFUC.Visibility = Visibility.Collapsed;
+                }
+                if (CPFUC != null)
+                {
+                    CNPJUC.Visibility = Visibility.Visible;
+                }
+            }
         }
     }
 }

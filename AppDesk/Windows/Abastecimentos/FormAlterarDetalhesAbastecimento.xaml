@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Abastecimentos"
         xmlns:uc="clr-namespace:AppDesk.UserControls"
+        xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
+        xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Detalhes Abastecimento" Height="650" Width="450" MinHeight="650" MinWidth="450" MaxHeight="650" MaxWidth="450">
+        Title="Detalhes Abastecimento" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -20,48 +22,33 @@
             <TabItem Header="Veiculo / Motorista">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3*"/>
-                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <GroupBox Grid.Row="0" Header="Veiculo">
                             <Grid>
                                 <StackPanel Style="{StaticResource MainStackPanelStyle}">
-                                    <Label Style="{StaticResource MainLabelStyle}">
-                                        Placa
-                                    </Label>
-                                    <TextBox Style="{StaticResource MainTextBoxStyle}" Text="{Binding Veiculo.Placa}" Width="100" IsEnabled="False">
-                                        
-                                    </TextBox>
+                                    <ucm:PlacaFieldUC x:Name="PlacaVeiculoUC" IsEnabled="False"></ucm:PlacaFieldUC>
                                 </StackPanel>
                             </Grid>
                         </GroupBox>
 
                         <GroupBox Grid.Row="1" Header="Motorista">
                             <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
                                 <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                    <Label Style="{StaticResource MainLabelStyle}">
-                                        CPF
-                                    </Label>
-                                    <TextBox Style="{StaticResource MainTextBoxStyle}" Text="{Binding Motorista.CPF}" Width="140" IsEnabled="False">
-
-                                    </TextBox>
+                                    <ucm:CPFFieldUC x:Name="CPFMotoristaUC" IsEnabled="False"></ucm:CPFFieldUC>
                                 </StackPanel>
-                                <StackPanel Grid.Column="1" Style="{StaticResource MainStackPanelStyle}">
-                                    <Label Style="{StaticResource MainLabelStyle}">
-                                        Nome
-                                    </Label>
-                                    <TextBox Style="{StaticResource MainTextBoxStyle}" Text="{Binding Veiculo.Placa}" Width="140" IsEnabled="False">
-
-                                    </TextBox>
+                                <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
+                                    <ucc:NomeFieldUC x:Name="NomeMotoristaUC" IsEnabled="False"></ucc:NomeFieldUC>
                                 </StackPanel>
                             </Grid>
                         </GroupBox>
@@ -88,7 +75,7 @@
             </TabItem>
             <TabItem Header="Local">
                 <Grid>
-                    <GroupBox Header="Local">
+                    <GroupBox Header="Local" IsEnabled="False">
                         <uc:EnderecoUserControl x:Name="EnderecoUC"/>
                     </GroupBox>
                 </Grid>
@@ -110,33 +97,27 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                <Label Style="{StaticResource MainLabelStyle}">
-                                    Data agendada
-                                </Label>
-
-                                <DatePicker x:Name="DataAgendamentoDatePicker" IsEnabled="False"></DatePicker>
+                                <ucc:DateHourFieldUC IsEnabled="False" Label="Data/Hora: Agendamento" x:Name="DataAgendamentoUC"></ucc:DateHourFieldUC>
                             </StackPanel>
 
                             <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                                <CheckBox x:Name="AbastecimentoConcluidoCheckBox" Checked="AbastecimentoConcluidoCheckBox_Checked" Unchecked="AbastecimentoConcluidoCheckBox_Unchecked" VerticalAlignment="Center">
+                                <CheckBox x:Name="AbastecimentoConcluidoCheckBox" VerticalAlignment="Center">
                                     Concluido
                                 </CheckBox>
 
                                 <Border Margin="10 0"/>
 
-                                <DatePicker x:Name="DataConclusaoDatePicker" IsEnabled="{Binding ElementName=AbastecimentoConcluidoCheckBox, Path=IsChecked}"></DatePicker>
+                                <ucc:DateHourFieldUC x:Name="DataConclusaoUC" IsEnabled="{Binding ElementName=AbastecimentoConcluidoCheckBox, Path=IsChecked}"></ucc:DateHourFieldUC>
                             </StackPanel>
                         </Grid>
                     </GroupBox>
 
                     <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Quantidade abastecida de combustivel (em litros)</Label>
-                        <TextBox x:Name="QuantidadeDeCombustivelTextBox" Style="{StaticResource MainTextBoxStyle}" Width="50" Text="{Binding QuantidadeAbastecida, StringFormat=F0}" IsEnabled="{Binding ElementName=AbastecimentoConcluidoCheckBox, Path=IsChecked}"></TextBox>
+                        <ucc:NumericFieldUC Label="Quantidade de Combustivel (em litros)" x:Name="QntCombustivelUC" IsEnabled="{Binding ElementName=DataConclusaoUC, Path=IsEnabled}"></ucc:NumericFieldUC>
                     </StackPanel>
 
                     <StackPanel Grid.Row="3" Style="{StaticResource MainStackPanelStyle}">
-                        <Label Style="{StaticResource MainLabelStyle}">Valor</Label>
-                        <TextBox x:Name="ValorTextBox" Style="{StaticResource MainTextBoxStyle}" IsEnabled="{Binding ElementName=AbastecimentoConcluidoCheckBox, Path=IsChecked}" Width="100" Text="{Binding Valor, StringFormat=F2}"></TextBox>
+                        <uc:ValorFieldUC x:Name="ValorUC" Label="Valor" IsEnabled="{Binding ElementName=DataConclusaoUC, Path=IsEnabled}"></uc:ValorFieldUC>    
                     </StackPanel>
                 </Grid>
             </TabItem>

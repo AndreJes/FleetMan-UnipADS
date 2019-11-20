@@ -29,7 +29,6 @@ namespace AppDesk.UserControls.Campos
             {
                 if (DatePickerField.Text != null)
                 {
-                    MessageBox.Show(DatePickerField.Text);
                     return DateTime.ParseExact(DatePickerField.Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
                 }
                 else
