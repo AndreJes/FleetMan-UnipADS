@@ -98,8 +98,8 @@
     <Compile Include="Tools\HexaColorPicker.cs" />
     <Compile Include="Tools\MainWindowUpdater.cs" />
     <Compile Include="Tools\StandardMessageBoxes.cs" />
-    <Compile Include="UserControls\AlertasController.xaml.cs">
-      <DependentUpon>AlertasController.xaml</DependentUpon>
+    <Compile Include="UserControls\AvisosUserControl.xaml.cs">
+      <DependentUpon>AvisosUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Campos\AnoFieldUC.xaml.cs">
       <DependentUpon>AnoFieldUC.xaml</DependentUpon>
@@ -199,6 +199,9 @@
     </Compile>
     <Compile Include="Windows\Abastecimentos\FormRegistrarAbastecimento.xaml.cs">
       <DependentUpon>FormRegistrarAbastecimento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Avisos\FormAvisosList.xaml.cs">
+      <DependentUpon>FormAvisosList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Cliente\FormAlterarClientes.xaml.cs">
       <DependentUpon>FormAlterarClientes.xaml</DependentUpon>
@@ -323,7 +326,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControls\AlertasController.xaml">
+    <Page Include="UserControls\AvisosUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -456,6 +459,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Abastecimentos\FormRegistrarAbastecimento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Avisos\FormAvisosList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

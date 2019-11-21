@@ -48,7 +48,11 @@ namespace Modelo.Classes.Desk
             {
                 int index = 0;
                 index = Descricao.IndexOf('/');
-                return Descricao.Substring(0, index);
+                if (index > 0)
+                {
+                    return Descricao.Substring(0, index);
+                }
+                return "";
             }
         }
 
@@ -59,8 +63,11 @@ namespace Modelo.Classes.Desk
             {
                 int index = 0;
                 index = Descricao.IndexOf('/');
-                int index2 = Descricao.Length - 1;
-                return Descricao.Substring(index, index2);
+                if (index > 0)
+                {
+                    return Descricao.Substring(index);
+                }
+                return "";
             }
         }
         #endregion

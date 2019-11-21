@@ -117,6 +117,10 @@
     <Compile Include="Migrations\Entity\201911171928373_Motorista-Categoria.Designer.cs">
       <DependentUpon>201911171928373_Motorista-Categoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Entity\201911211751218_Avisos-Remove.cs" />
+    <Compile Include="Migrations\Entity\201911211751218_Avisos-Remove.Designer.cs">
+      <DependentUpon>201911211751218_Avisos-Remove.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Entity\Configuration.cs" />
     <Compile Include="Migrations\Identity\201911051231263_Initial.cs" />
     <Compile Include="Migrations\Identity\201911051231263_Initial.Designer.cs">
@@ -147,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Entity\201911171928373_Motorista-Categoria.resx">
       <DependentUpon>201911171928373_Motorista-Categoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Entity\201911211751218_Avisos-Remove.resx">
+      <DependentUpon>201911211751218_Avisos-Remove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201911051231263_Initial.resx">
       <DependentUpon>201911051231263_Initial.cs</DependentUpon>

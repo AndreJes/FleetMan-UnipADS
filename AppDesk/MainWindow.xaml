@@ -7,7 +7,7 @@
         xmlns:lc="clr-namespace:AppDesk.Serviço"
         xmlns:local="clr-namespace:AppDesk"
         mc:Ignorable="d"
-        Title="FleetManV0.1" Style="{StaticResource WindowBackgroundColorSetter}" Height="640" Width="1080" MaxHeight="640" MinHeight="640" MaxWidth="1080" MinWidth="1080">
+        Title="FleetMan" Style="{StaticResource WindowBackgroundColorSetter}" Height="640" Width="1080" MaxHeight="640" MinHeight="640" MaxWidth="1080" MinWidth="1080">
     <Window.Resources>
         <Style x:Key="MainMenuBtnStyle" TargetType="Button">
             <Setter Property="Height" Value="120"/>
@@ -36,6 +36,8 @@
         </Grid>
         <!--#endregion-->
 
+        
+        
         <!--#region Main Content-->
         <Border Visibility="Visible" x:Name="MainContentBorder" Margin="10" BorderBrush="Gray" BorderThickness="3">
             <Grid ShowGridLines="False">
@@ -51,14 +53,13 @@
                     <Grid>
                         <!--#region Columns-->
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="20*"/>
                             <ColumnDefinition Width="80*"/>
                         </Grid.ColumnDefinitions>
                         <!--#endregion-->
 
-                        <uc:AlertasController></uc:AlertasController>
-
+                        <uc:AvisosUserControl></uc:AvisosUserControl>
+                        
                         <StackPanel x:Name="UserInfoPanel" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="2">
 
                             <Button Margin="0 8" x:Name="CurrentUserBtn" Click="CurrentUserBtn_Click" Background="White">

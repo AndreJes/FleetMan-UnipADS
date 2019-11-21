@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppDesk.UserControls
+namespace AppDesk.Windows.Avisos
 {
     /// <summary>
-    /// Interação lógica para AlertasController.xam
+    /// Lógica interna para FormAvisosList.xaml
     /// </summary>
-    public partial class AlertasController : UserControl
+    public partial class FormAvisosList : Window
     {
-        public AlertasController()
+        public FormAvisosList()
         {
             InitializeComponent();
         }

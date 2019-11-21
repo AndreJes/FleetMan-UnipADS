@@ -9,8 +9,8 @@ namespace Modelo.Classes.Desk
 {
     public class Aviso
     {
-        public long? AvisoId { get; set; }
         public string Mensagem { get; set; }
         public TiposDeAviso Tipo { get; set; }
+        public long? idObjeto { get; set; }
     }
 }

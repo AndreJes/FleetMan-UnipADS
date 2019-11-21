@@ -25,7 +25,6 @@ namespace Persistencia.Contexts
         public DbSet<ClientePJ> ClientesPJ { get; set; }
         #endregion
         #region Desk
-        public DbSet<Aviso> Avisos { get; set; }
         public DbSet<Financa> Financas { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Garagem> Garagens { get; set; }

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clientes\ClienteService.cs" />
+    <Compile Include="Desk\AvisoService.cs" />
     <Compile Include="Desk\FinancaService.cs" />
     <Compile Include="Desk\FuncionarioService.cs" />
     <Compile Include="Desk\GaragemService.cs" />
