@@ -24,9 +24,6 @@
             <Setter Property="Background" Value="Gray"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
-        <Style x:Key="AddImageStyle" TargetType="Image">
-            <Setter Property="Source" Value="Content/Icones/Botoes/add.png"/>
-        </Style>
     </Window.Resources>
     <Grid x:Name="MainGrid">
 

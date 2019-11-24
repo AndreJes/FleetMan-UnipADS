@@ -52,7 +52,7 @@ namespace AppDesk.UserControls
         {
             InitializeComponent();
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(5);
+            timer.Interval = TimeSpan.FromMinutes(3);
             timer.IsEnabled = true;
             timer.Tick += Timer_Event;
         }
