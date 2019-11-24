@@ -22,7 +22,23 @@ namespace AppDesk.UserControls
     /// </summary>
     public partial class DataFieldUC : UserControl, INotifyPropertyChanged
     {
-        public DateTime Date
+        private bool _required = true;
+
+        public bool Required
+        {
+            get 
+            { 
+                return _required; 
+            }
+            set 
+            { 
+                _required = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        public DateTime? Date
         {
             get 
             {
@@ -30,9 +46,13 @@ namespace AppDesk.UserControls
                 {
                     return DatePickerField.SelectedDate.GetValueOrDefault();
                 } 
-                else
+                else if(Required)
                 {
                     throw new FieldException(Label);
+                }
+                else
+                {
+                    return null;
                 }
             }
             set 

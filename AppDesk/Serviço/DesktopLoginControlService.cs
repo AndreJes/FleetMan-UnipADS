@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace AppDesk.Serviço
 {
-    public class DesktopLoginControlService
+    public static class DesktopLoginControlService
     {
         public static UsuarioFunc _Usuario { get; private set; }
 

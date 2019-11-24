@@ -7,25 +7,28 @@
         mc:Ignorable="d"
         Title="Lista de Avisos" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
-        <ListBox>
-            <ListBoxItem HorizontalContentAlignment="Stretch" Padding="0">
-                <Grid Margin="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="90*"/>
-                        <ColumnDefinition Width="13*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock>dawdawdwadawdawd</TextBlock>
-                    <Button HorizontalAlignment="Right" Grid.Column="1">Visualizar</Button>
-                </Grid>
-            </ListBoxItem>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <TextBlock Text="{Binding Mensagem}"></TextBlock>
-                        <Button x:Name="VisualizarBtn">Visualizar</Button>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" FontSize="20" Style="{StaticResource MainLabelFullRoundStyle}">
+            LISTA DE AVISOS
+        </Label>
+
+        <ScrollViewer Grid.Row="1">
+            <ListBox HorizontalContentAlignment="Stretch" x:Name="ListItemAvisos">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="DarkGray" BorderThickness="1">
+                            <Grid>
+                                <TextBlock Text="{Binding Mensagem}" TextAlignment="Center" Background="LightGray" Foreground="Black"></TextBlock>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+        <Button x:Name="VisualizarBtn" HorizontalAlignment="Center" Margin="0 3" Grid.Row="2" Click="VisualizarBtn_Click">Visualizar Item Selecionado</Button>
     </Grid>
 </Window>

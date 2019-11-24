@@ -57,9 +57,9 @@ namespace AppDesk.Windows.Seguros
                 _seguro.Nome = NomeUC.Text;
                 _seguro.Email = EmailUC.Text;
                 _seguro.Telefone = TelefoneUC.Text;
-                _seguro.Vencimento_Contrato = DataVencimentoUC.Date;
+                _seguro.Vencimento_Contrato = DataVencimentoUC.Date.GetValueOrDefault();
                 _seguro.PrecoParcela = ValorParcelaUC.Valor;
-                _seguro.DataVencimentoParcela = VencimentoProxParcelaUC.Date;
+                _seguro.DataVencimentoParcela = VencimentoProxParcelaUC.Date.GetValueOrDefault();
                 _seguro.TipoCobertura = (CoberturasSeguro)Enum.Parse(typeof(CoberturasSeguro), TipoCoberturaComboBox.SelectedItem.ToString());
             }
             catch (FieldException ex)

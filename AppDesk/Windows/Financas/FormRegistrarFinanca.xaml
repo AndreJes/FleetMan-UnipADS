@@ -56,7 +56,7 @@
 
             <uc:DataFieldUC Grid.Row="3" Label="Data de Vencimento" x:Name="DataVencimentoUC"></uc:DataFieldUC>
 
-            <uc:DataFieldUC Grid.Row="4" Label="Data do Pagamento(Opcional)" x:Name="DataPagamentoUC"></uc:DataFieldUC>
+            <uc:DataFieldUC Required="False" Grid.Row="4" Label="Data do Pagamento(Opcional)" x:Name="DataPagamentoUC"></uc:DataFieldUC>
 
 
             <GroupBox Header="Descrição" Grid.Row="5">

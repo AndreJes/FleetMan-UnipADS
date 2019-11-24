@@ -82,7 +82,7 @@ namespace AppDesk.Windows.Motoristas
                 novoMotorista.Celular = TelefoneUC.Text;
                 novoMotorista.NumeroCNH = NumeroCNHUC.Text;
                 novoMotorista.PontosCNH = PontosCNHUC.Value;
-                novoMotorista.VencimentoExame = DataVencimentoUC.Date;
+                novoMotorista.VencimentoExame = DataVencimentoUC.Date.GetValueOrDefault();
                 novoMotorista.Endereco = EnderecoUC.Endereco;
                 if (MotoristaProprioCheckBox.IsChecked == true)
                 {

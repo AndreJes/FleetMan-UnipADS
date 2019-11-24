@@ -50,7 +50,7 @@ namespace Modelo.Classes.Desk
                 index = Descricao.IndexOf('/');
                 if (index > 0)
                 {
-                    return Descricao.Substring(0, index);
+                    return Descricao.Substring(0, index).Replace("Referente a:", "");
                 }
                 return "";
             }
@@ -65,7 +65,7 @@ namespace Modelo.Classes.Desk
                 index = Descricao.IndexOf('/');
                 if (index > 0)
                 {
-                    return Descricao.Substring(index);
+                    return Descricao.Substring(index).Replace("/ Comentário:", "");
                 }
                 return "";
             }

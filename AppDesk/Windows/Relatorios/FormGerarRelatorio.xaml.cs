@@ -70,8 +70,8 @@ namespace AppDesk.Windows.Relatorios
 
                     ServicoDados.ServicoDadosRelatorio.GravarRelatorio(
                         relatorio: ServicoDados.ServicoDadosRelatorio.GerarRelatorio(
-                            dataInicio: DataInicialUC.Date,
-                            dataFinal: DataFinalUC.Date,
+                            dataInicio: DataInicialUC.Date.GetValueOrDefault(),
+                            dataFinal: DataFinalUC.Date.GetValueOrDefault(),
                             tipo: tipo,
                             descricao: DescricaoTextBox.Text),
                         tipo: tipo);

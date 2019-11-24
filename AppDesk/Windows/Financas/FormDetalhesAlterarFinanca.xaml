@@ -32,7 +32,7 @@
 
             <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
                 <Label Style="{StaticResource MainLabelRoundStyle}">Tipo</Label>
-                <TextBox Text="{Binding Tipo}" Width="80">
+                <TextBox Text="{Binding Tipo}" Style="{StaticResource MainTextBoxStyle}" Width="80">
                     <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="0 5 5 0"/>
@@ -40,7 +40,7 @@
                     </TextBox.Resources>
                 </TextBox>
                 <Label Style="{StaticResource MainLabelRoundStyle}">Codigo</Label>
-                <TextBox Text="{Binding Codigo}" Width="150">
+                <TextBox Style="{StaticResource MainTextBoxStyle}" Text="{Binding Codigo}" Width="150">
                     <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="0 5 5 0"/>
@@ -54,7 +54,7 @@
                 <Label Style="{StaticResource MainLabelRoundStyle}">
                     Pagamento
                 </Label>
-                <ComboBox x:Name="PagamentoFinancaComboBox" Width="100">
+                <ComboBox Style="{StaticResource MainComboBoxStyle}" x:Name="PagamentoFinancaComboBox" Width="100">
                 </ComboBox>
             </StackPanel>
 
@@ -70,7 +70,7 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
                         <Label Style="{StaticResource MainLabelRoundStyle}">Referente a</Label>
-                        <TextBox Text="{Binding Referente, Mode=OneWay}"  Width="240">
+                        <TextBox Text="{Binding Referente, Mode=OneWay}" Style="{StaticResource MainTextBoxStyle}" Width="240">
                             <TextBox.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="0 5 5 0"/>
@@ -80,7 +80,7 @@
                     </StackPanel>
                     <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
                         <Label Style="{StaticResource MainLabelRoundStyle}">Comentário</Label>
-                        <TextBox Text="{Binding Comentario, Mode=OneWay}" Width="240">
+                        <TextBox Text="{Binding Comentario, Mode=OneWay}" Style="{StaticResource MainTextBoxStyle}" Width="240">
                             <TextBox.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="0 5 5 0"/>

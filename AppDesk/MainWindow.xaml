@@ -394,7 +394,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarVeiculoBtn" Click="RegistrarVeiculoBtn_Click" Grid.Column="1" Margin="20 10">
+                            <Button x:Name="RegistrarVeiculoBtn" Click="RegistrarVeiculoBtn_Click" Grid.Column="1" Margin="20 10" IsEnabled="{Binding Permissoes.Veiculos.Cadastrar, Mode=OneWay}">
                                 Registrar Veiculo
                             </Button>
                             <!--#endregion-->
@@ -482,7 +482,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarClienteBtn" Click="RegistrarClienteBtn_Click" Grid.Column="1" Margin="20 10">
+                            <Button x:Name="RegistrarClienteBtn" IsEnabled="{Binding Permissoes.Clientes.Cadastrar, Mode=OneWay}" Click="RegistrarClienteBtn_Click" Grid.Column="1" Margin="20 10">
                                 Registrar Cliente
                             </Button>
                             <!--#endregion-->
@@ -599,7 +599,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarMultaSinisBtn" Click="RegistrarMultaSinisBtn_Click" Grid.Column="1" Margin="20 10" FontSize="9">
+                            <Button x:Name="RegistrarMultaSinisBtn" IsEnabled="{Binding Permissoes.MultasSinistros.Cadastrar, Mode=OneWay}" Click="RegistrarMultaSinisBtn_Click" Grid.Column="1" Margin="20 10" FontSize="9">
                                 Registrar Multa/Sinistro
                             </Button>
                             <!--#endregion-->
@@ -729,7 +729,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarMotoristaBtn" Click="RegistrarMotoristaBtn_Click" Grid.Column="1" Margin="20 10" FontSize="11">
+                            <Button x:Name="RegistrarMotoristaBtn" IsEnabled="{Binding Permissoes.Motoristas.Cadastrar, Mode=OneWay}" Click="RegistrarMotoristaBtn_Click" Grid.Column="1" Margin="20 10" FontSize="11">
                                 Registrar Motorista
                             </Button>
                             <!--#endregion-->
@@ -806,7 +806,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarGaragemBtn" Click="RegistrarGaragemBtn_Click" Grid.Column="1" Margin="20 10" FontSize="11">
+                            <Button x:Name="RegistrarGaragemBtn" IsEnabled="{Binding Permissoes.Garagens.Cadastrar, Mode=OneWay}" Click="RegistrarGaragemBtn_Click" Grid.Column="1" Margin="20 10" FontSize="11">
                                 Registrar Garagem
                             </Button>
                             <!--#endregion-->
@@ -885,7 +885,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarAluguelBtn" Click="RegistrarAluguelBtn_Click" Grid.Column="1" Margin="20 10" FontSize="11">
+                            <Button x:Name="RegistrarAluguelBtn" IsEnabled="{Binding Permissoes.Locacoes.Cadastrar, Mode=OneWay}" Click="RegistrarAluguelBtn_Click" Grid.Column="1" Margin="20 10" FontSize="11">
                                 Registrar Aluguel
                             </Button>
                             <!--#endregion-->
@@ -962,7 +962,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarViagemBtn" Click="RegistrarViagemBtn_Click"  Grid.Column="1" Margin="20 10" FontSize="11">
+                            <Button x:Name="RegistrarViagemBtn" IsEnabled="{Binding Permissoes.Viagens.Cadastrar, Mode=OneWay}" Click="RegistrarViagemBtn_Click"  Grid.Column="1" Margin="20 10" FontSize="11">
                                 Registrar Viagem
                             </Button>
                             <!--#endregion-->
@@ -1237,7 +1237,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button Grid.Column="1" Margin="20 10" FontSize="9" x:Name="RegistrarFinancaBtn" Click="RegistrarFinancaBtn_Click">
+                            <Button Grid.Column="1" Margin="20 10" FontSize="9" IsEnabled="{Binding Permissoes.Financeiro.Cadastrar, Mode=OneWay}" x:Name="RegistrarFinancaBtn" Click="RegistrarFinancaBtn_Click">
                                 Registrar Finança
                             </Button>
                             <!--#endregion-->
@@ -1357,7 +1357,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarFuncionarioBtn" Click="RegistrarFuncionarioBtn_Click" Grid.Column="1" Margin="20 10" FontSize="10">
+                            <Button x:Name="RegistrarFuncionarioBtn" IsEnabled="{Binding Permissoes.Funcionarios.Cadastrar, Mode=OneWay}" Click="RegistrarFuncionarioBtn_Click" Grid.Column="1" Margin="20 10" FontSize="10">
                                 Registrar Usuário
                             </Button>
                             <!--#endregion-->
@@ -1450,7 +1450,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button Grid.Column="1" Margin="20 10" x:Name="GerarRelatorioBtn" Click="GerarRelatorioBtn_Click">
+                            <Button Grid.Column="1" Margin="20 10" IsEnabled="{Binding Permissoes.Relatorios.Cadastrar, Mode=OneWay}" x:Name="GerarRelatorioBtn" Click="GerarRelatorioBtn_Click">
                                 Gerar Relatório
                             </Button>
                             <!--#endregion-->
@@ -1625,7 +1625,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarManutencaoBtn" Click="RegistrarManutencaoBtn_Click" Grid.Column="1" HorizontalAlignment="Center" Margin="6,10" Padding="5" Width="128">
+                            <Button x:Name="RegistrarManutencaoBtn" IsEnabled="{Binding Permissoes.Manutencoes.Cadastrar, Mode=OneWay}" Click="RegistrarManutencaoBtn_Click" Grid.Column="1" HorizontalAlignment="Center" Margin="6,10" Padding="5" Width="128">
                                 Registrar Manutenção
                             </Button>
                             <!--#endregion-->
@@ -1737,7 +1737,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarPecaBtn" Click="RegistrarPecaBtn_Click" Grid.Column="1" HorizontalAlignment="Center" Margin="6,10" Padding="5" Width="128">
+                            <Button x:Name="RegistrarPecaBtn" IsEnabled="{Binding Permissoes.Manutencoes.Cadastrar, Mode=OneWay}" Click="RegistrarPecaBtn_Click" Grid.Column="1" HorizontalAlignment="Center" Margin="6,10" Padding="5" Width="128">
                                 Registrar Peça
                             </Button>
 
@@ -1809,7 +1809,7 @@
                                 <Image Source="/Content/Icones/Botoes/voltar.png"></Image>
                             </Button>
 
-                            <Button x:Name="RegistrarAbastecimentoBtn" Click="RegistrarAbastecimentoBtn_Click" Grid.Column="1" Margin="15 10" FontSize="9">
+                            <Button x:Name="RegistrarAbastecimentoBtn" IsEnabled="{Binding Permissoes.Manutencoes.Cadastrar, Mode=OneWay}" Click="RegistrarAbastecimentoBtn_Click" Grid.Column="1" Margin="15 10" FontSize="9">
                                 Registrar Abastecimento
                             </Button>
                             <!--#endregion-->

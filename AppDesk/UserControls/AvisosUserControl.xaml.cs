@@ -1,4 +1,5 @@
 ﻿using AppDesk.Tools;
+using AppDesk.Windows.Avisos;
 using Modelo.Classes.Desk;
 using Modelo.Enums;
 using Servicos.Desk;
@@ -51,7 +52,7 @@ namespace AppDesk.UserControls
         {
             InitializeComponent();
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMinutes(5);
+            timer.Interval = TimeSpan.FromSeconds(5);
             timer.IsEnabled = true;
             timer.Tick += Timer_Event;
         }
@@ -80,5 +81,10 @@ namespace AppDesk.UserControls
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            FormAvisosList formAvisos = new FormAvisosList(_avisos);
+            formAvisos.ShowDialog();
+        }
     }
 }

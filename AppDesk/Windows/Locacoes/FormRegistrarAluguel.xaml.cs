@@ -38,8 +38,8 @@ namespace AppDesk.Windows.Locacoes
             try
             {
                 Aluguel aluguel = new Aluguel();
-                aluguel.DataContratacao = DataContratacaoDP.Date;
-                aluguel.DataVencimento = DataVencimentoDP.Date;
+                aluguel.DataContratacao = DataContratacaoDP.Date.GetValueOrDefault();
+                aluguel.DataVencimento = DataVencimentoDP.Date.GetValueOrDefault();
 
                 if (AguardandoPagamentoRadioBtn.IsChecked == true)
                 {

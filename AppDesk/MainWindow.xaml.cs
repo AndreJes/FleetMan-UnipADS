@@ -39,21 +39,25 @@ using AppDesk.Windows.Relatorios;
 using Modelo.Classes.Relatorios;
 using AppDesk.Windows.Solicitacoes;
 using Modelo.Classes.Usuarios;
+using Modelo.Classes.Usuarios.Permissoes;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace AppDesk
 {
     /// <summary>
     /// Interação lógica para MainWindow.xam
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public MainWindow()
         {
             InitializeComponent();
-            PopulateDataGrid();
             LogonGridBorder.Visibility = Visibility.Visible;
             MainContentBorder.Visibility = Visibility.Collapsed;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #region Botão de Voltar Ao Menu Principal
         private void BackToMainMenuGridBackBtn_Click(object sender, RoutedEventArgs e)
@@ -371,13 +375,251 @@ namespace AppDesk
             AbastecimentosFinalizadosDataGrid.ItemsSource = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentosOrdPorId().Where(a => a.Estado == EstadoAbastecimento.REALIZADO).ToList();
         }
 
-
         public void StartSession()
         {
+            Dispatcher.InvokeAsync(DefinirFuncoes);
+
             UserInfoPanel.DataContext = DesktopLoginControlService._Usuario;
             LogonGridBorder.Visibility = Visibility.Collapsed;
             MainContentBorder.Visibility = Visibility.Visible;
+            PopulateDataGrid();
             GotoMainMenu();
+
+        }
+
+        public void DefinirFuncoes()
+        {
+            Permissoes permissoes = DesktopLoginControlService._Usuario.Permissoes;
+            this.DataContext = this;
+
+            #region Consultar
+            if (!permissoes.Clientes.Consultar)
+            {
+                ClientesMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                ClientesMainMenuBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Veiculos.Consultar)
+            {
+                VehicleMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                VehicleMainMenuBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Motoristas.Consultar)
+            {
+                MotoristaMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                MotoristaMainMenuBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.MultasSinistros.Consultar)
+            {
+                MultaSinisMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                MultaSinisMainMenuBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Viagens.Consultar)
+            {
+                ViagensMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                ViagensMainMenuBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Solicitacoes.Consultar)
+            {
+                SolicitacaoMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                SolicitacaoMainMenuBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Garagens.Consultar)
+            {
+                GaragensMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                GaragensMainMenuBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Locacoes.Consultar)
+            {
+                LocacaoMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                LocacaoMainMenuBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Financeiro.Consultar)
+            {
+                FinanceiroMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                FinanceiroMainMenuBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Relatorios.Consultar)
+            {
+                RelatorioMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                RelatorioMainMenuBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Funcionarios.Consultar)
+            {
+                FuncionarioMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                FuncionarioMainMenuBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Manutencoes.Consultar)
+            {
+                ManutencaoMainMenuBtn.IsEnabled = false;
+            }
+            else
+            {
+                ManutencaoMainMenuBtn.IsEnabled = true;
+            }
+            #endregion
+
+            #region Registrar 
+            if (!permissoes.Clientes.Cadastrar)
+            {
+                RegistrarClienteBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarClienteBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Veiculos.Cadastrar)
+            {
+                RegistrarVeiculoBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarVeiculoBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Motoristas.Cadastrar)
+            {
+                RegistrarMotoristaBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarMotoristaBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.MultasSinistros.Cadastrar)
+            {
+                RegistrarMultaSinisBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarMultaSinisBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Viagens.Cadastrar)
+            {
+                RegistrarViagemBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarViagemBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Garagens.Cadastrar)
+            {
+                RegistrarGaragemBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarGaragemBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Locacoes.Cadastrar)
+            {
+                RegistrarAluguelBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarAluguelBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Relatorios.Cadastrar)
+            {
+                GerarRelatorioBtn.IsEnabled = false;
+            }
+            else
+            {
+                GerarRelatorioBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Financeiro.Cadastrar)
+            {
+                RegistrarFinancaBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarFinancaBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Funcionarios.Cadastrar)
+            {
+                RegistrarFuncionarioBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarFuncionarioBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Manutencoes.Cadastrar)
+            {
+                RegistrarPecaBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarPecaBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Manutencoes.Cadastrar)
+            {
+                RegistrarAbastecimentoBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarAbastecimentoBtn.IsEnabled = true;
+            }
+
+            if (!permissoes.Manutencoes.Cadastrar)
+            {
+                RegistrarManutencaoBtn.IsEnabled = false;
+            }
+            else
+            {
+                RegistrarManutencaoBtn.IsEnabled = true;
+            }
+            #endregion
         }
         #endregion
 
@@ -461,7 +703,7 @@ namespace AppDesk
                 viagem = ServicoDados.ServicoDadosViagem.ObterViagemPorId((ViagensCanceladasDataGrid.SelectedItem as Viagem).ViagemId);
             }
 
-            if(viagem != null)
+            if (viagem != null)
             {
                 FormDetalhesAlterarViagem formDetalhesAlterarViagem = new FormDetalhesAlterarViagem(viagem);
                 formDetalhesAlterarViagem.Show();
@@ -530,34 +772,7 @@ namespace AppDesk
             FormAlterarDetalhesManutencao formAlterarDetalhesManutencao = new FormAlterarDetalhesManutencao(manutencao);
             formAlterarDetalhesManutencao.Show();
         }
-        #endregion
 
-        #region Botões Usuarios
-        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show("Deseja encerrar a sessão atual?", "Sair do sistema", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                DesktopLoginControlService.Deslogar();
-                MainContentBorder.Visibility = Visibility.Collapsed;
-                LogonGridBorder.Visibility = Visibility.Visible;
-                MessageBox.Show("Sessão encerrada!");
-            }
-        }
-
-        private void CurrentUserBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (DesktopLoginControlService._Usuario.Funcionario != null)
-            {
-                FormAlterarDetalhesUsuario formAlterarDetalhes = new FormAlterarDetalhesUsuario(DesktopLoginControlService._Usuario.Funcionario);
-                formAlterarDetalhes.Show();
-            }
-            else
-            {
-                StandardMessageBoxes.MensagemDeErro("Você não pode alterar as informações desse usuário");
-            }
-        }
-
-        #endregion
 
         private void RelatorioConsumoDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -621,5 +836,39 @@ namespace AppDesk
             FormSolicitacaoCliente formSolicitacaoCliente = new FormSolicitacaoCliente(solicitacao);
             formSolicitacaoCliente.Show();
         }
+        #endregion
+
+        #region Botões Usuarios
+        private void LogoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Deseja encerrar a sessão atual?", "Sair do sistema", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                DesktopLoginControlService.Deslogar();
+                MainContentBorder.Visibility = Visibility.Collapsed;
+                LogonGridBorder.Visibility = Visibility.Visible;
+                MessageBox.Show("Sessão encerrada!");
+            }
+        }
+
+        private void CurrentUserBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (DesktopLoginControlService._Usuario.Funcionario != null)
+            {
+                FormAlterarDetalhesUsuario formAlterarDetalhes = new FormAlterarDetalhesUsuario(DesktopLoginControlService._Usuario.Funcionario);
+                formAlterarDetalhes.Show();
+            }
+            else
+            {
+                StandardMessageBoxes.MensagemDeErro("Você não pode alterar as informações desse usuário");
+            }
+        }
+
+        #endregion
+
+        private void NotifyPropertyChanged([CallerMemberName]string propertyName = "")
+        {
+            PropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
 }

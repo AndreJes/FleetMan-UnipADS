@@ -117,7 +117,7 @@ namespace AppDesk.Windows.Motoristas
                 _motorista.Email = EmailUC.Text;
                 _motorista.Celular = TelefoneUC.Text;
                 _motorista.PontosCNH = PontosCNHUC.Value;
-                _motorista.VencimentoExame = DataVencimentoUC.Date;
+                _motorista.VencimentoExame = DataVencimentoUC.Date.GetValueOrDefault();
                 _motorista.Endereco = EnderecoUC.Endereco;
                 _motorista.Categoria = (CategoriasCNH)Enum.Parse(typeof(CategoriasCNH), CategoriaComboBox.SelectedItem.ToString());
 

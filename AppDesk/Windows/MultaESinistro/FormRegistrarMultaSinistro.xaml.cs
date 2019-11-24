@@ -114,7 +114,7 @@ namespace AppDesk.Windows.MultaESinistro
                 Multa multa = new Multa();
                 multa.CodigoMulta = CodigoMultaTextBox.Text;
                 multa.Valor = ValorMultaUC.Valor;
-                multa.DataDaMulta = DataInfraçãoUC.Date;
+                multa.DataDaMulta = DataInfraçãoUC.Date.GetValueOrDefault();
                 multa.EstadoDoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), EstadoPagamentoInfracaoComboBox.SelectedItem.ToString().Replace(' ', '_'));
                 multa.GravidadeDaInfracao = (GravidadesDeInfracao)Enum.Parse(typeof(GravidadesDeInfracao), GravidadeInfracaoComboBox.SelectedItem.ToString());
                 multa.MotoristaId = SeletorMotoristaMultaUC.Motorista.MotoristaId;
@@ -139,7 +139,7 @@ namespace AppDesk.Windows.MultaESinistro
 
                 Sinistro sinistro = new Sinistro();
                 sinistro.CodSinistro = CodigoSinistroTextBox.Text;
-                sinistro.DataSinistro = DataSinistroUC.Date;
+                sinistro.DataSinistro = DataSinistroUC.Date.GetValueOrDefault();
                 sinistro.QntEnvolvidos = QntEnvolvidosUC.Value;
                 sinistro.Gravidade = (GravidadesDeSinistro)Enum.Parse(typeof(GravidadesDeSinistro), GravidadeSinistroComboBox.SelectedItem.ToString().Replace(' ', '_'));
                 sinistro.EstadoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), EstadoPagamentoSinistroComboBox.SelectedItem.ToString().Replace(' ', '_'));
