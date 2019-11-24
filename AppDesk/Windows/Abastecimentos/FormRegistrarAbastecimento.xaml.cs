@@ -43,11 +43,6 @@ namespace AppDesk.Windows.Abastecimentos
             }
         }
 
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private Abastecimento GerarAbastecimento()
         {
             Abastecimento abastecimento = new Abastecimento();

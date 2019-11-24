@@ -89,18 +89,26 @@
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
-                                <Button x:Name="AlterarBtn" Click="AlterarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
-                                    Salvar Alterações
+                                <Button x:Name="AlterarBtn" Template="{StaticResource ConfirmBtnTemplate}" Click="AlterarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+                                    SALVAR ALTERAÇÕES
                                 </Button>
-                                <Button x:Name="RemoveBtn" Click="RemoveBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
-                                    Remover
+                                <Button x:Name="RemoveBtn" Template="{StaticResource RemoveBtnTemplate}" Click="RemoveBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                                    REMOVER
                                 </Button>
                             </Grid>
                             <!--#endregion-->
                         </Grid>
                     </TabItem>
                     <TabItem Header="Veiculos">
-
+                        <Grid Grid.Row="1">
+                            <DataGrid AutoGenerateColumns="False" x:Name="VeiculosDataGrid" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Placa" Binding="{Binding Placa}"/>
+                                    <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}"/>
+                                    <DataGridTextColumn Header="Situação" Binding="{Binding EstadoTxt}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
                     </TabItem>
                 </TabControl>
             </Grid>

@@ -85,12 +85,6 @@ namespace AppDesk.Windows.Veiculos
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
-
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private Veiculo GerarVeiculo()
         {
             try

@@ -88,10 +88,5 @@ namespace AppDesk.Windows.Financas
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
-
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

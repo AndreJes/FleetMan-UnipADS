@@ -116,7 +116,7 @@
             </GroupBox>
 
             <Grid Grid.Row="2">
-                <Button x:Name="RemoverSinistroBtn" Click="RemoverSinistroBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                <Button x:Name="RemoverSinistroBtn" Template="{StaticResource RemoveBtnTemplate}" Click="RemoverSinistroBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
                     REMOVER
                 </Button>
             </Grid>

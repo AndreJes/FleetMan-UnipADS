@@ -59,11 +59,6 @@ namespace AppDesk.Windows.Usuarios
             }
         }
 
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private Funcionario GerarFuncionario()
         {
             try

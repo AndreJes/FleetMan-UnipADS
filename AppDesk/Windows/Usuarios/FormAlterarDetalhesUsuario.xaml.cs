@@ -42,6 +42,16 @@ namespace AppDesk.Windows.Usuarios
             this.DataContext = _funcionario;
             PopularPermissoes(_usuario.Permissoes);
             PreencherTextBoxes();
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Funcionarios.Alterar)
+            {
+                SalvarAlteracoesBtn.IsEnabled = false;
+                PermissoesTabItem.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Funcionarios.Remover)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         private void SalvarAlteracoesBtn_Click(object sender, RoutedEventArgs e)

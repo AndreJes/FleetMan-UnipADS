@@ -34,10 +34,20 @@ namespace AppDesk.Windows.Seguros
             _seguro = seguro;
             TipoCoberturaComboBox.ItemsSource = Enum.GetNames(typeof(CoberturasSeguro));
             PreencherDados();
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Seguros.Alterar)
+            {
+                AlterarBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Seguros.Remover)
+            {
+                RemoveBtn.IsEnabled = false;
+            }
         }
 
         private void PreencherDados()
         {
+            VeiculosDataGrid.ItemsSource = _seguro.Veiculos;
             CNPJUC.Text = _seguro.CNPJ;
             NomeUC.Text = _seguro.Nome;
             EmailUC.Text = _seguro.Email;

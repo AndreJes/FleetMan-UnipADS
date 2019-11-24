@@ -34,6 +34,15 @@ namespace AppDesk.Windows.Garagens
         {
             _garagem = garagem;
             VeiculosDataGrid.ItemsSource = _garagem.Veiculos;
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Garagens.Alterar)
+            {
+                AlterarBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Garagens.Remover)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
             PreencherTextBoxes();
         }
         #endregion

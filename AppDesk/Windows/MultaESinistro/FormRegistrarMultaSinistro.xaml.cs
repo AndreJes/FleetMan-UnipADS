@@ -82,13 +82,6 @@ namespace AppDesk.Windows.MultaESinistro
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
-
-
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         #endregion
 
         #region Métodos

@@ -42,11 +42,6 @@ namespace AppDesk.Windows.Motoristas
             }
         }
 
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {
             try

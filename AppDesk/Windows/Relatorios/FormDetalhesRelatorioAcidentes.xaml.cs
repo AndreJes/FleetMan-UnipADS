@@ -38,6 +38,11 @@ namespace AppDesk.Windows.Relatorios
             DataContext = this;
             DefinirGraficoRelacao();
             DefinirGraficoTipos();
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Remover || !DesktopLoginControlService._Usuario.Permissoes.Relatorios.Alterar)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
@@ -50,12 +55,6 @@ namespace AppDesk.Windows.Relatorios
                 this.Close();
             }
         }
-
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void DefinirGraficoRelacao()
         {
             GraficoPizzaPagamento.Series = new SeriesCollection()

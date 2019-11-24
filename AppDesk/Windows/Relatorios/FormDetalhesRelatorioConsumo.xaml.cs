@@ -40,6 +40,11 @@ namespace AppDesk.Windows.Relatorios
             Legendas = new string[] { "Total/Média" };
             DefinirGraficoTotalCombustivel(Relatorio);
             DefinirGraficoValores(Relatorio);
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Remover || !DesktopLoginControlService._Usuario.Permissoes.Relatorios.Alterar)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         public void DefinirGraficoTotalCombustivel(RelatorioConsumo relatorioConsumo)

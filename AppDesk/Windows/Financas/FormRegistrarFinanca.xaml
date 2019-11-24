@@ -90,15 +90,8 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="RegistrarBtn" Click="RegistrarBtn_Click" Grid.Row="3" Background="#FF6EE66E" Margin="5" HorizontalAlignment="Center">
-                REGISTRAR FINANÇA
-            </Button>
-            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Grid.Row="3" Grid.Column="1" Background="#FFE66E6E" Margin="40 5">
-                CANCELAR
+            <Button x:Name="RegistrarBtn" Template="{StaticResource ConfirmBtnTemplate}" Click="RegistrarBtn_Click" Grid.Row="3" Background="#FF6EE66E" Margin=" 40 5">
+                REGISTRAR
             </Button>
         </Grid>
     </Grid>

@@ -170,11 +170,11 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="SalvarAlteracoesBtn" Click="SalvarAlteracoesBtn_Click" Grid.Row="3" Background="#FF6EE66E" Margin="40 5" >
+            <Button x:Name="SalvarAlteracoesBtn" Template="{StaticResource ConfirmBtnTemplate}" Click="SalvarAlteracoesBtn_Click" Grid.Row="3" Background="#FF6EE66E" Margin="40 5" >
                 SALVAR ALTERAÇÕES
             </Button>
 
-            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Grid.Row="3" Grid.Column="1" Background="#FFE66E6E" Margin="40 5">
+            <Button x:Name="RemoverBtn" Template="{StaticResource RemoveBtnTemplate}" Click="RemoverBtn_Click" Grid.Row="3" Grid.Column="1" Background="#FFE66E6E" Margin="40 5">
                 REMOVER
             </Button>
         </Grid>

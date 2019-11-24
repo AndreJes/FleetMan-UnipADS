@@ -25,6 +25,7 @@ namespace AppDesk.Windows.Clientes
     /// </summary>
     public partial class FormAlterarClientes : Window
     {
+        private TipoCliente tipo;
         private ClientePF _clientePF = null;
         private ClientePJ _clientePJ = null;
 
@@ -35,6 +36,7 @@ namespace AppDesk.Windows.Clientes
 
         public FormAlterarClientes(Cliente cliente) : this()
         {
+            tipo = cliente.Tipo;
             VehicleDataGrid.ItemsSource = cliente.Veiculos;
             MotoristasDataGrid.ItemsSource = cliente.Motoristas;
             LocacoesDataGrid.ItemsSource = cliente.Alugueis;
@@ -61,6 +63,16 @@ namespace AppDesk.Windows.Clientes
                 InativoRadioBtn.IsChecked = true;
             }
 
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Clientes.Alterar)
+            {
+                AlterarBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Clientes.Remover)
+            {
+                CancelarBtn.IsEnabled = false;
+            }
+
             PreencherTextBoxes(cliente);
         }
 
@@ -80,9 +92,30 @@ namespace AppDesk.Windows.Clientes
             }
         }
 
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
+        private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            try
+            {
+                if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Cliente") == MessageBoxResult.Yes)
+                {
+                    switch (tipo)
+                    {
+                        case TipoCliente.PF:
+                            ServicoDados.ServicoDadosClientes.RemoverClientePorId(_clientePF.ClienteId);
+                            break;
+                        case TipoCliente.PJ:
+                            ServicoDados.ServicoDadosClientes.RemoverClientePorId(_clientePJ.ClienteId);
+                            break;
+                    }
+                }
+                StandardMessageBoxes.MensagemSucesso("Cliente removido com sucesso!", "Remoção");
+                MainWindowUpdater.UpdateDataGrids();
+                this.Close();
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
         }
 
         private void PreencherTextBoxes(Cliente cliente)

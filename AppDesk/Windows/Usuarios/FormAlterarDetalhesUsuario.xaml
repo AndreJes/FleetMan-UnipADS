@@ -48,7 +48,7 @@
                             <ucc:NomeFieldUC x:Name="NomeTextBox"></ucc:NomeFieldUC>
 
                             <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
-                                <ucm:CPFFieldUC x:Name="CPFTextBox"></ucm:CPFFieldUC>
+                                <ucm:CPFFieldUC x:Name="CPFTextBox" IsEnabled="False"></ucm:CPFFieldUC>
                                 <Border Margin="10 0"/>
                                 <ucm:RGFieldUC x:Name="RGTextBox"></ucm:RGFieldUC>
                             </StackPanel>
@@ -436,10 +436,10 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="SalvarAlteracoesBtn" Click="SalvarAlteracoesBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+            <Button x:Name="SalvarAlteracoesBtn" Template="{StaticResource ConfirmBtnTemplate}" Click="SalvarAlteracoesBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
                 SALVAR ALTERAÇÕES
             </Button>
-            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+            <Button x:Name="RemoverBtn" Template="{StaticResource RemoveBtnTemplate}" Click="RemoverBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
                 REMOVER
             </Button>
         </Grid>

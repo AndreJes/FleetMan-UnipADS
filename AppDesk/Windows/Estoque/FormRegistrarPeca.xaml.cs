@@ -44,11 +44,6 @@ namespace AppDesk.Windows.Estoque
             }
         }
 
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void SelecionarFornecedorBtn_Click(object sender, RoutedEventArgs e)
         {
             SelecionarFornecedor(FornecedoresDataGrid.SelectedItem as Fornecedor);

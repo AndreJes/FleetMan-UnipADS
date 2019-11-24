@@ -660,10 +660,6 @@
     <Resource Include="Content\Icones\abastecimento.png" />
     <Resource Include="Content\Icones\alerta.png" />
     <Resource Include="Content\Icones\aluguel.png" />
-    <Resource Include="Content\Icones\Botoes\add.png" />
-    <Resource Include="Content\Icones\Botoes\cancel.png" />
-    <Resource Include="Content\Icones\Botoes\close.png" />
-    <Resource Include="Content\Icones\Botoes\delete.png" />
     <Resource Include="Content\Icones\carro.png" />
     <Resource Include="Content\Icones\clientes.png" />
     <Resource Include="Content\Icones\financeiro.png" />

@@ -54,11 +54,6 @@ namespace AppDesk.Windows.Manutencoes
             }
         }
 
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void SelecionarPeca_Click(object sender, RoutedEventArgs e)
         {
             MoverItens(PecasDataGrid, PecasSelecionadasDataGrid);

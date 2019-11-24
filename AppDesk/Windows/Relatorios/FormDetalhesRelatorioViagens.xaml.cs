@@ -38,6 +38,11 @@ namespace AppDesk.Windows.Relatorios
             Relatorio = relatorio;
             DataContext = this;
             DefinirGraficoRelacao();
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Relatorios.Remover || !DesktopLoginControlService._Usuario.Permissoes.Relatorios.Alterar)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)

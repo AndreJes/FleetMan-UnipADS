@@ -88,8 +88,8 @@
             </GroupBox>
 
             <Grid Grid.Row="2">
-                <Button x:Name="RemoverMultaBtn" Click="RemoverMultaBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
-                    Remover
+                <Button x:Name="RemoverMultaBtn" Template="{StaticResource RemoveBtnTemplate}" Click="RemoverMultaBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
+                    REMOVER
                 </Button>
             </Grid>
         </Grid>

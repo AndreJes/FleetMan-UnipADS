@@ -77,6 +77,15 @@ namespace AppDesk.Windows.Manutencoes
             {
                 PecasSelecionadasDataGrid.Items.Add(p);
             }
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Alterar)
+            {
+                SalvarAlteracoesBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Remover)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         private void SalvarAlteracoesBtn_Click(object sender, RoutedEventArgs e)

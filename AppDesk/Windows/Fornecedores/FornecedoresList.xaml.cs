@@ -24,6 +24,12 @@ namespace AppDesk.Windows.Fornecedores
         public FormFornecedoresList()
         {
             InitializeComponent();
+
+            if(!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Cadastrar)
+            {
+                RegistrarFornecedorBtn.IsEnabled = false;
+            }
+
             FornecedoresDataGrid.ItemsSource = ServicoDados.ServicoDadosFornecedor.ObterFornecedoresOrdPorId();
         }
 

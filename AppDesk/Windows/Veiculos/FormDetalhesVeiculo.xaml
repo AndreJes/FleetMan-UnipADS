@@ -205,12 +205,12 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="AlterarBtn" Click="AlterarBtn_Click"  Grid.Row="3" Background="#FF6EE66E" Margin="40 5" >
-                                Salvar Alterações
+                            <Button x:Name="AlterarBtn" Template="{StaticResource ConfirmBtnTemplate}" Click="AlterarBtn_Click"  Grid.Row="3" Background="#FF6EE66E" Margin="40 5" >
+                                SALVAR ALTERAÇÕES
                             </Button>
 
-                            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Grid.Row="3" Grid.Column="1" Background="#FFE66E6E" Margin="40 5">
-                                Remover
+                            <Button x:Name="RemoverBtn" Template="{StaticResource RemoveBtnTemplate}" Click="RemoverBtn_Click" Grid.Row="3" Grid.Column="1" Background="#FFE66E6E" Margin="40 5">
+                                REMOVER
                             </Button>
                         </Grid>
                         <!--#endregion-->
@@ -273,7 +273,7 @@
                                         </Grid>
                                     </GroupBox>
 
-                                    <Button Grid.Row="1" HorizontalAlignment="Center" Height="30">Registrar abastecimento</Button>
+                                    <Button Grid.Row="1" HorizontalAlignment="Center" Height="30" x:Name="RegistrarAbastecimentoBtn" Click="RegistrarAbastecimentoBtn_Click">Registrar abastecimento</Button>
                                 </Grid>
                             </GroupBox>
                         </TabItem>
@@ -281,8 +281,15 @@
                             <Grid>
                                 <GroupBox Header="Lista de manutenções" Grid.Column="1" Grid.RowSpan="2">
                                     <Grid>
-                                        <DataGrid>
-
+                                        <DataGrid x:Name="ManutencaoDataGrid" Margin="10" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Código" Binding="{Binding ManutencaoId}"/>
+                                                <DataGridTextColumn Header="Responsável" Binding="{Binding NomeResponsavel}"/>
+                                                <DataGridTextColumn Header="Data de Entrada/Agendada" Binding="{Binding DataEntrada}"/>
+                                                <DataGridTextColumn Header="Data de Saida" Binding="{Binding DataSaida}"/>
+                                                <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}"/>
+                                                <DataGridTextColumn Header="Estado" Binding="{Binding EstadoAtual}"/>
+                                            </DataGrid.Columns>
                                         </DataGrid>
                                     </Grid>
                                 </GroupBox>

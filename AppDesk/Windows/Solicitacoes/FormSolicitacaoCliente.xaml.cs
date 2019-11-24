@@ -59,6 +59,17 @@ namespace AppDesk.Windows.Solicitacoes
             {
                 EstadoSolicitacaoTextBox.Text = "Aguardando";
             }
+
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Solicitacoes.Alterar)
+            {
+                AprovarBtn.IsEnabled = false;
+                ReprovarBtn.IsEnabled = false;
+            }
+            if(!DesktopLoginControlService._Usuario.Permissoes.Solicitacoes.Remover)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         private void AprovarBtn_Click(object sender, RoutedEventArgs e)

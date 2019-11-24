@@ -53,11 +53,6 @@ namespace AppDesk.Windows.Fornecedores
             }
         }
 
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void LojaVirtualCheckBox_Toggle(object sender, RoutedEventArgs e)
         {
             EnderecoUC.IsEnabled = !ConversorBoolNullable.ConversorBooleano(LojaVirtualCheckBox.IsChecked);

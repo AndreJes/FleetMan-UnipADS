@@ -855,6 +855,7 @@ namespace AppDesk
             if (DesktopLoginControlService._Usuario.Funcionario != null)
             {
                 FormAlterarDetalhesUsuario formAlterarDetalhes = new FormAlterarDetalhesUsuario(DesktopLoginControlService._Usuario.Funcionario);
+                formAlterarDetalhes.SalvarAlteracoesBtn.IsEnabled = true;
                 formAlterarDetalhes.Show();
             }
             else

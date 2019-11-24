@@ -39,6 +39,15 @@ namespace AppDesk.Windows.Motoristas
             MultasDataGrid.ItemsSource = _motorista.Multas;
             SinistrosDataGrid.ItemsSource = _motorista.Sinistros;
             PreencherTextBoxes();
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Motoristas.Alterar)
+            {
+                AlterarBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Motoristas.Remover)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)

@@ -24,6 +24,7 @@ namespace AppDesk.Windows.Seguros
         {
             InitializeComponent();
             UpdateDataGrid();
+            RegistrarSeguradoraBtn.IsEnabled = DesktopLoginControlService._Usuario.Permissoes.Seguros.Cadastrar;
         }
 
         private void RegistrarSeguradoraBtn_Click(object sender, RoutedEventArgs e)

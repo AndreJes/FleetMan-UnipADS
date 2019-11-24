@@ -86,18 +86,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="SalvarAlteracoesBtn" Click="SalvarAlteracoesBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+            <Button x:Name="SalvarAlteracoesBtn" Template="{StaticResource ConfirmBtnTemplate}" Click="SalvarAlteracoesBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
                 SALVAR ALTEÇÕES
             </Button>
 
-            <Button x:Name="RemoverBtn" Click="RemoverBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
-                REMOVER
-            </Button>
-
-            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Margin="20 5" Grid.Column="2" Background="#FFE4CD3D">
-                CANCELAR
+            <Button x:Name="RemoverBtn" Template="{StaticResource RemoveBtnTemplate}" Click="RemoverBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
             </Button>
         </Grid>
     </Grid>

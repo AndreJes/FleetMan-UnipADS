@@ -37,6 +37,15 @@ namespace AppDesk.Windows.Viagens
             _viagem = viagem;
             this.DataContext = _viagem;
             PreencherTextBoxes();
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Viagens.Alterar)
+            {
+                CancelarViagemBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Viagens.Remover)
+            {
+                RemoverViagemBtn.IsEnabled = false;
+            }
         }
 
         private void CancelarViagemBtn_Click(object sender, RoutedEventArgs e)

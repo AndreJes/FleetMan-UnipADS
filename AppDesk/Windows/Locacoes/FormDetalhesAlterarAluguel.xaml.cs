@@ -37,6 +37,16 @@ namespace AppDesk.Windows.Locacoes
         {
             _aluguel = aluguel;
             PreencherCampos();
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Locacoes.Alterar)
+            {
+                CancelarLocacaoBtn.IsEnabled = false;
+                SalvarPagamentoBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Locacoes.Remover)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         private void PreencherCampos()
@@ -97,12 +107,12 @@ namespace AppDesk.Windows.Locacoes
 
         private void CancelarLocacaoBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Cancelar Aluguel?" + Environment.NewLine + "Atenção está ação não poderá ser desfeita!", "Cancelar locação", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult result = MessageBox.Show("Cancelar Locação?" + Environment.NewLine + "Atenção está ação não poderá ser desfeita!", "Cancelar locação", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             {
                 _aluguel.EstadoDoAluguel = EstadosAluguel.CANCELADO;
                 ServicoDados.ServicoDadosAluguel.GravarAluguel(_aluguel);
-                MessageBox.Show("Aluguel cancelado com sucesso!");
+                MessageBox.Show("Locação cancelado com sucesso!");
             }
         }
 
@@ -137,21 +147,24 @@ namespace AppDesk.Windows.Locacoes
 
         private void PagamentoCheckChanged_Event(object sender, RoutedEventArgs e)
         {
-            if (AguardandoPagamentoRadioBtn.IsChecked == true && _aluguel.EstadoDoPagamento != EstadosDePagamento.AGUARDANDO)
+            if (DesktopLoginControlService._Usuario.Permissoes.Locacoes.Alterar)
             {
-                SalvarPagamentoBtn.IsEnabled = true;
-            }
-            else if (PagoRadioBtn.IsChecked == true && _aluguel.EstadoDoPagamento != EstadosDePagamento.PAGO)
-            {
-                SalvarPagamentoBtn.IsEnabled = true;
-            }
-            else if (VencidoRadioBtn.IsChecked == true && _aluguel.EstadoDoPagamento != EstadosDePagamento.VENCIDO)
-            {
-                SalvarPagamentoBtn.IsEnabled = true;
-            }
-            else
-            {
-                SalvarPagamentoBtn.IsEnabled = false;
+                if (AguardandoPagamentoRadioBtn.IsChecked == true && _aluguel.EstadoDoPagamento != EstadosDePagamento.AGUARDANDO)
+                {
+                    SalvarPagamentoBtn.IsEnabled = true;
+                }
+                else if (PagoRadioBtn.IsChecked == true && _aluguel.EstadoDoPagamento != EstadosDePagamento.PAGO)
+                {
+                    SalvarPagamentoBtn.IsEnabled = true;
+                }
+                else if (VencidoRadioBtn.IsChecked == true && _aluguel.EstadoDoPagamento != EstadosDePagamento.VENCIDO)
+                {
+                    SalvarPagamentoBtn.IsEnabled = true;
+                }
+                else
+                {
+                    SalvarPagamentoBtn.IsEnabled = false;
+                }
             }
         }
     }

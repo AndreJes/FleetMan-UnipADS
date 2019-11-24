@@ -35,11 +35,6 @@ namespace AppDesk.Windows.Seguros
             RegistrarSeguro();
         }
 
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void RegistrarSeguro()
         {
             try

@@ -95,9 +95,5 @@ namespace AppDesk.Windows.Locacoes
             }
         }
 
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

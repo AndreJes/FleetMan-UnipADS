@@ -42,6 +42,15 @@ namespace AppDesk.Windows.MultaESinistro.Multas
             PlacaUC.Text = _multa.Veiculo.Placa;
             DataMultaUC.Date = _multa.DataDaMulta;
             ValorMultaUC.Valor = _multa.Valor;
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.MultasSinistros.Alterar)
+            {
+                SalvarAlteracaoPagamentoBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.MultasSinistros.Remover)
+            {
+                RemoverMultaBtn.IsEnabled = false;
+            }
         }
 
         private void PopularComboBox()
@@ -67,7 +76,7 @@ namespace AppDesk.Windows.MultaESinistro.Multas
 
         private void EstadoPagamentoInfracaoComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (EstadoPagamentoInfracaoComboBox.SelectedItem.ToString() != _multa.EstadoDoPagamento.ToString("G"))
+            if (EstadoPagamentoInfracaoComboBox.SelectedItem.ToString() != _multa.EstadoDoPagamento.ToString("G") && DesktopLoginControlService._Usuario.Permissoes.MultasSinistros.Alterar)
             {
                 SalvarAlteracaoPagamentoBtn.IsEnabled = true;
             }

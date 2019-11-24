@@ -36,6 +36,15 @@ namespace AppDesk.Windows.Financas
             _financa = financa;
             this.DataContext = _financa;
             PreencherBoxes();
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Financeiro.Alterar)
+            {
+                SalvarAlteracoesBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Financeiro.Remover)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         private void SalvarAlteracoesBtn_Click(object sender, RoutedEventArgs e)
@@ -58,11 +67,6 @@ namespace AppDesk.Windows.Financas
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
-        }
-
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
         private void PreencherBoxes()

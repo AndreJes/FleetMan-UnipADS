@@ -41,6 +41,11 @@ namespace AppDesk.Windows.Relatorios
             Legendas = new string[] { "Total / Média" };
             DefinirGraficoRelacao();
             DefinirGraficoValores();
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Remover || !DesktopLoginControlService._Usuario.Permissoes.Relatorios.Alterar)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)

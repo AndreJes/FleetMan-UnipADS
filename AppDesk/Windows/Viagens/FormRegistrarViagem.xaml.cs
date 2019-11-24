@@ -39,11 +39,7 @@ namespace AppDesk.Windows.Viagens
             DataSaidaUC.DataMinima = DateTime.Now;
         }
 
-        #region Cancelar/Registrar
-        private void CancelarBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        #region Registrar
 
         private void RegistrarBtn_Click(object sender, RoutedEventArgs e)
         {

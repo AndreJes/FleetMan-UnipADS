@@ -40,11 +40,26 @@ namespace AppDesk.Windows.Veiculos
             DataContext = _veiculo;
             MultasDataGrid.ItemsSource = _veiculo.Multas.ToList();
             SinistrosDataGrid.ItemsSource = _veiculo.Sinistros.ToList();
+            ManutencaoDataGrid.ItemsSource = _veiculo.Manutencoes.ToList();
             TanqueProgressBar.Value = (double)_veiculo.EstadoDoTanque;
             SeguradorasComboBox.ItemsSource = ServicoDados.ServicoDadosSeguro.ObterSegurosOrdPorId().ToList();
             TipoDeVeiculoTextBox.Text = _veiculo.Tipo.ToString("G");
             PreencherDadosCliente();
             PreencherTextBoxes();
+
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Veiculos.Alterar)
+            {
+                AlterarBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Veiculos.Remover)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Cadastrar)
+            {
+                RegistrarAbastecimentoBtn.IsEnabled = false;
+            }
         }
 
         private void PreencherDadosCliente()
@@ -123,6 +138,11 @@ namespace AppDesk.Windows.Veiculos
             ModeloUC.Text = _veiculo.Modelo;
             AnoUC.Value = _veiculo.Ano;
             CorUC.Text = _veiculo.Cor;
+        }
+
+        private void RegistrarAbastecimentoBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

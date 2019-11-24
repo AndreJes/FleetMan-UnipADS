@@ -43,6 +43,15 @@ namespace AppDesk.Windows.Fornecedores
             EmailTextBox.Text = _fornecedor.Email;
             NomeTextBox.Text = _fornecedor.Razao_Social;
             TelefoneTextBox.Text = _fornecedor.Telefone;
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Alterar)
+            {
+                SalvarAlteracoesBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Remover)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
 

@@ -38,6 +38,16 @@ namespace AppDesk.Windows.Estoque
             EmailFornecedorUC.Text = _peca.Fornecedor.Email;
             TelefoneFornecedorUC.Text = _peca.Fornecedor.Telefone;
             NomeFornecedorUC.Text = _peca.Fornecedor.Razao_Social;
+
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Alterar)
+            {
+                SalvarAlteracoesBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Remover)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         private void SalvarAlteracoesBtn_Click(object sender, RoutedEventArgs e)

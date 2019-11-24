@@ -53,15 +53,8 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="RegistrarBtn" Click="RegistrarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
+            <Button x:Name="RegistrarBtn" Template="{StaticResource ConfirmBtnTemplate}" Click="RegistrarBtn_Click" Margin="20 5" Grid.Column="0" Background="#FF6EE66E" >
                 REGISTRAR
-            </Button>
-            <Button x:Name="CancelarBtn" Click="CancelarBtn_Click" Margin="20 5" Grid.Column="1" Background="#FFE66E6E">
-                CANCELAR
             </Button>
         </Grid>
     </Grid>

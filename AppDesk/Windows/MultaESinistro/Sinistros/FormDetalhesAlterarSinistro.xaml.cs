@@ -42,6 +42,16 @@ namespace AppDesk.Windows.MultaESinistro.Sinistros
             CPFUC.Text = _sinistro.Motorista.CPF;
             PlacaVeiculoUC.Text = _sinistro.Veiculo.Placa;
             DataSinistroUC.Date = _sinistro.DataSinistro;
+
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.MultasSinistros.Alterar)
+            {
+                SalvarAlteracaoPagamentoBtn.IsEnabled = false;
+            }
+            if (!DesktopLoginControlService._Usuario.Permissoes.MultasSinistros.Remover)
+            {
+                RemoverSinistroBtn.IsEnabled = false;
+            }
         }
 
         private void PopularComboBox()
@@ -62,7 +72,7 @@ namespace AppDesk.Windows.MultaESinistro.Sinistros
 
         private void EstadoPagamentoSinistro_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (EstadoPagamentoSinistro.SelectedItem.ToString() != _sinistro.EstadoPagamento.ToString("G"))
+            if (EstadoPagamentoSinistro.SelectedItem.ToString() != _sinistro.EstadoPagamento.ToString("G") && DesktopLoginControlService._Usuario.Permissoes.MultasSinistros.Alterar)
             {
                 SalvarAlteracaoPagamentoBtn.IsEnabled = true;
             }

@@ -42,6 +42,11 @@ namespace AppDesk.Windows.Relatorios
             DataContext = this;
             DefinirGraficoPizza();
             DefinirGraficoBarras();
+
+            if (!DesktopLoginControlService._Usuario.Permissoes.Manutencoes.Remover || !DesktopLoginControlService._Usuario.Permissoes.Relatorios.Alterar)
+            {
+                RemoverBtn.IsEnabled = false;
+            }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
