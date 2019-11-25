@@ -13,76 +13,118 @@ namespace Persistencia.DAL.Manutencao
     {
         public IEnumerable<Modelo.Classes.Manutencao.Manutencao> ObterManutencoesOrdPorId()
         {
-            return Context.Manutencoes.OrderBy(m => m.ManutencaoId).Include(m => m.Veiculo).ToList();
+            try
+            {
+                return Context.Manutencoes.OrderBy(m => m.ManutencaoId).Include(m => m.Veiculo).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Modelo.Classes.Manutencao.Manutencao ObterManutencaoPorId(long? id)
         {
-            return Context.Manutencoes.Where(m => m.ManutencaoId == id).Include(m => m.Veiculo).Include(m => m.PecasUtilizadas.Select(pu => pu.Peca)).FirstOrDefault();
+            try
+            {
+                return Context.Manutencoes.Where(m => m.ManutencaoId == id).Include(m => m.Veiculo).Include(m => m.PecasUtilizadas.Select(pu => pu.Peca)).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void AdicionarManutencao(Modelo.Classes.Manutencao.Manutencao manutencao, IList<PecasManutencao> pecas)
         {
-            manutencao.PecasUtilizadas = new ObservableCollection<PecasManutencao>();
+            try
+            {
+                manutencao.PecasUtilizadas = new ObservableCollection<PecasManutencao>();
 
-            Context.Manutencoes.Add(manutencao);
+                Context.Manutencoes.Add(manutencao);
 
-            Context.SaveChanges();
+                Context.SaveChanges();
 
-            AdicionarPecaManutencao(manutencao, pecas);
+                AdicionarPecaManutencao(manutencao, pecas);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void AlterarManutencao(Modelo.Classes.Manutencao.Manutencao manutencao, IList<PecasManutencao> pecas)
         {
-            var item = Context.Entry(manutencao);
-
-            item.State = EntityState.Modified;
-
-            item.Collection(m => m.PecasUtilizadas).Load();
-
-            manutencao.PecasUtilizadas.Clear();
-
-            foreach (PecasManutencao p in pecas)
+            try
             {
-                PecasManutencao PecaPRemover = Context.PecasManutencao.Where(pm => pm.PecaManutencaoId == p.PecaManutencaoId).FirstOrDefault();
-                PecasManutencao PecaPAdicionar = new PecasManutencao();
-                if (PecaPRemover != null)
+                var item = Context.Entry(manutencao);
+
+                item.State = EntityState.Modified;
+
+                item.Collection(m => m.PecasUtilizadas).Load();
+
+                manutencao.PecasUtilizadas.Clear();
+
+                foreach (PecasManutencao p in pecas)
                 {
-                    PecaPAdicionar.ManutencaoId = PecaPRemover.ManutencaoId;
-                    PecaPAdicionar.PecaId = PecaPRemover.PecaId;
-                    PecaPAdicionar.QuantidadePecasUtilizadas = PecaPRemover.QuantidadePecasUtilizadas;
-                    Context.PecasManutencao.Remove(PecaPRemover);
-                    Context.PecasManutencao.Add(PecaPAdicionar);
+                    PecasManutencao PecaPRemover = Context.PecasManutencao.Where(pm => pm.PecaManutencaoId == p.PecaManutencaoId).FirstOrDefault();
+                    PecasManutencao PecaPAdicionar = new PecasManutencao();
+                    if (PecaPRemover != null)
+                    {
+                        PecaPAdicionar.ManutencaoId = PecaPRemover.ManutencaoId;
+                        PecaPAdicionar.PecaId = PecaPRemover.PecaId;
+                        PecaPAdicionar.QuantidadePecasUtilizadas = PecaPRemover.QuantidadePecasUtilizadas;
+                        Context.PecasManutencao.Remove(PecaPRemover);
+                        Context.PecasManutencao.Add(PecaPAdicionar);
+                    }
+                    else
+                    {
+                        p.Peca = null;
+                        p.Manutencao = null;
+                        p.ManutencaoId = manutencao.ManutencaoId;
+                        Context.PecasManutencao.Add(p);
+                    }
                 }
-                else
-                {
-                    p.Peca = null;
-                    p.Manutencao = null;
-                    p.ManutencaoId = manutencao.ManutencaoId;
-                    Context.PecasManutencao.Add(p);
-                }
+                Context.SaveChanges();
+                RemoverValoresNulos();
             }
-            Context.SaveChanges();
-            RemoverValoresNulos();
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void RemoverManutencaoPorId(long? id)
         {
-            Modelo.Classes.Manutencao.Manutencao manutencao = ObterManutencaoPorId(id);
-            Context.PecasManutencao.RemoveRange(Context.PecasManutencao.Where(pm => pm.ManutencaoId == manutencao.ManutencaoId));
-            Context.Manutencoes.Remove(manutencao);
-            Context.SaveChanges();
+            try
+            {
+                Modelo.Classes.Manutencao.Manutencao manutencao = ObterManutencaoPorId(id);
+                Context.PecasManutencao.RemoveRange(Context.PecasManutencao.Where(pm => pm.ManutencaoId == manutencao.ManutencaoId));
+                Context.Manutencoes.Remove(manutencao);
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void AdicionarPecaManutencao(Modelo.Classes.Manutencao.Manutencao manutencao, IList<PecasManutencao> pecas)
         {
-            foreach (PecasManutencao pm in pecas)
+            try
             {
-                pm.Peca = null;
-                pm.Manutencao = null;
-                manutencao.PecasUtilizadas.Add(pm);
+                foreach (PecasManutencao pm in pecas)
+                {
+                    pm.Peca = null;
+                    pm.Manutencao = null;
+                    manutencao.PecasUtilizadas.Add(pm);
+                }
+                Context.SaveChanges();
             }
-            Context.SaveChanges();
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void RemoverValoresNulos()

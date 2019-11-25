@@ -49,12 +49,19 @@ namespace AppDesk.Windows.Garagens
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            { 
             if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Garagem") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosGaragem.RemoverGaragemPorId(_garagem.GaragemId);
                 StandardMessageBoxes.MensagemSucesso("Garagem removida com sucesso!", "Remoção");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
+            }
+            }
+            catch (Exception ex)
+            {
+              StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 

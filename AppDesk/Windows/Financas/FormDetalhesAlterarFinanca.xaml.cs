@@ -49,11 +49,18 @@ namespace AppDesk.Windows.Financas
 
         private void SalvarAlteracoesBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Finança") == MessageBoxResult.Yes)
+            try
             {
-                AlterarFinanca();
-                StandardMessageBoxes.MensagemSucesso("Finança alterada com sucesso!", "Alteração");
-                MainWindowUpdater.UpdateDataGrids();
+                if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Finança") == MessageBoxResult.Yes)
+                {
+                    AlterarFinanca();
+                    StandardMessageBoxes.MensagemSucesso("Finança alterada com sucesso!", "Alteração");
+                    MainWindowUpdater.UpdateDataGrids();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -75,7 +82,7 @@ namespace AppDesk.Windows.Financas
             PagamentoFinancaComboBox.ItemsSource = estados;
             PagamentoFinancaComboBox.SelectedItem = _financa.EstadoPagamento.ToString("G").Replace('_', ' ');
             DataVencimentoUC.Date = _financa.DataVencimento.GetValueOrDefault();
-            if(_financa.EstadoPagamento == EstadosDePagamento.PAGO)
+            if (_financa.EstadoPagamento == EstadosDePagamento.PAGO)
             {
                 DataPagamentoUC.Date = _financa.DataPagamento.GetValueOrDefault();
             }

@@ -14,7 +14,6 @@ namespace Modelo.Classes.Usuarios
     {
         [Key]
         public long? UsuarioId { get; set; }
-        [ForeignKey("Funcionario")]
         public long? FuncionarioId { get; set; }
         public Funcionario Funcionario { get; set; }
         public Permissoes.Permissoes Permissoes { get; set; }

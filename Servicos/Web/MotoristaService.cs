@@ -1,4 +1,5 @@
 ﻿using Modelo.Classes.Web;
+using Modelo.Enums;
 using Persistencia.DAL.Web;
 using System;
 using System.Collections.Generic;
@@ -14,27 +15,74 @@ namespace Servicos.Web
 
         public IEnumerable<Motorista> ObterMotoristasOrdPorId()
         {
-            return Context.ObterMotoristasOrdPorId();
+            try
+            {
+                return Context.ObterMotoristasOrdPorId();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void GravarMotorista(Motorista motorista)
         {
-            Context.GravarMotorista(motorista);
+            try
+            {
+                Context.GravarMotorista(motorista);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Motorista ObterMotoristaPorId(long? id)
         {
-            return Context.ObterMotoristaPorId(id);
+            try
+            {
+                return Context.ObterMotoristaPorId(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Motorista ObterMotoristaPorCPF(string cpf)
         {
-            return Context.ObterMotoristaPorCPF(cpf);
+            try
+            {
+                return Context.ObterMotoristaPorCPF(cpf);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public void RemoverMotoristaPorId(long? id)
+        public async void RemoverMotoristaPorId(long? id)
         {
-            Context.RemoverMotoristaPorId(id);
+            try
+            {
+                bool confirm = await Task.Run(() =>
+                {
+                    Motorista motorista = ObterMotoristaPorId(id);
+                    if(motorista.Estado == EstadosDeMotorista.EM_VIAGEM)
+                    {
+                        throw new Exception("Motorista se encontra em viagem");
+                    }
+                    return true;
+                });
+                if (confirm)
+                {
+                    Context.RemoverMotoristaPorId(id);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

@@ -12,38 +12,73 @@ namespace Persistencia.DAL.Web
     {
         public IEnumerable<Motorista> ObterMotoristasOrdPorId()
         {
-            return Context.Motoristas.OrderBy(m => m.MotoristaId).ToList();
+            try
+            {
+                return Context.Motoristas.OrderBy(m => m.MotoristaId).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void GravarMotorista(Motorista motorista)
         {
-            if(motorista.MotoristaId == null)
+            try
             {
-                Context.Motoristas.Add(motorista);
+                if (motorista.MotoristaId == null)
+                {
+                    Context.Motoristas.Add(motorista);
+                }
+                else
+                {
+                    Context.Entry(motorista).State = EntityState.Modified;
+                }
+                Context.SaveChanges();
             }
-            else
+            catch (Exception ex)
             {
-                Context.Entry(motorista).State = EntityState.Modified;
+                throw ex;
             }
-            Context.SaveChanges();
         }
 
         public Motorista ObterMotoristaPorId(long? id)
         {
-            return Context.Motoristas.Where(m => m.MotoristaId == id).Include(m => m.Cliente).Include(m => m.Multas.Select(m => m.Veiculo)).Include(m => m.Sinistros.Select(m => m.Veiculo)).Include(m => m.Viagens).First();
+            try
+            {
+                return Context.Motoristas.Where(m => m.MotoristaId == id).Include(m => m.Cliente).Include(m => m.Multas.Select(m => m.Veiculo)).Include(m => m.Sinistros.Select(m => m.Veiculo)).Include(m => m.Viagens).First();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Motorista ObterMotoristaPorCPF(string cpf)
         {
-            Motorista motorista = ObterMotoristasOrdPorId().Where(m => m.CPF == cpf).FirstOrDefault();
-            return motorista;
+            try
+            {
+                Motorista motorista = ObterMotoristasOrdPorId().Where(m => m.CPF == cpf).FirstOrDefault();
+                return motorista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void RemoverMotoristaPorId(long? id)
         {
-            Motorista motorista = ObterMotoristaPorId(id);
-            Context.Motoristas.Remove(motorista);
-            Context.SaveChanges();
+            try
+            {
+                Motorista motorista = ObterMotoristaPorId(id);
+                Context.Motoristas.Remove(motorista);
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

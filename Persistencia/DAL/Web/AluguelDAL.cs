@@ -12,32 +12,60 @@ namespace Persistencia.DAL.Web
     {
         public IEnumerable<Aluguel> ObterAlugueisOrdPorId()
         {
-            return Context.Alugueis.Include(a => a.Veiculo).OrderBy(a => a.AluguelId);
+            try
+            {
+                return Context.Alugueis.Include(a => a.Veiculo).OrderBy(a => a.AluguelId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Aluguel ObterAluguelPorId(long? id)
         {
-            return Context.Alugueis.Where(a => a.AluguelId == id).Include(a => a.Cliente).Include(a => a.Veiculo).FirstOrDefault();
+            try
+            {
+                return Context.Alugueis.Where(a => a.AluguelId == id).Include(a => a.Cliente).Include(a => a.Veiculo).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void GravarAluguel(Aluguel aluguel)
         {
-            if (aluguel.AluguelId == null)
+            try
             {
-                Context.Alugueis.Add(aluguel);
+                if (aluguel.AluguelId == null)
+                {
+                    Context.Alugueis.Add(aluguel);
+                }
+                else
+                {
+                    Context.Entry(aluguel).State = EntityState.Modified;
+                }
+                Context.SaveChanges();
             }
-            else
+            catch (Exception ex)
             {
-                Context.Entry(aluguel).State = EntityState.Modified;
+                throw ex;
             }
-            Context.SaveChanges();
         }
 
         public void RemoverAluguelPorId(long? id)
         {
-            Aluguel aluguel = ObterAluguelPorId(id);
-            Context.Alugueis.Remove(aluguel);
-            Context.SaveChanges();
+            try
+            {
+                Aluguel aluguel = ObterAluguelPorId(id);
+                Context.Alugueis.Remove(aluguel);
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

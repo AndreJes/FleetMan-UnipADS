@@ -9,7 +9,7 @@ using Modelo.Classes.Usuarios;
 using Modelo.Enums;
 using Persistencia.DAL.Usuarios;
 
-namespace Persistencia.DAL.Cliente
+namespace Persistencia.DAL.Clientes
 {
     public class ClienteDAL : DALContext
     {
@@ -23,107 +23,156 @@ namespace Persistencia.DAL.Cliente
 
         public IEnumerable<Modelo.Classes.Clientes.Cliente> ObterTodosOsClientesOrdPorId()
         {
-            IList<Modelo.Classes.Clientes.Cliente> Clientes = new List<Modelo.Classes.Clientes.Cliente>();
-
-            foreach (ClientePF pf in Context.ClientesPF.ToList())
+            try
             {
-                Clientes.Add(pf);
-            }
-            foreach (ClientePJ pj in Context.ClientesPJ.ToList())
-            {
-                Clientes.Add(pj);
-            }
+                IList<Modelo.Classes.Clientes.Cliente> Clientes = new List<Modelo.Classes.Clientes.Cliente>();
 
-            return Clientes;
+                foreach (ClientePF pf in Context.ClientesPF.ToList())
+                {
+                    Clientes.Add(pf);
+                }
+                foreach (ClientePJ pj in Context.ClientesPJ.ToList())
+                {
+                    Clientes.Add(pj);
+                }
+
+                return Clientes;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void GravarCliente(Modelo.Classes.Clientes.Cliente cliente)
         {
-            bool add = false;
-            if (cliente is ClientePF)
+            try
             {
-                if (cliente.ClienteId == null)
+                bool add = false;
+                if (cliente is ClientePF)
                 {
-                    Context.ClientesPF.Add(cliente as ClientePF);
-                    add = true;
+                    if (cliente.ClienteId == null)
+                    {
+                        Context.ClientesPF.Add(cliente as ClientePF);
+                        add = true;
+                    }
+                    else
+                    {
+                        Context.Entry(cliente).State = EntityState.Modified;
+                    }
                 }
                 else
                 {
-                    Context.Entry(cliente).State = EntityState.Modified;
+                    if (cliente.ClienteId == null)
+                    {
+                        Context.ClientesPJ.Add(cliente as ClientePJ);
+                        add = true;
+                    }
+                    else
+                    {
+                        Context.Entry(cliente).State = EntityState.Modified;
+                    }
                 }
-            }
-            else
-            {
-                if (cliente.ClienteId == null)
+
+                Context.SaveChanges();
+
+                if (add)
                 {
-                    Context.ClientesPJ.Add(cliente as ClientePJ);
-                    add = true;
+                    GerarUsuarioCliente(Context.Entry(cliente).Entity);
                 }
                 else
                 {
-                    Context.Entry(cliente).State = EntityState.Modified;
+                    UsuarioClienteDAL.AlterarUsuarioCliente(cliente.ClienteId.ToString(), novoEmail: cliente.Email);
                 }
             }
-
-            Context.SaveChanges();
-
-            if (add)
+            catch (Exception ex)
             {
-                GerarUsuarioCliente(Context.Entry(cliente).Entity);
-            }
-            else
-            {
-                UsuarioClienteDAL.AlterarUsuarioCliente(cliente.ClienteId.ToString(), novoEmail: cliente.Email);
+                throw ex;
             }
         }
 
         public ClientePF ObterClientePFPorId(long? id)
         {
-            ClientePF clientePF = Context.ClientesPF.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Motoristas).Include(c => c.Alugueis).Include(c => c.Solicitacoes).FirstOrDefault();
-            return clientePF;
+            try
+            {
+                ClientePF clientePF = Context.ClientesPF.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Motoristas).Include(c => c.Alugueis).Include(c => c.Solicitacoes).FirstOrDefault();
+                return clientePF;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public ClientePJ ObterClientePJPorId(long? id)
         {
-            return Context.ClientesPJ.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Alugueis).Include(c => c.Motoristas).Include(c => c.Solicitacoes).FirstOrDefault();
+            try
+            {
+                return Context.ClientesPJ.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Alugueis).Include(c => c.Motoristas).Include(c => c.Solicitacoes).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Modelo.Classes.Clientes.Cliente ObterClientePorCPFCNPJ(string cpfcnpj, TipoCliente tipo)
         {
-            switch (tipo)
+            try
             {
-                case TipoCliente.PF:
-                    return Context.ClientesPF.Where(c => c.CPF == cpfcnpj).FirstOrDefault();
-                case TipoCliente.PJ:
-                    return Context.ClientesPJ.Where(c => c.CNPJ == cpfcnpj).FirstOrDefault();
-                default:
-                    return null;
+                switch (tipo)
+                {
+                    case TipoCliente.PF:
+                        return Context.ClientesPF.Where(c => c.CPF == cpfcnpj).FirstOrDefault();
+                    case TipoCliente.PJ:
+                        return Context.ClientesPJ.Where(c => c.CNPJ == cpfcnpj).FirstOrDefault();
+                    default:
+                        return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
         public void RemoverClientePorId(long? id)
         {
-            UsuarioClienteDAL.RemoverUsuarioClientePorId(id.ToString());
-            Modelo.Classes.Clientes.Cliente cliente = Context.Clientes.Where(c => c.ClienteId == id).FirstOrDefault();
-            Context.Clientes.Remove(cliente);
-            Context.SaveChanges();
+            try
+            {
+                UsuarioClienteDAL.RemoverUsuarioClientePorId(id.ToString());
+                Modelo.Classes.Clientes.Cliente cliente = Context.Clientes.Where(c => c.ClienteId == id).FirstOrDefault();
+                Context.Clientes.Remove(cliente);
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void GerarUsuarioCliente(Modelo.Classes.Clientes.Cliente cliente)
         {
-            UsuarioClienteView clienteView = new UsuarioClienteView();
-            clienteView.ClienteId = cliente.ClienteId;
-            clienteView.Email = cliente.Email;
-            clienteView.Login = cliente.Email;
-            if (cliente is ClientePF)
+            try
             {
-                clienteView.Senha = (cliente as ClientePF).CPF.Substring(0, 8);
+                UsuarioClienteView clienteView = new UsuarioClienteView();
+                clienteView.ClienteId = cliente.ClienteId;
+                clienteView.Email = cliente.Email;
+                clienteView.Login = cliente.Email;
+                if (cliente is ClientePF)
+                {
+                    clienteView.Senha = (cliente as ClientePF).CPF.Substring(0, 8);
+                }
+                else
+                {
+                    clienteView.Senha = (cliente as ClientePJ).CNPJ.Substring(0, 8);
+                }
+                UsuarioClienteDAL.AdicionarUsuarioCliente(clienteView);
             }
-            else
+            catch (Exception ex)
             {
-                clienteView.Senha = (cliente as ClientePJ).CNPJ.Substring(0, 8);
+                throw ex;
             }
-            UsuarioClienteDAL.AdicionarUsuarioCliente(clienteView);
         }
     }
 }

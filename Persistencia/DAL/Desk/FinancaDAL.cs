@@ -12,33 +12,61 @@ namespace Persistencia.DAL.Desk
     {
         public IEnumerable<Financa> ObterFinancasOrdPorId()
         {
-            return Context.Financas.OrderBy(f => f.FinancaId);
+            try
+            {
+                return Context.Financas.OrderBy(f => f.FinancaId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Financa ObterFinancaPorId(long? id)
         {
-            return Context.Financas.Where(f => f.FinancaId == id).FirstOrDefault();
+            try
+            {
+                return Context.Financas.Where(f => f.FinancaId == id).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void GravarFinanca(Financa financa)
         {
-            if (financa.FinancaId == null)
+            try
             {
-                Context.Financas.Add(financa);
-            }
-            else
-            {
-                Context.Entry(financa).State = EntityState.Modified;
-            }
+                if (financa.FinancaId == null)
+                {
+                    Context.Financas.Add(financa);
+                }
+                else
+                {
+                    Context.Entry(financa).State = EntityState.Modified;
+                }
 
-            Context.SaveChanges();
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void RemoverFinancaPorId(long? id)
         {
-            Financa financa = ObterFinancaPorId(id);
-            Context.Financas.Remove(financa);
-            Context.SaveChanges();
+            try
+            {
+                Financa financa = ObterFinancaPorId(id);
+                Context.Financas.Remove(financa);
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

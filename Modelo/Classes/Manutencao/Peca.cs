@@ -1,6 +1,7 @@
 ﻿using Modelo.Classes.Manutencao.Associacao;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Modelo.Classes.Manutencao
         public string Descricao { get; set; }
         public int Quantidade { get; set; }
 
+        [Required]
         public long? FornecedorId { get; set; }
         public Fornecedor Fornecedor { get; set; }
 

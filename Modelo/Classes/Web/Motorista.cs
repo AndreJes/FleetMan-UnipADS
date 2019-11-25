@@ -14,6 +14,8 @@ namespace Modelo.Classes.Web
     public class Motorista
     {
         #region Props principais
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public long? MotoristaId { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set; }

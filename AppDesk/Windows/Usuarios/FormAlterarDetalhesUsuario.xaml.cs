@@ -174,11 +174,11 @@ namespace AppDesk.Windows.Usuarios
 
                 _funcionario.Endereco = endereco;
             }
-            catch(FieldException ex)
+            catch (FieldException ex)
             {
                 StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
@@ -247,13 +247,20 @@ namespace AppDesk.Windows.Usuarios
 
         private void RemoverFuncionarioUsuario()
         {
-            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Usuário") == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosUsuarioF.RemoverUsuarioFuncPorId(_usuario.FuncionarioId);
-                ServicoDados.ServicoDadosFuncionario.RemoverFuncionarioPorId(_funcionario.FuncionarioId);
-                MainWindowUpdater.UpdateDataGrids();
-                StandardMessageBoxes.MensagemSucesso("Usuário removido com sucesso!", "Remoção");
-                this.Close();
+                if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Usuário") == MessageBoxResult.Yes)
+                {
+                    ServicoDados.ServicoDadosUsuarioF.RemoverUsuarioFuncPorId(_usuario.FuncionarioId);
+                    ServicoDados.ServicoDadosFuncionario.RemoverFuncionarioPorId(_funcionario.FuncionarioId);
+                    MainWindowUpdater.UpdateDataGrids();
+                    StandardMessageBoxes.MensagemSucesso("Usuário removido com sucesso!", "Remoção");
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 

@@ -11,7 +11,8 @@ namespace Modelo.Classes.Usuarios
 {
     public class UsuarioMotorista : Usuario
     {
-        [Key, ForeignKey("Motorista")]
+        [Key]
+        public long? UsuarioId { get; set; }
         public long? MotoristaId { get; set; }
         public Motorista Motorista { get; set; }
     }

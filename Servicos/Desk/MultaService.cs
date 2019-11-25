@@ -14,22 +14,54 @@ namespace Servicos.Desk
 
         public IEnumerable<Multa> ObterMultasOrdPorId()
         {
-            return Context.ObterMultasOrdPorId();
+            try
+            {
+                return Context.ObterMultasOrdPorId();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Multa ObterMultaPorId(long? id)
         {
-            return Context.ObterMultaPorId(id);
+            try
+            {
+                return Context.ObterMultaPorId(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void GravarMulta(Multa multa)
         {
-            Context.GravarMulta(multa);
+            try
+            {
+                if(multa.DataDaMulta > DateTime.Now)
+                {
+                    throw new Exception("Data da multa inválida");
+                }
+                Context.GravarMulta(multa);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void RemoverMultaPorId(long? id)
         {
-            Context.RemoverMultaPorId(id);
+            try
+            {
+                Context.RemoverMultaPorId(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

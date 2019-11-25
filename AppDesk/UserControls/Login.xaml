@@ -30,7 +30,7 @@
             </Grid>
         </Border>
         <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="LoginBtn" Click="LoginBtn_Click" IsDefault="True" Style="{StaticResource MainConfirmButtonStyle}" Height="50" Width="200" FontSize="20">
+            <Button x:Name="LoginBtn" Click="LoginBtn_Click" IsDefault="True" Template="{StaticResource ConfirmBtnTemplate}" Height="50" Width="200" FontSize="20">
                 ACESSAR SISTEMA
             </Button>
         </Grid>

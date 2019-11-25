@@ -68,12 +68,22 @@ namespace AppDesk.Windows.Fornecedores
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Fornecedor") == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosFornecedor.RemoverFornecedorPorId(_fornecedor.FornecedorId);
-                StandardMessageBoxes.MensagemSucesso("Fornecedor removido com sucesso!", "Remoção");
-                Application.Current.Windows.OfType<FormFornecedoresList>().FirstOrDefault().FornecedoresDataGrid.ItemsSource = ServicoDados.ServicoDadosFornecedor.ObterFornecedoresOrdPorId();
-                this.Close();
+                if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Fornecedor") == MessageBoxResult.Yes)
+                {
+                    if (StandardMessageBoxes.MensagemAlerta("Remover fornecedor irá remover todas as peças relacionadas do sistema", "Deseja continuar?") == MessageBoxResult.Yes)
+                    {
+                        ServicoDados.ServicoDadosFornecedor.RemoverFornecedorPorId(_fornecedor.FornecedorId);
+                        StandardMessageBoxes.MensagemSucesso("Fornecedor removido com sucesso!", "Remoção");
+                        Application.Current.Windows.OfType<FormFornecedoresList>().FirstOrDefault().FornecedoresDataGrid.ItemsSource = ServicoDados.ServicoDadosFornecedor.ObterFornecedoresOrdPorId();
+                        this.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
@@ -89,11 +99,11 @@ namespace AppDesk.Windows.Fornecedores
                     Application.Current.Windows.OfType<FormFornecedoresList>().FirstOrDefault().FornecedoresDataGrid.ItemsSource = ServicoDados.ServicoDadosFornecedor.ObterFornecedoresOrdPorId();
                 }
             }
-            catch(FieldException ex)
+            catch (FieldException ex)
             {
                 StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }

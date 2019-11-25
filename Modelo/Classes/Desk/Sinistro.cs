@@ -21,9 +21,11 @@ namespace Modelo.Classes.Desk
         public EstadosDePagamento EstadoPagamento { get; set; }
         public GravidadesDeSinistro Gravidade { get; set; }
 
+        [Required]
         public long? VeiculoId { get; set; }
         public Veiculo Veiculo { get; set; }
 
+        [Required]
         public long? MotoristaId { get; set; }
         public Motorista Motorista { get; set; }
     }

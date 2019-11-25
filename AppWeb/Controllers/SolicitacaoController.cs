@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Modelo.Classes.Clientes;
 using Modelo.Classes.Web;
 using Modelo.Enums;
-using Persistencia.DAL.Cliente;
+using Persistencia.DAL.Clientes;
 using Persistencia.DAL.Usuarios.Web;
 using Servicos.Clientes;
 using Servicos.Web;

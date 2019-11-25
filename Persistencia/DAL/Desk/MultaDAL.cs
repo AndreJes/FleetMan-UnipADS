@@ -12,32 +12,60 @@ namespace Persistencia.DAL.Desk
     {
         public IEnumerable<Multa> ObterMultasOrdPorId()
         {
-            return Context.Multas.OrderBy(m => m.MultaId);
+            try
+            {
+                return Context.Multas.OrderBy(m => m.MultaId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Multa ObterMultaPorId(long? id)
         {
-            return Context.Multas.Where(m => m.MultaId == id).Include(m => m.Veiculo).Include(m => m.Motorista).First();
+            try
+            {
+                return Context.Multas.Where(m => m.MultaId == id).Include(m => m.Veiculo).Include(m => m.Motorista).First();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void GravarMulta(Multa multa)
         {
-            if(multa.MultaId == null)
+            try
             {
-                Context.Multas.Add(multa);
+                if (multa.MultaId == null)
+                {
+                    Context.Multas.Add(multa);
+                }
+                else
+                {
+                    Context.Entry(multa).State = EntityState.Modified;
+                }
+                Context.SaveChanges();
             }
-            else
+            catch (Exception ex)
             {
-                Context.Entry(multa).State = EntityState.Modified;
+                throw ex;
             }
-            Context.SaveChanges();
         }
 
         public void RemoverMultaPorId(long? id)
         {
-            Multa multa = ObterMultaPorId(id);
-            Context.Multas.Remove(multa);
-            Context.SaveChanges();
+            try
+            {
+                Multa multa = ObterMultaPorId(id);
+                Context.Multas.Remove(multa);
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

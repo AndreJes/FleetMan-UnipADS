@@ -1,6 +1,7 @@
 ﻿using Modelo.Classes.Auxiliares;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ namespace Modelo.Classes.Desk
     public class Funcionario
     {
         #region Props principais
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public long? FuncionarioId { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set; }

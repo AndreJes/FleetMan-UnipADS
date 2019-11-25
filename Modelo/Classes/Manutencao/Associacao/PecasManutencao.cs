@@ -12,9 +12,9 @@ namespace Modelo.Classes.Manutencao.Associacao
     {
         [Key, Column(Order = 1)]
         public long? PecaManutencaoId { get; set; }
-        [ForeignKey("Peca"), Column(Order = 2)]
+        [ForeignKey("Peca"), Column(Order = 2), Required]
         public long? PecaId { get; set; }
-        [ForeignKey("Manutencao"), Column(Order = 3)]
+        [ForeignKey("Manutencao"), Column(Order = 3), Required]
         public long? ManutencaoId { get; set; }
 
         public virtual Peca Peca { get; set; }

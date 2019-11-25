@@ -1,6 +1,8 @@
 ﻿using Modelo.Classes.Auxiliares;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +11,8 @@ namespace Modelo.Classes.Manutencao
 {
     public class Fornecedor
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public long? FornecedorId { get; set; }
         public string CNPJ { get; set; }
         public string Razao_Social { get; set; }

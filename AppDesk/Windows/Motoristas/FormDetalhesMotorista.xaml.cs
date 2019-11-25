@@ -52,12 +52,22 @@ namespace AppDesk.Windows.Motoristas
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Motorista") == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosMotorista.RemoverMotoristaPorId(_motorista.MotoristaId);
-                StandardMessageBoxes.MensagemSucesso("Motorista removido com sucesso!", "Remoção");
-                MainWindowUpdater.UpdateDataGrids();
-                this.Close();
+                if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Motorista") == MessageBoxResult.Yes)
+                {
+                    if (StandardMessageBoxes.MensagemAlerta("Ação também ira remover todos os dados relativos ao motorista (multas, sinistros, abastecimentos, etc.)", "Deseja continuar?") == MessageBoxResult.Yes)
+                    {
+                        ServicoDados.ServicoDadosMotorista.RemoverMotoristaPorId(_motorista.MotoristaId);
+                        StandardMessageBoxes.MensagemSucesso("Motorista removido com sucesso!", "Remoção");
+                        MainWindowUpdater.UpdateDataGrids();
+                        this.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 

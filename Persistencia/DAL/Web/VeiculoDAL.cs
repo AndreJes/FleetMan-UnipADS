@@ -12,38 +12,73 @@ namespace Persistencia.DAL.Web
     {
         public IEnumerable<Veiculo> ObterVeiculosOrdPorId()
         {
-            return Context.Veiculos.OrderBy(v => v.VeiculoId).ToList();
+            try
+            {
+                return Context.Veiculos.OrderBy(v => v.VeiculoId).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Veiculo ObterVeiculoPorId(long? id)
         {
-            return Context.Veiculos.Where(v => v.VeiculoId == id).Include(v => v.Multas.Select(m => m.Motorista)).Include(v => v.Sinistros.Select(s => s.Motorista)).Include(v => v.Garagem).Include(v => v.Cliente).Include(v => v.Seguro).Include(v => v.Manutencoes).First();
+            try
+            {
+                return Context.Veiculos.Where(v => v.VeiculoId == id).Include(v => v.Multas.Select(m => m.Motorista)).Include(v => v.Sinistros.Select(s => s.Motorista)).Include(v => v.Garagem).Include(v => v.Cliente).Include(v => v.Seguro).Include(v => v.Manutencoes).First();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Veiculo ObterVeiculoPorPlaca(string placa)
         {
-            Veiculo veiculo = ObterVeiculosOrdPorId().Where(v => v.Placa == placa).FirstOrDefault();
-            return veiculo;
+            try
+            {
+                Veiculo veiculo = ObterVeiculosOrdPorId().Where(v => v.Placa == placa).FirstOrDefault();
+                return veiculo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void GravarVeiculo(Veiculo veiculo)
         {
-            if(veiculo.VeiculoId == null)
+            try
             {
-                Context.Veiculos.Add(veiculo);
+                if (veiculo.VeiculoId == null)
+                {
+                    Context.Veiculos.Add(veiculo);
+                }
+                else
+                {
+                    Context.Entry(veiculo).State = EntityState.Modified;
+                }
+                Context.SaveChanges();
             }
-            else
+            catch (Exception ex)
             {
-                Context.Entry(veiculo).State = EntityState.Modified;
+                throw ex;
             }
-            Context.SaveChanges();
         }
 
         public void RemoverVeiculoPorId(long? id)
         {
-            Veiculo veiculo = ObterVeiculoPorId(id);
-            Context.Veiculos.Remove(veiculo);
-            Context.SaveChanges();
+            try
+            {
+                Veiculo veiculo = ObterVeiculoPorId(id);
+                Context.Veiculos.Remove(veiculo);
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

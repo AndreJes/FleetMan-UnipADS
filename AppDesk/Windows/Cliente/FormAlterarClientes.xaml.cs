@@ -78,17 +78,24 @@ namespace AppDesk.Windows.Clientes
 
         private void AlterarBtn_Click(object sender, RoutedEventArgs e)
         {
-            Cliente clienteAlterado = AlterarCliente();
-            if (clienteAlterado != null)
+            try
             {
-                ServicoDados.ServicoDadosClientes.GravarCliente(clienteAlterado);
-                StandardMessageBoxes.MensagemSucesso("Cliente", "Alterado");
-                MainWindowUpdater.UpdateDataGrids();
-                this.Close();
+                Cliente clienteAlterado = AlterarCliente();
+                if (clienteAlterado != null)
+                {
+                    ServicoDados.ServicoDadosClientes.GravarCliente(clienteAlterado);
+                    StandardMessageBoxes.MensagemSucesso("Cliente", "Alterado");
+                    MainWindowUpdater.UpdateDataGrids();
+                    this.Close();
+                }
+                else
+                {
+                    StandardMessageBoxes.MensagemDeErro("Falha ao alterar cliente");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                StandardMessageBoxes.MensagemDeErro("Falha ao alterar cliente");
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
@@ -98,21 +105,24 @@ namespace AppDesk.Windows.Clientes
             {
                 if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Cliente") == MessageBoxResult.Yes)
                 {
-                    switch (tipo)
+                    if (StandardMessageBoxes.MensagemAlerta("Remover cliente irá remover todos os dados relacionados (Veiculos, Motoristas, Alugueis, etc.)", "Deseja continuar?") == MessageBoxResult.Yes)
                     {
-                        case TipoCliente.PF:
-                            ServicoDados.ServicoDadosClientes.RemoverClientePorId(_clientePF.ClienteId);
-                            break;
-                        case TipoCliente.PJ:
-                            ServicoDados.ServicoDadosClientes.RemoverClientePorId(_clientePJ.ClienteId);
-                            break;
+                        switch (tipo)
+                        {
+                            case TipoCliente.PF:
+                                ServicoDados.ServicoDadosClientes.RemoverClientePorId(_clientePF.ClienteId);
+                                break;
+                            case TipoCliente.PJ:
+                                ServicoDados.ServicoDadosClientes.RemoverClientePorId(_clientePJ.ClienteId);
+                                break;
+                        }
                     }
                 }
                 StandardMessageBoxes.MensagemSucesso("Cliente removido com sucesso!", "Remoção");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }

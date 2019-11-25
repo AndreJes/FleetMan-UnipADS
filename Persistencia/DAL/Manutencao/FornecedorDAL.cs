@@ -12,37 +12,72 @@ namespace Persistencia.DAL.Manutencao
     {
         public IEnumerable<Fornecedor> ObterFornecedoresOrdPorId()
         {
-            return Context.Fornecedores.OrderBy(f => f.FornecedorId).ToList();
+            try
+            {
+                return Context.Fornecedores.OrderBy(f => f.FornecedorId).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Fornecedor ObterFornecedorPorId(long? id)
         {
-            return Context.Fornecedores.Where(f => f.FornecedorId == id).Include(f => f.Pecas).FirstOrDefault();
+            try
+            {
+                return Context.Fornecedores.Where(f => f.FornecedorId == id).Include(f => f.Pecas).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void GravarFornecedor(Fornecedor fornecedor)
         {
-            if(fornecedor.FornecedorId == null)
+            try
             {
-                Context.Fornecedores.Add(fornecedor);
+                if (fornecedor.FornecedorId == null)
+                {
+                    Context.Fornecedores.Add(fornecedor);
+                }
+                else
+                {
+                    Context.Entry(fornecedor).State = EntityState.Modified;
+                }
+                Context.SaveChanges();
             }
-            else
+            catch (Exception ex)
             {
-                Context.Entry(fornecedor).State = EntityState.Modified;
+                throw ex;
             }
-            Context.SaveChanges();
         }
 
         public void RemoverFornecedorPorId(long? id)
         {
-            Fornecedor fornecedor = ObterFornecedorPorId(id);
-            Context.Fornecedores.Remove(fornecedor);
-            Context.SaveChanges();
+            try
+            {
+                Fornecedor fornecedor = ObterFornecedorPorId(id);
+                Context.Fornecedores.Remove(fornecedor);
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Fornecedor ObterFornecedorPorCNPJ(string cnpj)
         {
-            return Context.Fornecedores.Where(f => f.CNPJ == cnpj).FirstOrDefault();
+            try
+            {
+                return Context.Fornecedores.Where(f => f.CNPJ == cnpj).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

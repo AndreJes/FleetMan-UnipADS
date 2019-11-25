@@ -107,12 +107,18 @@ namespace AppDesk.Windows.Locacoes
 
         private void CancelarLocacaoBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Cancelar Locação?" + Environment.NewLine + "Atenção está ação não poderá ser desfeita!", "Cancelar locação", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.Yes)
+            try
             {
-                _aluguel.EstadoDoAluguel = EstadosAluguel.CANCELADO;
-                ServicoDados.ServicoDadosAluguel.GravarAluguel(_aluguel);
-                MessageBox.Show("Locação cancelado com sucesso!");
+                if (StandardMessageBoxes.MensagemAlerta("Cancelar locação?", "Atenção está ação não podera ser desfeita") == MessageBoxResult.Yes)
+                {
+                    _aluguel.EstadoDoAluguel = EstadosAluguel.CANCELADO;
+                    ServicoDados.ServicoDadosAluguel.GravarAluguel(_aluguel);
+                    MessageBox.Show("Locação cancelada com sucesso!");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -130,19 +136,26 @@ namespace AppDesk.Windows.Locacoes
 
         private void SalvarPagamentoBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (AguardandoPagamentoRadioBtn.IsChecked == true)
+            try
             {
-                _aluguel.EstadoDoPagamento = EstadosDePagamento.AGUARDANDO;
+                if (AguardandoPagamentoRadioBtn.IsChecked == true)
+                {
+                    _aluguel.EstadoDoPagamento = EstadosDePagamento.AGUARDANDO;
+                }
+                else if (PagoRadioBtn.IsChecked == true)
+                {
+                    _aluguel.EstadoDoPagamento = EstadosDePagamento.PAGO;
+                }
+                else if (VencidoRadioBtn.IsChecked == true)
+                {
+                    _aluguel.EstadoDoPagamento = EstadosDePagamento.VENCIDO;
+                }
+                ServicoDados.ServicoDadosAluguel.GravarAluguel(_aluguel);
             }
-            else if (PagoRadioBtn.IsChecked == true)
+            catch (Exception ex)
             {
-                _aluguel.EstadoDoPagamento = EstadosDePagamento.PAGO;
+                throw ex;
             }
-            else if (VencidoRadioBtn.IsChecked == true)
-            {
-                _aluguel.EstadoDoPagamento = EstadosDePagamento.VENCIDO;
-            }
-            ServicoDados.ServicoDadosAluguel.GravarAluguel(_aluguel);
         }
 
         private void PagamentoCheckChanged_Event(object sender, RoutedEventArgs e)

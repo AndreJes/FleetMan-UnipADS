@@ -103,7 +103,7 @@ namespace AppDesk.Windows.Manutencoes
             {
                 StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
@@ -111,12 +111,19 @@ namespace AppDesk.Windows.Manutencoes
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Manutenção") == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosManutencao.RemoverManutencaoPorId(_manutencao.ManutencaoId);
-                StandardMessageBoxes.MensagemSucesso("Manutenção removida com sucesso!", "Remoção");
-                MainWindowUpdater.UpdateDataGrids();
-                this.Close();
+                if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Manutenção") == MessageBoxResult.Yes)
+                {
+                    ServicoDados.ServicoDadosManutencao.RemoverManutencaoPorId(_manutencao.ManutencaoId);
+                    StandardMessageBoxes.MensagemSucesso("Manutenção removida com sucesso!", "Remoção");
+                    MainWindowUpdater.UpdateDataGrids();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

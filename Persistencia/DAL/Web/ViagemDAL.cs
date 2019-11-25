@@ -12,32 +12,60 @@ namespace Persistencia.DAL.Web
     {
         public IEnumerable<Viagem> ObterViagensOrdPorId()
         {
-            return Context.Viagens.Include(v => v.Veiculo).Include(v => v.Motorista).OrderBy(v => v.ViagemId).ToList();
+            try
+            {
+                return Context.Viagens.Include(v => v.Veiculo).Include(v => v.Motorista).OrderBy(v => v.ViagemId).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Viagem ObterViagemPorId(long? id)
         {
-            return Context.Viagens.Where(v => v.ViagemId == id).Include(v => v.Veiculo).Include(v => v.Motorista).Include(v => v.GaragemOrigem).Include(v => v.GaragemRetorno).FirstOrDefault();
+            try
+            {
+                return Context.Viagens.Where(v => v.ViagemId == id).Include(v => v.Veiculo).Include(v => v.Motorista).Include(v => v.GaragemOrigem).Include(v => v.GaragemRetorno).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void GravarViagem(Viagem viagem)
         {
-            if(viagem.ViagemId == null)
+            try
             {
-                Context.Viagens.Add(viagem);
+                if (viagem.ViagemId == null)
+                {
+                    Context.Viagens.Add(viagem);
+                }
+                else
+                {
+                    Context.Entry(viagem).State = EntityState.Modified;
+                }
+                Context.SaveChanges();
             }
-            else
+            catch (Exception ex)
             {
-                Context.Entry(viagem).State = EntityState.Modified;
+                throw ex;
             }
-            Context.SaveChanges();
         }
 
         public void RemoverViagemPorId(long? id)
         {
-            Viagem viagem = ObterViagemPorId(id);
-            Context.Viagens.Remove(viagem);
-            Context.SaveChanges();
+            try
+            {
+                Viagem viagem = ObterViagemPorId(id);
+                Context.Viagens.Remove(viagem);
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

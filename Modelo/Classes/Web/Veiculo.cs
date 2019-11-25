@@ -13,7 +13,11 @@ namespace Modelo.Classes.Web
     public class Veiculo
     {
         #region Props Principais
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public long? VeiculoId { get; set; }
+
         public string Nome { get; set; }
         public string Placa { get; set; }
         public int Ano { get; set; }

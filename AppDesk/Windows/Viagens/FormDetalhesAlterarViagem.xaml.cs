@@ -50,25 +50,39 @@ namespace AppDesk.Windows.Viagens
 
         private void CancelarViagemBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (StandardMessageBoxes.MensagemCancelamento("Viagem") == MessageBoxResult.Yes)
+            try
             {
-                _viagem.EstadoDaViagem = Modelo.Enums.EstadosDeViagem.CANCELADA;
-                _viagem.DataChegada = DateTime.Now;
-                EstadoViagemTextBox.Text = _viagem.EstadoDaViagem.ToString("G").Replace('_', ' ');
-                ServicoDados.ServicoDadosViagem.GravarViagem(_viagem);
-                StandardMessageBoxes.MensagemSucesso("Viagem cancelada com sucesso!", "Cancelamento");
-                MainWindowUpdater.UpdateDataGrids();
+                if (StandardMessageBoxes.MensagemCancelamento("Viagem") == MessageBoxResult.Yes)
+                {
+                    _viagem.EstadoDaViagem = Modelo.Enums.EstadosDeViagem.CANCELADA;
+                    _viagem.DataChegada = DateTime.Now;
+                    EstadoViagemTextBox.Text = _viagem.EstadoDaViagem.ToString("G").Replace('_', ' ');
+                    ServicoDados.ServicoDadosViagem.GravarViagem(_viagem);
+                    StandardMessageBoxes.MensagemSucesso("Viagem cancelada com sucesso!", "Cancelamento");
+                    MainWindowUpdater.UpdateDataGrids();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Viagem") == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosViagem.RemoverViagemPorId(_viagem.ViagemId);
-                StandardMessageBoxes.MensagemSucesso("Viagem removida com sucesso!", "Remoção");
-                MainWindowUpdater.UpdateDataGrids();
-                this.Close();
+                if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Viagem") == MessageBoxResult.Yes)
+                {
+                    ServicoDados.ServicoDadosViagem.RemoverViagemPorId(_viagem.ViagemId);
+                    StandardMessageBoxes.MensagemSucesso("Viagem removida com sucesso!", "Remoção");
+                    MainWindowUpdater.UpdateDataGrids();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 

@@ -14,22 +14,54 @@ namespace Servicos.Desk
 
         public IEnumerable<Sinistro> ObterSinistrosOrdPorId()
         {
-            return Context.ObterSinistrosOrdPorId();
+            try
+            {
+                return Context.ObterSinistrosOrdPorId();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Sinistro ObterSinistroPorId(long? id)
         {
-            return Context.ObterSinistroPorId(id);
+            try
+            {
+                return Context.ObterSinistroPorId(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void GravarSinistro(Sinistro sinistro)
         {
-            Context.GravarSinistro(sinistro);
+            try
+            {
+                if (sinistro.DataSinistro > DateTime.Now)
+                {
+                    throw new Exception("Data do sinistro inválida");
+                }
+                Context.GravarSinistro(sinistro);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void RemoverSinistroPorId(long? id)
         {
-            Context.RemoverSinistroPorId(id);
+            try
+            {
+                Context.RemoverSinistroPorId(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

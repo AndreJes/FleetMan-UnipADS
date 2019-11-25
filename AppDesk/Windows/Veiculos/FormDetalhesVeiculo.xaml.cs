@@ -1,6 +1,7 @@
 ﻿using AppDesk.Interfaces;
 using AppDesk.Serviço;
 using AppDesk.Tools;
+using AppDesk.Windows.Abastecimentos;
 using Modelo.Classes.Auxiliares;
 using Modelo.Classes.Clientes;
 using Modelo.Classes.Desk;
@@ -77,28 +78,28 @@ namespace AppDesk.Windows.Veiculos
         private void AlterarDados()
         {
             try
-            { 
-            _veiculo.Placa = PlacaUC.Text;
-            _veiculo.CodRenavam = RenavamUC.Text;
-            _veiculo.Marca = MarcaUC.Text;
-            _veiculo.Modelo = ModeloUC.Text;
-            _veiculo.Ano = AnoUC.Value;
-            _veiculo.Cor = CorUC.Text;
-            _veiculo.Adaptado = ConversorBoolNullable.ConversorBooleano(AdaptadoCheckBox.IsChecked);
-            if(GaragemUC.Garagem != null)
             {
-                _veiculo.GaragemId = GaragemUC.Garagem.GaragemId;
+                _veiculo.Placa = PlacaUC.Text;
+                _veiculo.CodRenavam = RenavamUC.Text;
+                _veiculo.Marca = MarcaUC.Text;
+                _veiculo.Modelo = ModeloUC.Text;
+                _veiculo.Ano = AnoUC.Value;
+                _veiculo.Cor = CorUC.Text;
+                _veiculo.Adaptado = ConversorBoolNullable.ConversorBooleano(AdaptadoCheckBox.IsChecked);
+                if (GaragemUC.Garagem != null)
+                {
+                    _veiculo.GaragemId = GaragemUC.Garagem.GaragemId;
+                }
+                if (SeguradorasComboBox.SelectedItem != null)
+                {
+                    _veiculo.SeguroId = (SeguradorasComboBox.SelectedItem as Seguro).SeguroId;
+                }
             }
-            if(SeguradorasComboBox.SelectedItem != null)
-            {
-                _veiculo.SeguroId = (SeguradorasComboBox.SelectedItem as Seguro).SeguroId;
-            }
-            }
-            catch(FieldException ex)
+            catch (FieldException ex)
             {
                 StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
@@ -116,12 +117,22 @@ namespace AppDesk.Windows.Veiculos
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("veiculo") == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosVeiculos.RemoverVeiculoPorId(_veiculo.VeiculoId);
-                StandardMessageBoxes.MensagemSucesso("Veiculo removido com sucesso!", "Remoção");
-                MainWindowUpdater.UpdateDataGrids();
-                this.Close();
+                if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("veiculo") == MessageBoxResult.Yes)
+                {
+                    if (StandardMessageBoxes.MensagemAlerta("Ação também ira remover todos os dados relativos ao veiculo (multas, sinistros, abastecimentos, etc.)", "Deseja continuar?") == MessageBoxResult.Yes)
+                    {
+                        ServicoDados.ServicoDadosVeiculos.RemoverVeiculoPorId(_veiculo.VeiculoId);
+                        StandardMessageBoxes.MensagemSucesso("Veiculo removido com sucesso!", "Remoção");
+                        MainWindowUpdater.UpdateDataGrids();
+                        this.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 
@@ -142,7 +153,9 @@ namespace AppDesk.Windows.Veiculos
 
         private void RegistrarAbastecimentoBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            FormRegistrarAbastecimento formRegistrarAbastecimento = new FormRegistrarAbastecimento();
+            formRegistrarAbastecimento.SeletorVeiculo.Veiculo = _veiculo;
+            formRegistrarAbastecimento.Show();
         }
     }
 }

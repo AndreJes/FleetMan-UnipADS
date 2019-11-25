@@ -69,5 +69,10 @@ namespace AppDesk.Tools
         {
             return MessageBox.Show("Deseja cancelar: " + item + "?", "Cancelar " + item, MessageBoxButton.YesNo, MessageBoxImage.Question);
         }
+
+        public static MessageBoxResult MensagemAlerta(string mensagem, string acao)
+        {
+            return MessageBox.Show(mensagem + Environment.NewLine + acao, "Atenção", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+        }
     }
 }

@@ -113,9 +113,6 @@ namespace AppDesk.Windows.Veiculos
                     throw new FieldException("Seguradora");
                 }
 
-                veiculo.ClienteId = SeletorClienteUC.Cliente.ClienteId;
-
-
                 if (ParaLocacaoCheckBox.IsChecked == true)
                 {
                     veiculo.ParaLocacao = true;

@@ -26,9 +26,11 @@ namespace Modelo.Classes.Manutencao
         public EstadoAbastecimento Estado { get; set; }
         public EstadosTanqueCombustivel? NovoEstadoTanque { get; set; }
 
+        [Required]
         public long? MotoristaId { get; set; }
         public Motorista Motorista { get; set; }
 
+        [Required]
         public long? VeiculoId { get; set; }
         public Veiculo Veiculo { get; set; }
 

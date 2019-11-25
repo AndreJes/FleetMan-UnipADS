@@ -14,22 +14,54 @@ namespace Servicos.Desk
 
         public IEnumerable<Financa> ObterFinancasOrdPorId()
         {
-            return Context.ObterFinancasOrdPorId();
+            try
+            {
+                return Context.ObterFinancasOrdPorId();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Financa ObterFinancaPorId(long? id)
         {
-            return Context.ObterFinancaPorId(id);
+            try
+            {
+                return Context.ObterFinancaPorId(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void GravarFinanca(Financa financa)
         {
-            Context.GravarFinanca(financa);
+            try
+            {
+                if(financa.DataPagamento > DateTime.Now)
+                {
+                    throw new Exception("Data de pagamento inválida");
+                }
+                Context.GravarFinanca(financa);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void RemoverFinancaPorId(long? id)
         {
-            Context.RemoverFinancaPorId(id);
+            try
+            {
+                Context.RemoverFinancaPorId(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

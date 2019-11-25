@@ -121,6 +121,18 @@
     <Compile Include="Migrations\Entity\201911211751218_Avisos-Remove.Designer.cs">
       <DependentUpon>201911211751218_Avisos-Remove.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Entity\201911242232411_Teste.cs" />
+    <Compile Include="Migrations\Entity\201911242232411_Teste.Designer.cs">
+      <DependentUpon>201911242232411_Teste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Entity\201911250106121_Cascade-Add.cs" />
+    <Compile Include="Migrations\Entity\201911250106121_Cascade-Add.Designer.cs">
+      <DependentUpon>201911250106121_Cascade-Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Entity\201911250130587_Cascade-Correction.cs" />
+    <Compile Include="Migrations\Entity\201911250130587_Cascade-Correction.Designer.cs">
+      <DependentUpon>201911250130587_Cascade-Correction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Entity\Configuration.cs" />
     <Compile Include="Migrations\Identity\201911051231263_Initial.cs" />
     <Compile Include="Migrations\Identity\201911051231263_Initial.Designer.cs">
@@ -154,6 +166,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Entity\201911211751218_Avisos-Remove.resx">
       <DependentUpon>201911211751218_Avisos-Remove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Entity\201911242232411_Teste.resx">
+      <DependentUpon>201911242232411_Teste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Entity\201911250106121_Cascade-Add.resx">
+      <DependentUpon>201911250106121_Cascade-Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Entity\201911250130587_Cascade-Correction.resx">
+      <DependentUpon>201911250130587_Cascade-Correction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201911051231263_Initial.resx">
       <DependentUpon>201911051231263_Initial.cs</DependentUpon>

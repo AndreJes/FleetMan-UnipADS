@@ -4,6 +4,7 @@ using Modelo.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace Modelo.Classes.Clientes
     public abstract class Cliente
     {
         #region Props Principais
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public long? ClienteId { get; set; }
         public string Telefone { get; set; }
         public Endereco Endereco { get; set; }

@@ -14,22 +14,50 @@ namespace Servicos.Manutencao
 
         public IEnumerable<Peca> ObterPecasOrdPorId()
         {
-            return Context.ObterPecasOrdPorId();
+            try
+            {
+                return Context.ObterPecasOrdPorId();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Peca ObterPecaPorId(long? id)
         {
-            return Context.ObterPecaPorId(id);
+            try
+            {
+                return Context.ObterPecaPorId(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void GravarPeca(Peca peca)
         {
-            Context.GravarPeca(peca);
+            try
+            {
+                Context.GravarPeca(peca);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void RemoverPecaPorId(long? id)
         {
-            Context.RemoverPecaPorId(id);
+            try
+            {
+                Context.RemoverPecaPorId(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

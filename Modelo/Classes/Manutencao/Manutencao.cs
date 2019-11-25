@@ -30,6 +30,7 @@ namespace Modelo.Classes.Manutencao
 
         public virtual ObservableCollection<PecasManutencao> PecasUtilizadas { get; set; }
 
+        [Required]
         public long? VeiculoId { get; set; }
         public Veiculo Veiculo { get; set; }
     }

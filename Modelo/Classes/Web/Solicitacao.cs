@@ -11,6 +11,7 @@ namespace Modelo.Classes.Web
 {
     public class Solicitacao
     {
+        [Key]
         public long? SolicitacaoId { get; set; }
         public string ItemSerializado { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy HH:mm:ss}")]
@@ -58,7 +59,7 @@ namespace Modelo.Classes.Web
         }
         #endregion
 
-        [ForeignKey("Cliente")]
+        [Required]
         public long? ClienteId { get; set; }
         public Clientes.Cliente Cliente { get; set; }
     }

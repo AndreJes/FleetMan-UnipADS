@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Persistencia.DAL.Cliente;
+using Persistencia.DAL.Clientes;
 using Servicos.Clientes;
 
 namespace Servicos.Web

@@ -2,6 +2,8 @@
 using Modelo.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +12,10 @@ namespace Modelo.Classes.Desk
 {
     public class Seguro
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, Column(Order = 0)]
         public long? SeguroId { get; set; }
+
         public string Nome { get; set; }
         public string CNPJ { get; set; }
         public string Telefone { get; set; }

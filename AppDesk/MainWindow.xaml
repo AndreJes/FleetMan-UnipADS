@@ -20,7 +20,7 @@
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="FontFamily" Value="Arial Black" />
             <Setter Property="Background" Value="Gray"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
@@ -32,8 +32,6 @@
             <uc:Login x:Name="LoginField"></uc:Login>
         </Grid>
         <!--#endregion-->
-
-        
         
         <!--#region Main Content-->
         <Border Visibility="Visible" x:Name="MainContentBorder" Margin="10" BorderBrush="Gray" BorderThickness="3">

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo.Classes.Web;
+using Modelo.Enums;
 using Persistencia.DAL.Web;
 
 namespace Servicos.Web
@@ -14,22 +15,55 @@ namespace Servicos.Web
 
         public IEnumerable<Viagem> ObterViagensOrdPorId()
         {
-            return Context.ObterViagensOrdPorId();
+            try
+            {
+                return Context.ObterViagensOrdPorId();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public Viagem ObterViagemPorId(long? id)
         {
-            return Context.ObterViagemPorId(id);
+            try
+            {
+                return Context.ObterViagemPorId(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void GravarViagem(Viagem viagem)
         {
-            Context.GravarViagem(viagem);
+            try
+            {
+                Context.GravarViagem(viagem);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void RemoverViagemPorId(long? id)
         {
-            Context.RemoverViagemPorId(id);
+            try
+            {
+                Viagem viagem = ObterViagemPorId(id);
+                if(viagem.EstadoDaViagem == EstadosDeViagem.EM_ANDAMENTO)
+                {
+                    throw new Exception("Não é possivel remover viagens em andamento");
+                }
+                Context.RemoverViagemPorId(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

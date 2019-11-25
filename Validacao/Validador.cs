@@ -173,7 +173,7 @@ namespace Validacao
                                 return false;
                             }
                         }
-                        foreach (char c in placa.Substring(3, placa.IndexOf(placa.Last())))
+                        foreach (char c in placa.Substring(3))
                         {
                             if (!char.IsDigit(c))
                             {

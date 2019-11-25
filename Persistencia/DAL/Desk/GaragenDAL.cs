@@ -12,33 +12,61 @@ namespace Persistencia.DAL.Desk
     {
         public IEnumerable<Garagem> ObterGaragensOrdPorId()
         {
-            return Context.Garagens.Include(g => g.Veiculos).OrderBy(g => g.GaragemId);
+            try
+            {
+                return Context.Garagens.Include(g => g.Veiculos).OrderBy(g => g.GaragemId);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void GravarGaragem(Garagem garagem)
         {
-            if(garagem.GaragemId == null)
+            try
             {
-                Context.Garagens.Add(garagem);
+                if (garagem.GaragemId == null)
+                {
+                    Context.Garagens.Add(garagem);
+                }
+                else
+                {
+                    Context.Entry(garagem).State = EntityState.Modified;
+                }
+                Context.SaveChanges();
             }
-            else
+            catch (Exception ex)
             {
-                Context.Entry(garagem).State = EntityState.Modified;
+                throw ex;
             }
-            Context.SaveChanges();
         }
 
         public Garagem ObterGaragemPorId(long? id)
         {
-            Garagem garagem = Context.Garagens.Where(g => g.GaragemId == id).Include(g => g.Veiculos).First();
-            return garagem;
+            try
+            {
+                Garagem garagem = Context.Garagens.Where(g => g.GaragemId == id).Include(g => g.Veiculos).First();
+                return garagem;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void RemoverGaragemPorId(long? id)
         {
-            Garagem garagem = ObterGaragemPorId(id);
-            Context.Garagens.Remove(garagem);
-            Context.SaveChanges();
+            try
+            {
+                Garagem garagem = ObterGaragemPorId(id);
+                Context.Garagens.Remove(garagem);
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

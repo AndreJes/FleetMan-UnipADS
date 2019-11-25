@@ -65,10 +65,12 @@ namespace Modelo.Classes.Web
         }
         #endregion
 
+        [Required]
         public long? VeiculoId { get; set; }
         [JsonIgnore]
         public Veiculo Veiculo { get; set; }
 
+        [Required]
         public long? ClienteId { get; set; }
         [JsonIgnore]
         public Cliente Cliente { get; set; }
