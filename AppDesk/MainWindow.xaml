@@ -7,7 +7,7 @@
         xmlns:lc="clr-namespace:AppDesk.Serviço"
         xmlns:local="clr-namespace:AppDesk"
         mc:Ignorable="d"
-        Title="FleetMan" Style="{StaticResource WindowBackgroundColorSetter}" Height="640" Width="1080" MaxHeight="640" MinHeight="640" MaxWidth="1080" MinWidth="1080">
+        Title="FleetMan" Style="{StaticResource WindowBackgroundColorSetter}" WindowStartupLocation="CenterScreen" Height="640" Width="1080" MaxHeight="640" MinHeight="640" MaxWidth="1080" MinWidth="1080">
     <Window.Resources>
         <Style x:Key="MainMenuBtnStyle" TargetType="Button">
             <Setter Property="Height" Value="120"/>
@@ -364,7 +364,7 @@
                 <!--#region Todos os grids de listas-->
 
                 <!--#region Vehicles List/Actions Grid Menu-->
-                <Grid x:Name="VehicleGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="VehicleGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -487,7 +487,7 @@
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
-                                <TextBox x:Name="ClienteSearchTextBox">
+                                <TextBox x:Name="ClienteSearchTextBox" TextChanged="ClienteSearchTextBox_TextChanged">
 
                                 </TextBox>
                             </StackPanel>
@@ -604,7 +604,7 @@
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar Multa:
                                 </Label>
-                                <TextBox x:Name="MultaSearchTextBox">
+                                <TextBox x:Name="MultaSearchTextBox" TextChanged="MultaSearchTextBox_TextChanged">
 
                                 </TextBox>
                             </StackPanel>
@@ -613,7 +613,7 @@
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar Sinistro:
                                 </Label>
-                                <TextBox x:Name="SinisSearchTextBox">
+                                <TextBox x:Name="SinisSearchTextBox" TextChanged="SinisSearchTextBox_TextChanged">
 
                                 </TextBox>
                             </StackPanel>
@@ -733,7 +733,7 @@
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
-                                <TextBox x:Name="MotoristasSearchTextBox">
+                                <TextBox x:Name="MotoristasSearchTextBox" TextChanged="MotoristasSearchTextBox_TextChanged">
 
                                 </TextBox>
                             </StackPanel>
@@ -810,7 +810,7 @@
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
-                                <TextBox x:Name="GaragensSearchTextBox">
+                                <TextBox x:Name="GaragensSearchTextBox" TextChanged="GaragensSearchTextBox_TextChanged">
 
                                 </TextBox>
                             </StackPanel>
@@ -884,16 +884,7 @@
                                 Registrar Aluguel
                             </Button>
                             <!--#endregion-->
-                            <!--#region Pesquisa-->
-                            <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10 5">
-                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                    Pesquisar:
-                                </Label>
-                                <TextBox x:Name="LocacoesSearchTextBox">
 
-                                </TextBox>
-                            </StackPanel>
-                            <!--#endregion-->
                             <!--#region Separators-->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
@@ -961,18 +952,7 @@
                                 Registrar Viagem
                             </Button>
                             <!--#endregion-->
-
-                            <!--#region Pesquisa-->
-                            <StackPanel Grid.Column="2" Grid.ColumnSpan="2" Orientation="Vertical" Margin="10 5">
-                                <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
-                                    Pesquisar:
-                                </Label>
-                                <TextBox x:Name="ViagensSearchTextBox">
-
-                                </TextBox>
-                            </StackPanel>
-                            <!--#endregion-->
-
+                            
                             <!--#region Separators-->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
@@ -1242,7 +1222,7 @@
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
-                                <TextBox x:Name="FinancasSearchTextBox">
+                                <TextBox x:Name="FinancasSearchTextBox" TextChanged="FinancasSearchTextBox_TextChanged">
 
                                 </TextBox>
                             </StackPanel>
@@ -1327,7 +1307,7 @@
                 <!--#endregion-->
 
                 <!--#region Funcionarios List/Actions Grid Menu-->
-                <Grid x:Name="FuncionariosGrid" Visibility="Collapsed" Grid.Row="1">
+                <Grid x:Name="FuncionariosGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -1361,7 +1341,7 @@
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
-                                <TextBox x:Name="FuncionariosSearchTextBox">
+                                <TextBox x:Name="FuncionariosSearchTextBox" TextChanged="FuncionariosSearchTextBox_TextChanged">
 
                                 </TextBox>
                             </StackPanel>
@@ -1624,47 +1604,7 @@
                                 Registrar Manutenção
                             </Button>
                             <!--#endregion-->
-                            <!--#region Seleção de Tipo-->
-                            <GroupBox Grid.Column="2" Header="Tipo:" Margin="2">
-                                <Grid Background="Transparent">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <CheckBox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        Preventiva
-                                    </CheckBox>
-                                    <CheckBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        Corretiva
-                                    </CheckBox>
-                                </Grid>
-                            </GroupBox>
-                            <!--#endregion-->
-                            <!--#region Filtro estado manutenção-->
-                            <GroupBox Grid.Column="3" Header="Estado:" Margin="2">
-                                <Grid Background="Transparent">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <CheckBox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        Aguardando
-                                    </CheckBox>
-                                    <CheckBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        Em andamento
-                                    </CheckBox>
-                                    <CheckBox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        Cancelada
-                                    </CheckBox>
-                                    <CheckBox Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        Concluida
-                                    </CheckBox>
-                                </Grid>
-                            </GroupBox>
-                            <!--#endregion-->
+                           
                             <!--#region Separators-->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="5">
                                 <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>

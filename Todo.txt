@@ -1,20 +1,3 @@
--Separar funcionarios por ativos e inativos
+- Alterar FormatString dos datagrids
 
--ADICIONAR CATEGORIA CNH NO MOTORISTA SEU ANIMAL!!
-
--Implementar as funções de pesquisa.
-
--ADICIONAR VIAGENS CANCELADAS A LISTA DE VIAGENS SEU ANIMAL!!
-
--Adicionar ações dos botões de detalhes em viagens.
-
--Adicionar ações dos botões de Abastecimento em detalhes de veiculos.
-
--Adicionar lista de manutenções em detalhes de veiculo
-
--Trocar a exibição dos motoristas e veiculos do cliente para um TabControl
-
--Adicionar botões de fechar em todos os forms
-
--Trocar nome de estoque de peças no botão de menu principal 
-
+- Checar nome das janelas

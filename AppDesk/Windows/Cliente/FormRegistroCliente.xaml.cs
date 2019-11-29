@@ -51,7 +51,7 @@ namespace AppDesk.Windows.Clientes
                 if (cliente != null)
                 {
                     Serviço.ServicoDados.ServicoDadosClientes.GravarCliente(cliente);
-                    MessageBox.Show("Cliente registrado com sucesso!");
+                    StandardMessageBoxes.MensagemSucesso("Cliente registrado com sucesso!","Registro");
                     MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
                     window.PopulateDataGrid();
                     this.Close();

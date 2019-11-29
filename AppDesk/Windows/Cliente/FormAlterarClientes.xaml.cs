@@ -84,7 +84,7 @@ namespace AppDesk.Windows.Clientes
                 if (clienteAlterado != null)
                 {
                     ServicoDados.ServicoDadosClientes.GravarCliente(clienteAlterado);
-                    StandardMessageBoxes.MensagemSucesso("Cliente", "Alterado");
+                    StandardMessageBoxes.MensagemSucesso("Cliente alterado com sucesso!", "Alteração");
                     MainWindowUpdater.UpdateDataGrids();
                     this.Close();
                 }

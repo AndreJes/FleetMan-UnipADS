@@ -62,6 +62,8 @@ namespace AppDesk.UserControls
 
                 Dispatcher.Invoke(() =>
                 {
+                    LoginBtn.IsEnabled = false;
+
                     progressBarWindow = new ProgressBarWindow("Realizando Login");
                     progressBarWindow.Show();
                 });
@@ -94,7 +96,11 @@ namespace AppDesk.UserControls
             }
             finally
             {
-                Dispatcher.Invoke(() => progressBarWindow.Close());
+                Dispatcher.Invoke(() =>
+                {
+                    progressBarWindow.Close();
+                    LoginBtn.IsEnabled = true;
+                });
             }
         }
 

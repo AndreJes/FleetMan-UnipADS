@@ -346,9 +346,9 @@ namespace AppDesk
                 #endregion
 
                 #region Solicitações
-                SolicitacoesAguardandoDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.AGUARDANDO);
-                SolicitacoesAprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.APROVADA);
-                SolicitacoesReprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.REPROVADA);
+                SolicitacoesAguardandoDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.AGUARDANDO).ToList();
+                SolicitacoesAprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.APROVADA).ToList();
+                SolicitacoesReprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.REPROVADA).ToList();
                 #endregion
 
                 #region Finanças
@@ -370,12 +370,13 @@ namespace AppDesk
                 RelatoriosViagemDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosViagemOrdPorId().ToList();
                 #endregion
 
-                ManutencaoDataGrid.ItemsSource = ServicoDados.ServicoDadosManutencao.ObterManutencoesOrdPorId();
+                ManutencaoDataGrid.ItemsSource = ServicoDados.ServicoDadosManutencao.ObterManutencoesOrdPorId().ToList();
 
-                PecasDataGrid.ItemsSource = ServicoDados.ServicoDadosPeca.ObterPecasOrdPorId();
+                PecasDataGrid.ItemsSource = ServicoDados.ServicoDadosPeca.ObterPecasOrdPorId().ToList();
 
                 AbastecimentosAgendadosDataGrid.ItemsSource = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentosOrdPorId().Where(a => a.Estado == EstadoAbastecimento.AGENDADO).ToList();
                 AbastecimentosFinalizadosDataGrid.ItemsSource = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentosOrdPorId().Where(a => a.Estado == EstadoAbastecimento.REALIZADO).ToList();
+                UpdateLayout();
             });
         }
 
@@ -878,6 +879,7 @@ namespace AppDesk
 
         #endregion
 
+        #region Ações Pesquisa
         private void VehicleSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -887,19 +889,18 @@ namespace AppDesk
                     if (string.IsNullOrEmpty(VehicleSearchTextBox.Text))
                     {
                         VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId();
-                        VehicleDataGrid.UpdateLayout();
                     }
                     else
                     {
-                        string filter = VehicleSearchTextBox.Text.ToUpper();
+                        string filtro = VehicleSearchTextBox.Text.ToUpper();
                         VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId()
                             .Where(v =>
-                            v.Placa.ToUpper().Contains(filter) ||
-                            v.CodRenavam.ToUpper().Contains(filter) ||
-                            v.Tipo.ToString().ToUpper().Contains(filter) ||
-                            v.Marca.ToUpper().Contains(filter) ||
-                            v.Modelo.ToUpper().Contains(filter) ||
-                            v.EstadoTxt.ToUpper().Contains(filter))
+                            v.Placa.ToUpper().Contains(filtro) ||
+                            v.CodRenavam.ToUpper().Contains(filtro) ||
+                            v.Tipo.ToString().ToUpper().Contains(filtro) ||
+                            v.Marca.ToUpper().Contains(filtro) ||
+                            v.Modelo.ToUpper().Contains(filtro) ||
+                            v.EstadoTxt.ToUpper().Contains(filtro))
                             .ToList();
                     }
                 });
@@ -909,5 +910,229 @@ namespace AppDesk
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
+
+        private void ClienteSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                Dispatcher.InvokeAsync(() =>
+                {
+                    string filtro = ClienteSearchTextBox.Text.ToUpper();
+                    if (string.IsNullOrEmpty(ClienteSearchTextBox.Text))
+                    {
+                        ClientePFDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(c => c.Tipo == TipoCliente.PF).ToList();
+                        ClientePJDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(c => c.Tipo == TipoCliente.PJ).ToList();
+                    }
+                    else
+                    {
+                        ClientePFDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId()
+                        .Where(c => c.Tipo == TipoCliente.PF)
+                        .Where(c => c.Nome.ToUpper().Contains(filtro) ||
+                                    c.Email.ToUpper().Contains(filtro) ||
+                                    (c as ClientePF).CPF.Contains(filtro))
+                        .ToList();
+
+                        ClientePJDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId()
+                        .Where(c => c.Tipo == TipoCliente.PJ)
+                        .Where(c => c.Nome.ToUpper().Contains(filtro) ||
+                                    c.Email.ToUpper().Contains(filtro) ||
+                                    (c as ClientePJ).CNPJ.Contains(filtro))
+                        .ToList();
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
+        }
+
+        private void MultaSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                Dispatcher.InvokeAsync(() =>
+                {
+                    string filtro = MultaSearchTextBox.Text.ToUpper();
+
+                    if (string.IsNullOrEmpty(filtro))
+                    {
+                        MultasDataGrid.ItemsSource = ServicoDados.ServicoDadosMulta.ObterMultasOrdPorId();
+                    }
+                    else
+                    {
+                        Dispatcher.InvokeAsync(() =>
+                        {
+                            MultasDataGrid.ItemsSource = ServicoDados.ServicoDadosMulta.ObterMultasOrdPorId()
+                            .Where(m => m.CodigoMulta.ToUpper().Contains(filtro))
+                            .ToList();
+                        });
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
+        }
+
+        private void SinisSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                Dispatcher.InvokeAsync(() =>
+                {
+                    string filtro = SinisSearchTextBox.Text.ToUpper();
+
+                    if (string.IsNullOrEmpty(filtro))
+                    {
+                        SinistrosDataGrid.ItemsSource = ServicoDados.ServicoDadosSinistro.ObterSinistrosOrdPorId();
+                    }
+                    else
+                    {
+                        Dispatcher.InvokeAsync(() =>
+                        {
+                            SinistrosDataGrid.ItemsSource = ServicoDados.ServicoDadosSinistro.ObterSinistrosOrdPorId()
+                            .Where(s => s.CodSinistro.ToUpper().Contains(filtro))
+                            .ToList();
+                        });
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
+        }
+
+        private void MotoristasSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                Dispatcher.InvokeAsync(() =>
+                {
+                    string filtro = MotoristasSearchTextBox.Text.ToUpper();
+
+                    if (string.IsNullOrEmpty(filtro))
+                    {
+                        MotoristasDataGrid.ItemsSource = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId();
+                    }
+                    else
+                    {
+                        Dispatcher.InvokeAsync(() =>
+                        {
+                            MotoristasDataGrid.ItemsSource = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId()
+                            .Where(m => m.Nome.ToUpper().Contains(filtro) ||
+                                        m.CPF.ToUpper().Contains(filtro) ||
+                                        m.NumeroCNH.ToUpper().Contains(filtro))
+                            .ToList();
+                        });
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
+        }
+
+        private void GaragensSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                Dispatcher.InvokeAsync(() =>
+                {
+                    string filtro = GaragensSearchTextBox.Text.ToUpper();
+
+                    if (string.IsNullOrEmpty(filtro))
+                    {
+                        GaragensDataGrid.ItemsSource = ServicoDados.ServicoDadosGaragem.ObterGaragensOrdPorId();
+                    }
+                    else
+                    {
+                        Dispatcher.InvokeAsync(() =>
+                        {
+                            MultasDataGrid.ItemsSource = ServicoDados.ServicoDadosGaragem.ObterGaragensOrdPorId()
+                            .Where(g => g.CNPJ.ToUpper().Contains(filtro))
+                            .Where(g => g.EnderecoCompleto.ToUpper().Contains(filtro))
+                            .ToList();
+                        });
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
+        }
+
+        private void FinancasSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                Dispatcher.InvokeAsync(() =>
+                {
+                    string filtro = FinancasSearchTextBox.Text.ToUpper();
+
+                    if (string.IsNullOrEmpty(filtro))
+                    {
+                        FinancaSaidaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.SAIDA).ToList();
+                        FinancaEntradaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.ENTRADA).ToList();
+                    }
+                    else
+                    {
+                        Dispatcher.InvokeAsync(() =>
+                        {
+                            FinancaEntradaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId()
+                            .Where(f => f.Tipo == TipoDeFinanca.ENTRADA)
+                            .Where(f => f.Codigo.ToUpper().Contains(filtro) ||
+                                        f.Descricao.ToUpper().Contains(filtro))
+                            .ToList();
+                            FinancaSaidaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId()
+                            .Where(f => f.Tipo == TipoDeFinanca.SAIDA)
+                            .Where(f => f.Codigo.ToUpper().Contains(filtro) ||
+                                        f.Descricao.ToUpper().Contains(filtro))
+                            .ToList();
+                        });
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
+        }
+
+        private void FuncionariosSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                Dispatcher.InvokeAsync(() =>
+                {
+                    string filtro = FuncionariosSearchTextBox.Text.ToUpper();
+
+                    if (string.IsNullOrEmpty(filtro))
+                    {
+                        FuncionariosDataGrid.ItemsSource = ServicoDados.ServicoDadosFuncionario.ObterFuncionariosOrdPorId().ToList();
+                    }
+                    else
+                    {
+                        Dispatcher.InvokeAsync(() =>
+                        {
+                            FuncionariosDataGrid.ItemsSource = ServicoDados.ServicoDadosFuncionario.ObterFuncionariosOrdPorId()
+                            .Where (f => f.Nome.ToUpper().Contains(filtro) ||
+                                         f.CPF.ToUpper().Contains(filtro) ||
+                                         f.Email.ToUpper().Contains(filtro))
+                            .ToList();
+                        });
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
+        }
+        #endregion
     }
 }
