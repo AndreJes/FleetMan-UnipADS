@@ -48,7 +48,7 @@ namespace AppDesk
     /// <summary>
     /// Interação lógica para MainWindow.xam
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
@@ -56,8 +56,6 @@ namespace AppDesk
             LogonGridBorder.Visibility = Visibility.Visible;
             MainContentBorder.Visibility = Visibility.Collapsed;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         #region Botão de Voltar Ao Menu Principal
         private void BackToMainMenuGridBackBtn_Click(object sender, RoutedEventArgs e)
@@ -291,335 +289,349 @@ namespace AppDesk
         //Utilizado para iniciar o programa com os Grids corretos carregados e visiveis.
         private void GotoMainMenu()
         {
-            VehicleGrid.Visibility = Visibility.Collapsed;
-            ClientesGrid.Visibility = Visibility.Collapsed;
-            MultaSinisGrid.Visibility = Visibility.Collapsed;
-            MotoristasGrid.Visibility = Visibility.Collapsed;
-            GaragensGrid.Visibility = Visibility.Collapsed;
-            LocacoesGrid.Visibility = Visibility.Collapsed;
-            ViagensGrid.Visibility = Visibility.Collapsed;
-            SolicitacoesGrid.Visibility = Visibility.Collapsed;
-            FinancasGrid.Visibility = Visibility.Collapsed;
-            FuncionariosGrid.Visibility = Visibility.Collapsed;
-            RelatoriosGrid.Visibility = Visibility.Collapsed;
-            ManutencoesGrid.Visibility = Visibility.Collapsed;
-            ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
-            EstoqueGrid.Visibility = Visibility.Collapsed;
-            AbastecimentoGrid.Visibility = Visibility.Collapsed;
+            Dispatcher.Invoke(() =>
+            {
+                VehicleGrid.Visibility = Visibility.Collapsed;
+                ClientesGrid.Visibility = Visibility.Collapsed;
+                MultaSinisGrid.Visibility = Visibility.Collapsed;
+                MotoristasGrid.Visibility = Visibility.Collapsed;
+                GaragensGrid.Visibility = Visibility.Collapsed;
+                LocacoesGrid.Visibility = Visibility.Collapsed;
+                ViagensGrid.Visibility = Visibility.Collapsed;
+                SolicitacoesGrid.Visibility = Visibility.Collapsed;
+                FinancasGrid.Visibility = Visibility.Collapsed;
+                FuncionariosGrid.Visibility = Visibility.Collapsed;
+                RelatoriosGrid.Visibility = Visibility.Collapsed;
+                ManutencoesGrid.Visibility = Visibility.Collapsed;
+                ManutencaoSubMenuButtonsGrid.Visibility = Visibility.Collapsed;
+                EstoqueGrid.Visibility = Visibility.Collapsed;
+                AbastecimentoGrid.Visibility = Visibility.Collapsed;
 
-            MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
-            MainMenuPrimaryButtonsGrid.Visibility = Visibility.Visible;
+                MainMenuBtnsGridBorder.Visibility = Visibility.Visible;
+                MainMenuPrimaryButtonsGrid.Visibility = Visibility.Visible;
+            });
         }
 
         //Define a fonte de dados de todos os DataGrids
         public void PopulateDataGrid()
         {
-            VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().ToList();
+            Dispatcher.Invoke(() =>
+            {
+                VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId().ToList();
 
-            #region Clientes
-            ClientePFDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpf => cpf is ClientePF).ToList();
-            ClientePJDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpj => cpj is ClientePJ).ToList();
-            #endregion
+                #region Clientes
+                ClientePFDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpf => cpf is ClientePF).ToList();
+                ClientePJDataGrid.ItemsSource = ServicoDados.ServicoDadosClientes.ObterClientesOrdPorId().Where(cpj => cpj is ClientePJ).ToList();
+                #endregion
 
-            #region Multas/Sinistros
-            MultasDataGrid.ItemsSource = ServicoDados.ServicoDadosMulta.ObterMultasOrdPorId().ToList();
-            SinistrosDataGrid.ItemsSource = ServicoDados.ServicoDadosSinistro.ObterSinistrosOrdPorId().ToList();
-            #endregion
+                #region Multas/Sinistros
+                MultasDataGrid.ItemsSource = ServicoDados.ServicoDadosMulta.ObterMultasOrdPorId().ToList();
+                SinistrosDataGrid.ItemsSource = ServicoDados.ServicoDadosSinistro.ObterSinistrosOrdPorId().ToList();
+                #endregion
 
-            MotoristasDataGrid.ItemsSource = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId().ToList();
+                MotoristasDataGrid.ItemsSource = ServicoDados.ServicoDadosMotorista.ObterMotoristasOrdPorId().ToList();
 
-            GaragensDataGrid.ItemsSource = ServicoDados.ServicoDadosGaragem.ObterGaragensOrdPorId().ToList();
+                GaragensDataGrid.ItemsSource = ServicoDados.ServicoDadosGaragem.ObterGaragensOrdPorId().ToList();
 
-            LocacoesDataGrid.ItemsSource = ServicoDados.ServicoDadosAluguel.ObterAlugueisOrdPorId().ToList();
+                LocacoesDataGrid.ItemsSource = ServicoDados.ServicoDadosAluguel.ObterAlugueisOrdPorId().ToList();
 
-            #region Viagens
-            ViagensAguardandoDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.AGUARDANDO_INICIO).ToList();
+                #region Viagens
+                ViagensAguardandoDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.AGUARDANDO_INICIO).ToList();
 
-            ViagensEmAndamentoDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.EM_ANDAMENTO).ToList();
+                ViagensEmAndamentoDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.EM_ANDAMENTO).ToList();
 
-            ViagensConcluidasDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CONCLUIDA).ToList();
+                ViagensConcluidasDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CONCLUIDA).ToList();
 
-            ViagensCanceladasDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CANCELADA).ToList();
-            #endregion
+                ViagensCanceladasDataGrid.ItemsSource = ServicoDados.ServicoDadosViagem.ObterViagensOrdPorId().Where(v => v.EstadoDaViagem == EstadosDeViagem.CANCELADA).ToList();
+                #endregion
 
-            #region Solicitações
-            SolicitacoesAguardandoDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.AGUARDANDO);
-            SolicitacoesAprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.APROVADA);
-            SolicitacoesReprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.REPROVADA);
-            #endregion
+                #region Solicitações
+                SolicitacoesAguardandoDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.AGUARDANDO);
+                SolicitacoesAprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.APROVADA);
+                SolicitacoesReprovadasDataGrid.ItemsSource = ServicoDados.ServicoDadosSolicitacao.ObterSolicitacoesOrdPorId().Where(s => s.Estado == EstadosDaSolicitacao.REPROVADA);
+                #endregion
 
-            #region Finanças
-            FinancaEntradaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.ENTRADA).ToList();
-            FinancaSaidaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.SAIDA).ToList();
-            #endregion
+                #region Finanças
+                FinancaEntradaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.ENTRADA).ToList();
+                FinancaSaidaDataGrid.ItemsSource = ServicoDados.ServicoDadosFinancas.ObterFinancasOrdPorId().Where(f => f.Tipo == TipoDeFinanca.SAIDA).ToList();
+                #endregion
 
-            #region Funcionarios
-            FuncionariosDataGrid.ItemsSource = ServicoDados.ServicoDadosFuncionario.ObterFuncionariosOrdPorId().ToList();
-            //TODO: Separar funcionarios Ativos/Inativos.
-            #endregion
+                #region Funcionarios
+                FuncionariosDataGrid.ItemsSource = ServicoDados.ServicoDadosFuncionario.ObterFuncionariosOrdPorId().ToList();
+                //TODO: Separar funcionarios Ativos/Inativos.
+                #endregion
 
-            #region Relatórios
-            RelatoriosAbastecimentoDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosConsumoOrdPorId().ToList();
-            RelatoriosFinanceiroDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosFinanceiroOrdPorId().ToList();
-            RelatoriosManutencaoDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosManutencaoOrdPorId().ToList();
-            RelatoriosMultaDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosMultaOrdPorId().ToList();
-            RelatoriosSinistroDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosAcidenteOrdPorId().ToList();
-            RelatoriosViagemDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosViagemOrdPorId().ToList();
-            #endregion
+                #region Relatórios
+                RelatoriosAbastecimentoDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosConsumoOrdPorId().ToList();
+                RelatoriosFinanceiroDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosFinanceiroOrdPorId().ToList();
+                RelatoriosManutencaoDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosManutencaoOrdPorId().ToList();
+                RelatoriosMultaDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosMultaOrdPorId().ToList();
+                RelatoriosSinistroDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosAcidenteOrdPorId().ToList();
+                RelatoriosViagemDataGrid.ItemsSource = ServicoDados.ServicoDadosRelatorio.ObterRelatoriosViagemOrdPorId().ToList();
+                #endregion
 
-            ManutencaoDataGrid.ItemsSource = ServicoDados.ServicoDadosManutencao.ObterManutencoesOrdPorId();
+                ManutencaoDataGrid.ItemsSource = ServicoDados.ServicoDadosManutencao.ObterManutencoesOrdPorId();
 
-            PecasDataGrid.ItemsSource = ServicoDados.ServicoDadosPeca.ObterPecasOrdPorId();
+                PecasDataGrid.ItemsSource = ServicoDados.ServicoDadosPeca.ObterPecasOrdPorId();
 
-            AbastecimentosAgendadosDataGrid.ItemsSource = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentosOrdPorId().Where(a => a.Estado == EstadoAbastecimento.AGENDADO).ToList();
-            AbastecimentosFinalizadosDataGrid.ItemsSource = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentosOrdPorId().Where(a => a.Estado == EstadoAbastecimento.REALIZADO).ToList();
+                AbastecimentosAgendadosDataGrid.ItemsSource = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentosOrdPorId().Where(a => a.Estado == EstadoAbastecimento.AGENDADO).ToList();
+                AbastecimentosFinalizadosDataGrid.ItemsSource = ServicoDados.ServicoDadosAbastecimento.ObterAbastecimentosOrdPorId().Where(a => a.Estado == EstadoAbastecimento.REALIZADO).ToList();
+            });
         }
 
-        public void StartSession()
+        public IEnumerable<int> StartSession()
         {
-            Dispatcher.InvokeAsync(DefinirFuncoes);
-
-            UserInfoPanel.DataContext = DesktopLoginControlService._Usuario;
-            LogonGridBorder.Visibility = Visibility.Collapsed;
-            MainContentBorder.Visibility = Visibility.Visible;
-            PopulateDataGrid();
+            DefinirFuncoes();
+            yield return 25;
+            Dispatcher.Invoke(() =>
+            {
+                UserInfoPanel.DataContext = DesktopLoginControlService._Usuario;
+                LogonGridBorder.Visibility = Visibility.Collapsed;
+                MainContentBorder.Visibility = Visibility.Visible;
+            });
+            yield return 50;
             GotoMainMenu();
-
+            yield return 75;
+            PopulateDataGrid();
+            yield return 100;
         }
 
         public void DefinirFuncoes()
         {
-            Permissoes permissoes = DesktopLoginControlService._Usuario.Permissoes;
-            this.DataContext = this;
+            Dispatcher.Invoke(() =>
+            {
+                Permissoes permissoes = DesktopLoginControlService._Usuario.Permissoes;
+                this.DataContext = this;
 
-            #region Consultar
-            if (!permissoes.Clientes.Consultar)
-            {
-                ClientesMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                ClientesMainMenuBtn.IsEnabled = true;
-            }
+                #region Consultar
+                if (!permissoes.Clientes.Consultar)
+                {
+                    ClientesMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    ClientesMainMenuBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Veiculos.Consultar)
-            {
-                VehicleMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                VehicleMainMenuBtn.IsEnabled = true;
-            }
+                if (!permissoes.Veiculos.Consultar)
+                {
+                    VehicleMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    VehicleMainMenuBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Motoristas.Consultar)
-            {
-                MotoristaMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                MotoristaMainMenuBtn.IsEnabled = true;
-            }
+                if (!permissoes.Motoristas.Consultar)
+                {
+                    MotoristaMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    MotoristaMainMenuBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.MultasSinistros.Consultar)
-            {
-                MultaSinisMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                MultaSinisMainMenuBtn.IsEnabled = true;
-            }
+                if (!permissoes.MultasSinistros.Consultar)
+                {
+                    MultaSinisMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    MultaSinisMainMenuBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Viagens.Consultar)
-            {
-                ViagensMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                ViagensMainMenuBtn.IsEnabled = true;
-            }
+                if (!permissoes.Viagens.Consultar)
+                {
+                    ViagensMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    ViagensMainMenuBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Solicitacoes.Consultar)
-            {
-                SolicitacaoMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                SolicitacaoMainMenuBtn.IsEnabled = true;
-            }
+                if (!permissoes.Solicitacoes.Consultar)
+                {
+                    SolicitacaoMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    SolicitacaoMainMenuBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Garagens.Consultar)
-            {
-                GaragensMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                GaragensMainMenuBtn.IsEnabled = true;
-            }
+                if (!permissoes.Garagens.Consultar)
+                {
+                    GaragensMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    GaragensMainMenuBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Locacoes.Consultar)
-            {
-                LocacaoMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                LocacaoMainMenuBtn.IsEnabled = true;
-            }
+                if (!permissoes.Locacoes.Consultar)
+                {
+                    LocacaoMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    LocacaoMainMenuBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Financeiro.Consultar)
-            {
-                FinanceiroMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                FinanceiroMainMenuBtn.IsEnabled = true;
-            }
+                if (!permissoes.Financeiro.Consultar)
+                {
+                    FinanceiroMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    FinanceiroMainMenuBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Relatorios.Consultar)
-            {
-                RelatorioMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                RelatorioMainMenuBtn.IsEnabled = true;
-            }
+                if (!permissoes.Relatorios.Consultar)
+                {
+                    RelatorioMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RelatorioMainMenuBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Funcionarios.Consultar)
-            {
-                FuncionarioMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                FuncionarioMainMenuBtn.IsEnabled = true;
-            }
+                if (!permissoes.Funcionarios.Consultar)
+                {
+                    FuncionarioMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    FuncionarioMainMenuBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Manutencoes.Consultar)
-            {
-                ManutencaoMainMenuBtn.IsEnabled = false;
-            }
-            else
-            {
-                ManutencaoMainMenuBtn.IsEnabled = true;
-            }
-            #endregion
+                if (!permissoes.Manutencoes.Consultar)
+                {
+                    ManutencaoMainMenuBtn.IsEnabled = false;
+                }
+                else
+                {
+                    ManutencaoMainMenuBtn.IsEnabled = true;
+                }
+                #endregion
 
-            #region Registrar 
-            if (!permissoes.Clientes.Cadastrar)
-            {
-                RegistrarClienteBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarClienteBtn.IsEnabled = true;
-            }
+                #region Registrar 
+                if (!permissoes.Clientes.Cadastrar)
+                {
+                    RegistrarClienteBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarClienteBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Veiculos.Cadastrar)
-            {
-                RegistrarVeiculoBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarVeiculoBtn.IsEnabled = true;
-            }
+                if (!permissoes.Veiculos.Cadastrar)
+                {
+                    RegistrarVeiculoBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarVeiculoBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Motoristas.Cadastrar)
-            {
-                RegistrarMotoristaBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarMotoristaBtn.IsEnabled = true;
-            }
+                if (!permissoes.Motoristas.Cadastrar)
+                {
+                    RegistrarMotoristaBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarMotoristaBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.MultasSinistros.Cadastrar)
-            {
-                RegistrarMultaSinisBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarMultaSinisBtn.IsEnabled = true;
-            }
+                if (!permissoes.MultasSinistros.Cadastrar)
+                {
+                    RegistrarMultaSinisBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarMultaSinisBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Viagens.Cadastrar)
-            {
-                RegistrarViagemBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarViagemBtn.IsEnabled = true;
-            }
+                if (!permissoes.Viagens.Cadastrar)
+                {
+                    RegistrarViagemBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarViagemBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Garagens.Cadastrar)
-            {
-                RegistrarGaragemBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarGaragemBtn.IsEnabled = true;
-            }
+                if (!permissoes.Garagens.Cadastrar)
+                {
+                    RegistrarGaragemBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarGaragemBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Locacoes.Cadastrar)
-            {
-                RegistrarAluguelBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarAluguelBtn.IsEnabled = true;
-            }
+                if (!permissoes.Locacoes.Cadastrar)
+                {
+                    RegistrarAluguelBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarAluguelBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Relatorios.Cadastrar)
-            {
-                GerarRelatorioBtn.IsEnabled = false;
-            }
-            else
-            {
-                GerarRelatorioBtn.IsEnabled = true;
-            }
+                if (!permissoes.Relatorios.Cadastrar)
+                {
+                    GerarRelatorioBtn.IsEnabled = false;
+                }
+                else
+                {
+                    GerarRelatorioBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Financeiro.Cadastrar)
-            {
-                RegistrarFinancaBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarFinancaBtn.IsEnabled = true;
-            }
+                if (!permissoes.Financeiro.Cadastrar)
+                {
+                    RegistrarFinancaBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarFinancaBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Funcionarios.Cadastrar)
-            {
-                RegistrarFuncionarioBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarFuncionarioBtn.IsEnabled = true;
-            }
+                if (!permissoes.Funcionarios.Cadastrar)
+                {
+                    RegistrarFuncionarioBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarFuncionarioBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Manutencoes.Cadastrar)
-            {
-                RegistrarPecaBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarPecaBtn.IsEnabled = true;
-            }
+                if (!permissoes.Manutencoes.Cadastrar)
+                {
+                    RegistrarPecaBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarPecaBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Manutencoes.Cadastrar)
-            {
-                RegistrarAbastecimentoBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarAbastecimentoBtn.IsEnabled = true;
-            }
+                if (!permissoes.Manutencoes.Cadastrar)
+                {
+                    RegistrarAbastecimentoBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarAbastecimentoBtn.IsEnabled = true;
+                }
 
-            if (!permissoes.Manutencoes.Cadastrar)
-            {
-                RegistrarManutencaoBtn.IsEnabled = false;
-            }
-            else
-            {
-                RegistrarManutencaoBtn.IsEnabled = true;
-            }
-            #endregion
+                if (!permissoes.Manutencoes.Cadastrar)
+                {
+                    RegistrarManutencaoBtn.IsEnabled = false;
+                }
+                else
+                {
+                    RegistrarManutencaoBtn.IsEnabled = true;
+                }
+                #endregion
+            });
         }
         #endregion
 
@@ -866,10 +878,36 @@ namespace AppDesk
 
         #endregion
 
-        private void NotifyPropertyChanged([CallerMemberName]string propertyName = "")
+        private void VehicleSearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            PropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
+            try
+            {
+                Dispatcher.InvokeAsync(() =>
+                {
+                    if (string.IsNullOrEmpty(VehicleSearchTextBox.Text))
+                    {
+                        VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId();
+                        VehicleDataGrid.UpdateLayout();
+                    }
+                    else
+                    {
+                        string filter = VehicleSearchTextBox.Text.ToUpper();
+                        VehicleDataGrid.ItemsSource = ServicoDados.ServicoDadosVeiculos.ObterVeiculosOrdPorId()
+                            .Where(v =>
+                            v.Placa.ToUpper().Contains(filter) ||
+                            v.CodRenavam.ToUpper().Contains(filter) ||
+                            v.Tipo.ToString().ToUpper().Contains(filter) ||
+                            v.Marca.ToUpper().Contains(filter) ||
+                            v.Modelo.ToUpper().Contains(filter) ||
+                            v.EstadoTxt.ToUpper().Contains(filter))
+                            .ToList();
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
         }
-
     }
 }

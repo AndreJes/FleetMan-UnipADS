@@ -75,7 +75,7 @@
                 <!--#endregion-->
 
                 <!--#region Main Menu Grid-->
-                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Visible">
+                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Collapsed">
                     <Grid>
                         <Grid Visibility="Visible" x:Name="MainMenuPrimaryButtonsGrid" ShowGridLines="False" >
                             <!--#region Grid Columns and Row-->
@@ -364,7 +364,7 @@
                 <!--#region Todos os grids de listas-->
 
                 <!--#region Vehicles List/Actions Grid Menu-->
-                <Grid x:Name="VehicleGrid" Visibility="Hidden" Grid.Row="1">
+                <Grid x:Name="VehicleGrid" Visibility="Visible" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>
@@ -398,7 +398,7 @@
                                 <Label BorderBrush="Black" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana">
                                     Pesquisar:
                                 </Label>
-                                <TextBox x:Name="VehicleSearchTextBox">
+                                <TextBox x:Name="VehicleSearchTextBox" TextChanged="VehicleSearchTextBox_TextChanged">
 
                                 </TextBox>
                             </StackPanel>

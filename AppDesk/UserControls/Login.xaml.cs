@@ -1,9 +1,12 @@
 ﻿using AppDesk.Serviço;
 using AppDesk.Tools;
+using AppDesk.Windows.Extras;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,37 +25,82 @@ namespace AppDesk.UserControls
     /// </summary>
     public partial class Login : UserControl
     {
+        ProgressBarWindow progressBarWindow = null;
+
         public Login()
         {
             InitializeComponent();
         }
 
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        private void Bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if (Logar())
-            {
-                StandardMessageBoxes.MensagemSucesso("Login realizado com sucesso!", "Login");
-                PasswordUC.Password = string.Empty;
-                Application.Current.Windows.OfType<MainWindow>().First().StartSession();
-            }
+            progressBarWindow.SetProgress(e.ProgressPercentage, "Configurando area de trabalho");
         }
 
-        private bool Logar()
+        private void Processar()
         {
             try
             {
-                return DesktopLoginControlService.Logar(EmailUC.Text, PasswordUC.Password);
-            }
-            catch(FieldException fex)
-            {
-                StandardMessageBoxes.MensagemDeErroCampoFormulario(fex.Message);
-                return false;
+                BackgroundWorker bw = new BackgroundWorker();
+                bw.WorkerReportsProgress = true;
+                bw.DoWork += Bw_DoWork;
+                bw.ProgressChanged += Bw_ProgressChanged;
+                bw.RunWorkerAsync();
             }
             catch (Exception ex)
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
-                return false;
             }
+        }
+
+        private void Bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                string email = "";
+                string senha = "";
+
+                Dispatcher.Invoke(() =>
+                {
+                    progressBarWindow = new ProgressBarWindow("Realizando Login");
+                    progressBarWindow.Show();
+                });
+
+                Dispatcher.Invoke(() =>
+                {
+                    email = EmailUC.Text;
+                    senha = PasswordUC.Password;
+                });
+
+                if (DesktopLoginControlService.Logar(email, senha))
+                {
+                    Dispatcher.Invoke(() => { PasswordUC.Password = string.Empty; });
+
+                    foreach (int i in Dispatcher.Invoke(() => Application.Current.Windows.OfType<MainWindow>().First().StartSession()))
+                    {
+                        Thread.Sleep(50);
+                        (sender as BackgroundWorker).ReportProgress(i);
+                    }
+                }
+
+            }
+            catch (FieldException ex)
+            {
+                StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
+            finally
+            {
+                Dispatcher.Invoke(() => progressBarWindow.Close());
+            }
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Processar();
         }
     }
 }

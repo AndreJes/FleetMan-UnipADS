@@ -17,7 +17,7 @@ namespace Servicos.Web
         {
             try
             {
-                return Context.ObterVeiculosOrdPorId();
+                return Context.ObterVeiculosOrdPorId().ToList();
             }
             catch (Exception ex)
             {
