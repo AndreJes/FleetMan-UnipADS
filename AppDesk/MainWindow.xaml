@@ -436,7 +436,6 @@
                                 <DataGridTextColumn Header="Marca" Binding="{Binding Marca}"/>
                                 <DataGridTextColumn Header="Veiculo adaptado" Binding="{Binding AdaptadoTxt}"/>
                                 <DataGridTextColumn Header="Veiculo para locação" Binding="{Binding ParaLocacaoTxt}"/>
-                                <DataGridTextColumn Header="Situação" Binding="{Binding EstadoTxt}"/>
                                 <DataGridTemplateColumn Header="Detalhes">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>

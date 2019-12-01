@@ -42,6 +42,7 @@
                                         <RowDefinition Height="1*"/>
                                         <RowDefinition Height="1*"/>
                                         <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
                                     </Grid.RowDefinitions>
                                     <!--#region Placa-->
                                     <ucm:PlacaFieldUC Grid.Row="0" x:Name="PlacaUC"></ucm:PlacaFieldUC>
@@ -70,7 +71,13 @@
 
                                     <StackPanel Grid.Row="5" Style="{StaticResource MainStackPanelStyle}">
                                         <Label Style="{StaticResource MainLabelRoundStyle}">TIPO DE VEICULO</Label>
-                                        <TextBox IsEnabled="False" x:Name="TipoDeVeiculoTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120"/>
+                                        <TextBox IsEnabled="False" x:Name="TipoDeVeiculoTextBox" Style="{StaticResource MainTextBoxStyle}" Width="120">
+                                            <TextBox.Resources>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="CornerRadius" Value="0 5 5 0"></Setter>
+                                                </Style>
+                                            </TextBox.Resources>
+                                        </TextBox>
                                     </StackPanel>
 
                                     <!--#region Locação/Adaptado-->
@@ -81,6 +88,17 @@
                                         </StackPanel>
                                     </GroupBox>
                                     <!--#endregion-->
+
+                                    <StackPanel Grid.Row="7" Style="{StaticResource MainStackPanelStyle}">
+                                        <Label Style="{StaticResource MainLabelRoundStyle}">SITUAÇÃO</Label>
+                                        <TextBox x:Name="SituacaoTextBox" Style="{StaticResource MainTextBoxStyle}" IsEnabled="False">
+                                            <TextBox.Resources>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="CornerRadius" Value="0 5 5 0"></Setter>
+                                                </Style>
+                                            </TextBox.Resources>
+                                        </TextBox>
+                                    </StackPanel>
                                 </Grid>
                             </TabItem>
                             <TabItem Header="Garagem">

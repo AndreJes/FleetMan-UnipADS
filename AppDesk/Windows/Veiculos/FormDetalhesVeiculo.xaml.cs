@@ -44,6 +44,9 @@ namespace AppDesk.Windows.Veiculos
             ManutencaoDataGrid.ItemsSource = _veiculo.Manutencoes.ToList();
             TanqueProgressBar.Value = (double)_veiculo.EstadoDoTanque;
             SeguradorasComboBox.ItemsSource = ServicoDados.ServicoDadosSeguro.ObterSegurosOrdPorId().ToList();
+
+            SituacaoTextBox.Text = _veiculo.EstadoTxt;
+
             TipoDeVeiculoTextBox.Text = _veiculo.Tipo.ToString("G");
             PreencherDadosCliente();
             PreencherTextBoxes();
@@ -149,6 +152,7 @@ namespace AppDesk.Windows.Veiculos
             ModeloUC.Text = _veiculo.Modelo;
             AnoUC.Value = _veiculo.Ano;
             CorUC.Text = _veiculo.Cor;
+            
         }
 
         private void RegistrarAbastecimentoBtn_Click(object sender, RoutedEventArgs e)
