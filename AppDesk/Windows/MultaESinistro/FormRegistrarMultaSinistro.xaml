@@ -47,7 +47,7 @@
                                 <StackPanel Grid.Row="1" Style="{StaticResource MainStackPanelStyle}">
                                     <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}" HorizontalAlignment="Left" Margin="5 0">
                                         <Label Style="{StaticResource MainLabelRoundStyle}">Pagamento</Label>
-                                        <ComboBox x:Name="EstadoPagamentoInfracaoComboBox" Style="{StaticResource MainComboBoxStyle}" Width="80">
+                                        <ComboBox x:Name="EstadoPagamentoInfracaoComboBox" Style="{StaticResource MainComboBoxStyle}" Width="130">
                                         </ComboBox>
                                         <Label Style="{StaticResource MainLabelRoundStyle}">Gravidade</Label>
                                         <ComboBox x:Name="GravidadeInfracaoComboBox" Style="{StaticResource MainComboBoxStyle}" Width="80">

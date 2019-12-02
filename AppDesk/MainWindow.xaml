@@ -32,6 +32,7 @@
             <uc:Login x:Name="LoginField"></uc:Login>
         </Grid>
         <!--#endregion-->
+        <!--#endregion-->
         
         <!--#region Main Content-->
         <Border Visibility="Visible" x:Name="MainContentBorder" Margin="10" BorderBrush="Gray" BorderThickness="3">
@@ -652,8 +653,8 @@
                         <DataGrid x:Name="MultasDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding CodigoMulta}"/>
-                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=F2}"/>
-                                <DataGridTextColumn Header="Data da infração" Binding="{Binding DataDaMulta}" />
+                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=C}"/>
+                                <DataGridTextColumn Header="Data da infração" Binding="{Binding DataDaMulta, StringFormat=dd/MM/yyyy}" />
                                 <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoDoPagamento}" Width="auto"/>
                                 <DataGridTextColumn Header="Gravidade" Binding="{Binding GravidadeDaInfracao}"/>
                                 <DataGridTemplateColumn Header="Detalhes">
@@ -903,8 +904,8 @@
                         <DataGrid x:Name="LocacoesDataGrid" Margin="10" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding AluguelId}"/>
-                                <DataGridTextColumn Header="Data Contratação" Binding="{Binding DataContratacao}"/>
-                                <DataGridTextColumn Header="Data Vencimento" Binding="{Binding DataVencimento}"/>
+                                <DataGridTextColumn Header="Data Contratação" Binding="{Binding DataContratacao, StringFormat=dd/MM/yyyy}"/>
+                                <DataGridTextColumn Header="Data Vencimento" Binding="{Binding DataVencimento, StringFormat=dd/MM/yyyy}"/>
                                 <DataGridTextColumn Header="Estado do pagamento" Binding="{Binding EstadoDoPagamento}"/>
                                 <DataGridTextColumn Header="Situação da locação" Binding="{Binding EstadoDoAluguel}"/>
                                 <DataGridTemplateColumn Header="Detalhes">
@@ -1262,9 +1263,9 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
                                 <DataGridTextColumn Header="Descrição" Binding="{Binding Referente}"/>
-                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=N2}" />
+                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=C}" />
                                 <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoPagamentoTxt}" />
-                                <DataGridTextColumn Header="Data vencimento" Binding="{Binding DataVencimento, StringFormat=\{0:MM/yyyy\}}" />
+                                <DataGridTextColumn Header="Data vencimento" Binding="{Binding DataVencimento, StringFormat=dd/MM/yyyy}" />
                                 <DataGridTemplateColumn Header="Detalhes">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -1286,9 +1287,9 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding Codigo}"/>
                                 <DataGridTextColumn Header="Descrição" Binding="{Binding Referente}"/>
-                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=N2}" />
+                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=C}" />
                                 <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoPagamentoTxt}" />
-                                <DataGridTextColumn Header="Data recebimento" Binding="{Binding DataPagamento, StringFormat=\{0:dd/MM/yyyy\}}" />
+                                <DataGridTextColumn Header="Data recebimento" Binding="{Binding DataPagamento, StringFormat=dd/MM/yyyy}" />
                                 <DataGridTemplateColumn Header="Detalhes">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -1786,7 +1787,7 @@
                         <DataGrid x:Name="AbastecimentosAgendadosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Código" Binding="{Binding AbastecimentoId}"/>
-                                <DataGridTextColumn Header="Data Agendada" Binding="{Binding DataAgendada}" />
+                                <DataGridTextColumn Header="Data Agendada" Binding="{Binding DataAgendada, StringFormat={}{0:dd/MM/yyyy HH:mm}}" />
                                 <DataGridTextColumn Header="Nome do Motorista" Binding="{Binding Motorista.Nome}"/>
                                 <DataGridTextColumn Header="Placa do Veiculo" Binding="{Binding Veiculo.Placa}"/>
                                 <DataGridTemplateColumn Header="Detalhes">
@@ -1806,14 +1807,14 @@
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                         </StackPanel>
                         <!--#endregion-->
-                        <!--#region Sinistros-->
+                        <!--#region ABASTECIMENTOS CONCLUIDOS-->
                         <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20" Grid.Column="1">ABASTECIMENTOS FINALIZADOS</Label>
                         <DataGrid x:Name="AbastecimentosFinalizadosDataGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.Column="1">
                             <DataGrid.Columns>
 
                                 <DataGridTextColumn Header="Código" Binding="{Binding AbastecimentoId}"/>
-                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=F2}"/>
-                                <DataGridTextColumn Header="Data Conclusão" Binding="{Binding DataConclusao}" />
+                                <DataGridTextColumn Header="Valor" Binding="{Binding Valor, StringFormat=C}"/>
+                                <DataGridTextColumn Header="Data Conclusão" Binding="{Binding DataConclusao}"/>
                                 <DataGridTextColumn Header="Nome do Motorista" Binding="{Binding Motorista.Nome}"/>
                                 <DataGridTextColumn Header="Placa do Veiculo" Binding="{Binding Veiculo.Placa}"/>
                                 <DataGridTemplateColumn Header="Detalhes">

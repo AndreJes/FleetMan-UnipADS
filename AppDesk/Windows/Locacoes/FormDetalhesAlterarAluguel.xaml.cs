@@ -124,13 +124,19 @@ namespace AppDesk.Windows.Locacoes
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Confirmar remoção da locação?", "Confirmar remoção", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            try
             {
-                ServicoDados.ServicoDadosAluguel.RemoverAluguelPorId(_aluguel.AluguelId);
-                MessageBox.Show("Locação removida com sucesso!", "Remoção bem-sucedida", MessageBoxButton.OK, MessageBoxImage.Information);
-                MainWindowUpdater.UpdateDataGrids();
-                this.Close();
+                if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Locação") == MessageBoxResult.Yes)
+                {
+                    ServicoDados.ServicoDadosAluguel.RemoverAluguelPorId(_aluguel.AluguelId);
+                    StandardMessageBoxes.MensagemSucesso("Locação removida com sucesso", "Remoção");
+                    MainWindowUpdater.UpdateDataGrids();
+                    this.Close();
+                }
+            }
+            catch(Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 

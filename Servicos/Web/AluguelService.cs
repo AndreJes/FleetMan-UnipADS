@@ -22,7 +22,7 @@ namespace Servicos.Web
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -34,7 +34,7 @@ namespace Servicos.Web
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -60,7 +60,7 @@ namespace Servicos.Web
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -77,7 +77,7 @@ namespace Servicos.Web
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
     }
