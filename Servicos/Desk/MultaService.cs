@@ -1,5 +1,7 @@
 ﻿using Modelo.Classes.Desk;
+using Modelo.Classes.Web;
 using Persistencia.DAL.Desk;
+using Servicos.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,7 @@ namespace Servicos.Desk
     public class MultaService
     {
         private MultaDAL Context = new MultaDAL();
+        private MotoristaService MotoristaService = new MotoristaService();
 
         public IEnumerable<Multa> ObterMultasOrdPorId()
         {
@@ -40,9 +43,15 @@ namespace Servicos.Desk
         {
             try
             {
-                if(multa.DataDaMulta > DateTime.Now)
+                if (multa.DataDaMulta > DateTime.Now)
                 {
                     throw new Exception("Data da multa inválida");
+                }
+                if (multa.MultaId == null)
+                {
+                    Motorista motorista = MotoristaService.ObterMotoristaPorId(multa.MotoristaId);
+                    motorista.PontosCNH += (int)multa.GravidadeDaInfracao;
+                    MotoristaService.GravarMotorista(motorista);
                 }
                 Context.GravarMulta(multa);
             }

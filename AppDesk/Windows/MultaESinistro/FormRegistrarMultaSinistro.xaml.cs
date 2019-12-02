@@ -41,7 +41,7 @@ namespace AppDesk.Windows.MultaESinistro
         {
             try
             {
-                if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Sinistro") == MessageBoxResult.Yes)
+                if (StandardMessageBoxes.ConfirmarRegistroMessageBox("Multa") == MessageBoxResult.Yes)
                 {
                     Multa multa = GerarMulta();
                     ServicoDados.ServicoDadosMulta.GravarMulta(multa);

@@ -67,9 +67,7 @@ namespace Persistencia.DAL.Manutencao
 
                 item.State = EntityState.Modified;
 
-                item.Collection(m => m.PecasUtilizadas).Load();
-
-                manutencao.PecasUtilizadas.Clear();
+                Context.PecasManutencao.RemoveRange(manutencao.PecasUtilizadas.Where(p => !pecas.Contains(p)));
 
                 foreach (PecasManutencao p in pecas)
                 {
