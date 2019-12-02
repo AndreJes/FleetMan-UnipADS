@@ -86,6 +86,11 @@ namespace Servicos.Manutencao
         {
             try
             {
+                Modelo.Classes.Manutencao.Manutencao manutencao = ObterManutencaoPorId(id);
+                Veiculo veiculo = VeiculoService.ObterVeiculoPorId(manutencao.VeiculoId);
+                veiculo.EstadoDoVeiculo = EstadosDeVeiculo.NORMAL;
+                VeiculoService.GravarVeiculo(veiculo);
+
                 Context.RemoverManutencaoPorId(id);
             }
             catch (Exception ex)
@@ -96,13 +101,13 @@ namespace Servicos.Manutencao
 
         private bool ValidarManutencao(Modelo.Classes.Manutencao.Manutencao manutencao)
         {
-            if (manutencao.DataSaida.GetValueOrDefault() > DateTime.Now)
+            if (manutencao.DataSaida.HasValue && manutencao.DataSaida.Value > DateTime.Now)
             {
-                return false;
+                throw new Exception("Data de conclusão inválida");
             }
             else
             {
-                throw new Exception("Data de conclusão inválida");
+                return true;
             }
         }
     }

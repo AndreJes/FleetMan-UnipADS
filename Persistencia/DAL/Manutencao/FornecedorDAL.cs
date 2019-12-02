@@ -1,4 +1,5 @@
 ﻿using Modelo.Classes.Manutencao;
+using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.Manutencao
 {
-    public class FornecedorDAL : DALContext
+    public class FornecedorDAL
     {
         public IEnumerable<Fornecedor> ObterFornecedoresOrdPorId()
         {
             try
             {
+                using EFContext Context = new EFContext();
                 return Context.Fornecedores.OrderBy(f => f.FornecedorId).ToList();
             }
             catch (Exception ex)
@@ -26,6 +28,7 @@ namespace Persistencia.DAL.Manutencao
         {
             try
             {
+                using EFContext Context = new EFContext();
                 return Context.Fornecedores.Where(f => f.FornecedorId == id).Include(f => f.Pecas).FirstOrDefault();
             }
             catch (Exception ex)
@@ -38,12 +41,14 @@ namespace Persistencia.DAL.Manutencao
         {
             try
             {
+                using EFContext Context = new EFContext();
                 if (fornecedor.FornecedorId == null)
                 {
                     Context.Fornecedores.Add(fornecedor);
                 }
                 else
                 {
+                    AttachItem(fornecedor, Context);
                     Context.Entry(fornecedor).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
@@ -58,7 +63,9 @@ namespace Persistencia.DAL.Manutencao
         {
             try
             {
+                using EFContext Context = new EFContext();
                 Fornecedor fornecedor = ObterFornecedorPorId(id);
+                AttachItem(fornecedor, Context);
                 Context.Fornecedores.Remove(fornecedor);
                 Context.SaveChanges();
             }
@@ -72,11 +79,20 @@ namespace Persistencia.DAL.Manutencao
         {
             try
             {
+                using EFContext Context = new EFContext();
                 return Context.Fornecedores.Where(f => f.CNPJ == cnpj).FirstOrDefault();
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void AttachItem(Fornecedor fornecedor, EFContext Context)
+        {
+            if (!Context.Fornecedores.Local.Contains(fornecedor))
+            {
+                Context.Fornecedores.Attach(fornecedor);
             }
         }
     }

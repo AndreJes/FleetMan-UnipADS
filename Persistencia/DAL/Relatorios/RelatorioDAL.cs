@@ -1,5 +1,6 @@
 ﻿using Modelo.Classes.Relatorios;
 using Modelo.Enums;
+using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,42 +9,49 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.Relatorios
 {
-    public class RelatorioDAL : DALContext
+    public class RelatorioDAL
     {
         #region Obter relatórios por tipo
         public IEnumerable<Relatorio> ObterRelatoriosAcidenteOrdPorId()
         {
-            return Context.RelatoriosAcidentes.OrderBy(ra => ra.RelatorioId);
+            using EFContext Context = new EFContext();
+            return Context.RelatoriosAcidentes.OrderBy(ra => ra.RelatorioId).ToList();
         }
 
         public IEnumerable<RelatorioConsumo> ObterRelatoriosConsumoOrdPorId()
         {
-            return Context.RelatoriosConsumos.OrderBy(rc => rc.RelatorioId);
+            using EFContext Context = new EFContext();
+            return Context.RelatoriosConsumos.OrderBy(rc => rc.RelatorioId).ToList();
         }
 
         public IEnumerable<RelatorioFinanceiro> ObterRelatoriosFinanceiroOrdPorId()
         {
-            return Context.RelatoriosFinanceiros.OrderBy(ra => ra.RelatorioId);
+            using EFContext Context = new EFContext();
+            return Context.RelatoriosFinanceiros.OrderBy(ra => ra.RelatorioId).ToList();
         }
 
         public IEnumerable<RelatorioManutencao> ObterRelatoriosManutencaoOrdPorId()
         {
-            return Context.RelatoriosManutencao.OrderBy(rm => rm.RelatorioId);
+            using EFContext Context = new EFContext();
+            return Context.RelatoriosManutencao.OrderBy(rm => rm.RelatorioId).ToList();
         }
 
         public IEnumerable<RelatorioMulta> ObterRelatoriosMultaOrdPorId()
         {
-            return Context.RelatoriosMultas.OrderBy(rm => rm.RelatorioId);
+            using EFContext Context = new EFContext();
+            return Context.RelatoriosMultas.OrderBy(rm => rm.RelatorioId).ToList();
         }
 
         public IEnumerable<RelatorioViagem> ObterRelatoriosViagemOrdPorId()
         {
-            return Context.RelatoriosViagens.OrderBy(rv => rv.RelatorioId);
+            using EFContext Context = new EFContext();
+            return Context.RelatoriosViagens.OrderBy(rv => rv.RelatorioId).ToList();
         }
         #endregion
 
         public Relatorio ObterRelatorioPorId(long? id, TiposRelatorios tipo)
         {
+            using EFContext Context = new EFContext();
             switch (tipo)
             {
                 case TiposRelatorios.VIAGEM:
@@ -65,6 +73,7 @@ namespace Persistencia.DAL.Relatorios
 
         public void GravarRelatorio(Relatorio relatorio, TiposRelatorios tipo)
         {
+            using EFContext Context = new EFContext();
             switch (tipo)
             {
                 case TiposRelatorios.VIAGEM:
@@ -94,7 +103,9 @@ namespace Persistencia.DAL.Relatorios
 
         public void RemoverRelatorioPorId(long? id, TiposRelatorios tipo)
         {
+            using EFContext Context = new EFContext();
             Relatorio relatorio = ObterRelatorioPorId(id, tipo);
+            AttachItem(relatorio, Context, tipo);
             switch (tipo)
             {
                 case TiposRelatorios.VIAGEM:
@@ -120,6 +131,49 @@ namespace Persistencia.DAL.Relatorios
             }
 
             Context.SaveChanges();
+        }
+
+        private void AttachItem(Relatorio relatorio, EFContext Context, TiposRelatorios tipo)
+        {
+            switch (tipo)
+            {
+                case TiposRelatorios.VIAGEM:
+                    if(!Context.RelatoriosViagens.Local.Contains(relatorio))
+                    {
+                        Context.RelatoriosViagens.Attach(relatorio as RelatorioViagem);
+                    }
+                    break;
+                case TiposRelatorios.MULTA:
+                    if (!Context.RelatoriosMultas.Local.Contains(relatorio))
+                    {
+                        Context.RelatoriosMultas.Attach(relatorio as RelatorioMulta);
+                    }
+                    break;
+                case TiposRelatorios.ACIDENTE:
+                    if (!Context.RelatoriosAcidentes.Local.Contains(relatorio))
+                    {
+                        Context.RelatoriosAcidentes.Attach(relatorio as RelatorioSinistros);
+                    }
+                    break;
+                case TiposRelatorios.CONSUMO:
+                    if (!Context.RelatoriosConsumos.Local.Contains(relatorio))
+                    {
+                        Context.RelatoriosConsumos.Attach(relatorio as RelatorioConsumo);
+                    }
+                    break;
+                case TiposRelatorios.FINANCEIRO:
+                    if (!Context.RelatoriosFinanceiros.Local.Contains(relatorio))
+                    {
+                        Context.RelatoriosFinanceiros.Attach(relatorio as RelatorioFinanceiro);
+                    }
+                    break;
+                case TiposRelatorios.MANUTENCOES:
+                    if (!Context.RelatoriosManutencao.Local.Contains(relatorio))
+                    {
+                        Context.RelatoriosManutencao.Attach(relatorio as RelatorioManutencao);
+                    }
+                    break;
+            }
         }
     }
 }

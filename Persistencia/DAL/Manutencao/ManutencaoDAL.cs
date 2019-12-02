@@ -1,4 +1,5 @@
 ﻿using Modelo.Classes.Manutencao.Associacao;
+using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,12 +10,13 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.Manutencao
 {
-    public class ManutencaoDAL : DALContext
+    public class ManutencaoDAL
     {
         public IEnumerable<Modelo.Classes.Manutencao.Manutencao> ObterManutencoesOrdPorId()
         {
             try
             {
+                using EFContext Context = new EFContext();
                 return Context.Manutencoes.OrderBy(m => m.ManutencaoId).Include(m => m.Veiculo).ToList();
             }
             catch (Exception ex)
@@ -27,6 +29,7 @@ namespace Persistencia.DAL.Manutencao
         {
             try
             {
+                using EFContext Context = new EFContext();
                 return Context.Manutencoes.Where(m => m.ManutencaoId == id).Include(m => m.Veiculo).Include(m => m.PecasUtilizadas.Select(pu => pu.Peca)).FirstOrDefault();
             }
             catch (Exception ex)
@@ -39,6 +42,7 @@ namespace Persistencia.DAL.Manutencao
         {
             try
             {
+                using EFContext Context = new EFContext();
                 manutencao.PecasUtilizadas = new ObservableCollection<PecasManutencao>();
 
                 Context.Manutencoes.Add(manutencao);
@@ -57,6 +61,8 @@ namespace Persistencia.DAL.Manutencao
         {
             try
             {
+                using EFContext Context = new EFContext();
+                AttachItem(manutencao, Context);
                 var item = Context.Entry(manutencao);
 
                 item.State = EntityState.Modified;
@@ -98,7 +104,9 @@ namespace Persistencia.DAL.Manutencao
         {
             try
             {
+                using EFContext Context = new EFContext();
                 Modelo.Classes.Manutencao.Manutencao manutencao = ObterManutencaoPorId(id);
+                AttachItem(manutencao, Context);
                 Context.PecasManutencao.RemoveRange(Context.PecasManutencao.Where(pm => pm.ManutencaoId == manutencao.ManutencaoId));
                 Context.Manutencoes.Remove(manutencao);
                 Context.SaveChanges();
@@ -113,6 +121,8 @@ namespace Persistencia.DAL.Manutencao
         {
             try
             {
+                using EFContext Context = new EFContext();
+                AttachItem(manutencao, Context);
                 foreach (PecasManutencao pm in pecas)
                 {
                     pm.Peca = null;
@@ -129,9 +139,17 @@ namespace Persistencia.DAL.Manutencao
 
         private void RemoverValoresNulos()
         {
+            using EFContext Context = new EFContext();
             Context.PecasManutencao.RemoveRange(Context.PecasManutencao.Where(pm => pm.ManutencaoId == null));
-
             Context.SaveChanges();
+        }
+
+        private void AttachItem(Modelo.Classes.Manutencao.Manutencao manutencao, EFContext Context)
+        {
+            if (!Context.Manutencoes.Local.Contains(manutencao))
+            {
+                Context.Manutencoes.Attach(manutencao);
+            }
         }
     }
 }

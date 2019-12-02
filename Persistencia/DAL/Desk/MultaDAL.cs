@@ -1,4 +1,5 @@
 ﻿using Modelo.Classes.Desk;
+using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.Desk
 {
-    public class MultaDAL : DALContext
+    public class MultaDAL
     {
         public IEnumerable<Multa> ObterMultasOrdPorId()
         {
             try
             {
-                return Context.Multas.OrderBy(m => m.MultaId);
+                using EFContext Context = new EFContext();
+                return Context.Multas.OrderBy(m => m.MultaId).ToList();
             }
             catch (Exception ex)
             {
@@ -26,6 +28,7 @@ namespace Persistencia.DAL.Desk
         {
             try
             {
+                using EFContext Context = new EFContext();
                 return Context.Multas.Where(m => m.MultaId == id).Include(m => m.Veiculo).Include(m => m.Motorista).First();
             }
             catch (Exception ex)
@@ -38,6 +41,7 @@ namespace Persistencia.DAL.Desk
         {
             try
             {
+                using EFContext Context = new EFContext();
                 if (multa.MultaId == null)
                 {
                     Context.Multas.Add(multa);
@@ -58,6 +62,7 @@ namespace Persistencia.DAL.Desk
         {
             try
             {
+                using EFContext Context = new EFContext();
                 Multa multa = ObterMultaPorId(id);
                 Context.Multas.Remove(multa);
                 Context.SaveChanges();

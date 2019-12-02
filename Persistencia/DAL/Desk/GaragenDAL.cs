@@ -5,16 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using Persistencia.Contexts;
 
 namespace Persistencia.DAL.Desk
 {
-    public class GaragenDAL : DALContext
+    public class GaragenDAL
     {
         public IEnumerable<Garagem> ObterGaragensOrdPorId()
         {
             try
             {
-                return Context.Garagens.Include(g => g.Veiculos).OrderBy(g => g.GaragemId);
+                using EFContext Context = new EFContext();
+                return Context.Garagens.Include(g => g.Veiculos).OrderBy(g => g.GaragemId).ToList();
             }
             catch (Exception ex)
             {
@@ -26,6 +28,7 @@ namespace Persistencia.DAL.Desk
         {
             try
             {
+                using EFContext Context = new EFContext();
                 if (garagem.GaragemId == null)
                 {
                     Context.Garagens.Add(garagem);
@@ -46,6 +49,7 @@ namespace Persistencia.DAL.Desk
         {
             try
             {
+                using EFContext Context = new EFContext();
                 Garagem garagem = Context.Garagens.Where(g => g.GaragemId == id).Include(g => g.Veiculos).First();
                 return garagem;
             }
@@ -59,6 +63,7 @@ namespace Persistencia.DAL.Desk
         {
             try
             {
+                using EFContext Context = new EFContext();
                 Garagem garagem = ObterGaragemPorId(id);
                 Context.Garagens.Remove(garagem);
                 Context.SaveChanges();

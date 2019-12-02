@@ -18,7 +18,6 @@ namespace Modelo.Classes.Web
         [Key, Column(Order = 0)]
         public long? VeiculoId { get; set; }
 
-        public string Nome { get; set; }
         public string Placa { get; set; }
         public int Ano { get; set; }
         public string Marca { get; set; }

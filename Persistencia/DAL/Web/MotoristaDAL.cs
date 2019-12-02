@@ -5,15 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using Persistencia.Contexts;
 
 namespace Persistencia.DAL.Web
 {
-    public class MotoristaDAL : DALContext
+    public class MotoristaDAL
     {
         public IEnumerable<Motorista> ObterMotoristasOrdPorId()
         {
             try
             {
+                using EFContext Context = new EFContext();
                 return Context.Motoristas.OrderBy(m => m.MotoristaId).ToList();
             }
             catch (Exception ex)
@@ -26,12 +28,14 @@ namespace Persistencia.DAL.Web
         {
             try
             {
+                using EFContext Context = new EFContext();
                 if (motorista.MotoristaId == null)
                 {
                     Context.Motoristas.Add(motorista);
                 }
                 else
                 {
+                    AttachItem(motorista, Context);
                     Context.Entry(motorista).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
@@ -46,6 +50,7 @@ namespace Persistencia.DAL.Web
         {
             try
             {
+                using EFContext Context = new EFContext();
                 return Context.Motoristas.Where(m => m.MotoristaId == id).Include(m => m.Cliente).Include(m => m.Multas.Select(m => m.Veiculo)).Include(m => m.Sinistros.Select(m => m.Veiculo)).Include(m => m.Viagens).First();
             }
             catch (Exception ex)
@@ -58,6 +63,7 @@ namespace Persistencia.DAL.Web
         {
             try
             {
+                using EFContext Context = new EFContext();
                 Motorista motorista = ObterMotoristasOrdPorId().Where(m => m.CPF == cpf).FirstOrDefault();
                 return motorista;
             }
@@ -71,8 +77,10 @@ namespace Persistencia.DAL.Web
         {
             try
             {
+                using EFContext Context = new EFContext();
                 Motorista motorista = ObterMotoristaPorId(id);
                 Context.Motoristas.Remove(motorista);
+                AttachItem(motorista, Context);
                 Context.SaveChanges();
             }
             catch (Exception ex)
@@ -80,5 +88,14 @@ namespace Persistencia.DAL.Web
                 throw ex;
             }
         }
+
+        private void AttachItem(Motorista motorista, EFContext Context)
+        {
+            if (!Context.Motoristas.Local.Contains(motorista))
+            {
+                Context.Motoristas.Attach(motorista);
+            }
+        }
+
     }
 }

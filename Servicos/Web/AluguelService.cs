@@ -54,6 +54,7 @@ namespace Servicos.Web
                     Veiculo veiculo = VeiculoService.ObterVeiculoPorId(aluguel.VeiculoId);
                     veiculo.EstadoDoVeiculo = EstadosDeVeiculo.NORMAL;
                     veiculo.ClienteId = null;
+                    veiculo.Cliente = null;
                     VeiculoService.GravarVeiculo(veiculo);
                 }
                 Context.GravarAluguel(aluguel);

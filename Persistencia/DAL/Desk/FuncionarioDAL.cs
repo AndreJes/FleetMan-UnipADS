@@ -1,4 +1,5 @@
 ﻿using Modelo.Classes.Desk;
+using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,21 +9,24 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.Desk
 {
-    public class FuncionarioDAL : DALContext
+    public class FuncionarioDAL
     {
         public IEnumerable<Funcionario> ObterFuncionariosOrdPorId()
         {
-            return Context.Funcionarios.OrderBy(f => f.FuncionarioId);
+            using EFContext Context = new EFContext();
+            return Context.Funcionarios.OrderBy(f => f.FuncionarioId).ToList();
         }
 
         public Funcionario ObterFuncionarioPorId(long? id)
         {
+            using EFContext Context = new EFContext();
             return Context.Funcionarios.Where(f => f.FuncionarioId == id).FirstOrDefault();
         }
 
         public void GravarFuncionario(Funcionario funcionario)
         {
-            if(funcionario.FuncionarioId == null)
+            using EFContext Context = new EFContext();
+            if (funcionario.FuncionarioId == null)
             {
                 Context.Funcionarios.Add(funcionario);
             }
@@ -35,6 +39,7 @@ namespace Persistencia.DAL.Desk
 
         public void RemoverFuncionarioPorId(long? id)
         {
+            using EFContext Context = new EFContext();
             Funcionario funcionario = ObterFuncionarioPorId(id);
             if(funcionario != null)
             {
@@ -45,6 +50,7 @@ namespace Persistencia.DAL.Desk
 
         public Funcionario ObterFuncionarioPorCPF(string cpf)
         {
+            using EFContext Context = new EFContext();
             return Context.Funcionarios.Where(f => f.CPF == cpf).FirstOrDefault();
         }
     }

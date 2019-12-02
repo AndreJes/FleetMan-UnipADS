@@ -114,6 +114,7 @@ namespace AppDesk.Windows.Locacoes
                     _aluguel.EstadoDoAluguel = EstadosAluguel.CANCELADO;
                     ServicoDados.ServicoDadosAluguel.GravarAluguel(_aluguel);
                     MessageBox.Show("Locação cancelada com sucesso!");
+                    MainWindowUpdater.UpdateDataGrids();
                 }
             }
             catch (Exception ex)
@@ -160,7 +161,7 @@ namespace AppDesk.Windows.Locacoes
             }
             catch (Exception ex)
             {
-                throw ex;
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 

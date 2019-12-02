@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 using Modelo.Classes.Clientes;
 using Modelo.Classes.Usuarios;
 using Modelo.Enums;
+using Persistencia.Contexts;
 using Persistencia.DAL.Usuarios;
 
 namespace Persistencia.DAL.Clientes
 {
-    public class ClienteDAL : DALContext
+    public class ClienteDAL
     {
         private UsuarioClienteDAL UsuarioClienteDAL
         {
@@ -25,17 +26,18 @@ namespace Persistencia.DAL.Clientes
         {
             try
             {
-                IList<Modelo.Classes.Clientes.Cliente> Clientes = new List<Modelo.Classes.Clientes.Cliente>();
-
-                foreach (ClientePF pf in Context.ClientesPF.ToList())
+                List<Modelo.Classes.Clientes.Cliente> Clientes = new List<Modelo.Classes.Clientes.Cliente>();
+                using (EFContext Context = new EFContext())
                 {
-                    Clientes.Add(pf);
+                    foreach (ClientePF pf in Context.ClientesPF.ToList())
+                    {
+                        Clientes.Add(pf);
+                    }
+                    foreach (ClientePJ pj in Context.ClientesPJ.ToList())
+                    {
+                        Clientes.Add(pj);
+                    }
                 }
-                foreach (ClientePJ pj in Context.ClientesPJ.ToList())
-                {
-                    Clientes.Add(pj);
-                }
-
                 return Clientes;
             }
             catch (Exception ex)
@@ -48,6 +50,7 @@ namespace Persistencia.DAL.Clientes
         {
             try
             {
+                using EFContext Context = new EFContext();
                 bool add = false;
                 if (cliente is ClientePF)
                 {
@@ -95,6 +98,7 @@ namespace Persistencia.DAL.Clientes
         {
             try
             {
+                using EFContext Context = new EFContext();
                 ClientePF clientePF = Context.ClientesPF.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Motoristas).Include(c => c.Alugueis).Include(c => c.Solicitacoes).FirstOrDefault();
                 return clientePF;
             }
@@ -108,6 +112,7 @@ namespace Persistencia.DAL.Clientes
         {
             try
             {
+                using EFContext Context = new EFContext();
                 return Context.ClientesPJ.Where(c => c.ClienteId == id).Include(c => c.Veiculos).Include(c => c.Alugueis).Include(c => c.Motoristas).Include(c => c.Solicitacoes).FirstOrDefault();
             }
             catch (Exception ex)
@@ -120,6 +125,7 @@ namespace Persistencia.DAL.Clientes
         {
             try
             {
+                using EFContext Context = new EFContext();
                 switch (tipo)
                 {
                     case TipoCliente.PF:
@@ -140,6 +146,7 @@ namespace Persistencia.DAL.Clientes
         {
             try
             {
+                using EFContext Context = new EFContext();
                 UsuarioClienteDAL.RemoverUsuarioClientePorId(id.ToString());
                 Modelo.Classes.Clientes.Cliente cliente = Context.Clientes.Where(c => c.ClienteId == id).FirstOrDefault();
                 Context.Clientes.Remove(cliente);
@@ -155,6 +162,7 @@ namespace Persistencia.DAL.Clientes
         {
             try
             {
+                using EFContext Context = new EFContext();
                 UsuarioClienteView clienteView = new UsuarioClienteView();
                 clienteView.ClienteId = cliente.ClienteId;
                 clienteView.Email = cliente.Email;

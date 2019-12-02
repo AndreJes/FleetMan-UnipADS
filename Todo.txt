@@ -1,3 +1,5 @@
-- Alterar FormatString dos datagrids
-
 - Checar nome das janelas
+
+- Adicionar pontos as carteiras dos motoristas ao adicionar multa
+
+- Alterar as labels do site web para design resposivo

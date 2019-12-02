@@ -97,6 +97,7 @@ namespace AppDesk.Windows.Veiculos
                 {
                     _veiculo.SeguroId = (SeguradorasComboBox.SelectedItem as Seguro).SeguroId;
                 }
+                ServicoDados.ServicoDadosVeiculos.GravarVeiculo(_veiculo);
             }
             catch (FieldException ex)
             {

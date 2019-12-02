@@ -1,4 +1,5 @@
 ﻿using Modelo.Classes.Web;
+using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.Web
 {
-    public class AluguelDAL : DALContext
+    public class AluguelDAL
     {
         public IEnumerable<Aluguel> ObterAlugueisOrdPorId()
         {
             try
             {
-                return Context.Alugueis.Include(a => a.Veiculo).OrderBy(a => a.AluguelId);
+                using EFContext Context = new EFContext();
+                return Context.Alugueis.Include(a => a.Veiculo).OrderBy(a => a.AluguelId).ToList();
             }
             catch (Exception ex)
             {
@@ -26,6 +28,7 @@ namespace Persistencia.DAL.Web
         {
             try
             {
+                using EFContext Context = new EFContext();
                 return Context.Alugueis.Where(a => a.AluguelId == id).Include(a => a.Cliente).Include(a => a.Veiculo).FirstOrDefault();
             }
             catch (Exception ex)
@@ -38,12 +41,14 @@ namespace Persistencia.DAL.Web
         {
             try
             {
+                using EFContext Context = new EFContext();
                 if (aluguel.AluguelId == null)
                 {
                     Context.Alugueis.Add(aluguel);
                 }
                 else
                 {
+                    AttachItem(aluguel, Context);
                     Context.Entry(aluguel).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
@@ -58,13 +63,23 @@ namespace Persistencia.DAL.Web
         {
             try
             {
+                using EFContext Context = new EFContext();
                 Aluguel aluguel = ObterAluguelPorId(id);
+                AttachItem(aluguel, Context);
                 Context.Alugueis.Remove(aluguel);
                 Context.SaveChanges();
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void AttachItem(Aluguel aluguel, EFContext Context)
+        {
+            if (!Context.Alugueis.Local.Contains(aluguel))
+            {
+                Context.Alugueis.Attach(aluguel);
             }
         }
     }

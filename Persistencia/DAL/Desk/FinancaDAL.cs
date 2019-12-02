@@ -1,4 +1,5 @@
 ﻿using Modelo.Classes.Desk;
+using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace Persistencia.DAL.Desk
 {
-    public class FinancaDAL : DALContext
+    public class FinancaDAL
     {
         public IEnumerable<Financa> ObterFinancasOrdPorId()
         {
             try
             {
-                return Context.Financas.OrderBy(f => f.FinancaId);
+                using EFContext Context = new EFContext();
+                return Context.Financas.OrderBy(f => f.FinancaId).ToList();
             }
             catch (Exception ex)
             {
@@ -26,6 +28,7 @@ namespace Persistencia.DAL.Desk
         {
             try
             {
+                using EFContext Context = new EFContext();
                 return Context.Financas.Where(f => f.FinancaId == id).FirstOrDefault();
             }
             catch (Exception ex)
@@ -38,6 +41,7 @@ namespace Persistencia.DAL.Desk
         {
             try
             {
+                using EFContext Context = new EFContext();
                 if (financa.FinancaId == null)
                 {
                     Context.Financas.Add(financa);
@@ -59,6 +63,7 @@ namespace Persistencia.DAL.Desk
         {
             try
             {
+                using EFContext Context = new EFContext();
                 Financa financa = ObterFinancaPorId(id);
                 Context.Financas.Remove(financa);
                 Context.SaveChanges();
