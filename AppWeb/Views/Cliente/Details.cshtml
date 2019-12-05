@@ -35,52 +35,52 @@
             @if (Model is ClientePFViewModel)
             {
                 <div class="form-group form-inline">
-                    @Html.LabelFor(model => (model as ClientePFViewModel).CPF, new { @class = "form-control col-2 bg-secondary text-white" })
-                    @Html.EditorFor(model => (model as ClientePFViewModel).CPF, new { htmlAttributes = new { @class = "form-control col-10", disabled = "disabled", data_mask = "999.999.999-99" } })
+                    @Html.LabelFor(model => (model as ClientePFViewModel).CPF, new { @class = "form-control col-md-2 col-sm-12 bg-secondary text-white" })
+                    @Html.EditorFor(model => (model as ClientePFViewModel).CPF, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-12", disabled = "disabled", data_mask = "999.999.999-99" } })
                 </div>
             }
             else if (Model is ClientePJViewModel)
             {
                 <div class="form-group form-inline">
-                    @Html.LabelFor(model => (model as ClientePJViewModel).CNPJ, new { @class = "form-control col-2 bg-secondary text-white" })
-                    @Html.EditorFor(model => (model as ClientePJViewModel).CNPJ, new { htmlAttributes = new { @class = "form-control col-10", disabled = "disabled", data_mask = "99.999.999/9999-99" } })
+                    @Html.LabelFor(model => (model as ClientePJViewModel).CNPJ, new { @class = "form-control col-md-2 col-sm-12 bg-secondary text-white" })
+                    @Html.EditorFor(model => (model as ClientePJViewModel).CNPJ, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-12", disabled = "disabled", data_mask = "99.999.999/9999-99" } })
                 </div>
             }
             <div class="form-group form-inline">
-                @Html.LabelFor(model => model.Telefone, new { @class = "form-control col-2 bg-secondary text-white" })
-                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control col-10", disabled = "disabled", data_mask = "(99)99999-9999" } })
+                @Html.LabelFor(model => model.Telefone, new { @class = "form-control col-md-2 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-12", disabled = "disabled", data_mask = "(99)99999-9999" } })
             </div>
 
             <hr />
 
             <div class="form-group form-inline">
-                @Html.LabelFor(model => model.Endereco.Rua, new { @class = "form-control col-2 bg-secondary text-white" })
-                @Html.EditorFor(model => model.Endereco.Rua, new { htmlAttributes = new { @class = "form-control col-10", disabled = "disabled" } })
+                @Html.LabelFor(model => model.Endereco.Rua, new { @class = "form-control col-md-2 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Endereco.Rua, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-12", disabled = "disabled" } })
             </div>
 
             <div class="form-group form-inline">
-                @Html.LabelFor(model => model.Endereco.Numero, new { @class = "form-control col-2 bg-secondary text-white" })
-                @Html.EditorFor(model => model.Endereco.Numero, new { htmlAttributes = new { @class = "form-control col-10", disabled = "disabled" } })
+                @Html.LabelFor(model => model.Endereco.Numero, new { @class = "form-control col-md-2 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Endereco.Numero, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-12", disabled = "disabled" } })
             </div>
 
             <div class="form-group form-inline">
-                @Html.LabelFor(model => model.Endereco.Bairro, new { @class = "form-control col-2 bg-secondary text-white" })
-                @Html.EditorFor(model => model.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control col-10", disabled = "disabled" } })
+                @Html.LabelFor(model => model.Endereco.Bairro, new { @class = "form-control col-md-2 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-12", disabled = "disabled" } })
             </div>
 
             <div class="form-group form-inline">
-                @Html.LabelFor(model => model.Endereco.CEP, new { @class = "form-control col-2 bg-secondary text-white" })
-                @Html.EditorFor(model => model.Endereco.CEP, new { htmlAttributes = new { @class = "form-control col-10", disabled = "disabled", data_mask = "99999-999" } })
+                @Html.LabelFor(model => model.Endereco.CEP, new { @class = "form-control col-md-2 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Endereco.CEP, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-12", disabled = "disabled", data_mask = "99999-999" } })
             </div>
 
             <div class="form-group form-inline">
-                @Html.LabelFor(model => model.Endereco.Cidade, new { @class = "form-control col-2 bg-secondary text-white" })
-                @Html.EditorFor(model => model.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control col-10", disabled = "disabled" } })
+                @Html.LabelFor(model => model.Endereco.Cidade, new { @class = "form-control col-md-2 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-12", disabled = "disabled" } })
             </div>
 
             <div class="form-group form-inline">
-                @Html.LabelFor(model => model.Endereco.UF, new { @class = "form-control col-2 bg-secondary text-white" })
-                @Html.EditorFor(model => model.Endereco.UF, new { htmlAttributes = new { @class = "form-control col-10", disabled = "disabled" } })
+                @Html.LabelFor(model => model.Endereco.UF, new { @class = "form-control col-md-2 col-sm-12 bg-secondary text-white" })
+                @Html.EditorFor(model => model.Endereco.UF, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-12", disabled = "disabled" } })
             </div>
         </div>
 
