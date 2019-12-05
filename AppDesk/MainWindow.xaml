@@ -22,7 +22,7 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Arial Black" />
             <Setter Property="Background" Value="Gray"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
     </Window.Resources>
     <Grid x:Name="MainGrid">
@@ -35,7 +35,7 @@
         <!--#endregion-->
         
         <!--#region Main Content-->
-        <Border Visibility="Visible" x:Name="MainContentBorder" Margin="10" BorderBrush="Gray" BorderThickness="3">
+        <Border Visibility="Visible" x:Name="MainContentBorder" Margin="5" BorderBrush="Gray" BorderThickness="3">
             <Grid ShowGridLines="False">
                 <!--#region Row Definitions-->
                 <Grid.RowDefinitions>
@@ -76,7 +76,7 @@
                 <!--#endregion-->
 
                 <!--#region Main Menu Grid-->
-                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Collapsed">
+                <Border x:Name="MainMenuBtnsGridBorder" Grid.Row="1" Visibility="Visible">
                     <Grid>
                         <Grid Visibility="Visible" x:Name="MainMenuPrimaryButtonsGrid" ShowGridLines="False" >
                             <!--#region Grid Columns and Row-->
@@ -1307,7 +1307,7 @@
                 <!--#endregion-->
 
                 <!--#region Funcionarios List/Actions Grid Menu-->
-                <Grid x:Name="FuncionariosGrid" Visibility="Visible" Grid.Row="1">
+                <Grid x:Name="FuncionariosGrid" Visibility="Collapsed" Grid.Row="1">
                     <!--#region Rows Definitions-->
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15*"/>

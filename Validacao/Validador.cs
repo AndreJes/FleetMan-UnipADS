@@ -92,7 +92,7 @@ namespace Validacao
             return resultado;
         }
 
-        public async static Task<bool> ValidarEmailAsync(string email)
+        public static async Task<bool> ValidarEmailAsync(string email)
         {
             bool resultado = await Task.Run(() =>
             {
