@@ -8,7 +8,7 @@
         xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
         xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Detalhes do Aluguel" Style="{StaticResource SmallFormWindowStyle}">
+        Title="Detalhes da Locação" Style="{StaticResource SmallFormWindowStyle}">
     <Window.Resources>
         <Style TargetType="TextBox" BasedOn="{StaticResource MainTextBoxStyle}">
             <Setter Property="IsEnabled" Value="False"/>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AppDesk.Windows.Relatorios"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="Detalhes Relatorio Manutencao" Style="{StaticResource SmallFormWindowStyle}">
+        Title="Relatório de Manutencao" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -14,7 +14,7 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">Relatório de Finanças</Label>
+        <Label Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">Relatório de Manutenção</Label>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>

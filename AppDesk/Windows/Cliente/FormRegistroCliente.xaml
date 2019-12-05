@@ -8,7 +8,7 @@
         xmlns:uc="clr-namespace:AppDesk.UserControls"
         xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Registrar Novo Cliente" Style="{StaticResource SmallFormWindowStyle}">
+        Title="Registrar Cliente" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid Background="Transparent">
             <!--#region Columns/ Rows-->
@@ -20,7 +20,7 @@
             </Grid.RowDefinitions>
             <!--#endregion-->
             <!--#region Header-->
-            <Label FontFamily="Arial" Style="{StaticResource MainLabelFullRoundStyle}" Width="auto" FontSize="20">REGISTRAR NOVO CLIENTE</Label>
+            <Label FontFamily="Arial" Style="{StaticResource MainLabelFullRoundStyle}" Width="auto" FontSize="20">REGISTRAR CLIENTE</Label>
             <!--#endregion-->
             <!--#region Fields-->
             <!--#region Informações Principais-->

@@ -8,7 +8,7 @@
         xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
         xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
         mc:Ignorable="d"
-        Title="Registrar novo motorista" Style="{StaticResource SmallFormWindowStyle}">
+        Title="Registrar Motorista" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -16,7 +16,7 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource MainLabelFullRoundStyle}" Grid.ColumnSpan="2" FontSize="20">REGISTRAR NOVO MOTORISTA</Label>
+        <Label Style="{StaticResource MainLabelFullRoundStyle}" Grid.ColumnSpan="2" FontSize="20">REGISTRAR MOTORISTA</Label>
         <GroupBox Grid.Row="1">
             <TabControl>
                 <TabItem Header="Dados do Motorista">

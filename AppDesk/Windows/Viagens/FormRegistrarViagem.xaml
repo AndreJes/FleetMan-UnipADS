@@ -7,7 +7,7 @@
         xmlns:uc="clr-namespace:AppDesk.UserControls"
         xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos"
         mc:Ignorable="d"
-        Title="Registrar Nova Viagem" Style="{StaticResource SmallFormWindowStyle}">
+        Title="Registrar Viagem" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>

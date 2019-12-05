@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AppDesk.Windows.Relatorios"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="Detalhes Relatorio De Consumo" Style="{StaticResource SmallFormWindowStyle}">
+        Title="Relatório de Consumo" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>

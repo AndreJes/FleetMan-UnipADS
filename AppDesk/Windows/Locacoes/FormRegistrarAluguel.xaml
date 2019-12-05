@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AppDesk.Windows.Locacoes"
         xmlns:ucc="clr-namespace:AppDesk.UserControls"
         mc:Ignorable="d"
-        Title="Registrar Nova Locação" Style="{StaticResource SmallFormWindowStyle}">
+        Title="Registrar Locação" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">REGISTRAR NOVA LOCAÇÃO</Label>
+        <Label Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">REGISTRAR LOCAÇÃO</Label>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>

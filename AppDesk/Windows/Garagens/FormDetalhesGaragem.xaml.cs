@@ -93,7 +93,7 @@ namespace AppDesk.Windows.Garagens
             EnderecoUC.Endereco = _garagem.Endereco;
 
             LotacaoTextBox.Text = _garagem.Veiculos.Count.ToString();
-            CapacidadeTextBox.Text = _garagem.Capacidade.ToString();
+            CapacidadeSlider.Value = _garagem.Capacidade;
             LotacaoProgressBar.Value = _garagem.Veiculos.Count;
             LotacaoProgressBar.Maximum = _garagem.Capacidade;
         }

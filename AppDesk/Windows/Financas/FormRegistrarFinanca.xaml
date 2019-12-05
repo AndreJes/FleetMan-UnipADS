@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AppDesk.Windows.Financas"
         xmlns:uc="clr-namespace:AppDesk.UserControls"
         mc:Ignorable="d"
-        Title="Registrar Nova Financa" Style="{StaticResource SmallFormWindowStyle}">
+        Title="Registrar Financa" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">REGISTRAR NOVA FINANÇA</Label>
+        <Label Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">REGISTRAR FINANÇA</Label>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>

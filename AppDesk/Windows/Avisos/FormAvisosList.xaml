@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppDesk.Windows.Avisos"
         mc:Ignorable="d"
-        Title="Lista de Avisos" Style="{StaticResource SmallFormWindowStyle}">
+        Title="Lista de Avisos" Style="{StaticResource SmallFormWindowStyle}" WindowStyle="ToolWindow">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>

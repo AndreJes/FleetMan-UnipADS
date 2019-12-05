@@ -8,7 +8,7 @@
         xmlns:uc="clr-namespace:AppDesk.UserControls.Campos"
         xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
         mc:Ignorable="d"
-        Title="FormDetalhesSeguro" Style="{StaticResource SmallFormWindowStyle}">
+        Title="Detalhes de Seguradora" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid x:Name="FormContentGrid">
             <!--#region Columns/ Rows-->

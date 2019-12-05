@@ -18,7 +18,7 @@
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">REGISTRAR NOVA MULTA</Label>
+                    <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">REGISTRAR MULTA</Label>
                     <GroupBox Grid.Row="1" Header="Dados da Multa">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -85,7 +85,7 @@
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">REGISTRAR NOVO SINISTRO</Label>
+                    <Label Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">REGISTRAR SINISTRO</Label>
 
                     <GroupBox Grid.Row="1" Header="Dados do Sinistro">
                         <Grid>

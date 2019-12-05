@@ -8,7 +8,7 @@
         xmlns:ucc="clr-namespace:AppDesk.UserControls.Campos"
         xmlns:ucm="clr-namespace:AppDesk.UserControls.Campos.Masked"
         mc:Ignorable="d"
-        Title="Detalhes Manutenção" Style="{StaticResource SmallFormWindowStyle}">
+        Title="Detalhes da Manutenção" Style="{StaticResource SmallFormWindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Style="{StaticResource MainLabelFullRoundStyle}" FontSize="20">
-            DETALHES MANUTENÇÃO
+            DETALHES DA MANUTENÇÃO
         </Label>
 
         <Grid Grid.Row="1">

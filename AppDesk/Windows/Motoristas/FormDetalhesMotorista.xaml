@@ -15,7 +15,7 @@
             <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource MainLabelFullRoundStyle}" Grid.ColumnSpan="2" FontSize="20">DETALHES DE MOTORISTA</Label>
+        <Label Style="{StaticResource MainLabelFullRoundStyle}" Grid.ColumnSpan="2" FontSize="20">DETALHES DO MOTORISTA</Label>
 
         <TabControl Grid.Row="1">
             <TabItem Header="Alterar Dados do Motorista">
