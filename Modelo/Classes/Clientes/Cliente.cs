@@ -21,6 +21,8 @@ namespace Modelo.Classes.Clientes
         public string Telefone { get; set; }
         public Endereco Endereco { get; set; }
         public string Nome { get; set; }
+        [StringLength(100)]
+        [Index(IsUnique = true)]
         public string Email { get; set; }
         public bool Ativo { get; set; }
         public TipoCliente Tipo { get; set; }

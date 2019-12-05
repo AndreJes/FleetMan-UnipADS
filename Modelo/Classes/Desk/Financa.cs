@@ -1,6 +1,7 @@
 ﻿using Modelo.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,10 @@ namespace Modelo.Classes.Desk
     public class Financa
     {
         #region Props principais
+        [Key]
         public long? FinancaId { get; set; }
+        [StringLength(50)]
+        [Index(IsUnique = true)]
         public string Codigo { get; set; }
         public string Descricao { get; set; }
         public double Valor { get; set; }

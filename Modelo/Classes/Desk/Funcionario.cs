@@ -16,8 +16,12 @@ namespace Modelo.Classes.Desk
         [Key, Column(Order = 0)]
         public long? FuncionarioId { get; set; }
         public string Nome { get; set; }
+        [StringLength(11)]
+        [Index(IsUnique = true)]
         public string CPF { get; set; }
         public string RG { get; set; }
+        [StringLength(100)]
+        [Index(IsUnique = true)]
         public string Email { get; set; }
         public string Telefone { get; set; }
         public Endereco Endereco { get; set; }

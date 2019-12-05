@@ -12,6 +12,8 @@ namespace Modelo.Classes.Clientes
 {
     public class ClientePF : Cliente
     {
+        [StringLength(11)]
+        [Index(IsUnique = true)]
         public string CPF { get; set; }
 
         [NotMapped]

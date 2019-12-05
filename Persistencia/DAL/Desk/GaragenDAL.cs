@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Persistencia.Contexts;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 
 namespace Persistencia.DAL.Desk
 {
@@ -38,6 +40,10 @@ namespace Persistencia.DAL.Desk
                     Context.Entry(garagem).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
+            }
+            catch (DbUpdateException ex) when ((ex.InnerException.InnerException is SqlException && (ex.InnerException.InnerException as SqlException).Number == 2601))
+            {
+                throw new Exception("Já existe garagem com CNPJ idêntico registrada", ex);
             }
             catch (Exception ex)
             {

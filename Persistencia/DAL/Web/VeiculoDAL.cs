@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Persistencia.Contexts;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 
 namespace Persistencia.DAL.Web
 {
@@ -66,6 +68,11 @@ namespace Persistencia.DAL.Web
                     Context.Entry(veiculo).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
+            }
+            catch (DbUpdateException ex) when ((ex.InnerException.InnerException is SqlException && (ex.InnerException.InnerException as SqlException).Number == 2601))
+            {
+                
+                throw new Exception("Já existe um veiculo com Placa e/ou Código Renavam idêntico(s) registrados", ex);
             }
             catch (Exception ex)
             {

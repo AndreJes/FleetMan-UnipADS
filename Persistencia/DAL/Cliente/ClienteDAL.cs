@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,6 +88,17 @@ namespace Persistencia.DAL.Clientes
                 else
                 {
                     UsuarioClienteDAL.AlterarUsuarioCliente(cliente.ClienteId.ToString(), novoEmail: cliente.Email);
+                }
+            }
+            catch (DbUpdateException ex) when ((ex.InnerException.InnerException is SqlException && (ex.InnerException.InnerException as SqlException).Number == 2601))
+            {
+                if(cliente is ClientePF)
+                {
+                    throw new Exception("Já existe um cliente com Email e/ou CPF idêntico(s) registrado", ex);
+                }
+                if(cliente is ClientePJ)
+                {
+                    throw new Exception("Já existe um cliente com Email e/ou CNPJ idêntico(s) registrado", ex);
                 }
             }
             catch (Exception ex)

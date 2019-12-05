@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Persistencia.Contexts;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 
 namespace Persistencia.DAL.Web
 {
@@ -39,6 +41,10 @@ namespace Persistencia.DAL.Web
                     Context.Entry(motorista).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
+            }
+            catch (DbUpdateException ex) when ((ex.InnerException.InnerException is SqlException && (ex.InnerException.InnerException as SqlException).Number == 2601))
+            {
+                throw new Exception("Já existe um motorista com CPF, Celular e/ou Email idêntico(s) registrados", ex);
             }
             catch (Exception ex)
             {

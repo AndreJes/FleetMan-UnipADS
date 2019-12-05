@@ -136,6 +136,10 @@
     <Compile Include="Migrations\Entity\201912021334011_NomeVeiculoRemove.Designer.cs">
       <DependentUpon>201912021334011_NomeVeiculoRemove.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Entity\201912051810401_New-Unique-Fields.cs" />
+    <Compile Include="Migrations\Entity\201912051810401_New-Unique-Fields.Designer.cs">
+      <DependentUpon>201912051810401_New-Unique-Fields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Entity\Configuration.cs" />
     <Compile Include="Migrations\Identity\201911051231263_Initial.cs" />
     <Compile Include="Migrations\Identity\201911051231263_Initial.Designer.cs">
@@ -181,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Entity\201912021334011_NomeVeiculoRemove.resx">
       <DependentUpon>201912021334011_NomeVeiculoRemove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Entity\201912051810401_New-Unique-Fields.resx">
+      <DependentUpon>201912051810401_New-Unique-Fields.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Identity\201911051231263_Initial.resx">
       <DependentUpon>201911051231263_Initial.cs</DependentUpon>

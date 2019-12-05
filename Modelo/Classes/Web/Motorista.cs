@@ -18,9 +18,18 @@ namespace Modelo.Classes.Web
         [Key, Column(Order = 0)]
         public long? MotoristaId { get; set; }
         public string Nome { get; set; }
+
+        [StringLength(11)]
+        [Index(IsUnique = true)]
         public string CPF { get; set; }
         public string RG { get; set; }
+
+        [StringLength(11)]
+        [Index(IsUnique = true)]
         public string Celular { get; set; }
+
+        [StringLength(100)]
+        [Index(IsUnique = true)]
         public string Email { get; set; }
         public string NumeroCNH { get; set; }
         public int PontosCNH { get; set; }

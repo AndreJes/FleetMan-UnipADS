@@ -17,11 +17,16 @@ namespace Modelo.Classes.Web
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key, Column(Order = 0)]
         public long? VeiculoId { get; set; }
-
+        
+        [StringLength(8)]
+        [Index(IsUnique = true)]
         public string Placa { get; set; }
         public int Ano { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
+
+        [StringLength(11)]
+        [Index(IsUnique = true)]
         public string CodRenavam { get; set; }
         public string Cor { get; set; }
         public bool Adaptado { get; set; }

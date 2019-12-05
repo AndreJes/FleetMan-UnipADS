@@ -14,9 +14,14 @@ namespace Modelo.Classes.Manutencao
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key, Column(Order = 0)]
         public long? FornecedorId { get; set; }
+
+        [StringLength(14)]
+        [Index(IsUnique = true)]
         public string CNPJ { get; set; }
         public string Razao_Social { get; set; }
         public string Telefone { get; set; }
+        [StringLength(100)]
+        [Index(IsUnique = true)]
         public string Email { get; set; }
         public bool LojaVirtual { get; set; }
         public Endereco Endereco { get; set; }

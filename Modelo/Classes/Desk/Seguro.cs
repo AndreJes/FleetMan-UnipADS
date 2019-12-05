@@ -17,8 +17,12 @@ namespace Modelo.Classes.Desk
         public long? SeguroId { get; set; }
 
         public string Nome { get; set; }
+        [StringLength(14)]
+        [Index(IsUnique = true)]
         public string CNPJ { get; set; }
         public string Telefone { get; set; }
+        [StringLength(100)]
+        [Index(IsUnique = true)]
         public string Email { get; set; }
         public double PrecoParcela { get; set; }
         public DateTime DataVencimentoParcela { get; set; }

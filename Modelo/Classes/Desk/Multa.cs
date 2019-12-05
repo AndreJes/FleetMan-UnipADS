@@ -15,6 +15,9 @@ namespace Modelo.Classes.Desk
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key, Column(Order = 0)]
         public long? MultaId { get; set; }
+
+        [StringLength(40)]
+        [Index(IsUnique = true)]
         public string CodigoMulta { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:F2}")]

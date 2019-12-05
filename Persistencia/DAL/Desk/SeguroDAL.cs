@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Persistencia.Contexts;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 
 namespace Persistencia.DAL.Desk
 {
@@ -19,16 +21,28 @@ namespace Persistencia.DAL.Desk
 
         public void GravarSeguro(Seguro seguro)
         {
-            using EFContext Context = new EFContext();
-            if (seguro.SeguroId == null)
+            try
             {
-                Context.Seguro.Add(seguro);
+                using EFContext Context = new EFContext();
+                if (seguro.SeguroId == null)
+                {
+                    Context.Seguro.Add(seguro);
+                }
+                else
+                {
+                    Context.Entry(seguro).State = EntityState.Modified;
+                }
+                Context.SaveChanges();
             }
-            else
+
+            catch (DbUpdateException ex) when ((ex.InnerException.InnerException is SqlException && (ex.InnerException.InnerException as SqlException).Number == 2601))
             {
-                Context.Entry(seguro).State = EntityState.Modified;
+                throw new Exception("Já existe seguradora com CNPJ e/ou Email idêntico(s) registrada", ex);
             }
-            Context.SaveChanges();
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Seguro ObterSeguroPorId(long? id)

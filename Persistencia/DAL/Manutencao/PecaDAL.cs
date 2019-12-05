@@ -3,6 +3,8 @@ using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,17 +27,29 @@ namespace Persistencia.DAL.Manutencao
 
         public void GravarPeca(Peca peca)
         {
-            using EFContext Context = new EFContext();
-            if (peca.PecaId == null)
+            try
             {
-                Context.Pecas.Add(peca);
+                using EFContext Context = new EFContext();
+                if (peca.PecaId == null)
+                {
+                    Context.Pecas.Add(peca);
+                }
+                else
+                {
+                    AttachItem(peca, Context);
+                    Context.Entry(peca).State = EntityState.Modified;
+                }
+                Context.SaveChanges();
             }
-            else
+            catch (DbUpdateException ex) when ((ex.InnerException.InnerException is SqlException && (ex.InnerException.InnerException as SqlException).Number == 2601))
             {
-                AttachItem(peca, Context);
-                Context.Entry(peca).State = EntityState.Modified;
+
+                throw new Exception("Já existe peça com Lote idêntico registrado", ex);
             }
-            Context.SaveChanges();
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void RemoverPecaPorId(long? id)

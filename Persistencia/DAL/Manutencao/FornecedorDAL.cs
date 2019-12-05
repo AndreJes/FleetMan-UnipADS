@@ -3,6 +3,8 @@ using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +54,11 @@ namespace Persistencia.DAL.Manutencao
                     Context.Entry(fornecedor).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
+            }
+            catch (DbUpdateException ex) when ((ex.InnerException.InnerException is SqlException && (ex.InnerException.InnerException as SqlException).Number == 2601))
+            {
+
+                throw new Exception("Já existe um fornecedor com CNPJ e/ou Email idêntico(s) registrado", ex);
             }
             catch (Exception ex)
             {

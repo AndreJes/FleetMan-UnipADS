@@ -3,6 +3,8 @@ using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,16 +27,23 @@ namespace Persistencia.DAL.Desk
 
         public void GravarFuncionario(Funcionario funcionario)
         {
-            using EFContext Context = new EFContext();
-            if (funcionario.FuncionarioId == null)
+            try
             {
-                Context.Funcionarios.Add(funcionario);
+                using EFContext Context = new EFContext();
+                if (funcionario.FuncionarioId == null)
+                {
+                    Context.Funcionarios.Add(funcionario);
+                }
+                else
+                {
+                    Context.Entry(funcionario).State = EntityState.Modified;
+                }
+                Context.SaveChanges();
             }
-            else
+            catch (DbUpdateException ex) when ((ex.InnerException.InnerException is SqlException && (ex.InnerException.InnerException as SqlException).Number == 2601))
             {
-                Context.Entry(funcionario).State = EntityState.Modified;
+                throw new Exception("Já existe um funcionaro com CPF e/ou Email idêntico(s) registrado", ex);
             }
-            Context.SaveChanges();
         }
 
         public void RemoverFuncionarioPorId(long? id)

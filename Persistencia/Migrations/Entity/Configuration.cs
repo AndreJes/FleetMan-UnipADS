@@ -5,7 +5,7 @@ namespace Persistencia.Migrations.Entity
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Persistencia.Contexts.EFContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Contexts.EFContext>
     {
         public Configuration()
         {
@@ -19,6 +19,7 @@ namespace Persistencia.Migrations.Entity
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            
         }
     }
 }

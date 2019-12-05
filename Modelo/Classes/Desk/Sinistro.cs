@@ -3,6 +3,7 @@ using Modelo.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,10 @@ namespace Modelo.Classes.Desk
 {
     public class Sinistro
     {
+        [Key]
         public long? SinistroId { get; set; }
+        [StringLength(40)]
+        [Index(IsUnique = true)]
         public string CodSinistro { get; set; }
         public string Descricao { get; set; }
         public int QntEnvolvidos { get; set; }

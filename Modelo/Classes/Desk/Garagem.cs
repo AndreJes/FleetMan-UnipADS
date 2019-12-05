@@ -2,6 +2,7 @@
 using Modelo.Classes.Web;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,12 @@ namespace Modelo.Classes.Desk
     public class Garagem
     {
         #region Props principais
+        [Key]
         public long? GaragemId { get; set; }
         public string Telefone { get; set; }
         public Endereco Endereco { get; set; }
+        [StringLength(14)]
+        [Index(IsUnique = true)]
         public string CNPJ { get; set; }
         public int Capacidade { get; set; }
         #endregion

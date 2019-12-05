@@ -3,6 +3,8 @@ using Persistencia.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,16 +27,23 @@ namespace Persistencia.DAL.Desk
 
         public void GravarSinistro(Sinistro sinistro)
         {
-            using EFContext Context = new EFContext();
-            if (sinistro.SinistroId == null)
+            try
             {
-                Context.Sinistros.Add(sinistro);
+                using EFContext Context = new EFContext();
+                if (sinistro.SinistroId == null)
+                {
+                    Context.Sinistros.Add(sinistro);
+                }
+                else
+                {
+                    Context.Entry(sinistro).State = EntityState.Modified;
+                }
+                Context.SaveChanges();
             }
-            else
+            catch (DbUpdateException ex) when ((ex.InnerException.InnerException is SqlException && (ex.InnerException.InnerException as SqlException).Number == 2601))
             {
-                Context.Entry(sinistro).State = EntityState.Modified;
+                throw new Exception("Já existe um sinistro com Código idêntico registrado", ex);
             }
-            Context.SaveChanges();
         }
 
         public void RemoverSinistroPorId(long? id)
