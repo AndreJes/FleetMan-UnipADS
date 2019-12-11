@@ -36,6 +36,7 @@ namespace Persistencia.DAL.Desk
                 }
                 else
                 {
+                    AttachItem(sinistro, Context);
                     Context.Entry(sinistro).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
@@ -50,8 +51,17 @@ namespace Persistencia.DAL.Desk
         {
             using EFContext Context = new EFContext();
             Sinistro sinistro = ObterSinistroPorId(id);
+            AttachItem(sinistro, Context);
             Context.Sinistros.Remove(sinistro);
             Context.SaveChanges();
+        }
+
+        private void AttachItem(Sinistro sinistro, EFContext context)
+        {
+            if (!context.Sinistros.Local.Contains(sinistro))
+            {
+                context.Sinistros.Attach(sinistro);
+            }
         }
     }
 }

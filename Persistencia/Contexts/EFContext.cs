@@ -13,6 +13,7 @@ using Modelo.Classes.Web;
 using Modelo.Classes.Usuarios;
 using Modelo.Classes.Manutencao.Associacao;
 using Persistencia.Migrations.Entity;
+using System.Data.Entity.Migrations;
 
 namespace Persistencia.Contexts
 {

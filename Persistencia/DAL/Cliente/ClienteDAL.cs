@@ -24,7 +24,7 @@ namespace Persistencia.DAL.Clientes
             }
         }
 
-        public IEnumerable<Modelo.Classes.Clientes.Cliente> ObterTodosOsClientesOrdPorId()
+        public IEnumerable<Cliente> ObterTodosOsClientesOrdPorId()
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Persistencia.DAL.Clientes
             }
         }
 
-        public void GravarCliente(Modelo.Classes.Clientes.Cliente cliente)
+        public void GravarCliente(Cliente cliente)
         {
             try
             {
@@ -63,6 +63,7 @@ namespace Persistencia.DAL.Clientes
                     }
                     else
                     {
+                        AttachItem(cliente, Context);
                         Context.Entry(cliente).State = EntityState.Modified;
                     }
                 }
@@ -75,6 +76,7 @@ namespace Persistencia.DAL.Clientes
                     }
                     else
                     {
+                        AttachItem(cliente, Context);
                         Context.Entry(cliente).State = EntityState.Modified;
                     }
                 }
@@ -161,7 +163,8 @@ namespace Persistencia.DAL.Clientes
             {
                 using EFContext Context = new EFContext();
                 UsuarioClienteDAL.RemoverUsuarioClientePorId(id.ToString());
-                Modelo.Classes.Clientes.Cliente cliente = Context.Clientes.Where(c => c.ClienteId == id).FirstOrDefault();
+                Cliente cliente = Context.Clientes.Where(c => c.ClienteId == id).Include(c => c.Alugueis).Include(c => c.Veiculos).Include(c => c.Motoristas).Include(c => c.Solicitacoes).First();
+                AttachItem(cliente, Context);
                 Context.Clientes.Remove(cliente);
                 Context.SaveChanges();
             }
@@ -171,7 +174,7 @@ namespace Persistencia.DAL.Clientes
             }
         }
 
-        private void GerarUsuarioCliente(Modelo.Classes.Clientes.Cliente cliente)
+        private void GerarUsuarioCliente(Cliente cliente)
         {
             try
             {
@@ -193,6 +196,14 @@ namespace Persistencia.DAL.Clientes
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void AttachItem(Cliente cliente, EFContext Context)
+        {
+            if (!Context.Clientes.Local.Contains(cliente))
+            {
+                Context.Clientes.Attach(cliente);
             }
         }
     }

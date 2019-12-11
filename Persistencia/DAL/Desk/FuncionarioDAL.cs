@@ -36,6 +36,7 @@ namespace Persistencia.DAL.Desk
                 }
                 else
                 {
+                    AttachItem(funcionario, Context);
                     Context.Entry(funcionario).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
@@ -52,6 +53,7 @@ namespace Persistencia.DAL.Desk
             Funcionario funcionario = ObterFuncionarioPorId(id);
             if(funcionario != null)
             {
+                AttachItem(funcionario, Context);
                 Context.Funcionarios.Remove(funcionario);
                 Context.SaveChanges();
             }
@@ -61,6 +63,14 @@ namespace Persistencia.DAL.Desk
         {
             using EFContext Context = new EFContext();
             return Context.Funcionarios.Where(f => f.CPF == cpf).FirstOrDefault();
+        }
+
+        private void AttachItem(Funcionario funcionario, EFContext context)
+        {
+            if (!context.Funcionarios.Local.Contains(funcionario))
+            {
+                context.Funcionarios.Attach(funcionario);
+            }
         }
     }
 }

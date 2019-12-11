@@ -1,4 +1,5 @@
 ﻿using AppDesk.Serviço;
+using Modelo.Classes.Desk;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,8 @@ namespace AppDesk.Windows.Seguros
 
         private void DetalhesSeguroBtn_Click(object sender, RoutedEventArgs e)
         {
-            FormDetalhesSeguro formDetalhes = new FormDetalhesSeguro(SegurosDataGrid.SelectedItem as Modelo.Classes.Desk.Seguro);
+            Seguro seguro = ServicoDados.ServicoDadosSeguro.ObterSeguroPorId((SegurosDataGrid.SelectedItem as Seguro).SeguroId);
+            FormDetalhesSeguro formDetalhes = new FormDetalhesSeguro(seguro);
             formDetalhes.Show();
         }
     }

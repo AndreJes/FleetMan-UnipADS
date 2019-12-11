@@ -30,6 +30,7 @@ namespace Persistencia.DAL.Desk
                 }
                 else
                 {
+                    AttachItem(seguro, Context);
                     Context.Entry(seguro).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
@@ -48,15 +49,24 @@ namespace Persistencia.DAL.Desk
         public Seguro ObterSeguroPorId(long? id)
         {
             using EFContext Context = new EFContext();
-            return Context.Seguro.Where(s => s.SeguroId == id).FirstOrDefault();
+            return Context.Seguro.Where(s => s.SeguroId == id).Include(v => v.Veiculos).First();
         }
 
         public void RemoverSeguroPorId(long? id)
         {
             using EFContext Context = new EFContext();
             Seguro seguro = ObterSeguroPorId(id);
+            AttachItem(seguro, Context);
             Context.Seguro.Remove(seguro);
             Context.SaveChanges();
+        }
+
+        private void AttachItem(Seguro seguro, EFContext context)
+        {
+            if (!context.Seguro.Local.Contains(seguro))
+            {
+                context.Seguro.Attach(seguro);
+            }
         }
     }
 }

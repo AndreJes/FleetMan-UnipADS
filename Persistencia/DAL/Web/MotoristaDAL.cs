@@ -85,8 +85,8 @@ namespace Persistencia.DAL.Web
             {
                 using EFContext Context = new EFContext();
                 Motorista motorista = ObterMotoristaPorId(id);
-                Context.Motoristas.Remove(motorista);
                 AttachItem(motorista, Context);
+                Context.Motoristas.Remove(motorista);
                 Context.SaveChanges();
             }
             catch (Exception ex)

@@ -37,6 +37,7 @@ namespace Persistencia.DAL.Desk
                 }
                 else
                 {
+                    AttachItem(garagem, Context);
                     Context.Entry(garagem).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
@@ -71,12 +72,21 @@ namespace Persistencia.DAL.Desk
             {
                 using EFContext Context = new EFContext();
                 Garagem garagem = ObterGaragemPorId(id);
+                AttachItem(garagem, Context);
                 Context.Garagens.Remove(garagem);
                 Context.SaveChanges();
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void AttachItem(Garagem garagem, EFContext context)
+        {
+            if (!context.Garagens.Local.Contains(garagem))
+            {
+                context.Garagens.Attach(garagem);
             }
         }
     }

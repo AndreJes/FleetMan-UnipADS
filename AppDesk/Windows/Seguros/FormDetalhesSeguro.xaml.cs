@@ -1,6 +1,7 @@
 ﻿using AppDesk.Serviço;
 using AppDesk.Tools;
 using Modelo.Classes.Desk;
+using Modelo.Classes.Web;
 using Modelo.Enums;
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,10 @@ namespace AppDesk.Windows.Seguros
 
         private void PreencherDados()
         {
-            VeiculosDataGrid.ItemsSource = _seguro.Veiculos;
+            if (_seguro.Veiculos.Any() || _seguro.Veiculos != null)
+            {
+                VeiculosDataGrid.ItemsSource = _seguro.Veiculos.ToList();
+            }
             CNPJUC.Text = _seguro.CNPJ;
             NomeUC.Text = _seguro.Nome;
             EmailUC.Text = _seguro.Email;

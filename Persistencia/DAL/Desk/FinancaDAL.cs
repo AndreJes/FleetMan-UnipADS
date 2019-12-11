@@ -50,6 +50,7 @@ namespace Persistencia.DAL.Desk
                 }
                 else
                 {
+                    AttachItem(financa, Context);
                     Context.Entry(financa).State = EntityState.Modified;
                 }
 
@@ -71,12 +72,21 @@ namespace Persistencia.DAL.Desk
             {
                 using EFContext Context = new EFContext();
                 Financa financa = ObterFinancaPorId(id);
+                AttachItem(financa, Context);
                 Context.Financas.Remove(financa);
                 Context.SaveChanges();
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void AttachItem(Financa financa, EFContext context)
+        {
+            if (!context.Financas.Local.Contains(financa))
+            {
+                context.Financas.Attach(financa);
             }
         }
     }

@@ -21,7 +21,7 @@ namespace Servicos.Web
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -33,7 +33,7 @@ namespace Servicos.Web
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -57,7 +57,7 @@ namespace Servicos.Web
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -68,7 +68,7 @@ namespace Servicos.Web
                 bool confirm = await Task.Run(() =>
                 {
                     Motorista motorista = ObterMotoristaPorId(id);
-                    if(motorista.Estado == EstadosDeMotorista.EM_VIAGEM)
+                    if (motorista.Estado == EstadosDeMotorista.EM_VIAGEM)
                     {
                         throw new Exception("Motorista se encontra em viagem");
                     }
@@ -81,7 +81,7 @@ namespace Servicos.Web
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
     }

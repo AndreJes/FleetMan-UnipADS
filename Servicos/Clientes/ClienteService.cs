@@ -24,7 +24,7 @@ namespace Servicos.Clientes
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -36,7 +36,7 @@ namespace Servicos.Clientes
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -48,7 +48,7 @@ namespace Servicos.Clientes
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -60,7 +60,7 @@ namespace Servicos.Clientes
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -72,7 +72,7 @@ namespace Servicos.Clientes
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -92,7 +92,7 @@ namespace Servicos.Clientes
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -104,7 +104,7 @@ namespace Servicos.Clientes
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -116,7 +116,7 @@ namespace Servicos.Clientes
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
 
@@ -141,7 +141,7 @@ namespace Servicos.Clientes
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw ex;
             }
         }
     }

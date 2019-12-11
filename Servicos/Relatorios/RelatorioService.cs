@@ -72,6 +72,11 @@ namespace Servicos.Relatorios
                         .Where(v => v.DataSaida <= dataFinal)
                         .ToList();
 
+                    if (viagens.Count == 0)
+                    {
+                        throw new Exception("Não existem dados registrados nas datas informadas");
+                    }
+
                     RelatorioViagem relatorioViagem = new RelatorioViagem(dataInicio, dataFinal, tipo, viagens, descricao: descricao);
 
                     return relatorioViagem;
@@ -81,6 +86,11 @@ namespace Servicos.Relatorios
                         .Where(m => m.DataDaMulta >= dataInicio)
                         .Where(m => m.DataDaMulta <= dataFinal)
                         .ToList();
+
+                    if (multas.Count == 0)
+                    {
+                        throw new Exception("Não existem dados registrados nas datas informadas");
+                    }
 
                     RelatorioMulta relatorioMulta = new RelatorioMulta(dataInicio, dataFinal, tipo, multas, descricao: descricao);
 
@@ -92,6 +102,11 @@ namespace Servicos.Relatorios
                         .Where(s => s.DataSinistro <= dataFinal)
                         .ToList();
 
+                    if (sinistros.Count == 0)
+                    {
+                        throw new Exception("Não existem dados registrados nas datas informadas");
+                    }
+
                     RelatorioSinistros relatorioSinistros = new RelatorioSinistros(dataInicio, dataFinal, tipo, sinistros, descricao: descricao);
 
                     return relatorioSinistros;
@@ -101,6 +116,11 @@ namespace Servicos.Relatorios
                         .Where(a => a.DataAgendada >= dataInicio || a.DataConclusao >= dataInicio)
                         .Where(a => a.DataAgendada <= dataFinal || a.DataConclusao <= dataFinal)
                         .ToList();
+
+                    if (abastecimentos.Count == 0)
+                    {
+                        throw new Exception("Não existem dados registrados nas datas informadas");
+                    }
 
                     RelatorioConsumo relatorioConsumo = new RelatorioConsumo(dataInicio, dataFinal, tipo, abastecimentos, descricao: descricao);
 
@@ -112,6 +132,11 @@ namespace Servicos.Relatorios
                         .Where(f => f.DataVencimento <= dataFinal)
                         .ToList();
 
+                    if (financas.Count == 0)
+                    {
+                        throw new Exception("Não existem dados registrados nas datas informadas");
+                    }
+
                     RelatorioFinanceiro relatorioFinanceiro = new RelatorioFinanceiro(dataInicio, dataFinal, tipo, financas, descricao: descricao);
 
                     return relatorioFinanceiro;
@@ -120,6 +145,11 @@ namespace Servicos.Relatorios
                         .Where(m => m.DataEntrada >= dataInicio)
                         .Where(m => m.DataEntrada <= dataFinal)
                         .ToList();
+
+                    if (manutencoes.Count == 0)
+                    {
+                        throw new Exception("Não existem dados registrados nas datas informadas");
+                    }
 
                     RelatorioManutencao relatorioManutencao = new RelatorioManutencao(dataInicio, dataFinal, tipo, manutencoes, descricao: descricao);
 

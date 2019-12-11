@@ -73,6 +73,10 @@ namespace AppDesk.Windows.Fornecedores
                 {
                     fornecedor.Endereco = EnderecoUC.Endereco;
                 }
+                else
+                {
+                    fornecedor.Endereco = new Endereco();
+                }
 
                 return fornecedor;
             }

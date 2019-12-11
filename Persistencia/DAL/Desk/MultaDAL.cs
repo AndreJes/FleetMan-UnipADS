@@ -50,6 +50,7 @@ namespace Persistencia.DAL.Desk
                 }
                 else
                 {
+                    AttachItem(multa, Context);
                     Context.Entry(multa).State = EntityState.Modified;
                 }
                 Context.SaveChanges();
@@ -70,12 +71,21 @@ namespace Persistencia.DAL.Desk
             {
                 using EFContext Context = new EFContext();
                 Multa multa = ObterMultaPorId(id);
+                AttachItem(multa, Context);
                 Context.Multas.Remove(multa);
                 Context.SaveChanges();
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        private void AttachItem(Multa multa, EFContext context)
+        {
+            if (!context.Multas.Local.Contains(multa))
+            {
+                context.Multas.Attach(multa);
             }
         }
     }
