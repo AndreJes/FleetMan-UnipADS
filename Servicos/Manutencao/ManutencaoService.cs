@@ -103,6 +103,10 @@ namespace Servicos.Manutencao
         {
             if (manutencao.DataSaida.HasValue && manutencao.DataSaida.Value > DateTime.Now)
             {
+                if(manutencao.EstadoAtual == EstadosDeManutencao.CONCLUIDA && manutencao.DataEntrada > DateTime.Now)
+                {
+                    throw new Exception("Data de entrada/agendamento inválida");
+                }
                 throw new Exception("Data de conclusão inválida");
             }
             else

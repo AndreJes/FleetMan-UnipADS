@@ -20,7 +20,7 @@ namespace Persistencia.DAL.Manutencao
         public Abastecimento ObterAbastecimentoPorId(long? id)
         {
             using EFContext Context = new EFContext();
-            return Context.Abastecimentos.Where(a => a.AbastecimentoId == id).FirstOrDefault();
+            return Context.Abastecimentos.Where(a => a.AbastecimentoId == id).Include(a => a.Motorista).Include(a => a.Veiculo).FirstOrDefault();
         }
 
         public void GravarAbastecimento(Abastecimento abastecimento)
