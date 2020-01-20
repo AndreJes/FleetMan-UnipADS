@@ -2,19 +2,7 @@
 using AppDesk.Tools;
 using Modelo.Classes.Web;
 using Modelo.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AppDesk.Windows.Solicitacoes
 {
@@ -42,11 +30,11 @@ namespace AppDesk.Windows.Solicitacoes
                     break;
             }
 
-            if(solicitacao.Estado != EstadosDaSolicitacao.AGUARDANDO)
+            if (solicitacao.Estado != EstadosDaSolicitacao.AGUARDANDO)
             {
                 AprovarBtn.IsEnabled = false;
                 ReprovarBtn.IsEnabled = false;
-                if(solicitacao.Estado == EstadosDaSolicitacao.APROVADA)
+                if (solicitacao.Estado == EstadosDaSolicitacao.APROVADA)
                 {
                     EstadoSolicitacaoTextBox.Text = "Aprovada";
                 }
@@ -66,7 +54,7 @@ namespace AppDesk.Windows.Solicitacoes
                 AprovarBtn.IsEnabled = false;
                 ReprovarBtn.IsEnabled = false;
             }
-            if(!DesktopLoginControlService._Usuario.Permissoes.Solicitacoes.Remover)
+            if (!DesktopLoginControlService._Usuario.Permissoes.Solicitacoes.Remover)
             {
                 RemoverBtn.IsEnabled = false;
             }
@@ -96,7 +84,7 @@ namespace AppDesk.Windows.Solicitacoes
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(StandardMessageBoxes.ConfirmarRemocaoMessageBox("Solicitação") == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Solicitação") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosSolicitacao.RemoverSolicitacaoPorId(_solicitacao.SolicitacaoId);
                 StandardMessageBoxes.MensagemSucesso("Solicitação removida com sucesso!", "Remoção");

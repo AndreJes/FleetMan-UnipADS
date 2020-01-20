@@ -4,21 +4,11 @@ using AppDesk.Windows.Clientes;
 using Modelo.Classes.Clientes;
 using Modelo.Enums;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AppDesk.UserControls
 {
@@ -31,11 +21,11 @@ namespace AppDesk.UserControls
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Cliente Cliente 
-        { 
+        public Cliente Cliente
+        {
             get
             {
-                if(_cliente != null)
+                if (_cliente != null)
                 {
                     return _cliente;
                 }
@@ -50,8 +40,9 @@ namespace AppDesk.UserControls
                 NotifyPropertyChanged();
             }
         }
-        public TipoCliente Tipo { 
-            get 
+        public TipoCliente Tipo
+        {
+            get
             {
                 if (PFRadioBtn.IsChecked == true)
                 {

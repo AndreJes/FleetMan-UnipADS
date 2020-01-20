@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Modelo.Enums;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Modelo.Classes.Desk;
-using AppDesk.Serviço;
+﻿using AppDesk.Serviço;
 using AppDesk.Tools;
+using Modelo.Classes.Desk;
+using Modelo.Enums;
+using System;
+using System.Windows;
 
 namespace AppDesk.Windows.Financas
 {
@@ -79,11 +68,11 @@ namespace AppDesk.Windows.Financas
                     this.Close();
                 }
             }
-            catch(FieldException ex)
+            catch (FieldException ex)
             {
                 StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }

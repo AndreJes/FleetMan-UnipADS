@@ -4,11 +4,6 @@ using Servicos.Manutencao;
 using Servicos.Relatorios;
 using Servicos.Usuarios;
 using Servicos.Web;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppDesk.Serviço
 {

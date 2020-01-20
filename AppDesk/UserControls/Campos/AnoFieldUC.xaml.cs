@@ -1,18 +1,8 @@
 ﻿using AppDesk.Tools;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AppDesk.UserControls.Campos
 {
@@ -59,7 +49,7 @@ namespace AppDesk.UserControls.Campos
             int? valor = AnoNumberUD.Value;
             validado = await Task.Run(() =>
             {
-                if(valor != null)
+                if (valor != null)
                 {
                     return true;
                 }
@@ -69,7 +59,7 @@ namespace AppDesk.UserControls.Campos
                 }
             });
 
-            if(validado)
+            if (validado)
             {
                 _value = (int)AnoNumberUD.Value;
                 AnoNumberUD.BorderBrush = HexaColorPicker.TextBoxValidoColor;

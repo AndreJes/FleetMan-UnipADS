@@ -1,47 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using AppDesk.Serviço;
+﻿using AppDesk.Serviço;
 using AppDesk.Tools;
-using Modelo.Classes.Clientes;
-using Modelo.Classes.Web;
-using Modelo.Enums;
+using AppDesk.Windows.Abastecimentos;
 using AppDesk.Windows.Clientes;
-using AppDesk.Windows.Seguros;
+using AppDesk.Windows.Estoque;
+using AppDesk.Windows.Financas;
+using AppDesk.Windows.Fornecedores;
 using AppDesk.Windows.Garagens;
-using Modelo.Classes.Desk;
-using AppDesk.Windows.Veiculos;
+using AppDesk.Windows.Locacoes;
+using AppDesk.Windows.Manutencoes;
 using AppDesk.Windows.Motoristas;
 using AppDesk.Windows.MultaESinistro;
 using AppDesk.Windows.MultaESinistro.Multas;
 using AppDesk.Windows.MultaESinistro.Sinistros;
-using AppDesk.Windows.Viagens;
-using AppDesk.Windows.Financas;
-using AppDesk.Windows.Locacoes;
-using AppDesk.Windows.Usuarios;
-using AppDesk.Windows.Fornecedores;
-using AppDesk.Windows.Estoque;
-using Modelo.Classes.Manutencao;
-using AppDesk.Windows.Abastecimentos;
-using AppDesk.Windows.Manutencoes;
 using AppDesk.Windows.Relatorios;
-using Modelo.Classes.Relatorios;
+using AppDesk.Windows.Seguros;
 using AppDesk.Windows.Solicitacoes;
-using Modelo.Classes.Usuarios;
+using AppDesk.Windows.Usuarios;
+using AppDesk.Windows.Veiculos;
+using AppDesk.Windows.Viagens;
+using Modelo.Classes.Clientes;
+using Modelo.Classes.Desk;
+using Modelo.Classes.Manutencao;
+using Modelo.Classes.Relatorios;
 using Modelo.Classes.Usuarios.Permissoes;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using Modelo.Classes.Web;
+using Modelo.Enums;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace AppDesk
 {
@@ -1120,9 +1108,9 @@ namespace AppDesk
                         Dispatcher.InvokeAsync(() =>
                         {
                             FuncionariosDataGrid.ItemsSource = ServicoDados.ServicoDadosFuncionario.ObterFuncionariosOrdPorId()
-                            .Where (f => f.Nome.ToUpper().Contains(filtro) ||
-                                         f.CPF.ToUpper().Contains(filtro) ||
-                                         f.Email.ToUpper().Contains(filtro))
+                            .Where(f => f.Nome.ToUpper().Contains(filtro) ||
+                                        f.CPF.ToUpper().Contains(filtro) ||
+                                        f.Email.ToUpper().Contains(filtro))
                             .ToList();
                         });
                     }

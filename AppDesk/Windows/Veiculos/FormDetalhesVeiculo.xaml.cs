@@ -6,20 +6,10 @@ using Modelo.Classes.Auxiliares;
 using Modelo.Classes.Clientes;
 using Modelo.Classes.Desk;
 using Modelo.Classes.Web;
-using Modelo.Enums;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AppDesk.Windows.Veiculos
 {
@@ -153,7 +143,7 @@ namespace AppDesk.Windows.Veiculos
             ModeloUC.Text = _veiculo.Modelo;
             AnoUC.Value = _veiculo.Ano;
             CorUC.Text = _veiculo.Cor;
-            
+
         }
 
         private void RegistrarAbastecimentoBtn_Click(object sender, RoutedEventArgs e)

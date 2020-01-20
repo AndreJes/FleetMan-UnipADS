@@ -5,18 +5,7 @@ using LiveCharts.Wpf;
 using Modelo.Classes.Relatorios;
 using Modelo.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AppDesk.Windows.Relatorios
 {
@@ -51,7 +40,7 @@ namespace AppDesk.Windows.Relatorios
 
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Confirmar remoção de relatório?", "Confirmar remoção", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Confirmar remoção de relatório?", "Confirmar remoção", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosRelatorio.RemoverRelatorioPorId(Relatorio.RelatorioId, TiposRelatorios.FINANCEIRO);
                 MessageBox.Show("Relatorio removido com sucesso!");

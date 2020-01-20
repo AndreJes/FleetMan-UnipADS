@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using AppDesk.Tools;
-using Modelo.Classes.Auxiliares;
+﻿using AppDesk.Tools;
 using Modelo.Classes.Clientes;
 using Modelo.Enums;
+using System;
+using System.Linq;
+using System.Windows;
 
 namespace AppDesk.Windows.Clientes
 {
@@ -51,17 +40,17 @@ namespace AppDesk.Windows.Clientes
                 if (cliente != null)
                 {
                     Serviço.ServicoDados.ServicoDadosClientes.GravarCliente(cliente);
-                    StandardMessageBoxes.MensagemSucesso("Cliente registrado com sucesso!","Registro");
+                    StandardMessageBoxes.MensagemSucesso("Cliente registrado com sucesso!", "Registro");
                     MainWindow window = Application.Current.Windows.OfType<MainWindow>().First();
                     window.PopulateDataGrid();
                     this.Close();
                 }
             }
-            catch(FieldException ex)
+            catch (FieldException ex)
             {
                 StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }

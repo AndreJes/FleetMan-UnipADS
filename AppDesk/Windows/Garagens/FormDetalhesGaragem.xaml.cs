@@ -1,19 +1,7 @@
 ﻿using AppDesk.Serviço;
 using AppDesk.Tools;
-using Modelo.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AppDesk.Windows.Garagens
 {
@@ -50,18 +38,18 @@ namespace AppDesk.Windows.Garagens
         private void RemoverBtn_Click(object sender, RoutedEventArgs e)
         {
             try
-            { 
-            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Garagem") == MessageBoxResult.Yes)
             {
-                ServicoDados.ServicoDadosGaragem.RemoverGaragemPorId(_garagem.GaragemId);
-                StandardMessageBoxes.MensagemSucesso("Garagem removida com sucesso!", "Remoção");
-                MainWindowUpdater.UpdateDataGrids();
-                this.Close();
-            }
+                if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Garagem") == MessageBoxResult.Yes)
+                {
+                    ServicoDados.ServicoDadosGaragem.RemoverGaragemPorId(_garagem.GaragemId);
+                    StandardMessageBoxes.MensagemSucesso("Garagem removida com sucesso!", "Remoção");
+                    MainWindowUpdater.UpdateDataGrids();
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
-              StandardMessageBoxes.MensagemDeErro(ex.Message);
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
 

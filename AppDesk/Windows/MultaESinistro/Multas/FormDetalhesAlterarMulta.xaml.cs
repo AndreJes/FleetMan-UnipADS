@@ -5,18 +5,8 @@ using AppDesk.Windows.Veiculos;
 using Modelo.Classes.Desk;
 using Modelo.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AppDesk.Windows.MultaESinistro.Multas
 {
@@ -56,7 +46,7 @@ namespace AppDesk.Windows.MultaESinistro.Multas
         private void PopularComboBox()
         {
             var lista = Enum.GetNames(typeof(EstadosDePagamento));
-            for(int i = 0; i < lista.Length; i++)
+            for (int i = 0; i < lista.Length; i++)
             {
                 lista[i] = lista[i].Replace('_', ' ');
             }
@@ -65,10 +55,10 @@ namespace AppDesk.Windows.MultaESinistro.Multas
 
         private void RemoverMultaBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(StandardMessageBoxes.ConfirmarRemocaoMessageBox("Multa") == MessageBoxResult.Yes)
+            if (StandardMessageBoxes.ConfirmarRemocaoMessageBox("Multa") == MessageBoxResult.Yes)
             {
                 ServicoDados.ServicoDadosMulta.RemoverMultaPorId(_multa.MultaId);
-                StandardMessageBoxes.MensagemSucesso("Multa removida com sucesso!","Remoção");
+                StandardMessageBoxes.MensagemSucesso("Multa removida com sucesso!", "Remoção");
                 MainWindowUpdater.UpdateDataGrids();
                 this.Close();
             }
@@ -84,7 +74,7 @@ namespace AppDesk.Windows.MultaESinistro.Multas
 
         private void SalvarAlteracaoPagamentoBtn_Click(object sender, RoutedEventArgs e)
         {
-            _multa.EstadoDoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento),EstadoPagamentoInfracaoComboBox.SelectedItem.ToString());
+            _multa.EstadoDoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), EstadoPagamentoInfracaoComboBox.SelectedItem.ToString());
             ServicoDados.ServicoDadosMulta.GravarMulta(_multa);
             MainWindowUpdater.UpdateDataGrids();
         }

@@ -11,7 +11,7 @@ namespace Servicos.Web
 {
     public class ViagemService
     {
-        private ViagemDAL Context = new Persistencia.DAL.Web.ViagemDAL();
+        private ViagemDAL Context = new ViagemDAL();
 
         public IEnumerable<Viagem> ObterViagensOrdPorId()
         {

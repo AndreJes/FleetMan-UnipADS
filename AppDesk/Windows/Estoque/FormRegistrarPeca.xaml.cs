@@ -2,18 +2,7 @@
 using AppDesk.Tools;
 using Modelo.Classes.Manutencao;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AppDesk.Windows.Estoque
 {
@@ -68,7 +57,7 @@ namespace AppDesk.Windows.Estoque
             {
                 StandardMessageBoxes.MensagemDeErroCampoFormulario(ex.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
@@ -85,7 +74,7 @@ namespace AppDesk.Windows.Estoque
                     _peca.FornecedorId = _fornecedor.FornecedorId;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }

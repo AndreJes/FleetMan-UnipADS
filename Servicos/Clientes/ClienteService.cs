@@ -16,7 +16,7 @@ namespace Servicos.Clientes
         private ClienteDAL Context = new ClienteDAL();
         private VeiculoService VeiculoService = new VeiculoService();
 
-        public IEnumerable<Modelo.Classes.Clientes.Cliente> ObterClientesOrdPorId()
+        public IEnumerable<Cliente> ObterClientesOrdPorId()
         {
             try
             {
@@ -28,7 +28,7 @@ namespace Servicos.Clientes
             }
         }
 
-        public void GravarCliente(Modelo.Classes.Clientes.Cliente cliente)
+        public void GravarCliente(Cliente cliente)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace Servicos.Clientes
             }
         }
 
-        public Modelo.Classes.Clientes.Cliente ObterClientePorCPFCNPJ(string cpfcnpj, TipoCliente tipo)
+        public Cliente ObterClientePorCPFCNPJ(string cpfcnpj, TipoCliente tipo)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace Servicos.Clientes
             }
         }
 
-        public Modelo.Classes.Clientes.Cliente ObterClientePorEmailTipo(string email, TipoCliente tipo)
+        public Cliente ObterClientePorEmailTipo(string email, TipoCliente tipo)
         {
             try
             {

@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AppDesk.UserControls
 {
@@ -26,12 +14,12 @@ namespace AppDesk.UserControls
 
         public bool Required
         {
-            get 
-            { 
-                return _required; 
+            get
+            {
+                return _required;
             }
-            set 
-            { 
+            set
+            {
                 _required = value;
                 NotifyPropertyChanged();
             }
@@ -40,13 +28,13 @@ namespace AppDesk.UserControls
 
         public DateTime? Date
         {
-            get 
+            get
             {
                 if (DatePickerField.SelectedDate != null)
                 {
                     return DatePickerField.SelectedDate.GetValueOrDefault();
-                } 
-                else if(Required)
+                }
+                else if (Required)
                 {
                     throw new FieldException(Label);
                 }
@@ -55,19 +43,19 @@ namespace AppDesk.UserControls
                     return null;
                 }
             }
-            set 
-            { 
+            set
+            {
                 DatePickerField.SelectedDate = value;
                 NotifyPropertyChanged();
             }
         }
         public string Label
         {
-            get 
-            { 
-                return DataLabel.Content.ToString(); 
+            get
+            {
+                return DataLabel.Content.ToString();
             }
-            set 
+            set
             {
                 DataLabel.Content = value;
                 NotifyPropertyChanged();
@@ -82,7 +70,7 @@ namespace AppDesk.UserControls
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName= "")
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
         }
