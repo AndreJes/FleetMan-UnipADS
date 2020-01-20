@@ -91,7 +91,7 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
-                                <TextBox Width="250" Height="28" Text="{Binding Veiculo.Nome, Mode=OneWay}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                <TextBox Width="250" Height="28" x:Name="NomeVeiculoTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                                     <TextBox.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="10"/>
@@ -116,7 +116,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
-                            <ucc:NomeFieldUC x:Name="NomeTextBox" IsEnabled="False"></ucc:NomeFieldUC>
+                            <ucc:NomeFieldUC x:Name="NomeClienteTextBox" IsEnabled="False"></ucc:NomeFieldUC>
 
                             <ucm:CPFFieldUC x:Name="CPFTextBox" IsEnabled="False" Grid.Row="1" Visibility="Collapsed"></ucm:CPFFieldUC>
                             <ucm:CNPJFieldUC x:Name="CNPJTextBox" IsEnabled="False" Grid.Row="1" Visibility="Collapsed"></ucm:CNPJFieldUC>

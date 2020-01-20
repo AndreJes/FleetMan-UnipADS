@@ -55,6 +55,9 @@ namespace AppDesk.Windows.Locacoes
                     break;
             }
 
+            NomeClienteTextBox.Text = _aluguel.Cliente.Nome;
+            NomeVeiculoTextBox.Text = _aluguel.Veiculo.Marca + " " + _aluguel.Veiculo.Modelo + " " + _aluguel.Veiculo.Ano.ToString();
+
             if (_aluguel.Cliente is ClientePF)
             {
                 CPFTextBox.Text = (_aluguel.Cliente as ClientePF).CPFTxt;
