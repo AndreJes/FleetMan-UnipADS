@@ -246,6 +246,13 @@
                                             <DataGridTextColumn Header="Valor" Binding="{Binding Valor}"/>
                                             <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoDoPagamento}" />
                                             <DataGridTextColumn Header="Gravidade" Binding="{Binding GravidadeDaInfracao}"/>
+                                            <DataGridTemplateColumn Header="Detalhes">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button x:Name="DetalhesMultaBtn" Click="DetalhesMultaBtn_Click">Detalhes</Button>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
                                         </DataGrid.Columns>
                                     </DataGrid>
                                     <!--#endregion-->
@@ -261,6 +268,13 @@
                                             <DataGridTextColumn Header="Código" Binding="{Binding CodSinistro}"/>
                                             <DataGridTextColumn Header="Pagamento" Binding="{Binding EstadoPagamento}"/>
                                             <DataGridTextColumn Header="Gravidade" Binding="{Binding Gravidade}" />
+                                            <DataGridTemplateColumn Header="Detalhes">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button x:Name="DetalhesSinistroBtn" Click="DetalhesSinistroBtn_Click">Detalhes</Button>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
                                         </DataGrid.Columns>
                                     </DataGrid>
                                     <!--#endregion-->
@@ -307,6 +321,13 @@
                                                 <DataGridTextColumn Header="Data de Saida" Binding="{Binding DataSaida}"/>
                                                 <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}"/>
                                                 <DataGridTextColumn Header="Estado" Binding="{Binding EstadoAtual}"/>
+                                                <DataGridTemplateColumn Header="Detalhes">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button x:Name="DetalhesManutençãoBtn" Click="DetalhesManutençãoBtn_Click">Detalhes</Button>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
                                             </DataGrid.Columns>
                                         </DataGrid>
                                     </Grid>

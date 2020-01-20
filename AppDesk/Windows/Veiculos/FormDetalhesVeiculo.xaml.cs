@@ -2,9 +2,13 @@
 using AppDesk.Serviço;
 using AppDesk.Tools;
 using AppDesk.Windows.Abastecimentos;
+using AppDesk.Windows.Manutencoes;
+using AppDesk.Windows.MultaESinistro.Multas;
+using AppDesk.Windows.MultaESinistro.Sinistros;
 using Modelo.Classes.Auxiliares;
 using Modelo.Classes.Clientes;
 using Modelo.Classes.Desk;
+using Modelo.Classes.Manutencao;
 using Modelo.Classes.Web;
 using System;
 using System.Linq;
@@ -18,7 +22,7 @@ namespace AppDesk.Windows.Veiculos
     /// </summary>
     public partial class FormDetalhesVeiculo : Window, IFillTextBoxes
     {
-        private Veiculo _veiculo = new Veiculo();
+        private Veiculo _veiculo = null;
 
         private FormDetalhesVeiculo()
         {
@@ -149,8 +153,32 @@ namespace AppDesk.Windows.Veiculos
         private void RegistrarAbastecimentoBtn_Click(object sender, RoutedEventArgs e)
         {
             FormRegistrarAbastecimento formRegistrarAbastecimento = new FormRegistrarAbastecimento();
-            formRegistrarAbastecimento.SeletorVeiculo.Veiculo = _veiculo;
+            formRegistrarAbastecimento.SeletorVeiculo.SelecionarVeiculo(_veiculo);
             formRegistrarAbastecimento.Show();
+        }
+
+        private void DetalhesManutençãoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Manutencao manutencao = ServicoDados.ServicoDadosManutencao.ObterManutencaoPorId((ManutencaoDataGrid.SelectedItem as Manutencao).ManutencaoId);
+
+            FormAlterarDetalhesManutencao detalhesManutencao = new FormAlterarDetalhesManutencao(manutencao);
+            detalhesManutencao.Show();
+        }
+
+        private void DetalhesSinistroBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Sinistro sinistro = ServicoDados.ServicoDadosSinistro.ObterSinistroPorId((SinistrosDataGrid.SelectedItem as Sinistro).SinistroId);
+
+            FormDetalhesAlterarSinistro formDetalhesAlterarSinistro = new FormDetalhesAlterarSinistro(sinistro);
+            formDetalhesAlterarSinistro.Show();
+        }
+
+        private void DetalhesMultaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Multa multa = ServicoDados.ServicoDadosMulta.ObterMultaPorId((MultasDataGrid.SelectedItem as Multa).MultaId);
+
+            FormDetalhesAlterarMulta formDetalhesAlterarMulta = new FormDetalhesAlterarMulta(multa);
+            formDetalhesAlterarMulta.Show();
         }
     }
 }

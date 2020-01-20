@@ -87,7 +87,7 @@ namespace AppDesk.UserControls
             }
         }
 
-        private void SelecionarVeiculo(Veiculo veiculo)
+        public void SelecionarVeiculo(Veiculo veiculo)
         {
             Veiculo = ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorId(veiculo.VeiculoId);
             VeiculoSelecionadoTextBox.DataContext = Veiculo;

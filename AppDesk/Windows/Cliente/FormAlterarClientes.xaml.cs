@@ -1,6 +1,10 @@
 ﻿using AppDesk.Serviço;
 using AppDesk.Tools;
+using AppDesk.Windows.Locacoes;
+using AppDesk.Windows.Motoristas;
+using AppDesk.Windows.Veiculos;
 using Modelo.Classes.Clientes;
+using Modelo.Classes.Web;
 using Modelo.Enums;
 using System;
 using System.Windows;
@@ -181,17 +185,26 @@ namespace AppDesk.Windows.Clientes
 
         private void DetalhesVeiculoBtn_Click(object sender, RoutedEventArgs e)
         {
+            Veiculo veiculo = ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorId((VehicleDataGrid.SelectedItem as Veiculo).VeiculoId);
 
+            FormDetalhesVeiculo formDetalhesVeiculo = new FormDetalhesVeiculo(veiculo);
+            formDetalhesVeiculo.Show();
         }
 
         private void AluguelDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
+            Aluguel aluguel = ServicoDados.ServicoDadosAluguel.ObterAluguelPorId((LocacoesDataGrid.SelectedItem as Aluguel).AluguelId);
 
+            FormDetalhesAlterarAluguel formDetalhesAluguel = new FormDetalhesAlterarAluguel(aluguel);
+            formDetalhesAluguel.Show();
         }
 
         private void MotoristaDetailsBtn_Click(object sender, RoutedEventArgs e)
         {
+            Motorista motorista = ServicoDados.ServicoDadosMotorista.ObterMotoristaPorId((MotoristasDataGrid.SelectedItem as Motorista).MotoristaId);
 
+            FormDetalhesMotorista formDetalhesMotorista = new FormDetalhesMotorista(motorista);
+            formDetalhesMotorista.Show();
         }
     }
 }
