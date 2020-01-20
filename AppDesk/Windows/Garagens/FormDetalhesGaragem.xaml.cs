@@ -1,5 +1,7 @@
 ﻿using AppDesk.Serviço;
 using AppDesk.Tools;
+using AppDesk.Windows.Veiculos;
+using Modelo.Classes.Web;
 using System;
 using System.Windows;
 
@@ -81,6 +83,7 @@ namespace AppDesk.Windows.Garagens
             EnderecoUC.Endereco = _garagem.Endereco;
 
             LotacaoTextBox.Text = _garagem.Veiculos.Count.ToString();
+            CapacidadeTextBox.Text = _garagem.Capacidade.ToString();
             CapacidadeSlider.Value = _garagem.Capacidade;
             LotacaoProgressBar.Value = _garagem.Veiculos.Count;
             LotacaoProgressBar.Maximum = _garagem.Capacidade;
@@ -106,6 +109,14 @@ namespace AppDesk.Windows.Garagens
             {
                 throw ex;
             }
+        }
+
+        private void DetalhesVeiculoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Veiculo veiculo = ServicoDados.ServicoDadosVeiculos.ObterVeiculoPorId((VeiculosDataGrid.SelectedItem as Veiculo).VeiculoId);
+
+            FormDetalhesVeiculo formDetalhesVeiculo = new FormDetalhesVeiculo(veiculo);
+            formDetalhesVeiculo.Show();
         }
     }
 }

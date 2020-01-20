@@ -1,7 +1,10 @@
 ﻿using AppDesk.Interfaces;
 using AppDesk.Serviço;
 using AppDesk.Tools;
+using AppDesk.Windows.MultaESinistro.Multas;
+using AppDesk.Windows.MultaESinistro.Sinistros;
 using Modelo.Classes.Clientes;
+using Modelo.Classes.Desk;
 using Modelo.Classes.Web;
 using Modelo.Enums;
 using System;
@@ -138,6 +141,22 @@ namespace AppDesk.Windows.Motoristas
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
+        }
+
+        private void DetalhesSinistroBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Sinistro sinistro = ServicoDados.ServicoDadosSinistro.ObterSinistroPorId((SinistrosDataGrid.SelectedItem as Sinistro).SinistroId);
+
+            FormDetalhesAlterarSinistro formDetalhesAlterarSinistro = new FormDetalhesAlterarSinistro(sinistro);
+            formDetalhesAlterarSinistro.Show();
+        }
+
+        private void DetalhesMultaBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Multa multa = ServicoDados.ServicoDadosMulta.ObterMultaPorId((MultasDataGrid.SelectedItem as Multa).MultaId);
+
+            FormDetalhesAlterarMulta formDetalhesAlterarMulta = new FormDetalhesAlterarMulta(multa);
+            formDetalhesAlterarMulta.Show();
         }
     }
 }
