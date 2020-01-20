@@ -36,11 +36,15 @@ namespace AppDesk.Windows.Manutencoes
             {
                 PjRB.IsChecked = true;
                 CNPJUC.Text = _manutencao.CPFCNPJResponsavel;
+                CNPJUC.Visibility = Visibility.Visible;
+                CPFUC.Visibility = Visibility.Collapsed;
             }
             else
             {
                 PfRB.IsChecked = true;
                 CPFUC.Text = _manutencao.CPFCNPJResponsavel;
+                CNPJUC.Visibility = Visibility.Collapsed;
+                CPFUC.Visibility = Visibility.Visible;
             }
 
             DataAgendamento.Date = manutencao.DataEntrada;
