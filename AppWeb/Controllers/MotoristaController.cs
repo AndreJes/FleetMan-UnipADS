@@ -32,7 +32,7 @@ namespace AppWeb.Controllers
             string email = HttpContext.GetOwinContext().Authentication.User.Identity.Name;
             long? id = (long?)long.Parse(Gerenciador.FindByEmail(email).Id);
 
-            List<Motorista> motoristas = MotoristaService.ObterMotoristasOrdPorId().Where(m => m.MotoristaId == id).ToList();
+            List<Motorista> motoristas = MotoristaService.ObterMotoristasOrdPorId().Where(m => m.ClienteId == id).ToList();
 
             return View(motoristas);
         }

@@ -104,47 +104,7 @@
     <Compile Include="DAL\Web\SolicitacaoDAL.cs" />
     <Compile Include="DAL\Web\VeiculoDAL.cs" />
     <Compile Include="DAL\Web\ViagemDAL.cs" />
-    <Compile Include="Migrations\Entity\201911051229201_Initial.cs" />
-    <Compile Include="Migrations\Entity\201911051229201_Initial.Designer.cs">
-      <DependentUpon>201911051229201_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Entity\201911051340297_Solicitacao-Association.cs" />
-    <Compile Include="Migrations\Entity\201911051340297_Solicitacao-Association.Designer.cs">
-      <DependentUpon>201911051340297_Solicitacao-Association.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Entity\201911171928373_Motorista-Categoria.cs" />
-    <Compile Include="Migrations\Entity\201911171928373_Motorista-Categoria.Designer.cs">
-      <DependentUpon>201911171928373_Motorista-Categoria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Entity\201911211751218_Avisos-Remove.cs" />
-    <Compile Include="Migrations\Entity\201911211751218_Avisos-Remove.Designer.cs">
-      <DependentUpon>201911211751218_Avisos-Remove.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Entity\201911242232411_Teste.cs" />
-    <Compile Include="Migrations\Entity\201911242232411_Teste.Designer.cs">
-      <DependentUpon>201911242232411_Teste.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Entity\201911250106121_Cascade-Add.cs" />
-    <Compile Include="Migrations\Entity\201911250106121_Cascade-Add.Designer.cs">
-      <DependentUpon>201911250106121_Cascade-Add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Entity\201911250130587_Cascade-Correction.cs" />
-    <Compile Include="Migrations\Entity\201911250130587_Cascade-Correction.Designer.cs">
-      <DependentUpon>201911250130587_Cascade-Correction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Entity\201912021334011_NomeVeiculoRemove.cs" />
-    <Compile Include="Migrations\Entity\201912021334011_NomeVeiculoRemove.Designer.cs">
-      <DependentUpon>201912021334011_NomeVeiculoRemove.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Entity\201912051810401_New-Unique-Fields.cs" />
-    <Compile Include="Migrations\Entity\201912051810401_New-Unique-Fields.Designer.cs">
-      <DependentUpon>201912051810401_New-Unique-Fields.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Entity\Configuration.cs" />
-    <Compile Include="Migrations\Identity\201911051231263_Initial.cs" />
-    <Compile Include="Migrations\Identity\201911051231263_Initial.Designer.cs">
-      <DependentUpon>201911051231263_Initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Identity\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -160,38 +120,6 @@
       <Project>{e49d7987-d220-4d5b-bb00-611d7248f8d9}</Project>
       <Name>Modelo</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\Entity\201911051229201_Initial.resx">
-      <DependentUpon>201911051229201_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Entity\201911051340297_Solicitacao-Association.resx">
-      <DependentUpon>201911051340297_Solicitacao-Association.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Entity\201911171928373_Motorista-Categoria.resx">
-      <DependentUpon>201911171928373_Motorista-Categoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Entity\201911211751218_Avisos-Remove.resx">
-      <DependentUpon>201911211751218_Avisos-Remove.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Entity\201911242232411_Teste.resx">
-      <DependentUpon>201911242232411_Teste.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Entity\201911250106121_Cascade-Add.resx">
-      <DependentUpon>201911250106121_Cascade-Add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Entity\201911250130587_Cascade-Correction.resx">
-      <DependentUpon>201911250130587_Cascade-Correction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Entity\201912021334011_NomeVeiculoRemove.resx">
-      <DependentUpon>201912021334011_NomeVeiculoRemove.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Entity\201912051810401_New-Unique-Fields.resx">
-      <DependentUpon>201912051810401_New-Unique-Fields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\Identity\201911051231263_Initial.resx">
-      <DependentUpon>201911051231263_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

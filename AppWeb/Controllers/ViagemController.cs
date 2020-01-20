@@ -31,7 +31,7 @@ namespace AppWeb.Controllers
             string email = HttpContext.GetOwinContext().Authentication.User.Identity.Name;
             long? id = (long?)long.Parse(Gerenciador.FindByEmail(email).Id);
 
-            List<Viagem> viagens = ViagemService.ObterViagensOrdPorId().Where(v => v.Veiculo.ClienteId == id || v.MotoristaId == id).ToList();
+            List<Viagem> viagens = ViagemService.ObterViagensOrdPorId().Where(v => v.Veiculo.ClienteId == id || v.Motorista.ClienteId == id).ToList();
 
             ViagemViewModel viagemView = new ViagemViewModel() { Viagens = viagens };
 
