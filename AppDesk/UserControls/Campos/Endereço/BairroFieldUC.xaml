@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Style="{StaticResource MainStackPanelStyle}">
         <Label Style="{StaticResource MainLabelRoundStyle}">Bairro</Label>
-        <TextBox x:Name="BairroTextBox" TextChanged="BairroTextBox_TextChanged" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Bairro}" Width="155">
+        <TextBox x:Name="BairroTextBox" TextChanged="BairroTextBox_TextChanged" Style="{StaticResource MainTextBoxStyle}" Text="{Binding Bairro}" Width="125">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="0 5 5 0" />

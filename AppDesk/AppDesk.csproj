@@ -93,6 +93,7 @@
     </ApplicationDefinition>
     <Compile Include="Exceptions\FieldException.cs" />
     <Compile Include="Interfaces\IFillTextBoxes.cs" />
+    <Compile Include="Serviço\APIs\AddressSearcher.cs" />
     <Compile Include="Serviço\DesktopLoginControlService.cs" />
     <Compile Include="Serviço\ServicoDados.cs" />
     <Compile Include="Tools\HexaColorPicker.cs" />
@@ -691,6 +692,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Content\Icones\Botoes\voltar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

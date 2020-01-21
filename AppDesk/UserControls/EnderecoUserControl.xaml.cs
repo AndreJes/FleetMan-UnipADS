@@ -1,6 +1,9 @@
-﻿using Modelo.Classes.Auxiliares;
+﻿using AppDesk.Serviço.APIs;
+using AppDesk.Tools;
+using Modelo.Classes.Auxiliares;
 using Modelo.Enums;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace AppDesk.UserControls
@@ -39,21 +42,51 @@ namespace AppDesk.UserControls
 
         private void DefinirEndereco(Endereco endereco)
         {
-            this.DataContext = endereco;
-            RuaUC.Text = endereco.Rua;
-            NumeroUC.Text = endereco.Numero;
-            CidadeUC.Text = endereco.Cidade;
-            CEPUC.Text = endereco.CEP;
-            BairroUC.Text = endereco.Bairro;
-            UfComboBox.SelectedItem = endereco.UF.ToString("G");
-            if (Editavel == false)
+            try
             {
-                BairroUC.IsEnabled = false;
-                CEPUC.IsEnabled = false;
-                CidadeUC.IsEnabled = false;
-                NumeroUC.IsEnabled = false;
-                RuaUC.IsEnabled = false;
-                UfComboBox.IsEnabled = false;
+                Dispatcher.Invoke(() =>
+                {
+                    this.DataContext = endereco;
+                    RuaUC.Text = endereco.Rua;
+                    NumeroUC.Text = endereco.Numero;
+                    CidadeUC.Text = endereco.Cidade;
+                    CEPUC.Text = endereco.CEP;
+                    BairroUC.Text = endereco.Bairro;
+                    UfComboBox.SelectedItem = endereco.UF.ToString("G");
+                    if (Editavel == false)
+                    {
+                        BairroUC.IsEnabled = false;
+                        CEPUC.IsEnabled = false;
+                        CidadeUC.IsEnabled = false;
+                        NumeroUC.IsEnabled = false;
+                        RuaUC.IsEnabled = false;
+                        UfComboBox.IsEnabled = false;
+                        BuscarCepBtn.IsEnabled = false;
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
+        }
+
+        private void BuscarCepBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Buscar();
+        }
+
+        private async void Buscar()
+        {
+            try
+            {
+                AddressSearcher searcher = new AddressSearcher();
+                Endereco endereco = await searcher.GetEnderecoByCEPAsync(CEPUC.Text);
+                DefinirEndereco(endereco);
+            }
+            catch (Exception ex)
+            {
+                StandardMessageBoxes.MensagemDeErro(ex.Message);
             }
         }
     }

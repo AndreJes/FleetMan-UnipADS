@@ -29,6 +29,7 @@
         <!--#region Bairro/ CEP-->
         <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
             <euc:CEPFieldUC x:Name="CEPUC"></euc:CEPFieldUC>
+            <Button x:Name="BuscarCepBtn" Click="BuscarCepBtn_Click" Width="30">P</Button>
             <euc:BairroFieldUC x:Name="BairroUC"></euc:BairroFieldUC>
         </StackPanel>
         <!--#endregion-->
