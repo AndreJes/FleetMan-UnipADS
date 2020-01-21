@@ -47,7 +47,7 @@ namespace AppDesk.Serviço.APIs
                     string jsonString = await request.Content.ReadAsStringAsync();
                     
                     //Checa se a string de retorno contém erros
-                    if(jsonString.Contains("error"))
+                    if(jsonString.Contains("erro"))
                     {
                         throw new Exception("CEP inválido");
                     }

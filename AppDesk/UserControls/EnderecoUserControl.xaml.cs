@@ -13,7 +13,7 @@ namespace AppDesk.UserControls
     /// </summary>
     public partial class EnderecoUserControl : UserControl
     {
-        public bool Editavel { get; set; }
+        public bool Editavel { get; set; } = true;
 
         public Endereco Endereco
         {
@@ -80,6 +80,7 @@ namespace AppDesk.UserControls
         {
             try
             {
+                BuscarCepBtn.IsEnabled = false;
                 AddressSearcher searcher = new AddressSearcher();
                 Endereco endereco = await searcher.GetEnderecoByCEPAsync(CEPUC.Text);
                 DefinirEndereco(endereco);
@@ -87,6 +88,10 @@ namespace AppDesk.UserControls
             catch (Exception ex)
             {
                 StandardMessageBoxes.MensagemDeErro(ex.Message);
+            }
+            finally
+            {
+                BuscarCepBtn.IsEnabled = true;
             }
         }
     }
