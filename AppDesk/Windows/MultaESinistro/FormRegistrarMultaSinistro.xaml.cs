@@ -97,6 +97,7 @@ namespace AppDesk.Windows.MultaESinistro
                 multa.CodigoMulta = CodigoMultaTextBox.Text;
                 multa.Valor = ValorMultaUC.Valor;
                 multa.DataDaMulta = DataInfraçãoUC.Date.GetValueOrDefault();
+                multa.DataVencimento = DataDeVencimentoUC.Date.GetValueOrDefault();
                 multa.EstadoDoPagamento = (EstadosDePagamento)Enum.Parse(typeof(EstadosDePagamento), EstadoPagamentoInfracaoComboBox.SelectedItem.ToString().Replace(' ', '_'));
                 multa.GravidadeDaInfracao = (GravidadesDeInfracao)Enum.Parse(typeof(GravidadesDeInfracao), GravidadeInfracaoComboBox.SelectedItem.ToString());
                 multa.MotoristaId = SeletorMotoristaMultaUC.Motorista.MotoristaId;

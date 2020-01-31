@@ -20,13 +20,14 @@
             <GroupBox Grid.Row="1" Header="Dados da Multa">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="15*"/>
-                        <RowDefinition Height="15*"/>
-                        <RowDefinition Height="15*"/>
-                        <RowDefinition Height="15*"/>
-                        <RowDefinition Height="15*"/>
-                        <RowDefinition Height="20*"/>
-                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="61*"/>
+                        <RowDefinition Height="61*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Style="{StaticResource MainStackPanelStyle}">
                         <Label Style="{StaticResource MainLabelRoundStyle}" Width="50">Código</Label>
@@ -40,7 +41,7 @@
                     </StackPanel>
 
                     <uc:ValorFieldUC x:Name="ValorMultaUC" Label="Valor" IsEnabled="False" Grid.Row="1"></uc:ValorFieldUC>
-                    
+
                     <StackPanel Grid.Row="2" Style="{StaticResource MainStackPanelStyle}">
                         <Label Style="{StaticResource MainLabelRoundStyle}">Pagamento</Label>
                         <ComboBox Style="{StaticResource MainComboBoxStyle}" x:Name="EstadoPagamentoInfracaoComboBox" Width="130" SelectionChanged="EstadoPagamentoInfracaoComboBox_SelectionChanged">
@@ -62,8 +63,10 @@
                     </StackPanel>
 
                     <uc:DataFieldUC Grid.Row="4" IsEnabled="False" x:Name="DataMultaUC" Label="Data da Infração"></uc:DataFieldUC>
-                    
-                    <GroupBox Header="Dados do veiculo" Grid.Row="5">
+
+                    <uc:DataFieldUC Grid.Row="5" IsEnabled="False" x:Name="DataVencimentoUC" Label="Data de Vencimento"></uc:DataFieldUC>
+
+                    <GroupBox Header="Dados do veiculo" Grid.Row="6">
                         <Grid>
                             <StackPanel Style="{StaticResource MainStackPanelStyle}">
                                 <ucm:PlacaFieldUC IsEnabled="False" x:Name="PlacaUC"></ucm:PlacaFieldUC>
@@ -73,7 +76,7 @@
                             </StackPanel>
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="Dados do motorista" Grid.Row="6" >
+                    <GroupBox Header="Dados do motorista" Grid.Row="7" >
                         <Grid>
                             <StackPanel Style="{StaticResource MainStackPanelStyle}">
                                 <ucm:CPFFieldUC IsEnabled="False" x:Name="CPFUC"></ucm:CPFFieldUC>

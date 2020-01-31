@@ -31,6 +31,7 @@ namespace AppDesk.Windows.MultaESinistro.Multas
             CPFUC.Text = _multa.Motorista.CPF;
             PlacaUC.Text = _multa.Veiculo.Placa;
             DataMultaUC.Date = _multa.DataDaMulta;
+            DataVencimentoUC.Date = _multa.DataVencimento;
             ValorMultaUC.Valor = _multa.Valor;
 
             if (!DesktopLoginControlService._Usuario.Permissoes.MultasSinistros.Alterar)
