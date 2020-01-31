@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Modelo.Classes.Usuarios.Permissoes
 {
-    [ComplexType]
     public class Funcoes
     {
         public bool Alterar { get; set; }

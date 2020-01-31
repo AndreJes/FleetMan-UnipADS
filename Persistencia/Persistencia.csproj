@@ -104,6 +104,10 @@
     <Compile Include="DAL\Web\SolicitacaoDAL.cs" />
     <Compile Include="DAL\Web\VeiculoDAL.cs" />
     <Compile Include="DAL\Web\ViagemDAL.cs" />
+    <Compile Include="Migrations\Entity\202001212035122_NewPermissoesType.cs" />
+    <Compile Include="Migrations\Entity\202001212035122_NewPermissoesType.Designer.cs">
+      <DependentUpon>202001212035122_NewPermissoesType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Entity\Configuration.cs" />
     <Compile Include="Migrations\Identity\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +124,11 @@
       <Project>{e49d7987-d220-4d5b-bb00-611d7248f8d9}</Project>
       <Name>Modelo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\Entity\202001212035122_NewPermissoesType.resx">
+      <DependentUpon>202001212035122_NewPermissoesType.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

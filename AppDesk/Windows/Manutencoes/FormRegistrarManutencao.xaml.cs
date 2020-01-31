@@ -122,6 +122,14 @@ namespace AppDesk.Windows.Manutencoes
                     manutencao.DataSaida = DataConclusaoUC.Date;
                     manutencao.EstadoAtual = EstadosDeManutencao.CONCLUIDA;
                 }
+                else if(manutencao.DataEntrada <= DateTime.Now)
+                {
+                    manutencao.EstadoAtual = EstadosDeManutencao.EM_ANDAMENTO;
+                }
+                else
+                {
+                    manutencao.EstadoAtual = EstadosDeManutencao.AGUARDANDO;
+                }
 
                 return manutencao;
             }

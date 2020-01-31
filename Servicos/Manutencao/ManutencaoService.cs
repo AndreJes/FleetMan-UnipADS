@@ -49,8 +49,11 @@ namespace Servicos.Manutencao
                     if (manutencao.DataEntrada <= DateTime.Now)
                     {
                         Veiculo veiculo = VeiculoService.ObterVeiculoPorId(manutencao.VeiculoId);
-                        veiculo.EstadoDoVeiculo = EstadosDeVeiculo.EM_MANUTENCAO;
-                        VeiculoService.GravarVeiculo(veiculo);
+                        if (manutencao.EstadoAtual == EstadosDeManutencao.EM_ANDAMENTO)
+                        {
+                            veiculo.EstadoDoVeiculo = EstadosDeVeiculo.EM_MANUTENCAO;
+                            VeiculoService.GravarVeiculo(veiculo);
+                        }
                     }
                     Context.AdicionarManutencao(manutencao, pecas);
                 }
@@ -103,7 +106,7 @@ namespace Servicos.Manutencao
         {
             if (manutencao.DataSaida.HasValue && manutencao.DataSaida.Value > DateTime.Now)
             {
-                if(manutencao.EstadoAtual == EstadosDeManutencao.CONCLUIDA && manutencao.DataEntrada > DateTime.Now)
+                if (manutencao.EstadoAtual == EstadosDeManutencao.CONCLUIDA && manutencao.DataEntrada > DateTime.Now)
                 {
                     throw new Exception("Data de entrada/agendamento inválida");
                 }

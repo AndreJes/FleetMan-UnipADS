@@ -60,6 +60,10 @@ namespace AppDesk.Serviço.APIs
                     endereco.Rua = address.logradouro;
                     endereco.UF = (UnidadesFederativas)Enum.Parse(typeof(UnidadesFederativas), address.uf);
                 }
+                else
+                {
+                    throw new Exception("Falha ao conectar com o serviço de Busca!");
+                }
 
                 return endereco;
             }

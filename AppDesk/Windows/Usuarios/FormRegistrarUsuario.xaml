@@ -10,6 +10,22 @@
         mc:Ignorable="d"
         Title="Registrar Usuário" Style="{StaticResource SmallFormWindowStyle}">
     <Window.Resources>
+        
+        <!--Template para Labels que atuam como botões-->
+        <ControlTemplate x:Key="ButtonLabelTemplate" TargetType="Label">
+            <Border Background="Black" CornerRadius="10" x:Name="ContentBorder">
+                <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
+            </Border>
+            
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="ContentBorder" Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        <!--Estilo padrão checkbox-->
         <Style TargetType="CheckBox" >
             <Setter Property="IsChecked" Value="True"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -97,10 +113,10 @@
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource MainLabelFullRoundStyle}">Consultar</Label>
-                            <Label Grid.Row="0" Grid.Column="2" Style="{StaticResource MainLabelFullRoundStyle}">Cadastrar</Label>
-                            <Label Grid.Row="0" Grid.Column="3" Style="{StaticResource MainLabelFullRoundStyle}">Alterar</Label>
-                            <Label Grid.Row="0" Grid.Column="4" Style="{StaticResource MainLabelFullRoundStyle}">Remover</Label>
+                            <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource MainLabelFullRoundStyle}" Template="{StaticResource ButtonLabelTemplate}" x:Name="ConsultarLabel" PreviewMouseDoubleClick="ConsultarLabel_PreviewMouseDoubleClick">Consultar</Label>
+                            <Label Grid.Row="0" Grid.Column="2" Style="{StaticResource MainLabelFullRoundStyle}" Template="{StaticResource ButtonLabelTemplate}" x:Name="CadastrarLabel" PreviewMouseDoubleClick="CadastrarLabel_PreviewMouseDoubleClick">Cadastrar</Label>
+                            <Label Grid.Row="0" Grid.Column="3" Style="{StaticResource MainLabelFullRoundStyle}" Template="{StaticResource ButtonLabelTemplate}" x:Name="AlterarLabel" PreviewMouseDoubleClick="AlterarLabel_PreviewMouseDoubleClick">Alterar</Label>
+                            <Label Grid.Row="0" Grid.Column="4" Style="{StaticResource MainLabelFullRoundStyle}" Template="{StaticResource ButtonLabelTemplate}" x:Name="RemoverLabel" PreviewMouseDoubleClick="RemoverLabel_PreviewMouseDoubleClick">Remover</Label>
 
                         </Grid>
                         <!--#endregion-->
@@ -116,7 +132,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right" Style="{StaticResource MainLabelRoundStyle}">Veiculos:</Label>
+                                <Label Grid.Column="0" Style="{StaticResource MainLabelRoundStyle}" Template="{StaticResource ButtonLabelTemplate}" x:Name="VeiculosLabel" PreviewMouseDoubleClick="VeiculosLabel_PreviewMouseDoubleClick">Veiculos:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarVeiculosCheck">
                                 </CheckBox>
@@ -139,7 +155,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Motoristas:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="MotoristasLabel" PreviewMouseDoubleClick="MotoristasLabel_PreviewMouseDoubleClick">Motoristas:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarMotoristasCheckBox"/>
 
@@ -160,7 +176,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Clientes:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="ClienteLabel" PreviewMouseDoubleClick="ClienteLabel_PreviewMouseDoubleClick">Clientes:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarClientesCheckBox"/>
 
@@ -181,7 +197,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Garagens:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="GaragensLabel" PreviewMouseDoubleClick="GaragensLabel_PreviewMouseDoubleClick">Garagens:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarGaragensCheckBox"/>
 
@@ -202,7 +218,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Multas/Sinistros:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="MultaSinisLabel" PreviewMouseDoubleClick="MultaSinisLabel_PreviewMouseDoubleClick">Multas/Sinistros:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarMultaSinisCheckBox"/>
 
@@ -223,7 +239,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Manutenções:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="ManutenLabel" PreviewMouseDoubleClick="ManutenLabel_PreviewMouseDoubleClick">Manutenções:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarManutencaoCheckBox"/>
 
@@ -243,7 +259,7 @@
                                     <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Seguros:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="SegurosLabel" PreviewMouseDoubleClick="SegurosLabel_PreviewMouseDoubleClick">Seguros:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarSeguroCheckBox"/>
 
@@ -265,7 +281,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Financeiro:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="FinanceiroLabel" PreviewMouseDoubleClick="FinanceiroLabel_PreviewMouseDoubleClick">Financeiro:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarFinancaCheckBox"/>
 
@@ -289,7 +305,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Solicitações:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="SolicitacoesLabel" PreviewMouseDoubleClick="SolicitacoesLabel_PreviewMouseDoubleClick">Solicitações:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarSolicitacaoCheckBox"/>
 
@@ -311,7 +327,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Relatórios:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="RelatoriosLabel" PreviewMouseDoubleClick="RelatoriosLabel_PreviewMouseDoubleClick">Relatórios:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarRelatorioCheckBox"/>
 
@@ -334,7 +350,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Locações:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="LocacoesLabel" PreviewMouseDoubleClick="LocacoesLabel_PreviewMouseDoubleClick">Locações:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarLocacaoCheckBox"/>
 
@@ -357,7 +373,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Viagens:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="ViagensLabel" PreviewMouseDoubleClick="ViagensLabel_PreviewMouseDoubleClick">Viagens:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarViagemCheckBox"/>
 
@@ -380,7 +396,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" HorizontalAlignment="Right">Usuários:</Label>
+                                <Label Grid.Column="0" Template="{StaticResource ButtonLabelTemplate}" x:Name="UsuariosLabel" PreviewMouseDoubleClick="UsuariosLabel_PreviewMouseDoubleClick">Usuários:</Label>
 
                                 <CheckBox Grid.Column="1" x:Name="ConsultarUsuarioCheckBox" IsChecked="False"/>
 
