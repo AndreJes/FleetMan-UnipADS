@@ -25,6 +25,8 @@ namespace Modelo.Classes.Desk
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0: dd/MM/yyyy}")]
         public DateTime DataDaMulta { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0: dd/MM/yyyy}")]
+        public DateTime DataVencimento { get; set; }
         public EstadosDePagamento EstadoDoPagamento { get; set; }
         public GravidadesDeInfracao GravidadeDaInfracao { get; set; }
 

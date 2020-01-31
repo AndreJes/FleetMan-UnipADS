@@ -108,6 +108,10 @@
     <Compile Include="Migrations\Entity\202001212035122_NewPermissoesType.Designer.cs">
       <DependentUpon>202001212035122_NewPermissoesType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Entity\202001311345390_MultaDataVencimento.cs" />
+    <Compile Include="Migrations\Entity\202001311345390_MultaDataVencimento.Designer.cs">
+      <DependentUpon>202001311345390_MultaDataVencimento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Entity\Configuration.cs" />
     <Compile Include="Migrations\Identity\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,6 +132,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\Entity\202001212035122_NewPermissoesType.resx">
       <DependentUpon>202001212035122_NewPermissoesType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\Entity\202001311345390_MultaDataVencimento.resx">
+      <DependentUpon>202001311345390_MultaDataVencimento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
