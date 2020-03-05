@@ -166,6 +166,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AluguelController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -2026,9 +2027,12 @@
     <Content Include="Views\Viagem\Index.cshtml" />
     <Content Include="Views\Aluguel\Index.cshtml" />
     <Content Include="Views\Aluguel\Detalhes.cshtml" />
+    <Content Include="Views\Shared\_WatsonPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="APIs\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Chat\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

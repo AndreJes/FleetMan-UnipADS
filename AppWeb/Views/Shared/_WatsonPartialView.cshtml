@@ -1,0 +1,44 @@
+﻿<button class="btn btn-info watson-button" data-toggle="collapse" data-target="#chat-bot">
+    <i class="fas fa-robot"></i>
+</button>
+
+<div class="container">
+    <div class="row chat-window col-md-3 col-sm-12 collapse" id="chat-bot" style="margin-left:10px">
+        <div class="card">
+            <div class="card-header chat-top">
+                <div class="card-title" style="padding:5px; margin:0;">
+                    <i class="fa fa-2x fa-robot chat-title-icon"></i>
+                    FleetBot <small>v1</small>
+                    <button class="btn btn-danger btn-sm float-right chat-close-btn" data-toggle="collapse" data-target="#chat-bot">&times;</button>
+                </div>
+            </div>
+
+            <div class="card-body chat-content">
+                <div class="row message-container base-sent">
+                    <div class="col-md-10 col-sm-10">
+                        <div class="messages message-sent">
+                            <p>ABCDEFGdwaudiiudhaiwudhawidhawiudhawiudhawiudhawiudhawiudhawiudhawd</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row message-container base-received">
+                    <div class="col-md-10 col-sm-10">
+                        <div class="messages message-received">
+                            <p>ABCDEFGdwaudiiudhaiwudhawidhawiudhawiudhawiudhawiudhawiudhawiudhawd</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer chat-bottom">
+                <div class="input-group input-group-sm">
+                    <input id="message-input" type="text" class="form-control" placeholder="Digite sua mensagem..." />
+                    <div class="input-group-append">
+                        <button class="btn btn-info" id="send-message-btn">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
