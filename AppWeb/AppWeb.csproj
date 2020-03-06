@@ -55,6 +55,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="IBM.Watson.Assistant.v2, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -1982,6 +1983,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\watson\ChatController.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2057,6 +2059,10 @@
     <ProjectReference Include="..\Servicos\Servicos.csproj">
       <Project>{5421A323-FEF5-476E-A247-C34E727BEEDC}</Project>
       <Name>Servicos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Watson\Watson.csproj">
+      <Project>{9903d01a-a65f-4be1-a4b7-224ee675a695}</Project>
+      <Name>Watson</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
