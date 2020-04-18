@@ -10,9 +10,9 @@ namespace AppWeb.Controllers
 {
     public class ChatController : Controller
     {
-        const string API_KEY = "nL6pgKkgPVlBJ8uvPDFhazfFLP--V1DOau8jLnBHzw9N";
-        const string API_URL = @"https://api.us-east.assistant.watson.cloud.ibm.com/instances/68fb7dc5-1455-49e1-a217-58b0cd6e9a9e";
-        const string ASSISTANT_ID = @"27f4d612-10b7-4275-8e37-ed7cb055b2f3";
+        const string API_KEY = "";
+        const string API_URL = @"";
+        const string ASSISTANT_ID = @"";
 
         WatsonAssistantAPI assistantAPI = new WatsonAssistantAPI(API_URL, API_KEY, ASSISTANT_ID);
 
